@@ -1,4 +1,4 @@
-﻿---
+---
 import SetupScene from './SetupScene.astro';
 interface Props {
   kind: 'premium' | 'budget';
@@ -45,9 +45,9 @@ const p = Astro.props;
     </div>
     <div class="check-block"><strong>Check before buying</strong><p>{p.check}</p><small>Price and stock can change. Check the retailer before buying.</small></div>
     <div class="retailer-actions">
-      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener">Check Amazon price →</a>
+      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer">Check Amazon price →</a>
       <a class="btn" href={p.secondaryUrl} target={p.secondaryExternal ? '_blank' : undefined} rel={p.secondaryExternal ? 'noopener' : undefined}>{p.secondaryLabel}</a>
-      <span>Amazon is an affiliate link. We may earn a commission.</span>
+      <span>Paid link. StackGeist may earn a commission if you buy through this Amazon link.</span>
     </div>
   </div>
 </section>

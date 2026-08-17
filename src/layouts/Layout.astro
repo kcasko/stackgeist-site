@@ -1,29 +1,28 @@
----
+﻿---
 import '../styles/global.css';
-
-interface Props {
-  title?: string;
-  description?: string;
-}
-
+import SeoHead from '../components/SeoHead.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+interface Props { title?: string; description?: string; }
 const {
   title = 'StackGeist - Better setups, useful gear',
   description = 'Gaming setups, desk inspiration, useful gear and practical ways to improve the space you use every day.',
 } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#07050d" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <SeoHead title={title} description={description} />
   </head>
   <body>
     <slot />
+    <div class="site-shell home-shared-footer"><main><SiteFooter /></main></div>
   </body>
 </html>
+<style is:global>
+  body > .site-shell:first-of-type main > footer.site-footer:not([data-shared-footer]) { display:none; }
+  .home-shared-footer main { padding-top:0; }
+</style>

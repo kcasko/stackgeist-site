@@ -1,0 +1,40 @@
+﻿---
+interface Props {
+  title: string;
+  description: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+const { title, description, type = 'website', noindex = false } = Astro.props;
+const site = Astro.site ?? new URL('https://stackgeist.dev');
+const canonical = new URL(Astro.url.pathname, site).toString();
+const image = new URL('/og/stackgeist-card.png', site).toString();
+const structured = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'StackGeist',
+  url: site.toString(),
+  description: 'Gaming setups, useful gear, and practical setup guides.',
+};
+---
+<meta name="description" content={description} />
+<meta name="theme-color" content="#07050d" />
+<meta name="color-scheme" content="dark" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta property="og:site_name" content="StackGeist" />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="StackGeist - gaming setups, gear and practical guides" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
