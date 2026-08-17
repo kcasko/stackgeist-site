@@ -1,0 +1,461 @@
+---
+const branches = {
+  setups: {
+    label: 'SETUPS', intent: 'I want inspiration',
+    children: ['Gaming', 'Work', 'Small spaces', 'Budget', 'Minimal'],
+    detail: 'Console, PC and mixed-use desks with real room constraints.',
+    tags: ['Console', 'PC'],
+  },
+  gear: {
+    label: 'GEAR', intent: 'I need something',
+    children: ['Displays', 'Lighting', 'Audio', 'Furniture', 'Accessories', 'Cable management'],
+    detail: 'Useful gear organized by the problem it fixes, not by brand hype.',
+    tags: ['Lighting', 'Cables'],
+  },
+  guides: {
+    label: 'GUIDES', intent: 'I need help',
+    children: ['Setup basics', 'Cable management', 'Room setup', 'Upgrades', 'Buying guides'],
+    detail: 'Practical setup help built around decisions you can actually act on.',
+    tags: ['How-to', 'Buying'],
+  },
+};
+const branchEntries = Object.entries(branches);
+---
+
+<section class="explore" id="explore" data-mind-map data-active="setups">
+  <p class="eyebrow">Explore StackGeist</p>
+  <h1>What are you improving?</h1>
+  <p class="lead desktop-lead">Choose a path. StackGeist reveals the next useful layer instead of making you dig through a giant menu.</p>
+  <p class="lead mobile-lead">Choose one path.</p>
+  <div class="desktop-map" aria-label="Explore StackGeist">
+    <svg class="map-lines" viewBox="0 0 1000 430" aria-hidden="true">
+      <path class="line branch-line setups" d="M150 65 V105 H500 V150" />
+      <path class="line branch-line gear" d="M500 65 V150" />
+      <path class="line branch-line guides" d="M850 65 V105 H500 V150" />
+      <path class="line child-line" d="M500 225 V275 H120 M500 275 H880" />
+    </svg>
+
+    <div class="branch-tabs">
+      {branchEntries.map(([key, branch]) => (
+        <button class="branch-tab" type="button" data-branch={key} aria-pressed={key === 'setups' ? 'true' : 'false'}>
+          <strong>{branch.label}</strong>
+          <span>{branch.intent}</span>
+        </button>
+      ))}
+    </div>
+
+    <button class="hub" type="button" data-hub>
+      <strong>STACKGEIST</strong>
+      <span>Start here</span>
+    </button>
+    <div class="branch-panels">
+      {branchEntries.map(([key, branch]) => (
+        <div class="branch-panel" data-panel={key} hidden={key !== 'setups'}>
+          <div class="child-grid">
+            {branch.children.map((child, index) => (
+              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child>
+                {child}
+              </button>
+            ))}
+          </div>
+
+          <div class="branch-detail">
+            <div>
+              <strong data-detail-title>{branch.children[0]} {key === 'setups' ? 'setups' : ''}</strong>
+              <p>{branch.detail}</p>
+            </div>
+            <div class="detail-tags">
+              {branch.tags.map((tag, index) => <span class:list={{ active: index === 0 }}>{tag}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="mobile-map">
+    {branchEntries.map(([key, branch]) => (
+      <details class="mobile-branch" data-mobile-branch={key} open={key === 'setups'}>
+        <summary>
+          <span><strong>{branch.label}</strong><small>{branch.intent}</small></span>
+          <span class="summary-mark" aria-hidden="true">+</span>
+        </summary>
+        <div class="mobile-children">
+          {branch.children.map((child, index) => (
+            <button class:list={['mobile-child', { active: index === 0 }]} type="button">
+              <span>{child}</span><span aria-hidden="true">›</span>
+            </button>
+          ))}
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .explore {
+    padding-top: 34px;
+  }
+
+  h1 {
+    margin: 16px 0 8px;
+    font-size: 34px;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .lead {
+    margin: 0;
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .mobile-lead { display: none; }
+
+  .desktop-map {
+    position: relative;
+    height: 560px;
+    margin-top: 54px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 50% 53%, rgba(85, 36, 121, 0.18), transparent 290px),
+      var(--surface);
+  }
+
+  .map-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: var(--border-strong);
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 180ms ease, filter 180ms ease;
+  }
+
+  [data-active="setups"] .line.setups,
+  [data-active="gear"] .line.gear,
+  [data-active="guides"] .line.guides,
+  .child-line {
+    stroke: var(--purple);
+  }
+  .branch-tabs {
+    position: absolute;
+    top: 54px;
+    left: 70px;
+    right: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 190px);
+    justify-content: space-between;
+  }
+
+  .branch-tab,
+  .hub,
+  .child-node {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .branch-tab {
+    min-height: 78px;
+    padding: 14px 16px;
+  }
+
+  .branch-tab strong,
+  .hub strong {
+    display: block;
+    font-size: 14px;
+  }
+
+  .branch-tab span,
+  .hub span {
+    display: block;
+    margin-top: 9px;
+    color: var(--quiet);
+    font-size: 12px;
+  }
+  .branch-tab[aria-pressed="true"],
+  .branch-tab:hover {
+    border-color: var(--purple);
+    background: var(--purple-deep);
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.24);
+  }
+
+  .branch-tab[aria-pressed="true"] strong,
+  .branch-tab[aria-pressed="true"] span {
+    color: var(--purple-light);
+  }
+
+  .hub {
+    position: absolute;
+    top: 176px;
+    left: 50%;
+    width: 190px;
+    min-height: 84px;
+    padding: 14px 16px;
+    transform: translateX(-50%);
+    border: 2px solid var(--purple-light);
+    background: var(--purple-active);
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
+  }
+
+  .hub:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .hub span {
+    color: var(--purple-muted);
+  }
+
+  .branch-panels {
+    position: absolute;
+    top: 366px;
+    left: 64px;
+    right: 64px;
+  }
+  .child-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .child-node {
+    min-height: 54px;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .child-node:hover,
+  .child-node.active {
+    border-color: var(--purple-light);
+    background: #241133;
+    color: var(--purple-light);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.18);
+  }
+
+  .branch-detail {
+    width: min(520px, 100%);
+    min-height: 74px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 13px 18px;
+    border: 1.5px solid var(--purple);
+    border-radius: 14px;
+    background: #130b1c;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.12);
+  }
+  .branch-detail strong {
+    color: var(--purple-light);
+    font-size: 13px;
+  }
+
+  .branch-detail p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .detail-tags {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .detail-tags span {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .detail-tags span.active {
+    border-color: var(--purple);
+    background: var(--purple-deep);
+    color: var(--purple-light);
+  }
+
+  .mobile-map {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .explore {
+      padding-top: 34px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+
+    .desktop-lead { display: none; }
+    .mobile-lead { display: block; max-width: 280px; font-size: 13px; }
+
+    .desktop-map {
+      display: none;
+    }
+
+    .mobile-map {
+      display: grid;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .mobile-branch {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-2);
+      overflow: hidden;
+    }
+
+    .mobile-branch[open] {
+      border-color: var(--purple);
+      background: var(--purple-deep);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.14);
+    }
+    .mobile-branch summary {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .mobile-branch summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-branch summary strong,
+    .mobile-branch summary small {
+      display: block;
+    }
+
+    .mobile-branch summary strong {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .mobile-branch[open] summary strong,
+    .mobile-branch[open] .summary-mark {
+      color: var(--purple-light);
+    }
+
+    .mobile-branch summary small {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .summary-mark {
+      color: var(--muted);
+      font-size: 20px;
+      transition: transform 160ms ease;
+    }
+
+    .mobile-branch[open] .summary-mark {
+      transform: rotate(45deg);
+    }
+
+    .mobile-children {
+      display: grid;
+      gap: 10px;
+      padding: 0 16px 16px;
+      background: var(--bg);
+    }
+
+    .mobile-child {
+      width: 100%;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--text);
+      font-weight: 650;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .mobile-child.active,
+    .mobile-child:hover {
+      border-color: var(--purple-light);
+      background: #241133;
+      color: var(--purple-light);
+    }
+  }
+</style>
+<script>
+  const map = document.querySelector('[data-mind-map]');
+
+  function setBranch(key) {
+    if (!map) return;
+    map.setAttribute('data-active', key);
+
+    map.querySelectorAll('[data-branch]').forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.getAttribute('data-branch') === key));
+    });
+
+    map.querySelectorAll('[data-panel]').forEach((panel) => {
+      panel.toggleAttribute('hidden', panel.getAttribute('data-panel') !== key);
+    });
+
+    const mobile = map.querySelector(`[data-mobile-branch="${key}"]`);
+    map.querySelectorAll('[data-mobile-branch]').forEach((detail) => {
+      if (detail !== mobile) detail.removeAttribute('open');
+    });
+    mobile?.setAttribute('open', '');
+  }
+
+  map?.querySelectorAll('[data-branch]').forEach((button) => {
+    button.addEventListener('click', () => setBranch(button.getAttribute('data-branch')));
+  });
+  document.querySelectorAll('[data-nav-branch]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-nav-branch');
+      setBranch(key);
+      document.querySelector('#explore')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelector('[data-header]')?.setAttribute('data-open', 'false');
+      document.querySelector('[data-menu-toggle]')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  map?.querySelectorAll('[data-mobile-branch]').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (!detail.hasAttribute('open')) return;
+      const key = detail.getAttribute('data-mobile-branch');
+      setBranch(key);
+    });
+  });
+
+  map?.querySelectorAll('[data-panel]').forEach((panel) => {
+    panel.querySelectorAll('[data-child]').forEach((child) => {
+      child.addEventListener('click', () => {
+        panel.querySelectorAll('[data-child]').forEach((item) => item.classList.remove('active'));
+        child.classList.add('active');
+        const title = panel.querySelector('[data-detail-title]');
+        if (title) title.textContent = child.textContent?.trim() || '';
+      });
+    });
+  });
+</script>

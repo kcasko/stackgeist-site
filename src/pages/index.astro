@@ -1,1473 +1,165 @@
 ---
-const gear = [
-  "Monitor arms",
-  "Desk lighting",
-  "Cable management",
-  "Desk mats",
-  "USB hubs",
-  "Speakers",
-];
-
-const guides = [
-  {
-    title: "Your cables are probably making your setup look worse.",
-    description:
-      "A practical guide to routing power, USB, display, and charging cables without turning your desk into a snake pit.",
-  },
-  {
-    title: "How much desk do you actually need?",
-    description:
-      "What different desk widths really give you once the monitor, speakers, console, and everything else show up.",
-  },
-  {
-    title: "The cheap upgrades that make a desk feel expensive.",
-    description:
-      "Small changes that improve the setup without replacing everything you own.",
-  },
-];
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import MindMap from '../components/MindMap.astro';
+import FeaturedSetup from '../components/FeaturedSetup.astro';
 ---
 
-<!doctype html>
-<html lang="en">
+<Layout>
+  <div class="site-shell">
+    <Header />
+    <main>
+      <MindMap />
+      <FeaturedSetup />
 
-<head>
-  <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  />
-
-  <meta
-    name="color-scheme"
-    content="light"
-  />
-
-  <title>
-    StackGeist — Better setups, useful gear
-  </title>
-
-  <meta
-    name="description"
-    content="Gaming setups, desk inspiration, useful gear and practical ways to improve the space you use every day."
-  />
-</head>
-
-<body>
-
-  <header class="site-header">
-
-    <a
-      class="logo"
-      href="/"
-    >
-      StackGeist
-    </a>
-
-    <nav>
-      <a href="/setups">Setups</a>
-      <a href="/gear">Gear</a>
-      <a href="/guides">Guides</a>
-      <a href="/about">About</a>
-    </nav>
-
-  </header>
-
-
-  <main>
-
-    <!-- FEATURED SETUP -->
-
-    <section class="feature">
-
-      <a
-        class="feature-image"
-        href="/setups/midnight-shift"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1760253278044-48d3e8ed67ed?auto=format&fit=crop&w=2000&q=85"
-          alt="Gaming and computer desk setup"
-        />
-      </a>
-
-
-      <div class="feature-info">
-
-        <div>
-
-          <p class="type">
-            Gaming setup
-          </p>
-
-          <h1>
-            Midnight Shift
-          </h1>
-
-          <p class="intro">
-            A dark setup for people who want atmosphere without
-            turning the entire room into an RGB carnival.
-          </p>
-
+      <section class="keep-exploring" aria-labelledby="keep-exploring-title">
+        <div class="divider"></div>
+        <p class="eyebrow" id="keep-exploring-title">Keep exploring</p>
+        <div class="explore-links">
+          <button type="button" data-nav-branch="gear">
+            <strong>Gear that fixes a problem</strong>
+            <span>Lighting · cable management · monitor arms</span>
+          </button>
+          <button type="button" data-nav-branch="guides">
+            <strong>Guides worth reading</strong>
+            <span>Desk size · cable routing · cheap upgrades</span>
+          </button>
+          <button type="button" data-nav-branch="setups">
+            <strong>Browse by constraint</strong>
+            <span>Small spaces · budget · work + gaming</span>
+          </button>
         </div>
+      </section>
+      <footer class="site-footer">
+        <strong>STACKGEIST</strong>
+        <nav aria-label="Footer navigation">
+          <button type="button" data-nav-branch="setups">Setups</button>
+          <button type="button" data-nav-branch="gear">Gear</button>
+          <button type="button" data-nav-branch="guides">Guides</button>
+          <a href="/about">About</a>
+        </nav>
+        <p>As an Amazon Associate I earn from qualifying purchases.</p>
+      </footer>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .keep-exploring {
+    margin-top: 36px;
+  }
+
+  .keep-exploring > .eyebrow {
+    margin-top: 32px;
+  }
+
+  .explore-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 24px;
+  }
+
+  .explore-links button {
+    min-height: 74px;
+    padding: 6px 42px;
+    border: 0;
+    border-left: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+  }
+  .explore-links button:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .explore-links strong,
+  .explore-links span {
+    display: block;
+  }
+
+  .explore-links strong {
+    font-size: 15px;
+  }
+
+  .explore-links span {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .explore-links button:hover strong {
+    color: var(--purple-light);
+  }
+
+  .site-footer {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    align-items: center;
+    gap: 28px;
+    margin-top: 38px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .site-footer > strong {
+    color: var(--text);
+    font-size: 12px;
+  }
+  .site-footer nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .site-footer button,
+  .site-footer a {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    cursor: pointer;
+  }
+
+  .site-footer button:not(:last-child)::after,
+  .site-footer a:not(:last-child)::after {
+    content: '·';
+    margin-left: 8px;
+    color: var(--quiet);
+  }
 
+  .site-footer button:hover,
+  .site-footer a:hover {
+    color: var(--purple-light);
+  }
 
-        <div class="details">
+  .site-footer p {
+    margin: 0;
+    text-align: right;
+  }
 
-          <div>
-            <span>Good for</span>
-            <strong>Gaming + work</strong>
-          </div>
-
-          <div>
-            <span>Budget</span>
-            <strong>About $700</strong>
-          </div>
-
-          <a href="/setups/midnight-shift">
-            See the setup →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- SMALL SPACE STORY -->
-
-    <section class="story story-right">
-
-      <div class="story-copy">
-
-        <p class="type">
-          Small spaces
-        </p>
-
-        <h2>
-          You don't need a huge room.
-        </h2>
-
-        <p>
-          Start with what actually has to fit on the desk.
-          Everything else earns its place.
-        </p>
-
-        <a href="/setups/small-space">
-          Explore small setups →
-        </a>
-
-      </div>
-
-
-      <div class="story-image">
-
-        <img
-          src="https://images.pexels.com/photos/19931378/pexels-photo-19931378.jpeg?auto=compress&cs=tinysrgb&w=1400"
-          alt="Gaming setup with monitor and accessories"
-        />
-
-      </div>
-
-    </section>
-
-
-
-    <!-- GEAR -->
-
-    <section class="gear-section">
-
-      <div class="section-heading">
-
-        <p>
-          Gear
-        </p>
-
-        <h2>
-          The stuff that actually improves a desk.
-        </h2>
-
-      </div>
-
-
-      <div class="gear-list">
-
-        {
-          gear.map((item) => (
-
-            <a href="/gear">
-
-              <span>
-                {item}
-              </span>
-
-              <span>
-                →
-              </span>
-
-            </a>
-
-          ))
-        }
-
-      </div>
-
-    </section>
-
-
-
-    <!-- BUDGET STORY -->
-
-    <section class="story story-left">
-
-      <div class="story-image tall">
-
-        <img
-          src="https://images.pexels.com/photos/7199194/pexels-photo-7199194.jpeg?auto=compress&cs=tinysrgb&w=1400"
-          alt="Desktop gaming setup with monitor and lighting"
-        />
-
-      </div>
-
-
-      <div class="story-copy">
-
-        <p class="type">
-          Budget upgrades
-        </p>
-
-        <h2>
-          Fix the boring stuff first.
-        </h2>
-
-        <p>
-          Better lighting, cleaner cables and a little more usable desk
-          space usually matter more than another glowing accessory.
-        </p>
-
-        <a href="/guides">
-          Read the guides →
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- GUIDES -->
-
-    <section class="guides">
-
-      <header class="guides-header">
-
-        <p>
-          Guides
-        </p>
-
-        <h2>
-          Useful reading for people who spend too much time at a desk.
-        </h2>
-
-      </header>
-
-
-      <div class="guide-list">
-
-        {
-          guides.map((guide) => (
-
-            <a
-              href="/guides"
-              class="guide"
-            >
-
-              <h3>
-                {guide.title}
-              </h3>
-
-              <p>
-                {guide.description}
-              </p>
-
-              <span>
-                Read →
-              </span>
-
-            </a>
-
-          ))
-        }
-
-      </div>
-
-    </section>
-
-
-
-    <!-- CLOSING FEATURE -->
-
-    <section class="closing-feature">
-
-      <div class="closing-image">
-
-        <img
-          src="https://images.pexels.com/photos/16230031/pexels-photo-16230031.jpeg?auto=compress&cs=tinysrgb&w=1800"
-          alt="Gaming desk setup"
-        />
-
-      </div>
-
-
-      <div class="closing-copy">
-
-        <p>
-          Find a setup you like.
-        </p>
-
-        <h2>
-          Then steal the good ideas.
-        </h2>
-
-        <a href="/setups">
-          Browse all setups →
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="footer-top">
-
-      <strong>
-        StackGeist
-      </strong>
-
-      <p>
-        Setups, useful gear and better desks.
-      </p>
-
-    </div>
-
-
-    <div class="footer-links">
-
-      <div>
-        <a href="/setups">Setups</a>
-        <a href="/gear">Gear</a>
-        <a href="/guides">Guides</a>
-        <a href="/about">About</a>
-      </div>
-
-      <div>
-        <a href="/privacy">Privacy</a>
-
-        <a href="/affiliate-disclosure">
-          Affiliate disclosure
-        </a>
-      </div>
-
-    </div>
-
-
-    <div class="affiliate">
-      As an Amazon Associate I earn from qualifying purchases.
-    </div>
-
-  </footer>
-
-
-
-  <style is:global>
-
-    :root {
-      color-scheme: only light;
-
-      --background: #f4f2ed;
-      --text: #111111;
-      --soft-text: #686660;
-      --line: #cac7bf;
-    }
-
-
-    * {
-      box-sizing: border-box;
-    }
-
-
-    html {
-      background: var(--background);
-    }
-
-
-    body {
-      margin: 0;
-
-      background: var(--background);
-      color: var(--text);
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-    }
-
-
-    img {
-      display: block;
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    a {
-      color: inherit;
-    }
-
-
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .site-header {
-      height: 92px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding:
-        0
-        clamp(22px, 4vw, 72px);
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .logo {
-      text-decoration: none;
-
-      font-size: 24px;
-      font-weight: 700;
-
-      letter-spacing: -.04em;
-    }
-
-
-    nav {
-      display: flex;
-
-      gap: 32px;
-
-      font-size: 14px;
-    }
-
-
-    nav a {
-      text-decoration: none;
-    }
-
-
-    nav a:hover {
-      opacity: .5;
-    }
-
-
-
-    /* =========================
-       FEATURE
-    ========================= */
-
-    .feature {
-      padding:
-        clamp(25px, 4vw, 72px)
-        clamp(22px, 4vw, 72px)
-        90px;
-    }
-
-
-    .feature-image {
-      display: block;
-
-      width: 100%;
-
-      height:
-        min(58vw, 760px);
-
-      overflow: hidden;
-    }
-
-
-    .feature-image img {
-      object-position:
-        center 55%;
-
-      transition:
-        transform
-        700ms
-        cubic-bezier(.2,.7,.2,1);
-    }
-
-
-    .feature-image:hover img {
-      transform:
-        scale(1.015);
-    }
-
-
-    .feature-info {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.5fr)
-        minmax(280px, .5fr);
-
-      gap: 70px;
-
-      padding-top: 28px;
-    }
-
-
-    .type {
-      margin:
-        0
-        0
-        18px;
-
-      color:
-        var(--soft-text);
-
-      font-size:
-        13px;
-    }
-
-
-    h1 {
-      margin: 0;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(50px, 7vw, 112px);
-
-      line-height:
-        .92;
-
-      letter-spacing:
-        -.065em;
-
-      font-weight:
-        400;
-    }
-
-
-    .intro {
-      max-width:
-        700px;
-
-      margin:
-        30px
-        0
-        0;
-
-      font-size:
-        clamp(18px, 2vw, 26px);
-
-      line-height:
-        1.4;
-
-      letter-spacing:
-        -.02em;
-    }
-
-
-    .details {
-      align-self:
-        end;
-
-      display:
-        grid;
-
-      gap:
-        24px;
-    }
-
-
-    .details div {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      padding-bottom:
-        10px;
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .details span {
-      color:
-        var(--soft-text);
-
-      font-size:
-        13px;
-    }
-
-
-    .details strong {
-      font-size:
-        13px;
-    }
-
-
-    .details a {
-      margin-top:
-        8px;
-
-      font-size:
-        14px;
-
-      font-weight:
-        700;
-
-      text-decoration:
-        none;
-    }
-
-
-    .details a:hover {
-      opacity:
-        .55;
-    }
-
-
-
-    /* =========================
-       STORY SECTIONS
-    ========================= */
-
-    .story {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr
-        1.3fr;
-
-      gap:
-        clamp(40px, 7vw, 130px);
-
-      align-items:
-        center;
-
-      padding:
-        110px
-        clamp(22px, 7vw, 130px);
-
-      border-top:
-        1px solid var(--line);
-    }
-
-
-    .story-left {
-      grid-template-columns:
-        1.15fr
-        .85fr;
-    }
-
-
-    .story-image {
-      height:
-        clamp(500px, 55vw, 800px);
-
-      overflow:
-        hidden;
-    }
-
-
-    .story-image.tall {
-      height:
-        clamp(600px, 65vw, 900px);
-    }
-
-
-    .story-image img {
-      transition:
-        transform
-        700ms
-        cubic-bezier(.2,.7,.2,1);
-    }
-
-
-    .story-image:hover img {
-      transform:
-        scale(1.015);
-    }
-
-
-    .story-copy {
-      max-width:
-        520px;
-    }
-
-
-    .story-copy h2 {
-      margin:
-        0
-        0
-        30px;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(46px, 6vw, 92px);
-
-      line-height:
-        .95;
-
-      letter-spacing:
-        -.06em;
-
-      font-weight:
-        400;
-    }
-
-
-    .story-copy > p:not(.type) {
-      max-width:
-        480px;
-
-      font-size:
-        18px;
-
-      line-height:
-        1.55;
-    }
-
-
-    .story-copy a {
-      display:
-        inline-block;
-
-      margin-top:
-        25px;
-
-      padding-bottom:
-        5px;
-
-      border-bottom:
-        1px solid currentColor;
-
-      text-decoration:
-        none;
-
-      font-size:
-        14px;
-    }
-
-
-    .story-copy a:hover {
-      opacity:
-        .55;
-    }
-
-
-
-    /* =========================
-       GEAR
-    ========================= */
-
-    .gear-section {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      gap:
-        80px;
-
-      padding:
-        130px
-        clamp(22px, 4vw, 72px);
-
-      border-top:
-        1px solid var(--line);
-    }
-
-
-    .section-heading {
-      max-width:
-        600px;
-    }
-
-
-    .section-heading > p,
-    .guides-header > p {
-      margin:
-        0
-        0
-        25px;
-
-      color:
-        var(--soft-text);
-
-      font-size:
-        13px;
-    }
-
-
-    .section-heading h2,
-    .guides-header h2 {
-      margin:
-        0;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(44px, 5vw, 78px);
-
-      line-height:
-        .96;
-
-      letter-spacing:
-        -.055em;
-
-      font-weight:
-        400;
-    }
-
-
-    .gear-list {
-      display:
-        flex;
-
-      flex-direction:
-        column;
-    }
-
-
-    .gear-list a {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      padding:
-        19px
-        0;
-
-      border-bottom:
-        1px solid var(--line);
-
-      text-decoration:
-        none;
-
-      font-size:
-        clamp(20px, 2.4vw, 34px);
-
-      letter-spacing:
-        -.03em;
-    }
-
-
-    .gear-list a:first-child {
-      border-top:
-        1px solid var(--line);
-    }
-
-
-    .gear-list a:hover span:first-child {
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-style:
-        italic;
-    }
-
-
-
-    /* =========================
-       GUIDES
-    ========================= */
-
-    .guides {
-      padding:
-        130px
-        clamp(22px, 4vw, 72px);
-
-      border-top:
-        1px solid var(--line);
-    }
-
-
-    .guides-header {
-      max-width:
-        850px;
-
-      margin-bottom:
-        90px;
-    }
-
-
-    .guide-list {
-      border-top:
-        1px solid var(--text);
-    }
-
-
-    .guide {
-      display:
-        grid;
-
-      grid-template-columns:
-        1.1fr
-        1fr
-        80px;
-
-      gap:
-        80px;
-
-      align-items:
-        start;
-
-      padding:
-        30px
-        0;
-
-      border-bottom:
-        1px solid var(--line);
-
-      text-decoration:
-        none;
-    }
-
-
-    .guide h3 {
-      margin:
-        0;
-
-      font-size:
-        clamp(23px, 2.5vw, 36px);
-
-      line-height:
-        1.05;
-
-      letter-spacing:
-        -.04em;
-    }
-
-
-    .guide p {
-      margin:
-        0;
-
-      color:
-        var(--soft-text);
-
-      line-height:
-        1.5;
-    }
-
-
-    .guide > span {
-      text-align:
-        right;
-
-      font-size:
-        13px;
-    }
-
-
-    .guide:hover h3 {
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-weight:
-        400;
-
-      font-style:
-        italic;
-    }
-
-
-
-    /* =========================
-       CLOSING
-    ========================= */
-
-    .closing-feature {
-      display:
-        grid;
-
-      grid-template-columns:
-        1.3fr
-        .7fr;
-
-      align-items:
-        stretch;
-
-      min-height:
-        680px;
-
-      border-top:
-        1px solid var(--line);
-    }
-
-
-    .closing-image {
-      overflow:
-        hidden;
-    }
-
-
-    .closing-image img {
-      filter:
-        grayscale(100%);
-
-      transition:
-        filter 400ms ease,
-        transform 700ms cubic-bezier(.2,.7,.2,1);
-    }
-
-
-    .closing-feature:hover
-    .closing-image img {
-      filter:
-        grayscale(0%);
-
-      transform:
-        scale(1.012);
-    }
-
-
-    .closing-copy {
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        center;
-
-      padding:
-        70px
-        clamp(30px, 6vw, 100px);
-    }
-
-
-    .closing-copy p {
-      margin:
-        0
-        0
-        30px;
-
-      color:
-        var(--soft-text);
-
-      font-size:
-        13px;
-    }
-
-
-    .closing-copy h2 {
-      margin:
-        0;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(50px, 6vw, 90px);
-
-      line-height:
-        .93;
-
-      letter-spacing:
-        -.06em;
-
-      font-weight:
-        400;
-    }
-
-
-    .closing-copy a {
-      margin-top:
-        50px;
-
-      width:
-        fit-content;
-
-      padding-bottom:
-        5px;
-
-      border-bottom:
-        1px solid currentColor;
-
-      text-decoration:
-        none;
-
-      font-size:
-        14px;
-    }
-
-
-    .closing-copy a:hover {
-      opacity:
-        .55;
-    }
-
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      padding:
-        90px
-        clamp(22px, 4vw, 72px)
-        35px;
-
-      background:
-        #111;
-
-      color:
-        #f4f2ed;
-    }
-
-
-    .footer-top {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      padding-bottom:
-        80px;
-    }
-
-
-    .footer-top strong {
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size:
-        clamp(55px, 8vw, 120px);
-
-      font-weight:
-        400;
-
-      letter-spacing:
-        -.065em;
-    }
-
-
-    .footer-top p {
-      max-width:
-        350px;
-
-      color:
-        #aaa;
-
-      line-height:
-        1.5;
-    }
-
-
-    .footer-links {
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr
-        1fr;
-
-      padding:
-        25px
-        0
-        60px;
-
-      border-top:
-        1px solid #333;
-    }
-
-
-    .footer-links > div {
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      gap:
-        8px;
-    }
-
-
-    .footer-links a {
-      width:
-        fit-content;
-
-      color:
-        #ddd;
-
-      text-decoration:
-        none;
-
-      font-size:
-        13px;
-    }
-
-
-    .footer-links a:hover {
-      color:
-        #fff;
+  @media (max-width: 760px) {
+    .keep-exploring {
+      display: none;
     }
-
-
-    .affiliate {
-      padding-top:
-        20px;
-
-      border-top:
-        1px solid #333;
-
-      color:
-        #777;
-
-      font-size:
-        11px;
+    .site-footer {
+      min-height: 150px;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 26px 0 10px;
     }
-
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      .site-header {
-        height:
-          auto;
-
-        padding-top:
-          25px;
-
-        padding-bottom:
-          25px;
-
-        align-items:
-          flex-start;
-
-        gap:
-          25px;
-      }
-
-
-      nav {
-        gap:
-          14px;
-
-        flex-wrap:
-          wrap;
-
-        justify-content:
-          flex-end;
-      }
-
-
-      .feature {
-        padding-bottom:
-          75px;
-      }
-
-
-      .feature-image {
-        height:
-          68vh;
-
-        min-height:
-          500px;
-      }
-
-
-      .feature-info {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          50px;
-      }
-
-
-      .story,
-      .story-left {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          50px;
-
-        padding-left:
-          22px;
-
-        padding-right:
-          22px;
-      }
-
-
-      .story-left .story-image {
-        order:
-          2;
-      }
-
-
-      .story-left .story-copy {
-        order:
-          1;
-      }
-
 
-      .story-image,
-      .story-image.tall {
-        height:
-          65vh;
-
-        min-height:
-          500px;
-      }
-
-
-      .gear-section {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          70px;
-      }
-
-
-      .guide {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          15px;
-      }
-
-
-      .guide > span {
-        text-align:
-          left;
-      }
-
-
-      .closing-feature {
-        grid-template-columns:
-          1fr;
-      }
-
-
-      .closing-image {
-        min-height:
-          600px;
-      }
-
-
-      .footer-top {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          40px;
-      }
-
+    .site-footer nav {
+      display: none;
     }
-
-
-
-    @media (max-width: 520px) {
-
-      .logo {
-        font-size:
-          21px;
-      }
-
-
-      nav {
-        font-size:
-          12px;
-      }
-
 
-      h1 {
-        font-size:
-          55px;
-      }
-
-
-      .story-copy h2,
-      .section-heading h2,
-      .guides-header h2,
-      .closing-copy h2 {
-        font-size:
-          47px;
-      }
-
-
-      .footer-links {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          35px;
-      }
-
+    .site-footer p {
+      max-width: 330px;
+      text-align: left;
+      line-height: 1.5;
     }
-
-  </style>
-
-</body>
-
-</html>
+  }
+</style>
