@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 ---
 <ContentLayout title="Small bedroom gaming setup | StackGeist" description="A practical small-bedroom gaming setup strategy built around floor space, desk depth, storage, lighting, and shared-use constraints." active="setups">
   <article class="article-page">
@@ -7,6 +8,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
     <p class="page-kicker">Small spaces</p>
     <h1 class="page-title">A small gaming room needs fewer collisions, not smaller versions of everything.</h1>
     <p class="page-lead">Protect walking space, door clearance, chair movement, and desk depth first. Then use vertical space and selective lighting to make the room feel intentional.</p>
+    <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 
     <div class="article-summary">
       <strong>Design target</strong>
@@ -48,7 +50,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
         <p class="page-kicker">Lighting</p>
         <h2>Use one controlled light source before adding several accent lights.</h2>
         <p>Small rooms reflect light quickly. One task light or soft bias light can create separation around the desk without adding multiple lamps, strips, and visible power leads. The room usually looks cleaner when lighting has one job.</p>
-        <div class="page-actions"><a class="btn" href="/gear/desk-lighting">See the verified lighting approaches ?</a></div>
+        <VerifiedLightingRoutes premiumFit="Best when a small desk needs useful work light without adding a lamp base." budgetFit="Best when you only want monitor backlight and want to keep the upgrade inexpensive." />
       </section>
 
       <section>

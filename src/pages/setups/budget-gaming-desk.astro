@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 ---
 <ContentLayout title="Budget gaming desk setup | StackGeist" description="A budget gaming desk strategy that prioritizes usable layout, existing hardware, cable control, lighting, and upgrades that solve real problems." active="setups">
   <article class="article-page">
@@ -7,6 +8,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
     <p class="page-kicker">Budget setup</p>
     <h1 class="page-title">Make the setup better without pretending every part needs an upgrade.</h1>
     <p class="page-lead">The cheapest useful component is the one you already own. A budget build starts by identifying what is actually limiting the desk, then spends in that order.</p>
+    <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 
     <div class="article-summary">
       <strong>Budget rule</strong>
@@ -54,8 +56,8 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
       <section>
         <p class="page-kicker">Verified recommendations</p>
         <h2>StackGeist currently has one finished comparison category.</h2>
-        <p>The desk-lighting section compares a premium task-light route with a much simpler bias-light route. The point is not that either product belongs in every budget setup. It is an example of choosing based on the job instead of the product category.</p>
-        <div class="page-actions"><a class="btn" href="/gear/desk-lighting">Compare lighting routes ?</a></div>
+        <p>If lighting is one of the problems you identified, these are the two exact products StackGeist has verified so far. Skip this section if lighting is not your bottleneck.</p>
+        <VerifiedLightingRoutes premiumFit="Choose this only when functional desk light is worth the premium price and saved desk space." budgetFit="Choose this when low-cost monitor backlight solves the problem and task lighting is unnecessary." />
       </section>
 
       <section class="related-reading">

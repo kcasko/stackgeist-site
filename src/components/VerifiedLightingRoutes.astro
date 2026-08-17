@@ -1,0 +1,66 @@
+---
+interface Props {
+  heading?: string;
+  intro?: string;
+  premiumFit?: string;
+  budgetFit?: string;
+}
+const {
+  heading = 'If lighting is the problem, there are two verified routes.',
+  intro = 'Choose by the job you need the light to do, not by which product looks more dramatic.',
+  premiumFit = 'Best when you need useful light across the desk without giving up desk surface.',
+  budgetFit = 'Best when you mainly want soft backlight behind the display at a much lower cost.'
+} = Astro.props;
+---
+<section class="verified-routes" id="verified-lighting">
+  <p class="page-kicker">Verified lighting picks</p>
+  <h2>{heading}</h2>
+  <p class="routes-intro">{intro}</p>
+  <div class="route-list">
+    <article class="route-row">
+      <div>
+        <span class="route-label">Functional task light</span>
+        <h3>BenQ ScreenBar Pro</h3>
+        <p>{premiumFit}</p>
+        <small>Tradeoff: premium-priced and unnecessary if you only want ambient glow.</small>
+        <small><strong>Check:</strong> monitor thickness 0.17–2.56 in, 1000–1800R if curved, USB-C power, and webcam clearance.</small>
+      </div>      <div class="route-actions">
+        <a class="btn" href="/gear/desk-lighting/benq-screenbar-pro">Read recommendation</a>
+        <a class="btn primary" href="https://www.amazon.com/dp/B0CZ9P1QW9?tag=deskrespawn-20" target="_blank" rel="sponsored nofollow noopener noreferrer">Check Amazon price →</a>
+      </div>
+    </article>
+    <article class="route-row">
+      <div>
+        <span class="route-label">Lower-cost ambient light</span>
+        <h3>Power Practical Luminoodle</h3>
+        <p>{budgetFit}</p>
+        <small>Tradeoff: ambient backlight only; it does not replace a task light.</small>
+        <small><strong>Check:</strong> USB 5V / 1A power, adhesive placement, and whether the 78 in strip fits your display route.</small>
+      </div>
+      <div class="route-actions">
+        <a class="btn" href="/gear/desk-lighting/luminoodle">Read recommendation</a>
+        <a class="btn primary" href="https://www.amazon.com/dp/B01LG99NW4?tag=deskrespawn-20" target="_blank" rel="sponsored nofollow noopener noreferrer">Check Amazon price →</a>
+      </div>
+    </article>
+  </div>
+  <p class="route-disclosure">Paid Amazon links. As an Amazon Associate I earn from qualifying purchases. Price and stock can change; check the retailer before buying.</p>
+</section>
+
+<style>
+  .verified-routes { margin-top: 28px; padding: 26px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+  .verified-routes h2 { margin: 0; max-width: 760px; font-size: clamp(24px,3vw,30px); line-height: 1.15; letter-spacing: -.03em; }
+  .routes-intro { margin: 12px 0 0; max-width: 760px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+  .route-list { margin-top: 24px; border-top: 1px solid var(--border); }  .route-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 28px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--border); }
+  .route-label { color: var(--purple-light); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .route-row h3 { margin: 6px 0 8px; font-size: 20px; letter-spacing: -.025em; }
+  .route-row p { margin: 0; max-width: 650px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .route-row small { display: block; margin-top: 8px; color: var(--quiet); font-size: 11px; line-height: 1.5; }
+  .route-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+  .route-disclosure { margin: 14px 0 0; color: var(--quiet); font-size: 10px; line-height: 1.55; }
+  @media(max-width:760px){
+    .verified-routes { padding: 18px; }
+    .route-row { grid-template-columns: 1fr; gap: 16px; }
+    .route-actions { justify-content: flex-start; }
+    .route-actions .btn { flex: 1 1 180px; }
+  }
+</style>

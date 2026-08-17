@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 ---
 <ContentLayout title="Cheap desk upgrades that actually help | StackGeist" description="Low-cost gaming and desk upgrades focused on usable space, lighting, cable access, and comfort before expensive hardware." active="guides">
   <article class="article-page">
@@ -7,6 +8,7 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
     <p class="page-kicker">Cheap upgrades</p>
     <h1 class="page-title">Fix the annoying part before buying the impressive part.</h1>
     <p class="page-lead">A desk can feel dramatically better without replacing the PC, monitor, or furniture. Start with the friction you notice every day.</p>
+    <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 
     <div class="article-summary">
       <strong>Upgrade order</strong>
@@ -51,14 +53,14 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
         <p class="page-kicker">Skip these by default</p>
         <h2>Do not buy accessories just because setup photos keep showing them.</h2>
         <p>Desk shelves, giant mats, monitor arms, headphone stands, charging stations, speaker stands, RGB strips, and decorative panels can all be useful. None of them are automatically useful. Add one when you can explain the job it will do in your room.</p>
-        <div class="note">The easiest way to overspend on a ?budget? setup is to buy six cheap accessories that solve no important problem.</div>
+        <div class="note">The easiest way to overspend on a budget setup is to buy six cheap accessories that solve no important problem.</div>
       </section>
 
       <section>
         <p class="page-kicker">One proven category</p>
         <h2>Lighting already has two verified routes.</h2>
-        <p>For Midnight Shift, StackGeist currently compares functional monitor-mounted task lighting with a lower-cost bias-light approach. They solve different problems, which is why they are not treated as interchangeable.</p>
-        <div class="page-actions"><a class="btn" href="/gear/desk-lighting">Compare desk-lighting approaches ?</a></div>
+        <p>If lighting is the friction you are fixing, these are the two exact routes currently verified. If lighting is not the problem, keep your money.</p>
+        <VerifiedLightingRoutes premiumFit="Best when better desk visibility matters enough to justify a premium monitor-mounted light." budgetFit="Best when the goal is inexpensive monitor backlight rather than illuminating the desk." />
       </section>
 
       <section class="related-reading">
