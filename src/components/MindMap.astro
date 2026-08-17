@@ -8,7 +8,7 @@ const branches = {
   },
   gear: {
     label: 'GEAR', intent: 'I need something',
-    children: ['Displays', 'Lighting', 'Audio', 'Furniture', 'Accessories', 'Cable management'],
+    children: ['Lighting', 'Charging + power', 'Desk surfaces', 'Cable management'],
     detail: 'Useful gear organized by the problem it fixes, not by brand hype.',
     tags: ['Lighting', 'Cables'],
   },
@@ -28,6 +28,9 @@ const routes = {
   },
   gear: {
     'Lighting': '/gear/desk-lighting',
+    'Charging + power': '/gear/desk-power/anker-525',
+    'Desk surfaces': '/gear/desk-surface/steelseries-qck-heavy-xxl',
+    'Cable management': '/guides/cable-management',
   },
   guides: {
     'Setup basics': '/guides/desk-layout-basics',

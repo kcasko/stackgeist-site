@@ -1,0 +1,33 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<div class:list={['verified-upgrades',{compact}]}>
+  <a class="upgrade-row" href="/gear/desk-power/anker-525">
+    <div>
+      <p class="page-kicker">Charging + power</p>
+      <strong>Anker 525 Charging Station</strong>
+      <span>3 AC outlets, 2 USB-C and 2 USB-A. Best when charging clutter is the problem.</span>
+    </div>
+    <em>Check fit →</em>
+  </a>
+  <a class="upgrade-row" href="/gear/desk-surface/steelseries-qck-heavy-xxl">
+    <div>
+      <p class="page-kicker">Desk surface</p>
+      <strong>SteelSeries QcK Heavy XXL</strong>
+      <span>900 × 400 × 4 mm cloth surface. Measure first because it takes real desk space.</span>
+    </div>
+    <em>Check fit →</em>
+  </a>
+</div>
+<style>
+  .verified-upgrades { display:grid; gap:12px; margin-top:22px; }
+  .upgrade-row { display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center; padding:20px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+  .upgrade-row:hover { border-color:var(--purple); }
+  .upgrade-row .page-kicker { margin-bottom:7px; }
+  .upgrade-row strong { display:block; font-size:16px; }
+  .upgrade-row span { display:block; margin-top:7px; color:var(--muted); font-size:13px; line-height:1.55; }
+  .upgrade-row em { color:var(--purple-light); font-size:12px; font-style:normal; font-weight:700; white-space:nowrap; }
+  .compact .upgrade-row { padding:16px 18px; }
+  @media(max-width:760px){ .upgrade-row { grid-template-columns:1fr; } .upgrade-row em { justify-self:start; } }
+</style>
