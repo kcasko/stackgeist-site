@@ -53,7 +53,7 @@ const branchEntries = Object.entries(branches);
         <div class="branch-panel" data-panel={key} hidden={key !== 'setups'}>
           <div class="child-grid">
             {branch.children.map((child, index) => (
-              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child>
+              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child data-route={key === 'setups' && child === 'Gaming' ? '/setups/gaming' : key === 'gear' && child === 'Lighting' ? '/gear/desk-lighting' : undefined}>
                 {child}
               </button>
             ))}
@@ -81,7 +81,7 @@ const branchEntries = Object.entries(branches);
         </summary>
         <div class="mobile-children">
           {branch.children.map((child, index) => (
-            <button class:list={['mobile-child', { active: index === 0 }]} type="button">
+            <button class:list={['mobile-child', { active: index === 0 }]} type="button" data-mobile-child data-route={key === 'setups' && child === 'Gaming' ? '/setups/gaming' : key === 'gear' && child === 'Lighting' ? '/gear/desk-lighting' : undefined}>
               <span>{child}</span><span aria-hidden="true">›</span>
             </button>
           ))}
@@ -427,6 +427,9 @@ const branchEntries = Object.entries(branches);
     mobile?.setAttribute('open', '');
   }
 
+  const requestedBranch = new URLSearchParams(window.location.search).get('branch');
+  if (requestedBranch && ['setups', 'gear', 'guides'].includes(requestedBranch)) setBranch(requestedBranch);
+
   map?.querySelectorAll('[data-branch]').forEach((button) => {
     button.addEventListener('click', () => setBranch(button.getAttribute('data-branch')));
   });
@@ -457,5 +460,10 @@ const branchEntries = Object.entries(branches);
         if (title) title.textContent = child.textContent?.trim() || '';
       });
     });
+  });
+  map?.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('[data-route]') : null;
+    const route = target?.getAttribute('data-route');
+    if (route) window.location.href = route;
   });
 </script>

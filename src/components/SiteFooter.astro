@@ -1,0 +1,22 @@
+﻿<footer class="site-footer">
+  <strong>STACKGEIST</strong>
+  <nav aria-label="Footer navigation">
+    <a href="/setups/gaming">Setups</a>
+    <a href="/gear/desk-lighting">Gear</a>
+    <a href="/?branch=guides#explore">Guides</a>
+    <a href="/about">About</a>
+  </nav>
+  <p>As an Amazon Associate I earn from qualifying purchases.</p>
+</footer>
+<style>
+  .site-footer { margin-top: 72px; padding: 28px 0 12px; display: grid; grid-template-columns: 160px 1fr auto; gap: 32px; align-items: center; border-top: 1px solid var(--border); color: var(--muted); font-size: 11px; }
+  .site-footer strong { color: var(--text); font-size: 12px; }
+  .site-footer nav { display: flex; gap: 18px; }
+  .site-footer a:hover { color: var(--purple-light); }
+  .site-footer p { margin: 0; color: var(--quiet); text-align: right; }
+  @media (max-width: 760px) {
+    .site-footer { grid-template-columns: 1fr; gap: 18px; margin-top: 48px; }
+    .site-footer nav { flex-wrap: wrap; }
+    .site-footer p { text-align: left; line-height: 1.5; }
+  }
+</style>

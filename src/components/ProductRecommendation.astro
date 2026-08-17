@@ -1,0 +1,114 @@
+﻿---
+import SetupScene from './SetupScene.astro';
+interface Props {
+  kind: 'premium' | 'budget';
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  productName: string;
+  productMeta: string;
+  tags: string[];
+  why: string;
+  tradeoff: string;
+  check: string;
+  facts: string;
+  skip: string;
+  amazonUrl: string;
+  secondaryLabel: string;
+  secondaryUrl: string;
+  secondaryExternal?: boolean;
+  alternativeEyebrow: string;
+  alternativeName: string;
+  alternativeCopy: string;
+  alternativeHref: string;
+  alternativeWhy: string;
+  alternativeTradeoff: string;
+}
+const p = Astro.props;
+---
+<p class="breadcrumbs"><a href="/setups/midnight-shift">Midnight Shift</a> / <a href="/gear/desk-lighting">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
+<p class="page-kicker">{p.eyebrow}</p>
+<h1 class="page-title">{p.heading}</h1>
+<p class="page-lead">{p.intro}</p>
+<div class="page-actions"><a class="btn" href="/gear/desk-lighting">← Back to gear detail</a></div>
+
+<section class="recommend-card">
+  <SetupScene variant={p.kind === 'premium' ? 'screenbar' : 'bias'} />
+  <div class="recommend-copy">
+    <p class="page-kicker">{p.kind === 'premium' ? 'Best fit for Midnight Shift' : 'Budget fit for Midnight Shift'}</p>
+    <h2>{p.productName}</h2>
+    <p class="product-meta">{p.productMeta}</p>
+    <div class="product-tags">{p.tags.map((tag,index) => <span class:list={['tag',{active:index===0}]}>{tag}</span>)}</div>
+    <div class="reason-grid">
+      <div><strong>Why it fits</strong><p>{p.why}</p></div>
+      <div><strong>Tradeoff</strong><p>{p.tradeoff}</p></div>
+    </div>
+    <div class="check-block"><strong>Check before buying</strong><p>{p.check}</p><small>Price and stock can change. Check the retailer before buying.</small></div>
+    <div class="retailer-actions">
+      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener">Check Amazon price →</a>
+      <a class="btn" href={p.secondaryUrl} target={p.secondaryExternal ? '_blank' : undefined} rel={p.secondaryExternal ? 'noopener' : undefined}>{p.secondaryLabel}</a>
+      <span>Amazon is an affiliate link. We may earn a commission.</span>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <p class="page-kicker">Why this recommendation exists</p>
+  <h2 class="section-heading">{p.kind === 'premium' ? 'The product earns the link by solving a specific setup problem.' : 'Choose it when ambiance matters more than task lighting.'}</h2>
+  <div class="proof-grid">
+    <div><strong>Fits the setup</strong><p>{p.why}</p></div>
+    <div><strong>Facts we verify</strong><p>{p.facts}</p></div>
+    <div><strong>Skip it when</strong><p>{p.skip}</p></div>
+  </div>
+</section>
+
+<section class="content-section alt-route">
+  <div>
+    <p class="page-kicker">{p.alternativeEyebrow}</p>
+    <h2>{p.alternativeName}</h2>
+    <p>{p.alternativeCopy}</p>
+  </div>
+  <div class="alt-panel">
+    <strong>Why it can be enough</strong><p>{p.alternativeWhy}</p>
+    <strong class="trade">Tradeoff</strong><p>{p.alternativeTradeoff}</p>
+    <a class="btn" href={p.alternativeHref}>{p.kind === 'premium' ? 'View budget pick →' : 'View premium →'}</a>
+  </div>
+</section>
+
+<section class="content-section publishing-rule">
+  <p class="page-kicker">Publishing rule</p>
+  <h2>If we cannot support a claim, it does not appear.</h2>
+  <p>No invented ratings, no “tested by us” language without actual testing, and no fake urgency around prices or stock.</p>
+</section>
+
+<style>
+  .recommend-card { margin-top: 34px; padding: 32px; display:grid; grid-template-columns: 430px 1fr; gap:44px; border:1px solid var(--border); border-radius:18px; background:var(--surface); }
+  .recommend-copy h2 { margin: 8px 0 6px; font-size:34px; letter-spacing:-.035em; }
+  .product-meta { margin:0; color:var(--muted); font-size:13px; }
+  .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
+  .reason-grid { display:grid; grid-template-columns:1fr 1fr; gap:36px; padding:22px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .reason-grid strong, .proof-grid strong, .check-block strong, .alt-panel strong { font-size:13px; }
+  .reason-grid p, .proof-grid p, .check-block p, .alt-route p, .publishing-rule p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+  .check-block { padding-top:22px; }
+  .check-block strong { color:var(--purple-light); }
+  .check-block small { display:block; margin-top:10px; color:var(--quiet); }
+  .retailer-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .retailer-actions span { margin-left:6px; color:var(--quiet); font-size:10px; }
+  .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+  .proof-grid > div { padding-right:34px; }
+  .proof-grid > div + div { padding-left:34px; border-left:1px solid var(--border); }
+  .alt-route { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .alt-route h2, .publishing-rule h2 { margin:8px 0 0; font-size:27px; }
+  .alt-panel { padding:24px; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); }
+  .alt-panel .trade { display:block; margin-top:18px; color:var(--purple-light); }
+  .alt-panel .btn { margin-top:20px; }
+  @media(max-width:900px){ .recommend-card { grid-template-columns:1fr; } }
+  @media(max-width:760px){
+    .recommend-card { margin-top:28px; padding:18px; gap:24px; }
+    .recommend-copy h2 { font-size:28px; }
+    .reason-grid, .proof-grid, .alt-route { grid-template-columns:1fr; }
+    .proof-grid > div, .proof-grid > div + div { padding:18px 0; border-left:0; border-top:1px solid var(--border); }
+    .proof-grid > div:first-child { border-top:0; padding-top:0; }
+    .retailer-actions span { width:100%; margin-left:0; }
+  }
+</style>

@@ -1,0 +1,36 @@
+﻿---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupScene from '../../components/SetupScene.astro';
+---
+<ContentLayout title="Gaming setups | StackGeist" description="Gaming and mixed-use desk setups built around real space, budget, and clutter constraints." active="setups">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Setups / Gaming</p>
+  <p class="page-kicker">Gaming setups</p>
+  <h1 class="page-title">Gaming setups that still work as actual desks.</h1>
+  <p class="page-lead">Start with the room, desk space, and gear you already have. Then add only what improves the setup.</p>
+
+  <section class="content-section split">
+    <SetupScene />
+    <div class="copy-panel">
+      <p class="page-kicker">Featured setup</p>
+      <h2>Midnight Shift</h2>
+      <p>A dark gaming + work setup built for a smaller room, with controlled lighting and gear that earns its footprint.</p>
+      <div class="facts">
+        <div class="fact"><span>Good for</span><strong>Gaming · work · console</strong></div>
+        <div class="fact"><span>Budget target</span><strong>About $700</strong></div>
+        <div class="fact"><span>Priority</span><strong>Atmosphere without clutter</strong></div>
+      </div>
+      <div class="page-actions"><a class="btn primary" href="/setups/midnight-shift">View Midnight Shift →</a></div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">How we organize setups</p>
+    <h2 class="section-heading">Constraints are more useful than aesthetics alone.</h2>
+    <div class="cards">
+      <div class="card"><h3>Small spaces</h3><p>Layouts that protect usable desk depth and floor space before adding decorative gear.</p></div>
+      <div class="card"><h3>Budget</h3><p>Build around a target spend and separate meaningful upgrades from things that can wait.</p></div>
+      <div class="card"><h3>Mixed use</h3><p>Gaming, school, and work share the same desk without forcing a complete reset between tasks.</p></div>
+      <div class="card"><h3>Low clutter</h3><p>Fewer visible cables, fewer objects fighting for surface area, and cleaner power routing.</p></div>
+    </div>
+  </section>
+</ContentLayout>

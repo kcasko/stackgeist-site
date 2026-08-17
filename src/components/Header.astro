@@ -1,3 +1,15 @@
+﻿---
+interface Props {
+  active?: 'setups' | 'gear' | 'guides';
+  interactive?: boolean;
+}
+const { active, interactive = true } = Astro.props;
+const links = [
+  { key: 'setups', label: 'Setups', href: '/setups/gaming' },
+  { key: 'gear', label: 'Gear', href: '/gear/desk-lighting' },
+  { key: 'guides', label: 'Guides', href: '/?branch=guides#explore' },
+] as const;
+---
 <header class="site-header" data-header>
   <a class="brand" href="/" aria-label="StackGeist home">
     <span class="brand-mark" aria-hidden="true">S</span>
@@ -5,145 +17,42 @@
   </a>
 
   <nav class="desktop-nav" aria-label="Primary navigation">
-    <button type="button" data-nav-branch="setups">Setups</button>
-    <button type="button" data-nav-branch="gear">Gear</button>
-    <button type="button" data-nav-branch="guides">Guides</button>
+    {links.map((link) => interactive ? (
+      <button type="button" data-nav-branch={link.key}>{link.label}</button>
+    ) : (
+      <a class:list={{ active: active === link.key }} href={link.href}>{link.label}</a>
+    ))}
     <a href="/about">About</a>
-    <button class="search" type="button" aria-label="Search StackGeist">Search</button>
   </nav>
 
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>☰</button>
 
   <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
-    <button type="button" data-nav-branch="setups">Setups</button>
-    <button type="button" data-nav-branch="gear">Gear</button>
-    <button type="button" data-nav-branch="guides">Guides</button>
+    {links.map((link) => interactive ? (
+      <button type="button" data-nav-branch={link.key}>{link.label}</button>
+    ) : (
+      <a class:list={{ active: active === link.key }} href={link.href}>{link.label}</a>
+    ))}
     <a href="/about">About</a>
   </nav>
 </header>
+
 <style>
-  .site-header {
-    position: relative;
-    z-index: 20;
-    height: 79px;
-    display: flex;
-    align-items: center;
-    padding: 0 42px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(7, 5, 13, 0.94);
-  }
-
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .brand-mark {
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    border: 1.5px solid var(--purple);
-    border-radius: 10px;
-    background: var(--purple-deep);
-    color: var(--purple-light);
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.16);
-  }
-  .desktop-nav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-  }
-
-  .desktop-nav button,
-  .desktop-nav a {
-    padding: 6px 0;
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 650;
-    cursor: pointer;
-  }
-
-  .desktop-nav button:hover,
-  .desktop-nav a:hover,
-  .desktop-nav [aria-current="page"] {
-    color: var(--purple-light);
-  }
-
-  .desktop-nav .search {
-    min-width: 92px;
-    padding: 8px 18px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--muted);
-    font-size: 10px;
-  }
-  .menu-toggle,
-  .mobile-menu {
-    display: none;
-  }
-
+  .site-header { position: relative; z-index: 20; height: 79px; display: flex; align-items: center; padding: 0 42px; border-bottom: 1px solid var(--border); background: rgba(7,5,13,.94); }
+  .brand { display: inline-flex; align-items: center; gap: 14px; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
+  .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1.5px solid var(--purple); border-radius: 10px; background: var(--purple-deep); color: var(--purple-light); box-shadow: 0 0 10px rgba(168,85,247,.16); }
+  .desktop-nav { margin-left: auto; display: flex; align-items: center; gap: 28px; }
+  .desktop-nav button, .desktop-nav a { padding: 6px 0; border: 0; background: transparent; color: var(--muted); font-size: 12px; font-weight: 650; cursor: pointer; }
+  .desktop-nav button:hover, .desktop-nav a:hover, .desktop-nav a.active { color: var(--purple-light); }
+  .menu-toggle, .mobile-menu { display: none; }
   @media (max-width: 760px) {
-    .site-header {
-      height: 69px;
-      padding: 0 20px;
-    }
-
-    .desktop-nav {
-      display: none;
-    }
-
-    .menu-toggle {
-      position: absolute;
-      right: 20px;
-      top: 17px;
-      display: grid;
-      gap: 4px;
-      width: 34px;
-      height: 34px;
-      place-content: center;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      color: var(--text);
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .mobile-menu {
-      position: absolute;
-      top: 69px;
-      left: 0;
-      right: 0;
-      padding: 12px 20px 18px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(7, 5, 13, 0.98);
-    }
-
-    .site-header[data-open="true"] .mobile-menu {
-      display: grid;
-      gap: 8px;
-    }
-
-    .mobile-menu button,
-    .mobile-menu a {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--surface-2);
-      color: var(--text);
-      text-align: left;
-      cursor: pointer;
-    }
+    .site-header { height: 69px; padding: 0 20px; }
+    .desktop-nav { display: none; }
+    .menu-toggle { position: absolute; right: 20px; top: 17px; display: grid; width: 34px; height: 34px; place-content: center; border: 0; background: transparent; color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
+    .mobile-menu { position: absolute; top: 69px; left: 0; right: 0; padding: 12px 20px 18px; border-bottom: 1px solid var(--border); background: rgba(7,5,13,.98); }
+    .site-header[data-open="true"] .mobile-menu { display: grid; gap: 8px; }
+    .mobile-menu button, .mobile-menu a { width: 100%; padding: 13px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); text-align: left; cursor: pointer; }
+    .mobile-menu a.active { border-color: var(--purple); color: var(--purple-light); }
   }
 </style>
 

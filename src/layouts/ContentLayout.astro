@@ -1,0 +1,28 @@
+﻿---
+import '../styles/global.css';
+import '../styles/content.css';
+import Header from '../components/Header.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+interface Props {
+  title: string;
+  description: string;
+  active?: 'setups' | 'gear' | 'guides';
+}
+const { title, description, active } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <Header active={active} interactive={false} />
+      <main class="content-main"><slot /><SiteFooter /></main>
+    </div>
+  </body>
+</html>

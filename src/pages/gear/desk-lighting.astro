@@ -1,0 +1,36 @@
+﻿---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupScene from '../../components/SetupScene.astro';
+---
+<ContentLayout title="Desk lighting for Midnight Shift | StackGeist" description="Two verified lighting routes for the Midnight Shift setup: a premium monitor light bar and a lower-cost bias light." active="gear">
+  <p class="breadcrumbs"><a href="/setups/midnight-shift">Midnight Shift</a> / Gear used / Desk lighting</p>
+  <p class="page-kicker">Desk lighting</p>
+  <h1 class="page-title">Choose between task light and ambient backlight.</h1>
+  <p class="page-lead">These products solve different problems. The premium route adds functional desk light. The budget route adds atmosphere behind the monitor.</p>
+
+  <section class="content-section cards">
+    <a class="card" href="/gear/desk-lighting/benq-screenbar-pro">
+      <SetupScene variant="screenbar" compact />
+      <p class="page-kicker" style="margin-top:20px">Best overall fit</p>
+      <h2>BenQ ScreenBar Pro</h2>
+      <p>Monitor-mounted task lighting with no desk footprint. Better when you need useful work light, not just glow.</p>
+      <div class="card-meta"><span class="tag active">Task lighting</span><span class="tag">Low clutter</span><span class="tag">Premium</span></div>
+    </a>
+    <a class="card" href="/gear/desk-lighting/luminoodle">
+      <SetupScene variant="bias" compact />
+      <p class="page-kicker" style="margin-top:20px">Lower-cost route</p>
+      <h2>Power Practical Luminoodle</h2>
+      <p>USB bias lighting for a soft monitor backlight when functional desk illumination is not the goal.</p>
+      <div class="card-meta"><span class="tag active">Ambient</span><span class="tag">USB</span><span class="tag">Budget</span></div>
+    </a>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Decision shortcut</p>
+    <h2 class="section-heading">Buy for the problem, not the prettier product page.</h2>
+    <div class="cards">
+      <div class="card"><h3>Need to see the desk?</h3><p>Start with the ScreenBar Pro. It is the functional-lighting route.</p></div>
+      <div class="card"><h3>Only want glow behind the display?</h3><p>Start with the Luminoodle. It is the cheaper ambient-lighting route.</p></div>
+    </div>
+  </section>
+</ContentLayout>

@@ -1,0 +1,30 @@
+﻿---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ProductRecommendation from '../../../components/ProductRecommendation.astro';
+---
+<ContentLayout title="BenQ ScreenBar Pro recommendation | StackGeist" description="Why the BenQ ScreenBar Pro fits the Midnight Shift setup, what to check before buying, and when to skip it." active="gear">
+  <ProductRecommendation
+    kind="premium"
+    eyebrow="Desk lighting"
+    heading="A recommendation should make the decision easier."
+    intro="Fit and tradeoffs come before the retailer button."
+    productName="BenQ ScreenBar Pro"
+    productMeta="Black · model 9H.W4KWT.WS2 · Amazon ASIN B0CZ9P1QW9"
+    tags={['Small desks','Night use','Low clutter']}
+    why="Uses no desk surface, supports wide and curved displays, and lights a broad 85 × 50 cm work area."
+    tradeoff="Premium-priced. It is task lighting, not wall ambience; skip it if a cheaper bias strip solves your goal."
+    check="Monitor thickness 0.17–2.56 in · 1000–1800R curvature · USB-C power · webcam clearance"
+    facts="BenQ lists more than 1000 lux center output, 85 × 50 cm coverage at 500 lux, USB-C power, and 0.43–6.5 cm monitor fit."
+    skip="Skip it if you want room-wide ambient light, your monitor is outside the supported fit range, or you only need backlighting."
+    amazonUrl="https://www.amazon.com/dp/B0CZ9P1QW9?tag=deskrespawn-20"
+    secondaryLabel="BenQ page"
+    secondaryUrl="https://www.benq.com/en-us/lighting/monitor-light/screenbar-pro.html"
+    secondaryExternal={true}
+    alternativeEyebrow="Lower-cost route"
+    alternativeName="Power Practical Luminoodle"
+    alternativeCopy="USB bias-light strip for soft backlight when task lighting is not the goal."
+    alternativeHref="/gear/desk-lighting/luminoodle"
+    alternativeWhy="USB powered · 6500K true white · 10 brightness levels"
+    alternativeTradeoff="Ambient backlight only; adhesive strip and remote add setup friction."
+  />
+</ContentLayout>
