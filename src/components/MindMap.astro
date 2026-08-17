@@ -20,6 +20,22 @@ const branches = {
   },
 };
 const branchEntries = Object.entries(branches);
+const routes = {
+  setups: {
+    'Gaming': '/setups/gaming',
+    'Small spaces': '/setups/small-bedroom-gaming',
+    'Budget': '/setups/budget-gaming-desk',
+  },
+  gear: {
+    'Lighting': '/gear/desk-lighting',
+  },
+  guides: {
+    'Setup basics': '/guides/desk-layout-basics',
+    'Cable management': '/guides/cable-management',
+    'Upgrades': '/guides/cheap-desk-upgrades',
+  },
+};
+const routeFor = (key, child) => routes[key]?.[child];
 ---
 
 <section class="explore" id="explore" data-mind-map data-active="setups">
@@ -53,7 +69,7 @@ const branchEntries = Object.entries(branches);
         <div class="branch-panel" data-panel={key} hidden={key !== 'setups'}>
           <div class="child-grid">
             {branch.children.map((child, index) => (
-              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child data-route={key === 'setups' && child === 'Gaming' ? '/setups/gaming' : key === 'gear' && child === 'Lighting' ? '/gear/desk-lighting' : undefined}>
+              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child data-route={routeFor(key, child)}>
                 {child}
               </button>
             ))}
@@ -81,7 +97,7 @@ const branchEntries = Object.entries(branches);
         </summary>
         <div class="mobile-children">
           {branch.children.map((child, index) => (
-            <button class:list={['mobile-child', { active: index === 0 }]} type="button" data-mobile-child data-route={key === 'setups' && child === 'Gaming' ? '/setups/gaming' : key === 'gear' && child === 'Lighting' ? '/gear/desk-lighting' : undefined}>
+            <button class:list={['mobile-child', { active: index === 0 }]} type="button" data-mobile-child data-route={routeFor(key, child)}>
               <span>{child}</span><span aria-hidden="true">›</span>
             </button>
           ))}

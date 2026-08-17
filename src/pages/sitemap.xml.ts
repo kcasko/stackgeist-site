@@ -1,7 +1,8 @@
-﻿export const prerender = true;
+export const prerender = true;
 const routes = [
   '/', '/about', '/contact', '/privacy', '/affiliate-disclosure',
-  '/setups/gaming', '/setups/midnight-shift', '/gear/desk-lighting',
+  '/setups/gaming', '/setups/midnight-shift', '/setups/small-bedroom-gaming', '/setups/budget-gaming-desk',
+  '/guides/desk-layout-basics', '/guides/cable-management', '/guides/cheap-desk-upgrades', '/gear/desk-lighting',
   '/gear/desk-lighting/benq-screenbar-pro', '/gear/desk-lighting/luminoodle',
 ];
 export function GET() {
