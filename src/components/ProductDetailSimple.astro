@@ -16,6 +16,10 @@ interface Props {
   makerUrl: string;
   backHref: string;
   backLabel: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  imageSourceLabel?: string;
+  imageSourceUrl?: string;
 }
 const p = Astro.props;
 ---
@@ -25,6 +29,12 @@ const p = Astro.props;
 <p class="page-lead">{p.intro}</p>
 
 <section class="product-detail">
+  {p.imageUrl && (
+    <figure class="product-photo">
+      <img src={p.imageUrl} alt={p.imageAlt || p.productName} loading="eager" decoding="async" referrerpolicy="no-referrer" />
+      {p.imageSourceUrl && <figcaption>Product image: <a href={p.imageSourceUrl} target="_blank" rel="noopener">{p.imageSourceLabel || 'manufacturer'}</a></figcaption>}
+    </figure>
+  )}
   <div class="product-heading">
     <h2>{p.productName}</h2>
     <p>{p.productMeta}</p>
@@ -45,6 +55,10 @@ const p = Astro.props;
 </section>
 <style>
   .product-detail { max-width:1040px; margin-top:34px; padding:30px; border:1px solid var(--border); border-radius:18px; background:var(--surface); }
+  .product-photo { margin:0 0 28px; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff; }
+  .product-photo img { display:block; width:100%; height:clamp(260px,48vw,560px); object-fit:contain; }
+  .product-photo figcaption { padding:10px 14px; border-top:1px solid var(--border); color:var(--quiet); font-size:10px; background:var(--surface-2); }
+  .product-photo figcaption a { color:inherit; }
   .product-heading h2 { margin:0 0 6px; font-size:34px; letter-spacing:-.035em; }
   .product-heading > p { margin:0; color:var(--muted); font-size:13px; }
   .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }

@@ -9,24 +9,28 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 
   <section class="content-section cards">
     <a class="card" href="/gear/desk-lighting">
+      <img class="product-thumb" src="https://image.benq.com/is/image/benqco/comprehensive-1-1?$ResponsivePreset$" alt="BenQ ScreenBar Pro mounted above a monitor" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Lighting</p>
       <h2>Desk lighting</h2>
       <p>Compare the BenQ ScreenBar Pro for functional task light with the lower-cost Luminoodle for monitor backlight.</p>
-      <div class="card-meta"><span class="tag active">2 verified picks</span><span class="tag">Task + ambient</span></div>
+      <div class="card-meta"><span class="tag active">3 verified picks</span><span class="tag">Task + ambient</span></div>
     </a>
     <a class="card" href="/gear/desk-power/anker-nano-a9196">
+      <img class="product-thumb" src="https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A9196111_RI_TD01_US_V1.png?v=1776667400&width=800" alt="Anker Nano 70W clamp-on desk power strip" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Charging + power</p>
       <h2>Anker Nano A9196 clamp strip</h2>
       <p>Ten desk-edge connections when outlet access and loose power cords are the problem. Measure the clamp range and underside clearance first.</p>
       <div class="card-meta"><span class="tag active">Verified</span><span class="tag">70W USB total</span></div>
     </a>
     <a class="card" href="/gear/desk-power/anker-525">
+      <img class="product-thumb" src="https://cdn.shopify.com/s/files/1/0493/9834/9974/products/A91C0121_TD01_V1_2048x_cc67b904-8d0a-4a2a-9d9d-d8373eaf590f.png?v=1775968186&width=800" alt="Anker 525 Charging Station in black" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Charging + power</p>
       <h2>Anker 525 Charging Station</h2>
       <p>Seven connections in one compact station when chargers, power cords, and temporary device cables are the actual clutter problem.</p>
       <div class="card-meta"><span class="tag active">Verified</span><span class="tag">67W USB-C</span></div>
     </a>
     <a class="card" href="/gear/desk-surface/steelseries-qck-heavy-xxl">
+      <img class="product-thumb" src="https://images.ctfassets.net/hmm5mo4qf4mf/1LmTjOKEqxZeA59KMXaHek/33a82cea1eb6789755dcee4546d00076/qck_heavy_xxl_black_pdp_img_buy_01.png?fm=webp&q=85&fit=scale&w=800" alt="Black SteelSeries QcK Heavy XXL mouse pad" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Desk surface</p>
       <h2>SteelSeries QcK Heavy XXL</h2>
       <p>A large stable gaming surface for keyboard and mouse use. Measure first because 900 × 400 mm is not small-desk friendly.</p>
@@ -39,18 +43,21 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
       <div class="card-meta"><span class="tag active">Verified</span><span class="tag">Two 15–27 in displays</span></div>
     </a>
     <a class="card" href="/gear/connectivity/anker-553-usb-c-hub">
+      <img class="product-thumb" src="https://cdn.shopify.com/s/files/1/0493/9834/9974/products/A83800A1-Anker_553_USB-C_Hub_8-in-1_1.png?v=1672388211&width=800" alt="Anker 553 eight-in-one USB-C hub" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Laptop connectivity</p>
       <h2>Anker 553 8-in-1 USB-C hub</h2>
       <p>Add HDMI, Ethernet, USB, and card readers to a compatible laptop. Host-port and operating-system limits matter.</p>
       <div class="card-meta"><span class="tag active">Verified</span><span class="tag">Dual HDMI</span></div>
     </a>
     <a class="card" href="/gear/desk-lighting/govee-strip-light-2-pro">
+      <img class="product-thumb" src="https://cdn.shopify.com/s/files/1/0512/3489/8105/files/H61F6.png?v=1743403601&width=800" alt="Govee Strip Light 2 Pro kit" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Ambient lighting</p>
       <h2>Govee Strip Light 2 Pro</h2>
       <p>A long smart strip for room and desk atmosphere when a short fixed bias light is not enough.</p>
       <div class="card-meta"><span class="tag active">Verified</span><span class="tag">32.8 ft / 10 m</span></div>
     </a>
     <a class="card" href="/gear/accessories/razer-base-station-v2-chroma">
+      <img class="product-thumb" src="https://assets2.razerzone.com/images/pnx.assets/7942358e798995bc843260dbc5601f87/razer-base-station-v2-chroma-hero-desktop.jpg" alt="Razer Base Station V2 Chroma headset stand" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <p class="page-kicker">Desk accessories</p>
       <h2>Razer Base Station V2 Chroma</h2>
       <p>A headset stand that earns its desk space only when its front-access USB and audio hub are useful.</p>
@@ -65,4 +72,8 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
   </section>
 
   <section class="content-section"><div class="note">Paid Amazon links are disclosed next to the retailer action and in the site footer. As an Amazon Associate I earn from qualifying purchases.</div></section>
+  <style>
+    .product-thumb { display:block; width:100%; height:220px; margin-bottom:20px; border:1px solid var(--border); border-radius:12px; object-fit:contain; background:#fff; }
+    @media(max-width:760px){ .product-thumb { height:240px; } }
+  </style>
 </ContentLayout>

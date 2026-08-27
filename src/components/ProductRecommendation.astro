@@ -23,6 +23,10 @@ interface Props {
   alternativeHref: string;
   alternativeWhy: string;
   alternativeTradeoff: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  imageSourceLabel?: string;
+  imageSourceUrl?: string;
 }
 const p = Astro.props;
 ---
@@ -33,7 +37,12 @@ const p = Astro.props;
 <div class="page-actions"><a class="btn" href="/gear/desk-lighting">← Back to gear detail</a></div>
 
 <section class="recommend-card">
-  <SetupScene variant={p.kind === 'premium' ? 'screenbar' : 'bias'} />
+  {p.imageUrl ? (
+    <figure class="product-photo">
+      <img src={p.imageUrl} alt={p.imageAlt || p.productName} loading="eager" decoding="async" referrerpolicy="no-referrer" />
+      {p.imageSourceUrl && <figcaption>Product image: <a href={p.imageSourceUrl} target="_blank" rel="noopener">{p.imageSourceLabel || 'manufacturer'}</a></figcaption>}
+    </figure>
+  ) : <SetupScene variant={p.kind === 'premium' ? 'screenbar' : 'bias'} />}
   <div class="recommend-copy">
     <p class="page-kicker">{p.kind === 'premium' ? 'Best fit for Midnight Shift' : 'Budget fit for Midnight Shift'}</p>
     <h2>{p.productName}</h2>
@@ -83,6 +92,10 @@ const p = Astro.props;
 
 <style>
   .recommend-card { margin-top: 34px; padding: 32px; display:grid; grid-template-columns: 430px 1fr; gap:44px; border:1px solid var(--border); border-radius:18px; background:var(--surface); }
+  .product-photo { margin:0; align-self:start; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff; }
+  .product-photo img { display:block; width:100%; height:430px; object-fit:contain; }
+  .product-photo figcaption { padding:10px 12px; border-top:1px solid var(--border); color:var(--quiet); font-size:10px; background:var(--surface-2); }
+  .product-photo figcaption a { color:inherit; }
   .recommend-copy h2 { margin: 8px 0 6px; font-size:34px; letter-spacing:-.035em; }
   .product-meta { margin:0; color:var(--muted); font-size:13px; }
   .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
@@ -105,6 +118,7 @@ const p = Astro.props;
   @media(max-width:900px){ .recommend-card { grid-template-columns:1fr; } }
   @media(max-width:760px){
     .recommend-card { margin-top:28px; padding:18px; gap:24px; }
+    .product-photo img { height:300px; }
     .recommend-copy h2 { font-size:28px; }
     .reason-grid, .proof-grid, .alt-route { grid-template-columns:1fr; }
     .proof-grid > div, .proof-grid > div + div { padding:18px 0; border-left:0; border-top:1px solid var(--border); }
