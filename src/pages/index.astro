@@ -12,6 +12,18 @@ import FeaturedSetup from '../components/FeaturedSetup.astro';
       <MindMap />
       <FeaturedSetup />
 
+      <section class="latest-guide" aria-labelledby="latest-guide-title">
+        <div class="divider"></div>
+        <p class="eyebrow">New verified gear</p>
+        <a class="latest-guide-card" href="/gear/desk-power/anker-nano-a9196">
+          <div>
+            <h2 id="latest-guide-title">Anker Nano A9196 clamp strip</h2>
+            <p>Check desk thickness, edge angle, underside clearance, and shared USB power before buying.</p>
+          </div>
+          <span>Read the fit guide →</span>
+        </a>
+      </section>
+
       <section class="keep-exploring" aria-labelledby="keep-exploring-title">
         <div class="divider"></div>
         <p class="eyebrow" id="keep-exploring-title">Keep exploring</p>
@@ -45,6 +57,55 @@ import FeaturedSetup from '../components/FeaturedSetup.astro';
 </Layout>
 
 <style>
+  .latest-guide {
+    margin-top: 36px;
+  }
+
+  .latest-guide > .eyebrow {
+    margin-top: 32px;
+  }
+
+  .latest-guide-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 28px;
+    margin-top: 20px;
+    padding: 24px 26px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    color: var(--text);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--purple) 8%, transparent);
+  }
+
+  .latest-guide-card h2,
+  .latest-guide-card p {
+    margin: 0;
+  }
+
+  .latest-guide-card h2 {
+    font-size: clamp(20px, 2.2vw, 28px);
+  }
+
+  .latest-guide-card p {
+    max-width: 720px;
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .latest-guide-card > span {
+    color: var(--purple-light);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .latest-guide-card:hover {
+    border-color: var(--purple-light);
+  }
+
   .keep-exploring {
     margin-top: 36px;
   }
@@ -142,6 +203,16 @@ import FeaturedSetup from '../components/FeaturedSetup.astro';
   }
 
   @media (max-width: 760px) {
+    .latest-guide-card {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 22px;
+    }
+
+    .latest-guide-card > span {
+      white-space: normal;
+    }
+
     .keep-exploring {
       display: none;
     }
