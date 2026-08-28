@@ -19,10 +19,10 @@ const {
   </head>
   <body>
     <slot />
-    <div class="site-shell home-shared-footer"><main><SiteFooter /></main></div>
+    <div class="site-shell home-shared-footer"><div class="footer-pad"><SiteFooter /></div></div>
   </body>
 </html>
 <style is:global>
   body > .site-shell:first-of-type main > footer.site-footer:not([data-shared-footer]) { display:none; }
-  .home-shared-footer main { padding-top:0; }
+  .home-shared-footer .footer-pad { padding:0 var(--page-pad); }
 </style>

@@ -1,241 +1,381 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import MindMap from '../components/MindMap.astro';
-import FeaturedSetup from '../components/FeaturedSetup.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
+
+const problemCards = [
+  {
+    href: '/gear/budget-tech',
+    icon: '↘',
+    kicker: 'Spend less',
+    title: 'Budget tech that fixes something',
+    copy: 'Browse practical upgrades by price and use case instead of scrolling a wall of random products.',
+    meta: '30 picks · 10 comparisons',
+  },
+  {
+    href: '/gear/desk-lighting',
+    icon: '◐',
+    kicker: 'See better',
+    title: 'Light the desk, not your eyes',
+    copy: 'Compare task lighting, monitor bias lighting, and ambient strips by the job each one actually does.',
+    meta: '3 verified routes',
+  },
+  {
+    href: '/guides/cable-management',
+    icon: '⌁',
+    kicker: 'Clear the clutter',
+    title: 'Route cables before buying organizers',
+    copy: 'A purchase-free guide to separating permanent, movable, and temporary cables before choosing hardware.',
+    meta: 'No paid links',
+  },
+  {
+    href: '/setups/small-bedroom-gaming',
+    icon: '□',
+    kicker: 'Use less room',
+    title: 'Make a small setup feel intentional',
+    copy: 'Plan around door swing, chair clearance, screen distance, and the space you really have.',
+    meta: 'Small-space plan',
+  },
+];
+
+const researchCards = [
+  {
+    href: '/gear/desk-power/anker-nano-a9196',
+    label: 'Fit guide',
+    title: 'Anker Nano A9196 clamp strip',
+    copy: 'Measure desk thickness, underside clearance, and USB power sharing before this reaches your cart.',
+    image: 'https://cdn.shopify.com/s/files/1/0493/9834/9974/files/A9196111_RI_TD01_US_V1.png?v=1776667400&width=800',
+    alt: 'Anker Nano 70W clamp-on desk power strip',
+  },
+  {
+    href: '/gear/budget-tech/compare/iniu-cable-vs-generic-usb-c',
+    label: 'Comparison',
+    title: 'INIU 240W cable vs a generic USB-C cable',
+    copy: 'The wattage printed on a listing is not the whole compatibility story. Compare the details that matter.',
+    image: 'https://m.media-amazon.com/images/I/814lZbU+YYL._SL1500_.jpg',
+    alt: 'INIU braided USB-C to USB-C cable',
+  },
+  {
+    href: '/guides/cheap-desk-upgrades',
+    label: 'Practical guide',
+    title: 'Cheap upgrades that improve a desk first',
+    copy: 'Fix friction, lighting, cable paths, and reach zones before replacing expensive gear.',
+    image: null,
+    alt: '',
+  },
+];
 ---
 
-<Layout>
-  <div class="site-shell">
-    <Header />
+<Layout
+  title="StackGeist | Practical desk setup ideas and verified tech gear"
+  description="Build a better desk or gaming setup with fit-first gear research, honest tradeoffs, budget tech comparisons, and practical guides."
+>
+  <div class="site-shell home-shell">
+    <Header interactive={false} />
     <main>
-      <MindMap />
-      <FeaturedSetup />
-
-      <section class="latest-guide" aria-labelledby="latest-guide-title">
-        <div class="divider"></div>
-        <p class="eyebrow">New verified gear</p>
-        <a class="latest-guide-card" href="/gear/desk-power/anker-nano-a9196">
-          <div>
-            <h2 id="latest-guide-title">Anker Nano A9196 clamp strip</h2>
-            <p>Check desk thickness, edge angle, underside clearance, and shared USB power before buying.</p>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Practical setup research · no brand hype</p>
+          <h1 id="hero-title">Build a better setup.<br /><span>Buy fewer wrong things.</span></h1>
+          <p class="hero-lead">StackGeist turns desk and tech research into clear decisions: what fits, what changes, what to skip, and what is worth paying for.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="/gear/budget-tech">Explore budget tech <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="/guides/desk-layout-basics">Plan your desk first</a>
           </div>
-          <span>Read the fit guide →</span>
-        </a>
+          <ul class="trust-list" aria-label="StackGeist editorial standards">
+            <li><span aria-hidden="true">✓</span> Human-reviewed</li>
+            <li><span aria-hidden="true">✓</span> Fit checks included</li>
+            <li><span aria-hidden="true">✓</span> Skip-if guidance</li>
+          </ul>
+        </div>
+
+        <aside class="decision-panel" aria-label="Popular decision shortcuts">
+          <div class="panel-glow" aria-hidden="true"></div>
+          <div class="panel-heading">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Start with the problem</span>
+          </div>
+          <a href="/gear/budget-tech">
+            <span class="shortcut-number">01</span>
+            <span><strong>I want a useful upgrade under $75</strong><small>Browse budget tech by price</small></span>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="/gear/budget-tech/compare">
+            <span class="shortcut-number">02</span>
+            <span><strong>I am comparing two options</strong><small>See who each product suits</small></span>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="/setups/small-bedroom-gaming">
+            <span class="shortcut-number">03</span>
+            <span><strong>I have almost no desk space</strong><small>Plan a small-room setup</small></span>
+            <b aria-hidden="true">↗</b>
+          </a>
+          <a href="/guides/cable-management">
+            <span class="shortcut-number">04</span>
+            <span><strong>My cables are the real problem</strong><small>Fix the route before shopping</small></span>
+            <b aria-hidden="true">↗</b>
+          </a>
+        </aside>
       </section>
 
-      <div style="max-width:900px;margin:0 auto;padding:0 16px;">
-        <NewsletterSignup />
-      </div>
+      <section class="proof-strip" aria-label="StackGeist catalog summary">
+        <div><strong>30</strong><span>budget-tech starting points</span></div>
+        <div><strong>10</strong><span>side-by-side comparisons</span></div>
+        <div><strong>Fit first</strong><span>compatibility before checkout</span></div>
+        <div><strong>Plain English</strong><span>tradeoffs without filler</span></div>
+      </section>
 
-      <section class="keep-exploring" aria-labelledby="keep-exploring-title">
-        <div class="divider"></div>
-        <p class="eyebrow" id="keep-exploring-title">Keep exploring</p>
-        <div class="explore-links">
-          <button type="button" data-nav-branch="gear">
-            <strong>Gear that fixes a problem</strong>
-            <span>Lighting · cable management · monitor arms</span>
-          </button>
-          <button type="button" data-nav-branch="guides">
-            <strong>Guides worth reading</strong>
-            <span>Desk size · cable routing · cheap upgrades</span>
-          </button>
-          <button type="button" data-nav-branch="setups">
-            <strong>Browse by constraint</strong>
-            <span>Small spaces · budget · work + gaming</span>
-          </button>
+      <section class="section problem-section" aria-labelledby="problem-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Choose your friction</p>
+            <h2 id="problem-title">What needs to work better?</h2>
+          </div>
+          <a class="text-link" href="/gear">Browse all verified gear <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="problem-grid">
+          {problemCards.map((card) => (
+            <a class="problem-card" href={card.href}>
+              <span class="problem-icon" aria-hidden="true">{card.icon}</span>
+              <p>{card.kicker}</p>
+              <h3>{card.title}</h3>
+              <span class="card-copy">{card.copy}</span>
+              <span class="card-meta">{card.meta}<b aria-hidden="true">→</b></span>
+            </a>
+          ))}
         </div>
       </section>
-      <footer class="site-footer">
-        <strong>STACKGEIST</strong>
-        <nav aria-label="Footer navigation">
-          <button type="button" data-nav-branch="setups">Setups</button>
-          <button type="button" data-nav-branch="gear">Gear</button>
-          <button type="button" data-nav-branch="guides">Guides</button>
-          <a href="/about">About</a>
-        </nav>
-        <p>As an Amazon Associate I earn from qualifying purchases.</p>
-      </footer>
+
+      <section class="section research-section" aria-labelledby="research-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Useful now</p>
+            <h2 id="research-title">Research with a decision at the end.</h2>
+          </div>
+          <p class="section-note">No fake countdowns. No “best” label without context.</p>
+        </div>
+        <div class="research-grid">
+          {researchCards.map((card) => (
+            <a class:list={['research-card', { 'no-image': !card.image }]} href={card.href}>
+              {card.image ? (
+                <div class="research-image"><img src={card.image} alt={card.alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+              ) : (
+                <div class="guide-art" aria-hidden="true">
+                  <span></span><span></span><span></span><i>START WITH FRICTION</i>
+                </div>
+              )}
+              <div class="research-copy">
+                <p>{card.label}</p>
+                <h3>{card.title}</h3>
+                <span>{card.copy}</span>
+                <b>Read the research <span aria-hidden="true">→</span></b>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="setup-feature" aria-labelledby="setup-title">
+        <div class="setup-visual" aria-hidden="true">
+          <div class="setup-grid"></div>
+          <div class="monitor monitor-one"><span></span></div>
+          <div class="monitor monitor-two"><span></span></div>
+          <div class="desk-line"></div>
+          <div class="light-pool"></div>
+          <div class="keyboard"></div>
+        </div>
+        <div class="setup-copy">
+          <p class="eyebrow">Featured setup</p>
+          <h2 id="setup-title">Midnight Shift</h2>
+          <p>A dark gaming-and-work setup that protects usable desk space instead of filling every surface with RGB accessories.</p>
+          <dl>
+            <div><dt>Best for</dt><dd>Gaming · work · console</dd></div>
+            <div><dt>Constraint</dt><dd>Small-room friendly</dd></div>
+          </dl>
+          <a class="button secondary light" href="/setups/midnight-shift">See the complete setup <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <NewsletterSignup />
     </main>
   </div>
 </Layout>
 
 <style>
-  .latest-guide {
-    margin-top: 36px;
-  }
+  .home-shell { overflow: visible; }
+  .home-shell main { padding-bottom: 8px; }
 
-  .latest-guide > .eyebrow {
-    margin-top: 32px;
-  }
-
-  .latest-guide-card {
+  .hero {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1.08fr) minmax(390px, .82fr);
+    gap: clamp(48px, 8vw, 118px);
     align-items: center;
-    gap: 28px;
-    margin-top: 20px;
-    padding: 24px 26px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    color: var(--text);
-    text-decoration: none;
-    background: color-mix(in srgb, var(--purple) 8%, transparent);
+    min-height: 650px;
+    padding: 84px 0 76px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -260px;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, .13), transparent 67%);
+    pointer-events: none;
+  }
+  .hero-copy { position: relative; z-index: 1; max-width: 760px; }
+  .hero h1 {
+    margin: 19px 0 22px;
+    font-size: clamp(48px, 6.2vw, 86px);
+    font-weight: 650;
+    line-height: .98;
+    letter-spacing: -.062em;
+  }
+  .hero h1 span {
+    color: transparent;
+    background: linear-gradient(110deg, #f5f1ff 8%, #c4b5fd 44%, #a855f7 78%, #f0abfc);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  .hero-lead { max-width: 670px; margin: 0; color: #b8aec4; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.58; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 0 21px; border: 1px solid transparent; border-radius: 10px; font-size: 14px; font-weight: 750; transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease; }
+  .button:hover { transform: translateY(-2px); }
+  .button.primary { background: linear-gradient(135deg, #8b5cf6, #a855f7); color: #fff; box-shadow: 0 18px 36px -18px rgba(168, 85, 247, .75); }
+  .button.primary:hover { box-shadow: 0 22px 44px -18px rgba(168, 85, 247, .9); }
+  .button.secondary { border-color: var(--border-strong); background: rgba(255,255,255,.025); color: var(--text); }
+  .button.secondary:hover { border-color: #765493; background: rgba(168,85,247,.07); }
+  .button.light { min-height: 44px; }
+  .trust-list { display: flex; flex-wrap: wrap; gap: 22px; margin: 28px 0 0; padding: 0; color: var(--muted); font-size: 12px; list-style: none; }
+  .trust-list li { display: inline-flex; align-items: center; gap: 7px; }
+  .trust-list li span { display: grid; width: 17px; height: 17px; place-items: center; border: 1px solid rgba(192,132,252,.35); border-radius: 50%; color: var(--purple-light); font-size: 9px; }
+
+  .decision-panel { position: relative; overflow: hidden; padding: 10px; border: 1px solid #402a56; border-radius: 18px; background: linear-gradient(165deg, rgba(30,21,43,.96), rgba(10,7,15,.98)); box-shadow: 0 40px 80px -40px rgba(0,0,0,.9), 0 24px 54px -34px rgba(168,85,247,.65); }
+  .panel-glow { position: absolute; top: -150px; right: -120px; width: 330px; height: 330px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,.19), transparent 70%); pointer-events: none; }
+  .panel-heading { position: relative; display: flex; align-items: center; gap: 9px; padding: 15px 16px 13px; color: #d5cadf; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #a7f3d0; box-shadow: 0 0 12px #34d399; }
+  .decision-panel a { position: relative; display: grid; grid-template-columns: 27px 1fr auto; gap: 13px; align-items: center; min-height: 88px; padding: 14px 16px; border-top: 1px solid rgba(99,70,121,.38); border-radius: 9px; transition: background .18s ease; }
+  .decision-panel a:hover { background: rgba(168,85,247,.08); }
+  .shortcut-number { align-self: start; margin-top: 3px; color: #705c80; font-family: ui-monospace, monospace; font-size: 10px; }
+  .decision-panel strong, .decision-panel small { display: block; }
+  .decision-panel strong { color: #f4eff8; font-size: 14px; line-height: 1.35; }
+  .decision-panel small { margin-top: 5px; color: #8f829b; font-size: 11px; }
+  .decision-panel b { color: #8b6ba3; font-size: 15px; }
+
+  .proof-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--border); }
+  .proof-strip div { display: grid; gap: 5px; padding: 24px 28px; border-left: 1px solid var(--border); }
+  .proof-strip div:first-child { padding-left: 0; border-left: 0; }
+  .proof-strip strong { font-size: 15px; }
+  .proof-strip span { color: var(--muted); font-size: 11px; }
+
+  .section { padding-top: 108px; }
+  .section-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 30px; }
+  .section h2, .setup-copy h2 { margin: 13px 0 0; font-size: clamp(32px, 4vw, 50px); font-weight: 600; line-height: 1.06; letter-spacing: -.045em; }
+  .text-link { flex-shrink: 0; padding-bottom: 7px; color: var(--purple-light); font-size: 13px; font-weight: 700; }
+  .text-link:hover { color: #e4c9ff; }
+  .section-note { max-width: 330px; margin: 0 0 5px; color: var(--muted); font-size: 13px; line-height: 1.5; text-align: right; }
+
+  .problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--surface); }
+  .problem-card { position: relative; min-height: 330px; padding: 27px; border-left: 1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,.018), transparent); transition: background .2s ease, transform .2s ease; }
+  .problem-card:first-child { border-left: 0; }
+  .problem-card:hover { z-index: 1; background: linear-gradient(180deg, rgba(168,85,247,.11), rgba(168,85,247,.025)); }
+  .problem-icon { display: grid; width: 42px; height: 42px; place-items: center; margin-bottom: 54px; border: 1px solid #4d3562; border-radius: 10px; background: #160f20; color: var(--purple-light); font-size: 20px; }
+  .problem-card > p { margin: 0 0 10px; color: var(--purple-light); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+  .problem-card h3 { margin: 0; font-size: 20px; line-height: 1.2; letter-spacing: -.025em; }
+  .card-copy { display: block; margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .card-meta { position: absolute; right: 27px; bottom: 25px; left: 27px; display: flex; justify-content: space-between; color: #7f718b; font-size: 10px; font-weight: 650; text-transform: uppercase; letter-spacing: .05em; }
+  .card-meta b { color: var(--purple-light); font-size: 14px; }
+
+  .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .research-card { overflow: hidden; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .research-card:hover { transform: translateY(-4px); border-color: #64417e; box-shadow: 0 28px 60px -42px rgba(168,85,247,.75); }
+  .research-image, .guide-art { height: 235px; border-bottom: 1px solid var(--border); }
+  .research-image { display: grid; place-items: center; padding: 22px; background: radial-gradient(circle at 50% 35%, rgba(168,85,247,.14), transparent 62%), #0b0810; }
+  .research-image img { width: 88%; height: 88%; padding: 10px; border-radius: 10px; object-fit: contain; background: #fff; box-shadow: 0 24px 45px -30px rgba(168,85,247,.7); }
+  .guide-art { position: relative; overflow: hidden; display: grid; place-items: center; background: radial-gradient(circle at 70% 30%, rgba(168,85,247,.23), transparent 31%), linear-gradient(145deg,#100a18,#261433); }
+  .guide-art::before, .guide-art::after { content:''; position:absolute; border:1px solid rgba(192,132,252,.22); border-radius:50%; }
+  .guide-art::before { width:180px; height:180px; }
+  .guide-art::after { width:92px; height:92px; }
+  .guide-art span { position:absolute; width:7px; height:7px; border-radius:50%; background:#c084fc; box-shadow:0 0 14px #a855f7; }
+  .guide-art span:nth-child(1){transform:translate(-90px,-24px)} .guide-art span:nth-child(2){transform:translate(70px,-55px)} .guide-art span:nth-child(3){transform:translate(22px,72px)}
+  .guide-art i { position:relative; z-index:1; color:#d8b4fe; font-family:ui-monospace,monospace; font-size:10px; font-style:normal; letter-spacing:.16em; }
+  .research-copy { padding: 25px; }
+  .research-copy > p { margin: 0 0 10px; color: var(--purple-light); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+  .research-copy h3 { min-height: 52px; margin: 0; font-size: 20px; line-height: 1.25; letter-spacing: -.025em; }
+  .research-copy > span { display: block; min-height: 61px; margin-top: 12px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .research-copy > b { display: block; margin-top: 22px; color: #d9c9e5; font-size: 12px; }
+
+  .setup-feature { position: relative; display: grid; grid-template-columns: 1.3fr .8fr; min-height: 510px; margin-top: 108px; overflow: hidden; border: 1px solid #49315e; border-radius: 20px; background: #0c0811; }
+  .setup-visual { position: relative; min-height: 510px; overflow: hidden; background: linear-gradient(140deg,#08060c 18%,#170c21 75%,#2b113e); }
+  .setup-grid { position:absolute; inset:0; opacity:.22; background-image:linear-gradient(rgba(192,132,252,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(192,132,252,.16) 1px,transparent 1px); background-size:48px 48px; mask-image:linear-gradient(to right,#000,transparent 88%); }
+  .monitor { position:absolute; top:23%; width:29%; height:35%; border:2px solid #513568; border-radius:8px; background:linear-gradient(150deg,#0d0a12,#311445); box-shadow:0 0 40px rgba(168,85,247,.14); }
+  .monitor-one{left:20%}.monitor-two{left:51%;transform:perspective(700px) rotateY(-7deg)}
+  .monitor span{position:absolute;left:48%;bottom:-18%;width:5%;height:18%;background:#29202f}.monitor span::after{content:'';position:absolute;left:-420%;bottom:-5px;width:900%;height:6px;border-radius:4px;background:#211827}
+  .desk-line{position:absolute;left:11%;right:10%;bottom:25%;height:13px;border-radius:8px;background:linear-gradient(90deg,#18111e,#3a2449,#1b1221);box-shadow:0 24px 35px rgba(0,0,0,.55)}
+  .light-pool{position:absolute;left:30%;right:10%;bottom:13%;height:110px;border-radius:50%;background:radial-gradient(ellipse,rgba(168,85,247,.18),transparent 68%);filter:blur(7px)}
+  .keyboard{position:absolute;left:45%;bottom:28%;width:23%;height:5%;border:1px solid #503762;border-radius:5px;background:#1d1523;transform:perspective(500px) rotateX(60deg)}
+  .setup-copy { display: flex; flex-direction: column; justify-content: center; padding: 55px; background: linear-gradient(180deg,rgba(34,20,46,.87),rgba(15,9,20,.96)); }
+  .setup-copy > p:not(.eyebrow) { margin: 20px 0 0; color: #aaa0b4; font-size: 14px; line-height: 1.62; }
+  .setup-copy dl { display: grid; gap: 12px; margin: 28px 0; padding: 20px 0; border-block: 1px solid #3b294b; }
+  .setup-copy dl div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; }
+  .setup-copy dt { color: #7e7189; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+  .setup-copy dd { margin: 0; color: #e9e1ef; font-size: 12px; font-weight: 650; }
+  .setup-copy .button { align-self: flex-start; }
+
+  @media (max-width: 1080px) {
+    .hero { grid-template-columns: 1fr .82fr; gap: 44px; }
+    .hero h1 { font-size: clamp(48px,6vw,68px); }
+    .problem-grid { grid-template-columns: repeat(2,1fr); }
+    .problem-card { border-top: 1px solid var(--border); }
+    .problem-card:nth-child(-n+2) { border-top: 0; }
+    .problem-card:nth-child(odd) { border-left: 0; }
+    .setup-feature { grid-template-columns: 1fr .85fr; }
+    .setup-copy { padding: 38px; }
   }
 
-  .latest-guide-card h2,
-  .latest-guide-card p {
-    margin: 0;
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding: 68px 0 52px; }
+    .hero-copy { max-width: 680px; }
+    .decision-panel { max-width: 650px; }
+    .proof-strip { grid-template-columns: repeat(2,1fr); }
+    .proof-strip div:nth-child(3) { padding-left:0; border-left:0; border-top:1px solid var(--border); }
+    .proof-strip div:nth-child(4) { border-top:1px solid var(--border); }
+    .research-grid { grid-template-columns: 1fr 1fr; }
+    .research-card:last-child { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; }
+    .research-card:last-child .guide-art { height:100%; border-right:1px solid var(--border); border-bottom:0; }
+    .setup-feature { grid-template-columns: 1fr; }
+    .setup-visual { min-height: 390px; }
+    .section { padding-top: 86px; }
   }
 
-  .latest-guide-card h2 {
-    font-size: clamp(20px, 2.2vw, 28px);
-  }
-
-  .latest-guide-card p {
-    max-width: 720px;
-    margin-top: 8px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .latest-guide-card > span {
-    color: var(--purple-light);
-    font-size: 13px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .latest-guide-card:hover {
-    border-color: var(--purple-light);
-  }
-
-  .keep-exploring {
-    margin-top: 36px;
-  }
-
-  .keep-exploring > .eyebrow {
-    margin-top: 32px;
-  }
-
-  .explore-links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 24px;
-  }
-
-  .explore-links button {
-    min-height: 74px;
-    padding: 6px 42px;
-    border: 0;
-    border-left: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    text-align: left;
-    cursor: pointer;
-  }
-  .explore-links button:first-child {
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .explore-links strong,
-  .explore-links span {
-    display: block;
-  }
-
-  .explore-links strong {
-    font-size: 15px;
-  }
-
-  .explore-links span {
-    margin-top: 9px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .explore-links button:hover strong {
-    color: var(--purple-light);
-  }
-
-  .site-footer {
-    min-height: 100px;
-    display: grid;
-    grid-template-columns: 180px 1fr auto;
-    align-items: center;
-    gap: 28px;
-    margin-top: 38px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 11px;
-  }
-
-  .site-footer > strong {
-    color: var(--text);
-    font-size: 12px;
-  }
-  .site-footer nav {
-    display: flex;
-    gap: 8px;
-  }
-
-  .site-footer button,
-  .site-footer a {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    font-size: 11px;
-    cursor: pointer;
-  }
-
-  .site-footer button:not(:last-child)::after,
-  .site-footer a:not(:last-child)::after {
-    content: '·';
-    margin-left: 8px;
-    color: var(--quiet);
-  }
-
-  .site-footer button:hover,
-  .site-footer a:hover {
-    color: var(--purple-light);
-  }
-
-  .site-footer p {
-    margin: 0;
-    text-align: right;
-  }
-
-  @media (max-width: 760px) {
-    .latest-guide-card {
-      grid-template-columns: 1fr;
-      gap: 16px;
-      padding: 22px;
-    }
-
-    .latest-guide-card > span {
-      white-space: normal;
-    }
-
-    .keep-exploring {
-      display: none;
-    }
-    .site-footer {
-      min-height: 150px;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      padding: 26px 0 10px;
-    }
-
-    .site-footer nav {
-      display: none;
-    }
-
-    .site-footer p {
-      max-width: 330px;
-      text-align: left;
-      line-height: 1.5;
-    }
+  @media (max-width: 620px) {
+    .home-shell main { padding-inline: 18px; }
+    .hero { padding-top: 55px; }
+    .hero h1 { font-size: clamp(43px,13vw,59px); line-height:1.01; }
+    .hero-lead { font-size:16px; }
+    .hero-actions { display:grid; }
+    .button { width:100%; }
+    .trust-list { gap:12px 16px; }
+    .decision-panel a { min-height:82px; padding-inline:12px; }
+    .proof-strip div { padding:20px 14px; }
+    .proof-strip div:nth-child(odd) { padding-left:0; }
+    .section-heading-row { display:block; }
+    .text-link { display:inline-block; margin-top:18px; }
+    .section-note { margin-top:15px; text-align:left; }
+    .problem-grid { grid-template-columns:1fr; }
+    .problem-card { min-height:280px; border-top:1px solid var(--border)!important; border-left:0!important; }
+    .problem-card:first-child { border-top:0!important; }
+    .problem-icon { margin-bottom:34px; }
+    .research-grid { grid-template-columns:1fr; }
+    .research-card:last-child { grid-column:auto; display:block; }
+    .research-card:last-child .guide-art { height:220px; border-right:0; border-bottom:1px solid var(--border); }
+    .research-image { height:220px; }
+    .research-copy h3, .research-copy > span { min-height:0; }
+    .setup-feature { margin-top:86px; }
+    .setup-visual { min-height:285px; }
+    .setup-copy { padding:30px 24px; }
+    .setup-copy .button { width:100%; }
   }
 </style>

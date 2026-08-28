@@ -3,17 +3,17 @@ interface Props {
   active?: 'setups' | 'gear' | 'guides';
   interactive?: boolean;
 }
-const { active, interactive = true } = Astro.props;
+const { active, interactive = false } = Astro.props;
 const links = [
   { key: 'setups', label: 'Setups', href: '/setups/gaming' },
   { key: 'gear', label: 'Gear', href: '/gear' },
-  { key: 'guides', label: 'Guides', href: '/?branch=guides#explore' },
+  { key: 'guides', label: 'Guides', href: '/guides/desk-layout-basics' },
 ] as const;
 ---
 <header class="site-header" data-header>
   <a class="brand" href="/" aria-label="StackGeist home">
-    <span class="brand-mark" aria-hidden="true">S</span>
-    <span>STACKGEIST</span>
+    <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+    <span class="brand-name">STACKGEIST</span>
   </a>
 
   <nav class="desktop-nav" aria-label="Primary navigation">
@@ -22,46 +22,100 @@ const links = [
     ) : (
       <a class:list={{ active: active === link.key }} href={link.href}>{link.label}</a>
     ))}
+    <a href="/gear/budget-tech/compare">Comparisons</a>
     <a href="/about">About</a>
   </nav>
 
-  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>☰</button>
+  <a class="header-cta" href="/gear/budget-tech">Find useful gear <span aria-hidden="true">→</span></a>
+
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+    <span></span><span></span>
+  </button>
 
   <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
     {links.map((link) => interactive ? (
-      <button type="button" data-nav-branch={link.key}>{link.label}</button>
+      <button type="button" data-nav-branch={link.key}>{link.label}<span aria-hidden="true">→</span></button>
     ) : (
-      <a class:list={{ active: active === link.key }} href={link.href}>{link.label}</a>
+      <a class:list={{ active: active === link.key }} href={link.href}>{link.label}<span aria-hidden="true">→</span></a>
     ))}
-    <a href="/about">About</a>
+    <a href="/gear/budget-tech/compare">Comparisons <span aria-hidden="true">→</span></a>
+    <a href="/about">About <span aria-hidden="true">→</span></a>
+    <a class="mobile-cta" href="/gear/budget-tech">Explore budget tech <span aria-hidden="true">→</span></a>
   </nav>
 </header>
 
 <style>
-  .site-header { position: relative; z-index: 20; height: 79px; display: flex; align-items: center; padding: 0 42px; border-bottom: 1px solid var(--border); background: rgba(7,5,13,.94); }
-  .brand { display: inline-flex; align-items: center; gap: 14px; font-size: 18px; font-weight: 800; letter-spacing: -.02em; }
-  .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1.5px solid var(--purple); border-radius: 10px; background: var(--purple-deep); color: var(--purple-light); box-shadow: 0 0 10px rgba(168,85,247,.16); }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--page-pad);
+    border-bottom: 1px solid rgba(70, 47, 88, .72);
+    background: rgba(7, 5, 13, .82);
+    backdrop-filter: blur(18px) saturate(130%);
+  }
+  .brand { display: inline-flex; align-items: center; gap: 12px; }
+  .brand-name { font-size: 15px; font-weight: 850; letter-spacing: .035em; }
+  .brand-mark {
+    position: relative;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #684684;
+    border-radius: 9px;
+    background: linear-gradient(145deg,#241331,#100a17);
+    box-shadow: 0 12px 25px -14px rgba(168,85,247,.8);
+  }
+  .brand-mark::before, .brand-mark::after { content:''; position:absolute; width:13px; height:13px; border:2px solid var(--purple-light); transform:rotate(45deg); }
+  .brand-mark::before { top:7px; left:6px; }
+  .brand-mark::after { right:6px; bottom:7px; opacity:.58; }
   .desktop-nav { margin-left: auto; display: flex; align-items: center; gap: 28px; }
-  .desktop-nav button, .desktop-nav a { padding: 6px 0; border: 0; background: transparent; color: var(--muted); font-size: 12px; font-weight: 650; cursor: pointer; }
-  .desktop-nav button:hover, .desktop-nav a:hover, .desktop-nav a.active { color: var(--purple-light); }
+  .desktop-nav button, .desktop-nav a { position:relative; padding: 7px 0; border: 0; background: transparent; color: #a89dad; font-size: 12px; font-weight: 650; cursor: pointer; }
+  .desktop-nav button::after, .desktop-nav a::after { content:''; position:absolute; right:0; bottom:1px; left:0; height:1px; background:var(--purple-light); transform:scaleX(0); transition:transform .18s ease; }
+  .desktop-nav button:hover, .desktop-nav a:hover, .desktop-nav a.active { color: #f5f1ff; }
+  .desktop-nav button:hover::after, .desktop-nav a:hover::after, .desktop-nav a.active::after { transform:scaleX(1); }
+  .header-cta { display:inline-flex; min-height:38px; align-items:center; gap:8px; margin-left:30px; padding:0 15px; border:1px solid #60417a; border-radius:9px; background:rgba(168,85,247,.08); color:#e6d8f0; font-size:11px; font-weight:750; transition:border-color .18s ease,background .18s ease; }
+  .header-cta:hover { border-color:var(--purple-light); background:rgba(168,85,247,.14); }
   .menu-toggle, .mobile-menu { display: none; }
+
+  @media (max-width: 980px) {
+    .desktop-nav { gap:18px; }
+    .header-cta { display:none; }
+  }
+
   @media (max-width: 760px) {
-    .site-header { height: 69px; padding: 0 20px; }
+    .site-header { height: 68px; padding: 0 19px; }
     .desktop-nav { display: none; }
-    .menu-toggle { position: absolute; right: 20px; top: 17px; display: grid; width: 34px; height: 34px; place-content: center; border: 0; background: transparent; color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
-    .mobile-menu { position: absolute; top: 69px; left: 0; right: 0; padding: 12px 20px 18px; border-bottom: 1px solid var(--border); background: rgba(7,5,13,.98); }
-    .site-header[data-open="true"] .mobile-menu { display: grid; gap: 8px; }
-    .mobile-menu button, .mobile-menu a { width: 100%; padding: 13px 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); color: var(--text); text-align: left; cursor: pointer; }
-    .mobile-menu a.active { border-color: var(--purple); color: var(--purple-light); }
+    .brand-name { font-size:14px; }
+    .menu-toggle { position:absolute; right:16px; top:15px; display:grid; width:40px; height:38px; place-content:center; gap:6px; border:1px solid var(--border); border-radius:9px; background:rgba(255,255,255,.025); cursor:pointer; }
+    .menu-toggle span { display:block; width:17px; height:1.5px; background:var(--text); transition:transform .18s ease; }
+    .site-header[data-open="true"] .menu-toggle span:first-child { transform:translateY(3.75px) rotate(45deg); }
+    .site-header[data-open="true"] .menu-toggle span:last-child { transform:translateY(-3.75px) rotate(-45deg); }
+    .mobile-menu { position:absolute; top:68px; left:0; right:0; padding:12px 18px 20px; border-bottom:1px solid var(--border); background:rgba(7,5,13,.98); box-shadow:0 25px 50px rgba(0,0,0,.5); }
+    .site-header[data-open="true"] .mobile-menu { display:grid; gap:7px; }
+    .mobile-menu button, .mobile-menu a { width:100%; min-height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 14px; border:1px solid transparent; border-radius:9px; background:transparent; color:#cfc5d7; font-size:14px; font-weight:650; text-align:left; cursor:pointer; }
+    .mobile-menu button:hover, .mobile-menu a:hover, .mobile-menu a.active { border-color:var(--border); background:var(--surface-2); color:var(--text); }
+    .mobile-menu .mobile-cta { margin-top:5px; border-color:#684684; background:rgba(168,85,247,.11); color:#eadcff; }
   }
 </style>
 
 <script>
   const header = document.querySelector('[data-header]');
-  const toggle = document.querySelector('[data-menu-toggle]');
+  const toggle = header?.querySelector('[data-menu-toggle]');
   toggle?.addEventListener('click', () => {
     const open = header?.getAttribute('data-open') === 'true';
     header?.setAttribute('data-open', String(!open));
     toggle.setAttribute('aria-expanded', String(!open));
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      header?.setAttribute('data-open', 'false');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
   });
 </script>
