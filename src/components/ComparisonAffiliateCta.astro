@@ -1,0 +1,83 @@
+---
+interface Offer {
+  name: string;
+  amazonUrl: string;
+  fit: string;
+  detailHref?: string;
+}
+
+interface Props {
+  heading?: string;
+  intro?: string;
+  offers: Offer[];
+}
+
+const {
+  heading = 'Ready to choose?',
+  intro = 'Use the fit notes above, then check the retailer for current price and availability.',
+  offers,
+} = Astro.props;
+---
+<section class="affiliate-decision" aria-labelledby="affiliate-decision-title">
+  <div class="decision-heading">
+    <div>
+      <p class="page-kicker">Purchase options</p>
+      <h2 id="affiliate-decision-title">{heading}</h2>
+      <p>{intro}</p>
+    </div>
+    <span class="disclosure">Paid links · As an Amazon Associate I earn from qualifying purchases.</span>
+  </div>
+  <div class:list={['offer-grid', { single: offers.length === 1 }]}>
+    {offers.map((offer) => (
+      <article class="offer">
+        <div>
+          <strong>{offer.name}</strong>
+          <p>{offer.fit}</p>
+        </div>
+        <div class="offer-actions">
+          <a
+            class="btn primary"
+            href={offer.amazonUrl}
+            target="_blank"
+            rel="sponsored nofollow noopener noreferrer"
+            data-affiliate-link
+            data-affiliate-placement="comparison-verdict"
+          >Check Amazon price <span aria-hidden="true">→</span></a>
+          {offer.detailHref && <a class="detail-link" href={offer.detailHref}>Read full fit guide</a>}
+        </div>
+      </article>
+    ))}
+  </div>
+  <small>Prices and availability can change. Confirm the exact model, seller, and compatibility on Amazon before purchasing.</small>
+</section>
+
+<style>
+  .affiliate-decision {
+    margin: 34px 0;
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid color-mix(in srgb, var(--purple-light) 42%, var(--border));
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 95% 0%, rgba(168, 85, 247, .14), transparent 34%),
+      var(--surface);
+    box-shadow: 0 24px 60px -42px rgba(168, 85, 247, .75);
+  }
+  .decision-heading { display:flex; justify-content:space-between; gap:28px; align-items:flex-start; }
+  .decision-heading h2 { margin:7px 0 8px; font-size:clamp(24px, 3vw, 34px); letter-spacing:-.035em; }
+  .decision-heading p:not(.page-kicker) { max-width:680px; margin:0; color:var(--muted); line-height:1.6; }
+  .disclosure { max-width:280px; color:var(--muted); font-size:11px; line-height:1.5; text-align:right; }
+  .offer-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:24px; }
+  .offer-grid.single { grid-template-columns:minmax(0,720px); }
+  .offer { display:flex; flex-direction:column; justify-content:space-between; gap:20px; padding:20px; border:1px solid var(--border); border-radius:14px; background:rgba(255,255,255,.018); }
+  .offer strong { display:block; font-size:16px; line-height:1.35; }
+  .offer p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+  .offer-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .detail-link { color:var(--purple-light); font-size:12px; font-weight:700; }
+  .affiliate-decision > small { display:block; margin-top:18px; color:var(--muted); font-size:11px; line-height:1.5; }
+  @media(max-width:760px){
+    .decision-heading { display:block; }
+    .disclosure { display:block; max-width:none; margin-top:12px; text-align:left; }
+    .offer-grid { grid-template-columns:1fr; }
+    .offer-actions .btn { width:100%; text-align:center; }
+  }
+</style>

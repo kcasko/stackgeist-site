@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
 ---
 <ContentLayout title="SanDisk Ultra 128GB vs Samsung EVO Select 512GB: Which microSD Card Should You Buy? | StackGeist" description="Two of the most-recommended microSD cards on the market. Different price tiers, different sweet spots. Here is when each one is the right pick." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / SanDisk vs Samsung microSD</p>
@@ -50,6 +51,9 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
       <p>Full specs, compatibility check, and buy/skip breakdown.</p>
     </a>
   </section>
+
+
+  <ComparisonAffiliateCta offers={[{"name":"SanDisk Ultra 128GB microSD 2-Pack","amazonUrl":"https://www.amazon.com/dp/B0B7NVV55M?tag=deskrespawn-20","fit":"Lower-cost capacity for compatible everyday devices when 128GB per card is enough.","detailHref":"/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack/"},{"name":"Samsung EVO Select 512GB microSD","amazonUrl":"https://www.amazon.com/dp/B09B1HMJ9Z?tag=deskrespawn-20","fit":"Better for one device that benefits from substantially more storage.","detailHref":"/gear/budget-tech/samsung-evo-select-512gb-microsd-card/"}]} />
 
   <style>
     .cmp { width:100%; border-collapse:collapse; font-size:14px; }

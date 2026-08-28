@@ -48,15 +48,19 @@ const p = Astro.props;
     <h2>{p.productName}</h2>
     <p class="product-meta">{p.productMeta}</p>
     <div class="product-tags">{p.tags.map((tag,index) => <span class:list={['tag',{active:index===0}]}>{tag}</span>)}</div>
+    <div class="primary-offer">
+      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement="product-intro">Check current price on Amazon <span aria-hidden="true">→</span></a>
+      <small>Paid link · As an Amazon Associate I earn from qualifying purchases.</small>
+    </div>
     <div class="reason-grid">
       <div><strong>Why it fits</strong><p>{p.why}</p></div>
       <div><strong>Tradeoff</strong><p>{p.tradeoff}</p></div>
     </div>
     <div class="check-block"><strong>Check before buying</strong><p>{p.check}</p><small>Price and stock can change. Check the retailer before buying.</small></div>
     <div class="retailer-actions">
-      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer">Check Amazon price →</a>
+      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement="product-verdict">Check Amazon price →</a>
       <a class="btn" href={p.secondaryUrl} target={p.secondaryExternal ? '_blank' : undefined} rel={p.secondaryExternal ? 'noopener' : undefined}>{p.secondaryLabel}</a>
-      <span>Paid link. StackGeist may earn a commission if you buy through this Amazon link.</span>
+      <span>Paid link. As an Amazon Associate I earn from qualifying purchases.</span>
     </div>
   </div>
 </section>
@@ -99,6 +103,8 @@ const p = Astro.props;
   .recommend-copy h2 { margin: 8px 0 6px; font-size:34px; letter-spacing:-.035em; }
   .product-meta { margin:0; color:var(--muted); font-size:13px; }
   .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
+  .primary-offer { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:-4px 0 24px; }
+  .primary-offer small { color:var(--muted); font-size:11px; line-height:1.45; }
   .reason-grid { display:grid; grid-template-columns:1fr 1fr; gap:36px; padding:22px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .reason-grid strong, .proof-grid strong, .check-block strong, .alt-panel strong { font-size:13px; }
   .reason-grid p, .proof-grid p, .check-block p, .alt-route p, .publishing-rule p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
@@ -106,7 +112,7 @@ const p = Astro.props;
   .check-block strong { color:var(--purple-light); }
   .check-block small { display:block; margin-top:10px; color:var(--quiet); }
   .retailer-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-  .retailer-actions span { margin-left:6px; color:var(--quiet); font-size:10px; }
+  .retailer-actions span { margin-left:6px; color:var(--muted); font-size:11px; }
   .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
   .proof-grid > div { padding-right:34px; }
   .proof-grid > div + div { padding-left:34px; border-left:1px solid var(--border); }
@@ -124,5 +130,6 @@ const p = Astro.props;
     .proof-grid > div, .proof-grid > div + div { padding:18px 0; border-left:0; border-top:1px solid var(--border); }
     .proof-grid > div:first-child { border-top:0; padding-top:0; }
     .retailer-actions span { width:100%; margin-left:0; }
+    .primary-offer .btn { width:100%; text-align:center; }
   }
 </style>

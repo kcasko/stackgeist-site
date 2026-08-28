@@ -39,6 +39,10 @@ const p = Astro.props;
     <h2>{p.productName}</h2>
     <p>{p.productMeta}</p>
     <div class="product-tags">{p.tags.map((tag,index) => <span class:list={['tag',{active:index===0}]}>{tag}</span>)}</div>
+    <div class="primary-offer">
+      <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement="product-intro">Check current price on Amazon <span aria-hidden="true">→</span></a>
+      <small>Paid link · As an Amazon Associate I earn from qualifying purchases.</small>
+    </div>
   </div>
   <div class="decision-grid">
     <div><strong>Why it fits</strong><p>{p.why}</p></div>
@@ -48,7 +52,7 @@ const p = Astro.props;
   </div>
   <div class="skip-block"><strong>Skip it when</strong><p>{p.skip}</p></div>
   <div class="retailer-actions">
-    <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer">Check Amazon price →</a>
+    <a class="btn primary" href={p.amazonUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement="product-verdict">Check Amazon price →</a>
     <a class="btn" href={p.makerUrl} target="_blank" rel="noopener">{p.makerLabel}</a>
     <span>Paid link. As an Amazon Associate I earn from qualifying purchases.</span>
   </div>
@@ -62,6 +66,8 @@ const p = Astro.props;
   .product-heading h2 { margin:0 0 6px; font-size:34px; letter-spacing:-.035em; }
   .product-heading > p { margin:0; color:var(--muted); font-size:13px; }
   .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+  .primary-offer { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:22px; }
+  .primary-offer small { color:var(--muted); font-size:11px; line-height:1.45; }
   .decision-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:26px; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
   .decision-grid > div { padding:22px 26px 22px 0; }
   .decision-grid > div:nth-child(even) { padding-left:26px; border-left:1px solid var(--border); }
@@ -70,12 +76,13 @@ const p = Astro.props;
   .skip-block { padding-top:22px; }
   .skip-block strong { color:var(--purple-light); }
   .retailer-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-  .retailer-actions span { width:100%; color:var(--quiet); font-size:10px; line-height:1.5; }
+  .retailer-actions span { width:100%; color:var(--muted); font-size:11px; line-height:1.5; }
   @media(max-width:760px){
     .product-detail { padding:18px; }
     .product-heading h2 { font-size:28px; }
     .decision-grid { grid-template-columns:1fr; }
     .decision-grid > div, .decision-grid > div:nth-child(even) { padding:18px 0; border-left:0; border-top:1px solid var(--border); }
     .decision-grid > div:first-child { border-top:0; }
+    .primary-offer .btn { width:100%; text-align:center; }
   }
 </style>

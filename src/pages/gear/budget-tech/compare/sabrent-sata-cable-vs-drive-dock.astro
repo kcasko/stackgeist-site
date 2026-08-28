@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
 ---
 <ContentLayout title="SABRENT SATA-to-USB Cable vs Lay-Flat Drive Dock: Which Drive Reader Do You Actually Need? | StackGeist" description="A $10 cable reads a bare SATA drive. A $40 dock reads SATA + NVMe drives tool-free. Here is when to buy which." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / SABRENT SATA cable vs drive dock</p>
@@ -50,6 +51,9 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
       <p>Full specs, compatibility check, and buy/skip breakdown.</p>
     </a>
   </section>
+
+
+  <ComparisonAffiliateCta offers={[{"name":"SABRENT SATA-to-USB Cable","amazonUrl":"https://www.amazon.com/dp/B011M8YACM?tag=deskrespawn-20","fit":"The inexpensive answer for occasional access to a bare SATA drive.","detailHref":"/gear/budget-tech/sabrent-sata-to-usb-adapter-cable/"},{"name":"SABRENT USB-C Lay-Flat Drive Dock","amazonUrl":"https://www.amazon.com/dp/B0BX4LSHS4?tag=deskrespawn-20","fit":"Worth paying more when you regularly work with both SATA and NVMe drives.","detailHref":"/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata/"}]} />
 
   <style>
     .cmp { width:100%; border-collapse:collapse; font-size:14px; }

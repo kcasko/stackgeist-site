@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
 ---
 <ContentLayout title="Multi-Port GaN Charging Station vs Single Wall Brick: Which Setup Actually Charges Faster? | StackGeist" description="One GaN station charges four devices from one outlet. One good wall brick charges one device. Here is when each answer is the right one." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / GaN station vs wall brick</p>
@@ -50,6 +51,9 @@ import ContentLayout from '../../../../layouts/ContentLayout.astro';
       <p>Full specs, compatibility check, and buy/skip breakdown.</p>
     </a>
   </section>
+
+
+  <ComparisonAffiliateCta offers={[{"name":"500W Multi-Port GaN Charging Station","amazonUrl":"https://www.amazon.com/dp/B0FBH24KXC?tag=deskrespawn-20","fit":"Best for consolidating several compatible devices at one desk; overkill for a single-device setup.","detailHref":"/gear/budget-tech/500w-multi-port-gan-charging-station/"}]} />
 
   <style>
     .cmp { width:100%; border-collapse:collapse; font-size:14px; }
