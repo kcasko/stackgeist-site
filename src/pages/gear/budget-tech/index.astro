@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../../components/NewsletterSignup.astro';
 ---
 <ContentLayout title="Budget tech picks | StackGeist" description="Curated budget tech recommendations organized by price band and use case." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / Budget tech</p>
@@ -206,6 +207,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     </div>
   </section>
   <section class="content-section"><div class="note">Paid Amazon links are disclosed next to the retailer action and in the site footer. As an Amazon Associate I earn from qualifying purchases.</div></section>
+  <NewsletterSignup />
   <style>
     .product-thumb { display:block; width:100%; height:200px; margin-bottom:16px; border:1px solid var(--border); border-radius:12px; object-fit:contain; background:#fff; }
   </style>

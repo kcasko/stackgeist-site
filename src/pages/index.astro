@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import MindMap from '../components/MindMap.astro';
 import FeaturedSetup from '../components/FeaturedSetup.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 ---
 
 <Layout>
@@ -23,6 +24,10 @@ import FeaturedSetup from '../components/FeaturedSetup.astro';
           <span>Read the fit guide →</span>
         </a>
       </section>
+
+      <div style="max-width:900px;margin:0 auto;padding:0 16px;">
+        <NewsletterSignup />
+      </div>
 
       <section class="keep-exploring" aria-labelledby="keep-exploring-title">
         <div class="divider"></div>
