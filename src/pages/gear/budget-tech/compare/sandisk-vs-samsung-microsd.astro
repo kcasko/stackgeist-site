@@ -1,0 +1,61 @@
+---
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
+---
+<ContentLayout title="SanDisk Ultra 128GB vs Samsung EVO Select 512GB: Which microSD Card Should You Buy? | StackGeist" description="Two of the most-recommended microSD cards on the market. Different price tiers, different sweet spots. Here is when each one is the right pick." active="gear">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / SanDisk vs Samsung microSD</p>
+  <p class="page-kicker">Head to head</p>
+  <h1 class="page-title">SanDisk Ultra 128GB vs Samsung EVO Select 512GB</h1>
+  <p class="page-lead">Both are the boring reliable microSD cards that show up in every recommendation thread. The SanDisk Ultra 2-pack wins on capacity flexibility and price-per-card. The Samsung EVO Select 512GB wins on raw capacity and slightly better sustained write. Pick based on how much storage you actually need and how many devices you're feeding.</p>
+
+  <section class="content-section">
+    <table class="cmp">
+      <thead><tr><th>Feature</th><th>SanDisk Ultra 128GB (2-Pack)</th><th>Samsung EVO Select 512GB</th></tr></thead>
+      <tbody><tr><td>Capacity</td><td>128GB x 2 cards</td><td>512GB x 1 card</td></tr>
+<tr><td>Typical price</td><td>~$18 for the pack</td><td>~$40-50</td></tr>
+<tr><td>Sequential read</td><td>Up to 140 MB/s</td><td>Up to 130 MB/s</td></tr>
+<tr><td>Sequential write</td><td>Up to 60 MB/s (varies)</td><td>Up to 90 MB/s</td></tr>
+<tr><td>Speed class</td><td>UHS-I A1</td><td>UHS-I U3 V30 A2</td></tr>
+<tr><td>4K video capable</td><td>Yes for 1080p; borderline 4K</td><td>Yes 4K UHD</td></tr>
+<tr><td>Warranty</td><td>10 years limited</td><td>10 years limited</td></tr>
+<tr><td>Best for</td><td>Phones, backup cards, casual use</td><td>Steam Deck, Switch OLED, 4K cameras</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When SanDisk Ultra 128GB (2-Pack) wins</p>
+    <h2 class="section-heading">Pick SanDisk Ultra 128GB (2-Pack) if...</h2>
+    <p>You want flexibility across multiple devices. Two 128GB cards fit a phone, a spare for a camera, a Kindle, a Raspberry Pi — you don't have to swap files off one shared card. Two smaller cards is more useful than one big one for casual users.</p><p>You want cheap storage that just works. The SanDisk Ultra has been the boring correct answer for 128GB for years. Failure rate is low, price per GB is fair, and third-party benchmarks consistently show the sustained read numbers matching the marketing.</p><p>You need redundancy. Two cards means one for the device and one for backup. A single 512GB dies and you lose everything on it.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When Samsung EVO Select 512GB wins</p>
+    <h2 class="section-heading">Pick Samsung EVO Select 512GB if...</h2>
+    <p>You have a Steam Deck, Nintendo Switch, or Switch OLED where the game library takes up 300+ GB and swapping cards is inconvenient. One 512GB card that stays in the device is dramatically simpler than juggling multiple 128s.</p><p>You shoot 4K video on a phone or camera. The Samsung EVO Select 512GB is rated V30 (30 MB/s sustained write floor) which is the actual UHS-I spec for 4K video. Cheaper cards claiming 4K often can't sustain the write and start dropping frames.</p><p>You want the best-in-class A2 rated card for a Raspberry Pi or handheld emulation device. A2 improves random read/write performance for app / game loading, which matters much more than sequential speed for those workloads.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">The verdict</p>
+    <p>Buy the SanDisk 2-pack if you want cheap dependable storage across a couple of devices and none of them individually need more than 128GB. Two smaller cards is the underrated flexible answer.</p><p>Buy the Samsung 512GB if you have one specific device (Steam Deck / Switch OLED / 4K camera) that eats storage and you want the fewer-swaps, better-sustained-write path.</p>
+  </section>
+
+  <section class="content-section cards">
+    <a class="card" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>SanDisk Ultra 128GB (2-Pack)</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+    <a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>Samsung EVO Select 512GB</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+  </section>
+
+  <style>
+    .cmp { width:100%; border-collapse:collapse; font-size:14px; }
+    .cmp th, .cmp td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+    .cmp thead th { color:var(--purple-light); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; }
+    .cmp tbody td:first-child { color:var(--muted); font-weight:600; width:26%; }
+    @media(max-width:760px){ .cmp { font-size:13px; } .cmp th, .cmp td { padding:10px 8px; } }
+  </style>
+</ContentLayout>

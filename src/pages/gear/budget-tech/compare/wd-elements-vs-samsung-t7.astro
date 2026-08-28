@@ -1,0 +1,63 @@
+---
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
+---
+<ContentLayout title="WD Elements Portable HDD vs Samsung T7 SSD: Which External Drive Do You Need? | StackGeist" description="A 4TB WD Elements HDD is $80. A 1TB Samsung T7 SSD is $90. Same money, totally different use cases. Here is how to pick." active="gear">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / WD Elements vs Samsung T7</p>
+  <p class="page-kicker">Head to head</p>
+  <h1 class="page-title">WD Elements Portable HDD vs Samsung T7 SSD</h1>
+  <p class="page-lead">HDDs and SSDs are not interchangeable products. The WD Elements is cold storage: cheap capacity for backups and archives. The Samsung T7 is working storage: fast, portable, good for editing off the drive or running games. Buying the wrong one is the most common external-drive mistake.</p>
+
+  <section class="content-section">
+    <table class="cmp">
+      <thead><tr><th>Feature</th><th>WD Elements Portable Hard Drive</th><th>Samsung T7 Portable SSD</th></tr></thead>
+      <tbody><tr><td>Storage tech</td><td>Spinning HDD</td><td>NVMe SSD</td></tr>
+<tr><td>Typical price / TB</td><td>~$20/TB (4TB @ $80)</td><td>~$90/TB (1TB @ $90)</td></tr>
+<tr><td>Sequential read</td><td>~120 MB/s</td><td>~1050 MB/s</td></tr>
+<tr><td>Sequential write</td><td>~120 MB/s</td><td>~1000 MB/s</td></tr>
+<tr><td>Random 4K read</td><td>Bad (~1 MB/s)</td><td>Fast (~40 MB/s)</td></tr>
+<tr><td>Drop resistance</td><td>Poor (mechanical)</td><td>High (no moving parts)</td></tr>
+<tr><td>Noise</td><td>Audible spin-up + read/write</td><td>Silent</td></tr>
+<tr><td>Interface</td><td>USB 3.0 (5 Gbps)</td><td>USB 3.2 Gen 2 (10 Gbps)</td></tr>
+<tr><td>Physical size</td><td>Larger, ~130g+</td><td>Compact, ~58g</td></tr>
+<tr><td>Best for</td><td>Backups, archives, media libraries</td><td>Editing, games, working files</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When WD Elements Portable Hard Drive wins</p>
+    <h2 class="section-heading">Pick WD Elements Portable Hard Drive if...</h2>
+    <p>You need cheap capacity for cold storage. Family photos, archived project files, media library. The WD Elements at 4-5 TB for under $100 is the correct budget answer. Read performance is fine for occasional access; you're not editing off the drive.</p><p>The drive lives on a shelf, not in a bag. HDDs die on drops. If it doesn't travel, that's a non-issue.</p><p>You're doing a full-machine backup. Time Machine, Windows File History — these workloads are sequential writes, and 120 MB/s is fine for the size of backup most home machines produce.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When Samsung T7 Portable SSD wins</p>
+    <h2 class="section-heading">Pick Samsung T7 Portable SSD if...</h2>
+    <p>You edit video, photos, or code from the drive. Working off an HDD is painful; working off an SSD is close to internal-storage speed. Random 4K read (Lightroom scrubbing, project files, small file work) is 40x faster on the T7.</p><p>You carry it in a bag. SSDs don't care about drops or knocks; HDDs die from them. If the drive moves with you, it should be an SSD.</p><p>You run games or apps off the drive. Steam library on external, portable dev environment — HDD load times are brutal for these; SSD is basically transparent.</p><p>You want silence. Home office recording setups, quiet-room work — HDDs make a spin-up whir and periodic head-clatter that shows up on microphones.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">The verdict</p>
+    <p>Cold storage, backups, media archive on a shelf: WD Elements. Anything active, portable, or performance-sensitive: Samsung T7.</p><p>Don't buy an SSD for pure archival storage — you're paying 5x per GB for speed you don't use. Don't buy an HDD for portable working storage — you'll hate it within a week.</p>
+  </section>
+
+  <section class="content-section cards">
+    <a class="card" href="/gear/budget-tech/wd-elements-portable-external-hard-drive/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>WD Elements Portable Hard Drive</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+    <a class="card" href="/gear/budget-tech/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>Samsung T7 Portable SSD</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+  </section>
+
+  <style>
+    .cmp { width:100%; border-collapse:collapse; font-size:14px; }
+    .cmp th, .cmp td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+    .cmp thead th { color:var(--purple-light); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; }
+    .cmp tbody td:first-child { color:var(--muted); font-weight:600; width:26%; }
+    @media(max-width:760px){ .cmp { font-size:13px; } .cmp th, .cmp td { padding:10px 8px; } }
+  </style>
+</ContentLayout>

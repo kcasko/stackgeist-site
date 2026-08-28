@@ -1,0 +1,61 @@
+---
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
+---
+<ContentLayout title="SABRENT SATA-to-USB Cable vs Lay-Flat Drive Dock: Which Drive Reader Do You Actually Need? | StackGeist" description="A $10 cable reads a bare SATA drive. A $40 dock reads SATA + NVMe drives tool-free. Here is when to buy which." active="gear">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / SABRENT SATA cable vs drive dock</p>
+  <p class="page-kicker">Head to head</p>
+  <h1 class="page-title">SABRENT SATA-to-USB Cable vs Lay-Flat Drive Dock (NVMe + SATA)</h1>
+  <p class="page-lead">Both let you access a bare drive from your computer without permanently mounting it. The cable is $10 and does one thing: SATA-to-USB, one drive at a time. The lay-flat dock is $40 and reads SATA HDDs, SATA SSDs, and NVMe drives without tools. Pick based on how often you swap drives.</p>
+
+  <section class="content-section">
+    <table class="cmp">
+      <thead><tr><th>Feature</th><th>SABRENT SATA-to-USB Adapter Cable</th><th>SABRENT Lay-Flat Drive Dock</th></tr></thead>
+      <tbody><tr><td>Price</td><td>~$10</td><td>~$40</td></tr>
+<tr><td>Drive types supported</td><td>2.5" and 3.5" SATA</td><td>SATA (2.5/3.5) + NVMe M.2</td></tr>
+<tr><td>USB interface</td><td>USB 3.0 (5 Gbps)</td><td>USB-C 3.2 Gen 2 (10 Gbps)</td></tr>
+<tr><td>Drive install time</td><td>30 seconds, plug the connectors</td><td>5 seconds, drop it in</td></tr>
+<tr><td>Requires external power</td><td>For 3.5" drives yes; 2.5" no</td><td>For 3.5" drives yes; 2.5" no</td></tr>
+<tr><td>Simultaneous drives</td><td>1</td><td>1 (some models: 2, offline clone)</td></tr>
+<tr><td>Portability</td><td>Bag / pocket</td><td>Desk-only</td></tr>
+<tr><td>Best for</td><td>One-time data recovery</td><td>Frequent drive swapping</td></tr></tbody>
+    </table>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When SABRENT SATA-to-USB Adapter Cable wins</p>
+    <h2 class="section-heading">Pick SABRENT SATA-to-USB Adapter Cable if...</h2>
+    <p>You need to grab files off one old laptop hard drive one time. The cable is $10, does the job, and lives in a drawer between uses. Buying a $40 dock for a single one-time job is wasteful.</p><p>You travel and might need to read a drive on the road. The cable fits in a bag. The dock does not.</p><p>You only work with SATA drives. If you don't own any NVMe drives, half the dock's feature set is unused. Get the cable and save the money.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">When SABRENT Lay-Flat Drive Dock wins</p>
+    <h2 class="section-heading">Pick SABRENT Lay-Flat Drive Dock if...</h2>
+    <p>You pull drives regularly. IT work, data recovery as a hobby, homelab shuffling, drive testing before deploying — all of these become dramatically less annoying when you can drop a drive in without fumbling with cables.</p><p>You have any NVMe drives. NVMe requires a specific USB adapter (not SATA-to-USB); the dock reads both formats so you don't need two separate tools.</p><p>You want faster transfers. USB 3.2 Gen 2 at 10 Gbps means an SSD moves data at close to its native speed. The cable's USB 3.0 caps at 5 Gbps, half the speed for NVMe drives.</p>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">The verdict</p>
+    <p>Occasional use, SATA only, tight budget: cable. Frequent use, mixed SATA + NVMe, faster transfers matter: dock.</p><p>If you're a homelabber, buy the dock. If you're a normal person recovering files from one dead laptop, buy the cable and don't overthink it.</p>
+  </section>
+
+  <section class="content-section cards">
+    <a class="card" href="/gear/budget-tech/sabrent-sata-to-usb-adapter-cable/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>SABRENT SATA-to-USB Adapter Cable</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+    <a class="card" href="/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata/">
+      <p class="page-kicker">Read the full guide</p>
+      <h2>SABRENT Lay-Flat Drive Dock</h2>
+      <p>Full specs, compatibility check, and buy/skip breakdown.</p>
+    </a>
+  </section>
+
+  <style>
+    .cmp { width:100%; border-collapse:collapse; font-size:14px; }
+    .cmp th, .cmp td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+    .cmp thead th { color:var(--purple-light); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; }
+    .cmp tbody td:first-child { color:var(--muted); font-weight:600; width:26%; }
+    @media(max-width:760px){ .cmp { font-size:13px; } .cmp th, .cmp td { padding:10px 8px; } }
+  </style>
+</ContentLayout>
