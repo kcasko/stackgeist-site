@@ -75,6 +75,26 @@ test('setups and guides hub pages exist with h1 and template every setup card', 
   }
 });
 
+test('gear hub cards and product decision pages only load images from the self-hosted /gear path', async () => {
+  const hub = await read('src/pages/gear/index.astro');
+  const forbidden = /https?:\/\/[^"'\s]*(?:image\.benq\.com|cdn\.shopify\.com|images\.ctfassets\.net|assets2\.razerzone\.com)[^"'\s]*/i;
+  assert.doesNotMatch(hub, forbidden);
+  for (const slug of [
+    'gear/desk-lighting/benq-screenbar-pro',
+    'gear/desk-power/anker-nano-a9196',
+    'gear/desk-power/anker-525',
+    'gear/desk-surface/steelseries-qck-heavy-xxl',
+    'gear/monitor-support/amazon-basics-dual-monitor-arm',
+    'gear/connectivity/anker-553-usb-c-hub',
+    'gear/desk-lighting/govee-strip-light-2-pro',
+    'gear/accessories/razer-base-station-v2-chroma',
+  ]) {
+    const src = await read(`src/pages/${slug}.astro`);
+    assert.doesNotMatch(src, forbidden);
+    assert.match(src, /\/gear\//);
+  }
+});
+
 test('setup detail pages ship a hero illustration with alt text', async () => {
   for (const slug of ['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk', 'gaming']) {
     const src = await read(`src/pages/setups/${slug}.astro`);
