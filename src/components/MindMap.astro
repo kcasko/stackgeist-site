@@ -53,15 +53,15 @@ const branches = [
     <span class="cursor" aria-hidden="true">█</span>
   </header>
 
-  <pre class="tree-body" aria-hidden="true"><code>
+  <pre class="tree-body"><code>
 <span class="root">stackgeist</span>
-<span class="conn">├──</span> <button class="node root-node" data-branch="setups"  aria-pressed="true"><span class="brackets">[</span>setups<span class="brackets">]</span>  <span class="node-intent">// I want inspiration</span></button>
-<span class="conn">├──</span> <button class="node root-node" data-branch="gear"    aria-pressed="false"><span class="brackets">[</span>gear<span class="brackets">]</span>    <span class="node-intent">// I need something</span></button>
-<span class="conn">└──</span> <button class="node root-node" data-branch="guides"  aria-pressed="false"><span class="brackets">[</span>guides<span class="brackets">]</span>  <span class="node-intent">// I need help</span></button>
+<span class="conn" aria-hidden="true">├──</span> <button class="node root-node" data-branch="setups" aria-controls="branch-setups" aria-pressed="true"><span class="brackets" aria-hidden="true">[</span>setups<span class="brackets" aria-hidden="true">]</span> <span class="node-intent">I want inspiration</span></button>
+<span class="conn" aria-hidden="true">├──</span> <button class="node root-node" data-branch="gear" aria-controls="branch-gear" aria-pressed="false"><span class="brackets" aria-hidden="true">[</span>gear<span class="brackets" aria-hidden="true">]</span> <span class="node-intent">I need something</span></button>
+<span class="conn" aria-hidden="true">└──</span> <button class="node root-node" data-branch="guides" aria-controls="branch-guides" aria-pressed="false"><span class="brackets" aria-hidden="true">[</span>guides<span class="brackets" aria-hidden="true">]</span> <span class="node-intent">I need help</span></button>
   </code></pre>
 
   {branches.map((b) => (
-    <div class="branch" data-panel={b.key} hidden={b.key !== 'setups'} aria-label={`${b.label} branch contents`}>
+    <div class="branch" id={`branch-${b.key}`} data-panel={b.key} hidden={b.key !== 'setups'} aria-label={`${b.label} branch contents`}>
       <div class="branch-meta">
         <span class="tag">$ {b.cmd}</span>
         <span class="tag ok">200 OK</span>
@@ -196,7 +196,10 @@ const branches = [
 
   @media (max-width: 760px) {
     .tree { padding: 20px 16px 22px; font-size: 12.5px; }
-    .node-intent, .leaf-note { display: none; }
+    .node { min-height: 44px; flex-wrap: wrap; column-gap: 5px; }
+    .node-intent { display:block; flex-basis:100%; margin-left:12px; color:var(--quiet); font-size:11px; }
+    .leaf { min-height:44px; flex-wrap:wrap; }
+    .leaf-note { display:block; flex-basis:100%; margin-left:0; font-size:11px; }
   }
 </style>
 

@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "node --test tests/*.test.mjs",
     "preview": "astro build && wrangler pages dev",
     "astro": "astro",
     "generate-types": "wrangler types",
