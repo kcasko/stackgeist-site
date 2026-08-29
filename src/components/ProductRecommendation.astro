@@ -133,3 +133,15 @@ const p = Astro.props;
     .primary-offer .btn { width:100%; text-align:center; }
   }
 </style>
+<style>
+  .recommend-card { padding:0; gap:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); box-shadow:none; }
+  .recommend-copy::before { content:'$ recommend --fit-first'; display:block; margin-bottom:18px; color:var(--phosphor); font-size:11px; }
+  .recommend-visual { border-right:1px solid var(--term-border); }
+  .recommend-copy { padding:24px; }
+  .recommend-copy .reason { padding:14px 0; border:0; border-top:1px solid var(--term-border); border-radius:0; background:transparent; }
+  .recommend-copy .reason:first-of-type { border-top:0; }
+  .recommend-copy .reason strong { color:var(--phosphor); }
+  .proof-grid { border-color:var(--term-border); }
+  .recommend-actions { border-color:var(--term-border); }
+  @media(max-width:900px){ .recommend-visual { border-right:0; border-bottom:1px solid var(--term-border); } }
+</style>

@@ -81,3 +81,13 @@ const {
     .offer-actions .btn { width:100%; text-align:center; }
   }
 </style>
+<style>
+  .affiliate-decision { padding:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); box-shadow:none; }
+  .affiliate-decision::before { content:'$ compare --purchase-options'; display:block; padding:10px 14px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .decision-heading { padding:22px 24px 0; }
+  .offer-grid { gap:0; border-top:1px solid var(--term-border); border-bottom:1px solid var(--term-border); }
+  .offer { padding:20px 24px; border:0; border-left:1px solid var(--term-border); border-radius:0; background:transparent; }
+  .offer:first-child { border-left:0; }
+  .affiliate-decision > small { margin:0; padding:16px 24px; color:var(--quiet); }
+  @media(max-width:760px){ .offer { border-left:0; border-top:1px solid var(--term-border); } .offer:first-child{border-top:0} }
+</style>

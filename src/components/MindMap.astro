@@ -1,488 +1,232 @@
 ---
-const branches = {
-  setups: {
-    label: 'SETUPS', intent: 'I want inspiration',
-    children: ['Gaming', 'Small spaces', 'Budget'],
+// Terminal / operator style ASCII mind-map.
+// Real box-drawing characters, not SVG lines pretending to be a diagram.
+const branches = [
+  {
+    key: 'setups',
+    label: 'setups',
+    cmd: 'ls /setups',
+    intent: 'I want inspiration',
     detail: 'Console, PC and mixed-use desks with real room constraints.',
-    tags: ['Console', 'PC'],
+    nodes: [
+      { name: 'gaming',        href: '/setups/gaming',                 note: 'console + PC · shared desk' },
+      { name: 'small-spaces',  href: '/setups/small-bedroom-gaming',   note: 'bedroom · <5ft desk' },
+      { name: 'budget',        href: '/setups/budget-gaming-desk',     note: 'under $500 total' },
+      { name: 'midnight-shift',href: '/setups/midnight-shift',         note: 'featured · dark room' },
+    ],
   },
-  gear: {
-    label: 'GEAR', intent: 'I need something',
-    children: ['Lighting', 'Charging + power', 'Desk surfaces', 'Cable management'],
+  {
+    key: 'gear',
+    label: 'gear',
+    cmd: 'ls /gear',
+    intent: 'I need something',
     detail: 'Useful gear organized by the problem it fixes, not by brand hype.',
-    tags: ['Lighting', 'Cables'],
+    nodes: [
+      { name: 'lighting',       href: '/gear/desk-lighting',                            note: '3 verified routes' },
+      { name: 'power',          href: '/gear/desk-power/anker-525',                     note: 'clamp strips · fit-checked' },
+      { name: 'desk-surface',   href: '/gear/desk-surface/steelseries-qck-heavy-xxl',   note: 'mats · pads' },
+      { name: 'budget-tech',    href: '/gear/budget-tech',                              note: '30 picks · 10 comparisons' },
+    ],
   },
-  guides: {
-    label: 'GUIDES', intent: 'I need help',
-    children: ['Setup basics', 'Cable management', 'Upgrades'],
+  {
+    key: 'guides',
+    label: 'guides',
+    cmd: 'ls /guides',
+    intent: 'I need help',
     detail: 'Practical setup help built around decisions you can actually act on.',
-    tags: ['How-to', 'Buying'],
+    nodes: [
+      { name: 'desk-layout',       href: '/guides/desk-layout-basics',    note: 'plan before buying' },
+      { name: 'cable-management',  href: '/guides/cable-management',      note: 'route first · organize second' },
+      { name: 'cheap-upgrades',    href: '/guides/cheap-desk-upgrades',   note: 'fix friction first' },
+    ],
   },
-};
-const branchEntries = Object.entries(branches);
-const routes = {
-  setups: {
-    'Gaming': '/setups/gaming',
-    'Small spaces': '/setups/small-bedroom-gaming',
-    'Budget': '/setups/budget-gaming-desk',
-  },
-  gear: {
-    'Lighting': '/gear/desk-lighting',
-    'Charging + power': '/gear/desk-power/anker-525',
-    'Desk surfaces': '/gear/desk-surface/steelseries-qck-heavy-xxl',
-    'Cable management': '/guides/cable-management',
-  },
-  guides: {
-    'Setup basics': '/guides/desk-layout-basics',
-    'Cable management': '/guides/cable-management',
-    'Upgrades': '/guides/cheap-desk-upgrades',
-  },
-};
-const routeFor = (key, child) => routes[key]?.[child];
+];
 ---
 
-<section class="explore" id="explore" data-mind-map data-active="setups">
-  <p class="eyebrow">Explore StackGeist</p>
-  <h1>What are you improving?</h1>
-  <p class="lead desktop-lead">Choose a path. StackGeist reveals the next useful layer instead of making you dig through a giant menu.</p>
-  <p class="lead mobile-lead">Choose one path.</p>
-  <div class="desktop-map" aria-label="Explore StackGeist">
-    <svg class="map-lines" viewBox="0 0 1000 430" aria-hidden="true">
-      <path class="line branch-line setups" d="M150 65 V105 H500 V150" />
-      <path class="line branch-line gear" d="M500 65 V150" />
-      <path class="line branch-line guides" d="M850 65 V105 H500 V150" />
-      <path class="line child-line" d="M500 225 V275 H120 M500 275 H880" />
-    </svg>
+<section class="tree" id="explore" data-mindmap data-active="setups" aria-label="StackGeist site map">
+  <header class="tree-head">
+    <span class="prompt">stackgeist@local</span>
+    <span class="sep">:</span>
+    <span class="path">~/</span>
+    <span class="sep">$</span>
+    <span class="typed" data-typed>tree --by=intent</span>
+    <span class="cursor" aria-hidden="true">█</span>
+  </header>
 
-    <div class="branch-tabs">
-      {branchEntries.map(([key, branch]) => (
-        <button class="branch-tab" type="button" data-branch={key} aria-pressed={key === 'setups' ? 'true' : 'false'}>
-          <strong>{branch.label}</strong>
-          <span>{branch.intent}</span>
-        </button>
-      ))}
-    </div>
+  <pre class="tree-body" aria-hidden="true"><code>
+<span class="root">stackgeist</span>
+<span class="conn">├──</span> <button class="node root-node" data-branch="setups"  aria-pressed="true"><span class="brackets">[</span>setups<span class="brackets">]</span>  <span class="node-intent">// I want inspiration</span></button>
+<span class="conn">├──</span> <button class="node root-node" data-branch="gear"    aria-pressed="false"><span class="brackets">[</span>gear<span class="brackets">]</span>    <span class="node-intent">// I need something</span></button>
+<span class="conn">└──</span> <button class="node root-node" data-branch="guides"  aria-pressed="false"><span class="brackets">[</span>guides<span class="brackets">]</span>  <span class="node-intent">// I need help</span></button>
+  </code></pre>
 
-    <button class="hub" type="button" data-hub>
-      <strong>STACKGEIST</strong>
-      <span>Start here</span>
-    </button>
-    <div class="branch-panels">
-      {branchEntries.map(([key, branch]) => (
-        <div class="branch-panel" data-panel={key} hidden={key !== 'setups'}>
-          <div class="child-grid">
-            {branch.children.map((child, index) => (
-              <button class:list={['child-node', { active: index === 0 }]} type="button" data-child data-route={routeFor(key, child)}>
-                {child}
-              </button>
-            ))}
-          </div>
-
-          <div class="branch-detail">
-            <div>
-              <strong data-detail-title>{branch.children[0]} {key === 'setups' ? 'setups' : ''}</strong>
-              <p>{branch.detail}</p>
-            </div>
-            <div class="detail-tags">
-              {branch.tags.map((tag, index) => <span class:list={{ active: index === 0 }}>{tag}</span>)}
-            </div>
-          </div>
+  {branches.map((b) => (
+    <div class="branch" data-panel={b.key} hidden={b.key !== 'setups'} aria-label={`${b.label} branch contents`}>
+      <div class="branch-meta">
+        <span class="tag">$ {b.cmd}</span>
+        <span class="tag ok">200 OK</span>
+        <span class="tag muted">{b.nodes.length} entries</span>
+      </div>
+      <p class="branch-detail"><span class="hash">#</span> {b.detail}</p>
+      <div class="branch-body">{b.nodes.map((n, i) => (
+        <div class="leaf-row">
+          <span class="conn">{i === b.nodes.length - 1 ? '└──' : '├──'}</span> <a class="leaf" href={n.href} data-route={n.href}><span class="leaf-name">{n.name}</span><span class="leaf-note">// {n.note}</span><span class="leaf-arrow">↗</span></a>
         </div>
-      ))}
+      ))}</div>
     </div>
-  </div>
-  <div class="mobile-map">
-    {branchEntries.map(([key, branch]) => (
-      <details class="mobile-branch" data-mobile-branch={key} open={key === 'setups'}>
-        <summary>
-          <span><strong>{branch.label}</strong><small>{branch.intent}</small></span>
-          <span class="summary-mark" aria-hidden="true">+</span>
-        </summary>
-        <div class="mobile-children">
-          {branch.children.map((child, index) => (
-            <button class:list={['mobile-child', { active: index === 0 }]} type="button" data-mobile-child data-route={routeFor(key, child)}>
-              <span>{child}</span><span aria-hidden="true">›</span>
-            </button>
-          ))}
-        </div>
-      </details>
-    ))}
-  </div>
+  ))}
 </section>
 
 <style>
-  .explore {
-    padding-top: 34px;
-  }
-
-  h1 {
-    margin: 16px 0 8px;
-    font-size: 34px;
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-  }
-
-  .lead {
-    margin: 0;
-    max-width: 760px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .mobile-lead { display: none; }
-
-  .desktop-map {
+  .tree {
     position: relative;
-    height: 560px;
-    margin-top: 54px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: 22px;
+    margin-top: 24px;
+    padding: 26px 28px 30px;
+    border: 1px solid var(--term-border);
+    border-radius: 6px;
     background:
-      radial-gradient(circle at 50% 53%, rgba(85, 36, 121, 0.18), transparent 290px),
-      var(--surface);
+      linear-gradient(180deg, rgba(163,230,53,.015) 0, transparent 60%),
+      var(--term-bg);
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.55;
+    box-shadow: 0 0 0 1px rgba(163,230,53,.04) inset;
   }
-
-  .map-lines {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+  /* subtle CRT scanlines, only inside the terminal panel */
+  .tree::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: inherit;
     pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 2px,
+      rgba(255,255,255,.014) 2px 3px
+    );
+    mix-blend-mode: overlay;
+    opacity: .55;
   }
 
-  .line {
-    fill: none;
-    stroke: var(--border-strong);
-    stroke-width: 1.5;
-    vector-effect: non-scaling-stroke;
-    transition: stroke 180ms ease, filter 180ms ease;
+  .tree-head {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    padding-bottom: 18px; margin-bottom: 14px;
+    border-bottom: 1px dashed var(--term-border);
+    font-size: 12.5px;
   }
+  .prompt { color: var(--phosphor); }
+  .path   { color: var(--purple-light); }
+  .sep    { color: var(--muted); }
+  .typed  { color: var(--text); }
+  .cursor {
+    display: inline-block; width: .55em; height: 1.05em;
+    margin-left: 2px; transform: translateY(2px);
+    background: var(--phosphor);
+    animation: blink 1.05s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
 
-  [data-active="setups"] .line.setups,
-  [data-active="gear"] .line.gear,
-  [data-active="guides"] .line.guides,
-  .child-line {
-    stroke: var(--purple);
+  .tree-body {
+    margin: 0 0 22px;
+    color: var(--muted);
+    white-space: pre;
+    overflow-x: auto;
   }
-  .branch-tabs {
-    position: absolute;
-    top: 54px;
-    left: 70px;
-    right: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, 190px);
-    justify-content: space-between;
-  }
+  .tree-body code { font: inherit; color: inherit; }
+  .root { color: var(--phosphor); font-weight: 700; letter-spacing: .02em; }
+  .conn { color: var(--term-border-strong); }
 
-  .branch-tab,
-  .hub,
-  .child-node {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--surface);
+  .node {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    padding: 2px 8px; margin-left: 4px;
+    border: 1px solid transparent;
+    background: transparent;
     color: var(--text);
-    text-align: left;
+    font: inherit;
     cursor: pointer;
-    transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    border-radius: 3px;
+    transition: background 120ms linear, border-color 120ms linear, color 120ms linear;
   }
+  .brackets { color: var(--purple-light); }
+  .node-intent { color: var(--quiet); font-size: 12.5px; }
+  .node:hover { background: rgba(163,230,53,.06); border-color: var(--term-border-strong); }
+  .node[aria-pressed="true"] {
+    background: rgba(163,230,53,.08);
+    border-color: var(--phosphor);
+    color: var(--phosphor);
+  }
+  .node[aria-pressed="true"] .brackets { color: var(--phosphor); }
+  .node[aria-pressed="true"] .node-intent { color: var(--phosphor-dim); }
 
-  .branch-tab {
-    min-height: 78px;
-    padding: 14px 16px;
+  /* Branch panels */
+  .branch { padding-top: 6px; }
+  .branch[hidden] { display: none; }
+  .branch-meta {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin: 0 0 10px;
+    font-size: 11.5px; letter-spacing: .02em;
   }
-
-  .branch-tab strong,
-  .hub strong {
-    display: block;
-    font-size: 14px;
-  }
-
-  .branch-tab span,
-  .hub span {
-    display: block;
-    margin-top: 9px;
-    color: var(--quiet);
-    font-size: 12px;
-  }
-  .branch-tab[aria-pressed="true"],
-  .branch-tab:hover {
-    border-color: var(--purple);
-    background: var(--purple-deep);
-    box-shadow: 0 0 18px rgba(168, 85, 247, 0.24);
-  }
-
-  .branch-tab[aria-pressed="true"] strong,
-  .branch-tab[aria-pressed="true"] span {
-    color: var(--purple-light);
-  }
-
-  .hub {
-    position: absolute;
-    top: 176px;
-    left: 50%;
-    width: 190px;
-    min-height: 84px;
-    padding: 14px 16px;
-    transform: translateX(-50%);
-    border: 2px solid var(--purple-light);
-    background: var(--purple-active);
-    box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
-  }
-
-  .hub:hover {
-    transform: translateX(-50%) translateY(-2px);
-  }
-
-  .hub span {
-    color: var(--purple-muted);
-  }
-
-  .branch-panels {
-    position: absolute;
-    top: 366px;
-    left: 64px;
-    right: 64px;
-  }
-  .child-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .child-node {
-    min-height: 54px;
-    padding: 12px 16px;
-    background: var(--surface-2);
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .child-node:hover,
-  .child-node.active {
-    border-color: var(--purple-light);
-    background: #241133;
-    color: var(--purple-light);
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.18);
-  }
-
-  .branch-detail {
-    width: min(520px, 100%);
-    min-height: 74px;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    padding: 13px 18px;
-    border: 1.5px solid var(--purple);
-    border-radius: 14px;
-    background: #130b1c;
-    box-shadow: 0 0 10px rgba(168, 85, 247, 0.12);
-  }
-  .branch-detail strong {
-    color: var(--purple-light);
-    font-size: 13px;
-  }
-
-  .branch-detail p {
-    margin: 6px 0 0;
+  .tag {
+    padding: 2px 8px;
+    border: 1px solid var(--term-border);
     color: var(--muted);
-    font-size: 12px;
-    line-height: 1.4;
+    border-radius: 2px;
   }
+  .tag.ok    { color: var(--phosphor); border-color: rgba(163,230,53,.35); }
+  .tag.muted { color: var(--quiet); }
+  .branch-detail { margin: 0 0 14px; color: var(--muted); font-size: 13px; }
+  .hash { color: var(--purple-light); margin-right: 2px; }
+  .branch-body { margin: 0; padding: 0; overflow-x: auto; }
+  .branch-body code { font: inherit; color: inherit; }
+  .leaf-row { display: block; line-height: 1.55; }
+  .leaf {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    padding: 3px 10px; margin-left: 4px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 120ms linear, border-color 120ms linear, color 120ms linear;
+  }
+  .leaf-name { font-weight: 600; color: var(--text); }
+  .leaf-note { color: var(--quiet); font-size: 12.5px; }
+  .leaf-arrow { margin-left: 4px; color: var(--purple-light); opacity: .0; transition: opacity 120ms linear, transform 120ms linear; }
+  .leaf:hover { background: rgba(192,132,252,.07); border-color: var(--purple); color: var(--purple-light); }
+  .leaf:hover .leaf-name { color: var(--purple-light); }
+  .leaf:hover .leaf-arrow { opacity: 1; transform: translateX(2px); }
 
-  .detail-tags {
-    margin-left: auto;
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .detail-tags span {
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--muted);
-    font-size: 11px;
-  }
-
-  .detail-tags span.active {
-    border-color: var(--purple);
-    background: var(--purple-deep);
-    color: var(--purple-light);
-  }
-
-  .mobile-map {
-    display: none;
-  }
   @media (max-width: 760px) {
-    .explore {
-      padding-top: 34px;
-    }
-
-    h1 {
-      font-size: 26px;
-    }
-
-    .desktop-lead { display: none; }
-    .mobile-lead { display: block; max-width: 280px; font-size: 13px; }
-
-    .desktop-map {
-      display: none;
-    }
-
-    .mobile-map {
-      display: grid;
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .mobile-branch {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface-2);
-      overflow: hidden;
-    }
-
-    .mobile-branch[open] {
-      border-color: var(--purple);
-      background: var(--purple-deep);
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.14);
-    }
-    .mobile-branch summary {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px;
-      list-style: none;
-      cursor: pointer;
-    }
-
-    .mobile-branch summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .mobile-branch summary strong,
-    .mobile-branch summary small {
-      display: block;
-    }
-
-    .mobile-branch summary strong {
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    .mobile-branch[open] summary strong,
-    .mobile-branch[open] .summary-mark {
-      color: var(--purple-light);
-    }
-
-    .mobile-branch summary small {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 400;
-    }
-    .summary-mark {
-      color: var(--muted);
-      font-size: 20px;
-      transition: transform 160ms ease;
-    }
-
-    .mobile-branch[open] .summary-mark {
-      transform: rotate(45deg);
-    }
-
-    .mobile-children {
-      display: grid;
-      gap: 10px;
-      padding: 0 16px 16px;
-      background: var(--bg);
-    }
-
-    .mobile-child {
-      width: 100%;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface-2);
-      color: var(--text);
-      font-weight: 650;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .mobile-child.active,
-    .mobile-child:hover {
-      border-color: var(--purple-light);
-      background: #241133;
-      color: var(--purple-light);
-    }
+    .tree { padding: 20px 16px 22px; font-size: 12.5px; }
+    .node-intent, .leaf-note { display: none; }
   }
 </style>
+
 <script>
-  const map = document.querySelector('[data-mind-map]');
+  const map = document.querySelector('[data-mindmap]');
 
   function setBranch(key) {
     if (!map) return;
     map.setAttribute('data-active', key);
-
-    map.querySelectorAll('[data-branch]').forEach((button) => {
-      button.setAttribute('aria-pressed', String(button.getAttribute('data-branch') === key));
+    map.querySelectorAll('[data-branch]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-branch') === key));
     });
-
     map.querySelectorAll('[data-panel]').forEach((panel) => {
       panel.toggleAttribute('hidden', panel.getAttribute('data-panel') !== key);
     });
-
-    const mobile = map.querySelector(`[data-mobile-branch="${key}"]`);
-    map.querySelectorAll('[data-mobile-branch]').forEach((detail) => {
-      if (detail !== mobile) detail.removeAttribute('open');
-    });
-    mobile?.setAttribute('open', '');
   }
 
-  const requestedBranch = new URLSearchParams(window.location.search).get('branch');
-  if (requestedBranch && ['setups', 'gear', 'guides'].includes(requestedBranch)) setBranch(requestedBranch);
+  const initial = new URLSearchParams(window.location.search).get('branch');
+  if (initial && ['setups','gear','guides'].includes(initial)) setBranch(initial);
 
-  map?.querySelectorAll('[data-branch]').forEach((button) => {
-    button.addEventListener('click', () => setBranch(button.getAttribute('data-branch')));
+  map?.querySelectorAll('[data-branch]').forEach((btn) => {
+    btn.addEventListener('click', () => setBranch(btn.getAttribute('data-branch')));
   });
-  document.querySelectorAll('[data-nav-branch]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const key = button.getAttribute('data-nav-branch');
+
+  // header-driven jump (kept compatible with old data-nav-branch links)
+  document.querySelectorAll('[data-nav-branch]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-nav-branch');
       setBranch(key);
       document.querySelector('#explore')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.querySelector('[data-header]')?.setAttribute('data-open', 'false');
-      document.querySelector('[data-menu-toggle]')?.setAttribute('aria-expanded', 'false');
     });
-  });
-
-  map?.querySelectorAll('[data-mobile-branch]').forEach((detail) => {
-    detail.addEventListener('toggle', () => {
-      if (!detail.hasAttribute('open')) return;
-      const key = detail.getAttribute('data-mobile-branch');
-      setBranch(key);
-    });
-  });
-
-  map?.querySelectorAll('[data-panel]').forEach((panel) => {
-    panel.querySelectorAll('[data-child]').forEach((child) => {
-      child.addEventListener('click', () => {
-        panel.querySelectorAll('[data-child]').forEach((item) => item.classList.remove('active'));
-        child.classList.add('active');
-        const title = panel.querySelector('[data-detail-title]');
-        if (title) title.textContent = child.textContent?.trim() || '';
-      });
-    });
-  });
-  map?.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target.closest('[data-route]') : null;
-    const route = target?.getAttribute('data-route');
-    if (route) window.location.href = route;
   });
 </script>

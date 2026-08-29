@@ -36,3 +36,10 @@ const { variant = 'desk', compact = false } = Astro.props;
   .compact { min-height:180px; }
   @media (max-width:760px){ .setup-scene { min-height:220px; } .compact { min-height:140px; } }
 </style>
+<style>
+  .setup-scene { border-color:var(--term-border); border-radius:0; background:#050508; }
+  .setup-scene::before { content:'┌─ setup.render ─────────────────────────────┐'; position:absolute; top:10px; left:14px; z-index:3; color:var(--phosphor); font-size:10px; }
+  .scene-monitor { border-radius:0; border-color:var(--phosphor-dim); background:#090d07; box-shadow:0 0 18px rgba(163,230,53,.12); }
+  .scene-glow { opacity:.22; }
+  .scene-desk,.scene-base,.scene-keyboard { border-radius:0; }
+</style>

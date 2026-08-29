@@ -1,43 +1,12 @@
 <footer class="site-footer" data-shared-footer>
-  <div class="footer-brand">
-    <a href="/" aria-label="StackGeist home"><span class="footer-mark" aria-hidden="true"></span><strong>STACKGEIST</strong></a>
-    <p>Practical setup ideas, fit-first gear research, and buying guidance without the brand hype.</p>
+  <div class="footer-head"><span class="prompt">stackgeist@local</span><span>:</span><span class="path">~/footer</span><span>$ tree</span></div>
+  <div class="footer-grid">
+    <div class="footer-brand"><strong>stackgeist/</strong><p>Practical setup ideas, fit-first gear research, and buying guidance without the brand hype.</p><span class="status"><i></i> systems nominal</span></div>
+    <div class="footer-group"><strong>├── explore/</strong><nav aria-label="Explore StackGeist"><a href="/setups/gaming">├── setups</a><a href="/gear">├── gear</a><a href="/gear/budget-tech">├── budget-tech</a><a href="/gear/budget-tech/compare">├── compare</a><a href="/guides/desk-layout-basics">└── guides</a></nav></div>
+    <div class="footer-group"><strong>└── stackgeist/</strong><nav aria-label="Company and policy links"><a href="/about">├── about</a><a href="/contact">├── contact</a><a href="/privacy">├── privacy</a><a href="/affiliate-disclosure">└── disclosure</a></nav></div>
   </div>
-  <div class="footer-group">
-    <strong>Explore</strong>
-    <nav aria-label="Explore StackGeist">
-      <a href="/setups/gaming">Setups</a><a href="/gear">Gear</a><a href="/gear/budget-tech">Budget tech</a><a href="/gear/budget-tech/compare">Comparisons</a><a href="/guides/desk-layout-basics">Guides</a>
-    </nav>
-  </div>
-  <div class="footer-group">
-    <strong>StackGeist</strong>
-    <nav aria-label="Company and policy links">
-      <a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/affiliate-disclosure">Affiliate disclosure</a>
-    </nav>
-  </div>
-  <div class="footer-bottom">
-    <p>As an Amazon Associate StackGeist earns from qualifying purchases. Editorial pages explain fit, tradeoffs, and reasons to skip before a qualifying link.</p>
-    <p>© {new Date().getFullYear()} StackGeist</p>
-  </div>
+  <div class="footer-bottom"><p><span>NOTICE</span> As an Amazon Associate StackGeist earns from qualifying purchases. Editorial pages explain fit, tradeoffs, and reasons to skip before a qualifying link.</p><p>© {new Date().getFullYear()} stackgeist // EOF</p></div>
 </footer>
 <style>
-  .site-footer { margin-top:84px; padding:45px 0 22px; display:grid; grid-template-columns:1.5fr .7fr .7fr; gap:55px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
-  .footer-brand { max-width:420px; }
-  .footer-brand > a { display:inline-flex; align-items:center; gap:10px; color:var(--text); }
-  .footer-mark { position:relative; width:25px; height:25px; border:1px solid #684684; border-radius:7px; background:linear-gradient(145deg,#241331,#100a17); }
-  .footer-mark::before,.footer-mark::after{content:'';position:absolute;width:8px;height:8px;border:1.5px solid var(--purple-light);transform:rotate(45deg)}
-  .footer-mark::before{top:5px;left:4px}.footer-mark::after{right:4px;bottom:5px;opacity:.55}
-  .footer-brand strong { font-size:12px; letter-spacing:.05em; }
-  .footer-brand p { max-width:360px; margin:16px 0 0; color:var(--quiet); line-height:1.65; }
-  .footer-group > strong { display:block; margin-bottom:16px; color:#dcd4e2; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
-  .footer-group nav { display:grid; gap:11px; }
-  .site-footer a:hover { color:var(--purple-light); }
-  .footer-bottom { grid-column:1/-1; display:flex; justify-content:space-between; gap:30px; margin-top:12px; padding-top:22px; border-top:1px solid rgba(51,34,71,.65); color:#92869b; font-size:10px; }
-  .footer-bottom p { max-width:720px; margin:0; line-height:1.55; }
-  .footer-bottom p:last-child { flex-shrink:0; }
-  @media(max-width:760px){
-    .site-footer { grid-template-columns:1fr 1fr; gap:34px 26px; margin-top:60px; padding-top:35px; }
-    .footer-brand { grid-column:1/-1; }
-    .footer-bottom { display:grid; }
-  }
+.site-footer{margin-top:70px;padding:0 0 22px;border:1px solid var(--term-border);background:var(--term-bg);color:var(--muted);font:12px var(--font-mono)}.footer-head{display:flex;gap:6px;padding:9px 13px;border-bottom:1px dashed var(--term-border);color:var(--quiet);font-size:11px}.footer-head .prompt,.path{color:var(--phosphor)}.footer-grid{display:grid;grid-template-columns:1.45fr .75fr .75fr;gap:0}.footer-grid>div{padding:24px;border-left:1px solid var(--term-border)}.footer-grid>div:first-child{border-left:0}.footer-brand>strong{color:var(--phosphor);font-size:13px}.footer-brand p{max-width:390px;margin:13px 0 16px;color:var(--quiet);line-height:1.65}.status{color:var(--quiet);font-size:10.5px}.status i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--phosphor);box-shadow:0 0 8px var(--phosphor)}.footer-group>strong{display:block;margin-bottom:13px;color:var(--purple-light);font-size:11px}.footer-group nav{display:grid;gap:8px}.footer-group a{color:var(--quiet);font-size:11.5px}.site-footer a:hover{color:var(--phosphor)}.footer-bottom{display:flex;justify-content:space-between;gap:30px;padding:15px 22px 0;border-top:1px solid var(--term-border);color:#706a78;font-size:9.5px}.footer-bottom p{max-width:760px;margin:0;line-height:1.6}.footer-bottom p:last-child{flex-shrink:0}.footer-bottom span{color:var(--amber)}@media(max-width:760px){.site-footer{margin-top:52px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div{padding:18px}.footer-brand{grid-column:1/-1;border-left:0!important;border-bottom:1px solid var(--term-border)}.footer-group:nth-child(2){border-left:0}.footer-bottom{display:grid;padding:14px 18px 0}}
 </style>
