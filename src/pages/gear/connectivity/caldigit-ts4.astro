@@ -1,0 +1,29 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+---
+<ContentLayout title="CalDigit TS4 dock compatibility guide | StackGeist" description="A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing." active="gear">
+  <ProductDetailSimple
+    eyebrow="Connectivity / dock"
+    heading="An excellent dock cannot add display support your laptop never had."
+    intro="The TS4 is a dense one-cable desk hub for laptops that can use its Thunderbolt bandwidth, display paths, Ethernet, card readers, audio, and charging. Check the host before counting ports."
+    productName="CalDigit Thunderbolt Station 4 (TS4)"
+    imageUrl="https://m.media-amazon.com/images/I/61RBOqHLI0L._AC_SY355_.jpg"
+    imageAlt="CalDigit TS4 Thunderbolt 4 dock standing vertically"
+    imageSourceLabel="Amazon exact listing"
+    imageSourceUrl="https://www.amazon.com/dp/B09GK8LBWS"
+    productMeta="18-port Thunderbolt 4 dock · Amazon ASIN B09GK8LBWS"
+    tags={['Thunderbolt 4','98W host charging','2.5GbE']}
+    why="It can replace several adapters when the desk genuinely uses high-speed storage, wired networking, SD and microSD cards, audio, multiple USB devices, displays, and near-100W laptop charging."
+    tradeoff="It is expensive, its display behavior varies by host, and 98W may not replace the full-power adapter for larger mobile workstations. Buying it for unused ports is wasted complexity."
+    check="Confirm the laptop's exact Thunderbolt or USB-C specification, supported external-display count and resolutions, OS restrictions, charging requirement, and the cable or adapter needed for each monitor."
+    facts="CalDigit specifies 18 ports, a 40Gb/s Thunderbolt 4 host connection, up to 98W host charging, 2.5Gb Ethernet, UHS-II SD and microSD readers, DisplayPort 1.4, and three downstream Thunderbolt 4 ports.[1]"
+    skip="Skip it if a basic USB-C hub already covers one display and a few peripherals, your host cannot use Thunderbolt features, you need more than 98W charging, or your display plan is not explicitly supported."
+    amazonUrl="https://www.amazon.com/dp/B09GK8LBWS?tag=deskrespawn-20"
+    makerLabel="CalDigit compatibility [1]"
+    makerUrl="https://www.caldigit.com/thunderbolt-station-4/"
+    backHref="/gear"
+    backLabel="Gear"
+  />
+  <section class="content-section related-reading"><p class="page-kicker">Sources</p><ol><li><a href="https://www.caldigit.com/thunderbolt-station-4/">CalDigit — TS4 ports, charging, and compatibility</a></li><li><a href="https://www.amazon.com/dp/B09GK8LBWS">Amazon — exact ASIN B09GK8LBWS identity</a></li></ol><div class="cards"><a class="card" href="/guides/usb-c-dock-compatibility"><h3>Run the dock compatibility checklist</h3><p>Start with host capability, displays, power, and bandwidth—not the number of sockets.</p></a><a class="card" href="/gear/connectivity/anker-553-usb-c-hub"><h3>Need a smaller hub instead?</h3><p>The Anker 553 covers a simpler portable connection set at lower cost.</p></a></div></section>
+</ContentLayout>

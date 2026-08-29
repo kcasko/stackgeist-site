@@ -53,3 +53,39 @@ test('content CSS constrains prose and preserves mobile intent context', async (
   assert.match(content, /max-width:\s*76ch/);
   assert.doesNotMatch(map, /\.node-intent,\s*\.leaf-note\s*\{\s*display:\s*none/);
 });
+
+test('expanded catalog ships six fit-first product pages with exact affiliate identities', async () => {
+  const products = [
+    ['src/pages/gear/input/logitech-mx-master-3s.astro', 'B09HM94VDS'],
+    ['src/pages/gear/input/keychron-v6-max.astro', 'B0D14LQ9XW'],
+    ['src/pages/gear/connectivity/caldigit-ts4.astro', 'B09GK8LBWS'],
+    ['src/pages/gear/audio/elgato-wave-3.astro', 'B088HHWC47'],
+    ['src/pages/gear/monitor-support/ergotron-lx.astro', 'B00689HXI4'],
+    ['src/pages/gear/video/logitech-brio-500.astro', 'B09QW1WVRD'],
+  ];
+  for (const [path, asin] of products) {
+    const source = await read(path);
+    assert.match(source, new RegExp(asin));
+    assert.match(source, /tag=deskrespawn-20/);
+    assert.match(source, /Skip it|skip=/);
+    assert.match(source, /makerUrl=/);
+  }
+});
+
+test('new decision guides are discoverable from both hubs', async () => {
+  const guides = [
+    'usb-c-dock-compatibility',
+    'keyboard-mouse-fit',
+    'better-video-calls',
+  ];
+  for (const slug of guides) {
+    const source = await read(`src/pages/guides/${slug}.astro`);
+    assert.match(source, /Sources/);
+    assert.match(source, /Check|check|measure|verify/);
+  }
+  const gear = await read('src/pages/gear/index.astro');
+  const map = await read('src/components/MindMap.astro');
+  for (const slug of guides) {
+    assert.match(`${gear}\n${map}`, new RegExp(`/guides/${slug}`));
+  }
+});
