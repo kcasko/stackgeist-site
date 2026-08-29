@@ -54,6 +54,36 @@ test('content CSS constrains prose and preserves mobile intent context', async (
   assert.doesNotMatch(map, /\.node-intent,\s*\.leaf-note\s*\{\s*display:\s*none/);
 });
 
+test('primary navigation goes to hub pages, not deep-linked children', async () => {
+  const header = await read('src/components/Header.astro');
+  const footer = await read('src/components/SiteFooter.astro');
+  assert.match(header, /href:'\/setups'/);
+  assert.match(header, /href:'\/guides'/);
+  assert.doesNotMatch(header, /href:'\/setups\/gaming'/);
+  assert.doesNotMatch(header, /href:'\/guides\/desk-layout-basics'/);
+  assert.match(footer, /href="\/setups"/);
+  assert.match(footer, /href="\/guides"/);
+});
+
+test('setups and guides hub pages exist with h1 and template every setup card', async () => {
+  const setups = await read('src/pages/setups/index.astro');
+  const guides = await read('src/pages/guides/index.astro');
+  for (const src of [setups, guides]) assert.match(src, /<h1\b/);
+  assert.match(setups, /\$\{s\.slug\}\.png/);
+  for (const slug of ['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk', 'gaming']) {
+    assert.match(setups, new RegExp(`slug:'${slug}'`));
+  }
+});
+
+test('setup detail pages ship a hero illustration with alt text', async () => {
+  for (const slug of ['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk', 'gaming']) {
+    const src = await read(`src/pages/setups/${slug}.astro`);
+    assert.match(src, /SetupHero/);
+    assert.match(src, new RegExp(`/setups/${slug}\\.png`));
+    assert.match(src, /alt="/);
+  }
+});
+
 test('expanded catalog ships six fit-first product pages with exact affiliate identities', async () => {
   const products = [
     ['src/pages/gear/input/logitech-mx-master-3s.astro', 'B09HM94VDS'],

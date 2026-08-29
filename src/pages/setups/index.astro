@@ -1,0 +1,67 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+const setups=[
+ {slug:'midnight-shift',title:'Midnight Shift',kicker:'Featured',best:'Gaming · work · console',space:'Small-room friendly',look:'Dark with selective violet accent',desc:'A dark mixed-use setup that protects usable desk space instead of filling every surface with RGB accessories.'},
+ {slug:'small-bedroom-gaming',title:'Small bedroom gaming',kicker:'Small spaces',best:'Bedroom · shared use',space:'Under 5 ft desk depth',look:'Low visual clutter',desc:'A layout that solves floor clearance, chair movement, and door swing before choosing the desk that photographs best.'},
+ {slug:'budget-gaming-desk',title:'Budget gaming desk',kicker:'Budget',best:'Under $500 total',space:'Existing furniture reused',look:'Honest, unfussy',desc:'A build order that spends on real bottlenecks and keeps working gear instead of replacing every part for the theme.'},
+ {slug:'gaming',title:'Gaming setups overview',kicker:'Method',best:'Mixed use',space:'Any room',look:'System, not aesthetic',desc:'How StackGeist organizes setups: constraints first, gear second, decoration last. Start here if you have not picked a build yet.'}
+];
+---
+<ContentLayout title="Desk setup guides | StackGeist" description="Real desk and gaming setup guides. Each setup page shows a scene, the space and budget it fits, and only the gear it actually earns." active="setups">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Setups</p>
+  <p class="page-kicker">setups /</p>
+  <h1 class="page-title">Pick a setup by the room you have, not the aesthetic you like.</h1>
+  <p class="page-lead">Every setup below leads with the space, budget, and workflow it fits, then shows which verified gear it uses. Click one to see the scene, the fit checks, and the exact picks.</p>
+
+  <section class="content-section">
+    <p class="page-kicker">Choose one</p>
+    <h2 class="section-heading">Four starting points.</h2>
+    <div class="setup-grid">
+      {setups.map((s)=>(
+        <a class="setup-card" href={`/setups/${s.slug}`}>
+          <div class="setup-thumb"><img src={`/setups/${s.slug}.png`} alt={`Illustration of the ${s.title} desk setup`} loading="lazy" decoding="async" width="1024" height="576" /></div>
+          <div class="setup-body">
+            <p class="page-kicker">{s.kicker}</p>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <dl class="setup-meta">
+              <div><dt>Best for</dt><dd>{s.best}</dd></div>
+              <div><dt>Room</dt><dd>{s.space}</dd></div>
+              <div><dt>Look</dt><dd>{s.look}</dd></div>
+            </dl>
+            <span class="setup-cta">Open setup →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Not sure yet?</p>
+    <div class="cards">
+      <a class="card" href="/guides/desk-layout-basics"><h3>Desk layout basics</h3><p>Fix the primary zone before deciding where accessories, lighting, and audio should live.</p></a>
+      <a class="card" href="/gear"><h3>Browse verified gear</h3><p>Skip the setup and go straight to fit-first product decisions.</p></a>
+    </div>
+  </section>
+  <style>
+    .setup-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--term-border);background:var(--term-bg)}
+    .setup-card{display:grid;grid-template-rows:auto 1fr;border:0;background:var(--term-bg)}
+    .setup-card:nth-child(even){border-left:1px solid var(--term-border)}
+    .setup-card:nth-child(n+3){border-top:1px solid var(--term-border)}
+    .setup-thumb{background:#050508;border-bottom:1px solid var(--term-border)}
+    .setup-thumb img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;filter:saturate(.9)}
+    .setup-body{padding:22px}
+    .setup-body h3{margin:0 0 10px;font-size:20px;letter-spacing:-.015em}
+    .setup-body h3::before{content:'# ';color:var(--purple-light)}
+    .setup-body p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.65}
+    .setup-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:18px 0 0;border-top:1px dashed var(--term-border)}
+    .setup-meta>div{padding:12px 12px 4px;border-left:1px dashed var(--term-border)}
+    .setup-meta>div:first-child{border-left:0}
+    .setup-meta dt{color:var(--quiet);font-size:10.5px;letter-spacing:.04em;text-transform:lowercase}
+    .setup-meta dd{margin:4px 0 0;color:var(--phosphor);font-size:12px}
+    .setup-cta{display:inline-block;margin-top:16px;color:var(--phosphor);font-size:12px}
+    .setup-card:hover{background:rgba(163,230,53,.03)}
+    .setup-card:hover .setup-thumb img{filter:saturate(1.05)}
+    @media(max-width:760px){.setup-grid{grid-template-columns:1fr}.setup-card:nth-child(even){border-left:0}.setup-card:nth-child(n+2){border-top:1px solid var(--term-border)}.setup-meta{grid-template-columns:1fr 1fr}}
+  </style>
+</ContentLayout>

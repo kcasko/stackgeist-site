@@ -2,7 +2,7 @@
 interface Props { variant?: 'desk' | 'screenbar' | 'bias'; compact?: boolean; }
 const { variant = 'desk', compact = false } = Astro.props;
 ---
-<div class:list={['setup-scene', variant, { compact }]} aria-label="Stylized dark desk setup illustration">
+<div class:list={['setup-scene', variant, { compact }]} role="img" aria-label="Stylized dark desk setup illustration">
   <div class="scene-glow"></div>
   <div class="scene-desk"></div>
   <div class="scene-shadow"></div>

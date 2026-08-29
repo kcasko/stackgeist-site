@@ -1,7 +1,7 @@
 ---
 interface Props { active?: 'setups'|'gear'|'guides'; interactive?: boolean; }
 const { active, interactive=false }=Astro.props;
-const links=[{key:'setups',label:'setups',href:'/setups/gaming'},{key:'gear',label:'gear',href:'/gear'},{key:'guides',label:'guides',href:'/guides/desk-layout-basics'}] as const;
+const links=[{key:'setups',label:'setups',href:'/setups'},{key:'gear',label:'gear',href:'/gear'},{key:'guides',label:'guides',href:'/guides'}] as const;
 ---
 <header class="site-header" data-header>
   <a class="brand" href="/" aria-label="StackGeist home"><span class="brand-prompt" aria-hidden="true">sg@local:</span><strong>~/</strong><span class="brand-name">STACKGEIST</span><span class="brand-cursor" aria-hidden="true">_</span></a>
@@ -9,12 +9,12 @@ const links=[{key:'setups',label:'setups',href:'/setups/gaming'},{key:'gear',lab
     {links.map((link)=>interactive?(<button type="button" data-nav-branch={link.key}>/{link.label}</button>):(<a class:list={{active:active===link.key}} href={link.href}>/{link.label}</a>))}
     <a href="/gear/budget-tech/compare">/compare</a><a href="/about">/about</a>
   </nav>
-  <a class="header-cta" href="/gear/budget-tech" aria-label="Browse useful budget gear"><span aria-hidden="true">$</span> find --useful</a>
+  <a class="header-cta" href="/gear/budget-tech" aria-label="Find useful gear: browse budget tech"><span aria-hidden="true">$</span> find --useful</a>
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span></button>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
     <span class="menu-label">$ ls /stackgeist</span>
     {links.map((link)=>interactive?(<button type="button" data-nav-branch={link.key}>├── {link.label}<span aria-hidden="true">→</span></button>):(<a class:list={{active:active===link.key}} href={link.href}>├── {link.label}<span aria-hidden="true">→</span></a>))}
-    <a href="/gear/budget-tech/compare">├── compare <span aria-hidden="true">→</span></a><a href="/about">└── about <span aria-hidden="true">→</span></a><a class="mobile-cta" href="/gear/budget-tech" aria-label="Browse useful budget gear">$ find --useful <span aria-hidden="true">→</span></a>
+    <a href="/gear/budget-tech/compare">├── compare <span aria-hidden="true">→</span></a><a href="/about">└── about <span aria-hidden="true">→</span></a><a class="mobile-cta" href="/gear/budget-tech" aria-label="Find useful gear: browse budget tech">$ find --useful <span aria-hidden="true">→</span></a>
   </nav>
 </header>
 <style>

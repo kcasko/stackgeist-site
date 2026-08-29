@@ -1,12 +1,14 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupHero from '../../components/SetupHero.astro';
 import SetupScene from '../../components/SetupScene.astro';
 ---
 <ContentLayout title="Gaming setups | StackGeist" description="Gaming and mixed-use desk setups built around real space, budget, and clutter constraints." active="setups">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Setups / Gaming</p>
+  <p class="breadcrumbs"><a href="/setups">Setups</a> / Gaming</p>
   <p class="page-kicker">Gaming setups</p>
   <h1 class="page-title">Gaming setups that still work as actual desks.</h1>
   <p class="page-lead">Start with the room, desk space, and gear you already have. Then add only what improves the setup.</p>
+  <SetupHero src="/setups/gaming.png" alt="Illustration of a practical mixed-use gaming and work desk with a screen bar and one accent light" />
 
   <section class="content-section split">
     <SetupScene />

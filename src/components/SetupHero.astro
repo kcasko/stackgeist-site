@@ -1,0 +1,14 @@
+---
+interface Props { src: string; alt: string; }
+const { src, alt } = Astro.props;
+---
+<figure class="setup-hero">
+  <img src={src} alt={alt} loading="eager" decoding="async" fetchpriority="high" width="1024" height="576" />
+  <figcaption>Illustration only. Product placement in real setups depends on your room, desk, and gear.</figcaption>
+</figure>
+<style>
+  .setup-hero{margin:24px 0 0;padding:0;border:1px solid var(--term-border);background:#050508}
+  .setup-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .setup-hero figcaption{padding:9px 14px;border-top:1px dashed var(--term-border);color:var(--quiet);font-size:10.5px}
+  .setup-hero figcaption::before{content:'// ';color:var(--phosphor)}
+</style>
