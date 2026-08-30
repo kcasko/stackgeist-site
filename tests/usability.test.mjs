@@ -201,3 +201,17 @@ test('owned shortlist prioritizes five used products without shrinking the catal
     'wd-elements-vs-samsung-t7',
   ]) assert.match(source, new RegExp(`/gear/budget-tech/compare/${comparison}`));
 });
+
+test('featured owned pages do not retain unsupported precision from legacy copy', async () => {
+  const prohibited = new Map([
+    ['iniu-usb-c-to-usb-c-cable-240w-6-6ft', [/\$10 cable/i, /third-party PD-tester/i, /90 minutes/i]],
+    ['acodot-9-in-1-usb-c-hub', [/~87W/i, /gets warm under sustained load/i, /works reliably across firmware/i]],
+    ['logitech-c920x-hd-webcam', [/1080p60/i, /answer for 90%/i, /top 20%/i, /1\/4-inch sensor/i]],
+    ['sennheiser-momentum-4-wireless-noise-cancelling-headphones', [/within a few dB/i, /20-30 dB/i, /55-65 hours/i, /works reliably across firmware/i]],
+    ['wd-elements-portable-external-hard-drive', [/plug-and-play, reliable/i]],
+  ]);
+  for (const [slug, patterns] of prohibited) {
+    const source = await read(`src/pages/gear/budget-tech/${slug}.astro`);
+    for (const pattern of patterns) assert.doesNotMatch(source, pattern, `${slug} retains ${pattern}`);
+  }
+});
