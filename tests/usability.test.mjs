@@ -177,3 +177,27 @@ test('editorial provenance distinguishes owned products from sourced research', 
     assert.match(source, /https:\/\//);
   }
 });
+
+test('owned shortlist prioritizes five used products without shrinking the catalog', async () => {
+  const source = await read('src/pages/gear/budget-tech/index.astro');
+  assert.match(source, /data-owned-shortlist/);
+  assert.equal((source.match(/data-owned-pick/g) || []).length, 5);
+  assert.equal((source.match(/<a class="card" data-catalog-card/g) || []).length, 30);
+  assert.match(source, /Owned &amp; used|Owned & used/);
+  assert.match(source, /\/editorial-methodology/);
+
+  for (const slug of [
+    'iniu-usb-c-to-usb-c-cable-240w-6-6ft',
+    'acodot-9-in-1-usb-c-hub',
+    'logitech-c920x-hd-webcam',
+    'sennheiser-momentum-4-wireless-noise-cancelling-headphones',
+    'wd-elements-portable-external-hard-drive',
+  ]) assert.match(source, new RegExp(`/gear/budget-tech/${slug}`));
+
+  for (const comparison of [
+    'iniu-cable-vs-generic-usb-c',
+    'acodot-hub-vs-anker-553',
+    'sennheiser-momentum-4-vs-cheap-anc',
+    'wd-elements-vs-samsung-t7',
+  ]) assert.match(source, new RegExp(`/gear/budget-tech/compare/${comparison}`));
+});

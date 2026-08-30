@@ -6,7 +6,21 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / Budget tech</p>
   <p class="page-kicker">Budget tech</p>
   <h1 class="page-title">Small upgrades that quietly fix annoying problems.</h1>
-  <p class="page-lead">Imported from taurustech.me/affiliate and re-linked with StackGeist's Amazon Associates tag. Entries are short editorial blurbs — treat them as starting points, not verified spec sheets.</p>
+  <p class="page-lead">These thirty products were migrated from taurustech.me after being personally purchased and used by the StackGeist operator. Ownership is not a laboratory test: detailed pages separate that record from sourced specifications, compatibility checks, and reasons to skip.</p>
+
+  <section class="owned-shortlist" data-owned-shortlist aria-labelledby="owned-shortlist-title">
+    <div class="shortlist-head">
+      <div><p class="page-kicker">Owned &amp; used</p><h2 id="owned-shortlist-title">Start with the five pages that show the most decision context.</h2></div>
+      <a href="/editorial-methodology">How evidence labels work →</a>
+    </div>
+    <div class="shortlist-grid">
+      <article data-owned-pick><span>01 / charging</span><h3><a href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">INIU 240W USB-C cable</a></h3><p>Start here when charging wattage matters more than display or high-speed data.</p><a href="/gear/budget-tech/compare/iniu-cable-vs-generic-usb-c">Compare cable fit →</a></article>
+      <article data-owned-pick><span>02 / ports</span><h3><a href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">Acodot 9-in-1 USB-C hub</a></h3><p>Start here for a lower-cost single-display hub with common desk ports.</p><a href="/gear/budget-tech/compare/acodot-hub-vs-anker-553">Compare with Anker 553 →</a></article>
+      <article data-owned-pick><span>03 / video</span><h3><a href="/gear/budget-tech/logitech-c920x-hd-webcam">Logitech C920x webcam</a></h3><p>Start here when a laptop camera needs a straightforward external replacement.</p><a href="/guides/better-video-calls">Check the full call setup →</a></article>
+      <article data-owned-pick><span>04 / audio</span><h3><a href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones">Sennheiser Momentum 4</a></h3><p>Start here when sound quality and long battery life both matter.</p><a href="/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc">Compare ANC tiers →</a></article>
+      <article data-owned-pick><span>05 / storage</span><h3><a href="/gear/budget-tech/wd-elements-portable-external-hard-drive">WD Elements portable drive</a></h3><p>Start here when capacity and simple backup storage matter more than SSD speed.</p><a href="/gear/budget-tech/compare/wd-elements-vs-samsung-t7">Compare HDD and SSD fit →</a></article>
+    </div>
+  </section>
 
   <form class="catalog-tools" role="search" data-catalog-tools>
     <label><span>find</span><input type="search" placeholder="webcam, cable, storage…" autocomplete="off" data-catalog-search /></label>
@@ -228,14 +242,16 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
   <p class="catalog-empty" hidden data-catalog-empty>No products match that search. Try a broader problem or show all sections.</p>
   <style>
     .product-thumb { display:block; width:100%; height:200px; margin-bottom:16px; border:1px solid var(--border); border-radius:12px; object-fit:contain; background:#fff; }
+    .owned-shortlist{margin-top:30px;border:1px solid var(--term-border);background:var(--term-bg)}.owned-shortlist::before{content:'$ shortlist --owned --decision-ready';display:block;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--phosphor);font-size:11px}.shortlist-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding:22px}.shortlist-head h2{max-width:720px;margin:5px 0 0;font-size:clamp(20px,3vw,28px)}.shortlist-head>a,.shortlist-grid a{color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}.shortlist-head>a{flex-shrink:0;font-size:11px}.shortlist-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--term-border)}.shortlist-grid article{padding:18px;border-left:1px solid var(--term-border)}.shortlist-grid article:first-child{border-left:0}.shortlist-grid span{color:var(--phosphor);font-size:10px}.shortlist-grid h3{margin:10px 0 8px;font-size:15px;line-height:1.35}.shortlist-grid p{min-height:82px;margin:0 0 14px;color:var(--muted);font-size:11.5px;line-height:1.55}.shortlist-grid article>a{font-size:10.5px}
     .catalog-tools{display:grid;grid-template-columns:minmax(220px,1fr) 210px 240px auto;gap:10px;align-items:end;margin-top:28px;padding:16px;border:1px solid var(--term-border);background:var(--term-bg)}
     .catalog-tools label{display:grid;gap:7px;color:var(--phosphor);font-size:10.5px}.catalog-tools label span::before{content:'--';margin-right:5px;color:var(--quiet)}
     .catalog-tools input,.catalog-tools select{width:100%;min-height:44px;padding:0 11px;border:1px solid var(--term-border-strong);border-radius:0;background:var(--bg);color:var(--text);font:12px var(--font-mono)}
     .catalog-tools input:focus,.catalog-tools select:focus{outline:2px solid var(--purple-light);outline-offset:2px}.catalog-tools output{min-width:105px;padding-bottom:13px;color:var(--muted);font-size:11px;text-align:right}
     .catalog-jumps{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 16px;border:1px solid var(--term-border);border-top:0;color:var(--quiet);font-size:11px}.catalog-jumps span{color:var(--phosphor)}.catalog-jumps a{display:inline-flex;min-height:32px;align-items:center;color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}
     [data-catalog-section][hidden]{display:none}.catalog-empty{margin:28px 0;padding:18px;border:1px solid var(--amber);color:var(--amber);font-size:12px}
+    @media(max-width:1000px){.shortlist-grid{grid-template-columns:repeat(2,1fr)}.shortlist-grid article{border-top:1px solid var(--term-border)}.shortlist-grid article:nth-child(odd){border-left:0}.shortlist-grid article:first-child,.shortlist-grid article:nth-child(2){border-top:0}}
     @media(max-width:900px){.catalog-tools{grid-template-columns:1fr 1fr}.catalog-tools output{text-align:left;padding:4px 0}}
-    @media(max-width:600px){.catalog-tools{grid-template-columns:1fr}.catalog-tools output{min-height:28px}.catalog-jumps a{min-height:44px}.product-thumb{height:220px}}
+    @media(max-width:600px){.shortlist-head{display:grid}.shortlist-head>a{min-height:44px;display:flex;align-items:center}.shortlist-grid{grid-template-columns:1fr}.shortlist-grid article,.shortlist-grid article:nth-child(2){border-top:1px solid var(--term-border);border-left:0}.shortlist-grid article:first-child{border-top:0}.shortlist-grid p{min-height:0}.catalog-tools{grid-template-columns:1fr}.catalog-tools output{min-height:28px}.catalog-jumps a{min-height:44px}.product-thumb{height:220px}}
   </style>
   <script>
     const tools=document.querySelector('[data-catalog-tools]');
