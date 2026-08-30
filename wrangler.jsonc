@@ -11,10 +11,11 @@
 		"enabled": true
 	},
 	"upload_source_maps": true,
-	"analytics_engine_datasets": [
+	"d1_databases": [
 		{
-			"binding": "AFFILIATE_ANALYTICS",
-			"dataset": "stackgeist_affiliate_events"
+			"binding": "AFFILIATE_DB",
+			"database_name": "stackgeist-affiliate-events",
+			"database_id": "78dee955-24db-4889-8647-c424c96e3775"
 		}
 	]
 	/**

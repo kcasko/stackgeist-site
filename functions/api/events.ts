@@ -10,16 +10,8 @@ interface EventPayload {
   schemaVersion: string;
 }
 
-interface AnalyticsPoint {
-  blobs: string[];
-  doubles: number[];
-  indexes: string[];
-}
-
 interface Env {
-  AFFILIATE_ANALYTICS: {
-    writeDataPoint(point: AnalyticsPoint): void;
-  };
+  AFFILIATE_DB: D1Database;
 }
 
 interface PagesContext {
@@ -112,24 +104,22 @@ export async function onRequest(context: PagesContext): Promise<Response> {
 
   const event = validateEventPayload(parsed);
   if (!event) return response(400);
-  if (!env?.AFFILIATE_ANALYTICS?.writeDataPoint) return response(503);
+  if (!env?.AFFILIATE_DB?.prepare || !env?.AFFILIATE_DB?.batch) return response(503);
 
-  const day = new Date().toISOString().slice(0, 10);
-  env.AFFILIATE_ANALYTICS.writeDataPoint({
-    blobs: [
-      event.eventType,
-      event.pagePath,
-      event.utmSource,
-      event.utmMedium,
-      event.utmCampaign,
-      event.utmContent,
-      event.placement,
-      event.productId,
-      event.schemaVersion,
-    ],
-    doubles: [1],
-    indexes: [`${event.eventType}:${day}`],
-  });
+  const cleanup = env.AFFILIATE_DB.prepare(
+    "DELETE FROM affiliate_events WHERE created_at < datetime('now', '-90 days')",
+  );
+  const insert = env.AFFILIATE_DB.prepare(
+    `INSERT INTO affiliate_events (
+      event_type, page_path, utm_source, utm_medium, utm_campaign,
+      utm_content, placement, product_id, schema_version
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  ).bind(...Object.values(event));
 
+  try {
+    await env.AFFILIATE_DB.batch([cleanup, insert]);
+  } catch {
+    return response(500);
+  }
   return response(204);
 }

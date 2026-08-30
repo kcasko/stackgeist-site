@@ -28,8 +28,17 @@ test('analytics contract accepts only bounded allowlisted event fields', async (
 
 test('analytics endpoint rejects unsafe requests and writes accepted events', async () => {
   const { onRequest } = await import('../functions/api/events.ts');
-  const points = [];
-  const env = { AFFILIATE_ANALYTICS: { writeDataPoint: (point) => points.push(point) } };
+  const statements = [];
+  const env = {
+    AFFILIATE_DB: {
+      prepare: (sql) => ({
+        sql,
+        values: [],
+        bind: (...values) => ({ sql, values }),
+      }),
+      batch: async (batch) => { statements.push(...batch); return []; },
+    },
+  };
   const invoke = (request) => onRequest({ request, env });
 
   assert.equal((await invoke(new Request('https://stackgeist.dev/api/events'))).status, 405);
@@ -44,12 +53,12 @@ test('analytics endpoint rejects unsafe requests and writes accepted events', as
   }));
   assert.equal(response.status, 204);
   assert.equal(response.headers.get('cache-control'), 'no-store');
-  assert.equal(points.length, 1);
-  assert.deepEqual(points[0].blobs, Object.values(validPayload));
-  assert.deepEqual(points[0].doubles, [1]);
-  assert.equal(points[0].indexes.length, 1);
-  assert.match(points[0].indexes[0], /^affiliate_click:\d{4}-\d{2}-\d{2}$/);
-  assert.doesNotMatch(JSON.stringify(points[0]), /discard-me|email|userAgent/);
+  assert.equal(statements.length, 2);
+  assert.match(statements[0].sql, /DELETE FROM affiliate_events/);
+  assert.match(statements[0].sql, /-90 days/);
+  assert.match(statements[1].sql, /INSERT INTO affiliate_events/);
+  assert.deepEqual(statements[1].values, Object.values(validPayload));
+  assert.doesNotMatch(JSON.stringify(statements), /discard-me|email|userAgent/);
 });
 
 test('browser attribution is session-only, minimal, and loaded by both layouts', async () => {
@@ -80,15 +89,16 @@ test('browser attribution is session-only, minimal, and loaded by both layouts',
   }
 });
 
-test('wrangler declares the affiliate analytics dataset binding', async () => {
+test('wrangler declares the affiliate D1 binding', async () => {
   const wrangler = await read('wrangler.jsonc');
-  assert.match(wrangler, /"binding"\s*:\s*"AFFILIATE_ANALYTICS"/);
-  assert.match(wrangler, /"dataset"\s*:\s*"stackgeist_affiliate_events"/);
+  assert.match(wrangler, /"binding"\s*:\s*"AFFILIATE_DB"/);
+  assert.match(wrangler, /"database_name"\s*:\s*"stackgeist-affiliate-events"/);
+  assert.match(wrangler, /"database_id"\s*:\s*"[0-9a-f-]{36}"/);
 });
 
 test('privacy policy accurately describes minimal session attribution', async () => {
   const privacy = await read('src/pages/privacy.astro');
-  for (const token of ['sessionStorage', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM content', 'CTA placement', 'product identifier', '/api/events', 'Analytics Engine']) {
+  for (const token of ['sessionStorage', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM content', 'CTA placement', 'product identifier', '/api/events', 'D1', '90 days']) {
     assert.match(privacy, new RegExp(token.replace('/', '\\/'), 'i'));
   }
   assert.match(privacy, /no first-party analytics cookies/i);
@@ -96,30 +106,30 @@ test('privacy policy accurately describes minimal session attribution', async ()
   assert.doesNotMatch(privacy, /do not currently run first-party analytics/i);
 });
 
-test('aggregate report clamps its window and uses sampled-weight aggregation', async () => {
+test('aggregate report clamps its window and queries D1 aggregates', async () => {
   const { buildSql, parseDays } = await import('../scripts/affiliate-report.mjs');
   assert.equal(parseDays(['--days', '30']), 30);
   assert.equal(parseDays(['--days', '0']), 1);
   assert.equal(parseDays(['--days', '999']), 365);
   assert.equal(parseDays([]), 30);
   const sql = buildSql(7);
-  assert.match(sql, /stackgeist_affiliate_events/);
-  assert.match(sql, /_sample_interval/);
-  assert.match(sql, /INTERVAL '7' DAY/);
-  assert.match(sql, /blob5 AS campaign/);
-  assert.match(sql, /blob7 AS placement/);
+  assert.match(sql, /FROM affiliate_events/);
+  assert.match(sql, /datetime\('now', '-7 days'\)/);
+  assert.match(sql, /campaign/);
+  assert.match(sql, /placement/);
+  assert.match(sql, /COUNT\(\*\) AS events/);
 });
 
-test('aggregate report fails safely when credentials are missing', async () => {
+test('aggregate report exposes the D1 report command without secrets', async () => {
   const { spawnSync } = await import('node:child_process');
   const result = spawnSync(process.execPath, ['scripts/affiliate-report.mjs', '--days', '1'], {
     cwd: new URL('../', import.meta.url),
-    env: { PATH: process.env.PATH },
+    env: { PATH: '' },
     encoding: 'utf8',
   });
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /CLOUDFLARE_ACCOUNT_ID.*CLOUDFLARE_API_TOKEN/);
-  assert.doesNotMatch(`${result.stdout}${result.stderr}`, /Bearer|token value|account value/i);
+  assert.match(result.stderr, /Unable to run Wrangler D1 query/);
+  assert.doesNotMatch(`${result.stdout}${result.stderr}`, /Bearer|API token|account value/i);
 
   const packageJson = JSON.parse(await read('package.json'));
   assert.equal(packageJson.scripts['analytics:report'], 'node scripts/affiliate-report.mjs');

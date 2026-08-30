@@ -77,3 +77,7 @@ The single index is `event type + UTC day`. No personal identifier is used as th
 - Stage only intentional files.
 - Do not expose Cloudflare or Amazon credentials.
 - Do not claim a live deployment, analytics write, or query result without reading back the exact target.
+
+## Deployment amendment — 2026-08-30
+
+Cloudflare rejected the first deployment because Workers Analytics Engine was disabled and required an interactive dashboard action. The approved minimal schema is therefore stored in Cloudflare D1, which was available through the existing Wrangler session without a plan or payment change. The Pages Function deletes rows older than 90 days on every accepted write, then inserts only the same nine allowlisted fields. The aggregate report queries D1 through Wrangler; browser behavior and privacy constraints are unchanged.

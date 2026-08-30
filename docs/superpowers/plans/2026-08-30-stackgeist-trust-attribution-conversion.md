@@ -6,9 +6,11 @@
 
 **Architecture:** Shared Astro components and layouts own editorial evidence and browser instrumentation. A Cloudflare Pages Function validates a minimal event payload and writes it to Workers Analytics Engine; a standalone Node report queries aggregate results. Existing product routes, Amazon tags, navigation rules, and visual language remain intact.
 
-**Tech Stack:** Astro 5, TypeScript, Cloudflare Pages Functions, Workers Analytics Engine, Node.js test runner, Wrangler 4.
+**Tech Stack:** Astro 7, TypeScript, Cloudflare Pages Functions, Cloudflare D1, Node.js test runner, Wrangler 4.
 
 **Spec:** `docs/superpowers/specs/2026-08-30-stackgeist-trust-attribution-conversion.md`
+
+**Execution amendment (2026-08-30):** Cloudflare rejected the Analytics Engine binding because the account-level feature was disabled. Per the spec amendment, Tasks 2, 3, and 5 use the available Cloudflare D1 binding `AFFILIATE_DB`, database `stackgeist-affiliate-events`, a migration-backed `affiliate_events` table, and 90-day cleanup on accepted writes. The event payload and privacy allowlist are unchanged.
 
 ## Global Constraints
 

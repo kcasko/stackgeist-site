@@ -1,6 +1,7 @@
+import { spawnSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 
-const DATASET = 'stackgeist_affiliate_events';
+const DATABASE = 'stackgeist-affiliate-events';
 
 export function parseDays(args) {
   const index = args.indexOf('--days');
@@ -13,17 +14,17 @@ export function parseDays(args) {
 export function buildSql(days) {
   const safeDays = Math.min(365, Math.max(1, Number.parseInt(String(days), 10) || 30));
   return `SELECT
-  blob1 AS event_type,
-  blob2 AS page_path,
-  blob3 AS source,
-  blob4 AS medium,
-  blob5 AS campaign,
-  blob6 AS content,
-  blob7 AS placement,
-  blob8 AS product_id,
-  SUM(_sample_interval * double1) AS events
-FROM ${DATASET}
-WHERE timestamp >= NOW() - INTERVAL '${safeDays}' DAY
+  event_type,
+  page_path,
+  utm_source AS source,
+  utm_medium AS medium,
+  utm_campaign AS campaign,
+  utm_content AS content,
+  placement,
+  product_id,
+  COUNT(*) AS events
+FROM affiliate_events
+WHERE created_at >= datetime('now', '-${safeDays} days')
 GROUP BY event_type, page_path, source, medium, campaign, content, placement, product_id
 ORDER BY events DESC
 LIMIT 500`;
@@ -63,45 +64,39 @@ function summarize(rows) {
   };
 }
 
-export async function main(args = process.argv.slice(2), env = process.env) {
-  const accountId = env.CLOUDFLARE_ACCOUNT_ID;
-  const apiToken = env.CLOUDFLARE_API_TOKEN;
-  if (!accountId || !apiToken) {
-    console.error('Missing CLOUDFLARE_ACCOUNT_ID and/or CLOUDFLARE_API_TOKEN. Add Account Analytics Read credentials to the environment.');
-    return 1;
-  }
-
+export function main(args = process.argv.slice(2)) {
   const days = parseDays(args);
-  let response;
+  const command = process.platform === 'win32' ? 'npx.cmd' : 'npx';
+  const result = spawnSync(command, [
+    'wrangler',
+    'd1',
+    'execute',
+    DATABASE,
+    '--remote',
+    '--json',
+    '--command',
+    buildSql(days),
+  ], { encoding: 'utf8', windowsHide: true });
+
+  if (result.error || result.status !== 0) {
+    const detail = result.error?.message || (result.stderr || '').trim() || `exit ${result.status}`;
+    console.error(`Unable to run Wrangler D1 query: ${detail}`);
+    return 1;
+  }
+
+  let payload;
   try {
-    response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(accountId)}/analytics_engine/sql`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiToken}`,
-        'Content-Type': 'text/plain',
-      },
-      body: buildSql(days),
-    });
-  } catch (error) {
-    console.error(`Analytics request failed: ${error instanceof Error ? error.message : 'network error'}`);
+    payload = JSON.parse(result.stdout);
+  } catch {
+    console.error('Unable to parse Wrangler D1 query output.');
     return 1;
   }
-
-  if (!response.ok) {
-    console.error(`Analytics request failed with HTTP ${response.status}.`);
-    return 1;
-  }
-
-  const payload = await response.json();
-  const rows = Array.isArray(payload?.data)
-    ? payload.data
-    : Array.isArray(payload?.result?.data)
-      ? payload.result.data
-      : [];
+  const first = Array.isArray(payload) ? payload[0] : payload;
+  const rows = Array.isArray(first?.results) ? first.results : [];
   console.log(JSON.stringify({ days, rowCount: rows.length, ...summarize(rows) }, null, 2));
   return 0;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  process.exitCode = await main();
+  process.exitCode = main();
 }
