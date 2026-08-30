@@ -85,3 +85,42 @@ test('wrangler declares the affiliate analytics dataset binding', async () => {
   assert.match(wrangler, /"binding"\s*:\s*"AFFILIATE_ANALYTICS"/);
   assert.match(wrangler, /"dataset"\s*:\s*"stackgeist_affiliate_events"/);
 });
+
+test('privacy policy accurately describes minimal session attribution', async () => {
+  const privacy = await read('src/pages/privacy.astro');
+  for (const token of ['sessionStorage', 'UTM source', 'UTM medium', 'UTM campaign', 'UTM content', 'CTA placement', 'product identifier', '/api/events', 'Analytics Engine']) {
+    assert.match(privacy, new RegExp(token.replace('/', '\\/'), 'i'));
+  }
+  assert.match(privacy, /no first-party analytics cookies/i);
+  assert.match(privacy, /no persistent visitor identifier/i);
+  assert.doesNotMatch(privacy, /do not currently run first-party analytics/i);
+});
+
+test('aggregate report clamps its window and uses sampled-weight aggregation', async () => {
+  const { buildSql, parseDays } = await import('../scripts/affiliate-report.mjs');
+  assert.equal(parseDays(['--days', '30']), 30);
+  assert.equal(parseDays(['--days', '0']), 1);
+  assert.equal(parseDays(['--days', '999']), 365);
+  assert.equal(parseDays([]), 30);
+  const sql = buildSql(7);
+  assert.match(sql, /stackgeist_affiliate_events/);
+  assert.match(sql, /_sample_interval/);
+  assert.match(sql, /INTERVAL '7' DAY/);
+  assert.match(sql, /blob5 AS campaign/);
+  assert.match(sql, /blob7 AS placement/);
+});
+
+test('aggregate report fails safely when credentials are missing', async () => {
+  const { spawnSync } = await import('node:child_process');
+  const result = spawnSync(process.execPath, ['scripts/affiliate-report.mjs', '--days', '1'], {
+    cwd: new URL('../', import.meta.url),
+    env: { PATH: process.env.PATH },
+    encoding: 'utf8',
+  });
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /CLOUDFLARE_ACCOUNT_ID.*CLOUDFLARE_API_TOKEN/);
+  assert.doesNotMatch(`${result.stdout}${result.stderr}`, /Bearer|token value|account value/i);
+
+  const packageJson = JSON.parse(await read('package.json'));
+  assert.equal(packageJson.scripts['analytics:report'], 'node scripts/affiliate-report.mjs');
+});
