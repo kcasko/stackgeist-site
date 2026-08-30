@@ -139,3 +139,41 @@ test('new decision guides are discoverable from both hubs', async () => {
     assert.match(`${gear}\n${map}`, new RegExp(`/guides/${slug}`));
   }
 });
+
+test('editorial provenance distinguishes owned products from sourced research', async () => {
+  const methodology = await read('src/pages/editorial-methodology.astro');
+  for (const token of ['Owned & used', 'Researched', 'Corrections', 'Affiliate independence']) {
+    assert.match(methodology, new RegExp(token.replace('&', '&(?:amp;)?')));
+  }
+
+  const evidence = await read('src/components/EvidencePanel.astro');
+  assert.match(evidence, /owned-and-used/);
+  assert.match(evidence, /researched/);
+  assert.match(evidence, /reviewed/);
+
+  const about = await read('src/pages/about.astro');
+  const disclosure = await read('src/pages/affiliate-disclosure.astro');
+  for (const source of [about, disclosure]) {
+    assert.match(source, /personally purchased and used/i);
+    assert.match(source, /laboratory test/i);
+  }
+
+  const footer = await read('src/components/SiteFooter.astro');
+  assert.match(footer, /href="\/editorial-methodology"/);
+
+  const featured = [
+    'iniu-usb-c-to-usb-c-cable-240w-6-6ft',
+    'acodot-9-in-1-usb-c-hub',
+    'logitech-c920x-hd-webcam',
+    'sennheiser-momentum-4-wireless-noise-cancelling-headphones',
+    'wd-elements-portable-external-hard-drive',
+  ];
+  for (const slug of featured) {
+    const source = await read(`src/pages/gear/budget-tech/${slug}.astro`);
+    assert.match(source, /import EvidencePanel/);
+    assert.match(source, /status="owned-and-used"/);
+    assert.match(source, /reviewed="2026-08-30"/);
+    assert.match(source, /sources=\{\[/);
+    assert.match(source, /https:\/\//);
+  }
+});

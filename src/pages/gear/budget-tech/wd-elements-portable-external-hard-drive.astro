@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 ---
 <ContentLayout title="WD Elements Portable External Hard Drive | StackGeist" description="Running out of storage is inevitable if you keep files long enough." active="gear">
   <ProductDetailSimple
@@ -25,4 +26,5 @@ import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Western Digital Elements Portable specifications', href: 'https://www.westerndigital.com/products/portable-drives/wd-elements-portable-usb-3-0-hdd' }, { label: 'Amazon product identity — ASIN B07X41PWTY', href: 'https://www.amazon.com/dp/B07X41PWTY' }]} />
 </ContentLayout>
