@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # opencode
 .opencode/
+
+# local git worktrees
+.worktrees/
