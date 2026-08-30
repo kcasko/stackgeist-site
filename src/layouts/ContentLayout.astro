@@ -25,5 +25,6 @@ const { title, description, active, noindex = false } = Astro.props;
       <Header active={active} interactive={false} />
       <main id="main-content" class="content-main" tabindex="-1"><slot /><SiteFooter /></main>
     </div>
+    <script>import '../scripts/affiliate-attribution';</script>
   </body>
 </html>
