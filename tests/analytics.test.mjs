@@ -121,15 +121,21 @@ test('aggregate report clamps its window and queries D1 aggregates', async () =>
 });
 
 test('aggregate report exposes the D1 report command without secrets', async () => {
-  const { spawnSync } = await import('node:child_process');
-  const result = spawnSync(process.execPath, ['scripts/affiliate-report.mjs', '--days', '1'], {
-    cwd: new URL('../', import.meta.url),
-    env: { PATH: '' },
-    encoding: 'utf8',
-  });
-  assert.equal(result.status, 1);
-  assert.match(result.stderr, /Unable to run Wrangler D1 query/);
-  assert.doesNotMatch(`${result.stdout}${result.stderr}`, /Bearer|API token|account value/i);
+  const source = await read('scripts/affiliate-report.mjs');
+  assert.match(source, /process\.execPath/);
+  assert.match(source, /wrangler\/bin\/wrangler\.js/);
+
+  const { main } = await import('../scripts/affiliate-report.mjs');
+  let message = '';
+  const originalError = console.error;
+  console.error = (value) => { message = String(value); };
+  try {
+    assert.equal(main(['--days', '1'], () => ({ status: 1, stderr: 'offline', stdout: '' })), 1);
+  } finally {
+    console.error = originalError;
+  }
+  assert.match(message, /Unable to run Wrangler D1 query/);
+  assert.doesNotMatch(message, /Bearer|API token|account value/i);
 
   const packageJson = JSON.parse(await read('package.json'));
   assert.equal(packageJson.scripts['analytics:report'], 'node scripts/affiliate-report.mjs');

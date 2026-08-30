@@ -1,7 +1,8 @@
 import { spawnSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const DATABASE = 'stackgeist-affiliate-events';
+const WRANGLER = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
 
 export function parseDays(args) {
   const index = args.indexOf('--days');
@@ -64,11 +65,10 @@ function summarize(rows) {
   };
 }
 
-export function main(args = process.argv.slice(2)) {
+export function main(args = process.argv.slice(2), runner = spawnSync) {
   const days = parseDays(args);
-  const command = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-  const result = spawnSync(command, [
-    'wrangler',
+  const result = runner(process.execPath, [
+    WRANGLER,
     'd1',
     'execute',
     DATABASE,
