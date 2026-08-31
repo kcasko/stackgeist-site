@@ -1,12 +1,16 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupHero from '../../components/SetupHero.astro';
 import SetupScene from '../../components/SetupScene.astro';
+import { SETUP_LIST } from '../../data/gamingSetupOptions';
+const gamingSetups = SETUP_LIST.filter((s) => s.family === 'gaming');
 ---
 <ContentLayout title="Gaming setups | StackGeist" description="Gaming and mixed-use desk setups built around real space, budget, and clutter constraints." active="setups">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Setups / Gaming</p>
+  <p class="breadcrumbs"><a href="/setups">Setups</a> / Gaming</p>
   <p class="page-kicker">Gaming setups</p>
   <h1 class="page-title">Gaming setups that still work as actual desks.</h1>
   <p class="page-lead">Start with the room, desk space, and gear you already have. Then add only what improves the setup.</p>
+  <SetupHero src="/setups/gaming.png" alt="Illustration of a practical mixed-use gaming and work desk with a screen bar and one accent light" />
 
   <section class="content-section split">
     <SetupScene />
@@ -33,4 +37,60 @@ import SetupScene from '../../components/SetupScene.astro';
       <a class="card" href="/guides/cable-management"><h3>Low clutter</h3><p>Fewer visible cables, fewer objects fighting for surface area, and cleaner power routing.</p></a>
     </div>
   </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Category matrix</p>
+    <h2 class="section-heading">Every setup, every gear category, side by side.</h2>
+    <p class="matrix-lede">Each cell jumps to that setup's picks for that category. Use this when you know which piece of the setup you're solving next.</p>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            {gamingSetups.map((s) => (
+              <th scope="col"><a href={`/setups/${s.slug}`}>{s.title.replace(/ · gear options$/, '')}</a></th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {(() => {
+            const catNames = new Map<string, string>();
+            for (const s of gamingSetups) for (const c of s.categories) catNames.set(c.slug, c.name);
+            const rows = Array.from(catNames.entries());
+            return rows.map(([slug, name]) => (
+              <tr>
+                <th scope="row">{name}</th>
+                {gamingSetups.map((s) => {
+                  const cat = s.categories.find((c) => c.slug === slug);
+                  if (!cat) return <td class="empty">—</td>;
+                  return (
+                    <td>
+                      <a class="matrix-link" href={`/setups/${s.slug}#cat-${cat.slug}`}>
+                        {cat.picks.length} picks →
+                      </a>
+                    </td>
+                  );
+                })}
+              </tr>
+            ));
+          })()}
+        </tbody>
+      </table>
+    </div>
+    <p class="matrix-foot">Picks are grouped Budget · Mid · Premium on each setup page. Skip the categories that already work in your room.</p>
+  </section>
 </ContentLayout>
+
+<style>
+  .matrix-lede { margin: 0 0 18px; max-width: 76ch; color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+  .matrix-wrap { overflow-x: auto; border: 1px solid var(--term-border); background: var(--term-bg); }
+  .matrix { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12.5px; }
+  .matrix th, .matrix td { padding: 12px 14px; border: 1px solid var(--term-border); vertical-align: top; text-align: left; }
+  .matrix thead th { background: rgba(163,230,53,.04); color: var(--phosphor); font-size: 10.5px; letter-spacing: .04em; text-transform: lowercase; }
+  .matrix thead th a { color: var(--phosphor); text-decoration: underline dotted; text-underline-offset: 3px; }
+  .matrix tbody th { color: var(--purple-light); font-weight: 600; }
+  .matrix .matrix-link { color: var(--text); text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--term-border-strong); }
+  .matrix .matrix-link:hover { color: var(--phosphor); text-decoration-color: var(--phosphor); }
+  .matrix .empty { color: var(--quiet); }
+  .matrix-foot { margin: 12px 0 0; color: var(--quiet); font-size: 11px; }
+</style>

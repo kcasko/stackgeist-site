@@ -20,9 +20,11 @@ const { title, description, active, noindex = false } = Astro.props;
     <SeoHead title={title} description={description} noindex={noindex} />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
-      <main class="content-main"><slot /><SiteFooter /></main>
+      <main id="main-content" class="content-main" tabindex="-1"><slot /><SiteFooter /></main>
     </div>
+    <script>import '../scripts/affiliate-attribution';</script>
   </body>
 </html>

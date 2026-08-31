@@ -1,64 +1,20 @@
 ---
-interface Props {
-  variant?: 'card' | 'inline';
-  heading?: string;
-  subhead?: string;
-}
-const {
-  variant = 'card',
-  heading = 'Steal the 12-fix budget tech checklist.',
-  subhead = 'A concise, printable cheat sheet for the low-cost upgrades that remove everyday setup friction. No email gate and no fake countdown.',
-} = Astro.props;
+interface Props{variant?:'card'|'inline';heading?:string;subhead?:string}
+const{variant='card',heading='Steal the 12-fix budget tech checklist.',subhead='A concise, printable cheat sheet for the low-cost upgrades that remove everyday setup friction. No email gate and no fake countdown.'}=Astro.props;
 ---
-<section class={`newsletter ${variant}`} aria-labelledby="lead-magnet-title">
-  <div class="nl-copy">
-    <p class="eyebrow">Free field guide · PDF</p>
-    <h2 id="lead-magnet-title">{heading}</h2>
-    <p>{subhead}</p>
-    <div class="nl-actions">
-      <a class="download" href="/downloads/budget-tech-cheat-sheet.pdf" download>Download the free checklist <span aria-hidden="true">↓</span></a>
-      <a class="preview" href="/downloads/budget-tech-cheat-sheet.pdf">Preview it first <span aria-hidden="true">↗</span></a>
-    </div>
-    <small>Instant download · 12 practical fixes · no signup required</small>
-  </div>
-  <div class="sheet-preview" aria-hidden="true">
-    <div class="sheet sheet-back"></div>
-    <div class="sheet sheet-front">
-      <span class="sheet-brand">STACKGEIST</span>
-      <strong>BUDGET TECH<br />CHEAT SHEET</strong>
-      <i></i><i></i><i></i><i></i>
-      <small>12 fixes under $75</small>
-    </div>
-  </div>
-</section>
-
+<section class={`newsletter ${variant}`} aria-labelledby="lead-magnet-title"><header class="nl-head"><span class="dollar">$</span><span>fetch /downloads/budget-tech-cheat-sheet.pdf</span><span class="status">200 OK · 1 file</span></header><div class="nl-body"><div class="nl-copy"><p class="comment"># free field guide · PDF · no email gate</p><h2 id="lead-magnet-title">{heading}</h2><p>{subhead}</p><div class="nl-actions"><a class="download" href="/downloads/budget-tech-cheat-sheet.pdf" download>download --now <span aria-hidden="true">↓</span></a><a class="preview" href="/downloads/budget-tech-cheat-sheet.pdf">preview --browser <span aria-hidden="true">↗</span></a></div><small><span class="ok">✓</span> instant download&nbsp;&nbsp; <span class="ok">✓</span> 12 practical fixes&nbsp;&nbsp; <span class="ok">✓</span> no signup</small></div><pre class="sheet" aria-hidden="true"><code>┌────────────────────────────┐
+│ STACKGEIST                 │
+│                            │
+│ BUDGET TECH                │
+│ CHEAT SHEET                │
+│                            │
+│ [01] friction ........ fix │
+│ [02] lighting ........ fix │
+│ [03] cables .......... fix │
+│ [..] ..................... │
+│                            │
+│      12 FIXES / UNDER $75  │
+└────────────────────────────┘</code></pre></div></section>
 <style>
-  .newsletter { position:relative; min-height:370px; display:grid; grid-template-columns:1.1fr .7fr; align-items:center; gap:60px; margin:108px 0 24px; overflow:hidden; padding:55px clamp(30px,6vw,78px); border:1px solid #54366c; border-radius:20px; background:radial-gradient(circle at 85% 20%,rgba(168,85,247,.17),transparent 32%),linear-gradient(135deg,#140b1e,#0b0810 65%); }
-  .newsletter::before { content:''; position:absolute; inset:0; opacity:.2; background-image:linear-gradient(rgba(192,132,252,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(192,132,252,.12) 1px,transparent 1px); background-size:54px 54px; mask-image:linear-gradient(90deg,transparent,#000 60%,#000); pointer-events:none; }
-  .newsletter.inline { min-height:310px; margin:48px 0 8px; }
-  .nl-copy { position:relative; z-index:1; max-width:700px; }
-  .nl-copy h2 { margin:13px 0 14px; font-size:clamp(31px,4vw,50px); line-height:1.04; letter-spacing:-.045em; }
-  .nl-copy > p:not(.eyebrow) { max-width:620px; margin:0; color:#aaa0b4; font-size:15px; line-height:1.62; }
-  .nl-actions { display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px; margin-top:27px; }
-  .nl-actions a { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:46px; font-size:13px; font-weight:750; }
-  .download { padding:0 19px; border-radius:9px; background:linear-gradient(135deg,#8b5cf6,#a855f7); color:#fff; box-shadow:0 20px 38px -22px rgba(168,85,247,.85); }
-  .download:hover { filter:brightness(1.08); }
-  .preview { color:#cbbbd6; }
-  .preview:hover { color:#fff; }
-  .nl-copy > small { display:block; margin-top:16px; color:#796d83; font-size:10px; }
-  .sheet-preview { position:relative; z-index:1; min-height:260px; perspective:1000px; }
-  .sheet { position:absolute; top:50%; left:50%; width:185px; height:245px; border-radius:4px; background:#f8f6fb; box-shadow:0 35px 65px -28px rgba(0,0,0,.9); }
-  .sheet-back { transform:translate(-41%,-50%) rotate(9deg); opacity:.4; }
-  .sheet-front { display:flex; flex-direction:column; padding:24px; transform:translate(-57%,-50%) rotate(-5deg); color:#21152b; }
-  .sheet-brand { color:#7c3aed; font-size:8px; font-weight:900; letter-spacing:.12em; }
-  .sheet-front strong { margin:22px 0 19px; font-size:18px; line-height:1.05; letter-spacing:-.04em; }
-  .sheet-front i { display:block; height:1px; margin:7px 0; background:#d9d1df; }
-  .sheet-front i:nth-of-type(2){width:78%}.sheet-front i:nth-of-type(3){width:91%}.sheet-front i:nth-of-type(4){width:63%}
-  .sheet-front small { margin-top:auto; color:#7c3aed; font-size:8px; font-weight:800; text-transform:uppercase; }
-  @media(max-width:760px){
-    .newsletter { grid-template-columns:1fr; gap:28px; margin-top:86px; padding:36px 25px 28px; }
-    .nl-actions { display:grid; }
-    .nl-actions a { width:100%; }
-    .sheet-preview { min-height:240px; }
-  }
+.newsletter{margin:46px 0 24px;border:1px solid var(--term-border);border-radius:0;background:var(--term-bg);font-family:var(--font-mono)}.newsletter.inline{margin:38px 0 8px}.nl-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--text);font-size:12.5px}.dollar,.ok{color:var(--phosphor)}.status{margin-left:auto;color:var(--phosphor);font-size:11.5px}.nl-body{display:grid;grid-template-columns:1.15fr .65fr;align-items:center}.nl-copy{padding:28px 30px}.comment{margin:0;color:var(--purple-light);font-size:12px}.nl-copy h2{margin:14px 0 13px;max-width:760px;font-family:var(--font-mono);font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.15;letter-spacing:-.025em}.nl-copy>p:not(.comment){max-width:690px;margin:0;color:var(--muted);font-size:13.5px;line-height:1.6}.nl-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.nl-actions a{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--term-border-strong);font-size:12.5px}.download{border-color:var(--phosphor)!important;background:rgba(163,230,53,.07);color:var(--phosphor)}.preview{color:var(--purple-light)}.nl-copy>small{display:block;margin-top:15px;color:var(--quiet);font-size:10.5px}.sheet{min-height:290px;display:grid;place-items:center;margin:0;padding:24px;border-left:1px solid var(--term-border);color:var(--phosphor);background:#050508;font-family:var(--font-mono);font-size:clamp(10px,1.05vw,12.5px);line-height:1.42;overflow-x:auto}@media(max-width:760px){.nl-body{grid-template-columns:1fr}.nl-copy{padding:24px 20px}.nl-actions{display:grid}.nl-actions a{justify-content:center}.sheet{min-height:250px;border-top:1px solid var(--term-border);border-left:0}.status{display:none}}
 </style>

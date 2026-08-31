@@ -1,13 +1,15 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 ---
-<ContentLayout title="INIU 240W USB-C Cable Review: The $10 Cable That Actually Charges Fast | StackGeist" description="Full compatibility check for the INIU 240W USB-C to USB-C cable. What 240W really means, which devices see the full wattage, and when a cheaper cable is enough." active="gear">
+<ContentLayout title="INIU 240W USB-C Cable buying guide | StackGeist" description="Fit, compatibility checks, and tradeoffs for the INIU 240W USB-C to USB-C charging cable." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / INIU 240W USB-C Cable</p>
   <p class="page-kicker">Best under $25 · Charging</p>
   <h1 class="page-title">INIU USB-C to USB-C Cable (240W, 6.6ft)</h1>
-  <p class="page-lead">The $10 cable that delivers what most $30 cables only advertise: real USB-PD 3.1 240W throughput, stable data at USB 2.0 speeds, and none of the "why is my laptop charging so slow" that comes from lying cables.</p>
+  <p class="page-lead">A long USB-C charging cable sold with a 240W rating. Confirm your charger, device input, and any data or display requirements before treating the wattage on the listing as the whole compatibility check.</p>
 
-  <img class="hero" src="https://m.media-amazon.com/images/I/71PdX-CBGuL._AC_SL1500_.jpg" alt="INIU 240W USB-C to USB-C cable" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;max-height:420px;object-fit:contain;background:#fff;border:1px solid var(--border);border-radius:12px;margin:24px 0" />
+  <img class="hero" src="https://m.media-amazon.com/images/I/71PdX-CBGuL._AC_SL1500_.jpg" alt="INIU 240W USB-C to USB-C cable" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;max-height:420px;object-fit:contain;background:#fff;border:1px solid var(--term-border);margin:24px 0;filter:saturate(.8)" />
+  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Amazon product identity — ASIN B0C2V1512F', href: 'https://www.amazon.com/dp/B0C2V1512F' }]} />
 
   <section class="content-section">
     <p class="page-kicker">Quick verdict</p>
@@ -20,7 +22,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <h2 class="section-heading">Cheap cables silently throttle charging.</h2>
     <p>USB-C cables under $10 without a proper e-marker chip cap at 60W by spec — the charger cannot go higher because it has no way to confirm the cable can handle it safely. This is why a modern 100W laptop plugged into a 100W charger with a cheap cable charges as slowly as if it were a 5W phone charger.</p>
     <p>The e-marker is a tiny chip inside the connector that identifies the cable's rating to the charger. Real 240W cables have one. Fake 240W cables (yes, they exist) either lie in their e-marker or omit it entirely and just print "240W" on the plug. Testing tools like a USB PD tester will show you which one you actually bought within seconds of plugging it in.</p>
-    <p>The INIU cable ships with a real e-marker rated for the full 240W range. Third-party PD-tester teardowns and hobbyist teardowns on YouTube back this up. It's one of a small set of sub-$15 cables that pass an actual PD compliance check.</p>
+    <p>The retailer listing identifies this as a 240W cable. StackGeist has not published an instrumented USB-PD compliance test for this specific sample, so verify the current listing and use a USB-PD tester when exact negotiated power matters.</p>
   </section>
 
   <section class="content-section">
@@ -54,7 +56,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
   <section class="content-section">
     <p class="page-kicker">Real-world use cases</p>
     <h2 class="section-heading">Where the extra headroom matters.</h2>
-    <p><strong>MacBook Pro 16" M3/M4 daily charging.</strong> With the stock 140W USB-C charger, the M-series 16" chargers pull up to 140W in fast-charge mode for the first 30 minutes. A 60W-limited cable drags this to 90 minutes for the same charge. The 240W cable pulls the full available power for the full charge window.</p>
+    <p><strong>Higher-power laptop charging.</strong> A cable rating does not override the charger or device limit. Check the laptop's documented USB-C input and the charger's per-port output; the lowest supported link determines the negotiated ceiling.</p>
     <p><strong>Steam Deck OLED and Nintendo Switch dock.</strong> Neither pulls near 240W (Steam Deck ~45W, Switch dock ~40W), but the cable is fine there and future-proofs a spare cable when the next-gen console pushes higher wattages.</p>
     <p><strong>Framework Laptop 16 / gaming laptops with USB-C charging.</strong> These pull 100-180W over USB-C and are the exact devices that suffer most from wrong cables. The 240W ceiling gives real headroom for future higher-wattage laptops.</p>
   </section>
@@ -96,6 +98,6 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     </div>
   </section>
 
-  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B0C2V1512F?tag=deskrespawn-20" style="display:inline-block;padding:14px 22px;background:var(--purple-light,#9b5cff);color:#fff;font-weight:700;border-radius:10px;text-decoration:none">Check price on Amazon</a></p>
+  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B0C2V1512F?tag=deskrespawn-20" style="display:inline-block;padding:10px 14px;border:1px solid var(--phosphor);background:rgba(163,230,53,.07);color:var(--phosphor);font:600 12px var(--font-mono);text-decoration:none">Check price on Amazon</a></p>
   <div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
 </ContentLayout>

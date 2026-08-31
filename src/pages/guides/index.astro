@@ -1,0 +1,35 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+const guides=[
+ {slug:'desk-layout-basics',kicker:'Setup basics',title:'Desk layout basics',desc:'Fix the primary zone before deciding where accessories, lighting, and audio should live.'},
+ {slug:'cable-management',kicker:'Cable path',title:'Cable management that stays manageable',desc:'Route power, signal, and removable cables differently so future changes do not wreck the whole desk.'},
+ {slug:'cheap-desk-upgrades',kicker:'Order of operations',title:'Cheap desk upgrades first',desc:'Fix friction, lighting, cable paths, and reach zones before replacing working hardware.'},
+ {slug:'usb-c-dock-compatibility',kicker:'Connectivity',title:'USB-C dock compatibility',desc:'Trace host capability, display paths, charging, bandwidth, software, and cables before counting ports.'},
+ {slug:'keyboard-mouse-fit',kicker:'Input fit',title:'Keyboard and mouse fit',desc:'Choose keyboard width and pointer shape as one reach system, with OSHA-backed placement guidance.'},
+ {slug:'better-video-calls',kicker:'Calls',title:'Better video calls',desc:'Fix camera angle, front lighting, microphone distance, and background before buying resolution.'},
+];
+---
+<ContentLayout title="Practical desk setup guides | StackGeist" description="Practical desk and gaming setup guides: layout, cable management, cheap upgrades, dock compatibility, input fit, and better video calls." active="guides">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Guides</p>
+  <p class="page-kicker">guides /</p>
+  <h1 class="page-title">Practical guides that help you decide, not shop.</h1>
+  <p class="page-lead">Each guide covers one desk decision end to end. Read the two or three that match your bottleneck and skip the rest.</p>
+
+  <section class="content-section cards">
+    {guides.map((g)=>(
+      <a class="card" href={`/guides/${g.slug}`}>
+        <p class="page-kicker">{g.kicker}</p>
+        <h2>{g.title}</h2>
+        <p>{g.desc}</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Next</p>
+    <div class="cards">
+      <a class="card" href="/setups"><h3>Browse setups</h3><p>Match a full desk to your room and budget instead of a single decision.</p></a>
+      <a class="card" href="/gear"><h3>Browse verified gear</h3><p>Jump straight to fit-first product pages when you already know what to buy.</p></a>
+    </div>
+  </section>
+</ContentLayout>

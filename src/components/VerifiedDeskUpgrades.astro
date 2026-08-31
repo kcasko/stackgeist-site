@@ -31,3 +31,11 @@ const { compact = false } = Astro.props;
   .compact .upgrade-row { padding:16px 18px; }
   @media(max-width:760px){ .upgrade-row { grid-template-columns:1fr; } .upgrade-row em { justify-self:start; } }
 </style>
+<style>
+  .verified-upgrades { gap:0; border:1px solid var(--term-border); }
+  .verified-upgrades::before { content:'$ upgrades --verified'; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .upgrade-row { border:0; border-top:1px solid var(--term-border); border-radius:0; background:var(--term-bg); }
+  .upgrade-row:first-of-type { border-top:0; }
+  .upgrade-row:hover { border-color:var(--term-border); background:rgba(163,230,53,.035); }
+  .upgrade-row em { color:var(--phosphor); }
+</style>

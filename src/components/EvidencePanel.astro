@@ -1,0 +1,43 @@
+---
+interface EvidenceSource {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  status: 'owned-and-used' | 'researched';
+  reviewed: string;
+  sources: EvidenceSource[];
+}
+
+const { status, reviewed, sources } = Astro.props;
+const label = status === 'owned-and-used' ? 'Owned & used' : 'Researched';
+const explanation = status === 'owned-and-used'
+  ? 'The StackGeist operator personally purchased and used this product. That records ownership and practical familiarity; it is not a laboratory test, and technical specifications still come from the sources below.'
+  : 'This recommendation is based on identified source material. StackGeist does not claim personal ownership or hands-on testing for this item.';
+---
+<section class="evidence-panel" data-evidence-status={status} aria-labelledby="evidence-title">
+  <div class="evidence-head">
+    <p class="page-kicker">Evidence record</p>
+    <h2 id="evidence-title">{label}</h2>
+    <span>reviewed {reviewed}</span>
+  </div>
+  <p>{explanation}</p>
+  <div class="evidence-sources">
+    <strong>Sources</strong>
+    <ul>
+      {sources.map((source) => <li><a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}</a></li>)}
+    </ul>
+  </div>
+  <a class="method-link" href="/editorial-methodology">Read the editorial methodology →</a>
+</section>
+<style>
+  .evidence-panel{margin:32px 0;padding:0;border:1px solid var(--term-border);background:var(--term-bg)}
+  .evidence-panel::before{content:'$ evidence --show-provenance';display:block;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--phosphor);font-size:11px}
+  .evidence-head{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:20px 22px 12px}
+  .evidence-head .page-kicker{grid-column:1/-1;margin:0}.evidence-head h2{margin:0;color:var(--text);font-size:20px}.evidence-head span{color:var(--quiet);font:10.5px var(--font-mono)}
+  .evidence-panel>p{margin:0;padding:0 22px 18px;color:var(--muted);font-size:12.5px;line-height:1.65}
+  .evidence-sources{padding:16px 22px;border-top:1px solid var(--term-border)}.evidence-sources strong{color:var(--phosphor);font-size:11px}.evidence-sources ul{margin:9px 0 0;padding-left:18px}.evidence-sources li{margin:5px 0;color:var(--quiet);font-size:11.5px}.evidence-sources a,.method-link{color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}
+  .method-link{display:flex;min-height:42px;align-items:center;padding:0 22px;border-top:1px solid var(--term-border);font-size:11px}
+  @media(max-width:560px){.evidence-head{grid-template-columns:1fr}.evidence-head span{margin-top:4px}}
+</style>

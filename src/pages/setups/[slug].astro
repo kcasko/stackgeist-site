@@ -1,0 +1,56 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
+import { GENERATED_SETUPS, SETUPS } from '../../data/gamingSetupOptions';
+
+export async function getStaticPaths() {
+  return GENERATED_SETUPS.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const setup = SETUPS[slug as string];
+if (!setup) {
+  return Astro.redirect('/setups');
+}
+
+const title = `${setup.headline ?? setup.title} | StackGeist`;
+const description = setup.summary;
+---
+<ContentLayout title={title} description={description} active="setups">
+  <p class="breadcrumbs"><a href="/setups">Setups</a> / <a href="/setups/gaming">Setups index</a> / {setup.headline}</p>
+  <p class="page-kicker">{setup.kicker}</p>
+  <h1 class="page-title">{setup.headline}</h1>
+  <p class="page-lead">{setup.lead}</p>
+
+  {setup.facts && setup.facts.length > 0 && (
+    <section class="content-section split">
+      <div class="copy-panel">
+        <p class="page-kicker">The idea</p>
+        <h2>Design target</h2>
+        <p>{setup.summary}</p>
+      </div>
+      <div class="copy-panel">
+        <p class="page-kicker">Fit at a glance</p>
+        <div class="facts">
+          {setup.facts.map((f) => (
+            <div class="fact"><span>{f.label}</span><strong>{f.value}</strong></div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <SetupCategoryGrid setup={setup} heading={`${setup.headline} · every category, three price tiers.`} intro="Skip any row that already works in your room. The setup is done when the bottleneck moves." />
+
+  <section class="content-section">
+    <div class="note">Price bands are rough, not live quotes. Amazon search links are paid; internal links are our own writeups. Verify the exact model, fit, and current price before checkout.</div>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">More setups</p>
+    <div class="cards">
+      <a class="card" href="/setups/gaming"><h3>All setups</h3><p>Full index with the side-by-side category matrix.</p></a>
+      <a class="card" href="/setups"><h3>Setups home</h3><p>Pick a setup by the room and constraint it fits.</p></a>
+    </div>
+  </section>
+</ContentLayout>

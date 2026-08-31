@@ -64,3 +64,13 @@ const {
     .route-actions .btn { flex: 1 1 180px; }
   }
 </style>
+<style>
+  .verified-routes { padding:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); }
+  .verified-routes::before { content:'$ lighting --routes --verified'; display:block; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .verified-routes > .page-kicker,.verified-routes > h2,.routes-intro { margin-left:24px; margin-right:24px; }
+  .verified-routes > .page-kicker { margin-top:22px; }
+  .route-list { border-color:var(--term-border); }
+  .route-row { padding:20px 24px; border-color:var(--term-border); }
+  .route-label { color:var(--phosphor); }
+  .route-disclosure { margin:14px 24px 20px; }
+</style>

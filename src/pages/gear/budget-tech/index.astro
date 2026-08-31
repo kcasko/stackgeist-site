@@ -6,9 +6,31 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / Budget tech</p>
   <p class="page-kicker">Budget tech</p>
   <h1 class="page-title">Small upgrades that quietly fix annoying problems.</h1>
-  <p class="page-lead">Imported from taurustech.me/affiliate and re-linked with StackGeist's Amazon Associates tag. Entries are short editorial blurbs — treat them as starting points, not verified spec sheets.</p>
+  <p class="page-lead">These thirty products were migrated from taurustech.me after being personally purchased and used by the StackGeist operator. Ownership is not a laboratory test: detailed pages separate that record from sourced specifications, compatibility checks, and reasons to skip.</p>
 
-  <section class="content-section cards">
+  <section class="owned-shortlist" data-owned-shortlist aria-labelledby="owned-shortlist-title">
+    <div class="shortlist-head">
+      <div><p class="page-kicker">Owned &amp; used</p><h2 id="owned-shortlist-title">Start with the five pages that show the most decision context.</h2></div>
+      <a href="/editorial-methodology">How evidence labels work →</a>
+    </div>
+    <div class="shortlist-grid">
+      <article data-owned-pick><span>01 / charging</span><h3><a href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">INIU 240W USB-C cable</a></h3><p>Start here when charging wattage matters more than display or high-speed data.</p><a href="/gear/budget-tech/compare/iniu-cable-vs-generic-usb-c">Compare cable fit →</a></article>
+      <article data-owned-pick><span>02 / ports</span><h3><a href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">Acodot 9-in-1 USB-C hub</a></h3><p>Start here for a lower-cost single-display hub with common desk ports.</p><a href="/gear/budget-tech/compare/acodot-hub-vs-anker-553">Compare with Anker 553 →</a></article>
+      <article data-owned-pick><span>03 / video</span><h3><a href="/gear/budget-tech/logitech-c920x-hd-webcam">Logitech C920x webcam</a></h3><p>Start here when a laptop camera needs a straightforward external replacement.</p><a href="/guides/better-video-calls">Check the full call setup →</a></article>
+      <article data-owned-pick><span>04 / audio</span><h3><a href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones">Sennheiser Momentum 4</a></h3><p>Start here when sound quality and long battery life both matter.</p><a href="/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc">Compare ANC tiers →</a></article>
+      <article data-owned-pick><span>05 / storage</span><h3><a href="/gear/budget-tech/wd-elements-portable-external-hard-drive">WD Elements portable drive</a></h3><p>Start here when capacity and simple backup storage matter more than SSD speed.</p><a href="/gear/budget-tech/compare/wd-elements-vs-samsung-t7">Compare HDD and SSD fit →</a></article>
+    </div>
+  </section>
+
+  <form class="catalog-tools" role="search" data-catalog-tools>
+    <label><span>find</span><input type="search" placeholder="webcam, cable, storage…" autocomplete="off" data-catalog-search /></label>
+    <label><span>tier</span><select data-catalog-filter><option value="all">all sections</option><option value="under-25">under $25</option><option value="under-75">under $75</option><option value="essentials">everyday essentials</option><option value="premium">worth paying more</option></select></label>
+    <label><span>research</span><select data-catalog-status><option value="all">all entries</option><option value="verified">verified detail</option><option value="editorial">editorial starting point</option></select></label>
+    <output aria-live="polite" data-catalog-result>30 products</output>
+  </form>
+  <nav class="catalog-jumps" aria-label="Jump to product section"><span>jump:</span><a href="#under-25">under $25</a><a href="#under-75">under $75</a><a href="#essentials">essentials</a><a href="#premium">pay more</a></nav>
+
+  <section class="content-section cards" id="compare">
     <a class="card" href="/gear/budget-tech/compare">
       <p class="page-kicker">Head to head</p>
       <h2>Compare before you buy</h2>
@@ -16,34 +38,34 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
       <div class="card-meta"><span class="tag active">10 comparisons</span></div>
     </a>
   </section>
-  <section class="content-section">
+  <section class="content-section" id="under-25" data-catalog-section="under-25">
     <p class="page-kicker">Best under $25</p>
     <div class="cards">
-    <a class="card" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
+    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/814lZbU+YYL._SL1500_.jpg" alt="INIU USB-C to USB-C Cable (240W, 6.6ft)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>INIU USB-C to USB-C Cable (240W, 6.6ft)</h2>
       <p>Most USB-C cables are slow or inconsistent.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/140-in-1-precision-screwdriver-repair-kit">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/140-in-1-precision-screwdriver-repair-kit">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/81Iak49KL7L._AC_SL1500_.jpg" alt="140-in-1 Precision Screwdriver Repair Kit" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>140-in-1 Precision Screwdriver Repair Kit</h2>
       <p>Electronics use annoying tiny screws, and the wrong tool will strip them instantly.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61Sk0IYsmWL._AC_SL1500_.jpg" alt="Flat Plug Surge Protector Power Strip (8 Outlets + USB)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Flat Plug Surge Protector Power Strip (8 Outlets + USB)</h2>
       <p>Most power strips are cramped and useless once you plug in anything bulky.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">
+    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71osul51J+L._AC_SL1500_.jpg" alt="Acodot 9-in-1 USB-C Hub" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Acodot 9-in-1 USB-C Hub</h2>
       <p>Modern laptops keep removing ports.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/sabrent-sata-to-usb-adapter-cable">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/sabrent-sata-to-usb-adapter-cable">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71xhus0OFrL._AC_SL1500_.jpg" alt="SABRENT SATA to USB Adapter Cable" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>SABRENT SATA to USB Adapter Cable</h2>
       <p>If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data.</p>
@@ -51,40 +73,40 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
     </a>
     </div>
   </section>
-  <section class="content-section">
+  <section class="content-section" id="under-75" data-catalog-section="under-75">
     <p class="page-kicker">Best under $75</p>
     <div class="cards">
-    <a class="card" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71Ow-Ih7KNL._AC_SL1500_.jpg" alt="SanDisk Ultra 128GB microSD Card (2-Pack)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>SanDisk Ultra 128GB microSD Card (2-Pack)</h2>
       <p>Cheap storage works until it doesn’t.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
+    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61WPFmi-nvL._AC_SL1500_.jpg" alt="500W Multi-Port GaN Charging Station" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>500W Multi-Port GaN Charging Station</h2>
       <p>Charging setups get messy fast when every device needs its own brick.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61wuJwW8D6L._AC_SL1500_.jpg" alt="ALFA AC1900 Long-Range USB Wi-Fi Adapter" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>ALFA AC1900 Long-Range USB Wi-Fi Adapter</h2>
       <p>Built-in Wi-Fi adapters struggle in bad signal areas.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/81Gzo38hxFL._AC_SL1500_.jpg" alt="SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA)</h2>
       <p>Working with internal drives shouldn’t require a pile of adapters and screws.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/80w-soundbar-for-tv-pc-and-gaming">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/80w-soundbar-for-tv-pc-and-gaming">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/615QZ694L3L._AC_SL1500_.jpg" alt="80W Soundbar for TV, PC, and Gaming" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>80W Soundbar for TV, PC, and Gaming</h2>
       <p>Built-in TV speakers are usually the weakest part of a setup.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/logitech-c920x-hd-webcam">
+    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/logitech-c920x-hd-webcam">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71YN85pLGcL._AC_SL1500_.jpg" alt="Logitech C920x HD Webcam" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Logitech C920x HD Webcam</h2>
       <p>Built-in webcams are usually bad.</p>
@@ -92,64 +114,64 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
     </a>
     </div>
   </section>
-  <section class="content-section">
+  <section class="content-section" id="essentials" data-catalog-section="essentials">
     <p class="page-kicker">Everyday essentials</p>
     <div class="cards">
-    <a class="card" href="/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61DaP3ryRKL._AC_SL1500_.jpg" alt="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>SanDisk Ultra Flair 128GB USB 3.0 Flash Drive</h2>
       <p>Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71U00QSHzIL._AC_SL1500_.jpg" alt="15ft Indoor Extension Cord (16/3, Flat Black)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>15ft Indoor Extension Cord (16/3, Flat Black)</h2>
       <p>Sometimes the outlet just isn’t where you need it.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/adjustable-desk-phone-stand">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/adjustable-desk-phone-stand">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61o5ncARZXL._AC_SL1500_.jpg" alt="Adjustable Desk Phone Stand" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Adjustable Desk Phone Stand</h2>
       <p>Propping your phone against random objects gets old fast.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/adjustable-aluminum-tablet-stand">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/adjustable-aluminum-tablet-stand">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61ZTEGt4m0L._AC_SL1500_.jpg" alt="Adjustable Aluminum Tablet Stand" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Adjustable Aluminum Tablet Stand</h2>
       <p>Holding a tablet for long periods gets uncomfortable fast.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/microfiber-cleaning-cloths-18-pack">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/microfiber-cleaning-cloths-18-pack">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71JIS0N8fFL._AC_SL1500_.jpg" alt="Microfiber Cleaning Cloths (18-Pack)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Microfiber Cleaning Cloths (18-Pack)</h2>
       <p>Screens, glasses, and lenses get dirty constantly.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/usb-to-3-5mm-audio-adapter-cable">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/usb-to-3-5mm-audio-adapter-cable">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71183+7j6CL._AC_SL1500_.jpg" alt="USB to 3.5mm Audio Adapter Cable" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>USB to 3.5mm Audio Adapter Cable</h2>
       <p>When a headphone jack stops working or doesn’t exist at all, audio gets annoying fast.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/clipboard-with-storage-compartment">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/clipboard-with-storage-compartment">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61GpI8bconL._AC_SL1500_.jpg" alt="Clipboard with Storage Compartment" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Clipboard with Storage Compartment</h2>
       <p>Loose papers, notes, and small items get lost fast.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/80w-digital-soldering-iron-kit">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/80w-digital-soldering-iron-kit">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71V4Ld8XzCL._AC_SL1500_.jpg" alt="80W Digital Soldering Iron Kit" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>80W Digital Soldering Iron Kit</h2>
       <p>This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/usb-c-to-usb-a-adapter-2-pack">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/usb-c-to-usb-a-adapter-2-pack">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71Rs3utW-4L._AC_SL1500_.jpg" alt="USB-C to USB-A Adapter (2-Pack)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>USB-C to USB-A Adapter (2-Pack)</h2>
       <p>A lot of older accessories still use USB-A, while newer devices are all USB-C.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/clamp-on-led-desk-lamp">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/clamp-on-led-desk-lamp">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71Wt2jbcPHL._AC_SL1500_.jpg" alt="Clamp-On LED Desk Lamp" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Clamp-On LED Desk Lamp</h2>
       <p>Bad lighting makes desk work harder than it needs to be.</p>
@@ -157,57 +179,57 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
     </a>
     </div>
   </section>
-  <section class="content-section">
+  <section class="content-section" id="premium" data-catalog-section="premium">
     <p class="page-kicker">Worth paying more for</p>
     <div class="cards">
-    <a class="card" href="/gear/budget-tech/kroser-laptop-briefcase-up-to-17-3">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/kroser-laptop-briefcase-up-to-17-3">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/912zP+qy8IL._AC_SL1500_.jpg" alt="KROSER Laptop Briefcase (Up to 17.3”)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>KROSER Laptop Briefcase (Up to 17.3”)</h2>
       <p>Carrying a laptop in a flimsy bag is a good way to break expensive gear.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71VXEYmRrZL._AC_SL1500_.jpg" alt="Samsung EVO Select 512GB microSD Card" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Samsung EVO Select 512GB microSD Card</h2>
       <p>Cheap microSD cards are fine until they corrupt or slow everything down.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/levo-g2-deluxe-rolling-laptop-stand">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/levo-g2-deluxe-rolling-laptop-stand">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71fiX8JLkaL._AC_SL1500_.jpg" alt="LEVO G2 Deluxe Rolling Laptop Stand" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>LEVO G2 Deluxe Rolling Laptop Stand</h2>
       <p>Working from a couch or bed usually means awkward angles and bad posture.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/81j9KVsffLL._AC_SL1500_.jpg" alt="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)</h2>
       <p>This isn’t a bare-bones Raspberry Pi setup.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones">
+    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/716++4xC2wL._AC_SL1500_.jpg" alt="Sennheiser Momentum 4 Wireless Noise-Cancelling Headphones" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Sennheiser Momentum 4 Wireless Noise-Cancelling Headphones</h2>
       <p>Noise is one of the fastest ways to lose focus.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/big-tall-high-back-office-chair-400lb-capacity">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/big-tall-high-back-office-chair-400lb-capacity">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71uN3EX3ygL._AC_SL1500_.jpg" alt="Big & Tall High-Back Office Chair (400lb Capacity)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Big & Tall High-Back Office Chair (400lb Capacity)</h2>
       <p>Cheap office chairs fail fast and punish your back even faster.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/14-portable-laptop-screen-extender-triple-display">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/14-portable-laptop-screen-extender-triple-display">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71ELB0RRnZL._AC_SL1500_.jpg" alt="14” Portable Laptop Screen Extender (Triple Display)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>14” Portable Laptop Screen Extender (Triple Display)</h2>
       <p>One laptop screen is a bottleneck.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/texas-instruments-ti-84-plus-ce-graphing-calculator">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/texas-instruments-ti-84-plus-ce-graphing-calculator">
       <h2>Texas Instruments TI-84 Plus CE Graphing Calculator</h2>
       <p>This is the calculator most schools and exams are built around.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" href="/gear/budget-tech/wd-elements-portable-external-hard-drive">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/wd-elements-portable-external-hard-drive">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71LBKkZrvgL._AC_SL1500_.jpg" alt="WD Elements Portable External Hard Drive" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>WD Elements Portable External Hard Drive</h2>
       <p>Running out of storage is inevitable if you keep files long enough.</p>
@@ -217,7 +239,30 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
   </section>
   <section class="content-section"><div class="note">Paid Amazon links are disclosed next to the retailer action and in the site footer. As an Amazon Associate I earn from qualifying purchases.</div></section>
   <NewsletterSignup />
+  <p class="catalog-empty" hidden data-catalog-empty>No products match that search. Try a broader problem or show all sections.</p>
   <style>
     .product-thumb { display:block; width:100%; height:200px; margin-bottom:16px; border:1px solid var(--border); border-radius:12px; object-fit:contain; background:#fff; }
+    .owned-shortlist{margin-top:30px;border:1px solid var(--term-border);background:var(--term-bg)}.owned-shortlist::before{content:'$ shortlist --owned --decision-ready';display:block;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--phosphor);font-size:11px}.shortlist-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding:22px}.shortlist-head h2{max-width:720px;margin:5px 0 0;font-size:clamp(20px,3vw,28px)}.shortlist-head>a,.shortlist-grid a{color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}.shortlist-head>a{flex-shrink:0;font-size:11px}.shortlist-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--term-border)}.shortlist-grid article{padding:18px;border-left:1px solid var(--term-border)}.shortlist-grid article:first-child{border-left:0}.shortlist-grid span{color:var(--phosphor);font-size:10px}.shortlist-grid h3{margin:10px 0 8px;font-size:15px;line-height:1.35}.shortlist-grid p{min-height:82px;margin:0 0 14px;color:var(--muted);font-size:11.5px;line-height:1.55}.shortlist-grid article>a{font-size:10.5px}
+    .catalog-tools{display:grid;grid-template-columns:minmax(220px,1fr) 210px 240px auto;gap:10px;align-items:end;margin-top:28px;padding:16px;border:1px solid var(--term-border);background:var(--term-bg)}
+    .catalog-tools label{display:grid;gap:7px;color:var(--phosphor);font-size:10.5px}.catalog-tools label span::before{content:'--';margin-right:5px;color:var(--quiet)}
+    .catalog-tools input,.catalog-tools select{width:100%;min-height:44px;padding:0 11px;border:1px solid var(--term-border-strong);border-radius:0;background:var(--bg);color:var(--text);font:12px var(--font-mono)}
+    .catalog-tools input:focus,.catalog-tools select:focus{outline:2px solid var(--purple-light);outline-offset:2px}.catalog-tools output{min-width:105px;padding-bottom:13px;color:var(--muted);font-size:11px;text-align:right}
+    .catalog-jumps{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 16px;border:1px solid var(--term-border);border-top:0;color:var(--quiet);font-size:11px}.catalog-jumps span{color:var(--phosphor)}.catalog-jumps a{display:inline-flex;min-height:32px;align-items:center;color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}
+    [data-catalog-section][hidden]{display:none}.catalog-empty{margin:28px 0;padding:18px;border:1px solid var(--amber);color:var(--amber);font-size:12px}
+    @media(max-width:1000px){.shortlist-grid{grid-template-columns:repeat(2,1fr)}.shortlist-grid article{border-top:1px solid var(--term-border)}.shortlist-grid article:nth-child(odd){border-left:0}.shortlist-grid article:first-child,.shortlist-grid article:nth-child(2){border-top:0}}
+    @media(max-width:900px){.catalog-tools{grid-template-columns:1fr 1fr}.catalog-tools output{text-align:left;padding:4px 0}}
+    @media(max-width:600px){.shortlist-head{display:grid}.shortlist-head>a{min-height:44px;display:flex;align-items:center}.shortlist-grid{grid-template-columns:1fr}.shortlist-grid article,.shortlist-grid article:nth-child(2){border-top:1px solid var(--term-border);border-left:0}.shortlist-grid article:first-child{border-top:0}.shortlist-grid p{min-height:0}.catalog-tools{grid-template-columns:1fr}.catalog-tools output{min-height:28px}.catalog-jumps a{min-height:44px}.product-thumb{height:220px}}
   </style>
+  <script>
+    const tools=document.querySelector('[data-catalog-tools]');
+    const search=tools?.querySelector('[data-catalog-search]');
+    const filter=tools?.querySelector('[data-catalog-filter]');
+    const status=tools?.querySelector('[data-catalog-status]');
+    const result=tools?.querySelector('[data-catalog-result]');
+    const cards=[...document.querySelectorAll('[data-catalog-card]')];
+    const sections=[...document.querySelectorAll('[data-catalog-section]')];
+    const empty=document.querySelector('[data-catalog-empty]');
+    const update=()=>{const query=search?.value.trim().toLowerCase()||'';const tier=filter?.value||'all';const research=status?.value||'all';let shown=0;cards.forEach(card=>{const section=card.closest('[data-catalog-section]')?.getAttribute('data-catalog-section')||'compare';const matchesText=!query||card.textContent.toLowerCase().includes(query);const matchesTier=tier==='all'||tier===section;const matchesStatus=research==='all'||card.getAttribute('data-status')===research;const visible=matchesText&&matchesTier&&matchesStatus;card.hidden=!visible;if(visible)shown++;});sections.forEach(section=>{section.hidden=!section.querySelector('[data-catalog-card]:not([hidden])');});if(result)result.textContent=`${shown} result${shown===1?'':'s'}`;if(empty)empty.hidden=shown!==0;};
+    search?.addEventListener('input',update);filter?.addEventListener('change',update);status?.addEventListener('change',update);update();
+  </script>
 </ContentLayout>

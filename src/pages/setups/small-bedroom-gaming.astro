@@ -1,13 +1,18 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import SetupHero from '../../components/SetupHero.astro';
 import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
+import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
+import { SETUPS } from '../../data/gamingSetupOptions';
+const setup = SETUPS['small-bedroom-gaming'];
 ---
 <ContentLayout title="Small bedroom gaming setup | StackGeist" description="A practical small-bedroom gaming setup strategy built around floor space, desk depth, storage, lighting, and shared-use constraints." active="setups">
   <article class="article-page">
-    <p class="breadcrumbs"><a href="/setups/gaming">Gaming setups</a> / Small spaces</p>
+    <p class="breadcrumbs"><a href="/setups">Setups</a> / Small spaces</p>
     <p class="page-kicker">Small spaces</p>
     <h1 class="page-title">A small gaming room needs fewer collisions, not smaller versions of everything.</h1>
     <p class="page-lead">Protect walking space, door clearance, chair movement, and desk depth first. Then use vertical space and selective lighting to make the room feel intentional.</p>
+    <SetupHero src="/setups/small-bedroom-gaming.png" alt="Illustration of a small bedroom gaming setup along one wall with a single monitor and tidy cable route" />
     <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 
     <div class="article-summary">
@@ -72,5 +77,7 @@ import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astr
         </div>
       </section>
     </div>
+
+    <SetupCategoryGrid setup={setup} heading="Small-room gear options, by category." intro="These picks assume you're protecting floor and desk depth first. Compact and shallow beats big and impressive here." />
   </article>
 </ContentLayout>
