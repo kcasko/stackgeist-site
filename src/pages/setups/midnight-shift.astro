@@ -3,6 +3,9 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupHero from '../../components/SetupHero.astro';
 import SetupScene from '../../components/SetupScene.astro';
 import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
+import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
+import { SETUPS } from '../../data/gamingSetupOptions';
+const setup = SETUPS['midnight-shift'];
 ---
 <ContentLayout title="Midnight Shift gaming setup | StackGeist" description="A dark gaming and work setup focused on usable desk space, low clutter, and controlled lighting." active="setups">
   <p class="breadcrumbs"><a href="/setups">Setups</a> / Midnight Shift</p>
@@ -40,6 +43,8 @@ import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astr
   <section class="content-section">
     <VerifiedLightingRoutes heading="Two lighting routes are verified for this setup." intro="The ScreenBar Pro is the functional-light route. The Luminoodle is the lower-cost ambient route. They are not substitutes for each other." premiumFit="Best fit when Midnight Shift also needs useful work light without consuming desk surface." budgetFit="Best fit when the goal is inexpensive violet or white backlight behind the display." />
   </section>
+
+  <SetupCategoryGrid setup={setup} heading="Every category, three price tiers." intro="These are the parts a Midnight Shift build has to answer. Pick one option per row — you almost never need every category new." />
 
   <section class="content-section"><div class="note">Affiliate products are only added after the exact model, relevant specifications, and purchase fit are checked. We do not imply that placeholder gear has been tested or personally used.</div></section>
 </ContentLayout>

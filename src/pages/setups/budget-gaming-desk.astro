@@ -3,6 +3,9 @@ import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupHero from '../../components/SetupHero.astro';
 import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 import VerifiedDeskUpgrades from '../../components/VerifiedDeskUpgrades.astro';
+import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
+import { SETUPS } from '../../data/gamingSetupOptions';
+const setup = SETUPS['budget-gaming-desk'];
 ---
 <ContentLayout title="Budget gaming desk setup | StackGeist" description="A budget gaming desk strategy that prioritizes usable layout, existing hardware, cable control, lighting, and upgrades that solve real problems." active="setups">
   <article class="article-page">
@@ -77,5 +80,7 @@ import VerifiedDeskUpgrades from '../../components/VerifiedDeskUpgrades.astro';
         </div>
       </section>
     </div>
+
+    <SetupCategoryGrid setup={setup} heading="Budget-first gear options, by category." intro="Every row lists a cheap fix, a mid pick, and something to save toward. Ignore anything that isn't the bottleneck you identified above." />
   </article>
 </ContentLayout>

@@ -9,6 +9,9 @@ const { title, description, type = 'website', noindex = false } = Astro.props;
 const site = Astro.site ?? new URL('https://stackgeist.dev');
 const canonical = new URL(Astro.url.pathname, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
+// Cloudflare Web Analytics beacon token. Public by design — the beacon script
+// ships this token in every HTML response. Not a secret.
+const cfBeaconToken = (import.meta.env.PUBLIC_CF_BEACON_TOKEN ?? 'ef8afadeb68a45d49c726121c2976329').trim();
 const structured = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -39,3 +42,6 @@ const structured = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
+{cfBeaconToken && (
+  <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
+)}

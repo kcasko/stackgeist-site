@@ -1,0 +1,168 @@
+---
+import type { SetupOptions, Pick, Category } from '../data/gamingSetupOptions';
+
+interface Props {
+  setup: SetupOptions;
+  heading?: string;
+  intro?: string;
+}
+
+const { setup, heading, intro } = Astro.props as Props;
+
+const tierMeta: Record<Pick['tier'], { label: string; hint: string }> = {
+  budget: { label: 'Budget', hint: 'starter / bottleneck-first' },
+  mid: { label: 'Mid', hint: 'well-reviewed sweet spot' },
+  premium: { label: 'Premium', hint: 'end-game / long-term' },
+};
+
+// One-character glyph per category slug. Used as a placeholder when we don't
+// have a real product photo. Chosen to be legible in monospace at 32px.
+const CAT_GLYPH: Record<string, string> = {
+  desk: '▬', chair: '⌂', monitor: '□', 'monitor-mount': '⊥',
+  keyboard: '⌨', mouse: '◉', mousepad: '▭', audio: '♪', mic: '◎',
+  lighting: '☀', platform: '▣', power: '⚡',
+  webcam: '◉', 'key-light': '☀', capture: '▶', 'mic-arm': '⌐',
+  dock: '⊟', tv: '▭', soundbar: '▤', 'controller-charging': '⚡',
+  network: '⇄', nas: '⌸', 'mini-pc': '▢', gpu: '⌗', cooling: '❄',
+  'wheel-base': '◯', pedals: '◨', rig: '▯', 'shifter-handbrake': '⌘',
+  'audio-interface': '⊞', 'podcast-mic': '◎', 'studio-monitors': '◈',
+  'room-treatment': '▨', monitors: '◈', recorder: '●',
+  'handheld-dock': '⊟', handheld: '▭', 'keyboard-tray': '⊐',
+  storage: '⌸', case: '▤', psu: '⚡', ram: '▦',
+};
+const glyphFor = (cat: Category) => CAT_GLYPH[cat.slug] ?? '#';
+
+const isExternal = (href: string) => href.startsWith('http');
+const linkRel = (kind: Pick['kind']) =>
+  kind === 'internal' ? undefined : 'sponsored nofollow noopener noreferrer';
+---
+<section class="cat-grid-section" aria-labelledby={`opts-${setup.slug}`}>
+  <p class="page-kicker">Gear options</p>
+  <h2 id={`opts-${setup.slug}`} class="section-heading">{heading ?? 'Options for every part of this setup.'}</h2>
+  {intro && <p class="cat-grid-intro">{intro}</p>}
+  <p class="cat-grid-lede">{setup.summary}</p>
+
+  <div class="cat-grid-legend" role="list">
+    <span role="listitem"><em class="tier-dot budget"></em>Budget · starter</span>
+    <span role="listitem"><em class="tier-dot mid"></em>Mid · sweet spot</span>
+    <span role="listitem"><em class="tier-dot premium"></em>Premium · long-term</span>
+    <span role="listitem" class="paid-note">Product photos shown are our own writeups. Amazon search links are paid.</span>
+  </div>
+
+  <div class="cat-grid">
+    {setup.categories.map((cat) => (
+      <article class="cat-block" id={`cat-${cat.slug}`}>
+        <header class="cat-head">
+          <span class="cat-glyph" aria-hidden="true">{glyphFor(cat)}</span>
+          <div>
+            <h3 class="cat-name">{cat.name}</h3>
+            <p class="cat-role">{cat.role}</p>
+          </div>
+        </header>
+        <ul class="cat-picks">
+          {cat.picks.map((p) => (
+            <li class={`cat-pick tier-${p.tier}`}>
+              <a
+                class="pick-row"
+                href={p.href}
+                target={isExternal(p.href) ? '_blank' : undefined}
+                rel={linkRel(p.kind)}
+                data-affiliate-link={p.kind === 'search' ? true : undefined}
+                data-affiliate-placement={p.kind === 'search' ? `setup-${setup.slug}-${cat.slug}` : undefined}
+              >
+                <div class={`pick-thumb ${p.image ? 'has-photo' : 'is-glyph'}`}>
+                  {p.image ? (
+                    <img src={p.image} alt={p.label} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                  ) : (
+                    <span aria-hidden="true">{glyphFor(cat)}</span>
+                  )}
+                </div>
+                <div class="pick-body">
+                  <div class="pick-line">
+                    <span class={`tier-pill ${p.tier}`} title={tierMeta[p.tier].hint}>{tierMeta[p.tier].label}</span>
+                    <span class="pick-label">{p.label}</span>
+                    {p.kind === 'internal' && <span class="badge internal">writeup</span>}
+                    {p.kind === 'search' && <span class="badge search">search →</span>}
+                    {p.price && <span class="pick-price">{p.price}</span>}
+                  </div>
+                  <p class="pick-why">{p.why}</p>
+                  {p.note && <p class="pick-note">{p.note}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+
+  <p class="cat-grid-footer">Prices are rough bands, not live quotes. Confirm current price and fit before buying. As an Amazon Associate we earn from qualifying purchases.</p>
+</section>
+
+<style>
+  .cat-grid-section { margin-top: 56px; padding-top: 28px; border-top: 1px dashed var(--term-border-strong); }
+  .cat-grid-section::before { content: '$ list --gear-options'; display: block; margin-bottom: 18px; color: var(--quiet); font-size: 11px; }
+  .cat-grid-intro { margin: 0 0 8px; max-width: 76ch; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
+  .cat-grid-lede { margin: 0 0 22px; max-width: 76ch; color: var(--quiet); font-size: 12.5px; line-height: 1.65; }
+
+  .cat-grid-legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 0 0 20px; padding: 12px 14px; border: 1px solid var(--term-border); background: var(--term-bg); font-size: 11px; color: var(--muted); }
+  .cat-grid-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .cat-grid-legend .paid-note { color: var(--amber); }
+  .tier-dot { display: inline-block; width: 9px; height: 9px; border: 1px solid var(--term-border-strong); }
+  .tier-dot.budget { background: rgba(163,230,53,.15); border-color: var(--phosphor-dim); }
+  .tier-dot.mid { background: rgba(192,132,252,.15); border-color: var(--purple); }
+  .tier-dot.premium { background: rgba(242,184,114,.18); border-color: var(--amber); }
+
+  .cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid var(--term-border); background: var(--term-bg); }
+  .cat-block { padding: 20px 20px 18px; border-top: 1px solid var(--term-border); border-left: 1px solid var(--term-border); }
+  .cat-block:nth-child(-n+2) { border-top: 0; }
+  .cat-block:nth-child(odd) { border-left: 0; }
+
+  .cat-head { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; margin: 0 0 14px; }
+  .cat-glyph { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--purple); background: rgba(192,132,252,.06); color: var(--purple-light); font-size: 22px; line-height: 1; }
+  .cat-name { margin: 0 0 6px; font-family: var(--font-mono); font-size: 15px; letter-spacing: -.01em; color: var(--text); }
+  .cat-name::before { content: '## '; color: var(--purple-light); }
+  .cat-role { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+  .cat-picks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px dashed var(--term-border); }
+  .cat-pick { border-bottom: 1px solid var(--term-border); }
+  .cat-pick:last-child { border-bottom: 0; }
+
+  .pick-row { display: grid; grid-template-columns: 72px 1fr; gap: 14px; padding: 12px 0; align-items: start; color: inherit; text-decoration: none; }
+  .pick-row:hover { background: rgba(163,230,53,.03); }
+
+  .pick-thumb { position: relative; width: 72px; height: 72px; border: 1px solid var(--term-border); background: #050508; overflow: hidden; }
+  .pick-thumb.has-photo img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) contrast(1.04); }
+  .pick-row:hover .pick-thumb.has-photo img { filter: saturate(1) contrast(1.05); }
+  .pick-thumb.is-glyph { display: inline-flex; align-items: center; justify-content: center; color: var(--purple-light); font-size: 30px; line-height: 1; }
+  .pick-thumb.is-glyph::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(192,132,252,.045) 2px 3px); pointer-events: none; }
+
+  .pick-body { min-width: 0; }
+  .pick-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin-bottom: 4px; }
+  .tier-pill { display: inline-flex; align-items: center; padding: 1px 6px; border: 1px solid var(--term-border-strong); font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--quiet); }
+  .tier-pill.budget { color: var(--phosphor); border-color: var(--phosphor-dim); background: rgba(163,230,53,.06); }
+  .tier-pill.mid { color: var(--purple-light); border-color: var(--purple); background: rgba(192,132,252,.06); }
+  .tier-pill.premium { color: var(--amber); border-color: var(--amber); background: rgba(242,184,114,.06); }
+
+  .pick-label { color: var(--text); font-size: 13px; font-weight: 600; text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--term-border-strong); }
+  .pick-row:hover .pick-label { color: var(--phosphor); text-decoration-color: var(--phosphor); }
+  .badge { display: inline-flex; align-items: center; padding: 0 5px; border: 1px solid var(--term-border-strong); font-size: 9.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--quiet); background: transparent; }
+  .badge.internal { color: var(--phosphor); border-color: var(--phosphor-dim); }
+  .badge.search { color: var(--purple-light); border-color: var(--purple); }
+
+  .pick-price { margin-left: auto; color: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+  .pick-why { margin: 4px 0 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+  .pick-note { margin: 4px 0 0; color: var(--amber); font-size: 11.5px; line-height: 1.5; }
+  .pick-note::before { content: 'check '; color: var(--amber); font-weight: 700; }
+
+  .cat-grid-footer { margin: 14px 0 0; color: var(--quiet); font-size: 11px; line-height: 1.55; }
+
+  @media (max-width: 760px) {
+    .cat-grid { grid-template-columns: 1fr; }
+    .cat-block { border-left: 0; }
+    .cat-block:nth-child(n+2) { border-top: 1px solid var(--term-border); }
+    .pick-row { grid-template-columns: 60px 1fr; gap: 10px; }
+    .pick-thumb { width: 60px; height: 60px; }
+    .pick-price { margin-left: 0; }
+  }
+</style>

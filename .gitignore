@@ -34,3 +34,8 @@ pnpm-debug.log*
 
 # local git worktrees
 .worktrees/
+
+# local secrets / caches
+.env.pinterest
+scripts/_image_hunt.json
+scripts/_image_urls.json

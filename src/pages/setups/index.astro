@@ -1,23 +1,45 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
-const setups=[
- {slug:'midnight-shift',title:'Midnight Shift',kicker:'Featured',best:'Gaming · work · console',space:'Small-room friendly',look:'Dark with selective violet accent',desc:'A dark mixed-use setup that protects usable desk space instead of filling every surface with RGB accessories.'},
- {slug:'small-bedroom-gaming',title:'Small bedroom gaming',kicker:'Small spaces',best:'Bedroom · shared use',space:'Under 5 ft desk depth',look:'Low visual clutter',desc:'A layout that solves floor clearance, chair movement, and door swing before choosing the desk that photographs best.'},
- {slug:'budget-gaming-desk',title:'Budget gaming desk',kicker:'Budget',best:'Under $500 total',space:'Existing furniture reused',look:'Honest, unfussy',desc:'A build order that spends on real bottlenecks and keeps working gear instead of replacing every part for the theme.'},
- {slug:'gaming',title:'Gaming setups overview',kicker:'Method',best:'Mixed use',space:'Any room',look:'System, not aesthetic',desc:'How StackGeist organizes setups: constraints first, gear second, decoration last. Start here if you have not picked a build yet.'}
+import { SETUP_LIST } from '../../data/gamingSetupOptions';
+
+// Legacy hero-illustrated setups (have art in /public/setups/<slug>.png)
+const featured = [
+  {slug:'midnight-shift',title:'Midnight Shift',kicker:'Featured',best:'Gaming · work · console',space:'Small-room friendly',look:'Dark with selective violet accent',desc:'A dark mixed-use setup that protects usable desk space instead of filling every surface with RGB accessories.'},
+  {slug:'small-bedroom-gaming',title:'Small bedroom gaming',kicker:'Small spaces',best:'Bedroom · shared use',space:'Under 5 ft desk depth',look:'Low visual clutter',desc:'A layout that solves floor clearance, chair movement, and door swing before choosing the desk that photographs best.'},
+  {slug:'budget-gaming-desk',title:'Budget gaming desk',kicker:'Budget',best:'Under $500 total',space:'Existing furniture reused',look:'Honest, unfussy',desc:'A build order that spends on real bottlenecks and keeps working gear instead of replacing every part for the theme.'},
+  {slug:'gaming',title:'Gaming setups overview',kicker:'Method',best:'Mixed use',space:'Any room',look:'System, not aesthetic',desc:'How StackGeist organizes setups: constraints first, gear second, decoration last. Start here if you have not picked a build yet.'}
 ];
+
+const dedicated = new Set(['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk']);
+const generated = SETUP_LIST.filter((s) => !dedicated.has(s.slug));
+
+// Group generated setups by family for browsing
+const familyMeta: Record<string, { label: string; blurb: string }> = {
+  gaming: { label: 'Gaming', blurb: 'Handhelds, dedicated gaming desks, and console-adjacent builds.' },
+  creator: { label: 'Streaming + creator', blurb: 'Face-cam, key light, capture, and mic-first setups.' },
+  'living-room': { label: 'Living room', blurb: 'Couch, TV, and controller storage centered.' },
+  workstation: { label: 'Work + workstation', blurb: 'Remote work, dual monitor, home lab, AI/ML boxes.' },
+  sim: { label: 'Sim rig', blurb: 'Racing, flight, and truck sim gear that stays rigid.' },
+  audio: { label: 'Audio + podcast', blurb: 'Mic, interface, monitoring, and room treatment.' },
+};
+
+const groups = Object.entries(familyMeta).map(([family, meta]) => ({
+  family,
+  ...meta,
+  items: generated.filter((s) => s.family === family),
+})).filter((g) => g.items.length > 0);
 ---
 <ContentLayout title="Desk setup guides | StackGeist" description="Real desk and gaming setup guides. Each setup page shows a scene, the space and budget it fits, and only the gear it actually earns." active="setups">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / Setups</p>
   <p class="page-kicker">setups /</p>
   <h1 class="page-title">Pick a setup by the room you have, not the aesthetic you like.</h1>
-  <p class="page-lead">Every setup below leads with the space, budget, and workflow it fits, then shows which verified gear it uses. Click one to see the scene, the fit checks, and the exact picks.</p>
+  <p class="page-lead">Every setup below leads with the space, budget, and workflow it fits, then shows which gear it uses across every category. Click one to see the scene, the fit checks, and the picks — Budget, Mid, and Premium.</p>
 
   <section class="content-section">
-    <p class="page-kicker">Choose one</p>
-    <h2 class="section-heading">Four starting points.</h2>
+    <p class="page-kicker">Featured</p>
+    <h2 class="section-heading">Four starting points, with dedicated writeups.</h2>
     <div class="setup-grid">
-      {setups.map((s)=>(
+      {featured.map((s)=>(
         <a class="setup-card" href={`/setups/${s.slug}`}>
           <div class="setup-thumb"><img src={`/setups/${s.slug}.png`} alt={`Illustration of the ${s.title} desk setup`} loading="lazy" decoding="async" width="1024" height="576" /></div>
           <div class="setup-body">
@@ -35,6 +57,27 @@ const setups=[
       ))}
     </div>
   </section>
+
+  {groups.map((g) => (
+    <section class="content-section">
+      <p class="page-kicker">{g.family}</p>
+      <h2 class="section-heading">{g.label}</h2>
+      <p class="group-blurb">{g.blurb}</p>
+      <div class="cards">
+        {g.items.map((s) => (
+          <a class="card" href={`/setups/${s.slug}`}>
+            <p class="page-kicker">{s.kicker}</p>
+            <h3>{s.headline}</h3>
+            <p>{s.summary}</p>
+            <div class="card-meta">
+              {s.facts?.slice(0, 3).map((f) => <span class="tag">{f.value}</span>)}
+              <span class="tag active">{s.categories.length} categories</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
 
   <section class="content-section">
     <p class="page-kicker">Not sure yet?</p>
@@ -62,6 +105,7 @@ const setups=[
     .setup-cta{display:inline-block;margin-top:16px;color:var(--phosphor);font-size:12px}
     .setup-card:hover{background:rgba(163,230,53,.03)}
     .setup-card:hover .setup-thumb img{filter:saturate(1.05)}
+    .group-blurb{margin:0 0 18px;max-width:76ch;color:var(--muted);font-size:13.5px;line-height:1.65}
     @media(max-width:760px){.setup-grid{grid-template-columns:1fr}.setup-card:nth-child(even){border-left:0}.setup-card:nth-child(n+2){border-top:1px solid var(--term-border)}.setup-meta{grid-template-columns:1fr 1fr}}
   </style>
 </ContentLayout>
