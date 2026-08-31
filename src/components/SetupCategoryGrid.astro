@@ -10,9 +10,9 @@ interface Props {
 const { setup, heading, intro } = Astro.props as Props;
 
 const tierMeta: Record<Pick['tier'], { label: string; hint: string }> = {
-  budget: { label: 'Budget', hint: 'starter / bottleneck-first' },
-  mid: { label: 'Mid', hint: 'well-reviewed sweet spot' },
-  premium: { label: 'Premium', hint: 'end-game / long-term' },
+  budget: { label: 'Starter', hint: 'cheapest that works' },
+  mid: { label: 'Sweet spot', hint: 'most-recommended pick' },
+  premium: { label: 'Long-term', hint: 'buy-once splurge' },
 };
 
 // One-character glyph per category slug. Used as a placeholder when we don't
@@ -43,9 +43,9 @@ const linkRel = (kind: Pick['kind']) =>
   <p class="cat-grid-lede">{setup.summary}</p>
 
   <div class="cat-grid-legend" role="list">
-    <span role="listitem"><em class="tier-dot budget"></em>Budget · starter</span>
-    <span role="listitem"><em class="tier-dot mid"></em>Mid · sweet spot</span>
-    <span role="listitem"><em class="tier-dot premium"></em>Premium · long-term</span>
+    <span role="listitem"><em class="tier-dot budget"></em>Starter · cheapest that works</span>
+    <span role="listitem"><em class="tier-dot mid"></em>Sweet spot · most-recommended</span>
+    <span role="listitem"><em class="tier-dot premium"></em>Long-term · buy-once splurge</span>
     <span role="listitem" class="paid-note">Product photos shown are our own writeups. Amazon search links are paid.</span>
   </div>
 

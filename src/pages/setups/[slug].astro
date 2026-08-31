@@ -15,6 +15,7 @@ if (!setup) {
 
 const title = `${setup.headline ?? setup.title} | StackGeist`;
 const description = setup.summary;
+const totalPicks = setup.categories.reduce((n, c) => n + c.picks.length, 0);
 ---
 <ContentLayout title={title} description={description} active="setups">
   <p class="breadcrumbs"><a href="/setups">Setups</a> / <a href="/setups/gaming">Setups index</a> / {setup.headline}</p>
@@ -22,11 +23,16 @@ const description = setup.summary;
   <h1 class="page-title">{setup.headline}</h1>
   <p class="page-lead">{setup.lead}</p>
 
+  <div class="page-actions">
+    <a class="btn primary" href="#gear-picks">Jump to gear picks ({totalPicks}) ↓</a>
+    <a class="btn" href="/setups">Browse all setups</a>
+  </div>
+
   {setup.facts && setup.facts.length > 0 && (
     <section class="content-section split">
       <div class="copy-panel">
-        <p class="page-kicker">The idea</p>
-        <h2>Design target</h2>
+        <p class="page-kicker">Design target</p>
+        <h2>What this setup solves</h2>
         <p>{setup.summary}</p>
       </div>
       <div class="copy-panel">
@@ -40,10 +46,11 @@ const description = setup.summary;
     </section>
   )}
 
-  <SetupCategoryGrid setup={setup} heading={`${setup.headline} · every category, three price tiers.`} intro="Skip any row that already works in your room. The setup is done when the bottleneck moves." />
+  <div id="gear-picks"></div>
+  <SetupCategoryGrid setup={setup} heading={`Gear picks · ${totalPicks} options across ${setup.categories.length} categories.`} intro="Every row shows a Starter, Sweet-spot, and Long-term choice with rough prices. Skip any row that already works in your room." />
 
   <section class="content-section">
-    <div class="note">Price bands are rough, not live quotes. Amazon search links are paid; internal links are our own writeups. Verify the exact model, fit, and current price before checkout.</div>
+    <div class="note">Price bands are rough, not live quotes. Amazon search links are paid affiliate links; internal links are our own writeups. Verify the exact model, fit, and current price before checkout.</div>
   </section>
 
   <section class="content-section">
