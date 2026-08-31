@@ -42,6 +42,12 @@ const structured = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
-{cfBeaconToken && (
+{/*
+  Cloudflare Web Analytics beacon is auto-injected by Cloudflare Pages for
+  this project (Settings → Web Analytics). No manual snippet needed. If you
+  ever move off Cloudflare Pages, re-enable the fallback below and set
+  PUBLIC_CF_BEACON_TOKEN in your build env.
+*/}
+{false && cfBeaconToken && (
   <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
 )}

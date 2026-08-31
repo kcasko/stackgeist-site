@@ -63,7 +63,10 @@ function currentCampaign(): CampaignAttribution {
 function sendEvent(event: AffiliateEvent): void {
   const body = JSON.stringify(event);
   try {
-    if (navigator.sendBeacon('/api/events', new Blob([body], { type: 'application/json' }))) return;
+    if (navigator.sendBeacon('/api/events', new Blob([body], { type: 'application/json' }))) {
+      forwardToCloudflareAnalytics(event);
+      return;
+    }
   } catch { /* use keepalive fallback */ }
   void fetch('/api/events', {
     method: 'POST',
@@ -72,6 +75,33 @@ function sendEvent(event: AffiliateEvent): void {
     keepalive: true,
     credentials: 'same-origin',
   }).catch(() => undefined);
+  forwardToCloudflareAnalytics(event);
+}
+
+// Mirror click events into Cloudflare Web Analytics so you can see them in the
+// CF dashboard next to page-view metrics. The beacon exposes __cfBeacon.push
+// (or window.cfBeacon) once loaded — degrade silently if not present.
+type CFBeaconPush = (evt: { name: string; data?: Record<string, string | number> }) => void;
+declare global {
+  interface Window {
+    __cfBeacon?: { push?: CFBeaconPush };
+    cfBeacon?: { push?: CFBeaconPush };
+  }
+}
+function forwardToCloudflareAnalytics(event: AffiliateEvent): void {
+  if (event.eventType !== 'affiliate_click') return;
+  try {
+    const push = window.__cfBeacon?.push || window.cfBeacon?.push;
+    if (typeof push !== 'function') return;
+    push({
+      name: 'affiliate_click',
+      data: {
+        placement: event.placement.slice(0, 64),
+        product: event.productId || 'search-link',
+        page: event.pagePath.slice(0, 128),
+      },
+    });
+  } catch { /* never let analytics break navigation */ }
 }
 
 function baseEvent(campaign: CampaignAttribution): Omit<AffiliateEvent, 'eventType' | 'placement' | 'productId'> {
