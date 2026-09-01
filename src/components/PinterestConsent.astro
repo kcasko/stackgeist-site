@@ -1,0 +1,126 @@
+<div class="privacy-panel" data-pinterest-consent hidden role="dialog" aria-labelledby="privacy-title" aria-describedby="privacy-description">
+  <div>
+    <p class="privacy-kicker">PRIVACY CHOICE</p>
+    <h2 id="privacy-title">Allow Pinterest measurement?</h2>
+    <p id="privacy-description">If you opt in, Pinterest may use cookies to measure visits and improve campaign reporting. StackGeist does not send enhanced-match identifiers.</p>
+    <a href="/privacy">Read the privacy policy</a>
+  </div>
+  <div class="privacy-actions">
+    <button type="button" data-pinterest-deny>Decline</button>
+    <button type="button" class="primary" data-pinterest-grant>Allow Pinterest</button>
+  </div>
+</div>
+<button class="privacy-settings" type="button" data-pinterest-settings aria-haspopup="dialog">Privacy choices</button>
+
+<script>
+  import { readPinterestConsent, writePinterestConsent } from '../scripts/pinterest-consent';
+
+  const PINTEREST_TAG_ID = '2612792510425';
+  type Tracker = ((...args: unknown[]) => void) & { queue?: unknown[][]; version?: string };
+  const browser = window as typeof window & { pintrk?: Tracker };
+  const panel = document.querySelector<HTMLElement>('[data-pinterest-consent]');
+  const settings = document.querySelector<HTMLButtonElement>('[data-pinterest-settings]');
+  const grant = document.querySelector<HTMLButtonElement>('[data-pinterest-grant]');
+  const deny = document.querySelector<HTMLButtonElement>('[data-pinterest-deny]');
+
+  function loadPinterest(): void {
+    if (browser.pintrk || document.querySelector('script[data-pinterest-tag]')) return;
+
+    const pintrk: Tracker = (...args: unknown[]) => {
+      pintrk.queue = pintrk.queue || [];
+      pintrk.queue.push(args);
+    };
+    pintrk.queue = [];
+    pintrk.version = '3.0';
+    browser.pintrk = pintrk;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://s.pinimg.com/ct/core.js';
+    script.dataset.pinterestTag = PINTEREST_TAG_ID;
+    document.head.append(script);
+
+    pintrk('load', PINTEREST_TAG_ID);
+    pintrk('page');
+  }
+
+  function clearPinterestCookies(): void {
+    for (const name of ['_pin_unauth', '_pinterest_ct_ua', '_pinterest_sess']) {
+      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+    }
+  }
+
+  function showPanel(): void {
+    if (!panel) return;
+    panel.hidden = false;
+    grant?.focus();
+  }
+
+  function hidePanel(): void {
+    if (panel) panel.hidden = true;
+    settings?.focus();
+  }
+
+  const initialChoice = readPinterestConsent(localStorage);
+  if (readPinterestConsent(localStorage) === 'granted') loadPinterest();
+  if (initialChoice === 'denied') clearPinterestCookies();
+  if (initialChoice === null && panel) panel.hidden = false;
+
+  grant?.addEventListener('click', () => {
+    writePinterestConsent(localStorage, 'granted');
+    loadPinterest();
+    hidePanel();
+  });
+
+  deny?.addEventListener('click', () => {
+    const wasGranted = readPinterestConsent(localStorage) === 'granted';
+    writePinterestConsent(localStorage, 'denied');
+    clearPinterestCookies();
+    if (wasGranted) window.location.reload();
+    else hidePanel();
+  });
+
+  settings?.addEventListener('click', showPanel);
+</script>
+
+<style>
+  .privacy-panel {
+    position: fixed;
+    z-index: 1000;
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    width: min(34rem, calc(100vw - 2rem));
+    padding: 1rem;
+    border: 1px solid var(--border, #2f3847);
+    border-left: 4px solid var(--accent, #9bea4d);
+    background: #10151d;
+    color: #e8edf3;
+    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 45%);
+  }
+  .privacy-panel[hidden] { display: none; }
+  .privacy-kicker { margin: 0 0 .35rem; color: #9bea4d; font: 700 .7rem/1.2 ui-monospace, monospace; letter-spacing: .12em; }
+  .privacy-panel h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
+  .privacy-panel p { margin: 0; color: #b7c0cc; line-height: 1.55; }
+  .privacy-panel a { display: inline-block; margin-top: .6rem; color: #b9e884; }
+  .privacy-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+  .privacy-actions button, .privacy-settings {
+    border: 1px solid #596474;
+    background: #171e28;
+    color: #e8edf3;
+    font: 700 .76rem/1 ui-monospace, monospace;
+    letter-spacing: .03em;
+    cursor: pointer;
+  }
+  .privacy-actions button { padding: .7rem .9rem; }
+  .privacy-actions button.primary { border-color: #9bea4d; background: #9bea4d; color: #0b100f; }
+  .privacy-actions button:focus-visible, .privacy-settings:focus-visible { outline: 2px solid #f0c84b; outline-offset: 3px; }
+  .privacy-settings {
+    position: fixed;
+    z-index: 999;
+    left: .75rem;
+    bottom: .75rem;
+    padding: .5rem .65rem;
+    opacity: .78;
+  }
+  .privacy-settings:hover { opacity: 1; }
+</style>

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SeoHead from '../components/SeoHead.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import PinterestConsent from '../components/PinterestConsent.astro';
 interface Props { title?: string; description?: string; }
 const {
   title = 'StackGeist - Better setups, useful gear',
@@ -21,6 +22,7 @@ const {
     <a class="skip-link" href="#main-content">Skip to content</a>
     <slot />
     <div class="site-shell home-shared-footer"><div class="footer-pad"><SiteFooter /></div></div>
+    <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
   </body>
 </html>

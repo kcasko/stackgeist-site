@@ -89,6 +89,44 @@ test('browser attribution is session-only, minimal, and loaded by both layouts',
   }
 });
 
+test('Pinterest consent defaults off and accepts only explicit choices', async () => {
+  const { readPinterestConsent, writePinterestConsent } = await import('../src/scripts/pinterest-consent.ts');
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+  };
+
+  assert.equal(readPinterestConsent(storage), null);
+  values.set('stackgeist:pinterest-consent', 'unexpected');
+  assert.equal(readPinterestConsent(storage), null);
+  writePinterestConsent(storage, 'granted');
+  assert.equal(readPinterestConsent(storage), 'granted');
+  writePinterestConsent(storage, 'denied');
+  assert.equal(readPinterestConsent(storage), 'denied');
+});
+
+test('Pinterest tag is opt-in, privacy-minimal, and available from both layouts', async () => {
+  const component = await read('src/components/PinterestConsent.astro');
+  assert.match(component, /2612792510425/);
+  assert.match(component, /s\.pinimg\.com\/ct\/core\.js/);
+  assert.match(component, /readPinterestConsent\(localStorage\)\s*===\s*'granted'/);
+  assert.match(component, /pintrk\('page'\)/);
+  assert.match(component, /data-pinterest-settings/);
+  assert.doesNotMatch(component, /\bem\b|email|user_email/i);
+
+  for (const layout of ['src/layouts/Layout.astro', 'src/layouts/ContentLayout.astro']) {
+    const source = await read(layout);
+    assert.match(source, /PinterestConsent/);
+    assert.match(source, /<PinterestConsent\s*\/>/);
+  }
+
+  const privacy = await read('src/pages/privacy.astro');
+  for (const token of ['Pinterest', 'opt in', 'localStorage', 'advertising cookies', 'change your choice']) {
+    assert.match(privacy, new RegExp(token, 'i'));
+  }
+});
+
 test('wrangler declares the affiliate D1 binding', async () => {
   const wrangler = await read('wrangler.jsonc');
   assert.match(wrangler, /"binding"\s*:\s*"AFFILIATE_DB"/);
