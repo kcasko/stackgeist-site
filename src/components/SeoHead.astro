@@ -9,6 +9,29 @@ const { title, description, type = 'website', noindex = false } = Astro.props;
 const site = Astro.site ?? new URL('https://stackgeist.dev');
 const canonical = new URL(Astro.url.pathname, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
+const feed = new URL('/rss.xml', site).toString();
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbStructured = pathSegments.length === 0 ? null : {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'StackGeist',
+      item: new URL('/', site).toString(),
+    },
+    ...pathSegments.map((segment, index) => ({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: segment
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '),
+      item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, site).toString(),
+    })),
+  ],
+};
 // Cloudflare Web Analytics beacon token. Public by design — the beacon script
 // ships this token in every HTML response. Not a secret.
 const cfBeaconToken = (import.meta.env.PUBLIC_CF_BEACON_TOKEN ?? 'ef8afadeb68a45d49c726121c2976329').trim();
@@ -26,6 +49,7 @@ const structured = {
 <meta name="p:domain_verify" content="be7ae82233943c7beaf0af4fa9801ed0" />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" type="application/rss+xml" title="StackGeist setup feed" href={feed} />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <meta property="og:site_name" content="StackGeist" />
@@ -42,12 +66,7 @@ const structured = {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
-{/*
-  Cloudflare Web Analytics beacon is auto-injected by Cloudflare Pages for
-  this project (Settings → Web Analytics). No manual snippet needed. If you
-  ever move off Cloudflare Pages, re-enable the fallback below and set
-  PUBLIC_CF_BEACON_TOKEN in your build env.
-*/}
+{breadcrumbStructured && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructured)}></script>}
 {false && cfBeaconToken && (
   <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
 )}
