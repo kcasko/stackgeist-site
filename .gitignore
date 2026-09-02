@@ -1,3 +1,4 @@
+workers/pinterest-scheduler/node_modules/
 # build output
 dist/
 

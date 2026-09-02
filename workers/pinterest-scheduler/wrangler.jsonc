@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stackgeist-pinterest-scheduler",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-16",
+  "observability": { "enabled": true },
+  "triggers": {
+    "crons": ["0 16 * * *"]
+  },
+  "d1_databases": [
+    {
+      "binding": "PIN_QUEUE",
+      "database_name": "stackgeist-affiliate-events",
+      "database_id": "78dee955-24db-4889-8647-c424c96e3775"
+    }
+  ]
+}
