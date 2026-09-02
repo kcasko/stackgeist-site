@@ -67,6 +67,6 @@ const structured = {
 <meta name="twitter:image" content={image} />
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
 {breadcrumbStructured && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructured)}></script>}
-{false && cfBeaconToken && (
+{cfBeaconToken && (
   <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
 )}
