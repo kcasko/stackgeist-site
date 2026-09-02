@@ -28,7 +28,13 @@ type Env = {
   PINTEREST_REFRESH_TOKEN: string;
   PINTEREST_BOARD_MAP: string; // JSON string
   ADMIN_KEY: string;
+  PINTEREST_ENV?: string;      // "sandbox" | "production" (default production)
 };
+
+const API_BASE = (env: Env) =>
+  (env.PINTEREST_ENV || 'production').toLowerCase() === 'sandbox'
+    ? 'https://api-sandbox.pinterest.com/v5'
+    : 'https://api.pinterest.com/v5';
 
 interface PinRow {
   id: number;
@@ -50,7 +56,7 @@ async function pinterestAccessToken(env: Env): Promise<string> {
     refresh_token: env.PINTEREST_REFRESH_TOKEN,
   });
   const auth = btoa(`${env.PINTEREST_CLIENT_ID}:${env.PINTEREST_CLIENT_SECRET}`);
-  const r = await fetch('https://api.pinterest.com/v5/oauth/token', {
+  const r = await fetch(`${API_BASE(env)}/oauth/token`, {
     method: 'POST',
     headers: {
       'Authorization': `Basic ${auth}`,
@@ -82,7 +88,7 @@ async function publishPin(env: Env, pin: PinRow): Promise<string> {
       url: pin.media_url,
     },
   };
-  const r = await fetch('https://api.pinterest.com/v5/pins', {
+  const r = await fetch(`${API_BASE(env)}/pins`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${access}`,

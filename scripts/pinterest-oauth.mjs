@@ -26,8 +26,10 @@ import crypto from 'node:crypto';
 
 const CLIENT_ID = process.env.PINTEREST_CLIENT_ID;
 const CLIENT_SECRET = process.env.PINTEREST_CLIENT_SECRET;
+const ENV = (process.env.PINTEREST_ENV || 'production').toLowerCase();
 const REDIRECT_URI = 'http://localhost:53682/callback';
 const SCOPES = 'pins:read,pins:write,boards:read,user_accounts:read';
+const API_BASE = ENV === 'sandbox' ? 'https://api-sandbox.pinterest.com/v5' : 'https://api.pinterest.com/v5';
 
 if (!CLIENT_ID || !CLIENT_SECRET) {
   console.error('Set PINTEREST_CLIENT_ID and PINTEREST_CLIENT_SECRET env vars first.');
@@ -42,6 +44,7 @@ authUrl.searchParams.set('response_type', 'code');
 authUrl.searchParams.set('scope', SCOPES);
 authUrl.searchParams.set('state', state);
 
+console.log(`\n[env: ${ENV}]  API base: ${API_BASE}\n`);
 console.log('\nOpen this URL in your browser (must be logged into the Pinterest business account):');
 console.log('\n' + authUrl.toString() + '\n');
 
@@ -66,7 +69,7 @@ const server = http.createServer(async (req, res) => {
       code,
       redirect_uri: REDIRECT_URI,
     });
-    const tokenResp = await fetch('https://api.pinterest.com/v5/oauth/token', {
+    const tokenResp = await fetch(`${API_BASE}/oauth/token`, {
       method: 'POST',
       headers: {
         Authorization: `Basic ${auth}`,
@@ -98,7 +101,7 @@ const server = http.createServer(async (req, res) => {
     console.log('==========================================================\n');
 
     console.log('Fetching your boards to build the PINTEREST_BOARD_MAP...\n');
-    const boardsResp = await fetch('https://api.pinterest.com/v5/boards?page_size=100', {
+    const boardsResp = await fetch(`${API_BASE}/boards?page_size=100`, {
       headers: { Authorization: `Bearer ${tokenJson.access_token}` },
     });
     const boardsText = await boardsResp.text();
