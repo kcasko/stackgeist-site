@@ -7,7 +7,7 @@
  *
  * Prereq (once, from you):
  *   1. Go to https://developers.pinterest.com/apps/ → Create app.
- *   2. Under "App settings" set redirect URI to:  http://localhost:8788/callback
+ *   2. Under "App settings" set redirect URI to:  http://localhost:53682/callback
  *   3. Enable scopes: pins:read, pins:write, boards:read
  *   4. Copy the App ID and App secret and export them:
  *        export PINTEREST_CLIENT_ID=1234567
@@ -26,7 +26,7 @@ import crypto from 'node:crypto';
 
 const CLIENT_ID = process.env.PINTEREST_CLIENT_ID;
 const CLIENT_SECRET = process.env.PINTEREST_CLIENT_SECRET;
-const REDIRECT_URI = 'http://localhost:8788/callback';
+const REDIRECT_URI = 'http://localhost:53682/callback';
 const SCOPES = 'pins:read,pins:write,boards:read,user_accounts:read';
 
 if (!CLIENT_ID || !CLIENT_SECRET) {
@@ -47,7 +47,7 @@ console.log('\n' + authUrl.toString() + '\n');
 
 const server = http.createServer(async (req, res) => {
   try {
-    const u = new URL(req.url, `http://localhost:8788`);
+    const u = new URL(req.url, `http://localhost:53682`);
     if (u.pathname !== '/callback') {
       res.writeHead(404).end();
       return;
@@ -124,6 +124,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(8788, () => {
-  console.log('Waiting for Pinterest to redirect to http://localhost:8788/callback ...');
+server.listen(53682, () => {
+  console.log('Waiting for Pinterest to redirect to http://localhost:53682/callback ...');
 });
