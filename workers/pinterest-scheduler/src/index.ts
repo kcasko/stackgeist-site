@@ -176,7 +176,7 @@ async function handleEnqueue(req: Request, env: Env): Promise<Response> {
   const body = await req.json<{ pins: Array<Omit<PinRow, 'id' | 'status' | 'pinterest_pin_id' | 'error' | 'attempts'>> }>();
   if (!Array.isArray(body.pins)) return new Response('body.pins required', { status: 400 });
   const stmt = env.PIN_QUEUE.prepare(
-    `INSERT INTO pinterest_queue
+    `INSERT OR IGNORE INTO pinterest_queue
        (title, description, media_url, link, board_name, scheduled_for, status, attempts)
      VALUES (?, ?, ?, ?, ?, ?, 'queued', 0)`,
   );
@@ -184,7 +184,8 @@ async function handleEnqueue(req: Request, env: Env): Promise<Response> {
     stmt.bind(p.title, p.description, p.media_url, p.link, p.board_name, p.scheduled_for),
   );
   const results = await env.PIN_QUEUE.batch(batch);
-  return Response.json({ inserted: results.length });
+  const inserted = results.reduce((total, result) => total + (result.meta.changes ?? 0), 0);
+  return Response.json({ inserted, skipped_duplicates: body.pins.length - inserted });
 }
 
 export default {
