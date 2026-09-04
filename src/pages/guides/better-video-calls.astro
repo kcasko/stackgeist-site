@@ -1,7 +1,9 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Fix angle, light, and distance before buying resolution.", description: "Most desk-call problems are a chain: a low camera, bright window, distant microphone, distracting background, or overloaded USB path. Upgrade the weakest link first.", url: 'https://stackgeist.dev/guides/better-video-calls', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Better video calls without overspending | StackGeist" description="A practical upgrade order for clearer video calls: camera height, front lighting, microphone distance, background, software, then hardware." active="guides">
+<ContentLayout structuredData={__sd} title="Better video calls without overspending | StackGeist" description="A practical upgrade order for clearer video calls: camera height, front lighting, microphone distance, background, software, then hardware." active="guides">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/guides">Guides</a> / Better video calls</p>
     <p class="page-kicker">Calls and streaming</p>

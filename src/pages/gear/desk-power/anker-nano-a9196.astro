@@ -1,9 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Anker Nano Power Strip (10-in-1, 70W, Clamp)", description: "The Anker Nano A9196 makes sense when power access and loose cords are the problem. Its clamp is also the main compatibility test: measure the desktop and edge before treating it as a general-purpose power strip.", url: 'https://stackgeist.dev/gear/desk-power/anker-nano-a9196', image: 'https://stackgeist.dev/gear/anker-nano-a9196.jpg', brand: 'Anker' })];
 ---
-<ContentLayout
-  title="Anker Nano A9196 desk clamp power strip: fit and specs | StackGeist"
+<ContentLayout structuredData={__sd} title="Anker Nano A9196 desk clamp power strip: fit and specs | StackGeist"
   description="Verified Anker Nano A9196 specifications, desk-edge compatibility, charging limits, exact Amazon ASIN, and reasons to skip it."
   active="gear"
 >

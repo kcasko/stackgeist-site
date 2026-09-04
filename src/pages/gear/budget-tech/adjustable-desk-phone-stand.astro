@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Adjustable Desk Phone Stand", description: "Propping your phone against random objects gets old fast.", url: 'https://stackgeist.dev/gear/budget-tech/adjustable-desk-phone-stand', image: 'https://m.media-amazon.com/images/I/61o5ncARZXL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Adjustable Desk Phone Stand | StackGeist" description="Propping your phone against random objects gets old fast." active="gear">
+<ContentLayout structuredData={__sd} title="Adjustable Desk Phone Stand | StackGeist" description="Propping your phone against random objects gets old fast." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Adjustable Desk Phone Stand"

@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Samsung EVO Select 512GB microSD Card", description: "Cheap microSD cards are fine until they corrupt or slow everything down.", url: 'https://stackgeist.dev/gear/budget-tech/samsung-evo-select-512gb-microsd-card', image: 'https://m.media-amazon.com/images/I/71VXEYmRrZL._AC_SL1500_.jpg', brand: 'Samsung' })];
 ---
-<ContentLayout title="Samsung EVO Select 512GB microSD Card | StackGeist" description="Cheap microSD cards are fine until they corrupt or slow everything down." active="gear">
+<ContentLayout structuredData={__sd} title="Samsung EVO Select 512GB microSD Card | StackGeist" description="Cheap microSD cards are fine until they corrupt or slow everything down." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="Samsung EVO Select 512GB microSD Card"

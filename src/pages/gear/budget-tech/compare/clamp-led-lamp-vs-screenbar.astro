@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Clamp-On LED Desk Lamp vs BenQ ScreenBar", description: "Both are task lighting for a desk. The clamp lamp is a versatile flexible-arm light that puts brightness exactly where you need it, at a fraction of the price. The BenQ ScreenBar clips to the top of your monitor, uses zero desk space, and has an asymmetric optical design that avoids screen glare. Pick based on desk footprint and how much you value engineering polish.", url: 'https://stackgeist.dev/gear/budget-tech/compare/clamp-led-lamp-vs-screenbar', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Clamp-On LED Desk Lamp vs BenQ ScreenBar: Which Desk Light Should You Buy? | StackGeist" description="A $25 clamp lamp lights the whole desk. A $130 monitor bar lights the desk without eating space. Here is when each answer is correct." active="gear">
+<ContentLayout structuredData={__sd} title="Clamp-On LED Desk Lamp vs BenQ ScreenBar: Which Desk Light Should You Buy? | StackGeist" description="A $25 clamp lamp lights the whole desk. A $130 monitor bar lights the desk without eating space. Here is when each answer is correct." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / Clamp LED lamp vs BenQ ScreenBar</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">Clamp-On LED Desk Lamp vs BenQ ScreenBar</h1>

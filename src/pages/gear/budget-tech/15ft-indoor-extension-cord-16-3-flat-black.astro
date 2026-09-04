@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "15ft Indoor Extension Cord (16/3, Flat Black)", description: "Sometimes the outlet just isn’t where you need it.", url: 'https://stackgeist.dev/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black', image: 'https://m.media-amazon.com/images/I/71U00QSHzIL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="15ft Indoor Extension Cord (16/3, Flat Black) | StackGeist" description="Sometimes the outlet just isn’t where you need it." active="gear">
+<ContentLayout structuredData={__sd} title="15ft Indoor Extension Cord (16/3, Flat Black) | StackGeist" description="Sometimes the outlet just isn’t where you need it." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="15ft Indoor Extension Cord (16/3, Flat Black)"

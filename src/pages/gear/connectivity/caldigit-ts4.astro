@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", description: "The TS4 is a dense one-cable desk hub for laptops that can use its Thunderbolt bandwidth, display paths, Ethernet, card readers, audio, and charging. Check the host before counting ports.", url: 'https://stackgeist.dev/gear/connectivity/caldigit-ts4', image: 'https://m.media-amazon.com/images/I/61RBOqHLI0L._AC_SY355_.jpg', brand: 'CalDigit' })];
 ---
-<ContentLayout title="CalDigit TS4 dock compatibility guide | StackGeist" description="A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing." active="gear">
+<ContentLayout structuredData={__sd} title="CalDigit TS4 dock compatibility guide | StackGeist" description="A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing." active="gear">
   <ProductDetailSimple
     eyebrow="Connectivity / dock"
     heading="An excellent dock cannot add display support your laptop never had."

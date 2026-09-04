@@ -1,7 +1,9 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Fit the reach zone before comparing switches and sensors.", description: "Keyboard width changes mouse position. Mouse shape changes wrist and grip. Treat them as one desk system instead of two isolated product categories.", url: 'https://stackgeist.dev/guides/keyboard-mouse-fit', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Keyboard and mouse fit guide | StackGeist" description="A practical method for choosing keyboard width, mouse shape, handedness, placement, and software features around your body and desk." active="guides">
+<ContentLayout structuredData={__sd} title="Keyboard and mouse fit guide | StackGeist" description="A practical method for choosing keyboard width, mouse shape, handedness, placement, and software features around your body and desk." active="guides">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/guides">Guides</a> / Keyboard and mouse fit</p>
     <p class="page-kicker">Input fit</p>

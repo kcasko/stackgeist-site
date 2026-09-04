@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Amazon Basics Dual Gas-Spring Monitor Arm", description: "This dual gas-spring arm is a practical route for two smaller displays, but screen size alone does not prove compatibility. Weight, VESA pattern, and desk construction matter first.", url: 'https://stackgeist.dev/gear/monitor-support/amazon-basics-dual-monitor-arm', image: 'https://stackgeist.dev/gear/amazon-basics-dual-monitor-arm.jpg' })];
 ---
-<ContentLayout title="Amazon Basics dual monitor arm fit guide | StackGeist" description="Check monitor weight, VESA pattern, desk fit, and mounting limits before buying the Amazon Basics dual gas-spring monitor arm." active="gear">
+<ContentLayout structuredData={__sd} title="Amazon Basics dual monitor arm fit guide | StackGeist" description="Check monitor weight, VESA pattern, desk fit, and mounting limits before buying the Amazon Basics dual gas-spring monitor arm." active="gear">
   <ProductDetailSimple
     eyebrow="Monitor support"
     heading="Free desk space only after both monitors pass the fit check."

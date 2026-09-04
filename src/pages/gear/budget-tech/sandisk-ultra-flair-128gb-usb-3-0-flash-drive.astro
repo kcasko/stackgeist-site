@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Drive", description: "Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data.", url: 'https://stackgeist.dev/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', image: 'https://m.media-amazon.com/images/I/61DaP3ryRKL._AC_SL1500_.jpg', brand: 'SanDisk' })];
 ---
-<ContentLayout title="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive | StackGeist" description="Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data." active="gear">
+<ContentLayout structuredData={__sd} title="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive | StackGeist" description="Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive"

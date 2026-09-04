@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Flat Plug Surge Protector Power Strip (8 Outlets + USB)", description: "Most power strips are cramped and useless once you plug in anything bulky.", url: 'https://stackgeist.dev/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb', image: 'https://m.media-amazon.com/images/I/61Sk0IYsmWL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Flat Plug Surge Protector Power Strip (8 Outlets + USB) | StackGeist" description="Most power strips are cramped and useless once you plug in anything bulky." active="gear">
+<ContentLayout structuredData={__sd} title="Flat Plug Surge Protector Power Strip (8 Outlets + USB) | StackGeist" description="Most power strips are cramped and useless once you plug in anything bulky." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $25"
     heading="Flat Plug Surge Protector Power Strip (8 Outlets + USB)"

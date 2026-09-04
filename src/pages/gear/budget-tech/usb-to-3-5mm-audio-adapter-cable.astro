@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "USB to 3.5mm Audio Adapter Cable", description: "When a headphone jack stops working or doesn’t exist at all, audio gets annoying fast.", url: 'https://stackgeist.dev/gear/budget-tech/usb-to-3-5mm-audio-adapter-cable', image: 'https://m.media-amazon.com/images/I/71183+7j6CL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="USB to 3.5mm Audio Adapter Cable | StackGeist" description="When a headphone jack stops working or doesn’t exist at all, audio gets annoying fast." active="gear">
+<ContentLayout structuredData={__sd} title="USB to 3.5mm Audio Adapter Cable | StackGeist" description="When a headphone jack stops working or doesn’t exist at all, audio gets annoying fast." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="USB to 3.5mm Audio Adapter Cable"

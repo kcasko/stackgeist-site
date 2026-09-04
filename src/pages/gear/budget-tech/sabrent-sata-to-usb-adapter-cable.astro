@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", description: "If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data.", url: 'https://stackgeist.dev/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', image: 'https://m.media-amazon.com/images/I/71xhus0OFrL._AC_SL1500_.jpg', brand: 'Sabrent' })];
 ---
-<ContentLayout title="SABRENT SATA to USB Adapter Cable | StackGeist" description="If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data." active="gear">
+<ContentLayout structuredData={__sd} title="SABRENT SATA to USB Adapter Cable | StackGeist" description="If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $25"
     heading="SABRENT SATA to USB Adapter Cable"

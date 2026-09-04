@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Clamp-On LED Desk Lamp", description: "Bad lighting makes desk work harder than it needs to be.", url: 'https://stackgeist.dev/gear/budget-tech/clamp-on-led-desk-lamp', image: 'https://m.media-amazon.com/images/I/71Wt2jbcPHL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Clamp-On LED Desk Lamp | StackGeist" description="Bad lighting makes desk work harder than it needs to be." active="gear">
+<ContentLayout structuredData={__sd} title="Clamp-On LED Desk Lamp | StackGeist" description="Bad lighting makes desk work harder than it needs to be." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Clamp-On LED Desk Lamp"

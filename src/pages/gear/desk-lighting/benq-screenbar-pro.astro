@@ -1,8 +1,10 @@
 ﻿---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductRecommendation from '../../../components/ProductRecommendation.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "BenQ ScreenBar Pro", description: "Fit and tradeoffs come before the retailer button.", url: 'https://stackgeist.dev/gear/desk-lighting/benq-screenbar-pro', image: 'https://stackgeist.dev/gear/benq-screenbar-pro.jpg' })];
 ---
-<ContentLayout title="BenQ ScreenBar Pro recommendation | StackGeist" description="Why the BenQ ScreenBar Pro fits the Midnight Shift setup, what to check before buying, and when to skip it." active="gear">
+<ContentLayout structuredData={__sd} title="BenQ ScreenBar Pro recommendation | StackGeist" description="Why the BenQ ScreenBar Pro fits the Midnight Shift setup, what to check before buying, and when to skip it." active="gear">
   <ProductRecommendation
     kind="premium"
     eyebrow="Desk lighting"

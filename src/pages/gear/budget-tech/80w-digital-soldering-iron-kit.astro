@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", description: "This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs.", url: 'https://stackgeist.dev/gear/budget-tech/80w-digital-soldering-iron-kit', image: 'https://m.media-amazon.com/images/I/71V4Ld8XzCL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="80W Digital Soldering Iron Kit | StackGeist" description="This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs." active="gear">
+<ContentLayout structuredData={__sd} title="80W Digital Soldering Iron Kit | StackGeist" description="This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="80W Digital Soldering Iron Kit"

@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Logitech MX Master 3S — Graphite", description: "The MX Master 3S makes sense for right-handed desk work that benefits from a thumb wheel, fast document scrolling, and per-app shortcuts. It is not a universal comfort upgrade.", url: 'https://stackgeist.dev/gear/input/logitech-mx-master-3s', image: 'https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/mice/mx-master-3s/2025-update/mx-master-3s-bluetooth-edition-top-view-black-new-1.png', brand: 'Logitech' })];
 ---
-<ContentLayout title="Logitech MX Master 3S fit guide | StackGeist" description="A fit-first Logitech MX Master 3S guide covering hand fit, multi-device workflow, tradeoffs, and the exact Amazon listing." active="gear">
+<ContentLayout structuredData={__sd} title="Logitech MX Master 3S fit guide | StackGeist" description="A fit-first Logitech MX Master 3S guide covering hand fit, multi-device workflow, tradeoffs, and the exact Amazon listing." active="gear">
   <ProductDetailSimple
     eyebrow="Input / mouse"
     heading="Buy the workflow controls, not the 8,000-DPI headline."

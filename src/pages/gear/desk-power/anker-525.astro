@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Anker 525 Charging Station", description: "The Anker 525 is useful when charging bricks and temporary cables are creating friction, not simply because it has more ports.", url: 'https://stackgeist.dev/gear/desk-power/anker-525', image: 'https://stackgeist.dev/gear/anker-525.jpg', brand: 'Anker' })];
 ---
-<ContentLayout title="Anker 525 Charging Station recommendation | StackGeist" description="Who the Anker 525 Charging Station fits, what to check before buying, and the exact Amazon affiliate link." active="gear">
+<ContentLayout structuredData={__sd} title="Anker 525 Charging Station recommendation | StackGeist" description="Who the Anker 525 Charging Station fits, what to check before buying, and the exact Amazon affiliate link." active="gear">
   <ProductDetailSimple
     eyebrow="Desk power"
     heading="Consolidate charging only when the desk actually needs it."

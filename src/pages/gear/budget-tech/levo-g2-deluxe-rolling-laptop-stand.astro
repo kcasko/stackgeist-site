@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "LEVO G2 Deluxe Rolling Laptop Stand", description: "Working from a couch or bed usually means awkward angles and bad posture.", url: 'https://stackgeist.dev/gear/budget-tech/levo-g2-deluxe-rolling-laptop-stand', image: 'https://m.media-amazon.com/images/I/71fiX8JLkaL._AC_SL1500_.jpg', brand: 'Levo' })];
 ---
-<ContentLayout title="LEVO G2 Deluxe Rolling Laptop Stand | StackGeist" description="Working from a couch or bed usually means awkward angles and bad posture." active="gear">
+<ContentLayout structuredData={__sd} title="LEVO G2 Deluxe Rolling Laptop Stand | StackGeist" description="Working from a couch or bed usually means awkward angles and bad posture." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="LEVO G2 Deluxe Rolling Laptop Stand"

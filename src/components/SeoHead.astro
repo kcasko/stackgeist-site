@@ -4,8 +4,13 @@ interface Props {
   description: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  extraStructuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description, type = 'website', noindex = false } = Astro.props;
+const { title, description, type = 'website', noindex = false, extraStructuredData } = Astro.props;
+const extraSchemas: Record<string, unknown>[] = extraStructuredData
+  ? (Array.isArray(extraStructuredData) ? extraStructuredData : [extraStructuredData])
+  : [];
+const googleVerify = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '').trim();
 const site = Astro.site ?? new URL('https://stackgeist.dev');
 const canonical = new URL(Astro.url.pathname, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
@@ -48,6 +53,7 @@ const structured = {
 <meta name="color-scheme" content="dark" />
 <meta name="p:domain_verify" content="be7ae82233943c7beaf0af4fa9801ed0" />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+{googleVerify && <meta name="google-site-verification" content={googleVerify} />}
 <link rel="canonical" href={canonical} />
 <link rel="alternate" type="application/rss+xml" title="StackGeist setup feed" href={feed} />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,6 +73,7 @@ const structured = {
 <meta name="twitter:image" content={image} />
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
 {breadcrumbStructured && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructured)}></script>}
+{extraSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)}></script>)}
 {cfBeaconToken && (
   <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
 )}

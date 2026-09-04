@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "14” Portable Laptop Screen Extender (Triple Display)", description: "One laptop screen is a bottleneck.", url: 'https://stackgeist.dev/gear/budget-tech/14-portable-laptop-screen-extender-triple-display', image: 'https://m.media-amazon.com/images/I/71ELB0RRnZL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="14” Portable Laptop Screen Extender (Triple Display) | StackGeist" description="One laptop screen is a bottleneck." active="gear">
+<ContentLayout structuredData={__sd} title="14” Portable Laptop Screen Extender (Triple Display) | StackGeist" description="One laptop screen is a bottleneck." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="14” Portable Laptop Screen Extender (Triple Display)"

@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Anker 553 USB-C Hub (8-in-1)", description: "The Anker 553 can consolidate display, network, card, and USB connections for a laptop desk, but the host port and operating system determine what actually works.", url: 'https://stackgeist.dev/gear/connectivity/anker-553-usb-c-hub', image: 'https://stackgeist.dev/gear/anker-553-usb-c-hub.jpg', brand: 'Anker' })];
 ---
-<ContentLayout title="Anker 553 8-in-1 USB-C hub compatibility guide | StackGeist" description="Check display, charging, port, and operating-system compatibility before buying the Anker 553 8-in-1 USB-C hub." active="gear">
+<ContentLayout structuredData={__sd} title="Anker 553 8-in-1 USB-C hub compatibility guide | StackGeist" description="Check display, charging, port, and operating-system compatibility before buying the Anker 553 8-in-1 USB-C hub." active="gear">
   <ProductDetailSimple
     eyebrow="Laptop connectivity"
     heading="Add ports only after checking what the laptop USB-C port can do."

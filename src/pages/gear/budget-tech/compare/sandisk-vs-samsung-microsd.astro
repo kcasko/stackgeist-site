@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "SanDisk Ultra 128GB vs Samsung EVO Select 512GB", description: "Both are the boring reliable microSD cards that show up in every recommendation thread. The SanDisk Ultra 2-pack wins on capacity flexibility and price-per-card. The Samsung EVO Select 512GB wins on raw capacity and slightly better sustained write. Pick based on how much storage you actually need and how many devices you're feeding.", url: 'https://stackgeist.dev/gear/budget-tech/compare/sandisk-vs-samsung-microsd', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="SanDisk Ultra 128GB vs Samsung EVO Select 512GB: Which microSD Card Should You Buy? | StackGeist" description="Two of the most-recommended microSD cards on the market. Different price tiers, different sweet spots. Here is when each one is the right pick." active="gear">
+<ContentLayout structuredData={__sd} title="SanDisk Ultra 128GB vs Samsung EVO Select 512GB: Which microSD Card Should You Buy? | StackGeist" description="Two of the most-recommended microSD cards on the market. Different price tiers, different sweet spots. Here is when each one is the right pick." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / SanDisk vs Samsung microSD</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">SanDisk Ultra 128GB vs Samsung EVO Select 512GB</h1>

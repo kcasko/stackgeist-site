@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "140-in-1 Precision Screwdriver Repair Kit", description: "Electronics use annoying tiny screws, and the wrong tool will strip them instantly.", url: 'https://stackgeist.dev/gear/budget-tech/140-in-1-precision-screwdriver-repair-kit', image: 'https://m.media-amazon.com/images/I/81Iak49KL7L._AC_SL1500_.jpg', brand: 'WD' })];
 ---
-<ContentLayout title="140-in-1 Precision Screwdriver Repair Kit | StackGeist" description="Electronics use annoying tiny screws, and the wrong tool will strip them instantly." active="gear">
+<ContentLayout structuredData={__sd} title="140-in-1 Precision Screwdriver Repair Kit | StackGeist" description="Electronics use annoying tiny screws, and the wrong tool will strip them instantly." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $25"
     heading="140-in-1 Precision Screwdriver Repair Kit"

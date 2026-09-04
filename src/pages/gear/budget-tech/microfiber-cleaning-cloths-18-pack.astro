@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Microfiber Cleaning Cloths (18-Pack)", description: "Screens, glasses, and lenses get dirty constantly.", url: 'https://stackgeist.dev/gear/budget-tech/microfiber-cleaning-cloths-18-pack', image: 'https://m.media-amazon.com/images/I/71JIS0N8fFL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Microfiber Cleaning Cloths (18-Pack) | StackGeist" description="Screens, glasses, and lenses get dirty constantly." active="gear">
+<ContentLayout structuredData={__sd} title="Microfiber Cleaning Cloths (18-Pack) | StackGeist" description="Screens, glasses, and lenses get dirty constantly." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Microfiber Cleaning Cloths (18-Pack)"

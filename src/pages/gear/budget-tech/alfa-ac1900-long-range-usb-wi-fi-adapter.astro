@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "ALFA AC1900 Long-Range USB Wi-Fi Adapter", description: "Built-in Wi-Fi adapters struggle in bad signal areas.", url: 'https://stackgeist.dev/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter', image: 'https://m.media-amazon.com/images/I/61wuJwW8D6L._AC_SL1500_.jpg', brand: 'Alfa' })];
 ---
-<ContentLayout title="ALFA AC1900 Long-Range USB Wi-Fi Adapter | StackGeist" description="Built-in Wi-Fi adapters struggle in bad signal areas." active="gear">
+<ContentLayout structuredData={__sd} title="ALFA AC1900 Long-Range USB Wi-Fi Adapter | StackGeist" description="Built-in Wi-Fi adapters struggle in bad signal areas." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $75"
     heading="ALFA AC1900 Long-Range USB Wi-Fi Adapter"

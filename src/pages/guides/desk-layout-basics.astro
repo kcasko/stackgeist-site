@@ -1,7 +1,9 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Build the desk around what your hands actually need to reach.", description: "A good-looking setup can still be annoying to use. Start with the work area, viewing position, and cable path before deciding where accessories belong.", url: 'https://stackgeist.dev/guides/desk-layout-basics', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Desk layout basics | StackGeist" description="A practical way to lay out a gaming or work desk around usable space, reach, displays, power, and the gear you already own." active="guides">
+<ContentLayout structuredData={__sd} title="Desk layout basics | StackGeist" description="A practical way to lay out a gaming or work desk around usable space, reach, displays, power, and the gear you already own." active="guides">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/setups">Setups</a> / Guides</p>
     <p class="page-kicker">Setup basics</p>

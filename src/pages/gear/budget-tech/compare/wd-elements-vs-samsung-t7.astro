@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "WD Elements Portable HDD vs Samsung T7 SSD", description: "HDDs and SSDs are not interchangeable products. The WD Elements is cold storage: cheap capacity for backups and archives. The Samsung T7 is working storage: fast, portable, good for editing off the drive or running games. Buying the wrong one is the most common external-drive mistake.", url: 'https://stackgeist.dev/gear/budget-tech/compare/wd-elements-vs-samsung-t7', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="WD Elements Portable HDD vs Samsung T7 SSD: Which External Drive Do You Need? | StackGeist" description="A 4TB WD Elements HDD is $80. A 1TB Samsung T7 SSD is $90. Same money, totally different use cases. Here is how to pick." active="gear">
+<ContentLayout structuredData={__sd} title="WD Elements Portable HDD vs Samsung T7 SSD: Which External Drive Do You Need? | StackGeist" description="A 4TB WD Elements HDD is $80. A 1TB Samsung T7 SSD is $90. Same money, totally different use cases. Here is how to pick." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / WD Elements vs Samsung T7</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">WD Elements Portable HDD vs Samsung T7 SSD</h1>

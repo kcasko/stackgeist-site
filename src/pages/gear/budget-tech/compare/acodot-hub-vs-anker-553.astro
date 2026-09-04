@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Acodot 9-in-1 vs Anker 553 8-in-1 USB-C Hub", description: "Both hubs solve the same problem: modern laptops don't have enough ports. The Acodot is cheaper and includes SD + microSD + audio jack. The Anker 553 gives up card readers to add a second HDMI output. Pick based on whether you need two external monitors or just more everyday ports.", url: 'https://stackgeist.dev/gear/budget-tech/compare/acodot-hub-vs-anker-553', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Acodot 9-in-1 USB-C Hub vs Anker 553 8-in-1: Which Laptop Hub Should You Buy? | StackGeist" description="Compare the Acodot 9-in-1 and Anker 553 by display support, port mix, Ethernet, power delivery, and fit." active="gear">
+<ContentLayout structuredData={__sd} title="Acodot 9-in-1 USB-C Hub vs Anker 553 8-in-1: Which Laptop Hub Should You Buy? | StackGeist" description="Compare the Acodot 9-in-1 and Anker 553 by display support, port mix, Ethernet, power delivery, and fit." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / Acodot vs Anker 553</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">Acodot 9-in-1 vs Anker 553 8-in-1 USB-C Hub</h1>

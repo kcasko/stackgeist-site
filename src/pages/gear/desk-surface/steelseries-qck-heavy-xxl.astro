@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "SteelSeries QcK Heavy XXL", description: "The QcK Heavy XXL gives a keyboard and mouse one large stable cloth surface, but its size makes measuring first mandatory.", url: 'https://stackgeist.dev/gear/desk-surface/steelseries-qck-heavy-xxl', image: 'https://stackgeist.dev/gear/steelseries-qck-heavy-xxl.jpg', brand: 'SteelSeries' })];
 ---
-<ContentLayout title="SteelSeries QcK Heavy XXL recommendation | StackGeist" description="Who the SteelSeries QcK Heavy XXL fits, what to measure first, and the exact Amazon affiliate link." active="gear">
+<ContentLayout structuredData={__sd} title="SteelSeries QcK Heavy XXL recommendation | StackGeist" description="Who the SteelSeries QcK Heavy XXL fits, what to measure first, and the exact Amazon affiliate link." active="gear">
   <ProductDetailSimple
     eyebrow="Desk surface"
     heading="A desk mat earns the space only when the surface is the problem."

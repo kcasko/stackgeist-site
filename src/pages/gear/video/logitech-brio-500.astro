@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Logitech Brio 500 — Rose", description: "The Brio 500 is a 1080p meeting webcam with a privacy shutter, light correction, and optional auto-framing. It is a workflow upgrade over basic cameras, not a substitute for good front lighting.", url: 'https://stackgeist.dev/gear/video/logitech-brio-500', image: 'https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/webcams/brio-500/gallery/brio-500-gallery-rose-1.png', brand: 'Logitech' })];
 ---
-<ContentLayout title="Logitech Brio 500 webcam fit guide | StackGeist" description="A fit-first Logitech Brio 500 guide covering 1080p video, lighting, framing software, USB-C, privacy, and the exact rose Amazon listing." active="gear">
+<ContentLayout structuredData={__sd} title="Logitech Brio 500 webcam fit guide | StackGeist" description="A fit-first Logitech Brio 500 guide covering 1080p video, lighting, framing software, USB-C, privacy, and the exact rose Amazon listing." active="gear">
   <ProductDetailSimple
     eyebrow="Video / webcam"
     heading="Choose it for framing and meeting convenience—not a 4K spec race."

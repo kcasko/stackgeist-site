@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)", description: "This isn’t a bare-bones Raspberry Pi setup.", url: 'https://stackgeist.dev/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb', image: 'https://m.media-amazon.com/images/I/81j9KVsffLL._AC_SL1500_.jpg', brand: 'CanaKit' })];
 ---
-<ContentLayout title="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB) | StackGeist" description="This isn’t a bare-bones Raspberry Pi setup." active="gear">
+<ContentLayout structuredData={__sd} title="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB) | StackGeist" description="This isn’t a bare-bones Raspberry Pi setup." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)"

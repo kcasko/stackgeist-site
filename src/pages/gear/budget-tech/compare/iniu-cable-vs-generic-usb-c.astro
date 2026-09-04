@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "INIU 240W USB-C Cable vs Generic USB-C: Which Actually Charges Faster?", description: "Both are cheap, both plug into the same ports, both look identical in product photos. One delivers full-speed USB-PD 3.1 charging. The other quietly throttles your laptop to 60W without telling you. Here is exactly where the $8 difference matters.", url: 'https://stackgeist.dev/gear/budget-tech/compare/iniu-cable-vs-generic-usb-c', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="INIU 240W USB-C Cable vs Generic USB-C: Which Actually Charges Faster? | StackGeist" description="Cheap USB-C cables cap at 60W by spec. The INIU 240W has a real e-marker. Here is what the difference actually means for your charging speed." active="gear">
+<ContentLayout structuredData={__sd} title="INIU 240W USB-C Cable vs Generic USB-C: Which Actually Charges Faster? | StackGeist" description="Cheap USB-C cables cap at 60W by spec. The INIU 240W has a real e-marker. Here is what the difference actually means for your charging speed." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / INIU vs generic USB-C</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">INIU 240W USB-C Cable vs Generic USB-C: Which Actually Charges Faster?</h1>

@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Big & Tall High-Back Office Chair (400lb Capacity)", description: "Cheap office chairs fail fast and punish your back even faster.", url: 'https://stackgeist.dev/gear/budget-tech/big-tall-high-back-office-chair-400lb-capacity', image: 'https://m.media-amazon.com/images/I/71uN3EX3ygL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Big & Tall High-Back Office Chair (400lb Capacity) | StackGeist" description="Cheap office chairs fail fast and punish your back even faster." active="gear">
+<ContentLayout structuredData={__sd} title="Big & Tall High-Back Office Chair (400lb Capacity) | StackGeist" description="Cheap office chairs fail fast and punish your back even faster." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="Big & Tall High-Back Office Chair (400lb Capacity)"

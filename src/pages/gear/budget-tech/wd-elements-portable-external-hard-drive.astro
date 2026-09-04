@@ -2,8 +2,10 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
 import EvidencePanel from '../../../components/EvidencePanel.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "WD Elements Portable External Hard Drive", description: "Running out of storage is inevitable if you keep files long enough.", url: 'https://stackgeist.dev/gear/budget-tech/wd-elements-portable-external-hard-drive', image: 'https://m.media-amazon.com/images/I/71LBKkZrvgL._AC_SL1500_.jpg', brand: 'WD' })];
 ---
-<ContentLayout title="WD Elements Portable External Hard Drive | StackGeist" description="Running out of storage is inevitable if you keep files long enough." active="gear">
+<ContentLayout structuredData={__sd} title="WD Elements Portable External Hard Drive | StackGeist" description="Running out of storage is inevitable if you keep files long enough." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="WD Elements Portable External Hard Drive"

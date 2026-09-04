@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Razer Base Station V2 Chroma", description: "The Razer Base Station V2 Chroma is easier to justify as a front-access USB and audio hub that also stores a headset—not as an expensive hook with lights.", url: 'https://stackgeist.dev/gear/accessories/razer-base-station-v2-chroma', image: 'https://stackgeist.dev/gear/razer-base-station-v2-chroma.jpg', brand: 'Razer' })];
 ---
-<ContentLayout title="Razer Base Station V2 Chroma buying guide | StackGeist" description="Who the Razer Base Station V2 Chroma headset stand fits, its useful ports, tradeoffs, and exact Amazon affiliate link." active="gear">
+<ContentLayout structuredData={__sd} title="Razer Base Station V2 Chroma buying guide | StackGeist" description="Who the Razer Base Station V2 Chroma headset stand fits, its useful ports, tradeoffs, and exact Amazon affiliate link." active="gear">
   <ProductDetailSimple
     eyebrow="Desk accessories"
     heading="Buy the powered headset stand only if you will use its hub."

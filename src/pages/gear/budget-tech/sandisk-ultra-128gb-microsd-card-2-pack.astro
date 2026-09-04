@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "SanDisk Ultra 128GB microSD Card (2-Pack)", description: "Cheap storage works until it doesn’t.", url: 'https://stackgeist.dev/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack', image: 'https://m.media-amazon.com/images/I/71Ow-Ih7KNL._AC_SL1500_.jpg', brand: 'SanDisk' })];
 ---
-<ContentLayout title="SanDisk Ultra 128GB microSD Card (2-Pack) | StackGeist" description="Cheap storage works until it doesn’t." active="gear">
+<ContentLayout structuredData={__sd} title="SanDisk Ultra 128GB microSD Card (2-Pack) | StackGeist" description="Cheap storage works until it doesn’t." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $75"
     heading="SanDisk Ultra 128GB microSD Card (2-Pack)"

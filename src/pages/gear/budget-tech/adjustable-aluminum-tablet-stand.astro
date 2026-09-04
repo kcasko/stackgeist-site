@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Adjustable Aluminum Tablet Stand", description: "Holding a tablet for long periods gets uncomfortable fast.", url: 'https://stackgeist.dev/gear/budget-tech/adjustable-aluminum-tablet-stand', image: 'https://m.media-amazon.com/images/I/61ZTEGt4m0L._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Adjustable Aluminum Tablet Stand | StackGeist" description="Holding a tablet for long periods gets uncomfortable fast." active="gear">
+<ContentLayout structuredData={__sd} title="Adjustable Aluminum Tablet Stand | StackGeist" description="Holding a tablet for long periods gets uncomfortable fast." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Adjustable Aluminum Tablet Stand"

@@ -1,8 +1,10 @@
 ﻿---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductRecommendation from '../../../components/ProductRecommendation.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Power Practical Luminoodle", description: "This pick trades task lighting for low-cost ambient backlight.", url: 'https://stackgeist.dev/gear/desk-lighting/luminoodle' })];
 ---
-<ContentLayout title="Power Practical Luminoodle recommendation | StackGeist" description="Why the Power Practical Luminoodle can be the lower-cost lighting route for Midnight Shift, plus its limitations." active="gear">
+<ContentLayout structuredData={__sd} title="Power Practical Luminoodle recommendation | StackGeist" description="Why the Power Practical Luminoodle can be the lower-cost lighting route for Midnight Shift, plus its limitations." active="gear">
   <ProductRecommendation
     kind="budget"
     eyebrow="Budget lighting"

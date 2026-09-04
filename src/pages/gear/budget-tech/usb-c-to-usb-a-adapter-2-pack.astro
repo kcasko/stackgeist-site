@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "USB-C to USB-A Adapter (2-Pack)", description: "A lot of older accessories still use USB-A, while newer devices are all USB-C.", url: 'https://stackgeist.dev/gear/budget-tech/usb-c-to-usb-a-adapter-2-pack', image: 'https://m.media-amazon.com/images/I/71Rs3utW-4L._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="USB-C to USB-A Adapter (2-Pack) | StackGeist" description="A lot of older accessories still use USB-A, while newer devices are all USB-C." active="gear">
+<ContentLayout structuredData={__sd} title="USB-C to USB-A Adapter (2-Pack) | StackGeist" description="A lot of older accessories still use USB-A, while newer devices are all USB-C." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="USB-C to USB-A Adapter (2-Pack)"

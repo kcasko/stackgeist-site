@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import EvidencePanel from '../../../components/EvidencePanel.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Logitech C920x HD Webcam", description: "A 1080p-at-30-fps external webcam in Logitech's established C920 family. Check USB-A availability, mounting, operating-system support, room lighting, and the capture mode your application actually uses.", url: 'https://stackgeist.dev/gear/budget-tech/logitech-c920x-hd-webcam', image: 'https://m.media-amazon.com/images/I/71YN85pLGcL._AC_SL1500_.jpg', brand: 'Logitech' }), faqSchema({ questions: [{"question":"Will it fit my computer?","answer":"Confirm an available USB-A port or plan for a compatible adapter, then check Logitech's current operating-system support."},{"question":"Can I mount it on a tripod?","answer":"Logitech lists tripod-ready mounting for the C920 family; verify the current package and mount before ordering."},{"question":"Is it a 4K production camera?","answer":"No. Logitech publishes 1080p at 30fps for this tier. Choose a different camera when higher resolution, frame rate, or manual image control is required."},{"question":"Buy this if","answer":"Your laptop webcam is embarrassing on daily calls and you want a boring reliable fix. It's been the default answer for a decade for good reason."},{"question":"Skip this if","answer":"You do serious content work — a mirrorless camera plus capture card is the tier above and worth the difference. Or if you have a modern iPhone you're happy to tie up during calls."}] })];
 ---
-<ContentLayout title="Logitech C920x HD Webcam buying guide | StackGeist" description="Published specifications, fit checks, and tradeoffs for the Logitech C920x HD Webcam." active="gear">
+<ContentLayout structuredData={__sd} title="Logitech C920x HD Webcam buying guide | StackGeist" description="Published specifications, fit checks, and tradeoffs for the Logitech C920x HD Webcam." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / Logitech C920x</p>
   <p class="page-kicker">Best under $75 · Video</p>
   <h1 class="page-title">Logitech C920x HD Webcam</h1>

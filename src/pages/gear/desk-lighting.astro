@@ -1,8 +1,10 @@
 ﻿---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupScene from '../../components/SetupScene.astro';
+import { productSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [productSchema({ name: "Choose between task light and ambient backlight.", description: "These products solve different problems. The premium route adds functional desk light. The budget route adds atmosphere behind the monitor.", url: 'https://stackgeist.dev/gear/desk-lighting' }), faqSchema({ questions: [{"question":"Need to see the desk?","answer":"Start with the ScreenBar Pro. It is the functional-lighting route."},{"question":"Only want glow behind the display?","answer":"Start with the Luminoodle. It is the cheaper ambient-lighting route."}] })];
 ---
-<ContentLayout title="Three verified desk-lighting routes | StackGeist" description="Compare functional monitor task light, simple bias light, and a full smart RGBWWIC strip for a gaming or work desk." active="gear">
+<ContentLayout structuredData={__sd} title="Three verified desk-lighting routes | StackGeist" description="Compare functional monitor task light, simple bias light, and a full smart RGBWWIC strip for a gaming or work desk." active="gear">
   <p class="breadcrumbs"><a href="/setups/midnight-shift">Midnight Shift</a> / Gear used / Desk lighting</p>
   <p class="page-kicker">Desk lighting</p>
   <h1 class="page-title">Choose between task light and ambient backlight.</h1>

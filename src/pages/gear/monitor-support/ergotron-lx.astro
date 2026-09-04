@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Ergotron LX Desk Monitor Arm — Tall Pole, polished", description: "The LX Tall Pole is a durable single-monitor arm for compatible displays and sturdy desks. Its adjustment range is valuable only after the mount, weight, and clamp geometry pass.", url: 'https://stackgeist.dev/gear/monitor-support/ergotron-lx', image: 'https://m.media-amazon.com/images/I/61TtgnEUM0L._AC_SY355_.jpg', brand: 'Ergotron' })];
 ---
-<ContentLayout title="Ergotron LX tall-pole monitor arm fit guide | StackGeist" description="A fit-first Ergotron LX tall-pole monitor arm guide covering monitor weight, VESA, desk clamps, reach, and the exact Amazon listing." active="gear">
+<ContentLayout structuredData={__sd} title="Ergotron LX tall-pole monitor arm fit guide | StackGeist" description="A fit-first Ergotron LX tall-pole monitor arm guide covering monitor weight, VESA, desk clamps, reach, and the exact Amazon listing." active="gear">
   <ProductDetailSimple
     eyebrow="Monitor support"
     heading="Match the arm to the monitor’s weight and the desk—not just screen inches."

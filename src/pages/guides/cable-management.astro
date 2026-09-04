@@ -1,7 +1,9 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [articleSchema({ headline: "Hide less. Route better.", description: "The goal is not to make every cable invisible. The goal is to keep the desk easy to use, clean, change, and troubleshoot.", url: 'https://stackgeist.dev/guides/cable-management', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="Cable management guide | StackGeist" description="A practical cable-management system for gaming and desk setups that remains easy to change, clean, and troubleshoot." active="guides">
+<ContentLayout structuredData={__sd} title="Cable management guide | StackGeist" description="A practical cable-management system for gaming and desk setups that remains easy to change, clean, and troubleshoot." active="guides">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/guides">Guides</a> / Cable management</p>
     <p class="page-kicker">Cable management</p>

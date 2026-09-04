@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Elgato Wave:3 (MK.1)", description: "The original Wave:3 is a capable USB condenser microphone with direct monitoring and mixer software, but placement and room noise matter more than its maximum sample rate.", url: 'https://stackgeist.dev/gear/audio/elgato-wave-3', image: 'https://m.media-amazon.com/images/I/61KjhEX33JL._AC_SL1500_.jpg', brand: 'Elgato' })];
 ---
-<ContentLayout title="Elgato Wave:3 microphone fit guide | StackGeist" description="A fit-first Elgato Wave:3 guide covering room noise, mic distance, software, mounting, tradeoffs, and listing availability." active="gear">
+<ContentLayout structuredData={__sd} title="Elgato Wave:3 microphone fit guide | StackGeist" description="A fit-first Elgato Wave:3 guide covering room noise, mic distance, software, mounting, tradeoffs, and listing availability." active="gear">
   <ProductDetailSimple
     eyebrow="Audio / microphone"
     heading="A better microphone still needs to be close to the person speaking."

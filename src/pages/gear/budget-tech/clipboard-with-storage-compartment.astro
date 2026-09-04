@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "Clipboard with Storage Compartment", description: "Loose papers, notes, and small items get lost fast.", url: 'https://stackgeist.dev/gear/budget-tech/clipboard-with-storage-compartment', image: 'https://m.media-amazon.com/images/I/61GpI8bconL._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="Clipboard with Storage Compartment | StackGeist" description="Loose papers, notes, and small items get lost fast." active="gear">
+<ContentLayout structuredData={__sd} title="Clipboard with Storage Compartment | StackGeist" description="Loose papers, notes, and small items get lost fast." active="gear">
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Clipboard with Storage Compartment"

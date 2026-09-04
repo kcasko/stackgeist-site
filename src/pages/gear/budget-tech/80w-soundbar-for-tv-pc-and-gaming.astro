@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "80W Soundbar for TV, PC, and Gaming", description: "Built-in TV speakers are usually the weakest part of a setup.", url: 'https://stackgeist.dev/gear/budget-tech/80w-soundbar-for-tv-pc-and-gaming', image: 'https://m.media-amazon.com/images/I/615QZ694L3L._AC_SL1500_.jpg' })];
 ---
-<ContentLayout title="80W Soundbar for TV, PC, and Gaming | StackGeist" description="Built-in TV speakers are usually the weakest part of a setup." active="gear">
+<ContentLayout structuredData={__sd} title="80W Soundbar for TV, PC, and Gaming | StackGeist" description="Built-in TV speakers are usually the weakest part of a setup." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $75"
     heading="80W Soundbar for TV, PC, and Gaming"

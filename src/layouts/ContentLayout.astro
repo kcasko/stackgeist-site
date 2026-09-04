@@ -9,8 +9,9 @@ interface Props {
   title: string; description: string;
   active?: 'setups' | 'gear' | 'guides';
   noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
-const { title, description, active, noindex = false } = Astro.props;
+const { title, description, active, noindex = false, structuredData } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,7 +19,7 @@ const { title, description, active, noindex = false } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <SeoHead title={title} description={description} noindex={noindex} />
+    <SeoHead title={title} description={description} noindex={noindex} extraStructuredData={structuredData} />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>

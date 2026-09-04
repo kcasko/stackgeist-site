@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA)", description: "Working with internal drives shouldn’t require a pile of adapters and screws.", url: 'https://stackgeist.dev/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata', image: 'https://m.media-amazon.com/images/I/81Gzo38hxFL._AC_SL1500_.jpg', brand: 'Sabrent' })];
 ---
-<ContentLayout title="SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA) | StackGeist" description="Working with internal drives shouldn’t require a pile of adapters and screws." active="gear">
+<ContentLayout structuredData={__sd} title="SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA) | StackGeist" description="Working with internal drives shouldn’t require a pile of adapters and screws." active="gear">
   <ProductDetailSimple
     eyebrow="Best under $75"
     heading="SABRENT USB-C Lay-Flat Drive Dock (NVMe + SATA)"

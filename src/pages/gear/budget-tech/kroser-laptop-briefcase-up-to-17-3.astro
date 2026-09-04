@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import { productSchema, faqSchema } from '../../../lib/structured-data';
+const __sd = [productSchema({ name: "KROSER Laptop Briefcase (Up to 17.3”)", description: "Carrying a laptop in a flimsy bag is a good way to break expensive gear.", url: 'https://stackgeist.dev/gear/budget-tech/kroser-laptop-briefcase-up-to-17-3', image: 'https://m.media-amazon.com/images/I/912zP+qy8IL._AC_SL1500_.jpg', brand: 'Kroser' })];
 ---
-<ContentLayout title="KROSER Laptop Briefcase (Up to 17.3”) | StackGeist" description="Carrying a laptop in a flimsy bag is a good way to break expensive gear." active="gear">
+<ContentLayout structuredData={__sd} title="KROSER Laptop Briefcase (Up to 17.3”) | StackGeist" description="Carrying a laptop in a flimsy bag is a good way to break expensive gear." active="gear">
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="KROSER Laptop Briefcase (Up to 17.3”)"

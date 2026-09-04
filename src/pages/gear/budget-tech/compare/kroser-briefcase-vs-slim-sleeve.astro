@@ -1,8 +1,10 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
+const __sd = [articleSchema({ headline: "KROSER Laptop Briefcase vs Tomtoc 360 Slim Sleeve", description: "Both protect a laptop. They solve totally different problems. The briefcase is a full carry bag with room for charger, notebook, headphones. The slim sleeve is padding-only and goes inside a backpack you already own. Buy the wrong one and you'll wonder why nobody uses it.", url: 'https://stackgeist.dev/gear/budget-tech/compare/kroser-briefcase-vs-slim-sleeve', dateModified: '2026-09-04' })];
 ---
-<ContentLayout title="KROSER Laptop Briefcase vs Tomtoc 360 Slim Sleeve: Which Laptop Carry Is Right? | StackGeist" description="A briefcase carries your laptop plus everything else. A slim sleeve protects the laptop and fits inside another bag. Here is when each answer is correct." active="gear">
+<ContentLayout structuredData={__sd} title="KROSER Laptop Briefcase vs Tomtoc 360 Slim Sleeve: Which Laptop Carry Is Right? | StackGeist" description="A briefcase carries your laptop plus everything else. A slim sleeve protects the laptop and fits inside another bag. Here is when each answer is correct." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / KROSER briefcase vs tomtoc sleeve</p>
   <p class="page-kicker">Head to head</p>
   <h1 class="page-title">KROSER Laptop Briefcase vs Tomtoc 360 Slim Sleeve</h1>
