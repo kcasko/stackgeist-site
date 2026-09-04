@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [articleSchema({ headline: "Fix angle, light, and distance before buying resolution.", description: "Most desk-call problems are a chain: a low camera, bright window, distant microphone, distracting background, or overloaded USB path. Upgrade the weakest link first.", url: 'https://stackgeist.dev/guides/better-video-calls', dateModified: '2026-09-04' })];
 ---
@@ -19,4 +20,5 @@ const __sd = [articleSchema({ headline: "Fix angle, light, and distance before b
       <section><p class="page-kicker">Sources</p><ol class="article-list"><li>[5] <a href="https://www.logitech.com/en-us/shop/p/brio-500-webcam">Logitech — Brio 500 features and software notes</a></li><li>[6] <a href="https://help.elgato.com/hc/en-us/articles/360044557692-Elgato-Wave-3-MK-1-Technical-Specifications">Elgato — Wave:3 MK.1 technical specifications</a></li></ol></section>
     </div>
   </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
 </ContentLayout>

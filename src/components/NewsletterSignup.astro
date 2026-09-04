@@ -1,20 +1,56 @@
 ---
-interface Props{variant?:'card'|'inline';heading?:string;subhead?:string}
-const{variant='card',heading='Steal the 12-fix budget tech checklist.',subhead='A concise, printable cheat sheet for the low-cost upgrades that remove everyday setup friction. No email gate and no fake countdown.'}=Astro.props;
+interface Props {
+  variant?: 'card' | 'inline';
+  heading?: string;
+  subhead?: string;
+}
+const {
+  variant = 'card',
+  heading = 'Get the StackGeist field notes.',
+  subhead = 'Fit-first desk setup guidance, grounded gear comparisons, and practical fixes. No brand hype.',
+} = Astro.props;
+const headingId = `newsletter-${variant}-title`;
 ---
-<section class={`newsletter ${variant}`} aria-labelledby="lead-magnet-title"><header class="nl-head"><span class="dollar">$</span><span>fetch /downloads/budget-tech-cheat-sheet.pdf</span><span class="status">200 OK · 1 file</span></header><div class="nl-body"><div class="nl-copy"><p class="comment"># free field guide · PDF · no email gate</p><h2 id="lead-magnet-title">{heading}</h2><p>{subhead}</p><div class="nl-actions"><a class="download" href="/downloads/budget-tech-cheat-sheet.pdf" download>download --now <span aria-hidden="true">↓</span></a><a class="preview" href="/downloads/budget-tech-cheat-sheet.pdf">preview --browser <span aria-hidden="true">↗</span></a></div><small><span class="ok">✓</span> instant download&nbsp;&nbsp; <span class="ok">✓</span> 12 practical fixes&nbsp;&nbsp; <span class="ok">✓</span> no signup</small></div><pre class="sheet" aria-hidden="true"><code>┌────────────────────────────┐
-│ STACKGEIST                 │
+<section class={`newsletter ${variant}`} aria-labelledby={headingId}>
+  <header class="nl-head">
+    <span class="dollar">$</span>
+    <span>subscribe --channel=email</span>
+    <span class="status">READY · free</span>
+  </header>
+  <div class="nl-body">
+    <div class="nl-copy">
+      <p class="comment"># useful dispatches · unsubscribe anytime</p>
+      <h2 id={headingId}>{heading}</h2>
+      <p>{subhead}</p>
+      <form
+        class="nl-form embeddable-buttondown-form"
+        action="https://buttondown.com/api/emails/embed-subscribe/stackgeist"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.com/stackgeist', 'popupwindow')"
+      >
+        <label class="sr-only" for={`email-${variant}`}>Email address</label>
+        <input id={`email-${variant}`} type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        <input type="hidden" value="1" name="embed" />
+        <input type="hidden" value="stackgeist-site" name="tag" />
+        <button type="submit">subscribe <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="nl-actions">
+        <a class="download" href="/downloads/budget-tech-cheat-sheet.pdf" download>download free checklist <span aria-hidden="true">↓</span></a>
+      </div>
+      <small><span class="ok">✓</span> practical only&nbsp;&nbsp; <span class="ok">✓</span> no spam&nbsp;&nbsp; <span class="ok">✓</span> one-click unsubscribe</small>
+    </div>
+    <pre class="sheet" aria-hidden="true"><code>┌────────────────────────────┐
+│ STACKGEIST DISPATCH        │
 │                            │
-│ BUDGET TECH                │
-│ CHEAT SHEET                │
+│ [01] fit checks ........ ✓ │
+│ [02] honest tradeoffs .. ✓ │
+│ [03] practical fixes ... ✓ │
 │                            │
-│ [01] friction ........ fix │
-│ [02] lighting ........ fix │
-│ [03] cables .......... fix │
-│ [..] ..................... │
-│                            │
-│      12 FIXES / UNDER $75  │
-└────────────────────────────┘</code></pre></div></section>
+│ no hype · no sponsor copy │
+└────────────────────────────┘</code></pre>
+  </div>
+</section>
 <style>
-.newsletter{margin:46px 0 24px;border:1px solid var(--term-border);border-radius:0;background:var(--term-bg);font-family:var(--font-mono)}.newsletter.inline{margin:38px 0 8px}.nl-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--text);font-size:12.5px}.dollar,.ok{color:var(--phosphor)}.status{margin-left:auto;color:var(--phosphor);font-size:11.5px}.nl-body{display:grid;grid-template-columns:1.15fr .65fr;align-items:center}.nl-copy{padding:28px 30px}.comment{margin:0;color:var(--purple-light);font-size:12px}.nl-copy h2{margin:14px 0 13px;max-width:760px;font-family:var(--font-mono);font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.15;letter-spacing:-.025em}.nl-copy>p:not(.comment){max-width:690px;margin:0;color:var(--muted);font-size:13.5px;line-height:1.6}.nl-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.nl-actions a{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--term-border-strong);font-size:12.5px}.download{border-color:var(--phosphor)!important;background:rgba(163,230,53,.07);color:var(--phosphor)}.preview{color:var(--purple-light)}.nl-copy>small{display:block;margin-top:15px;color:var(--quiet);font-size:10.5px}.sheet{min-height:290px;display:grid;place-items:center;margin:0;padding:24px;border-left:1px solid var(--term-border);color:var(--phosphor);background:#050508;font-family:var(--font-mono);font-size:clamp(10px,1.05vw,12.5px);line-height:1.42;overflow-x:auto}@media(max-width:760px){.nl-body{grid-template-columns:1fr}.nl-copy{padding:24px 20px}.nl-actions{display:grid}.nl-actions a{justify-content:center}.sheet{min-height:250px;border-top:1px solid var(--term-border);border-left:0}.status{display:none}}
+.newsletter{margin:46px 0 24px;border:1px solid var(--term-border);border-radius:0;background:var(--term-bg);font-family:var(--font-mono)}.newsletter.inline{margin:38px 0 8px}.nl-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--text);font-size:12.5px}.dollar,.ok{color:var(--phosphor)}.status{margin-left:auto;color:var(--phosphor);font-size:11.5px}.nl-body{display:grid;grid-template-columns:1.15fr .65fr;align-items:center}.nl-copy{padding:28px 30px}.comment{margin:0;color:var(--purple-light);font-size:12px}.nl-copy h2{margin:14px 0 13px;max-width:760px;font-family:var(--font-mono);font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.15;letter-spacing:-.025em}.nl-copy>p:not(.comment){max-width:690px;margin:0;color:var(--muted);font-size:13.5px;line-height:1.6}.nl-form{display:flex;gap:8px;margin-top:22px;max-width:610px}.nl-form input[type="email"]{min-width:0;flex:1;padding:11px 13px;border:1px solid var(--term-border-strong);border-radius:0;background:#050508;color:var(--text);font:inherit}.nl-form input[type="email"]::placeholder{color:var(--quiet)}.nl-form input[type="email"]:focus{outline:2px solid var(--phosphor);outline-offset:2px}.nl-form button{padding:11px 16px;border:1px solid var(--phosphor);border-radius:0;background:rgba(163,230,53,.1);color:var(--phosphor);font:inherit;cursor:pointer}.nl-form button:hover{background:rgba(163,230,53,.18)}.nl-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:13px}.nl-actions a{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--term-border-strong);font-size:12.5px}.download{color:var(--purple-light)}.nl-copy>small{display:block;margin-top:15px;color:var(--quiet);font-size:10.5px}.sheet{min-height:290px;display:grid;place-items:center;margin:0;padding:24px;border-left:1px solid var(--term-border);color:var(--phosphor);background:#050508;font-family:var(--font-mono);font-size:clamp(10px,1.05vw,12.5px);line-height:1.42;overflow-x:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:760px){.nl-body{grid-template-columns:1fr}.nl-copy{padding:24px 20px}.nl-form{display:grid}.nl-form button{min-height:44px}.nl-actions{display:grid}.nl-actions a{justify-content:center}.sheet{min-height:250px;border-top:1px solid var(--term-border);border-left:0}.status{display:none}}
 </style>

@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [articleSchema({ headline: "Hide less. Route better.", description: "The goal is not to make every cable invisible. The goal is to keep the desk easy to use, clean, change, and troubleshoot.", url: 'https://stackgeist.dev/guides/cable-management', dateModified: '2026-09-04' })];
 ---
@@ -79,4 +80,5 @@ const __sd = [articleSchema({ headline: "Hide less. Route better.", description:
       </section>
     </div>
   </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
 </ContentLayout>

@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [articleSchema({ headline: "Fit the reach zone before comparing switches and sensors.", description: "Keyboard width changes mouse position. Mouse shape changes wrist and grip. Treat them as one desk system instead of two isolated product categories.", url: 'https://stackgeist.dev/guides/keyboard-mouse-fit', dateModified: '2026-09-04' })];
 ---
@@ -19,4 +20,5 @@ const __sd = [articleSchema({ headline: "Fit the reach zone before comparing swi
       <section><p class="page-kicker">Sources</p><ol class="article-list"><li>[3] <a href="https://www.osha.gov/etools/computer-workstations/components/keyboards">OSHA — Computer Workstations: Keyboards</a></li><li>[4] <a href="https://www.osha.gov/etools/computer-workstations/components/pointer-mouse">OSHA — Computer Workstations: Pointer/Mouse</a></li></ol></section>
     </div>
   </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
 </ContentLayout>
