@@ -79,3 +79,42 @@ Fix the angle, light, and mic before buying a webcam. Full checklist at StackGei
 
 ### Caption
 Before buying another desk accessory: clear the center, separate primary/support/storage. Full layout guide at StackGeist.dev. #desksetup #wfh #productivity #techtok
+
+---
+
+## 2026-09-07 — The numpad moves your mouse
+
+- Source: `https://stackgeist.dev/guides/keyboard-mouse-fit`
+- Landing URL: `https://stackgeist.dev/guides/keyboard-mouse-fit?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=numpad_moves_mouse`
+- Best posting time (ET): Monday 12:15 PM ET (weekday lunch scroll; desk/office intent peaks midday)
+- Length: ~22s
+- Hashtags: #desksetup #keyboard #mechanicalkeyboard #tkl #wfh #productivity #techtok #ergonomics
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ fit --input`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII desk top-down: full-size keyboard centered, mouse pushed far to the right with a red arrow `→→→`.
+  - VO/caption: "Your keyboard width is moving your mouse away from your body."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  NUMPAD HAS A COST`
+  - Visual: Two ASCII boards side by side — `[FULL SIZE]` wide, `[TKL]` narrower. Mouse icon under each: far right vs. close to hand.
+  - VO/caption: "A full-size board pushes your right hand out. Fine — but make it an explicit trade, not a default."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  CENTER THE LETTERS`
+  - Visual: ASCII keyboard with `QWERTY` block highlighted, arrow: `↔ body midline`. Numpad grayed.
+  - VO/caption: "Center the letter keys to your body — not the whole chassis."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  MOCK IT FIRST`
+  - Visual: Painter's tape rectangle on a desk (ASCII). Timer icon: `10:00`. Text: `type · scroll · shortcut`.
+  - VO/caption: "Tape the footprint. Run ten real minutes before you checkout."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/keyboard-mouse-fit`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Before you buy another keyboard: the numpad moves your mouse. TKL vs. full-size is a reach decision, not a taste one. Full fit guide at StackGeist.dev. #desksetup #keyboard #mechanicalkeyboard #wfh #techtok
