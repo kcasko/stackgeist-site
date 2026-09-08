@@ -118,3 +118,42 @@ Before buying another desk accessory: clear the center, separate primary/support
 
 ### Caption
 Before you buy another keyboard: the numpad moves your mouse. TKL vs. full-size is a reach decision, not a taste one. Full fit guide at StackGeist.dev. #desksetup #keyboard #mechanicalkeyboard #wfh #techtok
+
+---
+
+## 2026-09-08 — Don't hide cables. Route them.
+
+- Source: `https://stackgeist.dev/guides/cable-management`
+- Landing URL: `https://stackgeist.dev/guides/cable-management?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=route_dont_hide`
+- Best posting time (ET): Tuesday 7:30 PM ET (evening desk-setup scroll; troubleshooting intent post-workday)
+- Length: ~22s
+- Hashtags: #cablemanagement #desksetup #wfh #gamingsetup #techtok #productivity #homeoffice #deskorganization
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ cables --route`
+  - Visual: Black terminal frame. Green cursor blinks. ASCII desk back with a chaotic bundle labeled `[TRAP]` velcroed under the surface.
+  - VO/caption: "The velcro bundle is not cable management. It's a trap."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  SORT BY MOVEMENT`
+  - Visual: Three ASCII columns — `PERMANENT` (monitor, PC, power), `SEMI` (HDMI, USB, dock), `ACTIVE` (controller, phone, headset).
+  - VO/caption: "Sort every cable by how often it moves. Never bundle the three groups together."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  ROUTE != HIDE`
+  - Visual: ASCII desk underside — a single tray with lanes labeled `POWER · DATA · ACTIVE`. Arrows follow the lanes to their devices.
+  - VO/caption: "Give every cable a lane. A clean setup should still be understandable in a year."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  BUY LAST`
+  - Visual: `[CART]` box with clips, sleeves, trays greyed out. Green check: `NAME THE PROBLEM FIRST`.
+  - VO/caption: "Only buy the organizer when you can name the exact problem it solves."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/cable-management`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Stop hiding cables. Sort by how often they move, give each group a lane, then buy the organizer last. Full routing guide at StackGeist.dev. #cablemanagement #desksetup #wfh #techtok
