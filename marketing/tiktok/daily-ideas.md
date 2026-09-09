@@ -157,3 +157,40 @@ Before you buy another keyboard: the numpad moves your mouse. TKL vs. full-size 
 
 ### Caption
 Stop hiding cables. Sort by how often they move, give each group a lane, then buy the organizer last. Full routing guide at StackGeist.dev. #cablemanagement #desksetup #wfh #techtok
+
+## 2026-09-09 — Empty space is not a shopping list
+
+- Source: `https://stackgeist.dev/guides/cheap-desk-upgrades`
+- Landing URL: `https://stackgeist.dev/guides/cheap-desk-upgrades?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=empty_space_not_shopping_list`
+- Best posting time (ET): Wednesday 7:30 PM ET (mid-week evening desk-setup scroll; buying intent peaks after workday)
+- Length: ~22s
+- Hashtags: #desksetup #deskorganization #wfh #homeoffice #budgetsetup #techtok #productivity #minimaldesk
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ upgrade --cheap`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII desk top-down with a red `[ ]` box highlighting empty space near the monitor.
+  - VO/caption: "Empty desk space is not a shopping list. Stop filling it."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  FREE MOVES FIRST`
+  - Visual: ASCII desk. Icons for charger, second monitor, notebook slide from center out toward the edges. Arrow: `→ edge`.
+  - VO/caption: "Before ordering anything, reposition what you already own. Move rarely-touched items away from the center."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  NAME THE FRICTION`
+  - Visual: Split panel — left `"looks plain"` (grayed), right `"can't fit a notebook"` (green check). Question mark: `WHAT BREAKS TODAY?`
+  - VO/caption: "'My desk looks plain' is not a problem. 'I can't fit a notebook beside my keyboard' is."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  COUNT THE NEW COST`
+  - Visual: `[SHELF]` uses depth. `[ARM]` needs VESA + clearance. `[LIGHT]` adds a cable. Small `+cost` tag pops next to each.
+  - VO/caption: "Every accessory adds a new cost. A shelf eats depth. A light adds a cable. Count that first."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/cheap-desk-upgrades`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Free layout changes beat cheap accessories. Fix the annoying part before buying the impressive part. Full upgrade order at StackGeist.dev. #desksetup #wfh #budgetsetup #techtok
