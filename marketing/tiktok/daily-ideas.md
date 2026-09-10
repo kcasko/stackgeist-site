@@ -194,3 +194,42 @@ Stop hiding cables. Sort by how often they move, give each group a lane, then bu
 
 ### Caption
 Free layout changes beat cheap accessories. Fix the annoying part before buying the impressive part. Full upgrade order at StackGeist.dev. #desksetup #wfh #budgetsetup #techtok
+
+---
+
+## 2026-09-10 — The dock's wattage is not your laptop's wattage
+
+- Source: `https://stackgeist.dev/guides/usb-c-dock-compatibility`
+- Landing URL: `https://stackgeist.dev/guides/usb-c-dock-compatibility?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=dock_wattage_lies`
+- Best posting time (ET): Thursday 12:15 PM ET (weekday lunch scroll; laptop/WFH buying intent peaks midday)
+- Length: ~22s
+- Hashtags: #usbc #dockingstation #laptopsetup #thunderbolt #wfh #techtok #desksetup #productivity
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ dock --check-power`
+  - Visual: Black terminal frame. Green cursor blinks. ASCII laptop connected to a dock with a big `[ 98W ]` sticker glowing on the dock.
+  - VO/caption: "The wattage on the dock box is not the wattage your laptop gets."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  HOST OUTPUT != LAPTOP INPUT`
+  - Visual: Split ASCII — left `DOCK: up to 98W` (green), right `LAPTOP CHARGER: 140W` (red). Arrow between them with `Δ = deficit`.
+  - VO/caption: "'Up to 98W' means the dock's ceiling — not what your laptop actually needs."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  UNDER-POWERED = SLOW CHARGE`
+  - Visual: Battery icon at 40% with a downward arrow under load. Text: `charges slow · throttles · still needs OEM brick`.
+  - VO/caption: "A lower-wattage dock may run the laptop, charge it slowly, or throttle it under load."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  COMPARE BOTH SPECS`
+  - Visual: Two spec cards side-by-side — `DOCK PD OUT: __W` and `LAPTOP PD IN: __W`. Checkbox: `dock ≥ laptop?`
+  - VO/caption: "Before you buy: write down both numbers. Dock output. Laptop charger. Only then decide."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/usb-c-dock-compatibility`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+The dock's wattage is a ceiling, not a promise. Compare it to your laptop's charger before checkout. Full dock fit guide at StackGeist.dev. #usbc #dockingstation #laptopsetup #wfh #techtok
