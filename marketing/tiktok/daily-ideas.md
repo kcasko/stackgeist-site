@@ -233,3 +233,42 @@ Free layout changes beat cheap accessories. Fix the annoying part before buying 
 
 ### Caption
 The dock's wattage is a ceiling, not a promise. Compare it to your laptop's charger before checkout. Full dock fit guide at StackGeist.dev. #usbc #dockingstation #laptopsetup #wfh #techtok
+
+---
+
+## 2026-09-11 — Wattage is a receipt, not a wish
+
+- Source: `https://stackgeist.dev/guides/laptop-charger-wattage`
+- Landing URL: `https://stackgeist.dev/guides/laptop-charger-wattage?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=wattage_is_a_receipt`
+- Best posting time (ET): Friday 12:15 PM ET (weekday lunch scroll; travel/charger buying intent peaks before weekend trips)
+- Length: ~22s
+- Hashtags: #usbc #gancharger #laptopcharger #wfh #techtok #travel #productivity #desksetup
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ charger --spec`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII brick with a label reading `20V ⎓ 3.25A (65W)`.
+  - VO/caption: "The wattage on the brick is a receipt of what your laptop asked for."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  MATCH THE ORIGINAL`
+  - Visual: Two ASCII bricks side by side — `[65W]` green check, `[45W]` yellow warn. Small arrow to the laptop.
+  - VO/caption: "A lower-watt charger will run the laptop — until real work starts. Then it pulls from the battery while plugged in."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  SHARED PORTS SPLIT`
+  - Visual: ASCII GaN brick with 3 ports. `100W` total on top. Laptop takes `65W`, phone `20W`, tablet `20W` — `= 105W` blinks red.
+  - VO/caption: "A multi-port charger divides its total. 100W is not 100W per port."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  USB-C ≠ AUTOMATIC`
+  - Visual: Two laptop icons. Left: `USB-C IN` green. Right: `BARREL JACK` grey. Text: `check the port, not the shape`.
+  - VO/caption: "USB-C is a shape. Power Delivery is the feature. Gaming laptops over 100W often can't charge from USB-C at all."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/laptop-charger-wattage`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Match the wattage on the original brick, then add headroom for anything sharing the charger. USB-C is a shape — Power Delivery is the feature. Full wattage guide at StackGeist.dev. #usbc #gancharger #laptopcharger #techtok
