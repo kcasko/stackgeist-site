@@ -1,0 +1,131 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "How many watts does your laptop charger actually need?",
+    description: "Pick a laptop charger by matching the laptop's rated input wattage, then adding headroom for battery charging and any other devices sharing the brick. A lower-wattage charger will still power most laptops, but it will throttle under load and charge slowly.",
+    url: 'https://stackgeist.dev/guides/laptop-charger-wattage',
+    dateModified: '2026-09-11'
+  }),
+  faqSchema({
+    questions: [
+      { question: "Can I use a lower-wattage charger than my laptop's original?", answer: "Usually yes for basic tasks, but the laptop will pull power from the battery under load and charge slowly or not at all while working. Modern laptops with USB Power Delivery negotiate down to the highest available wattage the charger supports." },
+      { question: "Can I use a higher-wattage charger than my laptop's original?", answer: "Yes. USB Power Delivery chargers negotiate the correct voltage and current with the laptop, so a 100W charger connected to a 65W laptop delivers 65W. You cannot over-charge a laptop by using a higher-rated brick." },
+      { question: "Do I need Thunderbolt or a specific USB-C standard to charge over USB-C?", answer: "No. USB Power Delivery is the charging standard and works over any USB-C port that supports it. Data speed (USB 2.0, 3.x, USB4, Thunderbolt) is separate from charging capability." },
+      { question: "What wattage do I need for a MacBook Pro 14-inch or 16-inch?", answer: "Apple ships the 14-inch M-series with a 70W or 96W adapter and the 16-inch with 140W. You can charge from anything lower but fast charging requires the original wattage." },
+      { question: "Why does my laptop drain the battery even though it's plugged in?", answer: "The charger cannot supply enough sustained wattage for the current workload. Either reduce the load or use a higher-wattage charger. Common with gaming laptops on 65W travel adapters." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="How many watts does my laptop charger need? | StackGeist" description="A practical guide to matching laptop charger wattage: how to read USB Power Delivery specs, when a lower-wattage brick is safe, and how much headroom to plan for docks and multi-device chargers." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/guides">Guides</a> / Laptop charger wattage</p>
+    <p class="page-kicker">Power</p>
+    <h1 class="page-title">How many watts does your laptop charger actually need?</h1>
+    <p class="page-lead">Pick a charger by matching the laptop's rated input wattage first, then add headroom for battery charging and any other devices sharing the brick. A lower-wattage charger will still power most laptops, but it will throttle under load and charge slowly.</p>
+
+    <div class="article-summary">
+      <strong>The short version</strong>
+      <p>Find the wattage printed on the laptop's original charger. Buy at least that. If the charger will also power a phone, tablet, or dock, add the wattage of those devices to the target rating.</p>
+    </div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Start here</p>
+        <h2>Find the wattage the laptop was designed for.</h2>
+        <p>Every laptop ships with a charger sized for full-load operation plus battery charging. That number is the safe target. Flip the original brick over: it will list an output like <em>20V ⎓ 3.25A (65W)</em> or <em>20V ⎓ 5A (100W)</em>. That total wattage — not the voltage — is what you match.</p>
+        <ul class="article-list">
+          <li>Ultrabooks and 13-inch business laptops are typically 45W to 65W.</li>
+          <li>14-inch to 16-inch productivity laptops are typically 65W to 100W.</li>
+          <li>15-inch to 17-inch gaming laptops range from 130W to 330W and often require a proprietary barrel connector, not USB-C.</li>
+          <li>Apple MacBook Air is 30W to 35W; MacBook Pro 14-inch is 70W or 96W; MacBook Pro 16-inch is 140W.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">The rule</p>
+        <h2>Under-spec chargers work, but with tradeoffs.</h2>
+        <p>USB Power Delivery lets a laptop negotiate the highest wattage a charger can supply. So a 45W charger will keep a 65W laptop running for browsing and video, but under sustained CPU load — compiling, exports, gaming, Zoom with screen share — the laptop will pull the deficit from the battery. Battery may not charge at all while working, and once it drains, the laptop throttles.</p>
+        <p>Symptoms of an under-spec charger:</p>
+        <ul class="article-list">
+          <li>Battery percentage drops while plugged in during heavy tasks.</li>
+          <li>Fan noise and CPU throttling despite being connected to power.</li>
+          <li>"Slow charger" or "not the recommended adapter" warnings from macOS or Windows.</li>
+          <li>Full charge takes 4+ hours instead of the usual 1.5 to 2.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Multi-device</p>
+        <h2>Add up everything the charger will power.</h2>
+        <p>A GaN multi-port charger shares its total wattage across ports. A 100W charger with a 65W laptop plugged in has 35W left for phones, tablets, or headphones. That headroom disappears fast.</p>
+        <div class="article-cards">
+          <div><strong>Laptop</strong><p>Use the rated wattage from the original brick.</p></div>
+          <div><strong>Phone fast charge</strong><p>Add 20W to 30W per phone.</p></div>
+          <div><strong>Tablet</strong><p>Add 20W for iPad, 30W to 45W for iPad Pro.</p></div>
+        </div>
+        <p>A desk that runs a 100W laptop, a fast-charging phone, and a tablet at the same time wants a 200W+ station. A 65W laptop with a phone on the side does fine at 100W.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">USB-C vs proprietary</p>
+        <h2>Not every laptop can be charged over USB-C.</h2>
+        <p>USB-C charging requires the laptop's port to support USB Power Delivery — not just have the shape. Most laptops sold after 2020 do, but gaming laptops over 100W and older business laptops often still use a proprietary barrel plug and cannot be charged from a USB-C brick regardless of wattage. Check the port label or laptop spec sheet before buying a USB-C charger.</p>
+        <div class="note">A rough test: if the laptop's original charger has a USB-C plug on the laptop end, USB-C charging works. If it's a barrel jack or MagSafe, it does not.</div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Cable warning</p>
+        <h2>The cable also has a wattage rating.</h2>
+        <p>USB-C cables are rated for either 60W (3A) or 100W to 240W (5A with e-marker chip). A 100W charger with a 60W cable delivers only 60W. If the charger is rated higher than 60W and the laptop needs more than 60W, the cable has to explicitly state 100W or 240W support.</p>
+        <p>See the <a href="/guides/usb-c-cable-buying-guide">USB-C cable buying guide</a> for how to identify the rating on an unlabeled cable.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Common mistakes</p>
+        <h2>Things people do that cost time and money.</h2>
+        <ul class="article-list">
+          <li>Buying the smallest wattage that "will still charge" — works until you actually need to work.</li>
+          <li>Ignoring the cable rating, then blaming the charger for slow charging.</li>
+          <li>Buying a 100W charger for a gaming laptop that needs 230W and expecting it to keep up.</li>
+          <li>Sharing a single-port 65W brick between a laptop and phone via a splitter — total output still 65W, split randomly.</li>
+          <li>Assuming Thunderbolt or USB4 means fast charging. They are data specs. Power Delivery is separate.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Buy</p>
+        <h2>Solid options at each tier.</h2>
+        <div class="cards">
+          <a class="card" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
+            <h3>500W multi-port desk station</h3>
+            <p>For a desk that charges a laptop, phone, tablet, and headphones simultaneously without juggling bricks.</p>
+          </a>
+          <a class="card" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
+            <h3>240W USB-C cable (Iniu)</h3>
+            <p>Any charger over 60W needs a 100W or 240W cable to deliver full wattage. This one is rated for both power and data.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="related-reading">
+        <p class="page-kicker">Next</p>
+        <h2>Related decisions.</h2>
+        <div class="cards">
+          <a class="card" href="/guides/usb-c-cable-buying-guide">
+            <h3>USB-C cable buying guide</h3>
+            <p>Which cables actually support 100W or 240W, and why USB 2.0 vs 3.x matters for data even at the same wattage.</p>
+          </a>
+          <a class="card" href="/guides/usb-c-dock-compatibility">
+            <h3>USB-C dock compatibility checklist</h3>
+            <p>If the same USB-C port also drives displays and peripherals, check the dock spec before adding load.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

@@ -1,0 +1,151 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "How to pick an extension cord for your desk without starting a fire.",
+    description: "Pick an extension cord by matching the total wattage of what plugs into it against the cord's amp rating, then check gauge, length, and grounding. Skip flat cords for high-draw gear; skip round cords for tight desk paths.",
+    url: 'https://stackgeist.dev/guides/extension-cord-safety-guide',
+    dateModified: '2026-09-11'
+  }),
+  faqSchema({
+    questions: [
+      { question: "What gauge extension cord do I need for a computer setup?", answer: "16 gauge (16 AWG) handles up to 13 amps (about 1500 watts) at 25 feet, which covers most desks with a computer, monitors, and peripherals. Drop to 14 gauge for gaming rigs with high-wattage GPUs or a space heater on the same cord." },
+      { question: "Is it safe to plug a surge protector into an extension cord?", answer: "Not recommended by UL or NEC. Extension cords are for temporary use; surge protectors are considered permanent wiring. If you need more outlets away from a wall, use a longer surge protector strip directly, or run a properly rated extension cord to a single-outlet strip rated for the combined load." },
+      { question: "Can I run a computer and monitors on the same extension cord safely?", answer: "Yes, as long as the total wattage stays under the cord's rating. A typical desk (300W computer + two 30W monitors + peripherals) is well under a 16 AWG cord's 1500W capacity. Add a laser printer, space heater, or gaming rig with a 750W+ PSU and you need to recalculate." },
+      { question: "Flat vs round extension cord — which is better?", answer: "Flat cords fit under rugs and behind furniture but usually top out at 15 amps and use thinner wire than round cords of the same length. Round cords are safer for continuous high loads. For a computer desk, either works if the amp rating matches your load; flat is easier to hide." },
+      { question: "Why does my extension cord get warm?", answer: "Warm is normal under continuous load; hot means the cord is undersized for the wattage plugged in. Unplug some devices, replace with a heavier-gauge cord, or run a dedicated circuit. A hot cord is the last warning before a fire." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="How to pick an extension cord for a computer desk (amp, gauge, length) | StackGeist" description="A practical guide to picking a safe extension cord for a desk: how to calculate load, what amp and gauge ratings mean, when to use flat vs round, and where surge protectors fit in." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/guides">Guides</a> / Extension cord safety</p>
+    <p class="page-kicker">Power</p>
+    <h1 class="page-title">How to pick an extension cord for your desk without starting a fire.</h1>
+    <p class="page-lead">Match the cord's amp rating to the total wattage of what will plug into it. Check gauge, length, and grounding. Skip flat cords for high-draw gear and skip round cords when the path has to hide.</p>
+
+    <div class="article-summary">
+      <strong>The short version</strong>
+      <p>Add up the wattage of every device the cord will run. Divide by 120 to get amps. Buy a cord rated at least 25% above that number, in a gauge that matches — 16 AWG for typical desks, 14 AWG for heavy loads.</p>
+    </div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Step 01</p>
+        <h2>Add up what's actually plugged in.</h2>
+        <p>Look at the back of each device or its power supply label. It'll list either watts or amps. If it lists watts, that's the number. If it lists amps, multiply by 120 (US household voltage) to get watts.</p>
+        <ul class="article-list">
+          <li>Laptop or small desktop: 45W to 150W typical.</li>
+          <li>Gaming desktop under load: 400W to 850W (check the PSU rating; actual draw is usually lower).</li>
+          <li>27-inch monitor: 25W to 40W.</li>
+          <li>Laser printer while printing: 400W to 900W (idle is 5W to 15W).</li>
+          <li>Speaker system: 30W to 100W.</li>
+          <li>Space heater: 750W or 1500W — this alone eats most cords.</li>
+        </ul>
+        <p>Total those. Divide by 120. That's your amp draw at full load.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 02</p>
+        <h2>Match the cord's amp rating with headroom.</h2>
+        <p>An extension cord's rating is the maximum continuous load it can safely carry. Running near the rating for hours will heat the cord and eventually degrade the insulation. Rule of thumb: pick a cord rated at least 25% above your calculated load.</p>
+        <div class="article-cards">
+          <div><strong>Under 5A (600W)</strong><p>Any indoor cord works. Laptops, monitors, phone chargers.</p></div>
+          <div><strong>5A to 10A (600W-1200W)</strong><p>16 AWG cord, 13A rated. Typical desktop desks.</p></div>
+          <div><strong>10A to 13A (1200W-1500W)</strong><p>14 AWG cord, 15A rated. Gaming rigs, laser printers on same circuit, small space heaters.</p></div>
+          <div><strong>Over 13A</strong><p>Don't use an extension cord. Run to a dedicated wall outlet or add a circuit.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 03</p>
+        <h2>Gauge matters more than the plastic looks suggest.</h2>
+        <p>Wire gauge (AWG — American Wire Gauge) is <em>inversely</em> numbered. Lower number = thicker wire = higher amp capacity. A 16 AWG cord has thicker wire than an 18 AWG cord, even though both look identical from the outside.</p>
+        <ul class="article-list">
+          <li><strong>18 AWG:</strong> up to 10A at 25ft. Lamps and phone chargers only.</li>
+          <li><strong>16 AWG:</strong> up to 13A at 25ft. Standard for computer desks.</li>
+          <li><strong>14 AWG:</strong> up to 15A at 25ft. Heavy loads, gaming, appliances.</li>
+          <li><strong>12 AWG:</strong> up to 20A at 25ft. Workshop tools, portable AC.</li>
+        </ul>
+        <div class="note">Length reduces capacity. A 16 AWG cord rated 13A at 25ft drops to about 10A at 50ft. If the run is long, go up a gauge.</div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 04</p>
+        <h2>Flat cord or round cord.</h2>
+        <p>Flat cords are designed to fit under rugs and behind furniture without creating a lump. They're convenient but usually use flatter, wider wire that runs cooler at low loads but has less thermal mass — meaning they degrade faster if pushed near their rating.</p>
+        <div class="article-cards">
+          <div><strong>Flat cord — good for</strong><p>Under rugs, behind desks against baseboards, tight cable paths where a round cord bulges. Great for typical office loads.</p></div>
+          <div><strong>Round cord — good for</strong><p>Continuous high draw, gaming rigs, anywhere the cord can breathe. More forgiving under stress.</p></div>
+        </div>
+        <p>For most desks, a good 16 AWG flat cord is the right pick — enough capacity for a computer and monitors, easy to route cleanly.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 05</p>
+        <h2>Extension cord + surge protector: the rule.</h2>
+        <p>UL and the National Electrical Code do not permit surge protectors plugged into extension cords, and vice versa. Both are treated as temporary wiring; stacking them multiplies the failure risk and no listing agency has certified the combination.</p>
+        <p>The practical version:</p>
+        <ul class="article-list">
+          <li>If you need more outlets close to the wall — buy a longer surge protector strip.</li>
+          <li>If the wall outlet is too far — buy an extension cord rated for your full load, and plug it into a single-outlet surge protector strip at the desk end (not a daisy chain).</li>
+          <li>Never plug an extension cord into another extension cord.</li>
+          <li>Never plug a surge protector into a surge protector.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 06</p>
+        <h2>Grounding matters.</h2>
+        <p>Any cord you plug a computer or surge protector into must be 3-prong (grounded). The ground pin isn't optional — surge protectors need it to shunt spikes to earth, and any device with a metal chassis needs it for safety. Cheap 2-prong extension cords are for lamps, not electronics.</p>
+        <div class="note">If your wall outlet is 2-prong (older houses), don't use a 3-prong adapter without connecting the ground tab to the outlet's cover screw. Better solution: have an electrician add a GFCI outlet.</div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Common mistakes</p>
+        <h2>Things that cause fires or fried electronics.</h2>
+        <ul class="article-list">
+          <li>Running a space heater on a 16 AWG flat cord. Heaters pull 12A+ continuously; that cord will get hot.</li>
+          <li>Daisy chaining extension cords to reach further. Each junction adds resistance and heat.</li>
+          <li>Using a cord under a rug where you can't see if it's damaged or overheating. Flat cords are safer here, but still check periodically.</li>
+          <li>Plugging a laser printer into the same strip as a computer. The printer's warmup spike can crash the computer or trip a surge protector.</li>
+          <li>Assuming a cord's amp rating is per outlet. A 15A strip means 15A total across all outlets, not per socket.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Buy</p>
+        <h2>Cords that match a typical desk.</h2>
+        <div class="cards">
+          <a class="card" href="/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black">
+            <h3>15ft flat 16/3 indoor extension cord</h3>
+            <p>16 AWG, 3-prong grounded, 15 amp rated, flat profile for behind-desk routing. Handles typical desktop + monitors + peripherals with headroom.</p>
+          </a>
+          <a class="card" href="/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb">
+            <h3>Flat-plug 8-outlet surge protector</h3>
+            <p>Use this at the desk end of an extension cord (not daisy-chained). 8 outlets plus USB, flat plug, right pattern for a desk.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="related-reading">
+        <p class="page-kicker">Next</p>
+        <h2>Related decisions.</h2>
+        <div class="cards">
+          <a class="card" href="/guides/laptop-charger-wattage">
+            <h3>How many watts does my laptop charger need?</h3>
+            <p>Add up wattage on the desk-side load before picking the cord that feeds it.</p>
+          </a>
+          <a class="card" href="/guides/cable-management">
+            <h3>Cable management that stays manageable</h3>
+            <p>Route power, signal, and removable cables differently so future changes don't wreck the whole desk.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

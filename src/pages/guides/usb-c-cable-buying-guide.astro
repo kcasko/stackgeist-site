@@ -1,0 +1,130 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "The USB-C cable buying guide: watts, data speeds, and how to tell them apart.",
+    description: "USB-C cables look identical but vary from 60W charging with USB 2.0 data to 240W charging with 40Gbps Thunderbolt. Pick by matching the highest wattage your charger will deliver and the fastest data device that will use the cable.",
+    url: 'https://stackgeist.dev/guides/usb-c-cable-buying-guide',
+    dateModified: '2026-09-11'
+  }),
+  faqSchema({
+    questions: [
+      { question: "What's the difference between a 60W and 100W USB-C cable?", answer: "60W cables carry up to 3A of current. 100W and 240W cables carry 5A and contain an e-marker chip that tells the charger the cable can handle higher current safely. A 60W cable connected to a 100W charger and 100W laptop will only deliver 60W." },
+      { question: "How do I tell if my USB-C cable is USB 2.0 or USB 3.x?", answer: "Look at the ends: USB 3.x cables usually have more internal pins visible. The reliable test is transferring a large file to a USB 3+ SSD — USB 2.0 caps at 40 MB/s, USB 3.x will do 400+ MB/s. Most cables that ship with phones and chargers are USB 2.0 even if they charge fast." },
+      { question: "Can I charge and transfer data at full speed on the same cable?", answer: "Yes, but the cable has to be rated for both. Most charging cables are USB 2.0 for data (very slow) even when they support 100W or 240W charging. If you need fast data and fast charging together, buy a cable that explicitly lists both." },
+      { question: "Does a Thunderbolt cable work as a USB-C charging cable?", answer: "Yes. Thunderbolt 3, 4, and USB4 cables all support USB Power Delivery up to at least 100W, and 240W-capable ones exist. They also carry the fastest data. They cost more, so only buy Thunderbolt when the devices at both ends can use those speeds." },
+      { question: "Why does my USB-C cable charge slowly even with a fast charger?", answer: "The cable is likely a 60W (3A) cable being asked to deliver more. Either the cable, charger, or laptop will silently drop to the lowest common capability. Replace the cable with one rated for the wattage you need." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="USB-C cable buying guide: 60W vs 100W vs 240W, USB 2.0 vs 3.x | StackGeist" description="A practical guide to picking a USB-C cable: how wattage ratings actually work, what USB 2.0 vs USB 3.x vs Thunderbolt means for data, and how to tell an unlabeled cable's real capability." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/guides">Guides</a> / USB-C cable buying guide</p>
+    <p class="page-kicker">Connectivity</p>
+    <h1 class="page-title">USB-C cables all look identical. They aren't.</h1>
+    <p class="page-lead">A USB-C cable can be a 60W charger with USB 2.0 data, or a 240W Thunderbolt cable at 40Gbps. Pick by matching the highest wattage your charger will deliver and the fastest data device that will use the cable.</p>
+
+    <div class="article-summary">
+      <strong>The short version</strong>
+      <p>For charging above 60W, buy a cable explicitly labeled 100W or 240W. For anything faster than "phone syncs slowly" data, buy a cable explicitly labeled USB 3.2, USB4, or Thunderbolt. Assume unlabeled cables are USB 2.0 at 60W.</p>
+    </div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Power tier</p>
+        <h2>Cables are limited by current, not just voltage.</h2>
+        <p>USB Power Delivery negotiates the voltage. The cable's limit is amperage: 3A for standard cables (60W max at 20V), 5A for e-marked cables (100W at 20V, or 240W at 48V under USB PD 3.1). If your charger and laptop both support 100W but the cable is 3A, actual delivery caps at 60W.</p>
+        <div class="article-cards">
+          <div><strong>Standard (3A)</strong><p>60W max. Fine for phones, tablets, and laptops that need under 60W.</p></div>
+          <div><strong>E-marked (5A)</strong><p>100W max. Required for most 14"+ laptops.</p></div>
+          <div><strong>EPR (48V, 5A)</strong><p>240W max. Required for 16" MacBook Pro, high-wattage gaming laptops, and monitors that pass 100W+ through.</p></div>
+        </div>
+        <p>See the <a href="/guides/laptop-charger-wattage">laptop charger wattage guide</a> to figure out what your laptop actually needs.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Data tier</p>
+        <h2>Data speed is a separate spec from power.</h2>
+        <p>A USB-C cable can charge at 240W and still transfer data at USB 2.0 speed (480Mbps, roughly 40MB/s in practice). Most cables that ship in phone and laptop boxes are exactly this: fast charging, slow data. Great for a wall charger, terrible for a USB-C SSD.</p>
+        <ul class="article-list">
+          <li><strong>USB 2.0:</strong> 480Mbps. Every cable is at least this. Fine for phones and keyboards.</li>
+          <li><strong>USB 3.2 Gen 1:</strong> 5Gbps. Roughly 400MB/s real-world. Cheap external SSDs, monitors at 1080p60.</li>
+          <li><strong>USB 3.2 Gen 2:</strong> 10Gbps. Faster SSDs, 4K60 displays over DisplayPort Alt Mode.</li>
+          <li><strong>USB 3.2 Gen 2x2:</strong> 20Gbps. NVMe enclosures, uncommon.</li>
+          <li><strong>USB4 / Thunderbolt 3, 4:</strong> 40Gbps. External GPUs, high-end docks, dual 4K displays, PCIe over cable.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Identifying unlabeled cables</p>
+        <h2>How to test what you already have.</h2>
+        <p>Most USB-C cables have zero markings. Two tests tell you what you actually have:</p>
+        <ol class="article-steps">
+          <li><strong>Power test.</strong><span>Plug the cable into a 100W+ charger and a laptop that needs 65W+. On macOS, hold Option and click the battery icon → look at "Power Adapter" wattage. On Windows, some laptops (Dell, Lenovo) show negotiated wattage in the vendor's power app. If it reads 60W with a 100W charger, the cable is 3A.</span></li>
+          <li><strong>Data test.</strong><span>Copy a large file (5GB+) to a USB 3+ SSD. If the transfer runs at 30-40MB/s the cable is USB 2.0. 300+ MB/s means USB 3.x. 700+ MB/s means USB4 or Thunderbolt.</span></li>
+        </ol>
+        <div class="note">The Apple USB-C cable that ships with 96W and 140W MacBook chargers is 240W-rated but USB 2.0 data. This is why plugging a MacBook into a display via that cable at 4K60 sometimes fails — the cable can charge but not carry the display signal.</div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Buying rules</p>
+        <h2>Match the cable to the weakest end.</h2>
+        <p>Buying above your needs is fine but wasteful. Buying below silently caps your entire chain.</p>
+        <div class="article-cards">
+          <div><strong>Phone-only charging</strong><p>Any 60W cable. Included cables are fine.</p></div>
+          <div><strong>Laptop charging under 60W</strong><p>Any 60W cable, but check length — longer cables sometimes underperform their rating.</p></div>
+          <div><strong>Laptop charging 60W to 100W</strong><p>Buy a cable explicitly labeled 100W or 5A.</p></div>
+          <div><strong>Laptop charging 100W+</strong><p>Buy a cable explicitly labeled 240W. Fewer exist; brand matters.</p></div>
+          <div><strong>External SSD or dock data</strong><p>Buy USB 3.2 Gen 2 (10Gbps) minimum.</p></div>
+          <div><strong>Displays, eGPU, high-end dock</strong><p>Buy USB4 or Thunderbolt 4.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Common mistakes</p>
+        <h2>Where people get it wrong.</h2>
+        <ul class="article-list">
+          <li>Buying a "100W USB-C cable" for a 4K monitor and getting no display signal. USB 2.0 cables don't carry DisplayPort Alt Mode at high resolutions.</li>
+          <li>Using the phone-box cable to charge a MacBook Pro 16-inch. It's a 60W cable; the MacBook needs 140W. The MacBook will charge slowly and drain the battery under load.</li>
+          <li>Buying an expensive Thunderbolt cable to charge a phone. It works, but it's ten times the price of a 60W cable that would do the same job.</li>
+          <li>Assuming all cables in the drawer are equivalent. Test them once and label them with tape.</li>
+          <li>Buying long cables (2m+) at the cheapest tier. Voltage drop and shielding get worse with length; longer cables need higher-quality construction to maintain the rating.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Buy</p>
+        <h2>Cables that actually deliver the rating.</h2>
+        <div class="cards">
+          <a class="card" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
+            <h3>Iniu 240W USB-C cable (6.6ft)</h3>
+            <p>240W charging, USB 2.0 data. The right cable for a MacBook Pro 16" or a GaN charger on a heavy laptop. Length is the practical limit for high-wattage cables without price jumping.</p>
+          </a>
+          <a class="card" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
+            <h3>500W GaN charging station</h3>
+            <p>Match the cable to the charger. A high-wattage cable is wasted on a 30W wall wart.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="related-reading">
+        <p class="page-kicker">Next</p>
+        <h2>Related decisions.</h2>
+        <div class="cards">
+          <a class="card" href="/guides/laptop-charger-wattage">
+            <h3>How many watts does my laptop charger need?</h3>
+            <p>Figure out the target wattage before buying either the charger or the cable.</p>
+          </a>
+          <a class="card" href="/guides/usb-c-dock-compatibility">
+            <h3>USB-C dock compatibility checklist</h3>
+            <p>Displays, data, and charging often share the same port. Check the whole chain.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
