@@ -1,0 +1,41 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { INCOME_KITS } from '../../data/incomeKits';
+---
+<ContentLayout title="Practical buyer kits | StackGeist" description="Practical buyer kits for help desk homelabs, WGU study desks, USB-C desk survival, video calls, and cheap desk upgrades." active="kits">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Kits</p>
+  <p class="page-kicker">kits /</p>
+  <h1 class="page-title">Buyer kits for people who want the shortest path to useful.</h1>
+  <p class="page-lead">Each kit turns a real setup problem into a buying order, internal decision pages, paid retailer links, and social angles ready to schedule.</p>
+
+  <section class="content-section kit-index">
+    <p class="page-kicker">income paths</p>
+    <h2 class="section-heading">Start where the buyer already has a problem.</h2>
+    <div class="cards">
+      {INCOME_KITS.map((kit) => (
+        <a class="card" href={`/kits/${kit.slug}`}>
+          <p class="page-kicker">{kit.audience}</p>
+          <h2>{kit.title}</h2>
+          <p>{kit.description}</p>
+          <div class="card-meta"><span class="tag active">{kit.items.length} picks</span><span class="tag">{kit.socialAngles.length} angles</span></div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section split">
+    <div class="copy-panel">
+      <p class="page-kicker">engine</p>
+      <h2>What makes these pages monetized.</h2>
+      <p>Every kit links down into existing StackGeist decision pages, then out to paid search or verified product routes only when the buying intent is clear.</p>
+    </div>
+    <div class="copy-panel">
+      <p class="page-kicker">automation</p>
+      <h2>What gets reused.</h2>
+      <p>The same kit data powers pages, sitemap entries, social CSVs, TikTok scripts, and future analytics reports. Less copy-paste, fewer chances to ship nonsense.</p>
+    </div>
+  </section>
+
+  <NewsletterSignup />
+</ContentLayout>

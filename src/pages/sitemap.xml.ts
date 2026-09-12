@@ -2,6 +2,7 @@ export const prerender = true;
 
 import { GENERATED_SETUPS } from '../data/gamingSetupOptions';
 import { troubleshootingHubs } from '../data/troubleshootingHubs';
+import { INCOME_KITS } from '../data/incomeKits';
 
 const pageModules = import.meta.glob('./**/*.astro');
 
@@ -16,6 +17,7 @@ const staticRoutes = Object.keys(pageModules)
 const dynamicRoutes = [
   ...GENERATED_SETUPS.map((setup) => `/setups/${setup.slug}`),
   ...troubleshootingHubs.map((hub) => `/guides/${hub.slug}`),
+  ...INCOME_KITS.map((kit) => `/kits/${kit.slug}`),
 ];
 const routes = [...new Set([...staticRoutes, ...dynamicRoutes])]
   .sort((a, b) => a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b));

@@ -1,0 +1,130 @@
+---
+import NewsletterSignup from './NewsletterSignup.astro';
+import type { IncomeKit, KitItem } from '../data/incomeKits';
+
+const { kit } = Astro.props as { kit: IncomeKit };
+const tierLabel: Record<KitItem['tier'], string> = {
+  'must-have': 'must-have',
+  'nice-next': 'nice-next',
+  'skip-until-needed': 'skip-until-needed',
+};
+const isExternal = (href: string) => href.startsWith('http');
+const campaign = `income_kits_${kit.slug}`;
+---
+<article class="article-page kit-page">
+  <p class="breadcrumbs"><a href="/kits">Kits</a> / {kit.title}</p>
+  <p class="page-kicker">buyer kit</p>
+  <h1 class="page-title">{kit.title}</h1>
+  <p class="page-lead">{kit.promise}</p>
+
+  <div class="article-summary kit-summary">
+    <strong>Who this is for</strong>
+    <p>{kit.audience}</p>
+    <strong>The useful answer</strong>
+    <p>{kit.summary}</p>
+  </div>
+
+  <section class="content-section kit-order">
+    <p class="page-kicker">buying order</p>
+    <h2 class="section-heading">Buy in this order so the cheap stuff does not become clutter.</h2>
+    <ol class="article-steps">
+      {kit.buyingOrder.map((step) => (
+        <li><strong>order</strong><span>{step}</span></li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="content-section kit-items">
+    <p class="page-kicker">monetized picks</p>
+    <h2 class="section-heading">Every link has to earn its spot.</h2>
+    <div class="kit-grid">
+      {kit.items.map((item) => (
+        <a
+          class:list={['kit-item', `tier-${item.tier}`]}
+          href={isExternal(item.href) ? `${item.href}&utm_source=stackgeist&utm_medium=internal&utm_campaign=${campaign}&utm_content=${encodeURIComponent(item.label.toLowerCase().replaceAll(' ', '_'))}` : item.href}
+          target={isExternal(item.href) ? '_blank' : undefined}
+          rel={isExternal(item.href) ? 'sponsored nofollow noopener noreferrer' : undefined}
+          data-affiliate-link={isExternal(item.href) ? true : undefined}
+          data-affiliate-placement={isExternal(item.href) ? `kit-${kit.slug}` : undefined}
+        >
+          <span class="kit-tier">{tierLabel[item.tier]}</span>
+          <h3>{item.label}</h3>
+          <p>{item.role}</p>
+          <strong>Check before buying</strong>
+          <small>{item.check}</small>
+        </a>
+      ))}
+    </div>
+    <p class="kit-disclosure">Paid Amazon links are marked and may earn a commission. Internal links are StackGeist decision pages with fit notes, limitations, and reasons to skip.</p>
+  </section>
+
+  <section class="content-section kit-related">
+    <p class="page-kicker">internal links</p>
+    <h2 class="section-heading">Where this kit sends people next.</h2>
+    <div class="cards">
+      {kit.related.map((item) => (
+        <a class="card" href={item.href}><h3>{item.title}</h3><p>{item.desc}</p></a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section kit-social">
+    <p class="page-kicker">distribution</p>
+    <h2 class="section-heading">Angles ready for scheduled posts.</h2>
+    <div class="social-rows">
+      {kit.socialAngles.map((angle) => (
+        <div class="social-row">
+          <span>{angle.channel}</span>
+          <strong>{angle.title}</strong>
+          <p>{angle.hook}</p>
+          <code>?utm_source={angle.channel}&amp;utm_medium=organic&amp;utm_campaign=income_kits&amp;utm_content={angle.utmContent}</code>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section kit-faq">
+    <p class="page-kicker">FAQ</p>
+    <h2 class="section-heading">Questions people ask before buying.</h2>
+    <div class="article-cards">
+      {kit.faqs.map((faq) => (
+        <div><strong>{faq.question}</strong><p>{faq.answer}</p></div>
+      ))}
+    </div>
+  </section>
+</article>
+
+<NewsletterSignup variant="inline" heading="Get the next practical gear kit." subhead="One useful setup decision per dispatch. No sponsor fog machine." />
+
+<style>
+  .kit-summary { display:grid; gap:8px; }
+  .kit-summary strong + p { margin-bottom:8px; }
+  .kit-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; border:1px solid var(--term-border); background:var(--term-bg); }
+  .kit-item { display:grid; gap:10px; padding:22px; color:inherit; text-decoration:none; border-top:1px solid var(--term-border); position:relative; }
+  .kit-item:nth-child(-n+2) { border-top:0; }
+  .kit-item:nth-child(even) { border-left:1px solid var(--term-border); }
+  .kit-item:hover { background:rgba(163,230,53,.035); }
+  .kit-tier { width:max-content; padding:3px 7px; border:1px solid var(--term-border-strong); color:var(--phosphor); font-size:10px; }
+  .tier-nice-next .kit-tier { color:var(--purple-light); }
+  .tier-skip-until-needed .kit-tier { color:var(--amber); }
+  .kit-item h3 { margin:0; padding-right:22px; font-size:18px; line-height:1.35; }
+  .kit-item h3::after { content:' ↗'; color:var(--quiet); font-size:13px; }
+  .kit-item p { margin:0; color:var(--muted); font-size:12.5px; line-height:1.6; }
+  .kit-item strong { margin-top:4px; color:var(--text); font-size:12px; }
+  .kit-item small { color:var(--amber); font-size:11.5px; line-height:1.55; }
+  .kit-disclosure { margin:14px 0 0; color:var(--quiet); font-size:11px; line-height:1.55; }
+  .social-rows { border:1px solid var(--term-border); background:var(--term-bg); }
+  .social-row { display:grid; grid-template-columns:110px 220px 1fr; gap:14px; align-items:start; padding:16px; border-top:1px solid var(--term-border); }
+  .social-row:first-child { border-top:0; }
+  .social-row span { color:var(--phosphor); font-size:11px; }
+  .social-row strong { font-size:13px; }
+  .social-row p { margin:0; color:var(--muted); font-size:12.5px; line-height:1.55; }
+  .social-row code { grid-column:2 / -1; color:var(--quiet); font-size:10.5px; white-space:normal; }
+  @media(max-width:760px){
+    .kit-grid { grid-template-columns:1fr; }
+    .kit-item:nth-child(even){ border-left:0; }
+    .kit-item:nth-child(n+2){ border-top:1px solid var(--term-border); }
+    .social-row { grid-template-columns:1fr; gap:8px; }
+    .social-row code { grid-column:1; }
+  }
+</style>

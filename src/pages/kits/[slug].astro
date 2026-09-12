@@ -1,0 +1,36 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import IncomeKitPage from '../../components/IncomeKitPage.astro';
+import { INCOME_KITS } from '../../data/incomeKits';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+export function getStaticPaths() {
+  return INCOME_KITS.map((kit) => ({ params: { slug: kit.slug }, props: { kit } }));
+}
+
+const { kit } = Astro.props;
+const structuredData = [
+  articleSchema({
+    headline: kit.title,
+    description: kit.description,
+    url: `https://stackgeist.dev/kits/${kit.slug}`,
+    datePublished: '2026-09-12',
+    dateModified: '2026-09-12',
+  }),
+  faqSchema({ questions: kit.faqs }),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: kit.title,
+    itemListElement: kit.items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      url: item.href.startsWith('/') ? `https://stackgeist.dev${item.href}` : item.href,
+    })),
+  },
+];
+---
+<ContentLayout structuredData={structuredData} title={kit.seoTitle} description={kit.description} active="kits">
+  <IncomeKitPage kit={kit} />
+</ContentLayout>
