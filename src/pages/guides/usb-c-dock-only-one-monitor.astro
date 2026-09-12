@@ -1,0 +1,69 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "USB-C dock only detecting one monitor: the real fix.",
+    description: "A single monitor working through a USB-C dock is almost always the host port's DisplayPort Alt Mode limit, an MST or DisplayLink misconfiguration, or an underspecified cable — not a broken dock. Diagnose in that order.",
+    url: 'https://stackgeist.dev/guides/usb-c-dock-only-one-monitor',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a USB-C dock that only detects one monitor",
+    description: "Diagnose in host-port order: confirm the laptop can output two display streams, verify the dock's mode (DP Alt Mode, MST, DisplayLink, or Thunderbolt), replace the cable, update drivers and firmware, then check the OS display arrangement.",
+    steps: [
+      { name: "Confirm the host port carries video", text: "Look up the exact laptop model and check whether the USB-C port supports DisplayPort Alt Mode, USB4, or Thunderbolt. A data-only USB-C port cannot drive any external display through any dock." },
+      { name: "Check how many display streams the host allows", text: "Most non-Thunderbolt USB-C ports carry a single DisplayPort stream. Two monitors require either MST support on both host and dock, a Thunderbolt host, or a DisplayLink dock with its driver installed." },
+      { name: "Identify the dock's video mode", text: "Read the dock's spec sheet. DP Alt Mode passes native video, MST splits one stream into two, DisplayLink uses CPU-driven virtual displays that require a driver, and Thunderbolt docks have dedicated video engines." },
+      { name: "Replace the host cable with a known full-featured one", text: "A USB 2.0 charge-only cable will pass power and still enumerate the dock, but drop the second display or both. Use the cable shipped with the dock or a rated USB4 / Thunderbolt cable of the correct length." },
+      { name: "Install DisplayLink or vendor drivers and update dock firmware", text: "DisplayLink docks require the vendor driver on Windows and macOS. Thunderbolt and MST docks usually work driverless but ship firmware updates that fix multi-monitor edge cases." },
+      { name: "Configure the OS to extend, not mirror", text: "Windows: Settings > System > Display > 'Extend these displays'. macOS: System Settings > Displays > 'Arrangement' and drag the second display into place. A dock can present two displays that macOS then silently mirrors." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why does my USB-C dock only show one monitor on a MacBook?", answer: "Apple silicon MacBook Air and base M1 / M2 / M3 MacBooks support only one external display through DisplayPort Alt Mode, regardless of how many ports a dock has. Two displays require either a Pro / Max chip, a Thunderbolt dock with a supported dual-display engine, or a DisplayLink dock with the driver installed." },
+      { question: "Does the cable matter for a second monitor?", answer: "Yes. A USB 2.0 or charge-only USB-C cable will power the dock and pass keyboard and mouse but drop video streams. Use the cable that came with the dock, or a rated USB4 or Thunderbolt cable of the length you actually need." },
+      { question: "How do I know if my laptop's USB-C port supports two external displays?", answer: "Search the manufacturer's specification page for the exact model and look for 'DisplayPort 1.4', 'MST', 'USB4', or 'Thunderbolt 4' on the specific port. If the port is listed only as 'USB-C 3.2 Gen 2' with no display language, it will not drive a second monitor without a DisplayLink dock." },
+      { question: "Will updating the dock's firmware fix the second display?", answer: "It can. CalDigit, Anker, Plugable, and Kensington all ship firmware that fixes handshake and hot-plug problems with specific hosts. Update firmware before returning a dock that only shows one display." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: the real fix | StackGeist" description="A single monitor working through a USB-C dock is almost always the host port's DisplayPort Alt Mode limit, an MST or DisplayLink misconfiguration, or an underspecified cable. Diagnose in that order." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / USB-C dock only one monitor</p>
+    <p class="page-kicker">Connectivity troubleshooting</p>
+    <h1 class="page-title">USB-C dock only detecting one monitor: the real fix.</h1>
+    <p class="page-lead">One display working through a USB-C dock is almost never a broken dock. It is a host port that cannot carry a second stream, a dock mode the host does not support, or a cable that never had the bandwidth to begin with. Diagnose in that order and the fix is usually free.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and its USB-C port capability. If the port is not Thunderbolt, USB4, or documented as supporting MST, a dock alone cannot produce a second display without DisplayLink and its driver. If the port qualifies, swap in the dock's supplied cable, install DisplayLink or vendor drivers, update the dock's firmware, and set the OS to extend rather than mirror.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Confirm the host port carries video at all.</h2><p>USB-C is a connector shape. The port behind it may carry USB data only, USB data plus DisplayPort Alt Mode, USB4, or Thunderbolt 3 or 4. A data-only USB-C port cannot drive any external display through any dock, regardless of price. Find the laptop's official specification page and read the language for the specific port you are using.</p><ul class="article-list"><li>Record the exact laptop model and OS version.</li><li>Find the documented capability of the port you plug the dock into.</li><li>Reject the "one port must be the same as the other" assumption — many laptops label each USB-C port differently.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Check how many display streams the host actually allows.</h2><p>Even a video-capable USB-C port usually carries a single DisplayPort stream. A second monitor then requires one of three paths: the host and dock both support MST (Multi-Stream Transport), the host is Thunderbolt or USB4 and the dock has a dedicated dual-display engine, or the dock uses DisplayLink with its driver installed on the OS.</p><div class="article-cards"><div><strong>DP Alt Mode + MST</strong><p>One DisplayPort stream from the laptop, split into two by the dock. Works on most Windows laptops. macOS ignores MST entirely.</p></div><div><strong>Thunderbolt or USB4</strong><p>Two native display streams from the host. Required for dual 4K at 60 Hz without compression on most setups.</p></div><div><strong>DisplayLink</strong><p>CPU-rendered virtual displays sent as USB data. Works on almost anything with the driver installed. Not ideal for gaming.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Identify the dock's video mode, then match it to the host.</h2><p>Docks fall into the three categories above and sometimes mix them. A Thunderbolt 4 dock plugged into a non-Thunderbolt USB-C port will fall back to DP Alt Mode limits and often to one display. A DisplayLink dock plugged into any host will do nothing extra until its driver is installed.</p><ol class="article-steps"><li><strong>Read the spec sheet, not the marketing.</strong><span>Look for "Thunderbolt 4," "USB4," "MST," or "DisplayLink" as literal words.</span></li><li><strong>Cross-reference with the host capability from Step 01.</strong><span>A DP-Alt-Mode-only host with a non-DisplayLink single-stream dock is a one-display setup.</span></li><li><strong>If the host is Apple silicon, read the chip name.</strong><span>M1, M2, and M3 base chips drive one external display natively. Pro and Max chips drive multiple. DisplayLink adds displays to any of them at a cost.</span></li></ol><div class="note">macOS on Apple silicon does not support MST at all. A dock that advertises two DisplayPort outputs will still expose only one to a base MacBook Air unless DisplayLink is in the path.</div></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Replace the host cable with a known full-featured one.</h2><p>The USB-C cable between the laptop and the dock is the most common single point of failure. A USB 2.0 charge cable enumerates the dock, passes power, and carries a keyboard and mouse. It also silently drops video, or drops the second display while the first survives. Use the cable that shipped with the dock. If it is missing, buy a rated USB4 or Thunderbolt cable of the exact length you need — longer passive cables lose signal integrity.</p><p>The USB-C cable buying guide on this site covers what the wattage and speed ratings actually mean and how to identify an unlabeled cable.[1]</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Install DisplayLink or vendor drivers and update the firmware.</h2><p>DisplayLink docks require the free driver from Synaptics on both Windows and macOS. Thunderbolt and MST docks generally work driverless, but every major dock vendor — CalDigit, Anker, Plugable, Kensington — ships firmware that fixes handshake and hot-plug edge cases with specific hosts.[2] Update the firmware before you return a dock that only shows one display.</p><ul class="article-list"><li>Windows: install the vendor's dock utility, then check for a firmware update button.</li><li>macOS: same, and grant Full Disk Access if the utility requests it during firmware flash.</li><li>Reboot after firmware update, then re-plug the dock with the laptop already on.</li></ul></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Set the OS to extend, not mirror.</h2><p>A dock can correctly present two displays that the operating system then silently mirrors. Confirm the arrangement before assuming the second display is missing.</p><div class="article-cards"><div><strong>Windows</strong><p>Settings &gt; System &gt; Display &gt; scroll to "Multiple displays" &gt; "Extend these displays." Then drag the display icons so their arrangement matches physical position.</p></div><div><strong>macOS</strong><p>System Settings &gt; Displays. Click the second display, uncheck "Mirror Displays" if set, then use the "Arrangement" tab to place it.</p></div></div></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the dock is fine.</h2><p>Most single-display failures resolve at Step 01, 04, or 05. If the host port simply cannot carry a second stream and you cannot change laptops, a DisplayLink dock is the honest fix. If you already own a Thunderbolt-capable host and want a verified dual-display path, the two docks below are the ones on this site with a full fit guide.</p><div class="cards">
+        <a class="card" href="/gear/connectivity/caldigit-ts4"><h3>CalDigit TS4 fit guide</h3><p>18-port Thunderbolt 4 dock for a verified Thunderbolt host and a high-demand desk.</p></a>
+        <a class="card" href="/gear/connectivity/anker-553-usb-c-hub"><h3>Anker 553 USB-C hub</h3><p>A smaller connection set for a single external display and a few low-bandwidth peripherals.</p></a>
+        <a class="card" href="/guides/usb-c-dock-compatibility"><h3>Before you buy: dock compatibility</h3><p>The buying-side companion to this troubleshooting guide — host port, displays, power, bandwidth, and cables.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="/guides/usb-c-cable-buying-guide">StackGeist — USB-C cable buying guide</a></li>
+        <li>[2] <a href="https://www.caldigit.com/thunderbolt-station-4/">CalDigit — Thunderbolt Station 4 firmware and compatibility notes</a></li>
+        <li>[3] <a href="https://support.apple.com/en-us/111883">Apple — MacBook Air (M2) external display support</a></li>
+        <li>[4] <a href="https://www.synaptics.com/products/displaylink-graphics/downloads">Synaptics — DisplayLink driver downloads (Windows and macOS)</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
