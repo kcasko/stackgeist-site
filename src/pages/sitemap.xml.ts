@@ -1,6 +1,7 @@
 export const prerender = true;
 
 import { GENERATED_SETUPS } from '../data/gamingSetupOptions';
+import { troubleshootingHubs } from '../data/troubleshootingHubs';
 
 const pageModules = import.meta.glob('./**/*.astro');
 
@@ -12,7 +13,10 @@ const staticRoutes = Object.keys(pageModules)
   .map((route) => route || '/')
   .filter((route) => route !== '/404' && !route.includes('['));
 
-const dynamicRoutes = GENERATED_SETUPS.map((setup) => `/setups/${setup.slug}`);
+const dynamicRoutes = [
+  ...GENERATED_SETUPS.map((setup) => `/setups/${setup.slug}`),
+  ...troubleshootingHubs.map((hub) => `/guides/${hub.slug}`),
+];
 const routes = [...new Set([...staticRoutes, ...dynamicRoutes])]
   .sort((a, b) => a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b));
 
