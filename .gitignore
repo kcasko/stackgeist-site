@@ -40,3 +40,8 @@ pnpm-debug.log*
 .env.pinterest
 scripts/_image_hunt.json
 scripts/_image_urls.json
+
+# Google Search Console / Indexing API service account key path
+# The key itself lives at C:/Users/keith/AppData/Local/hermes/secrets/
+secrets/
+*.sa.json
