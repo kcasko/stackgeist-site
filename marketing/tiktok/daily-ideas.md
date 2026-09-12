@@ -272,3 +272,42 @@ The dock's wattage is a ceiling, not a promise. Compare it to your laptop's char
 
 ### Caption
 Match the wattage on the original brick, then add headroom for anything sharing the charger. USB-C is a shape — Power Delivery is the feature. Full wattage guide at StackGeist.dev. #usbc #gancharger #laptopcharger #techtok
+
+---
+
+## 2026-09-12 — A hot extension cord is the last warning
+
+- Source: `https://stackgeist.dev/guides/extension-cord-safety-guide`
+- Landing URL: `https://stackgeist.dev/guides/extension-cord-safety-guide?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=hot_cord_last_warning`
+- Best posting time (ET): Saturday 10:30 AM ET (weekend late-morning scroll; DIY/home-office intent, low-competition window)
+- Length: ~22s
+- Hashtags: #extensioncord #electricalsafety #wfh #homeoffice #desksetup #gamingsetup #techtok #firesafety
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ cord --safety`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII outlet with a warm-orange glow behind a cord bundle labeled `[HOT]`.
+  - VO/caption: "If your extension cord is warm, that's normal. If it's hot, that's the last warning before a fire."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  ADD THE WATTS`
+  - Visual: ASCII stack: `PC 400W + MON 30W + MON 30W + PRINTER 700W = 1160W`. Divider: `÷ 120V = 9.7A`.
+  - VO/caption: "Add every device on the cord. Divide by 120. That's your amps."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  GAUGE > LOOKS`
+  - Visual: Three ASCII cord cross-sections: `18AWG · 10A`, `16AWG · 13A`, `14AWG · 15A`. Arrow: `↓ number = ↑ wire`.
+  - VO/caption: "Lower AWG number equals thicker wire. 16 gauge is the desk minimum. 18 gauge is for lamps, not PCs."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  NO DAISY CHAIN`
+  - Visual: ASCII: cord → cord → strip → strip with a red `X` over each junction. Green check: `WALL → CORD → STRIP → DEVICES`.
+  - VO/caption: "Never plug a cord into a cord, or a strip into a strip. Every junction adds resistance and heat."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/extension-cord-safety-guide`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Add the watts, divide by 120, then buy the cord — not the other way around. Full amp / gauge / length rules at StackGeist.dev. #extensioncord #electricalsafety #wfh #desksetup #techtok
