@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Office chair gas cylinder replacement: the real fix.",
+    description: "An office chair that sinks under load or feels bouncy is almost always a worn-out Class 3 or Class 4 gas cylinder — not a broken chair. Replace the cylinder before replacing the chair.",
+    url: 'https://stackgeist.dev/guides/office-chair-gas-cylinder-replacement',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Replace an office chair gas cylinder",
+    description: "Diagnose the symptoms, measure whether the chair uses Class 3 or Class 4, confirm the universal 2-inch top diameter, remove the wheels and base, use a pipe wrench and rubber mallet to extract the old cylinder, install the new one, and decide when to upgrade from Class 3 to Class 4 for heavier users.",
+    steps: [
+      { name: "Confirm the symptoms are a worn cylinder", text: "A chair that slowly sinks under your weight, will not stay at the set height, or feels bouncy when you sit is showing gas cylinder wear. The cylinder is a sealed pressurized tube and cannot be repaired — only replaced." },
+      { name: "Measure Class 3 versus Class 4 cylinder", text: "Office chair cylinders come in Class 3 (rated for up to 250 lbs) and Class 4 (rated for 250-400 lbs). Class 4 cylinders have thicker walls and higher pressure. Measure the current cylinder or check the chair's weight rating." },
+      { name: "Confirm the universal 2-inch top diameter", text: "Most office chairs use a standard 2-inch (50mm) top taper and 2-inch bottom taper. Measure the top where it enters the seat mechanism to verify before buying a replacement kit." },
+      { name: "Remove the wheels and base first", text: "Pull the wheels straight out of the base, then flip the chair upside down. The base is held onto the cylinder by friction only. Strike the base from below with a rubber mallet to separate it." },
+      { name: "Use a pipe wrench and rubber mallet to remove the old cylinder", text: "Protect the chrome with a cloth, clamp a pipe wrench onto the cylinder, and strike the wrench handle with a mallet to twist the cylinder free. The taper is friction-fit — no threads or fasteners." },
+      { name: "Install the new cylinder and reassemble", text: "Drop the new cylinder into the base, tap it in with the mallet, then insert the top taper into the seat mechanism. Sit on the chair to seat the cylinder fully. Reinstall the wheels." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How do I know if I need a Class 3 or Class 4 gas cylinder?", answer: "Class 3 is rated for users up to 250 lbs. Class 4 is rated for 250-400 lbs. If you weigh over 250 lbs or the chair sinks quickly under load, upgrade to Class 4. A Class 4 cylinder costs $5-10 more but lasts significantly longer under heavy use." },
+      { question: "Are office chair gas cylinders universal?", answer: "Most office chairs sold in North America use a 2-inch (50mm) top taper and 2-inch bottom taper, which makes replacement cylinders interchangeable. Measure the top diameter where it enters the seat mechanism to confirm. Executive chairs and some imported models may use a metric or proprietary size." },
+      { question: "Can I replace the gas cylinder without tools?", answer: "No. The cylinder is friction-fit into the base and seat mechanism with enough force that hand removal is impossible. A rubber mallet is required to separate the parts, and a pipe wrench is the safest way to twist the old cylinder free without damaging the chrome finish." },
+      { question: "Will replacing the gas cylinder void my chair's warranty?", answer: "Yes, on most chairs. If the chair is under warranty, contact the manufacturer for a replacement cylinder or a warranty claim. If the chair is out of warranty or was bought used, DIY replacement is cheaper than buying a new chair." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Office chair gas cylinder replacement: the real fix | StackGeist" description="An office chair that sinks under load or feels bouncy is almost always a worn-out Class 3 or Class 4 gas cylinder — not a broken chair. Replace the cylinder before replacing the chair." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Office chair gas cylinder replacement</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Office chair gas cylinder replacement: the real fix.</h1>
+    <p class="page-lead">An office chair that sinks slowly under your weight, refuses to stay at the adjusted height, or feels bouncy when you sit is not a broken seat mechanism or a loose base. It is a worn-out gas cylinder that exhausted its internal pressure after months or years of use. Replace the cylinder before you replace the chair — it costs under $30 and takes 20 minutes with a rubber mallet and a pipe wrench.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Buy a Class 3 or Class 4 replacement gas cylinder kit with a 2-inch top diameter. Remove the wheels, flip the chair, and strike the base with a rubber mallet to separate it from the cylinder. Use a pipe wrench and mallet to twist the old cylinder free. Install the new cylinder, tap it into place, and reassemble. Upgrade to Class 4 if you weigh over 250 lbs.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Confirm the symptoms are a gas cylinder failure.</h2><p>An office chair gas cylinder is a sealed pneumatic strut filled with nitrogen. Over time and repeated compression cycles, the internal seals wear and gas pressure drops. The chair then sinks slowly under the user's weight, will not lock at the set height, or feels soft and bouncy when you sit down. This is end-of-life wear, not a repairable defect. The cylinder must be replaced.[1]</p><ul class="article-list"><li>Test the chair without weight. Raise it to max height and wait 5 minutes. If it stays up, the cylinder holds pressure when unloaded.</li><li>Sit on the chair and observe whether it sinks immediately or slowly over 10-30 seconds. Slow sinking is a leaking seal.</li><li>If the chair will not rise at all even when unloaded, the lift lever mechanism is broken — not the cylinder.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Choose Class 3 or Class 4 based on user weight.</h2><p>Office chair gas cylinders come in two pressure ratings. Class 3 is rated for users up to 250 lbs and is the default in most consumer chairs. Class 4 is rated for 250-400 lbs, has thicker cylinder walls, and runs at higher internal pressure. A Class 3 cylinder under a 280-lb user will fail in months. A Class 4 cylinder under the same user lasts years.[2]</p><div class="article-cards"><div><strong>Class 3</strong><p>Rated to 250 lbs. Standard for most office chairs. Replace with Class 3 if the original was Class 3 and the user is under 250 lbs.</p></div><div><strong>Class 4</strong><p>Rated 250-400 lbs. Thicker walls, higher pressure. Upgrade to this if the user is over 250 lbs or the chair is marketed as big-and-tall.</p></div><div><strong>Check the chair's original spec</strong><p>Big-and-tall chairs like the 400-lb-capacity model on this site ship with Class 4. Replacing it with Class 3 will fail quickly.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Confirm the 2-inch top diameter before buying.</h2><p>Most office chairs sold in North America use a 2-inch (50mm) top taper that fits into the seat mechanism and a 2-inch bottom taper that fits into the base. Measure the top of the current cylinder where it enters the seat to verify the diameter. Executive chairs and some imported models may use a metric size or proprietary taper that requires a brand-specific replacement kit.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Remove the wheels and base from the cylinder.</h2><p>Flip the chair upside down. Pull each wheel straight out of the base — they are friction-fit and should slide free with firm force. Set the wheels aside. The base is held onto the cylinder by a tapered friction fit with no fasteners. Strike the underside of the base with a rubber mallet to drive it off the cylinder. Protect the floor with a towel or mat.</p><ol class="article-steps"><li><strong>Pull the wheels out of the base.</strong><span>They are push-fit into the star base. If stuck, wiggle and pull.</span></li><li><strong>Flip the chair upside down on a protected surface.</strong><span>A carpet or folded towel prevents scratching the seat.</span></li><li><strong>Strike the base from below with a rubber mallet.</strong><span>Hit around the perimeter in a circle. The base will drop free after 3-5 hits.</span></li></ol></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Remove the old cylinder with a pipe wrench and mallet.</h2><p>The cylinder is tapered and pressed into the seat mechanism. There are no threads or retaining clips. Wrap the chrome cylinder in a cloth to protect the finish, clamp a pipe wrench onto the cylinder shaft, and strike the wrench handle with a rubber mallet to twist it free. Turn counterclockwise. The taper will release after the initial break.</p><ul class="article-list"><li>Wrap the cylinder in a rag or towel to prevent wrench teeth from scratching the chrome.</li><li>Clamp a pipe wrench onto the cylinder as close to the seat mechanism as possible.</li><li>Strike the wrench handle sharply with a rubber mallet to turn it counterclockwise. The cylinder will twist free.</li></ul><p>If the cylinder is rusted or stuck, spray the joint with penetrating oil and wait 10 minutes before retrying. A seized cylinder can sometimes require a longer breaker bar or a second person holding the seat still.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Install the new cylinder and reassemble the chair.</h2><p>Drop the new cylinder's bottom taper into the base and tap it in with the rubber mallet until it seats. Insert the top taper into the seat mechanism. Sit on the chair to drive the taper fully into place — body weight is the correct installation force. Reinstall the wheels by pressing them into the base until they click.</p><div class="note">Most replacement cylinders ship with a plastic bushing or washer that sits between the top of the cylinder and the seat mechanism. Install it before inserting the cylinder or the seat will sit lower than before.</div></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to upgrade from Class 3 to Class 4.</h2><p>If the user weighs over 250 lbs, or if the original Class 3 cylinder failed in under a year, upgrade to Class 4. A Class 4 cylinder costs $5-10 more and lasts significantly longer under heavy use. The big-and-tall chair linked below ships with a Class 4 cylinder and a seat mechanism rated for 400 lbs, which eliminates early failure from underrated components.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/big-tall-high-back-office-chair-400lb-capacity"><h3>Big & Tall 400-lb office chair</h3><p>Ships with a Class 4 gas cylinder and a reinforced seat mechanism rated for heavy users.</p></a>
+        <a class="card" href="/guides/office-chair-buying-guide"><h3>Office chair buying guide</h3><p>Gas cylinder class, lumbar support, armrest adjustability, and when to spend more than $200.</p></a>
+        <a class="card" href="/guides/desk-ergonomics-checklist"><h3>Desk ergonomics checklist</h3><p>Chair height, monitor distance, keyboard tilt, and the 90-90-90 rule.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.bifma.org/page/standardsoverview">BIFMA — Office furniture standards and gas cylinder pressure ratings</a></li>
+        <li>[2] <a href="https://www.osha.gov/ergonomics">OSHA — Ergonomics and office chair weight capacity guidance</a></li>
+        <li>[3] <a href="https://www.americanoffice.com/gas-cylinder-replacement-guide">American Office — Office chair gas cylinder replacement guide</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

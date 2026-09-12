@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Raspberry Pi 5 won't boot: the real fix.",
+    description: "A Raspberry Pi 5 that powers on but won't boot is almost always an undervolted USB-C power supply, a corrupt SD card, or the HDMI cable in the wrong port — not a dead board. Diagnose the LED pattern first.",
+    url: 'https://stackgeist.dev/guides/raspberry-pi-5-wont-boot',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a Raspberry Pi 5 that won't boot",
+    description: "Diagnose in LED order: red-only means the SD card cannot boot, red and green blinking signals specific errors, then verify the official 27W USB-C PSU for 5V/5A negotiation, use Raspberry Pi Imager to reflash the SD card, confirm HDMI is in HDMI0, and check boot order for NVMe HATs.",
+    steps: [
+      { name: "Use the official Raspberry Pi 27W USB-C PSU", text: "Raspberry Pi 5 requires 5V at 5A, which most third-party USB-C chargers cannot deliver. A generic 65W laptop charger delivers 5V/3A, triggers undervolt throttling, and often fails to boot at all." },
+      { name: "Decode the LED pattern", text: "Red-only LED means powered but not booting — the SD card is the problem. Red and green blinking in a specific pattern indicates a boot error code. Continuous green means the Pi booted successfully." },
+      { name: "Reflash the SD card with Raspberry Pi Imager", text: "Download Raspberry Pi Imager from the official site, select Raspberry Pi OS, choose the SD card, and write. Use an A2-rated card for Pi 5 speed. A worn-out or counterfeit SD card will not boot reliably." },
+      { name: "Plug the HDMI cable into HDMI0", text: "Raspberry Pi 5 has two micro HDMI ports. HDMI0 is the one nearest the USB-C power port. The Pi outputs to HDMI0 by default and ignores HDMI1 unless configured in config.txt." },
+      { name: "Check NVMe HAT boot order in raspi-config", text: "If an NVMe HAT is installed, the Pi may try to boot from it and fail silently if no bootloader is installed on the SSD. Boot from SD first, run sudo raspi-config, and set boot order." },
+      { name: "Inspect stacked HATs for unpopulated headers", text: "Stacked HATs sometimes ship with unpopulated GPIO headers or jumpers that must be set before power is delivered correctly. Check the HAT's assembly guide before assuming the Pi is dead." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why won't my Raspberry Pi 5 boot with a 65W USB-C laptop charger?", answer: "Most third-party USB-C chargers deliver 5V at 3A maximum, not the 5V at 5A the Pi 5 requires. The Pi will power on, light the red LED, then fail to boot or throttle the CPU and refuse to start the GPU. Use the official Raspberry Pi 27W USB-C power supply or a charger verified to deliver 5V/5A on the USB-PD profile." },
+      { question: "What does a solid red LED with no green LED mean?", answer: "Red-only means the board is receiving power but cannot read a bootable image from the SD card. The card is missing, corrupt, improperly flashed, or worn out. Reflash the card with Raspberry Pi Imager or try a different known-good SD card." },
+      { question: "Can I boot a Raspberry Pi 5 without an SD card?", answer: "Yes, if you have flashed the onboard EEPROM to boot from USB or NVMe. Out of the box, the Pi 5 requires an SD card or an NVMe HAT with a bootloader installed on the SSD. Use an SD card first to configure alternative boot modes via raspi-config." },
+      { question: "Why does my HDMI monitor show no signal from the Pi?", answer: "Confirm the HDMI cable is plugged into HDMI0, the port closest to the USB-C power connector. The Pi outputs to HDMI0 by default. Also try a different HDMI cable — some cheap cables are HDMI 1.4 and will not carry 4K at 60 Hz, causing handshake failures with newer monitors." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Raspberry Pi 5 won't boot: the real fix | StackGeist" description="A Raspberry Pi 5 that powers on but won't boot is almost always an undervolted USB-C power supply, a corrupt SD card, or the HDMI cable in the wrong port — not a dead board. Diagnose the LED pattern first." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Raspberry Pi 5 won't boot</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Raspberry Pi 5 won't boot: the real fix.</h1>
+    <p class="page-lead">A Raspberry Pi 5 that lights up but refuses to boot is almost never a hardware defect. It is an underpowered USB-C supply negotiating the wrong profile, a microSD card that cannot hold a filesystem under repeated writes, or an HDMI cable plugged into the second port. Diagnose the LED pattern first and the cause becomes obvious.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Use the official Raspberry Pi 27W USB-C power supply or a verified 5V/5A charger. Look at the LED. Red-only means the SD card is corrupt or missing — reflash it with Raspberry Pi Imager. Red and green blinking is a specific error code. Plug HDMI into HDMI0, the port nearest the power connector. If an NVMe HAT is installed, boot from SD first and set boot order in raspi-config.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Use the official Raspberry Pi 27W USB-C PSU.</h2><p>Raspberry Pi 5 requires 5 volts at 5 amps, which is a USB Power Delivery profile most third-party chargers do not support. A typical 65W laptop charger delivers 5V/3A on the low end, then jumps to 9V, 12V, or 20V at higher wattages. The Pi cannot use those higher voltages and will fall back to 3A, which triggers continuous undervolt warnings and often prevents boot entirely.[1]</p><ul class="article-list"><li>Use the official Raspberry Pi 27W USB-C power supply that ships with the CanaKit starter kit or sold separately.</li><li>If using a third-party charger, confirm it explicitly lists 5V/5A as a supported Power Delivery profile on the spec sheet.</li><li>Generic phone chargers and older Raspberry Pi 4 power supplies will not deliver enough current for the Pi 5.</li></ul><div class="note">The CanaKit Raspberry Pi 5 Starter Kit Pro includes the official 27W PSU, a case with active cooling, and a pre-flashed 128GB A2-rated microSD card, which solves Steps 01 and 03 together.</div></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Decode the LED pattern to isolate the failure.</h2><p>The Raspberry Pi 5 board has a red power LED and a green activity LED. The pattern these two LEDs display during boot encodes the exact failure mode. A solid red with no green means power is present but the SD card cannot boot. Red and green blinking together in a specific pattern is a numbered error code documented in the official Pi troubleshooting guide.[2]</p><div class="article-cards"><div><strong>Solid red, no green</strong><p>SD card is missing, unreadable, or does not contain a bootable image. Reflash the card or try a different one.</p></div><div><strong>Red + green blinking</strong><p>Count the blinks. Each pattern maps to a specific boot error: insufficient power, firmware not found, or EEPROM corruption.</p></div><div><strong>Green flashing, then solid</strong><p>The Pi booted successfully. If there is no HDMI output, the cable or monitor is the problem, not the Pi.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Reflash the SD card with Raspberry Pi Imager.</h2><p>A microSD card that worked yesterday can fail today. SD cards have finite write cycles, and the Pi's continuous logging and swap activity exhausts cheap cards quickly. Reflash the card with the official Raspberry Pi Imager tool, which writes a verified image and pre-configures Wi-Fi and SSH in one step. Use an A2-rated microSD card for the Pi 5 — it is noticeably faster than A1 cards on random I/O.[3]</p><ol class="article-steps"><li><strong>Download Raspberry Pi Imager from raspberrypi.com.</strong><span>Available for Windows, macOS, and Linux. The web-based imager is slower and less reliable.</span></li><li><strong>Insert the microSD card into the computer.</strong><span>Use the computer's built-in SD card slot or a USB adapter. Verify the card is detected before proceeding.</span></li><li><strong>Select Raspberry Pi 5, choose Raspberry Pi OS, then select the SD card.</strong><span>Click the gear icon to pre-configure hostname, Wi-Fi, and SSH. Write the image.</span></li><li><strong>Eject the card, insert it into the Pi, and power on.</strong><span>The first boot takes longer as the filesystem expands to fill the card.</span></li></ol></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Plug HDMI into HDMI0, not HDMI1.</h2><p>The Raspberry Pi 5 has two micro HDMI ports. HDMI0 is the port closest to the USB-C power connector. The Pi outputs to HDMI0 by default. HDMI1 requires explicit configuration in /boot/config.txt to activate. If the monitor shows no signal, swap the cable to HDMI0 and power-cycle the Pi.</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Set boot order in raspi-config if using an NVMe HAT.</h2><p>Raspberry Pi 5 supports NVMe SSDs via a PCIe HAT. If the HAT is installed but the SSD does not contain a bootloader, the Pi will try to boot from NVMe, fail, and hang with no error. Boot from an SD card first, open a terminal, run sudo raspi-config, navigate to Advanced Options > Boot Order, and set the SD card as first priority. After the SSD is set up, reverse the order.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Check for unpopulated headers on stacked HATs.</h2><p>Stacked HATs — a cooling fan HAT under an NVMe HAT, for example — sometimes ship with unpopulated GPIO headers or jumpers that must be manually set before the board receives power correctly. A missing jumper can prevent the Pi from booting or cause intermittent power cycling. Read the HAT's assembly instructions before assuming the Pi itself is defective.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the SD card is the limit.</h2><p>If the Pi boots reliably after reflashing the SD card but fails again after a few days or weeks, the card is worn out and should be replaced. A2-rated cards last longer under the Pi's write load, and booting from an NVMe SSD removes SD card wear entirely. The two kits below are verified to boot and run a Raspberry Pi 5 without the common power and storage failures.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb"><h3>CanaKit Pi 5 Starter Kit Pro</h3><p>Includes the official 27W PSU, active-cooled case, and a 128GB A2 microSD pre-flashed with Raspberry Pi OS.</p></a>
+        <a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card"><h3>Samsung EVO Select 512GB microSD</h3><p>A2-rated, U3 speed class, verified for Raspberry Pi OS and RetroPie.</p></a>
+        <a class="card" href="/guides/raspberry-pi-nvme-boot-setup"><h3>Boot Pi 5 from NVMe SSD</h3><p>Skip SD card wear entirely by booting from a PCIe NVMe drive.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply">Raspberry Pi — Raspberry Pi 5 power supply requirements</a></li>
+        <li>[2] <a href="https://www.raspberrypi.com/documentation/computers/configuration.html#led-warning-flash-codes">Raspberry Pi — LED warning flash codes</a></li>
+        <li>[3] <a href="https://www.raspberrypi.com/documentation/computers/getting-started.html#raspberry-pi-imager">Raspberry Pi — Installing the operating system with Raspberry Pi Imager</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

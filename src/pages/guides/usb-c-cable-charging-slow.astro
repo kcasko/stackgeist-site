@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Why your USB-C cable is charging slow (and how to tell).",
+    description: "Slow USB-C charging is almost always the cable, the charger, or the device negotiating a lower power profile — not a broken laptop. Diagnose which side is limiting the wattage before you replace anything.",
+    url: 'https://stackgeist.dev/guides/usb-c-cable-charging-slow',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Diagnose a slow-charging USB-C cable",
+    description: "Isolate whether the cable, charger, or device is limiting wattage. Check the cable's rated wattage and e-marker, swap in a known 100W+ cable, verify the charger's per-port output, confirm the device's own charging limit, and rule out heat throttling.",
+    steps: [
+      { name: "Check the cable's rated wattage", text: "USB-C cables come in 60W (no e-marker), 100W, and 240W ratings. A 60W cable will refuse to carry more than 3A regardless of what the charger can deliver." },
+      { name: "Confirm the cable has an e-marker chip", text: "Any USB-C cable rated above 60W or supporting USB 3.x data must contain an e-marker chip that reports its capability. Unbranded cheap cables often lie or omit it entirely." },
+      { name: "Test with a known full-featured cable", text: "Swap in a cable you trust — a rated 100W or 240W USB-C to USB-C. If speed jumps, the original cable was the limit." },
+      { name: "Verify the charger's per-port output", text: "Multi-port GaN chargers split total wattage across active ports. A '100W' charger may deliver only 45W when a second device is plugged in." },
+      { name: "Check the device's own maximum draw", text: "A MacBook Air M2 accepts 30W max. A gaming laptop may want 180W. A phone typically caps at 20-30W. Charging above the device's ceiling is impossible even with the right cable." },
+      { name: "Rule out heat and dirty ports", text: "Chargers throttle when hot. USB-C ports collect lint that blocks full contact. Let the charger cool, and clean the port with a wooden toothpick before assuming failure." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How do I know if my USB-C cable is rated for 100W?", answer: "Look for '100W', '5A', or 'USB-PD 3.0' printed on the cable or its packaging. A rated cable also feels noticeably thicker than a 60W cable because it contains larger conductors and an e-marker chip." },
+      { question: "Will a 240W cable charge my laptop faster than a 100W cable?", answer: "Only if the laptop and charger both support more than 100W. A 240W-rated cable is required for the new USB-PD 3.1 EPR profile above 100W. Below that ceiling, a 100W cable delivers identical speed." },
+      { question: "Why does my laptop charge slowly when other devices are plugged into the same charger?", answer: "Multi-port GaN chargers share a total wattage budget across ports. Plugging a phone into a second port of a 100W charger can drop the laptop port to 45W or 65W depending on the model." },
+      { question: "Can a bad USB-C cable damage my laptop?", answer: "A properly manufactured USB-C cable cannot deliver more power than the charger and device negotiate. The risk is uncertified counterfeit cables missing the e-marker or with wrong resistor values, which can confuse the negotiation and in rare cases push wrong voltage. Buy from a brand you can look up." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Why your USB-C cable is charging slow (and how to tell) | StackGeist" description="Slow USB-C charging is almost always the cable, the charger, or the device negotiating a lower power profile — not a broken laptop. Diagnose which side is limiting the wattage before you replace anything." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / USB-C cable charging slow</p>
+    <p class="page-kicker">Connectivity troubleshooting</p>
+    <h1 class="page-title">Why your USB-C cable is charging slow (and how to tell).</h1>
+    <p class="page-lead">A slow-charging USB-C setup has three suspects: the cable, the charger, and the device. Each one can silently negotiate down to a lower profile and each one hides the reason. Diagnose which side is the ceiling before buying anything new.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Swap in a rated 100W or 240W USB-C to USB-C cable. If speed jumps, the old cable was under-spec. If nothing changes, check whether a second device is sharing the charger, then confirm the device's own maximum draw. Most "slow" charging is expected charging measured against the wrong ceiling.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Check the cable's rated wattage first.</h2><p>USB-C cables fall into three power tiers. A 60W cable carries up to 3A at 20V and does not require an e-marker chip. A 100W cable carries 5A at 20V and must contain an e-marker. A 240W cable, introduced with USB-PD 3.1 Extended Power Range, carries 5A at 48V and requires a newer e-marker chip.[1]</p><ul class="article-list"><li>Look for '60W', '100W', '5A', or '240W' printed on the cable or listed on the box.</li><li>An unlabeled thin cable is almost certainly the 60W tier.</li><li>Length also matters. A rated 100W cable at 3 meters is more expensive because of thicker conductors.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Confirm the cable actually has an e-marker.</h2><p>The e-marker is a tiny chip in one of the plug housings that tells the charger what current the cable can carry. Above 60W the USB-PD specification requires one. Below 60W chargers assume a safe default. A missing or lying e-marker on a cheap cable is a common reason a "PD" cable never crosses 60W in practice.</p><div class="note">A cable that supports USB 3.x data (5Gbps or higher) also requires an e-marker, which is why USB 2.0 charging cables — even 100W-rated ones — will not carry high-speed data even between USB4 devices.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Test with a known full-featured cable.</h2><p>Borrow or buy a cable you can identify — a rated 100W or 240W USB-C to USB-C, ideally the one that shipped with the charger. If wattage jumps to what you expect, the original cable was the limit and can be replaced or reserved for phone-only duty. If nothing changes, the charger or device is the ceiling.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Verify the charger's per-port output, not the total.</h2><p>Multi-port GaN chargers advertise a total wattage but split it across active ports on a fixed schedule. A "100W" charger may deliver the full 100W only when one port is active, then drop to 65W + 30W the moment a second device plugs in. Read the small print on the box or the sticker on the charger itself for the per-port table.</p><div class="article-cards"><div><strong>One port only</strong><p>Usually the highest advertised wattage. Use this port for the laptop.</p></div><div><strong>Two ports active</strong><p>The primary port typically drops to 65W or 45W. Check the printed table.</p></div><div><strong>Three or more</strong><p>Every port scales down. Chargers with more ports are more useful for phones and tablets than a hungry laptop.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Check the device's own maximum draw.</h2><p>A charger and cable can deliver only what the device asks for. A MacBook Air M2 will not accept more than 30W. A 16" MacBook Pro asks for 96W. A gaming laptop with a discrete GPU may want 180W or more via USB-C EPR, and will otherwise fall back to slow charging. Look up the device's official spec sheet before assuming the charger is too weak.[2]</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Rule out heat and dirty ports.</h2><p>USB-PD chargers throttle to protect their internal components when hot. A charger on top of the laptop it is charging will run hotter than one on the desk beside it. USB-C ports collect pocket lint that prevents full pin contact, which can silently negotiate the cable down to a lower profile. A wooden toothpick is safer than metal for cleaning the port.</p><ul class="article-list"><li>Move the charger off the laptop and off the carpet.</li><li>Inspect the USB-C port on both ends under a bright light.</li><li>Blow compressed air, then check contacts with a wooden toothpick.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to replace the cable versus everything else.</h2><p>If Step 03 restored full speed, the cable was the limit and a rated 100W or 240W USB-C to USB-C is the fix. If Step 04 revealed a per-port drop, moving the laptop to a solo charger is cheaper than a new brick. If the device's own ceiling is the limit, no cable or charger will make it faster.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft"><h3>INIU 240W 6.6ft USB-C cable</h3><p>A rated 240W cable with e-marker, USB 2.0 data, that covers every current USB-PD profile.</p></a>
+        <a class="card" href="/gear/budget-tech/500w-multi-port-gan-charging-station"><h3>500W multi-port GaN station</h3><p>When one charger has to feed a laptop, a phone, a tablet, and a spare port at once.</p></a>
+        <a class="card" href="/guides/usb-c-cable-buying-guide"><h3>USB-C cable buying guide</h3><p>What the wattage and speed markings actually mean, and how to identify an unlabeled cable.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.usb.org/document-library/usb-power-delivery">USB-IF — USB Power Delivery specification and revision history</a></li>
+        <li>[2] <a href="https://support.apple.com/en-us/111883">Apple — MacBook Air (M2) power adapter and charging specifications</a></li>
+        <li>[3] <a href="/guides/usb-c-cable-buying-guide">StackGeist — USB-C cable buying guide</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

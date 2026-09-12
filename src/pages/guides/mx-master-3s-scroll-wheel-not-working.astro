@@ -1,0 +1,66 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "MX Master 3S scroll wheel not working: the real fix.",
+    description: "An MX Master 3S scroll wheel that does not register is usually the SmartShift toggle accidentally set to free-spin, hair or lint wrapped around the wheel axle, or a low battery causing intermittent detection — not a broken sensor.",
+    url: 'https://stackgeist.dev/guides/mx-master-3s-scroll-wheel-not-working',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix an MX Master 3S scroll wheel that stopped working",
+    description: "Check the SmartShift button behind the scroll wheel, clean hair and lint from the axle, reset scroll settings in Logi Options+, update firmware, replace the battery, and identify a genuine MagSpeed sensor failure.",
+    steps: [
+      { name: "Check the SmartShift button behind the wheel", text: "The button immediately behind the scroll wheel toggles between ratchet and free-spin mode. Accidentally pressing it makes the wheel feel unresponsive. Press it once to toggle back to ratchet mode." },
+      { name: "Clean hair and lint wrapped around the wheel axle", text: "Shine a light from the side and inspect the gap between the wheel and the mouse body. Hair, lint, or crumbs can wrap around the axle and prevent the wheel from turning. Use compressed air or a wooden toothpick to remove debris." },
+      { name: "Reset scroll settings in Logi Options+", text: "Open Logi Options+, select the MX Master 3S, go to the scroll wheel settings, and reset scroll direction and SmartShift sensitivity to defaults. A misconfigured threshold can make the wheel feel broken." },
+      { name: "Update firmware via Logi Options+", text: "Firmware updates fix scroll wheel intermittent detection and improve SmartShift behavior. Open Logi Options+ and check the Settings tab for available firmware updates. Install and reboot the mouse." },
+      { name: "Replace the battery or recharge fully", text: "Low battery causes intermittent scroll detection before the mouse stops moving entirely. Charge the mouse for at least an hour via USB-C, or check battery level in Logi Options+." },
+      { name: "Identify a genuine MagSpeed sensor failure", text: "If the wheel is clean, the battery is full, firmware is updated, and the wheel does not register at all in any application, the internal MagSpeed electromagnetic sensor has failed. Contact Logitech for warranty replacement." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "What is the button behind the MX Master 3S scroll wheel?", answer: "That is the SmartShift toggle. It switches the wheel between ratchet mode (notched, precise) and free-spin mode (smooth, fast scrolling). Press it once to toggle. Accidentally pressing it makes the wheel feel unresponsive in free-spin." },
+      { question: "Why does my scroll wheel work in some apps but not others?", answer: "Application-specific scroll bindings or a misconfigured Logi Options+ profile. Open Logi Options+, select the MX Master 3S, check whether the scroll wheel is remapped in a per-app profile, and reset it to default scroll." },
+      { question: "How do I clean the scroll wheel without breaking it?", answer: "Use compressed air to blow debris out of the gap between the wheel and the body. For stuck lint, a wooden toothpick is safer than metal tweezers. Do not disassemble the mouse unless you are comfortable with small screws and ribbon cables — iFixit has a teardown guide if needed.[1]" },
+      { question: "Will a firmware update fix the scroll wheel?", answer: "It can. Logitech has shipped firmware updates that fix intermittent scroll detection, improve SmartShift transitions, and resolve conflicts with specific operating systems. Update firmware before returning the mouse." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="MX Master 3S scroll wheel not working: the real fix | StackGeist" description="An MX Master 3S scroll wheel that does not register is usually the SmartShift toggle accidentally set, hair or lint wrapped around the axle, or a low battery — not a broken sensor." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / MX Master 3S scroll wheel not working</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">MX Master 3S scroll wheel not working: the real fix.</h1>
+    <p class="page-lead">An MX Master 3S scroll wheel that does not register is almost never a broken sensor. It is the SmartShift button accidentally toggled to free-spin, hair or lint wrapped around the wheel axle, or a low battery causing intermittent detection. Diagnose in that order before you return it.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Press the button immediately behind the scroll wheel once to toggle SmartShift mode. Shine a light from the side and inspect the gap around the wheel for hair or lint — remove debris with compressed air or a wooden toothpick. Open Logi Options+ and reset scroll settings to default. Charge the mouse fully. If the wheel still does not register at all, the MagSpeed sensor has failed.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Check the SmartShift button behind the scroll wheel.</h2><p>The MX Master 3S has a small button immediately behind the scroll wheel. This is the SmartShift toggle. It switches the wheel between ratchet mode — notched, precise scrolling — and free-spin mode — smooth, fast scrolling. Accidentally pressing it makes the wheel feel unresponsive or broken when it is simply in the wrong mode. Press the button once to toggle back.[1]</p><ul class="article-list"><li>The button is directly behind the scroll wheel, between the wheel and the top shell.</li><li>Press it once to toggle. You should feel a change in wheel resistance immediately.</li><li>Ratchet mode: notched, tactile. Free-spin: smooth, infinite scroll.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Clean hair and lint wrapped around the wheel axle.</h2><p>Hair, lint, and crumbs can wrap around the scroll wheel axle and prevent it from turning. Shine a flashlight or phone light from the side and inspect the gap between the wheel and the mouse body. Even a single hair can bind the wheel enough to make it feel broken. Use compressed air to blow debris out, or a wooden toothpick to gently remove visible lint. Do not use metal tools — they can scratch the axle or damage the MagSpeed sensor housing.</p><div class="note">The MX Master 3S scroll wheel uses an electromagnetic MagSpeed sensor instead of a mechanical encoder. Debris does not break the sensor directly, but it can prevent the wheel from turning at all.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Reset scroll settings in Logi Options+.</h2><p>Open Logi Options+, select the MX Master 3S from the device list, and go to the scroll wheel settings. Reset scroll direction to default, and check the SmartShift sensitivity slider. A misconfigured SmartShift threshold can make the wheel switch modes unexpectedly or feel unresponsive. Set it to the middle position and test.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Update firmware via Logi Options+.</h2><p>Logitech ships firmware updates that fix scroll wheel intermittent detection, improve SmartShift transitions, and resolve conflicts with specific operating systems. Open Logi Options+, click the Settings gear icon, and check for firmware updates. Install any available updates, then reboot the mouse by turning it off and back on.[2]</p><ul class="article-list"><li>Open Logi Options+ and select the MX Master 3S.</li><li>Click Settings > Firmware update.</li><li>Install the update, then power-cycle the mouse.</li></ul></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Replace the battery or recharge fully.</h2><p>Low battery causes intermittent scroll detection before the cursor stops moving entirely. The MX Master 3S uses a built-in rechargeable battery charged via USB-C. Charge the mouse for at least an hour, or check the battery level in Logi Options+. A battery below 10 percent can cause strange behavior that mimics hardware failure.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Identify a genuine MagSpeed sensor failure.</h2><p>If the scroll wheel is clean, the battery is fully charged, firmware is updated, SmartShift is toggled correctly, and the wheel does not register in any application, the internal MagSpeed electromagnetic sensor has failed. This is rare but does happen. Contact Logitech support with proof of purchase and the serial number for warranty replacement.</p><ul class="article-list"><li>Confirm the wheel is physically clean and turns freely.</li><li>Test in multiple applications — browser, text editor, settings menus.</li><li>Try a different computer to rule out OS or driver issues.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to clean versus replace.</h2><p>Most scroll wheel failures resolve at Step 01 or Step 02. If the wheel is physically stuck with debris, compressed air or a toothpick is the fix. If the MagSpeed sensor has genuinely failed and the mouse is out of warranty, replacement is cheaper than third-party repair. The fit guides below cover the MX Master 3S and alternative input setups.</p><div class="cards">
+        <a class="card" href="/gear/input/logitech-mx-master-3s"><h3>Logitech MX Master 3S fit guide</h3><p>A wireless mouse with MagSpeed scroll, multi-device pairing, and a form factor for medium to large hands.</p></a>
+        <a class="card" href="/guides/keyboard-mouse-fit"><h3>Keyboard and mouse fit</h3><p>The buying-side guide to hand size, grip style, switch type, and wrist angle.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://support.logi.com/hc/en-us/articles/4418322853143-Getting-Started-MX-Master-3S">Logitech — Getting Started with MX Master 3S (SmartShift and button layout)</a></li>
+        <li>[2] <a href="https://support.logi.com/hc/en-us/articles/360035037273-Logi-Options-How-to-Update-Firmware">Logitech — How to Update Firmware via Logi Options+</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

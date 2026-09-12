@@ -1,0 +1,66 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Keychron V6 Max Bluetooth not connecting: the real fix.",
+    description: "A Keychron V6 Max that will not connect via Bluetooth is usually the physical mode switch on the wrong setting, the wrong Bluetooth profile selected, a stale device cache on the host, or a low battery cutoff — not a broken radio.",
+    url: 'https://stackgeist.dev/guides/keychron-v6-max-bluetooth-not-connecting',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a Keychron V6 Max that will not connect via Bluetooth",
+    description: "Check the physical mode switch on the back of the keyboard, select the correct Bluetooth profile with Fn+1/2/3/4, long-press to enter pairing mode, remove stale pairings on the host, factory reset the keyboard, and rule out low battery cutoff.",
+    steps: [
+      { name: "Check the physical mode switch on the back", text: "The Keychron V6 Max has a three-position switch on the back edge: Cable, BT (Bluetooth), and 2.4G (for the wireless dongle). Slide it to BT for Bluetooth mode." },
+      { name: "Select a Bluetooth profile with Fn+1/2/3/4", text: "The keyboard stores up to four Bluetooth pairings. Press Fn+1, Fn+2, Fn+3, or Fn+4 to select a profile. Long-press the same combination for about four seconds to enter pairing mode on that profile." },
+      { name: "Remove old pairings on the host and re-pair", text: "Windows 11: Settings > Bluetooth & devices > Devices. Remove 'Keychron V6 Max' if listed. macOS: System Settings > Bluetooth, click the i next to the keyboard, and choose 'Forget This Device'. Then re-pair." },
+      { name: "Re-pair the 2.4GHz dongle if using wireless mode", text: "Plug the dongle into a USB port, slide the keyboard's mode switch to 2.4G, then press and hold Fn+R for four seconds. The keyboard will re-pair with the dongle. This does not affect Bluetooth profiles." },
+      { name: "Factory reset the keyboard", text: "Press and hold Fn+J+Z for four seconds. All LEDs will flash. This clears all Bluetooth pairings and settings. Slide the mode switch to BT and re-pair from scratch." },
+      { name: "Charge the battery fully", text: "Low battery triggers a cutoff that disables wireless modes before the keyboard shuts down entirely. Charge via USB-C for at least an hour, or check the battery indicator LED. A battery below 10 percent can cause pairing to fail silently." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How do I know which Bluetooth profile is selected?", answer: "The Keychron V6 Max shows the active profile via LED indicators when you press Fn+1, Fn+2, Fn+3, or Fn+4. The number key's LED will light up or flash to indicate the profile. Check the manual for the exact LED pattern." },
+      { question: "Why does my keyboard work wired but not Bluetooth?", answer: "Check the physical mode switch on the back. It must be set to BT, not Cable or 2.4G. If the switch is correct, the Bluetooth radio may need a factory reset (Fn+J+Z held for four seconds) to clear corrupted pairing state." },
+      { question: "Will a factory reset delete my custom key mappings?", answer: "Yes. A factory reset clears all settings, including custom key mappings saved via VIA or the Keychron Launcher software. Export your layout before resetting if you have custom mappings." },
+      { question: "Why does macOS take so long to connect after sleep?", answer: "macOS wake-from-sleep Bluetooth delays are common with many keyboards, including the Keychron V6 Max. Some builds of macOS cache Bluetooth device state aggressively. This is not a keyboard fault. Forgetting and re-pairing the device sometimes helps, but the delay can return after OS updates.[1]" }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Keychron V6 Max Bluetooth not connecting: the real fix | StackGeist" description="A Keychron V6 Max that will not connect via Bluetooth is usually the mode switch on the wrong setting, the wrong profile selected, a stale device cache, or low battery — not a broken radio." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Keychron V6 Max Bluetooth not connecting</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Keychron V6 Max Bluetooth not connecting: the real fix.</h1>
+    <p class="page-lead">A Keychron V6 Max that will not connect via Bluetooth is almost never a broken radio. It is the physical mode switch on the back set to Cable or 2.4G instead of BT, the wrong Bluetooth profile selected, a stale device cache on the host, or a low battery cutoff. Diagnose in that order before you return it.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Slide the mode switch on the back edge of the keyboard to BT. Press Fn+1 and long-hold for four seconds to enter pairing mode on Bluetooth profile 1. On the computer, remove any old 'Keychron V6 Max' pairing and re-pair. Charge the keyboard via USB-C for at least an hour. If it still does not pair, factory reset with Fn+J+Z held for four seconds.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Check the physical mode switch on the back of the keyboard.</h2><p>The Keychron V6 Max has a three-position slide switch on the back edge. The positions are Cable (wired USB-C), BT (Bluetooth), and 2.4G (wireless dongle). For Bluetooth pairing, the switch must be set to BT. If the switch is on Cable, the keyboard will work wired but ignore Bluetooth pairing attempts. If it is on 2.4G, it will pair only with the wireless dongle.[1]</p><ul class="article-list"><li>Unplug the USB-C cable if connected.</li><li>Flip the keyboard over and locate the switch on the back edge.</li><li>Slide it to the BT position.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Select a Bluetooth profile and enter pairing mode.</h2><p>The Keychron V6 Max stores up to four Bluetooth pairings in profiles 1, 2, 3, and 4. Press Fn+1, Fn+2, Fn+3, or Fn+4 to select a profile. To enter pairing mode on that profile, long-press the same combination for about four seconds until the LED flashes. The keyboard is now discoverable on that profile. Pair it from the host's Bluetooth settings.</p><div class="note">If you have already paired the keyboard to a different device on profile 1, switch to an unused profile — Fn+2, Fn+3, or Fn+4 — to avoid conflicts.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Remove old pairings on the host and re-pair.</h2><p>Stale Bluetooth device cache on the host can prevent the keyboard from reconnecting even when the mode switch and profile are correct. Remove the old pairing, then re-pair from scratch.</p><div class="article-cards"><div><strong>Windows 11</strong><p>Settings > Bluetooth & devices > Devices. Find 'Keychron V6 Max', click the three dots, and choose 'Remove device'. Then re-pair.</p></div><div><strong>macOS</strong><p>System Settings > Bluetooth. Click the i next to 'Keychron V6 Max' and choose 'Forget This Device'. Then re-pair.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Re-pair the 2.4GHz dongle if using wireless mode.</h2><p>If you use the wireless dongle instead of Bluetooth, the keyboard may have lost pairing with the dongle. Plug the dongle into a USB port, slide the keyboard's mode switch to 2.4G, then press and hold Fn+R for four seconds. The keyboard will re-pair with the dongle. This does not affect Bluetooth profiles — each mode is independent.</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Factory reset the keyboard.</h2><p>A factory reset clears all Bluetooth pairings, key mappings, and settings. Press and hold Fn+J+Z for four seconds. All LEDs will flash to confirm the reset. Slide the mode switch to BT, select a profile with Fn+1, long-press to enter pairing mode, and re-pair from the host. If you have custom key mappings saved via VIA or Keychron Launcher, export them before resetting.[2]</p><ul class="article-list"><li>Hold Fn+J+Z for four seconds.</li><li>Wait for all LEDs to flash.</li><li>Re-pair the keyboard from scratch.</li></ul></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Charge the battery fully.</h2><p>Low battery triggers a cutoff that disables wireless modes — Bluetooth and 2.4G — before the keyboard shuts down entirely. Charge the keyboard via USB-C for at least an hour. The battery indicator LED near the USB-C port lights up during charging. A battery below 10 percent can cause pairing to fail silently or the keyboard to disconnect after a few seconds.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the keyboard still will not pair.</h2><p>Most pairing failures resolve at Step 01, 02, or 03. If the keyboard pairs successfully but disconnects after sleep on macOS, this is a known macOS Bluetooth caching issue and not a keyboard fault. If the keyboard does not pair at all after a factory reset and full charge, the Bluetooth radio has failed and warranty replacement is the next step. The fit guide below covers the Keychron V6 Max and alternative mechanical keyboards.</p><div class="cards">
+        <a class="card" href="/gear/input/keychron-v6-max"><h3>Keychron V6 Max fit guide</h3><p>A full-size mechanical keyboard with wireless tri-mode, hot-swap switches, and QMK/VIA support.</p></a>
+        <a class="card" href="/guides/keyboard-mouse-fit"><h3>Keyboard and mouse fit</h3><p>The buying-side guide to switch type, layout, wrist angle, and hand size.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.keychron.com/pages/keychron-v6-max-user-guide">Keychron — V6 Max User Guide (mode switch and Bluetooth pairing steps)</a></li>
+        <li>[2] <a href="https://www.keychron.com/pages/keychron-v6-max-user-guide">Keychron — V6 Max factory reset and firmware update instructions</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

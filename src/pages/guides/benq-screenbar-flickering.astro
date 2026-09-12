@@ -1,0 +1,66 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "BenQ ScreenBar flickering: the real fix.",
+    description: "A flickering BenQ ScreenBar is usually a monitor USB port that does not deliver enough power, a low battery in the Halo wireless puck, dirty pogo pins, or PWM dimming at low brightness — not a broken LED driver.",
+    url: 'https://stackgeist.dev/guides/benq-screenbar-flickering',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a flickering BenQ ScreenBar",
+    description: "Swap the USB power source to a wall adapter, recharge the Halo wireless puck, clean the pogo pins between the bar and dimmer, reset pairing, rule out PWM dimming on camera, and check for ambient sensor obstruction.",
+    steps: [
+      { name: "Swap USB power from the monitor to a wall adapter", text: "Monitor USB ports often deliver only 500mA at 5V, below the 1A the ScreenBar needs. A wall adapter rated for at least 5V/1A eliminates power fluctuation as a cause." },
+      { name: "Recharge the Halo wireless puck battery", text: "The ScreenBar Pro's wireless Halo dimmer runs on a built-in battery. When low, the puck loses connection and the bar flickers or turns off. Charge the puck via USB-C for at least an hour." },
+      { name: "Clean the pogo pins between the bar and dimmer", text: "The wired dimmer on the standard ScreenBar connects via spring-loaded pogo pins. Dust or oxidation on the pins causes intermittent contact. Wipe the pins with isopropyl alcohol on a cotton swab." },
+      { name: "Reset firmware and pairing", text: "Unplug the ScreenBar, wait ten seconds, plug it back in. For the ScreenBar Pro, re-pair the Halo puck by holding the auto-dimming button on the puck for five seconds." },
+      { name: "Rule out PWM dimming flicker visible on camera", text: "LED lights dimmed via pulse-width modulation flicker at a frequency invisible to the human eye but visible on camera at certain shutter speeds. If the flicker appears only on video calls or recordings, the ScreenBar is working correctly — adjust camera shutter speed." },
+      { name: "Check for ambient sensor obstruction", text: "The ScreenBar Pro has an ambient light sensor on the front edge. An object blocking the sensor can cause auto-dimming to fluctuate rapidly. Clear the sensor area and disable auto-dimming to test." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How much power does the BenQ ScreenBar need?", answer: "The ScreenBar and ScreenBar Pro both require 5V at 1A minimum. Many monitor USB ports deliver only 500mA. Use a wall adapter or powered USB hub rated for at least 5W to rule out power as a cause." },
+      { question: "Why does my ScreenBar flicker on camera but not in person?", answer: "PWM dimming. LEDs dimmed via pulse-width modulation flicker at a high frequency invisible to the human eye but visible on camera at certain shutter speeds. This is not a fault. Adjust your camera's shutter speed or exposure settings to reduce or eliminate the visible flicker." },
+      { question: "How do I know if the Halo puck battery is dead?", answer: "The Halo puck on the ScreenBar Pro has a small LED near the USB-C port that lights up when charging. If the puck does not respond to button presses or the ScreenBar turns off randomly, charge the puck for at least an hour and retest." },
+      { question: "Will dirty pogo pins break the ScreenBar?", answer: "No, but they will cause intermittent contact that looks like flickering or the bar turning off. Clean the pins with isopropyl alcohol on a cotton swab. Let them dry fully before reconnecting the dimmer." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="BenQ ScreenBar flickering: the real fix | StackGeist" description="A flickering BenQ ScreenBar is usually a monitor USB port that does not deliver enough power, a low Halo puck battery, dirty pogo pins, or PWM dimming on camera — not a broken LED driver." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / BenQ ScreenBar flickering</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">BenQ ScreenBar flickering: the real fix.</h1>
+    <p class="page-lead">A BenQ ScreenBar that flickers is almost never a broken LED driver. It is a monitor USB port that cannot deliver 1A, a low battery in the Halo wireless puck, dirty pogo pins between the bar and dimmer, or PWM dimming visible on camera but not in person. Diagnose in that order before you return it.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Plug the ScreenBar into a 5V/1A wall adapter instead of the monitor's USB port. Charge the Halo wireless puck via USB-C for at least an hour. Wipe the pogo pins on the wired dimmer with isopropyl alcohol. If the flicker appears only on camera, it is PWM dimming at low brightness — not a fault.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Swap USB power from the monitor to a wall adapter.</h2><p>The BenQ ScreenBar and ScreenBar Pro both require 5V at 1A minimum. Many monitor USB ports deliver only 500mA, which is enough to turn the bar on but not enough to run it stably at full brightness. Flickering at high brightness or when auto-dimming adjusts is a classic sign of under-voltage. Use a wall adapter rated for at least 5V/1A or a powered USB hub.[1]</p><ul class="article-list"><li>Monitor USB ports: often 500mA maximum, below the ScreenBar's requirement.</li><li>Wall adapter: use a phone charger rated for at least 5W (5V/1A).</li><li>Powered USB hub: confirm the hub spec lists at least 1A per port.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Recharge the Halo wireless puck battery.</h2><p>The ScreenBar Pro's wireless Halo dimmer runs on a built-in rechargeable battery. When the battery is low, the puck loses connection to the bar and the bar flickers or turns off. Charge the puck via USB-C for at least an hour. A small LED near the USB-C port lights up during charging and turns off when full.</p><div class="note">The standard ScreenBar uses a wired dimmer with pogo pins and does not have a battery. Skip this step if you own the standard ScreenBar.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Clean the pogo pins between the bar and dimmer.</h2><p>The wired dimmer on the standard ScreenBar connects via spring-loaded pogo pins at the center of the bar. Dust, oxidation, or finger oils on the pins cause intermittent contact that looks like flickering or the bar turning off when you adjust the dimmer wheel. Wipe both the pins on the bar and the contacts on the dimmer with isopropyl alcohol on a cotton swab. Let them dry fully before reconnecting.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Reset firmware and pairing.</h2><p>Unplug the ScreenBar from USB power, wait ten seconds, and plug it back in. For the ScreenBar Pro, re-pair the Halo wireless puck by holding the auto-dimming button on the puck for five seconds until the LED flashes. This clears transient firmware state that can cause flickering or unresponsive controls.[2]</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Rule out PWM dimming flicker visible on camera.</h2><p>LEDs dimmed via pulse-width modulation flicker at a frequency invisible to the human eye — often 200Hz to 1kHz — but visible on camera at certain shutter speeds. If the ScreenBar flickers only on video calls or recordings, and you do not see it in person, the bar is working correctly. Adjust your camera's shutter speed or exposure settings to reduce the visible flicker on video. This is not a fault and does not indicate a hardware problem.</p><div class="article-cards"><div><strong>Human eye</strong><p>Cannot detect flicker above about 60Hz. The ScreenBar appears steady at all brightness levels.</p></div><div><strong>Camera sensor</strong><p>Sees PWM flicker when shutter speed aligns with the dimming frequency. Adjust shutter or use higher brightness.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Check for ambient sensor obstruction.</h2><p>The ScreenBar Pro has an ambient light sensor on the front edge of the bar. An object blocking the sensor — a piece of paper, a cable, a monitor bezel — can cause auto-dimming to fluctuate rapidly as the sensor tries to adjust. Clear the sensor area and disable auto-dimming to test whether the flicker stops. If it does, the sensor was the cause.</p><ul class="article-list"><li>The sensor is a small circle on the front face of the bar, near the center.</li><li>Test with auto-dimming disabled: press the Halo puck's auto-dimming button to toggle it off.</li><li>If flicker stops with auto-dimming off, clear obstructions or leave auto-dimming disabled.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to replace versus return.</h2><p>Most flickering resolves at Step 01 or Step 02. If the LED driver has genuinely failed — the bar flickers at all brightness levels on wall power with a clean dimmer connection — warranty replacement is the next step. The desk lighting guide below covers the ScreenBar Pro and alternative task lights.</p><div class="cards">
+        <a class="card" href="/gear/desk-lighting/benq-screenbar-pro"><h3>BenQ ScreenBar Pro fit guide</h3><p>A monitor-mounted task light with auto-dimming and a wireless control puck for a desk with limited space.</p></a>
+        <a class="card" href="/guides/desk-lighting-guide"><h3>Desk lighting buying guide</h3><p>The buying-side guide to lux, color temperature, CRI, and task light placement.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.benq.com/en-us/lighting/monitor-light/screenbar-pro.html">BenQ — ScreenBar Pro specifications and power requirements</a></li>
+        <li>[2] <a href="https://www.benq.com/en-us/support/downloads-faq/products/lighting/screenbar-pro/faq.html">BenQ — ScreenBar Pro FAQ and troubleshooting steps</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Extension cord getting hot: when to unplug immediately.",
+    description: "A hot extension cord is a watt draw exceeding the cord's ampacity, a coiled cord trapping heat, or damaged conductors increasing resistance. Diagnose which side is overloading before it melts or starts a fire.",
+    url: 'https://stackgeist.dev/guides/extension-cord-getting-hot',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Diagnose a hot extension cord and decide whether to unplug",
+    description: "Measure the total watt draw on the cord, verify the cord's gauge and ampacity rating, check for coiling that traps heat, inspect for damaged insulation or bent prongs, and recognize the signs of immediate danger that require unplugging now.",
+    steps: [
+      { name: "Unplug immediately if you see melting, discoloration, or smell plastic", text: "Any visible deformation of the plug, receptacle, or cord insulation, or any smell of burning plastic, means the cord is failing and poses a fire risk. Unplug it now and do not use it again." },
+      { name: "Calculate the total watt draw on the cord", text: "Add up the wattage of every device plugged into the cord. Divide by 120V to get the amperage. If the result exceeds the cord's rating, the cord is overloaded." },
+      { name: "Check the cord's gauge and ampacity", text: "A 16-gauge cord is rated for 13A continuous. A 14-gauge cord is rated for 15A. An 18-gauge cord is rated for only 10A. The gauge is usually printed on the insulation." },
+      { name: "Uncoil the cord and spread it out in open air", text: "A coiled cord traps heat in the center of the coil and runs hotter than a straight cord carrying the same load. Uncoil it completely and test whether it still gets hot." },
+      { name: "Inspect the plug, receptacle, and cord for physical damage", text: "Bent or corroded prongs, worn outlet contacts, pinched insulation, or exposed copper increase resistance and generate heat even on a safe load." },
+      { name: "Never use an extension cord for high-draw appliances long-term", text: "Space heaters, portable air conditioners, microwaves, and other motor or resistive loads should plug directly into the wall. Extension cords are for temporary low-draw use only." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How hot is too hot for an extension cord?", answer: "An extension cord should feel barely warm to the touch under load. If it is uncomfortably hot, smells like plastic, or has any visible deformation, it is overloaded or damaged and must be unplugged immediately." },
+      { question: "Can I use a 16-gauge extension cord for a space heater?", answer: "No. A space heater typically draws 12-15 amps, which exceeds the 13-amp rating of a 16-gauge cord and will cause it to overheat. Plug space heaters directly into the wall outlet." },
+      { question: "Why does my extension cord get hot when coiled?", answer: "A coiled cord traps heat in the center of the coil and cannot dissipate it as efficiently as a straight cord. The same load that is safe on an uncoiled cord can overheat a coiled one." },
+      { question: "Is a hot plug on an extension cord dangerous?", answer: "Yes. A hot plug means either the prongs are making poor contact with the outlet, the outlet itself is worn, or the cord is overloaded. All three conditions can lead to arcing, melting, and fire. Unplug the cord and replace the outlet or cord as needed." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Extension cord getting hot: when to unplug immediately | StackGeist" description="A hot extension cord is a watt draw exceeding the cord's ampacity, a coiled cord trapping heat, or damaged conductors increasing resistance. Diagnose which side is overloading before it melts or starts a fire." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Extension cord getting hot</p>
+    <p class="page-kicker">Power troubleshooting</p>
+    <h1 class="page-title">Extension cord getting hot: when to unplug immediately.</h1>
+    <p class="page-lead">A hot extension cord is a fire waiting for the right conditions. The heat comes from watt draw exceeding the cord's ampacity, a coiled cord trapping heat it cannot dissipate, or damaged conductors adding resistance to the path. Diagnose which one is overloading the cord before it melts or ignites.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Unplug immediately if you see any melting, discoloration, or smell burning plastic. Add up the wattage of everything on the cord and compare it to the cord's rated ampacity. Uncoil the cord completely and spread it in open air. If it still gets hot under a safe load, replace it.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Unplug immediately if you see melting, discoloration, or smell plastic.</h2><p>Any visible deformation of the plug, receptacle, or cord insulation, any discoloration around the prongs or outlet, or any smell of burning plastic means the cord or outlet is failing and poses an immediate fire risk. Unplug the cord now and do not use it again. Replace the cord and inspect the wall outlet for damage.</p><ul class="article-list"><li>Melted or deformed plastic on the plug or receptacle.</li><li>Brown or black discoloration around the prongs or inside the outlet.</li><li>Any smell of burning plastic, even faint.</li><li>Sparking, crackling, or buzzing sounds when plugging or unplugging.</li></ul><div class="note">Do not attempt to cool the cord or outlet with water. Unplug it and let it cool in open air. If the outlet is hot, turn off the breaker and call an electrician.</div></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Calculate the total watt draw on the cord.</h2><p>Add up the wattage of every device plugged into the extension cord or the power strip plugged into it. Divide the total by 120V to get the amperage draw. If the result exceeds the cord's rating, the cord is overloaded and will get hot under normal use.</p><div class="article-cards"><div><strong>14-gauge cord</strong><p>Rated for 15A continuous, or 1800W at 120V. Safe for most office and home use.</p></div><div><strong>16-gauge cord</strong><p>Rated for 13A continuous, or 1560W at 120V. Common in budget extension cords.</p></div><div><strong>18-gauge cord</strong><p>Rated for only 10A continuous, or 1200W at 120V. Too small for many appliances.</p></div></div><p>The gauge is usually printed on the cord insulation as "16/3" or "14/3" where the first number is the wire gauge. A lower gauge number means thicker wire and higher ampacity.[1]</p></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Check the cord's gauge and ampacity against the load.</h2><p>Most extension cords are 16-gauge and rated for 13A continuous load. A 14-gauge cord is rated for 15A. An 18-gauge cord is rated for only 10A and is not suitable for any appliance that draws more than 1200W. The rating assumes the cord is uncoiled and in open air. A coiled cord or a cord buried under carpet runs hotter.</p><p>If the total load exceeds the cord's rating, reduce the load or replace the cord with a heavier-gauge one rated for the wattage you need. Do not chain extension cords together to add length — use a single cord of the correct gauge and length.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Uncoil the cord and spread it out in open air.</h2><p>A coiled extension cord traps heat in the center of the coil and cannot dissipate it as efficiently as a straight cord. The same load that is safe on an uncoiled 16-gauge cord can overheat a coiled one. Uncoil the cord completely, spread it out in open air, and test whether it still gets hot under the same load.</p><p>If the cord stays cool when uncoiled, the coiling was the problem and the fix is to store the cord loosely or use a shorter one that does not need coiling. If the cord still gets hot, the load exceeds the cord's rating or the cord is damaged.</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Inspect the plug, receptacle, and cord for physical damage.</h2><p>Bent or corroded prongs increase resistance at the connection point and generate heat even on a safe load. A worn outlet with loose contacts does the same. Pinched insulation, exposed copper, or cuts in the cord jacket increase resistance and create hot spots. Inspect both ends of the cord and the wall outlet under a bright light.</p><ul class="article-list"><li>Bent, loose, or corroded prongs on the plug.</li><li>Worn or loose contacts inside the wall outlet.</li><li>Pinched, cut, or exposed insulation anywhere on the cord.</li><li>Cord run under carpet, furniture, or through a doorway.</li></ul><p>Replace a damaged cord immediately. A worn outlet should be replaced by a qualified electrician.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Never use an extension cord for high-draw appliances long-term.</h2><p>Space heaters, portable air conditioners, microwaves, toasters, hair dryers, and other resistive or motor loads should plug directly into the wall outlet. Extension cords are rated for temporary use only and are not a permanent substitute for a properly placed outlet. Most space heaters draw 12-15 amps and will overheat a 16-gauge cord.[2]</p><div class="note">The National Electrical Code restricts extension cord use to temporary applications. A permanent need for an outlet in a different location requires installing a new wall outlet, not running a permanent extension cord.</div></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to replace the cord versus the outlet or the load.</h2><p>If the cord is overloaded by the devices on it, reduce the load or replace the cord with a heavier-gauge one rated for the wattage. If the cord is damaged, replace it immediately. If the wall outlet is worn or hot, replace it. If the load is a high-draw appliance, plug it directly into the wall or install a new outlet closer to where the appliance lives.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black"><h3>15ft flat indoor extension cord</h3><p>A 16-gauge flat-plug cord rated for 13A, useful for low-draw desk and entertainment loads.</p></a>
+        <a class="card" href="/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb"><h3>Flat-plug surge protector</h3><p>An 8-outlet power strip with surge protection, safer than daisy-chaining extension cords.</p></a>
+        <a class="card" href="/guides/extension-cord-safety-guide"><h3>Extension cord safety guide</h3><p>Gauge, length, ampacity, grounding, and long-term safety for extension cords and power strips.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70">National Fire Protection Association — National Electrical Code (NFPA 70)</a></li>
+        <li>[2] <a href="https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Extension-Cord-Safety">U.S. Consumer Product Safety Commission — Extension cord safety guidance</a></li>
+        <li>[3] <a href="/guides/extension-cord-safety-guide">StackGeist — Extension cord safety guide</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

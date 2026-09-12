@@ -1,0 +1,67 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "ALFA AC1900 slow speed: USB 3.0, drivers, and 5 GHz fixes.",
+    description: "A slow ALFA AWUS1900 Wi-Fi adapter is almost always plugged into a USB 2.0 port, using the wrong driver, or competing with the onboard adapter. Diagnose the USB port, driver, and radio settings before assuming the adapter is broken.",
+    url: 'https://stackgeist.dev/guides/alfa-ac1900-slow-speed-fix',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a slow ALFA AC1900 Wi-Fi adapter",
+    description: "Diagnose USB bandwidth limits, driver issues, and radio settings: verify the adapter is in a USB 3.0 port, install the correct Realtek RTL8814AU driver, disable the onboard adapter, select 5 GHz band, orient antennas vertically, and rule out interference.",
+    steps: [
+      { name: "Confirm the adapter is in a USB 3.0 port", text: "USB 2.0 has a 480 Mbps ceiling that limits Wi-Fi speed. USB 3.0 ports are usually blue inside and labeled 'SS' or with a USB trident logo. Move the adapter to a USB 3.0 port or powered USB 3.0 hub." },
+      { name: "Install the correct Realtek RTL8814AU driver for your OS", text: "The ALFA AWUS1900 uses the Realtek RTL8814AU chipset. Windows requires the vendor driver. Linux requires the Realtek or Aircrack-ng RTL8814AU driver built for your kernel. A wrong driver caps speed or disables 5 GHz entirely." },
+      { name: "Disable the onboard Wi-Fi adapter", text: "Windows and Linux prefer the onboard adapter over an external USB one. Disable the onboard adapter in Device Manager or NetworkManager to force the OS to use the ALFA exclusively." },
+      { name: "Connect to the 5 GHz band, not 2.4 GHz", text: "The 2.4 GHz band is slower and more congested. The ALFA AC1900 supports dual-band 802.11ac. Use the 5 GHz SSID or configure your router to steer the adapter to 5 GHz." },
+      { name: "Orient the antennas vertically and aim them at the router", text: "Wi-Fi antennas are polarized. A horizontal antenna receiving a vertical signal loses 10-20 dB. Point the ALFA's antennas vertically and toward the router for maximum gain." },
+      { name: "Rule out distance, interference, and power limits on Linux", text: "Check signal strength, nearby 5 GHz networks, and the regulatory domain. On Linux, 'iw reg set US' or your country code may increase transmit power. A powered USB hub can fix undervoltage." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why is my ALFA AC1900 capped at 40 Mbps on a gigabit network?", answer: "The adapter is almost certainly in a USB 2.0 port, which has a 480 Mbps ceiling. USB 2.0 overhead and protocol inefficiency usually cap real Wi-Fi speed around 100-150 Mbps. Move the adapter to a blue USB 3.0 port." },
+      { question: "Does the ALFA AC1900 work on Linux?", answer: "Yes, but you must build the Realtek RTL8814AU driver for your kernel. The Aircrack-ng repository has a maintained driver. The adapter will not work with the generic in-kernel driver." },
+      { question: "Will a USB 3.0 extension cable slow down the ALFA AC1900?", answer: "A short high-quality USB 3.0 extension cable will not significantly affect speed. A long or cheap cable, or one labeled 'USB 2.0', will drop the adapter to USB 2.0 speed and cap throughput." },
+      { question: "Why does Windows prefer the onboard Wi-Fi over the ALFA adapter?", answer: "Windows assigns a metric to each network adapter and prefers the one with the lowest value. The onboard adapter usually has a lower metric. Disable the onboard adapter in Device Manager or manually set the ALFA's metric lower in the adapter's advanced properties." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="ALFA AC1900 slow speed: USB 3.0, drivers, and 5 GHz fixes | StackGeist" description="A slow ALFA AWUS1900 Wi-Fi adapter is almost always plugged into a USB 2.0 port, using the wrong driver, or competing with the onboard adapter. Diagnose the USB port, driver, and radio settings before assuming the adapter is broken." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / ALFA AC1900 slow speed fix</p>
+    <p class="page-kicker">Connectivity troubleshooting</p>
+    <h1 class="page-title">ALFA AC1900 slow speed: USB 3.0, drivers, and 5 GHz fixes.</h1>
+    <p class="page-lead">A slow ALFA AWUS1900 Wi-Fi adapter is almost never broken. It is plugged into a USB 2.0 port with a 480 Mbps ceiling, using the wrong driver, or competing with the onboard adapter that Windows prefers by default. Diagnose the USB port, driver, and radio settings in that order before assuming hardware failure.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Confirm the adapter is in a blue USB 3.0 port. Install the correct Realtek RTL8814AU driver for your OS. Disable the onboard Wi-Fi adapter in Device Manager or NetworkManager. Connect to the router's 5 GHz band and orient the antennas vertically. If speed is still capped, check for interference and undervoltage.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Confirm the adapter is in a USB 3.0 port, not USB 2.0.</h2><p>USB 2.0 has a 480 Mbps theoretical ceiling. Real-world overhead and protocol inefficiency usually cap Wi-Fi speed around 100-150 Mbps even on a gigabit network. USB 3.0 has a 5 Gbps ceiling and is required to saturate the ALFA AC1900's 1900 Mbps combined radio capability.</p><ul class="article-list"><li>USB 3.0 ports are usually blue inside and labeled 'SS' or with a USB trident logo.</li><li>USB 2.0 ports are black or white inside.</li><li>Check the port itself, not the cable. A USB 3.0 cable in a USB 2.0 port runs at USB 2.0 speed.</li></ul><p>Move the adapter to a USB 3.0 port on the computer. If none are available, use a powered USB 3.0 hub plugged into a USB 3.0 port. A non-powered hub may undervolt the adapter and cause instability.</p></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Install the correct Realtek RTL8814AU driver for your OS.</h2><p>The ALFA AWUS1900 uses the Realtek RTL8814AU chipset. A wrong or missing driver will cap speed, disable 5 GHz, or prevent the adapter from appearing at all. Windows requires the vendor driver from ALFA or Realtek. Linux requires the RTL8814AU driver built for your kernel.[1]</p><div class="article-cards"><div><strong>Windows</strong><p>Download the latest driver from ALFA Network's website. Uninstall the old driver, reboot, then install the new one. Windows Update may install a generic driver that does not work correctly.</p></div><div><strong>Linux</strong><p>Build the Aircrack-ng RTL8814AU driver from source. The in-kernel rtl8xxxu driver does not support this chipset. You will need kernel headers and DKMS.</p></div><div><strong>macOS</strong><p>The RTL8814AU chipset is not supported on macOS. The adapter will not work without a third-party commercial driver that may be unstable.</p></div></div><p>On Linux, the driver must be rebuilt after every kernel update. Use DKMS to automate this.</p></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Disable the onboard Wi-Fi adapter so the OS uses the ALFA.</h2><p>Windows and Linux prefer the onboard adapter over an external USB one by default. Even with the ALFA connected, the OS may route traffic through the slower onboard adapter. Disable the onboard adapter entirely to force the OS to use the ALFA exclusively.</p><ol class="article-steps"><li><strong>Windows: Device Manager.</strong><span>Right-click the onboard adapter and select 'Disable device.' It will stay disabled across reboots until you enable it again.</span></li><li><strong>Linux: NetworkManager or systemd-networkd.</strong><span>Use 'nmcli device set &lt;onboard interface&gt; managed no' or blacklist the onboard driver in /etc/modprobe.d/.</span></li><li><strong>Verify the active adapter.</strong><span>On Windows, check 'Network Connections' and confirm only the ALFA is active. On Linux, run 'ip link' and confirm the onboard interface is down.</span></li></ol></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Connect to the 5 GHz band, not 2.4 GHz.</h2><p>The 2.4 GHz band is slower, more congested, and limited to 3 non-overlapping channels. The ALFA AC1900 supports dual-band 802.11ac with higher throughput on 5 GHz. If the router broadcasts both bands on the same SSID, it may steer the adapter to 2.4 GHz by default.</p><ul class="article-list"><li>Split the 2.4 GHz and 5 GHz SSIDs in the router's settings so they are named differently.</li><li>Connect to the 5 GHz SSID manually.</li><li>Check the connection properties to confirm the adapter is on 5 GHz and using 802.11ac.</li></ul><div class="note">5 GHz has shorter range than 2.4 GHz. If signal strength is weak, the adapter may fall back to 2.4 GHz automatically. Move closer to the router or reduce obstructions.</div></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Orient the antennas vertically and aim them at the router.</h2><p>Wi-Fi antennas are polarized. A horizontal antenna receiving a vertical signal loses 10-20 dB of gain. The ALFA AC1900 has four external antennas. Orient them vertically and point them toward the router for maximum signal strength and throughput.</p><p>If the adapter is on a desk and the router is on a shelf above, tilt the antennas upward to match the router's antenna orientation. Most consumer routers have vertical antennas, so the ALFA's antennas should also be vertical.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Rule out distance, interference, and power limits on Linux.</h2><p>Check signal strength with 'iw dev &lt;interface&gt; link' on Linux or the Wi-Fi icon on Windows. A signal below -70 dBm will limit speed. Check for nearby 5 GHz networks with 'iw dev &lt;interface&gt; scan' and switch to a less-congested channel in the router's settings.</p><p>On Linux, the regulatory domain limits transmit power. The default is often conservative. Set your country code with 'iw reg set US' or your actual country to allow higher power.[2] A powered USB 3.0 hub can fix undervoltage if the adapter is unstable or slow under load.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the adapter is fine.</h2><p>Most speed issues resolve at Step 01, 02, or 03. If the adapter is in a USB 3.0 port with the correct driver and the onboard adapter disabled, it should deliver 400-600 Mbps on a clean 5 GHz 802.11ac link. If speed is still capped, the router, distance, or interference is the limit, not the adapter.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter"><h3>ALFA AC1900 product page</h3><p>Specs, driver downloads, and fit guide for the AWUS1900 long-range adapter.</p></a>
+        <a class="card" href="/guides/usb-c-dock-compatibility"><h3>USB-C dock compatibility</h3><p>Host port, display support, power, and bandwidth matching for USB-C docks and hubs.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://github.com/aircrack-ng/rtl8814au">Aircrack-ng — RTL8814AU driver for Linux (maintained fork)</a></li>
+        <li>[2] <a href="https://wireless.wiki.kernel.org/en/developers/regulatory">Linux Wireless — Regulatory domain documentation</a></li>
+        <li>[3] <a href="https://www.alfa.com.tw/products/awus1900">ALFA Network — AWUS1900 specifications and driver downloads</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

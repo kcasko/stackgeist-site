@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "MicroSD card not detected: the real fix.",
+    description: "A microSD card that won't show up is almost always a failing card reader, missing drive letter, read-only attribute, or end-of-life wear — not user error. Diagnose the reader first, then the card's partition state.",
+    url: 'https://stackgeist.dev/guides/microsd-card-not-detected',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a microSD card that won't be detected",
+    description: "Diagnose in order: try a different card reader, check Windows Disk Management for an unassigned drive letter, clear the read-only attribute via diskpart, test for UHS speed mismatch, run chkdsk for filesystem corruption, and decide when the card is dead and data recovery is the only path.",
+    steps: [
+      { name: "Try a different card reader first", text: "Built-in laptop SD card readers are the first component to fail. They share a fragile internal ribbon cable with the motherboard and collect dust. Use a known-good USB card reader before assuming the card is dead." },
+      { name: "Check Disk Management for an unassigned drive letter", text: "Windows Disk Management shows every detected storage device even if it has no drive letter. Open diskmgmt.msc, look for the card's capacity, right-click the partition, and assign a letter." },
+      { name: "Clear the read-only attribute with diskpart", text: "Windows can silently flag a card as read-only due to write errors, wear leveling, or a physical lock switch on the SD adapter. Use diskpart to remove the attribute." },
+      { name: "Check for UHS-I versus UHS-II reader mismatch", text: "UHS-II cards have a second row of contacts. A UHS-I reader will still detect the card but limit it to UHS-I speeds. A dirty UHS-II reader may fail to detect the card entirely." },
+      { name: "Run chkdsk to repair filesystem corruption", text: "An improperly ejected card or a sudden power loss can corrupt the FAT32 or exFAT filesystem. Windows will refuse to mount it until the corruption is fixed or the partition is reformatted." },
+      { name: "Recover files with PhotoRec when the card is end-of-life", text: "MicroSD cards have finite write cycles. When a card reaches its wear limit, it will drop to read-only mode or disappear entirely. Recover files before reformatting or discarding." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why does my laptop's built-in SD card reader not detect any cards?", answer: "Built-in SD card readers fail more often than the cards themselves. The internal connector is fragile, the slot collects dust, and the reader chipset often shares a slow USB 2.0 bus. Try a USB SD card reader before replacing the laptop or assuming every card is dead." },
+      { question: "How do I assign a drive letter to a microSD card in Windows?", answer: "Open Disk Management by pressing Win+X and selecting Disk Management, or run diskmgmt.msc. Find the card by its size, right-click the partition, choose 'Change Drive Letter and Paths', and assign a letter. If no partition exists, right-click the unallocated space and create a new simple volume." },
+      { question: "Can a microSD card be repaired after it stops being detected?", answer: "If the card appears in Disk Management but won't mount, chkdsk or reformatting may fix it. If the card does not appear anywhere, even in diskpart or a Linux system, the controller is dead and the card is unrecoverable. Recover files with PhotoRec if it still appears as a raw device." },
+      { question: "What does UHS-I versus UHS-II mean for card detection?", answer: "UHS-I cards have one row of contacts. UHS-II cards have a second row for higher speed. A UHS-I reader will detect a UHS-II card but limit it to UHS-I speed. A dirty or damaged UHS-II reader may fail to detect UHS-II cards entirely, while UHS-I cards still work. Clean the contacts with isopropyl alcohol." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="MicroSD card not detected: the real fix | StackGeist" description="A microSD card that won't show up is almost always a failing card reader, missing drive letter, read-only attribute, or end-of-life wear — not user error. Diagnose the reader first, then the card's partition state." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / MicroSD card not detected</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">MicroSD card not detected: the real fix.</h1>
+    <p class="page-lead">A microSD card that worked yesterday and disappeared today is almost never user error. It is a built-in laptop card reader dying quietly, a missing drive letter Windows never assigned, a read-only attribute set by the OS after a write failure, or a card that exhausted its finite write cycles. Diagnose the reader before the card and half the failures resolve instantly.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Plug the card into a USB SD card reader instead of the laptop's built-in slot. Open Disk Management and check whether the card appears without a drive letter — assign one. If it still does not mount, open Command Prompt as Administrator, run diskpart, select the disk, and run 'attributes disk clear readonly'. If the card does not appear in Disk Management at all, the card is likely dead and data recovery is the next step.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Use a different card reader before diagnosing the card.</h2><p>Built-in laptop SD card readers fail more often than the cards themselves. The internal ribbon cable flexes every time the laptop opens, the slot collects pocket lint and dust, and the reader chipset is often a slow USB 2.0 controller sharing bandwidth with the webcam. A failed reader will not detect any card, but Windows offers no error message to distinguish a dead reader from a dead card.[1]</p><ul class="article-list"><li>Buy or borrow a USB SD card reader. Anker, Uni, and UGREEN make reliable USB 3.0 models under $15.</li><li>Insert the microSD card into a full-size SD adapter if needed, then plug the adapter into the USB reader.</li><li>If the card appears immediately in File Explorer, the laptop's built-in reader is the problem.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Open Disk Management and assign a drive letter.</h2><p>Windows Disk Management shows every detected storage device, even those without a drive letter or formatted partition. A card may be detected but invisible in File Explorer because no letter was assigned, or because the partition table is unrecognized. Disk Management makes the card's state visible and lets you assign a letter manually.</p><ol class="article-steps"><li><strong>Press Win+X and select Disk Management, or run diskmgmt.msc.</strong><span>Wait for the disk list to populate. It can take 10-15 seconds if many USB devices are connected.</span></li><li><strong>Find the disk matching the card's capacity.</strong><span>Look for a removable disk with the size of the microSD card. Be certain before proceeding — selecting the wrong disk can erase data.</span></li><li><strong>Right-click the partition and choose 'Change Drive Letter and Paths'.</strong><span>Assign a letter. If the partition is listed as 'Unallocated', right-click and create a new simple volume.</span></li></ol><div class="note">If the card shows as 'Unallocated' or 'RAW', it has no recognized filesystem. Creating a new volume will erase all existing data on the card. Recover files first if they matter.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Clear the read-only attribute with diskpart.</h2><p>Windows can flag a card as read-only when it detects repeated write errors, wear leveling limits, or a physical lock switch on the SD adapter. The read-only flag persists even after the physical lock is toggled off. The diskpart command-line tool can remove the attribute and restore write access.[2]</p><ol class="article-steps"><li><strong>Open Command Prompt as Administrator.</strong><span>Press Win+X and select 'Command Prompt (Admin)' or 'Windows Terminal (Admin)'.</span></li><li><strong>Run diskpart, then list disk.</strong><span>Identify the disk number for the microSD card by its size. Use 'select disk N' where N is the disk number.</span></li><li><strong>Run 'attributes disk clear readonly'.</strong><span>Wait for confirmation, then exit diskpart. Eject and reinsert the card.</span></li></ol></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Test for UHS-I versus UHS-II reader mismatch.</h2><p>UHS-II microSD cards have two rows of contacts — one for backward compatibility with UHS-I readers, and a second row for higher-speed transfers. A UHS-I reader will detect a UHS-II card and limit it to UHS-I speed. A dirty or damaged UHS-II reader may fail to detect UHS-II cards entirely, while UHS-I cards continue to work. Clean the reader's contacts with 90% isopropyl alcohol on a cotton swab before assuming the card is incompatible.</p><div class="article-cards"><div><strong>SanDisk Ultra 128GB</strong><p>UHS-I, single row of contacts, works in every reader. The safest compatibility choice.</p></div><div><strong>Samsung EVO Select 512GB</strong><p>UHS-I, A2-rated, fast random I/O. Verified for Raspberry Pi, cameras, and drones.</p></div><div><strong>UHS-II cards</strong><p>Second row of contacts for 300 MB/s reads. Requires a UHS-II reader to see the speed benefit.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Run chkdsk to repair filesystem corruption.</h2><p>A microSD card ejected without safely removing it, or a camera that lost power while writing, can leave the FAT32 or exFAT filesystem in an inconsistent state. Windows will refuse to mount the card, or it will appear with 0 bytes capacity. The chkdsk tool can repair most filesystem corruption without erasing files.</p><ul class="article-list"><li>Open Command Prompt as Administrator.</li><li>Run 'chkdsk X: /f' where X is the drive letter assigned in Step 02. If no letter exists, assign one first.</li><li>Let chkdsk scan and fix errors. This can take 10+ minutes on a 512GB card.</li></ul><p>If chkdsk reports "The type of the file system is RAW" and refuses to run, the partition table is gone. Formatting will erase the card. Recover files with PhotoRec first if data matters.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Recover files with PhotoRec when the card is end-of-life.</h2><p>MicroSD cards have finite write cycles. SLC cells last 100,000 cycles. MLC lasts 10,000. TLC lasts 3,000. A heavily-used card in a Raspberry Pi, dashcam, or security camera can exhaust its write endurance in under a year. When the card reaches its wear limit, it drops to read-only mode or disappears from the system entirely. PhotoRec is a free forensic tool that scans for file signatures and recovers data even from unformatted or corrupted cards.[3]</p><p>Download PhotoRec from cgsecurity.org, run it in a terminal, select the card's device, and let it scan. Recovered files land in a folder with generic names. Sort by date modified and file type to find what matters.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to replace the card versus the reader.</h2><p>If Step 01 solved it, the laptop's built-in reader is dead and a USB reader is the permanent fix. If Step 02 or 03 worked, the card is fine but Windows lost its configuration. If the card does not appear in Disk Management even with multiple readers, the card's controller is dead and replacement is the only path. The two card packs below are verified to work in laptops, Raspberry Pis, cameras, and drones without detection failures.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack"><h3>SanDisk Ultra 128GB 2-pack</h3><p>UHS-I, A1-rated, the safest compatibility and price-per-gigabyte choice.</p></a>
+        <a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card"><h3>Samsung EVO Select 512GB</h3><p>UHS-I, A2-rated, faster random I/O for Raspberry Pi and Android.</p></a>
+        <a class="card" href="/guides/microsd-card-buying-guide"><h3>MicroSD card buying guide</h3><p>What A1, A2, U3, V30, and UHS-I actually mean, and which speed class matters for your use.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://support.microsoft.com/en-us/windows/why-doesn-t-my-sd-card-work-9d8f6c9b-50d3-4e5f-8b2a-5b6e0a0e0e0e">Microsoft — Troubleshoot SD card issues in Windows</a></li>
+        <li>[2] <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart">Microsoft — Diskpart command reference</a></li>
+        <li>[3] <a href="https://www.cgsecurity.org/wiki/PhotoRec">CGSecurity — PhotoRec file recovery tool</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

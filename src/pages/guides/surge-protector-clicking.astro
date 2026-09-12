@@ -1,0 +1,68 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Surge protector clicking: MOV end-of-life or overload.",
+    description: "A clicking surge protector is almost always a metal oxide varistor at end-of-life, a thermal breaker cycling from overload, or inrush current from a motor load. Check the protection LED first, then the load, then replace the unit.",
+    url: 'https://stackgeist.dev/guides/surge-protector-clicking',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Diagnose a clicking surge protector and decide when to replace",
+    description: "Check the surge protection LED, calculate the total load, identify motor or high-inrush devices, verify the ground connection, and recognize MOV end-of-life. If the protection LED is off or the click is repetitive, replace the unit immediately.",
+    steps: [
+      { name: "Check the surge protection LED immediately", text: "A surge protector with a 'protected' or 'grounded' LED that is off or blinking has lost its MOV protection and must be replaced. The click is often the sound of the internal disconnect switching the failed MOV out of the circuit." },
+      { name: "Calculate the total watt draw on the strip", text: "Add up the wattage of every device plugged into the surge protector. Divide by 120V to get amperage. If the result exceeds the strip's rating, the thermal breaker is cycling to protect the circuit." },
+      { name: "Identify high-inrush devices plugged into the strip", text: "Laser printers, refrigerators, power tools, and motor loads draw a brief surge when they start. A surge protector's thermal breaker or MOV can click in response to the inrush even if the steady-state load is safe." },
+      { name: "Verify the wall outlet is grounded", text: "A surge protector requires a grounded outlet to function. An ungrounded or reversed-polarity outlet can cause the protection circuit to behave erratically or disable itself with a click." },
+      { name: "Check the age of the surge protector", text: "MOVs degrade over time and consumed joules. A surge protector older than 5-7 years or one that has absorbed multiple surges is likely at end-of-life even if the LED still glows." },
+      { name: "Replace immediately if the click is repetitive or the LED is off", text: "A surge protector that clicks every few seconds, or one whose protection LED is off, is no longer protecting and should be replaced immediately. Continuing to use it exposes devices to surges and the strip itself to potential overload or fire." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "What does it mean when a surge protector clicks once and stops?", answer: "A single click when plugging in a high-inrush device like a laser printer or refrigerator is usually the MOV or thermal breaker responding to the startup surge. If the click does not repeat and the protection LED stays on, the surge protector is likely fine." },
+      { question: "Should I replace a surge protector if the LED is off but it still powers devices?", answer: "Yes. A surge protector with the protection LED off has lost its MOV and is no longer protecting against surges. It functions as a plain power strip. Replace it immediately to restore surge protection." },
+      { question: "How long do surge protectors last?", answer: "Most MOVs last 5-7 years under normal use. Surge protectors that absorb large surges or frequent small ones degrade faster. Replace a surge protector at the first sign of a failed LED, repetitive clicking, or after a major electrical storm." },
+      { question: "Can a surge protector clicking cause a fire?", answer: "A clicking surge protector at end-of-life or overloaded poses a fire risk if the thermal breaker is cycling under sustained overload or if the MOV has degraded and shorted. Replace it immediately rather than continuing to use it." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Surge protector clicking: MOV end-of-life or overload | StackGeist" description="A clicking surge protector is almost always a metal oxide varistor at end-of-life, a thermal breaker cycling from overload, or inrush current from a motor load. Check the protection LED first, then the load, then replace the unit." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Surge protector clicking</p>
+    <p class="page-kicker">Power troubleshooting</p>
+    <h1 class="page-title">Surge protector clicking: MOV end-of-life or overload.</h1>
+    <p class="page-lead">A clicking surge protector is almost never fine. The click is usually a metal oxide varistor at end-of-life disconnecting itself, a thermal breaker cycling under overload, or the MOV responding to inrush current from a motor load. Check the protection LED first, then the load, then replace the unit if the LED is off or the click repeats.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Look at the surge protection LED on the strip. If it is off or blinking, the MOV has failed and the unit must be replaced immediately. If the LED is on, calculate the total watt draw and check for motor loads. If the click is repetitive under normal load, replace the strip.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Check the surge protection LED immediately.</h2><p>Most surge protectors have a 'protected' or 'grounded' LED that glows when the metal oxide varistor is functional. If the LED is off, blinking, or has changed color, the MOV has failed and the surge protector is no longer protecting. The click you hear is often the internal disconnect switching the failed MOV out of the circuit to prevent it from shorting or catching fire.</p><ul class="article-list"><li>A green or amber LED labeled 'protected' or 'surge' that is off means the MOV is dead.</li><li>A blinking LED or one that changes color under load also signals failure.</li><li>Some cheaper strips have no LED. If you hear clicking and the strip has no indicator, assume failure and replace it.</li></ul><div class="note">A surge protector with a dead MOV still powers devices but no longer protects them from voltage spikes. It is functionally a plain power strip. Replace it immediately.</div></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Calculate the total watt draw on the strip.</h2><p>Add up the wattage of every device plugged into the surge protector. Divide the total by 120V to get the amperage draw. If the result exceeds the strip's rating — usually 15A — the thermal breaker is cycling to protect the internal wiring. The click is the breaker opening and closing as the strip overheats and cools.</p><div class="article-cards"><div><strong>Under 15A</strong><p>Safe for most surge protectors. The click is likely MOV-related or inrush, not overload.</p></div><div><strong>15A to 18A</strong><p>Exceeds the strip's rating. The thermal breaker is protecting the circuit. Reduce the load.</p></div><div><strong>Above 18A</strong><p>Dangerous. The strip is overloaded and should be unplugged immediately. The wall circuit breaker should trip before this point.</p></div></div><p>If the load is under the rating and the LED is on, the click is likely inrush current or a dying MOV that has not yet tripped the disconnect.</p></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Identify high-inrush devices plugged into the strip.</h2><p>Laser printers, refrigerators, portable air conditioners, power tools, and other motor or compressor loads draw a brief surge when they start that can be ten times the steady-state current. A surge protector's MOV or thermal breaker can click in response to the inrush even if the running load is safe. This is expected behavior for motor loads and does not necessarily mean the strip is failing.[1]</p><ol class="article-steps"><li><strong>Single click when a device powers on.</strong><span>Normal for high-inrush loads. If the click does not repeat, the strip is likely fine.</span></li><li><strong>Click every time a specific device cycles.</strong><span>The device's inrush is triggering the MOV or breaker. Consider plugging it directly into the wall.</span></li><li><strong>Repetitive clicking with no device change.</strong><span>The MOV is degraded or the strip is overloaded. Replace the strip.</span></li></ol></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Verify the wall outlet is grounded and wired correctly.</h2><p>A surge protector requires a grounded three-prong outlet to function. An ungrounded outlet, reversed hot and neutral, or missing ground connection can cause the protection circuit to behave erratically, disable itself, or click as it tries and fails to establish a reference. Test the outlet with a plug-in circuit tester before assuming the surge protector is at fault.</p><ul class="article-list"><li>A three-prong outlet does not guarantee a ground. Test it.</li><li>Reversed polarity — hot and neutral swapped — is invisible but breaks surge protection.</li><li>A GFCI outlet upstream can also cause a surge protector to behave strangely.</li></ul></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Check the age of the surge protector and its joule rating history.</h2><p>MOVs degrade over time and consumed energy. A surge protector rated for 1000 joules that has absorbed 1000 joules worth of surges is at end-of-life even if it has never tripped. A surge protector older than 5-7 years, or one that has absorbed multiple surges from lightning or grid faults, is likely degraded and should be replaced preemptively.[2]</p><div class="note">There is no consumer-accessible way to measure remaining joule capacity. Replace a surge protector after a major electrical storm, after 5-7 years of use, or at the first sign of a failed LED or repetitive clicking.</div></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Replace immediately if the click is repetitive or the LED is off.</h2><p>A surge protector that clicks every few seconds, or one whose protection LED is off, is no longer protecting and poses a fire risk if the MOV has shorted or the thermal breaker is cycling under sustained overload. Unplug it immediately and replace it with a new unit rated for the wattage and joule capacity you need.</p><p>Continuing to use a dead surge protector exposes every device on it to voltage spikes, and exposes the strip itself to potential overload, arcing, and fire.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says replace it.</h2><p>Most clicking surge protectors are at end-of-life and should be replaced regardless of whether the LED is still glowing. If the LED is off, replace immediately. If the click is repetitive, replace immediately. If the click happens only once per high-inrush device and the LED stays on, the strip may be fine but monitor it closely and replace preemptively if it gets worse.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb"><h3>Flat-plug surge protector</h3><p>An 8-outlet power strip with 1800J surge protection and dual USB ports for desk use.</p></a>
+        <a class="card" href="/guides/extension-cord-getting-hot"><h3>Extension cord getting hot</h3><p>Diagnose overload, gauge limits, and when to unplug before it melts or ignites.</p></a>
+        <a class="card" href="/guides/extension-cord-safety-guide"><h3>Extension cord safety guide</h3><p>Gauge, length, ampacity, grounding, and long-term safety for cords and power strips.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.nfpa.org/codes-and-standards/all-codes-and-standards/list-of-codes-and-standards/detail?code=70">National Fire Protection Association — National Electrical Code (NFPA 70)</a></li>
+        <li>[2] <a href="https://www.ul.com/resources/surge-protective-devices-safety-standard">UL — Surge Protective Device (SPD) safety standards and testing</a></li>
+        <li>[3] <a href="https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Power-Strip-Safety">U.S. Consumer Product Safety Commission — Power strip and surge protector safety</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

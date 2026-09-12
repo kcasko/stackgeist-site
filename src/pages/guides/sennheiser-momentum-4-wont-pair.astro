@@ -1,0 +1,66 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Sennheiser Momentum 4 won't pair: the real fix.",
+    description: "Sennheiser Momentum 4 headphones that will not pair are usually in the wrong pairing mode, holding a full list of eight devices, suffering from multipoint confusion, or paired via the Smart Control app when the OS wants native pairing — not broken Bluetooth.",
+    url: 'https://stackgeist.dev/guides/sennheiser-momentum-4-wont-pair',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix Sennheiser Momentum 4 headphones that will not pair",
+    description: "Enter the correct pairing mode by sliding the power button up and holding it past power-on, remove old pairings to free slots, factory reset via the app or button combo, disconnect one multipoint device to free a slot, and test with a wired cable to isolate Bluetooth from hardware.",
+    steps: [
+      { name: "Enter pairing mode correctly", text: "Slide the power button up and hold it past the power-on voice prompt for about four seconds until the LED flashes red and blue. Releasing too early powers the headphones on but does not enter pairing mode." },
+      { name: "Remove old pairings to free device slots", text: "The Momentum 4 stores up to eight paired devices. When full, new devices cannot pair until an old one is removed. Use the Smart Control app to view and delete old pairings, or factory reset to clear all." },
+      { name: "Factory reset via app or button combo", text: "Smart Control app: Settings > Factory Reset. Button combo: slide the power button up and hold it for about ten seconds until the LED flashes red rapidly. A reset clears all pairings and settings." },
+      { name: "Disconnect one multipoint device to pair a third", text: "Multipoint allows two simultaneous connections. A third source will not pair until one of the active two is disconnected. Turn off Bluetooth on one device, then try pairing the third." },
+      { name: "Pair via OS settings, not the app", text: "The Smart Control app can pair the headphones, but some operating systems prefer native Bluetooth pairing. Try pairing from the OS Bluetooth menu instead of the app to avoid conflicts." },
+      { name: "Test with a wired cable to isolate Bluetooth", text: "The Momentum 4 includes a 3.5mm to USB-C cable. Plug it in to confirm the headphones work wired. If audio passes, the Bluetooth radio is the issue. If wired also fails, the headphones have a hardware fault." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "How do I enter pairing mode on Momentum 4 headphones?", answer: "Slide the power button up and hold it past the power-on voice prompt for about four seconds until the LED flashes red and blue. Do not release when you hear 'Power on' — keep holding until the LED pattern changes." },
+      { question: "Why won't my Momentum 4 pair with a third device?", answer: "Multipoint mode allows two simultaneous connections. A third device will not pair until you disconnect one of the active two. Turn off Bluetooth on one device, or forget the Momentum 4 pairing on that device, then retry pairing the third." },
+      { question: "How many devices can the Momentum 4 remember?", answer: "The Momentum 4 stores up to eight paired devices. It will connect to the two most recent at once via multipoint. When the list is full, delete an old pairing via the Smart Control app or factory reset the headphones to clear all slots." },
+      { question: "Will a factory reset delete my EQ settings?", answer: "Yes. A factory reset clears all pairings, EQ presets, and settings. If you have a custom EQ in the Smart Control app, take a screenshot of the settings before resetting so you can recreate them afterward.[1]" }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Sennheiser Momentum 4 won't pair: the real fix | StackGeist" description="Sennheiser Momentum 4 headphones that will not pair are usually in the wrong pairing mode, holding a full list of eight devices, or suffering from multipoint confusion — not broken Bluetooth." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Sennheiser Momentum 4 won't pair</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Sennheiser Momentum 4 won't pair: the real fix.</h1>
+    <p class="page-lead">Sennheiser Momentum 4 headphones that will not pair are almost never broken Bluetooth. The power button was not held long enough to enter pairing mode, the device list is full at eight pairings, multipoint mode already has two active connections, or the OS and app are fighting over which one pairs. Diagnose in that order before you return them.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Slide the power button up and hold it past the 'Power on' voice prompt for about four seconds until the LED flashes red and blue. Remove old pairings via the Smart Control app to free device slots. If the headphones still will not pair, factory reset them by holding the power button for ten seconds until the LED flashes red rapidly, or reset via the app.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Enter pairing mode correctly.</h2><p>The Sennheiser Momentum 4 power button slides up to turn on and must be held past the power-on voice prompt to enter pairing mode. Slide the button up, wait for 'Power on', then keep holding for about four more seconds until the LED flashes red and blue. Releasing too early powers the headphones on but does not make them discoverable.[1]</p><ul class="article-list"><li>Slide the power button up — not down.</li><li>Hold past the 'Power on' voice prompt.</li><li>Wait for the LED to flash red and blue, then release.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Remove old pairings to free device slots.</h2><p>The Momentum 4 stores up to eight paired devices. When the list is full, new devices cannot pair until an old one is removed. Open the Sennheiser Smart Control app, go to Settings > Bluetooth Devices, and delete pairings you no longer use. If you do not have the app installed, a factory reset clears all pairings but also erases EQ settings.</p><div class="note">The headphones will connect to the two most recent devices automatically via multipoint. Older devices in the list remain paired but will not connect unless you manually select them or disconnect one of the active two.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Factory reset via app or button combo.</h2><p>A factory reset clears all paired devices, EQ presets, and settings. Use this when the headphones will not pair at all, or when you cannot access the Smart Control app to delete old pairings. Reset via the app: Settings > Factory Reset. Reset via button: slide the power button up and hold it for about ten seconds until the LED flashes red rapidly. After the reset, re-pair from scratch.[2]</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Disconnect one multipoint device to pair a third.</h2><p>Multipoint mode allows the Momentum 4 to connect to two devices simultaneously — a phone and a laptop, for example. A third device will not pair until you disconnect one of the active two. Turn off Bluetooth on one device, or forget the Momentum 4 pairing on that device, then retry pairing the third. The headphones do not support three simultaneous connections.</p><div class="article-cards"><div><strong>Two devices active</strong><p>This is the normal multipoint state. The headphones will switch audio between them automatically based on which one is playing.</p></div><div><strong>Third device blocked</strong><p>New pairings fail or the headphones appear paired but do not connect. Disconnect one of the active two first.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Pair via OS settings, not the app.</h2><p>The Sennheiser Smart Control app can pair the headphones, but some operating systems prefer native Bluetooth pairing. On Windows 11 and macOS, open the OS Bluetooth settings menu, put the headphones into pairing mode via the button, and pair from the OS instead of the app. This avoids conflicts where the app and OS both try to claim the pairing.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Test with a wired cable to isolate Bluetooth from hardware.</h2><p>The Momentum 4 includes a 3.5mm to USB-C cable for wired use. Plug the USB-C end into the headphones and the 3.5mm end into a device with a headphone jack, or use a USB-C to 3.5mm adapter. If audio passes, the Bluetooth radio is the issue. If wired also fails, the headphones have a hardware fault and need warranty service.</p><ul class="article-list"><li>Use the cable that came with the headphones.</li><li>Test with a known working audio source.</li><li>If wired works, the Bluetooth radio or firmware is the problem.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the headphones still will not pair.</h2><p>Most pairing failures resolve at Step 01, 02, or 03. If the headphones pair successfully but do not stay connected, the host device's Bluetooth stack or interference is the issue. If a factory reset and correct pairing mode still produce no pairing, the Bluetooth radio has failed and warranty replacement is the next step. The fit guide below covers the Momentum 4 and alternative wireless headphones.</p><div class="cards">
+        <a class="card" href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones"><h3>Sennheiser Momentum 4 fit guide</h3><p>Wireless over-ear headphones with adaptive ANC, 60-hour battery, and a foldable travel case.</p></a>
+        <a class="card" href="/guides/headphone-buying-guide"><h3>Headphone buying guide</h3><p>The buying-side guide to driver size, impedance, ANC, and battery life for wireless headphones.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://en-us.sennheiser.com/momentum-4-wireless">Sennheiser — Momentum 4 Wireless specifications and user guide</a></li>
+        <li>[2] <a href="https://support.sennheiser.com/hc/en-us/articles/6838926358173-How-do-I-reset-my-MOMENTUM-4-Wireless">Sennheiser Support — How do I reset my Momentum 4 Wireless</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

@@ -1,0 +1,69 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "GaN charger not charging laptop full speed: why wattage drops.",
+    description: "A GaN charger delivering less power than advertised is almost always negotiating a lower USB-PD profile due to multi-port sharing, cable rating, port compatibility, or thermal throttle — not a broken charger. Diagnose the power path before replacing the brick.",
+    url: 'https://stackgeist.dev/guides/gan-charger-not-charging-laptop-full-speed',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a GaN charger not charging at full speed",
+    description: "Diagnose USB-PD negotiation failures: verify the charger's per-port wattage table, confirm the cable rating and e-marker, test a single-port load, check for proprietary charging protocols the laptop requires, clean the USB-C port, and rule out thermal throttle.",
+    steps: [
+      { name: "Check the per-port wattage table, not the total rating", text: "Multi-port GaN chargers split total wattage across active ports on a fixed schedule. A 100W charger may deliver only 45W when a second device is plugged in." },
+      { name: "Confirm the cable supports the wattage you expect", text: "A USB-C cable rated for 60W will refuse to carry more than 3A regardless of the charger's capability. Use the cable that came with the charger or a rated 100W or 240W USB-C to USB-C cable." },
+      { name: "Test with one port active and nothing else plugged in", text: "Unplug every other device from the charger and use only the highest-wattage port listed on the label. If speed jumps, the charger was sharing power across ports." },
+      { name: "Verify the laptop does not require proprietary charging", text: "Some Dell and HP laptops refuse to charge above 60W on standard USB-PD alone and require a proprietary protocol or PPS negotiation. Check the manufacturer's spec sheet for USB-PD support versus legacy barrel plug." },
+      { name: "Clean the USB-C port on both ends and inspect for damage", text: "Lint, dust, or bent pins silently prevent full contact and force a lower-power negotiation. Use compressed air and a wooden toothpick to clear the port." },
+      { name: "Let the charger cool and move it off the laptop", text: "GaN chargers throttle when hot. A charger sitting on top of the laptop it is charging or buried under papers will run hotter and deliver less wattage than one in open air." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why does my 100W GaN charger only deliver 45W to my laptop?", answer: "A second device plugged into another port is splitting the charger's total output on a fixed schedule. Read the label on the charger for the per-port table and use only the highest-wattage port when charging a laptop alone." },
+      { question: "Will a 240W cable make my GaN charger faster?", answer: "Only if the charger and laptop both support more than 100W. A 240W cable is required for the USB-PD 3.1 Extended Power Range profile above 100W. Below that ceiling, a 100W cable delivers identical speed." },
+      { question: "Can a GaN charger damage my laptop by delivering too much power?", answer: "No. USB-PD negotiation is device-driven — the laptop requests a specific voltage and current, and the charger delivers only what was asked. A properly certified charger cannot push more power than the device negotiates." },
+      { question: "How do I know if my laptop requires proprietary charging instead of standard USB-PD?", answer: "Search for the exact model and 'USB-C charging' or 'USB Power Delivery.' If the spec sheet lists only the barrel-plug adapter wattage and does not explicitly mention USB-PD support, the laptop may refuse full-speed charging over USB-C without a proprietary dock." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="GaN charger not charging laptop full speed: why wattage drops | StackGeist" description="A GaN charger delivering less power than advertised is almost always negotiating a lower USB-PD profile due to multi-port sharing, cable rating, port compatibility, or thermal throttle — not a broken charger. Diagnose the power path before replacing the brick." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / GaN charger not charging full speed</p>
+    <p class="page-kicker">Power troubleshooting</p>
+    <h1 class="page-title">GaN charger not charging laptop full speed: why wattage drops.</h1>
+    <p class="page-lead">A GaN charger delivering less power than the box advertises is almost never broken. It is negotiating a lower USB-PD profile because a second device is sharing the total wattage, the cable cannot carry the current, or the laptop itself is refusing to draw more. Diagnose which side is limiting the wattage before buying a new charger.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Unplug everything except the laptop and use only the highest-wattage port listed on the charger's label. Swap in a rated 100W or 240W USB-C cable. If speed jumps, the charger was sharing power or the cable was under-spec. If nothing changes, check whether the laptop requires proprietary charging above baseline USB-PD or is hitting its own thermal or power limit.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Check the per-port wattage table, not the total rating.</h2><p>Multi-port GaN chargers advertise a total wattage but split it across active ports on a fixed schedule printed on the label or box. A 100W charger may deliver the full 100W when one USB-C port is active, then drop to 65W + 30W or 45W + 45W when a second device plugs in. This is expected behavior, not a fault.</p><ul class="article-list"><li>Find the label or sticker on the charger itself and read the per-port table.</li><li>Use the highest-wattage port for the laptop and leave the others empty.</li><li>If the table shows 65W max on any single port, the charger cannot deliver 100W to one device regardless of what the box says.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Confirm the cable supports the wattage you expect.</h2><p>USB-C cables fall into three power tiers. A 60W cable carries up to 3A at 20V and does not require an e-marker chip. A 100W cable carries 5A at 20V and must contain an e-marker. A 240W cable carries 5A at 48V and requires a newer e-marker chip that supports USB-PD 3.1 Extended Power Range.[1]</p><p>An unlabeled thin cable is almost certainly the 60W tier and will refuse to carry more current even if the charger can deliver it. Use the cable that shipped with the charger, or buy a rated 100W or 240W USB-C to USB-C cable of the length you actually need.</p><div class="note">A missing or counterfeit e-marker on a cheap cable is a common reason a "PD" cable never crosses 60W in practice. Rated cables feel noticeably thicker and cost more because they contain larger conductors and the chip.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Test with one port active and nothing else plugged in.</h2><p>Unplug every other device from the charger and use only the highest-wattage port listed on the label. If charging speed jumps to what you expect, the charger was sharing its total output across multiple ports and the fix is either a solo charger for the laptop or accepting the split. If nothing changes, the cable, laptop, or a protocol mismatch is the limit.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Verify the laptop does not require proprietary charging.</h2><p>Some Dell and HP business laptops refuse to charge above 60W on standard USB-PD alone and require a proprietary protocol, PPS negotiation, or a vendor-specific dock. This is a documented limitation, not a charger failure. Search for the exact laptop model and "USB-C charging" or "USB Power Delivery" to confirm whether the laptop supports full-speed USB-PD or requires the original barrel-plug adapter for anything above a trickle charge.[2]</p><div class="article-cards"><div><strong>Standard USB-PD</strong><p>The laptop negotiates with any compliant charger. Most consumer laptops fall here.</p></div><div><strong>USB-PD + PPS</strong><p>Requires a charger that supports Programmable Power Supply profiles. Most modern GaN chargers do.</p></div><div><strong>Proprietary only</strong><p>The laptop refuses full-speed charging over USB-C without a vendor dock. Check the spec sheet.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Clean the USB-C port on both ends and inspect for damage.</h2><p>USB-C ports collect lint, dust, and pocket debris that silently blocks full pin contact. A dirty port can force the charger to negotiate down to a lower current or voltage to protect the connection. A wooden toothpick is safer than metal for cleaning the port. Blow compressed air first, then inspect under a bright light before assuming the charger is at fault.</p><ul class="article-list"><li>Power off the laptop before cleaning the port.</li><li>Use compressed air at an angle to blow debris out, not deeper in.</li><li>Inspect for bent pins or discoloration inside the port — signs of physical damage or water entry.</li></ul></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Let the charger cool and move it off the laptop.</h2><p>GaN chargers throttle when hot to protect their internal components. A charger sitting on top of the laptop it is charging, buried under papers, or on a carpet will run hotter than one in open air and will silently deliver less wattage until it cools. Move the charger to a hard surface with airflow and wait five minutes before testing again.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the charger is fine.</h2><p>Most wattage drops resolve at Step 01, 02, or 03. If the charger's per-port limit or cable rating was the ceiling, accepting the split or buying a rated cable is cheaper than a new charger. If the laptop requires proprietary charging, a vendor dock is the honest fix. If the charger truly cannot deliver its advertised single-port wattage even under ideal conditions, it qualifies for return or warranty replacement.</p><div class="cards">
+        <a class="card" href="/gear/desk-power/anker-525"><h3>Anker 525 charging station</h3><p>A 12-in-1 desk dock with 65W USB-C and multiple ports for a fixed workstation.</p></a>
+        <a class="card" href="/gear/desk-power/anker-nano-a9196"><h3>Anker Nano A9196 GaN charger</h3><p>A compact 100W dual-port GaN charger with clear per-port power sharing.</p></a>
+        <a class="card" href="/gear/budget-tech/500w-multi-port-gan-charging-station"><h3>500W multi-port GaN station</h3><p>When one charger has to feed a laptop, a phone, a tablet, and spare ports at once.</p></a>
+        <a class="card" href="/guides/usb-c-cable-buying-guide"><h3>USB-C cable buying guide</h3><p>What the wattage and speed markings actually mean, and how to identify an unlabeled cable.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.usb.org/document-library/usb-power-delivery">USB-IF — USB Power Delivery specification and revision history</a></li>
+        <li>[2] <a href="https://www.dell.com/support/kbdoc/en-us/000124295/dell-docking-station-wd19-wd19s">Dell — WD19 docking station USB-C charging and compatibility notes</a></li>
+        <li>[3] <a href="https://www.anker.com/blogs/chargers/usb-c-charger-buying-guide">Anker — GaN charger technology and multi-port power distribution</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

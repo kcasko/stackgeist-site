@@ -1,0 +1,67 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Monitor arm sagging: the real fix.",
+    description: "A sagging monitor arm is usually the tension adjustment at the wrong setting for the monitor's weight, a loose VESA plate, or a failed internal gas strut — not a broken mount. Adjust, tighten, or warranty-claim in that order.",
+    url: 'https://stackgeist.dev/guides/monitor-arm-sagging-fix',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a sagging monitor arm",
+    description: "Isolate whether the arm needs more tension at the spring joint, a tighter VESA plate, or the gas strut is genuinely blown. Adjust with the correct Allen key, verify monitor weight falls within the arm's rated range, and rule out cold-room stiffness before returning the arm.",
+    steps: [
+      { name: "Locate the tension adjustment screw", text: "Most monitor arms have a hex-head screw at the joint where the arm meets the vertical column. Ergotron LX uses a 4mm Allen key. Other arms vary — check the manual for the exact size." },
+      { name: "Verify monitor weight falls within the rated range", text: "Ergotron LX rates 7-25 lbs. Below the minimum is also a problem because there is not enough weight to load the spring correctly. Weigh the monitor without the stand." },
+      { name: "Turn the tension screw clockwise", text: "A quarter turn at a time. Raise the monitor to where you want it, release it gently, and test whether it holds. Repeat until the monitor stays in place across the full range of motion." },
+      { name: "Check the VESA plate screws", text: "A loose VESA plate at the back of the monitor can cause the screen to sag even when the arm holds the plate itself. Re-tighten all four screws at the VESA mount." },
+      { name: "Rule out cold-room stiffness", text: "Gas struts and springs behave differently at different temperatures. An arm that sags when warm may hold when cold, and vice versa. Test after adjusting tension at the temperature where you actually work." },
+      { name: "Identify a genuinely blown gas strut", text: "If the arm will not hold ANY position even fully tightened, and the monitor weight is in range, the internal gas strut has failed. Contact the manufacturer for warranty replacement." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Which Allen key size does the Ergotron LX need?", answer: "4mm. The tension adjustment screw sits at the joint where the arm meets the vertical column. Turn it clockwise a quarter turn at a time until the monitor holds position." },
+      { question: "Why does my monitor arm sag when the room is warm?", answer: "Gas struts and springs are temperature-sensitive. A cold room may make the arm too stiff; a warm room may make it too loose. Adjust tension at the temperature where you actually work, and expect to re-tune seasonally." },
+      { question: "Can I use a monitor arm with a screen lighter than the minimum weight?", answer: "Not reliably. Monitor arms rate a minimum weight because the spring needs enough load to function correctly. Below the minimum the arm will over-extend and will not hold position even fully tightened." },
+      { question: "How do I know if the gas strut is actually broken?", answer: "A blown gas strut will not hold the monitor at any position across the full tension range. If you have tightened the adjustment screw fully, verified the monitor weight is in range, and the arm still drops, the strut has failed and the arm needs warranty service." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Monitor arm sagging: the real fix | StackGeist" description="A sagging monitor arm is usually the tension adjustment at the wrong setting for the monitor's weight, a loose VESA plate, or a failed internal gas strut. Adjust, tighten, or warranty-claim in that order." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Monitor arm sagging fix</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Monitor arm sagging: the real fix.</h1>
+    <p class="page-lead">A monitor arm that sags is almost never broken. It is a tension adjustment set wrong for the monitor's weight, a VESA plate with loose screws, or a gas strut that has genuinely failed and needs warranty service. Diagnose in that order before you return it.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Find the hex screw at the arm's spring joint — Ergotron LX uses a 4mm Allen key. Turn it clockwise a quarter turn at a time. Verify the monitor's weight falls between the arm's minimum and maximum rating. Tighten the VESA plate screws at the back of the monitor. If the arm still drops at every position fully tightened, the internal gas strut has failed.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Locate the tension adjustment screw on the arm.</h2><p>Most monitor arms have a hex-head screw at the joint where the arm meets the vertical column. This screw changes how much force the internal spring or gas strut applies. Ergotron LX uses a 4mm Allen key. AmazonBasics dual monitor arms vary by model. Check the manual if the screw is not visible at the first joint.</p><ul class="article-list"><li>Look for a hex screw at the pivot where the arm meets the vertical pole.</li><li>Ergotron LX: 4mm Allen key, clockwise to increase tension.</li><li>Test at the temperature where you actually work — gas struts and springs are temperature-sensitive.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Verify the monitor weight falls within the arm's rated range.</h2><p>Monitor arms rate a minimum and maximum weight. Ergotron LX rates 7-25 lbs. Below the minimum is also a problem because there is not enough weight to load the spring correctly. The arm will over-extend and will not hold position even fully tightened. Weigh the monitor without its original stand.</p><div class="note">A monitor lighter than the rated minimum needs either a different arm or additional weight attached to the VESA plate. A monitor heavier than the maximum will sag regardless of how much you tighten the screw.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Turn the tension screw clockwise, a quarter turn at a time.</h2><p>Insert the correct Allen key into the tension adjustment screw. Turn it clockwise a quarter turn. Raise the monitor to where you want it, release it gently, and test whether it holds. Repeat until the monitor stays in place across the full range of motion. Over-tightening can make the arm too stiff to adjust easily.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Check and re-tighten the VESA plate screws.</h2><p>The VESA plate attaches the monitor to the arm at four screw points on the back of the screen. A loose VESA plate can cause the monitor itself to tilt or sag even when the arm holds the plate correctly. Remove the monitor from the arm, re-tighten all four screws with a screwdriver, then remount it.</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Rule out cold-room stiffness before diagnosing failure.</h2><p>Gas struts and springs behave differently at different temperatures. An arm that sags when the room is warm may hold perfectly when cold, and vice versa. Adjust tension at the temperature where you actually work. Expect to re-tune seasonally if your desk sits near a window or an HVAC vent.[1]</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Identify a genuinely blown gas strut.</h2><p>If the arm will not hold ANY position even fully tightened, the monitor weight is in range, and the VESA plate is tight, the internal gas strut has failed. This is a warranty claim. Contact the manufacturer with proof of purchase and the model number. Ergotron, AmazonBasics, and most other reputable arm vendors replace failed units.</p><ul class="article-list"><li>Confirm the tension screw is fully tightened.</li><li>Verify monitor weight is within the rated range.</li><li>Test at room temperature after letting the arm acclimate for at least an hour.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to adjust versus replace.</h2><p>Most sagging resolves at Step 03 or Step 04. If the monitor weight is out of range, a different arm is the honest fix. If the gas strut is blown and the arm is out of warranty, replacement is cheaper than repair. The two monitor arms below are the ones on this site with full fit guides.</p><div class="cards">
+        <a class="card" href="/gear/monitor-support/ergotron-lx"><h3>Ergotron LX fit guide</h3><p>The single-display monitor arm with a proven ten-year track record and a warranty that backs it.</p></a>
+        <a class="card" href="/gear/monitor-support/amazon-basics-dual-monitor-arm"><h3>AmazonBasics dual monitor arm</h3><p>A lower-cost dual-display arm for lighter monitors and a smaller desk footprint.</p></a>
+        <a class="card" href="/guides/monitor-buying-guide"><h3>Monitor buying guide</h3><p>What the panel type, refresh rate, and resolution specs mean and which ones matter for your work.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://www.ergotron.com/en-us/products/product-details/45-241">Ergotron — LX Desk Mount LCD Arm specifications and setup guide</a></li>
+        <li>[2] <a href="https://www.amazon.com/AmazonBasics-Premium-Single-Monitor-Stand/dp/B00MIBN16O">AmazonBasics — Single Monitor Stand specifications and manual</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

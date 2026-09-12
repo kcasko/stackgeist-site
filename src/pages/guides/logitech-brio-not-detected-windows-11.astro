@@ -1,0 +1,66 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Logitech Brio not detected on Windows 11: the real fix.",
+    description: "A Logitech Brio that does not appear in Windows 11 is usually a camera privacy setting, a USB 2.0 port, a power draw issue on an unpowered hub, or a software conflict between G Hub and Logi Options+. Diagnose in that order.",
+    url: 'https://stackgeist.dev/guides/logitech-brio-not-detected-windows-11',
+    dateModified: '2026-09-11'
+  }),
+  howToSchema({
+    name: "Fix a Logitech Brio that is not detected on Windows 11",
+    description: "Enable Camera privacy settings, swap to a USB 3.0 blue port, remove duplicate Logitech software, refresh the driver in Device Manager, test a different USB-C cable, and rule out a recent Windows Update conflict.",
+    steps: [
+      { name: "Enable Camera access in Windows privacy settings", text: "Windows 11: Settings > Privacy & security > Camera. Enable 'Camera access' and 'Let desktop apps access your camera'. A disabled setting blocks all camera detection." },
+      { name: "Swap to a USB 3.0 port on the motherboard", text: "The Brio 500 needs USB 3.0 (blue port) for 4K. USB 2.0 works only at 1080p and may not enumerate correctly. Avoid front-panel headers and unpowered hubs — plug directly into the motherboard." },
+      { name: "Uninstall conflicting Logitech software", text: "G Hub, Logi Options+, and the older Camera Settings app all try to claim the Brio. Uninstall duplicates via Settings > Apps. Keep only one — Logi Options+ is the current official tool for the Brio 500." },
+      { name: "Refresh the driver in Device Manager", text: "Open Device Manager, expand 'Cameras', right-click the Brio, and choose 'Uninstall device'. Unplug the camera, reboot, plug it back in. Windows will reinstall the driver." },
+      { name: "Test a different rated USB-C cable", text: "The Brio 500 uses a detachable USB-A to USB-C cable. A cable that is too thin or damaged will pass power but drop data. Test with a cable rated for USB 3.0 data or the cable that shipped with the camera." },
+      { name: "Roll back a recent Windows Update if detection broke after it", text: "Settings > Windows Update > Update history > Uninstall updates. Roll back the most recent update, reboot, and retest. A known Windows 11 build in early 2024 broke UVC camera detection for many users.[1]" }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why does my Brio work on USB 2.0 but not USB 3.0?", answer: "This is rare but can happen when a motherboard's USB 3.0 controller driver is out of date or the BIOS has USB 3.0 set to a compatibility mode. Update the chipset driver from the motherboard vendor's support page and check BIOS settings for 'XHCI Hand-off' or 'USB 3.0 Mode'." },
+      { question: "Do I need G Hub or Logi Options+ for the Brio 500?", answer: "Logi Options+ is the current official tool for the Brio 500. G Hub is for gaming peripherals and should not be installed alongside Options+. The camera will work driverless in most apps, but Options+ unlocks settings like field-of-view and auto-framing." },
+      { question: "Will a USB hub work with the Brio?", answer: "A powered USB 3.0 hub will work. An unpowered hub may not deliver enough power, especially when other devices are plugged in. The Brio draws more current at 4K than at 1080p. Plug directly into the motherboard to rule out power issues." },
+      { question: "How do I know if Windows Update broke camera detection?", answer: "Check Settings > Windows Update > Update history for the date of the most recent update. If the Brio stopped working immediately after, roll back that update, reboot, and retest. Microsoft has shipped UVC camera regressions in the past and patched them in later builds.[1]" }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Logitech Brio not detected on Windows 11: the real fix | StackGeist" description="A Logitech Brio that does not appear in Windows 11 is usually a camera privacy setting, a USB 2.0 port, a power draw issue on an unpowered hub, or a software conflict. Diagnose in that order." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides">Guides</a> / Logitech Brio not detected Windows 11</p>
+    <p class="page-kicker">Troubleshooting</p>
+    <h1 class="page-title">Logitech Brio not detected on Windows 11: the real fix.</h1>
+    <p class="page-lead">A Logitech Brio that does not show up in Windows 11 is almost never broken hardware. It is a Camera privacy setting, a USB 2.0 port that cannot carry 4K, an unpowered hub, or a conflict between G Hub and Logi Options+. Diagnose in that order before you return it.</p>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Go to Settings > Privacy & security > Camera and enable 'Camera access' and 'Let desktop apps access your camera'. Plug the Brio into a USB 3.0 blue port on the motherboard. Uninstall G Hub if you have Logi Options+ installed, or vice versa. Refresh the driver in Device Manager. Test with the USB cable that came with the camera.</p></div>
+    <div class="article-body">
+      <section><p class="page-kicker">Step 01</p><h2>Enable Camera access in Windows 11 privacy settings.</h2><p>Windows 11 ships with Camera access disabled by default for new accounts. A disabled setting blocks all camera detection and apps will not see the Brio at all. Go to Settings > Privacy & security > Camera. Enable 'Camera access' and 'Let desktop apps access your camera'. Restart the app you were testing in.</p><ul class="article-list"><li>Settings > Privacy & security > Camera.</li><li>Toggle 'Camera access' ON.</li><li>Toggle 'Let desktop apps access your camera' ON.</li></ul></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Swap to a USB 3.0 blue port on the motherboard.</h2><p>The Logitech Brio 500 needs USB 3.0 for 4K streaming. USB 2.0 works only at 1080p and may fail to enumerate correctly depending on the host controller. Blue USB-A ports are USB 3.0. Black ports are usually USB 2.0. Plug directly into the motherboard — avoid front-panel headers and unpowered hubs, both of which may not deliver enough current.</p><div class="note">The Brio draws more power at 4K than at 1080p. An unpowered hub shared with a keyboard, mouse, and external drive may enumerate the camera but drop it under load. Test with a direct connection first.</div></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Uninstall conflicting Logitech software.</h2><p>Logitech ships three tools that all try to control the Brio: G Hub for gaming peripherals, Logi Options+ for productivity devices, and the older Camera Settings app. Installing more than one creates driver conflicts. Uninstall duplicates via Settings > Apps. For the Brio 500, keep only Logi Options+.</p><div class="article-cards"><div><strong>Logi Options+</strong><p>The current official tool for Brio 500. Handles field-of-view, auto-framing, and light correction settings.</p></div><div><strong>G Hub</strong><p>For gaming keyboards, mice, and headsets. Should not be installed alongside Options+ unless you also have Logitech gaming hardware.</p></div><div><strong>Camera Settings</strong><p>Older standalone app for the original Brio 4K. Not needed for the Brio 500. Uninstall it.</p></div></div></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Refresh the driver in Device Manager.</h2><p>Open Device Manager, expand 'Cameras', and look for the Brio. If it appears with a yellow exclamation mark, right-click it and choose 'Uninstall device'. Check 'Delete the driver software for this device' if the option appears. Unplug the camera, reboot Windows, plug it back in. Windows will reinstall the UVC driver automatically.[2]</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Test a different rated USB-C cable.</h2><p>The Brio 500 uses a detachable USB-A to USB-C cable. A thin or damaged cable will pass power but drop data. Test with the cable that shipped with the camera, or a replacement rated for USB 3.0 data at 5Gbps. A charge-only cable will not work.</p></section>
+
+      <section><p class="page-kicker">Step 06</p><h2>Roll back a recent Windows Update if detection broke after it.</h2><p>Windows 11 has shipped UVC camera regressions in the past, most notably in early 2024. If the Brio stopped working immediately after a Windows Update, roll back that update and retest. Go to Settings > Windows Update > Update history > Uninstall updates. Select the most recent update, uninstall it, reboot, and plug the camera back in.[1]</p><ul class="article-list"><li>Record the date when detection stopped working.</li><li>Cross-reference with the Update history list.</li><li>Roll back only the most recent update — older updates are dependencies.</li></ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When the Brio still does not appear.</h2><p>Most detection failures resolve at Step 01, 02, or 03. If the camera works on a different Windows 11 machine, the original host's USB controller or chipset driver is the problem. If it does not work anywhere, the hardware has failed and warranty replacement is the next step. The video call guide below covers alternative cameras and setup.</p><div class="cards">
+        <a class="card" href="/gear/video/logitech-brio-500"><h3>Logitech Brio 500 fit guide</h3><p>A 4K webcam with auto-framing and light correction for a Windows or macOS desk.</p></a>
+        <a class="card" href="/guides/better-video-calls"><h3>Better video calls</h3><p>The buying-side guide to cameras, microphones, lighting, and bandwidth for remote work.</p></a>
+      </div></section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li>[1] <a href="https://support.microsoft.com/en-us/windows/camera-doesn-t-work-in-windows-32adb016-b29c-a928-0073-53d31da0dad5">Microsoft — Camera doesn't work in Windows (known issues and rollback steps)</a></li>
+        <li>[2] <a href="https://support.logi.com/hc/en-us/articles/4406138714391-Getting-Started-Brio-500">Logitech — Getting Started with Brio 500 (driver and software guide)</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
