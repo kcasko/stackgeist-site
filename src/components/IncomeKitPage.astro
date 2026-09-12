@@ -22,6 +22,12 @@ const campaign = `income_kits_${kit.slug}`;
     <p>{kit.audience}</p>
     <strong>The useful answer</strong>
     <p>{kit.summary}</p>
+    {kit.download && (
+      <a class="download-link" href={kit.download.href} data-download-lead-magnet>
+        <span>{kit.download.title}</span>
+        <small>{kit.download.note}</small>
+      </a>
+    )}
   </div>
 
   <section class="content-section kit-order">
@@ -99,6 +105,9 @@ const campaign = `income_kits_${kit.slug}`;
 <style>
   .kit-summary { display:grid; gap:8px; }
   .kit-summary strong + p { margin-bottom:8px; }
+  .download-link { display:grid; gap:4px; margin-top:8px; padding:14px; border:1px solid var(--phosphor); color:var(--phosphor); text-decoration:none; background:rgba(163,230,53,.045); }
+  .download-link span { font-size:13px; font-weight:700; }
+  .download-link small { color:var(--muted); font-size:11.5px; line-height:1.5; }
   .kit-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; border:1px solid var(--term-border); background:var(--term-bg); }
   .kit-item { display:grid; gap:10px; padding:22px; color:inherit; text-decoration:none; border-top:1px solid var(--term-border); position:relative; }
   .kit-item:nth-child(-n+2) { border-top:0; }
