@@ -1,0 +1,29 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import TroubleshootingHubPage from '../../components/TroubleshootingHubPage.astro';
+import { troubleshootingHubs } from '../../data/troubleshootingHubs';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+export function getStaticPaths() {
+  return troubleshootingHubs.map((hub) => ({
+    params: { slug: hub.slug },
+    props: { hub },
+  }));
+}
+
+const { hub } = Astro.props;
+const __sd = [
+  articleSchema({
+    headline: hub.title,
+    description: hub.description,
+    url: `https://stackgeist.dev/guides/${hub.slug}`,
+    datePublished: '2026-09-12',
+    dateModified: '2026-09-12',
+  }),
+  faqSchema({ questions: hub.faqs }),
+];
+---
+
+<ContentLayout structuredData={__sd} title={hub.seoTitle} description={hub.description} active="guides">
+  <TroubleshootingHubPage hub={hub} />
+</ContentLayout>

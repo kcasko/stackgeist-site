@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { troubleshootingHubs } from '../../data/troubleshootingHubs';
 const guides=[
  {slug:'desk-layout-basics',kicker:'Setup basics',title:'Desk layout basics',desc:'Fix the primary zone before deciding where accessories, lighting, and audio should live.'},
  {slug:'cable-management',kicker:'Cable path',title:'Cable management that stays manageable',desc:'Route power, signal, and removable cables differently so future changes do not wreck the whole desk.'},
@@ -35,6 +36,16 @@ const guides=[
   <p class="page-kicker">guides /</p>
   <h1 class="page-title">Practical guides that help you decide, not shop.</h1>
   <p class="page-lead">Each guide covers one desk decision end to end. Read the two or three that match your bottleneck and skip the rest.</p>
+
+  <section class="content-section cards">
+    {troubleshootingHubs.map((hub)=>(
+      <a class="card" href={`/guides/${hub.slug}`}>
+        <p class="page-kicker">Troubleshooting hub</p>
+        <h2>{hub.title}</h2>
+        <p>{hub.description}</p>
+      </a>
+    ))}
+  </section>
 
   <section class="content-section cards">
     {guides.map((g)=>(

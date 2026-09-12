@@ -1,0 +1,106 @@
+---
+import NewsletterSignup from './NewsletterSignup.astro';
+import type { TroubleshootingHub } from '../data/troubleshootingHubs';
+
+const { hub } = Astro.props as { hub: TroubleshootingHub };
+---
+
+<article class="article-page hub-page">
+  <p class="breadcrumbs"><a href="/guides">Guides</a> / {hub.title}</p>
+  <p class="page-kicker">{hub.kicker}</p>
+  <h1 class="page-title">{hub.title}</h1>
+  <p class="page-lead">{hub.lead}</p>
+
+  <div class="article-summary">
+    <strong>The useful answer</strong>
+    <p>{hub.primaryProblem}</p>
+  </div>
+
+  <section class="content-section hub-checks">
+    <p class="page-kicker">Start here</p>
+    <h2>Run these checks before replacing anything.</h2>
+    <ol class="article-steps">
+      {hub.quickChecks.map((check, index) => (
+        <li>
+          <strong>Step {String(index + 1).padStart(2, '0')}</strong>
+          <span>{check}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Troubleshooting guides</p>
+    <h2>Pick the symptom you actually have.</h2>
+    <div class="cards hub-guide-grid">
+      {hub.guides.map((guide) => (
+        <a class="card hub-guide-card" href={`/guides/${guide.slug}`}>
+          <p class="page-kicker">{guide.kicker}</p>
+          <h3>{guide.title}</h3>
+          <p class="symptom"><strong>Problem:</strong> {guide.problem}</p>
+          <p>{guide.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="page-kicker">Related buying-side guides</p>
+    <h2>When the fix reveals a bad fit.</h2>
+    <div class="cards">
+      {hub.related.map((item) => (
+        <a class="card" href={item.href}>
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section hub-faq">
+    <p class="page-kicker">FAQ</p>
+    <h2>Common questions before you start replacing parts.</h2>
+    <div class="article-cards">
+      {hub.faqs.map((faq) => (
+        <div>
+          <strong>{faq.question}</strong>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</article>
+
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded gear decision or desk fix per dispatch. No sponsor copy." />
+
+<style>
+  .hub-page :global(.article-summary) {
+    border-color: rgba(36, 255, 143, 0.34);
+  }
+
+  .hub-checks h2,
+  .hub-faq h2 {
+    margin-top: 0;
+  }
+
+  .hub-guide-grid {
+    align-items: stretch;
+  }
+
+  .hub-guide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .hub-guide-card h3 {
+    margin-bottom: 0;
+  }
+
+  .hub-guide-card .symptom {
+    color: var(--text);
+    border-left: 2px solid var(--accent);
+    padding-left: 0.75rem;
+    margin: 0.15rem 0;
+  }
+</style>
