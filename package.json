@@ -14,6 +14,7 @@
     "generate-types": "wrangler types",
     "deploy": "astro build && wrangler pages deploy",
     "analytics:report": "node scripts/affiliate-report.mjs",
+    "analytics:weekly": "node scripts/kits-weekly-report.mjs",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {

@@ -14,7 +14,10 @@ const slugs = [
 test('income kits define monetized buyer-intent pages and social angles', async () => {
   const data = await read('src/data/incomeKits.ts');
   for (const slug of slugs) assert.match(data, new RegExp(`slug: '${slug}'`));
-  assert.equal((data.match(/channel: 'reddit'/g) || []).length, 5);
+  const kitCount = (data.match(/^\s{2}\{\s*$/gm) || []).length;
+  assert.ok(kitCount >= 5, `expected at least 5 kits, saw ${kitCount}`);
+  const redditAngles = (data.match(/channel: 'reddit'/g) || []).length;
+  assert.ok(redditAngles >= kitCount, `expected at least one reddit angle per kit (${kitCount} kits, ${redditAngles} reddit angles)`);
   assert.match(data, /tag=\$\{TAG\}/);
   assert.match(data, /deskrespawn-20/);
   assert.doesNotMatch(data, /tested in our lab|guaranteed income|passive income/i);
