@@ -272,3 +272,42 @@ The dock's wattage is a ceiling, not a promise. Compare it to your laptop's char
 
 ### Caption
 Match the wattage on the original brick, then add headroom for anything sharing the charger. USB-C is a shape — Power Delivery is the feature. Full wattage guide at StackGeist.dev. #usbc #gancharger #laptopcharger #techtok
+
+---
+
+## 2026-09-14 — Your surge protector is clicking. Stop using it.
+
+- Source: `https://stackgeist.dev/guides/surge-protector-clicking`
+- Landing URL: `https://stackgeist.dev/guides/surge-protector-clicking?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=surge_click_replace`
+- Best posting time (ET): Monday 8:30 PM ET (after-work safety/home scroll; buying + replace intent peaks Sun–Mon evenings)
+- Length: ~22s
+- Hashtags: #surgeprotector #hometips #techtok #wfh #desksetup #electrical #homeoffice #safetyfirst
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --surge-strip`
+  - Visual: Black terminal frame. Green cursor blinks. Beside it: ASCII surge strip with a red `[click]` bubble pulsing every second.
+  - VO/caption: "If your surge protector is clicking, it is not being cautious. It is failing."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  CHECK THE PROTECTION LED`
+  - Visual: Two ASCII strips side by side — left `[LED ●]` green, right `[LED  ]` dark. Red arrow to the dark one.
+  - VO/caption: "The 'protected' light off means the MOV inside is dead. It still powers stuff — but it is now just a power strip."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  ADD UP THE WATTS`
+  - Visual: ASCII outlets: monitor 40W · PC 300W · laser printer 900W. Total: `1240W / 1800W`. Printer icon flashes red with `[INRUSH]`.
+  - VO/caption: "Motor loads and laser printers spike hard at startup. The click can be the thermal breaker cycling under overload."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  CLICKING + OLD = REPLACE`
+  - Visual: Calendar strip `5–7 yrs`. `[STRIP]` icon slides into a `[TRASH]` box. Green check: `NEW UNIT`.
+  - VO/caption: "MOVs last five to seven years. Repetitive click plus a dead LED is a replace, not a reset."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/surge-protector-clicking`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+A clicking surge protector is a fail signal, not a feature. Check the LED, count the load, then replace. Full diagnosis at StackGeist.dev. #surgeprotector #hometips #techtok #wfh
