@@ -311,3 +311,42 @@ Match the wattage on the original brick, then add headroom for anything sharing 
 
 ### Caption
 A clicking surge protector is a fail signal, not a feature. Check the LED, count the load, then replace. Full diagnosis at StackGeist.dev. #surgeprotector #hometips #techtok #wfh
+
+---
+
+## 2026-09-15 — Your monitor arm is not broken. It's cold.
+
+- Source: `https://stackgeist.dev/guides/monitor-arm-sagging-fix`
+- Landing URL: `https://stackgeist.dev/guides/monitor-arm-sagging-fix?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=arm_is_cold`
+- Best posting time (ET): Tuesday 7:00 PM ET (post-workday desk-fix scroll; troubleshooting intent peaks)
+- Length: ~22s
+- Hashtags: #monitorarm #desksetup #wfh #homeoffice #techtok #ergotron #productivity #deskorganization
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --sag`
+  - Visual: Black terminal frame. Green cursor blinks. ASCII monitor drooping on an arm, labeled `[SAG]`. Prompt types the command.
+  - VO/caption: "Before you return the arm — it's probably not broken."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  WEIGHT IN RANGE?`
+  - Visual: ASCII scale. Monitor icon lands between `MIN 7lb` and `MAX 25lb` brackets. Ergotron LX label.
+  - VO/caption: "Weigh the monitor without its stand. Too light is also a failure — the spring needs load."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  QUARTER TURN, 4mm HEX`
+  - Visual: ASCII arm joint zoom. Hex key rotates clockwise `↻ 1/4`. Text: `Ergotron LX = 4mm`.
+  - VO/caption: "Find the tension screw at the spring joint. Quarter turn clockwise, test, repeat."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  TEMPERATURE MATTERS`
+  - Visual: Two panels — `[WARM ROOM]` arm droops, `[COOL ROOM]` arm holds. Small thermometer icon.
+  - VO/caption: "Gas struts change with room temp. Tune it at the temperature you actually work in."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/monitor-arm-sagging-fix`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+A drooping monitor arm is usually tension, a loose VESA plate, or cold-room physics — not a broken mount. Full diagnosis at StackGeist.dev. #monitorarm #desksetup #wfh #techtok
