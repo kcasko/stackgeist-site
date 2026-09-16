@@ -350,3 +350,42 @@ A clicking surge protector is a fail signal, not a feature. Check the LED, count
 
 ### Caption
 A drooping monitor arm is usually tension, a loose VESA plate, or cold-room physics — not a broken mount. Full diagnosis at StackGeist.dev. #monitorarm #desksetup #wfh #techtok
+
+---
+
+## 2026-09-16 — That extension cord is not rated for your space heater
+
+- Source: `https://stackgeist.dev/guides/extension-cord-safety-guide`
+- Landing URL: `https://stackgeist.dev/guides/extension-cord-safety-guide?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=ext_cord_not_rated`
+- Best posting time (ET): Wednesday 7:30 PM ET (mid-week evening desk-setup scroll; safety/troubleshooting intent peaks post-workday)
+- Length: ~22s
+- Hashtags: #extensioncord #desksetup #wfh #hometips #electricalsafety #techtok #cablemanagement #fireprevention
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ cord --check-rating`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII flat cord under a desk with a red `[HOT]` badge pulsing.
+  - VO/caption: \"Your extension cord has a number on the tag. That number is a limit, not a suggestion.\"
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  WATTS / 120 = AMPS`
+  - Visual: ASCII calc — `PC 300W + 2x MON 60W + PRINTER 900W = 1320W` → `/120 = 11A`. Cord label: `16 AWG 13A`. Green check.
+  - VO/caption: \"Add up every device wattage. Divide by 120. That's your amp draw. Cord rating must be 25% higher.\"
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  FLAT != HEAVY DUTY`
+  - Visual: Two cords side by side — `[FLAT 16/3]` and `[ROUND 14/3]`. Space heater icon over flat cord flashes red: `12A+ CONTINUOUS`.
+  - VO/caption: \"Flat cords hide well but run thinner wire. A space heater on a 16 AWG flat cord is a fire waiting to happen.\"
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  NO DAISY CHAIN`
+  - Visual: ASCII chain — `[WALL] → [EXT] → [STRIP] → [PC]` with red `X` over the links. Green: `[WALL] → [LONG STRIP]`.
+  - VO/caption: \"UL and NEC forbid stacking extension cords and surge protectors. Each junction adds heat and failure points.\"
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/extension-cord-safety-guide`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Your extension cord has an amp rating. Add up the watts, divide by 120, then pick a cord with 25% headroom. Flat cords are for hiding — round cords are for heat. No daisy chains. Full guide at StackGeist.dev. #extensioncord #desksetup #hometips #techtok
