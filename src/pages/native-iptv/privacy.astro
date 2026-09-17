@@ -1,0 +1,20 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+---
+<ContentLayout title="Native IPTV Privacy Policy | StackGeist" description="Native IPTV is a local-first Android TV player. No personal data, viewing history, or analytics are collected, transmitted, or sold.">
+  <div class="legal-page">
+    <p class="page-kicker">Privacy</p>
+    <h1 class="page-title">Native IPTV — Privacy Policy</h1>
+    <p class="page-lead">Native IPTV is a local-first media player. We do not collect, transmit, or sell any personal data, viewing history, or usage analytics.</p>
+    <p class="effective">Effective September 16, 2026</p>
+    <div class="legal-body">
+      <section><h2>Local data stored on your device</h2><p>Everything you put in the app stays in the app, in private storage on that device only:</p><ul><li>Playlists and channels you import, including M3U URLs, Xtream Codes credentials, and Stalker portal data</li><li>Your favorites, recently-played entries, and watch progress used for resume playback</li><li>Downloaded VOD content for offline viewing</li><li>XMLTV / EPG guide data fetched from the URLs you configure</li><li>A TMDB metadata cache (title, year, poster) used for optional enrichment</li></ul><p>None of this data leaves your device.</p></section>
+      <section><h2>Network requests (you start them)</h2><p>The app only makes network requests that you directly trigger by entering a source:</p><ul><li>Fetching M3U playlists from URLs you enter</li><li>Fetching XMLTV guides from URLs you configure</li><li>Xtream / Stalker portal API calls using credentials you provide</li><li>TMDB enrichment, only when you supply your own Bearer Token; those requests go straight to api.themoviedb.org</li></ul><p>No telemetry, crash reports, or analytics are sent to any third party.</p></section>
+      <section><h2>Third-party services</h2><p>Two kinds of remote services exist, both opt-in through your own input:</p><ul><li>TMDB — only if you supply your own API key; the request carries no device identifiers beyond a standard user-agent</li><li>Your IPTV providers — only the URLs and credentials you explicitly enter</li></ul></section>
+      <section><h2>Children's privacy</h2><p>Native IPTV is not directed at children under 13. We do not knowingly collect data from children.</p></section>
+      <section><h2>Your rights</h2><p>Because all data is local, you control it entirely:</p><ul><li>Clear playlists, favorites, history, and downloads from inside the app</li><li>Uninstall the app to remove every local database</li><li>There is no account to delete and no server we can contact</li></ul></section>
+      <section><h2>Changes to this policy</h2><p>Any update is posted at this same URL. Continued use after a change constitutes acceptance.</p></section>
+      <section><h2>Contact</h2><p>Questions? Email keith@stackgeist.dev.</p></section>
+    </div>
+  </div>
+</ContentLayout>
