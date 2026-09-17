@@ -389,3 +389,42 @@ A drooping monitor arm is usually tension, a loose VESA plate, or cold-room phys
 
 ### Caption
 Your extension cord has an amp rating. Add up the watts, divide by 120, then pick a cord with 25% headroom. Flat cords are for hiding — round cords are for heat. No daisy chains. Full guide at StackGeist.dev. #extensioncord #desksetup #hometips #techtok
+
+---
+
+## 2026-09-17 — That USB-C cable is capped at 60W
+
+- Source: `https://stackgeist.dev/guides/usb-c-cable-charging-slow`
+- Landing URL: `https://stackgeist.dev/guides/usb-c-cable-charging-slow?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=cable_60w_cap`
+- Best posting time (ET): Thursday 12:15 PM ET (weekday lunch scroll; laptop/power-delivery buying intent peaks midday)
+- Length: ~22s
+- Hashtags: #usbc #charging #laptopcharging #techtok #desksetup #usbctips #powerdelivery #productivity
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --cable`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII laptop plugged to a 100W brick via a thin cable. Text: `slow charge?`
+  - VO/caption: "Your USB-C cable looks fine. It's lying."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  THE 60W CEILING`
+  - Visual: Two ASCII cables side by side — `[THIN]` reads `3A → 60W`, `[THICK]` reads `5A + e-marker → 100W`. Arrow between them: `cable = bottleneck`.
+  - VO/caption: "Most cables cap at 3 amps — 60W max. Your 100W charger can't push more through it."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  THE E-MARKER CHIP`
+  - Visual: Zoom on a cable plug housing. Tiny chip icon with `[e-marker]` label. Text: `reports capability → charger`.
+  - VO/caption: "The e-marker chip tells the charger, 'I can handle 5A.' No chip, no 100W — even with a rated brick."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  TEST IT ON MACOS`
+  - Visual: macOS battery menu showing `Power Adapter: 60W` in yellow. Swap cable → `100W` in green.
+  - VO/caption: "Hold Option and click the battery menu. If it reads 60W with a 100W brick, the cable is the limit."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/usb-c-cable-charging-slow`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+That USB-C cable charging your laptop? It's probably capped at 60W — no e-marker chip, no 100W. Check the negotiated wattage before buying another brick. Full diagnosis at StackGeist.dev. #usbc #charging #laptopcharging #techtok
