@@ -428,3 +428,42 @@ Your extension cord has an amp rating. Add up the watts, divide by 120, then pic
 
 ### Caption
 That USB-C cable charging your laptop? It's probably capped at 60W — no e-marker chip, no 100W. Check the negotiated wattage before buying another brick. Full diagnosis at StackGeist.dev. #usbc #charging #laptopcharging #techtok
+
+---
+
+## 2026-09-19 — Your office chair is sinking. Replace the gas cylinder.
+
+- Source: `https://stackgeist.dev/guides/office-chair-gas-cylinder-replacement`
+- Landing URL: `https://stackgeist.dev/guides/office-chair-gas-cylinder-replacement?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=gas_cylinder_replace`
+- Best posting time (ET): Saturday 10:30 AM ET (weekend home-office project scroll; DIY fix-and-tinker audience, low-competition morning window)
+- Length: ~21s
+- Hashtags: #officechair #ergonomics #deskchair #chairrepair #techtok #diy #lifehack #homedesk
+
+### Script (5 shots, 21s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --chair-sink`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII office chair with a red `[SINK]` arrow under the seat.
+  - VO/caption: "Before you buy a new chair — if it sinks under you, the gas cylinder is out of pressure."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  CLASS BY WEIGHT`
+  - Visual: Two ASCII gas cylinders side by side — `[CLASS 3 ≤250LB]` and `[CLASS 4 250-400LB]`. Scale icon: `280lb → Class 4` green check.
+  - VO/caption: "Match the class to your weight. Class 3 holds up to 250 lbs. Over that, Class 4 — a Class 3 under a 280-lb user fails in months."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  MEASURE THE TAPER`
+  - Visual: ASCII caliper measuring the cylinder top: `⌀ 50mm`. Ruler line with `2-INCH` label.
+  - VO/caption: "Measure the top taper. Most chairs use a universal 2-inch diameter. If it's not 50mm, you need a brand-specific kit."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  REPLACE, NOT RETURN`
+  - Visual: Pipe wrench + rubber mallet icons beside a `[$30 · 20min]` tag. Chair droops → arrow up → chair holds.
+  - VO/caption: "Rubber mallet, pipe wrench, twenty minutes. A new cylinder costs under $30 — cheaper than a new chair."
+
+- `00:19–00:21` — END CARD
+  - On-screen text: `stackgeist.dev/guides/office-chair-gas-cylinder-replacement`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Your chair sinks under you because the gas cylinder lost pressure — not because the chair is broken. Match Class 3 vs Class 4 to your weight, confirm the 2-inch taper, then replace with a mallet and pipe wrench for $30. Full fix at StackGeist.dev. #officechair #techtok
