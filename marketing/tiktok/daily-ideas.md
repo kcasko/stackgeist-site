@@ -158,6 +158,8 @@ Before you buy another keyboard: the numpad moves your mouse. TKL vs. full-size 
 ### Caption
 Stop hiding cables. Sort by how often they move, give each group a lane, then buy the organizer last. Full routing guide at StackGeist.dev. #cablemanagement #desksetup #wfh #techtok
 
+---
+
 ## 2026-09-09 — Empty space is not a shopping list
 
 - Source: `https://stackgeist.dev/guides/cheap-desk-upgrades`
@@ -467,3 +469,47 @@ That USB-C cable charging your laptop? It's probably capped at 60W — no e-mark
 
 ### Caption
 Your chair sinks under you because the gas cylinder lost pressure — not because the chair is broken. Match Class 3 vs Class 4 to your weight, confirm the 2-inch taper, then replace with a mallet and pipe wrench for $30. Full fix at StackGeist.dev. #officechair #techtok
+
+---
+
+## 2026-09-20 — BenQ ScreenBar flickering: Not a hardware fail
+
+- Source: `https://stackgeist.dev/guides/benq-screenbar-flickering`
+- Landing URL: `https://stackgeist.dev/guides/benq-screenbar-flickering?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=screenbar_flickering_fix`
+- Best posting time (ET): Friday 8:00 PM ET (end-of-week troubleshoot/upgrade browse)
+- Length: ~22s
+- Hashtags: #screenbar #desklighting #benq #setupfix #productivity #monitorlight #techtok
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --screenbar`
+  - Visual: Terminal frame, cursor blinks. ASCII strip light flickering above monitor. Text: `[?][?][?]`
+  - VO/caption: "Bar flicker? It's not the LEDs — diagnose before you return."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  WALL PLUG > USB`
+  - Visual: USB port labeled `500mA` with red X; wall adapter labeled `1A` with green check.
+  - VO/caption: "Monitor USB can't deliver 1A steady. Use a 5V/1A wall adapter first."
+
+- `00:08–00:13` — SHOT 3
+  - On-screen text: `02  PUCK BATTERY DEAD?`
+  - Visual: Halo dimmer icon flashes, then shows a battery symbol charging.
+  - VO/caption: "If the halo puck flickers/loses connection, charge it for an hour."
+
+- `00:13–00:17` — SHOT 4
+  - On-screen text: `03  DIRTY PINS = GLITCHES`
+  - Visual: Spring pin contacts with a cotton swab. Text: `clean both ends`
+  - VO/caption: "Clean the pogo pins on the dimmer and the bar with isopropyl alcohol."
+
+- `00:17–00:21` — SHOT 5
+  - On-screen text: `04  PWM = CAMERA FLICKER`
+  - Visual: Camera feed with flicker, then steady. Overlay: `adjust shutter`
+  - VO/caption: "See flicker only on video? That's PWM, not a fault — adjust camera, not hardware."
+
+- `00:21–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/benq-screenbar-flickering`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` underline/cursor.
+
+### Caption
+Flicker is nearly always USB power, puck battery, or dirty pins — not a broken ScreenBar. Test these before RMA. Full checklist at StackGeist.dev. #screenbar #desklighting #setupfix #techtok
