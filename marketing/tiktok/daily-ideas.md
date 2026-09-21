@@ -513,3 +513,43 @@ Your chair sinks under you because the gas cylinder lost pressure — not becaus
 
 ### Caption
 Flicker is nearly always USB power, puck battery, or dirty pins — not a broken ScreenBar. Test these before RMA. Full checklist at StackGeist.dev. #screenbar #desklighting #setupfix #techtok
+
+---
+
+## 2026-09-21 — Your USB-C monitor has power, not video
+
+- Source: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal`
+- Landing URL: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=monitor_power_not_video`
+- Best posting time (ET): Sunday 7:30 PM ET (Sunday setup-and-troubleshooting scroll before the workweek)
+- Length: ~22s
+- Hashtags: #portablemonitor #usbc #displayport #laptopsetup #techtok #wfh #techsupport
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --no-signal`
+  - Visual: Black terminal frame. ASCII portable monitor powers on, then flashes `[NO SIGNAL]` in red.
+  - VO/caption: "Your USB-C monitor has power. That does not mean it has video."
+
+- `00:04–00:09` — SHOT 2
+  - On-screen text: `01  USB-C SHAPE != VIDEO`
+  - Visual: USB-C port branches into `DATA`, `POWER`, and `DP ALT MODE`; only the last path reaches a display.
+  - VO/caption: "The laptop port needs DisplayPort Alt Mode, USB4, or Thunderbolt. USB-C alone proves nothing."
+
+- `00:09–00:14` — SHOT 3
+  - On-screen text: `02  CHARGE CABLE != VIDEO CABLE`
+  - Visual: Two ASCII cables: `[CHARGE ONLY]` powers the screen but drops the video packet; `[FULL-FEATURED]` passes both.
+  - VO/caption: "A charge cable can light the monitor while dropping the video signal. Swap in a full-featured cable."
+
+- `00:14–00:18` — SHOT 4
+  - On-screen text: `03  BYPASS THE HUB`
+  - Visual: Path `[LAPTOP] → [HUB] → [MONITOR]` fails red, then `[LAPTOP] → [MONITOR]` turns green.
+  - VO/caption: "Most portable hubs block video on downstream USB-C. Connect the monitor directly."
+
+- `00:18–00:22` — SHOT 5
+  - On-screen text: `NO ALT MODE? USE HDMI.`
+  - Visual: HDMI cable snaps into the monitor. Terminal prompt opens `stackgeist.dev/guides/portable-usb-c-monitor-no-signal`.
+  - VO/caption: "No Alt Mode? Use HDMI plus separate USB power. Full checklist at StackGeist."
+
+### Caption
+Portable monitor powered on but showing no signal? Check the host port, cable, and hub before blaming the screen. Full diagnosis at StackGeist.dev. #portablemonitor #usbc #techtok #laptopsetup
