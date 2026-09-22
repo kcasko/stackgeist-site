@@ -553,3 +553,43 @@ Flicker is nearly always USB power, puck battery, or dirty pins — not a broken
 
 ### Caption
 Portable monitor powered on but showing no signal? Check the host port, cable, and hub before blaming the screen. Full diagnosis at StackGeist.dev. #portablemonitor #usbc #techtok #laptopsetup
+
+---
+
+## 2026-09-22 — Your WD drive needs a letter, not a funeral
+
+- Source: `https://stackgeist.dev/guides/wd-elements-not-showing-up`
+- Landing URL: `https://stackgeist.dev/guides/wd-elements-not-showing-up?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=drive_needs_letter`
+- Best posting time (ET): Tuesday 7:30 PM ET (post-work troubleshooting and desk-setup scroll)
+- Length: ~22s
+- Hashtags: #externalharddrive #windows11 #datastorage #techsupport #pctips #techtok #backup
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --missing-drive`
+  - Visual: Black terminal frame. A WD drive spins up, but File Explorer shows an empty slot. Red status: `[POWERED / MISSING]`.
+  - VO/caption: "Your WD drive spins up but vanished from Windows. Do not format it."
+
+- `00:04–00:09` — SHOT 2
+  - On-screen text: `01  FIX THE POWER PATH`
+  - Visual: Path `[DRIVE] → [UNPOWERED HUB]` fails red, then `[DRIVE] → [REAR USB]` turns green. Original cable snaps into place.
+  - VO/caption: "Skip the unpowered hub. Use a rear motherboard USB port and the original cable."
+
+- `00:09–00:14` — SHOT 3
+  - On-screen text: `02  OPEN DISK MANAGEMENT`
+  - Visual: Terminal types `diskmgmt.msc`. A disk list appears with `WD ELEMENTS · 2TB · NO LETTER` highlighted.
+  - VO/caption: "Open Disk Management and find the drive by capacity, not by name."
+
+- `00:14–00:18` — SHOT 4
+  - On-screen text: `03  ASSIGN A LETTER`
+  - Visual: `NO LETTER` changes to `E:`. File Explorer immediately reveals folders. Side note: `FOREIGN? → IMPORT`.
+  - VO/caption: "Assign a drive letter. If Windows says foreign disk, import it to preserve the files."
+
+- `00:18–00:22` — SHOT 5
+  - On-screen text: `CLICKING? BACK UP NOW.`
+  - Visual: A pulsing `[click]` waveform turns red. Files copy from the WD drive to a backup icon. End prompt opens `stackgeist.dev/guides/wd-elements-not-showing-up`.
+  - VO/caption: "If it clicks, stop troubleshooting. Copy the files and replace the drive. Full checklist at StackGeist."
+
+### Caption
+WD Elements spinning but missing from File Explorer? Fix the power path, then check Disk Management for a missing drive letter. Clicking means back up now. Full checklist at StackGeist.dev. #externalharddrive #windows11 #techsupport #techtok
