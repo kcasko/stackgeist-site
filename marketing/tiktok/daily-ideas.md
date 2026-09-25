@@ -158,6 +158,8 @@ Before you buy another keyboard: the numpad moves your mouse. TKL vs. full-size 
 ### Caption
 Stop hiding cables. Sort by how often they move, give each group a lane, then buy the organizer last. Full routing guide at StackGeist.dev. #cablemanagement #desksetup #wfh #techtok
 
+---
+
 ## 2026-09-09 — Empty space is not a shopping list
 
 - Source: `https://stackgeist.dev/guides/cheap-desk-upgrades`
@@ -311,3 +313,322 @@ Match the wattage on the original brick, then add headroom for anything sharing 
 
 ### Caption
 Add the watts, divide by 120, then buy the cord — not the other way around. Full amp / gauge / length rules at StackGeist.dev. #extensioncord #electricalsafety #wfh #desksetup #techtok
+
+---
+
+## 2026-09-14 — Your surge protector is clicking. Stop using it.
+
+- Source: `https://stackgeist.dev/guides/surge-protector-clicking`
+- Landing URL: `https://stackgeist.dev/guides/surge-protector-clicking?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=surge_click_replace`
+- Best posting time (ET): Monday 8:30 PM ET (after-work safety/home scroll; buying + replace intent peaks Sun–Mon evenings)
+- Length: ~22s
+- Hashtags: #surgeprotector #hometips #techtok #wfh #desksetup #electrical #homeoffice #safetyfirst
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --surge-strip`
+  - Visual: Black terminal frame. Green cursor blinks. Beside it: ASCII surge strip with a red `[click]` bubble pulsing every second.
+  - VO/caption: "If your surge protector is clicking, it is not being cautious. It is failing."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  CHECK THE PROTECTION LED`
+  - Visual: Two ASCII strips side by side — left `[LED ●]` green, right `[LED  ]` dark. Red arrow to the dark one.
+  - VO/caption: "The 'protected' light off means the MOV inside is dead. It still powers stuff — but it is now just a power strip."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  ADD UP THE WATTS`
+  - Visual: ASCII outlets: monitor 40W · PC 300W · laser printer 900W. Total: `1240W / 1800W`. Printer icon flashes red with `[INRUSH]`.
+  - VO/caption: "Motor loads and laser printers spike hard at startup. The click can be the thermal breaker cycling under overload."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  CLICKING + OLD = REPLACE`
+  - Visual: Calendar strip `5–7 yrs`. `[STRIP]` icon slides into a `[TRASH]` box. Green check: `NEW UNIT`.
+  - VO/caption: "MOVs last five to seven years. Repetitive click plus a dead LED is a replace, not a reset."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/surge-protector-clicking`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+A clicking surge protector is a fail signal, not a feature. Check the LED, count the load, then replace. Full diagnosis at StackGeist.dev. #surgeprotector #hometips #techtok #wfh
+
+---
+
+## 2026-09-15 — Your monitor arm is not broken. It's cold.
+
+- Source: `https://stackgeist.dev/guides/monitor-arm-sagging-fix`
+- Landing URL: `https://stackgeist.dev/guides/monitor-arm-sagging-fix?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=arm_is_cold`
+- Best posting time (ET): Tuesday 7:00 PM ET (post-workday desk-fix scroll; troubleshooting intent peaks)
+- Length: ~22s
+- Hashtags: #monitorarm #desksetup #wfh #homeoffice #techtok #ergotron #productivity #deskorganization
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --sag`
+  - Visual: Black terminal frame. Green cursor blinks. ASCII monitor drooping on an arm, labeled `[SAG]`. Prompt types the command.
+  - VO/caption: "Before you return the arm — it's probably not broken."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  WEIGHT IN RANGE?`
+  - Visual: ASCII scale. Monitor icon lands between `MIN 7lb` and `MAX 25lb` brackets. Ergotron LX label.
+  - VO/caption: "Weigh the monitor without its stand. Too light is also a failure — the spring needs load."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  QUARTER TURN, 4mm HEX`
+  - Visual: ASCII arm joint zoom. Hex key rotates clockwise `↻ 1/4`. Text: `Ergotron LX = 4mm`.
+  - VO/caption: "Find the tension screw at the spring joint. Quarter turn clockwise, test, repeat."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  TEMPERATURE MATTERS`
+  - Visual: Two panels — `[WARM ROOM]` arm droops, `[COOL ROOM]` arm holds. Small thermometer icon.
+  - VO/caption: "Gas struts change with room temp. Tune it at the temperature you actually work in."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/monitor-arm-sagging-fix`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+A drooping monitor arm is usually tension, a loose VESA plate, or cold-room physics — not a broken mount. Full diagnosis at StackGeist.dev. #monitorarm #desksetup #wfh #techtok
+
+---
+
+## 2026-09-16 — That extension cord is not rated for your space heater
+
+- Source: `https://stackgeist.dev/guides/extension-cord-safety-guide`
+- Landing URL: `https://stackgeist.dev/guides/extension-cord-safety-guide?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=ext_cord_not_rated`
+- Best posting time (ET): Wednesday 7:30 PM ET (mid-week evening desk-setup scroll; safety/troubleshooting intent peaks post-workday)
+- Length: ~22s
+- Hashtags: #extensioncord #desksetup #wfh #hometips #electricalsafety #techtok #cablemanagement #fireprevention
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ cord --check-rating`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII flat cord under a desk with a red `[HOT]` badge pulsing.
+  - VO/caption: \"Your extension cord has a number on the tag. That number is a limit, not a suggestion.\"
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  WATTS / 120 = AMPS`
+  - Visual: ASCII calc — `PC 300W + 2x MON 60W + PRINTER 900W = 1320W` → `/120 = 11A`. Cord label: `16 AWG 13A`. Green check.
+  - VO/caption: \"Add up every device wattage. Divide by 120. That's your amp draw. Cord rating must be 25% higher.\"
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  FLAT != HEAVY DUTY`
+  - Visual: Two cords side by side — `[FLAT 16/3]` and `[ROUND 14/3]`. Space heater icon over flat cord flashes red: `12A+ CONTINUOUS`.
+  - VO/caption: \"Flat cords hide well but run thinner wire. A space heater on a 16 AWG flat cord is a fire waiting to happen.\"
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  NO DAISY CHAIN`
+  - Visual: ASCII chain — `[WALL] → [EXT] → [STRIP] → [PC]` with red `X` over the links. Green: `[WALL] → [LONG STRIP]`.
+  - VO/caption: \"UL and NEC forbid stacking extension cords and surge protectors. Each junction adds heat and failure points.\"
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/extension-cord-safety-guide`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Your extension cord has an amp rating. Add up the watts, divide by 120, then pick a cord with 25% headroom. Flat cords are for hiding — round cords are for heat. No daisy chains. Full guide at StackGeist.dev. #extensioncord #desksetup #hometips #techtok
+
+---
+
+## 2026-09-17 — That USB-C cable is capped at 60W
+
+- Source: `https://stackgeist.dev/guides/usb-c-cable-charging-slow`
+- Landing URL: `https://stackgeist.dev/guides/usb-c-cable-charging-slow?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=cable_60w_cap`
+- Best posting time (ET): Thursday 12:15 PM ET (weekday lunch scroll; laptop/power-delivery buying intent peaks midday)
+- Length: ~22s
+- Hashtags: #usbc #charging #laptopcharging #techtok #desksetup #usbctips #powerdelivery #productivity
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --cable`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII laptop plugged to a 100W brick via a thin cable. Text: `slow charge?`
+  - VO/caption: "Your USB-C cable looks fine. It's lying."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  THE 60W CEILING`
+  - Visual: Two ASCII cables side by side — `[THIN]` reads `3A → 60W`, `[THICK]` reads `5A + e-marker → 100W`. Arrow between them: `cable = bottleneck`.
+  - VO/caption: "Most cables cap at 3 amps — 60W max. Your 100W charger can't push more through it."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  THE E-MARKER CHIP`
+  - Visual: Zoom on a cable plug housing. Tiny chip icon with `[e-marker]` label. Text: `reports capability → charger`.
+  - VO/caption: "The e-marker chip tells the charger, 'I can handle 5A.' No chip, no 100W — even with a rated brick."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  TEST IT ON MACOS`
+  - Visual: macOS battery menu showing `Power Adapter: 60W` in yellow. Swap cable → `100W` in green.
+  - VO/caption: "Hold Option and click the battery menu. If it reads 60W with a 100W brick, the cable is the limit."
+
+- `00:19–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/usb-c-cable-charging-slow`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+That USB-C cable charging your laptop? It's probably capped at 60W — no e-marker chip, no 100W. Check the negotiated wattage before buying another brick. Full diagnosis at StackGeist.dev. #usbc #charging #laptopcharging #techtok
+
+---
+
+## 2026-09-19 — Your office chair is sinking. Replace the gas cylinder.
+
+- Source: `https://stackgeist.dev/guides/office-chair-gas-cylinder-replacement`
+- Landing URL: `https://stackgeist.dev/guides/office-chair-gas-cylinder-replacement?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=gas_cylinder_replace`
+- Best posting time (ET): Saturday 10:30 AM ET (weekend home-office project scroll; DIY fix-and-tinker audience, low-competition morning window)
+- Length: ~21s
+- Hashtags: #officechair #ergonomics #deskchair #chairrepair #techtok #diy #lifehack #homedesk
+
+### Script (5 shots, 21s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --chair-sink`
+  - Visual: Black terminal frame. Green cursor blinks. Prompt types the command. ASCII office chair with a red `[SINK]` arrow under the seat.
+  - VO/caption: "Before you buy a new chair — if it sinks under you, the gas cylinder is out of pressure."
+
+- `00:04–00:10` — SHOT 2
+  - On-screen text: `01  CLASS BY WEIGHT`
+  - Visual: Two ASCII gas cylinders side by side — `[CLASS 3 ≤250LB]` and `[CLASS 4 250-400LB]`. Scale icon: `280lb → Class 4` green check.
+  - VO/caption: "Match the class to your weight. Class 3 holds up to 250 lbs. Over that, Class 4 — a Class 3 under a 280-lb user fails in months."
+
+- `00:10–00:15` — SHOT 3
+  - On-screen text: `02  MEASURE THE TAPER`
+  - Visual: ASCII caliper measuring the cylinder top: `⌀ 50mm`. Ruler line with `2-INCH` label.
+  - VO/caption: "Measure the top taper. Most chairs use a universal 2-inch diameter. If it's not 50mm, you need a brand-specific kit."
+
+- `00:15–00:19` — SHOT 4
+  - On-screen text: `03  REPLACE, NOT RETURN`
+  - Visual: Pipe wrench + rubber mallet icons beside a `[$30 · 20min]` tag. Chair droops → arrow up → chair holds.
+  - VO/caption: "Rubber mallet, pipe wrench, twenty minutes. A new cylinder costs under $30 — cheaper than a new chair."
+
+- `00:19–00:21` — END CARD
+  - On-screen text: `stackgeist.dev/guides/office-chair-gas-cylinder-replacement`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` with underline. Cursor blinks.
+
+### Caption
+Your chair sinks under you because the gas cylinder lost pressure — not because the chair is broken. Match Class 3 vs Class 4 to your weight, confirm the 2-inch taper, then replace with a mallet and pipe wrench for $30. Full fix at StackGeist.dev. #officechair #techtok
+
+---
+
+## 2026-09-20 — BenQ ScreenBar flickering: Not a hardware fail
+
+- Source: `https://stackgeist.dev/guides/benq-screenbar-flickering`
+- Landing URL: `https://stackgeist.dev/guides/benq-screenbar-flickering?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=screenbar_flickering_fix`
+- Best posting time (ET): Friday 8:00 PM ET (end-of-week troubleshoot/upgrade browse)
+- Length: ~22s
+- Hashtags: #screenbar #desklighting #benq #setupfix #productivity #monitorlight #techtok
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --screenbar`
+  - Visual: Terminal frame, cursor blinks. ASCII strip light flickering above monitor. Text: `[?][?][?]`
+  - VO/caption: "Bar flicker? It's not the LEDs — diagnose before you return."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  WALL PLUG > USB`
+  - Visual: USB port labeled `500mA` with red X; wall adapter labeled `1A` with green check.
+  - VO/caption: "Monitor USB can't deliver 1A steady. Use a 5V/1A wall adapter first."
+
+- `00:08–00:13` — SHOT 3
+  - On-screen text: `02  PUCK BATTERY DEAD?`
+  - Visual: Halo dimmer icon flashes, then shows a battery symbol charging.
+  - VO/caption: "If the halo puck flickers/loses connection, charge it for an hour."
+
+- `00:13–00:17` — SHOT 4
+  - On-screen text: `03  DIRTY PINS = GLITCHES`
+  - Visual: Spring pin contacts with a cotton swab. Text: `clean both ends`
+  - VO/caption: "Clean the pogo pins on the dimmer and the bar with isopropyl alcohol."
+
+- `00:17–00:21` — SHOT 5
+  - On-screen text: `04  PWM = CAMERA FLICKER`
+  - Visual: Camera feed with flicker, then steady. Overlay: `adjust shutter`
+  - VO/caption: "See flicker only on video? That's PWM, not a fault — adjust camera, not hardware."
+
+- `00:21–00:22` — END CARD
+  - On-screen text: `stackgeist.dev/guides/benq-screenbar-flickering`
+  - Visual: Terminal prompt: `$ open stackgeist.dev` underline/cursor.
+
+### Caption
+Flicker is nearly always USB power, puck battery, or dirty pins — not a broken ScreenBar. Test these before RMA. Full checklist at StackGeist.dev. #screenbar #desklighting #setupfix #techtok
+
+---
+
+## 2026-09-21 — Your USB-C monitor has power, not video
+
+- Source: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal`
+- Landing URL: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=monitor_power_not_video`
+- Best posting time (ET): Sunday 7:30 PM ET (Sunday setup-and-troubleshooting scroll before the workweek)
+- Length: ~22s
+- Hashtags: #portablemonitor #usbc #displayport #laptopsetup #techtok #wfh #techsupport
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --no-signal`
+  - Visual: Black terminal frame. ASCII portable monitor powers on, then flashes `[NO SIGNAL]` in red.
+  - VO/caption: "Your USB-C monitor has power. That does not mean it has video."
+
+- `00:04–00:09` — SHOT 2
+  - On-screen text: `01  USB-C SHAPE != VIDEO`
+  - Visual: USB-C port branches into `DATA`, `POWER`, and `DP ALT MODE`; only the last path reaches a display.
+  - VO/caption: "The laptop port needs DisplayPort Alt Mode, USB4, or Thunderbolt. USB-C alone proves nothing."
+
+- `00:09–00:14` — SHOT 3
+  - On-screen text: `02  CHARGE CABLE != VIDEO CABLE`
+  - Visual: Two ASCII cables: `[CHARGE ONLY]` powers the screen but drops the video packet; `[FULL-FEATURED]` passes both.
+  - VO/caption: "A charge cable can light the monitor while dropping the video signal. Swap in a full-featured cable."
+
+- `00:14–00:18` — SHOT 4
+  - On-screen text: `03  BYPASS THE HUB`
+  - Visual: Path `[LAPTOP] → [HUB] → [MONITOR]` fails red, then `[LAPTOP] → [MONITOR]` turns green.
+  - VO/caption: "Most portable hubs block video on downstream USB-C. Connect the monitor directly."
+
+- `00:18–00:22` — SHOT 5
+  - On-screen text: `NO ALT MODE? USE HDMI.`
+  - Visual: HDMI cable snaps into the monitor. Terminal prompt opens `stackgeist.dev/guides/portable-usb-c-monitor-no-signal`.
+  - VO/caption: "No Alt Mode? Use HDMI plus separate USB power. Full checklist at StackGeist."
+
+### Caption
+Portable monitor powered on but showing no signal? Check the host port, cable, and hub before blaming the screen. Full diagnosis at StackGeist.dev. #portablemonitor #usbc #techtok #laptopsetup
+
+---
+
+## 2026-09-22 — Your WD drive needs a letter, not a funeral
+
+- Source: `https://stackgeist.dev/guides/wd-elements-not-showing-up`
+- Landing URL: `https://stackgeist.dev/guides/wd-elements-not-showing-up?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=drive_needs_letter`
+- Best posting time (ET): Tuesday 7:30 PM ET (post-work troubleshooting and desk-setup scroll)
+- Length: ~22s
+- Hashtags: #externalharddrive #windows11 #datastorage #techsupport #pctips #techtok #backup
+
+### Script (5 shots, 22s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ diagnose --missing-drive`
+  - Visual: Black terminal frame. A WD drive spins up, but File Explorer shows an empty slot. Red status: `[POWERED / MISSING]`.
+  - VO/caption: "Your WD drive spins up but vanished from Windows. Do not format it."
+
+- `00:04–00:09` — SHOT 2
+  - On-screen text: `01  FIX THE POWER PATH`
+  - Visual: Path `[DRIVE] → [UNPOWERED HUB]` fails red, then `[DRIVE] → [REAR USB]` turns green. Original cable snaps into place.
+  - VO/caption: "Skip the unpowered hub. Use a rear motherboard USB port and the original cable."
+
+- `00:09–00:14` — SHOT 3
+  - On-screen text: `02  OPEN DISK MANAGEMENT`
+  - Visual: Terminal types `diskmgmt.msc`. A disk list appears with `WD ELEMENTS · 2TB · NO LETTER` highlighted.
+  - VO/caption: "Open Disk Management and find the drive by capacity, not by name."
+
+- `00:14–00:18` — SHOT 4
+  - On-screen text: `03  ASSIGN A LETTER`
+  - Visual: `NO LETTER` changes to `E:`. File Explorer immediately reveals folders. Side note: `FOREIGN? → IMPORT`.
+  - VO/caption: "Assign a drive letter. If Windows says foreign disk, import it to preserve the files."
+
+- `00:18–00:22` — SHOT 5
+  - On-screen text: `CLICKING? BACK UP NOW.`
+  - Visual: A pulsing `[click]` waveform turns red. Files copy from the WD drive to a backup icon. End prompt opens `stackgeist.dev/guides/wd-elements-not-showing-up`.
+  - VO/caption: "If it clicks, stop troubleshooting. Copy the files and replace the drive. Full checklist at StackGeist."
+
+### Caption
+WD Elements spinning but missing from File Explorer? Fix the power path, then check Disk Management for a missing drive letter. Clicking means back up now. Full checklist at StackGeist.dev. #externalharddrive #windows11 #techsupport #techtok
