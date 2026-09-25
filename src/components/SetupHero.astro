@@ -1,14 +1,23 @@
 ---
+// SetupHero renders the full-width illustration at the top of a setup page — the LCP.
+// `src` is the fallback raster (kept for browsers without AVIF/WebP).
+// Derives the base path (no extension) to reference pre-generated 600w and 1200w
+// AVIF + WebP siblings from scripts/build-setup-hero-variants.cjs.
 interface Props { src: string; alt: string; }
 const { src, alt } = Astro.props;
+const base = src.replace(/\.(png|jpe?g|webp|avif)$/i, '');
 ---
 <figure class="setup-hero">
-  <img src={src} alt={alt} loading="eager" decoding="async" fetchpriority="high" width="1024" height="576" />
+  <picture>
+    <source type="image/avif" srcset={`${base}-600w.avif 600w, ${base}-1200w.avif 1200w`} sizes="(min-width: 1200px) 1100px, 100vw" />
+    <source type="image/webp" srcset={`${base}-600w.webp 600w, ${base}-1200w.webp 1200w`} sizes="(min-width: 1200px) 1100px, 100vw" />
+    <img src={src} alt={alt} loading="eager" decoding="async" fetchpriority="high" width="1024" height="576" />
+  </picture>
   <figcaption>Illustration only. Product placement in real setups depends on your room, desk, and gear.</figcaption>
 </figure>
 <style>
   .setup-hero{margin:24px 0 0;padding:0;border:1px solid var(--term-border);background:#050508}
-  .setup-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .setup-hero picture,.setup-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
   .setup-hero figcaption{padding:9px 14px;border-top:1px dashed var(--term-border);color:var(--quiet);font-size:10.5px}
   .setup-hero figcaption::before{content:'// ';color:var(--phosphor)}
 </style>
