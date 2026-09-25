@@ -1,0 +1,202 @@
+
+> stackgeist-site@0.0.1 analytics:report
+> node scripts/affiliate-report.mjs --days 30
+
+{
+  "days": 30,
+  "rowCount": 26,
+  "campaigns": [
+    {
+      "name": "hermes / verification / income_engine_verify / synthetic_20260912",
+      "landings": 0,
+      "affiliateClicks": 1,
+      "clickThroughRate": null
+    },
+    {
+      "name": "(direct or unattributed)",
+      "landings": 62,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "pinterest / organic / launch / p01",
+      "landings": 3,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "pinterest / organic / launch / p02",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "verification / agent / deployment / 2026-08-30",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    }
+  ],
+  "pages": [
+    {
+      "name": "/kits/help-desk-homelab-starter-kit",
+      "landings": 0,
+      "affiliateClicks": 1,
+      "clickThroughRate": null
+    },
+    {
+      "name": "/",
+      "landings": 30,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/setups/small-bedroom-gaming/",
+      "landings": 8,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/monitor-support/ergotron-lx/",
+      "landings": 7,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/kits/",
+      "landings": 2,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/kits/help-desk-homelab-starter-kit/",
+      "landings": 2,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/budget-tech/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/budget-tech/500w-multi-port-gan-charging-station/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/budget-tech/compare/clamp-led-lamp-vs-screenbar/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/budget-tech/compare/wd-elements-vs-samsung-t7/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/desk-lighting/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/gear/desk-power/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/cable-management/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/gan-charger-not-charging-laptop-full-speed/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/keychron-v6-max-bluetooth-not-connecting/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/portable-usb-c-monitor-no-signal/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/usb-c-charging-display-problems/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/usb-c-dock-compatibility/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/guides/wd-elements-not-showing-up/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/setups/budget-gaming-desk/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/setups/midnight-shift/",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    },
+    {
+      "name": "/verification/affiliate-foundation",
+      "landings": 1,
+      "affiliateClicks": 0,
+      "clickThroughRate": 0
+    }
+  ],
+  "placements": [
+    {
+      "name": "kit-help-desk-homelab-starter-kit",
+      "landings": 0,
+      "affiliateClicks": 1,
+      "clickThroughRate": null
+    }
+  ],
+  "products": [
+    {
+      "name": "search-link",
+      "landings": 0,
+      "affiliateClicks": 1,
+      "clickThroughRate": null
+    }
+  ]
+}
