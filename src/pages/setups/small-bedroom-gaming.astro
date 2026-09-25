@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupHero from '../../components/SetupHero.astro';
+import SetupShopList from '../../components/SetupShopList.astro';
 import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
 import { SETUPS } from '../../data/gamingSetupOptions';
@@ -12,6 +13,7 @@ const setup = SETUPS['small-bedroom-gaming'];
     <p class="page-kicker">Small spaces</p>
     <h1 class="page-title">A small gaming room needs fewer collisions, not smaller versions of everything.</h1>
     <p class="page-lead">Protect walking space, door clearance, chair movement, and desk depth first. Then use vertical space and selective lighting to make the room feel intentional.</p>
+    <SetupShopList setup={setup} categories={['desk','chair','monitor','audio']} heading="Small-bedroom starter picks" intro="The four purchases that most affect a small room. Full tiers and alternatives below." />
     <SetupHero src="/setups/small-bedroom-gaming.png" alt="Illustration of a small bedroom gaming setup along one wall with a single monitor and tidy cable route" />
     <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 

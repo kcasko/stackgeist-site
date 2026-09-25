@@ -1,0 +1,100 @@
+---
+// SetupShopList — above-the-fold "shop this setup" affiliate strip.
+//
+// Purpose: give a first-time visitor a clickable path to buy the core gear
+// for a setup within the first 900px of the page, before the long-form
+// research prose. Uses the existing SetupOptions data (mid-tier picks),
+// so it stays in sync with the full category grid below.
+//
+// Fires data-affiliate-placement="setup-<slug>-shoplist-<category>" so the
+// D1 aggregation separates hero clicks from mid-body category-grid clicks.
+
+import type { SetupOptions } from '../data/gamingSetupOptions';
+
+interface Props {
+  setup: SetupOptions;
+  /** Which category slugs to feature. Order matters. Default: the 4 that
+   *  most affect first-buy intent. */
+  categories?: string[];
+  heading?: string;
+  intro?: string;
+}
+
+const {
+  setup,
+  categories = ['desk', 'chair', 'monitor', 'audio'],
+  heading = 'Start with these four picks',
+  intro,
+} = Astro.props as Props;
+
+// Pull the mid-tier pick for each requested category. Fall back to the first
+// pick in that category if there is no explicit "mid" (shouldn't happen but
+// we do not want to crash a page).
+const rows = categories
+  .map((slug) => {
+    const cat = setup.categories.find((c) => c.slug === slug);
+    if (!cat) return null;
+    const pick =
+      cat.picks.find((p) => p.tier === 'mid') ??
+      cat.picks.find((p) => p.tier === 'budget') ??
+      cat.picks[0];
+    if (!pick) return null;
+    return { cat, pick };
+  })
+  .filter((x): x is { cat: NonNullable<ReturnType<typeof Function>>; pick: NonNullable<ReturnType<typeof Function>> } => x !== null);
+
+const isExternal = (href: string) => href.startsWith('http');
+const linkRel = (kind: 'internal' | 'search') =>
+  kind === 'internal' ? undefined : 'sponsored nofollow noopener noreferrer';
+---
+<aside class="setup-shoplist" aria-labelledby={`shoplist-${setup.slug}`}>
+  <div class="shoplist-head">
+    <span class="shoplist-prompt">$ shoplist --setup {setup.slug}</span>
+    <h2 id={`shoplist-${setup.slug}`} class="shoplist-heading">{heading}</h2>
+    {intro && <p class="shoplist-intro">{intro}</p>}
+  </div>
+  <ol class="shoplist-rows">
+    {rows.map(({ cat, pick }: any) => (
+      <li class="shoplist-row">
+        <span class="shoplist-cat">{cat.name}</span>
+        <span class="shoplist-name">{pick.label}</span>
+        <span class="shoplist-price">{pick.price ?? '—'}</span>
+        <a
+          class="shoplist-cta"
+          href={pick.href}
+          target={isExternal(pick.href) ? '_blank' : undefined}
+          rel={linkRel(pick.kind)}
+          data-affiliate-link={pick.kind === 'search' ? '' : undefined}
+          data-affiliate-placement={`setup-${setup.slug}-shoplist-${cat.slug}`}
+        >
+          {pick.kind === 'search' ? 'Check on Amazon →' : 'See our pick →'}
+        </a>
+      </li>
+    ))}
+  </ol>
+  <p class="shoplist-note">Sweet-spot picks · Full comparison and starter/premium tiers below · Paid links marked. As an Amazon Associate we earn from qualifying purchases.</p>
+</aside>
+<style>
+.setup-shoplist{max-width:1040px;margin:20px 0 8px;border:1px solid var(--term-border);background:var(--term-bg);font-family:var(--font-mono)}
+.shoplist-head{padding:14px 16px 10px;border-bottom:1px dashed var(--term-border)}
+.shoplist-prompt{display:block;color:var(--phosphor);font-size:11px;margin-bottom:6px}
+.shoplist-heading{margin:0;color:var(--text);font-size:15px;font-weight:700;letter-spacing:-.01em}
+.shoplist-intro{margin:6px 0 0;color:var(--muted);font-size:12.5px;line-height:1.5}
+.shoplist-rows{list-style:none;margin:0;padding:0}
+.shoplist-row{display:grid;grid-template-columns:120px 1fr 90px auto;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--term-border);font-size:12.5px}
+.shoplist-row:first-child{border-top:0}
+.shoplist-cat{color:var(--quiet);text-transform:lowercase;letter-spacing:.04em;font-size:11.5px}
+.shoplist-cat::before{content:'#';color:var(--purple-light);margin-right:4px}
+.shoplist-name{color:var(--text);line-height:1.35}
+.shoplist-price{color:var(--phosphor);font-size:12px;text-align:right}
+.shoplist-cta{color:var(--phosphor);border:1px solid var(--term-border);padding:6px 10px;font-size:11.5px;font-weight:700;text-decoration:none;white-space:nowrap;background:rgba(163,230,53,.03)}
+.shoplist-cta:hover{border-color:var(--phosphor);background:rgba(163,230,53,.08)}
+.shoplist-note{margin:0;padding:10px 16px;border-top:1px dashed var(--term-border);color:var(--quiet);font-size:10.5px;line-height:1.5}
+@media(max-width:720px){
+  .shoplist-row{grid-template-columns:1fr 90px;grid-template-areas:'name price' 'cat cat' 'cta cta';gap:6px 12px}
+  .shoplist-cat{grid-area:cat}
+  .shoplist-name{grid-area:name}
+  .shoplist-price{grid-area:price}
+  .shoplist-cta{grid-area:cta;text-align:center;padding:8px 10px;margin-top:4px}
+}
+</style>

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupHero from '../../components/SetupHero.astro';
+import SetupShopList from '../../components/SetupShopList.astro';
 import SetupScene from '../../components/SetupScene.astro';
 import VerifiedLightingRoutes from '../../components/VerifiedLightingRoutes.astro';
 import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
@@ -12,6 +13,7 @@ const setup = SETUPS['midnight-shift'];
   <p class="page-kicker">Gaming + work</p>
   <h1 class="page-title">Midnight Shift</h1>
   <p class="page-lead">A dark setup for people who want atmosphere without turning the room into an RGB carnival.</p>
+  <SetupShopList setup={setup} categories={['desk','chair','monitor','lighting']} heading="Midnight Shift starter picks" intro="Four purchases that most define the dark mixed-use look. Full tiers and alternatives below." />
   <SetupHero src="/setups/midnight-shift.png" alt="Illustration of the Midnight Shift dark mixed-use gaming and work desk at night" />
   <div class="page-actions"><a class="btn" href="#verified-lighting">See verified lighting picks ↓</a></div>
 

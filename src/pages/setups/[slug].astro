@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import SetupCategoryGrid from '../../components/SetupCategoryGrid.astro';
+import SetupShopList from '../../components/SetupShopList.astro';
 import { GENERATED_SETUPS, SETUPS } from '../../data/gamingSetupOptions';
 
 export async function getStaticPaths() {
@@ -22,6 +23,8 @@ const totalPicks = setup.categories.reduce((n, c) => n + c.picks.length, 0);
   <p class="page-kicker">{setup.kicker}</p>
   <h1 class="page-title">{setup.headline}</h1>
   <p class="page-lead">{setup.lead}</p>
+
+  <SetupShopList setup={setup} heading="Start here — sweet-spot picks" intro="One recommendation per key category. Full comparison below." />
 
   <div class="page-actions">
     <a class="btn primary" href="#gear-picks">Jump to gear picks ({totalPicks}) ↓</a>
