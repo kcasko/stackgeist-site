@@ -7,16 +7,16 @@ const research=[{href:'/guides/usb-c-dock-compatibility',tag:'checklist',title:'
 // Conversion strip — the plain-English shortcut for first-time visitors.
 // Each card leads with the question a real person types into Google.
 const quickPicks = [
-  { href: '/kits/help-desk-homelab-starter-kit', img: '/gear/caldigit-ts4.jpg', kicker: 'IT lab', title: 'Help desk homelab starter kit', note: 'Mini PC, storage, switch, UPS. Buy in order.' },
-  { href: '/kits/cheap-desk-upgrades-under-100', img: '/gear/clamp-on-led-desk-lamp.jpg', kicker: 'Under $100', title: 'Cheap desk upgrades that matter', note: 'Power, light, cable path, reach fixes.' },
-  { href: '/setups/budget-gaming-desk', img: '/setups/budget-gaming-desk.png', kicker: 'Under $500', title: 'Best budget gaming desk setup', note: 'Full build order, real prices, skip-list.' },
-  { href: '/kits/usb-c-desk-survival-kit', img: '/gear/anker-553-usb-c-hub.jpg', kicker: 'USB-C', title: 'USB-C desk survival kit', note: 'Cable, hub, charger, adapters. No mystery drawer.' },
+  { href: '/kits/help-desk-homelab-starter-kit', img: '/gear/caldigit-ts4.jpg', kicker: 'IT lab', title: 'Help desk homelab starter kit', note: 'Mini PC, storage, switch, UPS. Buy in order.', cta: 'Open the kit →', slug: 'help-desk-homelab' },
+  { href: '/kits/cheap-desk-upgrades-under-100', img: '/gear/clamp-on-led-desk-lamp.jpg', kicker: 'Under $100', title: 'Cheap desk upgrades that matter', note: 'Power, light, cable path, reach fixes.', cta: 'Open the kit →', slug: 'cheap-desk-upgrades' },
+  { href: '/setups/budget-gaming-desk', img: '/setups/budget-gaming-desk.png', kicker: 'Under $500', title: 'Best budget gaming desk setup', note: 'Full build order, real prices, skip-list.', cta: 'See the setup →', slug: 'budget-gaming-desk' },
+  { href: '/kits/usb-c-desk-survival-kit', img: '/gear/anker-553-usb-c-hub.jpg', kicker: 'USB-C', title: 'USB-C desk survival kit', note: 'Cable, hub, charger, adapters. No mystery drawer.', cta: 'Open the kit →', slug: 'usb-c-survival' },
 ];
 const updated = 'Updated August 2026';
 ---
 <Layout title="StackGeist | Practical desk setup ideas and verified tech gear" description="Build a better desk or gaming setup with fit-first gear research, honest tradeoffs, budget tech comparisons, and practical guides.">
 <div class="site-shell home-shell"><Header interactive={false}/><main id="main-content" tabindex="-1">
-<section class="hero-conversion" aria-label="Popular starting points"><div class="hero-copy"><p class="hero-eyebrow">{updated} · 45 verified gear pages · No sponsorships</p><h1 class="hero-h1">Desk setup research that actually fits your room and budget.</h1><p class="hero-sub">Pick a starting point below, or scroll for the full catalog.</p></div><div class="hero-grid">{quickPicks.map((q)=>(<a class="hero-card" href={q.href}><div class="hero-thumb"><img src={q.img} alt="" loading="eager" decoding="async" /></div><div class="hero-body"><span class="hero-kicker">{q.kicker}</span><h2 class="hero-title">{q.title}</h2><p class="hero-note">{q.note}</p><span class="hero-cta">See the setup →</span></div></a>))}</div></section>
+<section class="hero-conversion" aria-label="Popular starting points"><div class="hero-copy"><p class="hero-eyebrow">{updated} · 45 verified gear pages · No sponsorships</p><h1 class="hero-h1">Desk setup research that actually fits your room and budget.</h1><p class="hero-sub">Pick a starting point below, or scroll for the full catalog.</p></div><div class="hero-grid">{quickPicks.map((q)=>(<a class="hero-card" href={`${q.href}?utm_source=stackgeist&utm_medium=home_hero&utm_campaign=featured&utm_content=${q.slug}`} data-affiliate-placement={`home-featured-${q.slug}`}><div class="hero-thumb"><img src={q.img} alt="" loading="eager" decoding="async" /></div><div class="hero-body"><span class="hero-kicker">{q.kicker}</span><h2 class="hero-title">{q.title}</h2><p class="hero-note">{q.note}</p><span class="hero-cta">{q.cta}</span></div></a>))}</div></section>
 <section class="motd" aria-label="StackGeist introduction"><h1 class="home-title">Practical desk setups and verified gear research</h1><pre class="ascii" aria-hidden="true"><code>  ____  _             _     ____      _     _
  / ___|| |_ __ _  ___| | __/ ___| ___(_)___| |_
  \___ \| __/ _` |/ __| |/ / |  _ / _ \ / __| __|
