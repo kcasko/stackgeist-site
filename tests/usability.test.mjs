@@ -37,14 +37,15 @@ test('budget catalog includes search, filtering, status, and section jumps', asy
   }
 });
 
-test('Logitech page uses the catalog image and decision jump navigation', async () => {
+test('Logitech page uses first-party evidence and puts the retailer link after fit decisions', async () => {
   const source = await read('src/pages/gear/budget-tech/logitech-c920x-hd-webcam.astro');
-  assert.match(source, /71YN85pLGcL/);
-  assert.doesNotMatch(source, /71YmyIWpVOL/);
-  assert.match(source, /class="decision-nav"/);
-  for (const id of ['verdict', 'specs', 'compatibility', 'alternatives', 'buy-or-skip']) {
-    assert.match(source, new RegExp(`id="${id}"`));
-  }
+  assert.match(source, /Logitech — C920x Know Your Product guide/);
+  assert.match(source, /logitech\.com\/assets\/66173\/c920x-pro\.pdf/);
+  assert.match(source, /Source-checked product decision/);
+  assert.match(source, /Do you need it\?/);
+  const fit = source.indexOf('Do you need it?');
+  const retailer = source.indexOf('tag=deskrespawn-20');
+  assert.ok(fit >= 0 && retailer > fit, 'retailer CTA should follow the fit/skip decision');
 });
 
 test('content CSS constrains prose and preserves mobile intent context', async () => {
@@ -161,45 +162,45 @@ test('editorial provenance distinguishes owned products from sourced research', 
   const footer = await read('src/components/SiteFooter.astro');
   assert.match(footer, /href="\/editorial-methodology"/);
 
-  const featured = [
-    'iniu-usb-c-to-usb-c-cable-240w-6-6ft',
-    'acodot-9-in-1-usb-c-hub',
+  const sourceChecked = [
     'logitech-c920x-hd-webcam',
     'sennheiser-momentum-4-wireless-noise-cancelling-headphones',
-    'wd-elements-portable-external-hard-drive',
   ];
-  for (const slug of featured) {
+  for (const slug of sourceChecked) {
     const source = await read(`src/pages/gear/budget-tech/${slug}.astro`);
     assert.match(source, /import EvidencePanel/);
     assert.match(source, /status="owned-and-used"/);
-    assert.match(source, /reviewed="2026-08-30"/);
+    assert.match(source, /reviewed="2026-10-01"/);
     assert.match(source, /sources=\{\[/);
     assert.match(source, /https:\/\//);
   }
-});
-
-test('owned shortlist prioritizes five used products without shrinking the catalog', async () => {
-  const source = await read('src/pages/gear/budget-tech/index.astro');
-  assert.match(source, /data-owned-shortlist/);
-  assert.equal((source.match(/data-owned-pick/g) || []).length, 5);
-  assert.equal((source.match(/<a class="card" data-catalog-card/g) || []).length, 30);
-  assert.match(source, /Owned &amp; used|Owned & used/);
-  assert.match(source, /\/editorial-methodology/);
 
   for (const slug of [
     'iniu-usb-c-to-usb-c-cable-240w-6-6ft',
     'acodot-9-in-1-usb-c-hub',
+    '500w-multi-port-gan-charging-station',
+  ]) {
+    const source = await read(`src/pages/gear/budget-tech/${slug}.astro`);
+    assert.match(source, /noindex/);
+    assert.match(source, /Research starting point|Research pending|research pending/i);
+    assert.doesNotMatch(source, /tag=deskrespawn-20/);
+  }
+});
+
+test('evidence-backed shortlist prioritizes source-checked pages without shrinking the catalog', async () => {
+  const source = await read('src/pages/gear/budget-tech/index.astro');
+  assert.match(source, /data-owned-shortlist/);
+  assert.equal((source.match(/data-owned-pick/g) || []).length, 2);
+  assert.equal((source.match(/<a class="card" data-catalog-card/g) || []).length, 30);
+  assert.match(source, /Evidence-backed shortlist/);
+  assert.match(source, /\/editorial-methodology/);
+
+  for (const slug of [
     'logitech-c920x-hd-webcam',
     'sennheiser-momentum-4-wireless-noise-cancelling-headphones',
-    'wd-elements-portable-external-hard-drive',
   ]) assert.match(source, new RegExp(`/gear/budget-tech/${slug}`));
 
-  for (const comparison of [
-    'iniu-cable-vs-generic-usb-c',
-    'acodot-hub-vs-anker-553',
-    'sennheiser-momentum-4-vs-cheap-anc',
-    'wd-elements-vs-samsung-t7',
-  ]) assert.match(source, new RegExp(`/gear/budget-tech/compare/${comparison}`));
+  assert.doesNotMatch(source, /Compare cable fit →|Compare with Anker 553 →|Compare ANC tiers →|Compare HDD and SSD fit →/);
 });
 
 test('featured owned pages do not retain unsupported precision from legacy copy', async () => {

@@ -6,26 +6,23 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / Budget tech</p>
   <p class="page-kicker">Budget tech</p>
   <h1 class="page-title">Small upgrades that quietly fix annoying problems.</h1>
-  <p class="page-lead">These thirty products were migrated from taurustech.me after being personally purchased and used by the StackGeist operator. Ownership is not a laboratory test: detailed pages separate that record from sourced specifications, compatibility checks, and reasons to skip.</p>
+  <p class="page-lead">These catalog entries were migrated from an earlier editorial list. Each detail page now states its own evidence status: source-checked, owned-and-used where that record is explicitly supported, or research starting point when the technical evidence pass is incomplete.</p>
 
   <section class="owned-shortlist" data-owned-shortlist aria-labelledby="owned-shortlist-title">
     <div class="shortlist-head">
-      <div><p class="page-kicker">Owned &amp; used</p><h2 id="owned-shortlist-title">Start with the five pages that show the most decision context.</h2></div>
+      <div><p class="page-kicker">Evidence-backed shortlist</p><h2 id="owned-shortlist-title">Start with pages that currently have the clearest evidence and decision context.</h2></div>
       <a href="/editorial-methodology">How evidence labels work →</a>
     </div>
     <div class="shortlist-grid">
-      <article data-owned-pick><span>01 / charging</span><h3><a href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">INIU 240W USB-C cable</a></h3><p>Start here when charging wattage matters more than display or high-speed data.</p><a href="/gear/budget-tech/compare/iniu-cable-vs-generic-usb-c">Compare cable fit →</a></article>
-      <article data-owned-pick><span>02 / ports</span><h3><a href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">Acodot 9-in-1 USB-C hub</a></h3><p>Start here for a lower-cost single-display hub with common desk ports.</p><a href="/gear/budget-tech/compare/acodot-hub-vs-anker-553">Compare with Anker 553 →</a></article>
-      <article data-owned-pick><span>03 / video</span><h3><a href="/gear/budget-tech/logitech-c920x-hd-webcam">Logitech C920x webcam</a></h3><p>Start here when a laptop camera needs a straightforward external replacement.</p><a href="/guides/better-video-calls">Check the full call setup →</a></article>
-      <article data-owned-pick><span>04 / audio</span><h3><a href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones">Sennheiser Momentum 4</a></h3><p>Start here when sound quality and long battery life both matter.</p><a href="/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc">Compare ANC tiers →</a></article>
-      <article data-owned-pick><span>05 / storage</span><h3><a href="/gear/budget-tech/wd-elements-portable-external-hard-drive">WD Elements portable drive</a></h3><p>Start here when capacity and simple backup storage matter more than SSD speed.</p><a href="/gear/budget-tech/compare/wd-elements-vs-samsung-t7">Compare HDD and SSD fit →</a></article>
+      <article data-owned-pick><span>01 / video</span><h3><a href="/gear/budget-tech/logitech-c920x-hd-webcam/">Logitech C920x webcam</a></h3><p>Current first-party documentation supports the core connection, lens, microphone, and mounting facts used on the decision page.</p><a href="/guides/better-video-calls/">Check the full call setup →</a></article>
+      <article data-owned-pick><span>02 / audio</span><h3><a href="/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/">Sennheiser MOMENTUM 4</a></h3><p>Current Sennheiser documentation supports the codec, ANC, Bluetooth, multipoint, and published battery claims used on the decision page.</p><a href="/guides/sennheiser-momentum-4-wont-pair/">Pairing troubleshooting →</a></article>
     </div>
   </section>
 
   <form class="catalog-tools" role="search" data-catalog-tools>
     <label><span>find</span><input type="search" placeholder="webcam, cable, storage…" autocomplete="off" data-catalog-search /></label>
     <label><span>tier</span><select data-catalog-filter><option value="all">all sections</option><option value="under-25">under $25</option><option value="under-75">under $75</option><option value="essentials">everyday essentials</option><option value="premium">worth paying more</option></select></label>
-    <label><span>research</span><select data-catalog-status><option value="all">all entries</option><option value="verified">verified detail</option><option value="editorial">editorial starting point</option></select></label>
+    <label><span>research</span><select data-catalog-status><option value="all">all entries</option><option value="verified">source-checked detail</option><option value="editorial">editorial starting point</option></select></label>
     <output aria-live="polite" data-catalog-result>30 products</output>
   </form>
   <nav class="catalog-jumps" aria-label="Jump to product section"><span>jump:</span><a href="#under-25">under $25</a><a href="#under-75">under $75</a><a href="#essentials">essentials</a><a href="#premium">pay more</a></nav>
@@ -39,9 +36,9 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
     </a>
   </section>
   <section class="content-section" id="under-25" data-catalog-section="under-25">
-    <p class="page-kicker">Best under $25</p>
+    <p class="page-kicker">Budget tier</p>
     <div class="cards">
-    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/814lZbU+YYL._SL1500_.jpg" alt="INIU USB-C to USB-C Cable (240W, 6.6ft)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>INIU USB-C to USB-C Cable (240W, 6.6ft)</h2>
       <p>Most USB-C cables are slow or inconsistent.</p>
@@ -59,7 +56,7 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
       <p>Most power strips are cramped and useless once you plug in anything bulky.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/acodot-9-in-1-usb-c-hub">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71osul51J+L._AC_SL1500_.jpg" alt="Acodot 9-in-1 USB-C Hub" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>Acodot 9-in-1 USB-C Hub</h2>
       <p>Modern laptops keep removing ports.</p>
@@ -74,7 +71,7 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
     </div>
   </section>
   <section class="content-section" id="under-75" data-catalog-section="under-75">
-    <p class="page-kicker">Best under $75</p>
+    <p class="page-kicker">Mid-budget tier</p>
     <div class="cards">
     <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/71Ow-Ih7KNL._AC_SL1500_.jpg" alt="SanDisk Ultra 128GB microSD Card (2-Pack)" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
@@ -82,7 +79,7 @@ import NewsletterSignup from '../../../components/NewsletterSignup.astro';
       <p>Cheap storage works until it doesn’t.</p>
       <div class="card-meta"><span class="tag active">Budget tech</span></div>
     </a>
-    <a class="card" data-catalog-card data-status="verified" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
+    <a class="card" data-catalog-card data-status="editorial" href="/gear/budget-tech/500w-multi-port-gan-charging-station">
       <img class="product-thumb" src="https://m.media-amazon.com/images/I/61WPFmi-nvL._AC_SL1500_.jpg" alt="500W Multi-Port GaN Charging Station" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
       <h2>500W Multi-Port GaN Charging Station</h2>
       <p>Charging setups get messy fast when every device needs its own brick.</p>

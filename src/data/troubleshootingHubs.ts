@@ -33,7 +33,7 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
       'Confirm the exact laptop port supports video, USB4, Thunderbolt, or the wattage you expect.',
       'Swap in a known full-featured USB-C, USB4, or Thunderbolt cable before changing the dock or charger.',
       'Test one device at a time so a multi-port charger or hub is not silently splitting bandwidth or wattage.',
-      'Check OS display settings, firmware, and vendor utilities after the physical path is verified.',
+      'Check OS display settings, firmware, and vendor utilities after the physical path is confirmed.',
     ],
     guides: [
       {

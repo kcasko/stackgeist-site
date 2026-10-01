@@ -10,9 +10,9 @@ interface Props {
 const { setup, heading, intro } = Astro.props as Props;
 
 const tierMeta: Record<Pick['tier'], { label: string; hint: string }> = {
-  budget: { label: 'Starter', hint: 'cheapest that works' },
-  mid: { label: 'Sweet spot', hint: 'most-recommended pick' },
-  premium: { label: 'Long-term', hint: 'buy-once splurge' },
+  budget: { label: 'Starter', hint: 'lower-cost example to evaluate' },
+  mid: { label: 'Middle', hint: 'mid-tier example to evaluate' },
+  premium: { label: 'Higher tier', hint: 'higher-cost example to evaluate' },
 };
 
 // One-character glyph per category slug. Used as a placeholder when we don't
@@ -43,10 +43,10 @@ const linkRel = (kind: Pick['kind']) =>
   <p class="cat-grid-lede">{setup.summary}</p>
 
   <div class="cat-grid-legend" role="list">
-    <span role="listitem"><em class="tier-dot budget"></em>Starter · cheapest that works</span>
-    <span role="listitem"><em class="tier-dot mid"></em>Sweet spot · most-recommended</span>
-    <span role="listitem"><em class="tier-dot premium"></em>Long-term · buy-once splurge</span>
-    <span role="listitem" class="paid-note">Product photos shown are our own writeups. Amazon search links are paid.</span>
+    <span role="listitem"><em class="tier-dot budget"></em>Starter · lower-cost example</span>
+    <span role="listitem"><em class="tier-dot mid"></em>Middle · mid-tier example</span>
+    <span role="listitem"><em class="tier-dot premium"></em>Higher tier · higher-cost example</span>
+    <span role="listitem" class="paid-note">Internal writeups carry StackGeist evidence status. Search entries are research examples, not exact-product recommendations.</span>
   </div>
 
   <div class="cat-grid">
@@ -81,11 +81,11 @@ const linkRel = (kind: Pick['kind']) =>
                   <div class="pick-line">
                     <span class={`tier-pill ${p.tier}`} title={tierMeta[p.tier].hint}>{tierMeta[p.tier].label}</span>
                     <span class="pick-label">{p.label}</span>
-                    {p.kind === 'internal' && <span class="badge internal">writeup</span>}
-                    {p.kind === 'search' && <span class="badge search">search →</span>}
+                    {p.kind === 'internal' && <span class="badge internal">decision page</span>}
+                    {p.kind === 'search' && <span class="badge search">research example</span>}
                     {p.price && <span class="pick-price">{p.price}</span>}
                   </div>
-                  <p class="pick-why">{p.why}</p>
+                  <p class="pick-why">{p.kind === 'internal' ? p.why : 'Category/model example only. Verify the exact manufacturer specifications, compatibility, current availability, and price before treating it as a candidate.'}</p>
                   {p.note && <p class="pick-note">{p.note}</p>}
                 </div>
               </a>
@@ -96,7 +96,7 @@ const linkRel = (kind: Pick['kind']) =>
     ))}
   </div>
 
-  <p class="cat-grid-footer">Prices are rough bands, not live quotes. Confirm current price and fit before buying. As an Amazon Associate we earn from qualifying purchases.</p>
+  <p class="cat-grid-footer">Prices are not live quotes. Internal writeups have an evidence status; external search examples require independent specification and fit checks before purchase. Paid search links are disclosed.</p>
 </section>
 
 <style>

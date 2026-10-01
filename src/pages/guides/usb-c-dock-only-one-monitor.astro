@@ -4,7 +4,7 @@ import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [
   articleSchema({
-    headline: "USB-C dock only detecting one monitor: the real fix.",
+    headline: "USB-C dock only detecting one monitor: diagnose the display path.",
     description: "A single monitor working through a USB-C dock commonly points to a host display limit, an MST or DisplayLink mismatch, a cable limitation, or a dock/firmware issue. Diagnose the path before replacing hardware.",
     url: 'https://stackgeist.dev/guides/usb-c-dock-only-one-monitor',
     dateModified: '2026-10-01'
@@ -31,11 +31,11 @@ const __sd = [
   })
 ];
 ---
-<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: the real fix | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides">
+<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: diagnose the display path | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/guides">Guides</a> / USB-C dock only one monitor</p>
     <p class="page-kicker">Connectivity troubleshooting</p>
-    <h1 class="page-title">USB-C dock only detecting one monitor: the real fix.</h1>
+    <h1 class="page-title">USB-C dock only detecting one monitor: diagnose the display path.</h1>
     <p class="page-lead">One display working through a USB-C dock does not prove the dock is bad. The host's display limits, dock technology, cable, firmware, and display settings can all produce the same symptom. Diagnose those layers in order.</p>
     <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and its USB-C port capability. Read the host's documented external-display capability first. A second display may depend on MST, USB4/Thunderbolt display tunneling, or DisplayLink, depending on the host and dock. If the port qualifies, swap in the dock's supplied cable, install DisplayLink or vendor drivers, update the dock's firmware, and set the OS to extend rather than mirror.</p></div>
     <div class="article-body">
@@ -51,8 +51,8 @@ const __sd = [
 
       <section><p class="page-kicker">Step 06</p><h2>Set the OS to extend, not mirror.</h2><p>A dock can correctly present two displays that the operating system then silently mirrors. Confirm the arrangement before assuming the second display is missing.</p><div class="article-cards"><div><strong>Windows</strong><p>Settings &gt; System &gt; Display &gt; scroll to "Multiple displays" &gt; "Extend these displays." Then drag the display icons so their arrangement matches physical position.</p></div><div><strong>macOS</strong><p>System Settings &gt; Displays. Click the second display, uncheck "Mirror Displays" if set, then use the "Arrangement" tab to place it.</p></div></div></section>
 
-      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the dock is fine.</h2><p>Most single-display failures resolve at Step 01, 04, or 05. If the host port simply cannot carry a second stream and you cannot change laptops, a DisplayLink dock is the honest fix. If you already own a Thunderbolt-capable host and want a verified dual-display path, the two docks below are the ones on this site with a full fit guide.</p><div class="cards">
-        <a class="card" href="/gear/connectivity/caldigit-ts4"><h3>CalDigit TS4 fit guide</h3><p>18-port Thunderbolt 4 dock for a verified Thunderbolt host and a high-demand desk.</p></a>
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the dock is fine.</h2><p>Most single-display failures resolve at Step 01, 04, or 05. If the host port simply cannot carry a second stream and you cannot change laptops, a DisplayLink dock is the honest fix. If you already own a Thunderbolt-capable host and want a documented dual-display path, the two docks below are the ones on this site with a full fit guide.</p><div class="cards">
+        <a class="card" href="/gear/connectivity/caldigit-ts4"><h3>CalDigit TS4 fit guide</h3><p>18-port Thunderbolt 4 dock for a manufacturer-documented Thunderbolt-capable host and a high-demand desk.</p></a>
         <a class="card" href="/gear/connectivity/anker-553-usb-c-hub"><h3>Anker 553 USB-C hub</h3><p>A smaller connection set for a single external display and a few low-bandwidth peripherals.</p></a>
         <a class="card" href="/guides/usb-c-dock-compatibility"><h3>Before you buy: dock compatibility</h3><p>The buying-side companion to this troubleshooting guide — host port, displays, power, bandwidth, and cables.</p></a>
       </div></section>

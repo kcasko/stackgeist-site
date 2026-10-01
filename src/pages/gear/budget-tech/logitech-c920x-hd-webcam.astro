@@ -2,75 +2,74 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "Logitech C920x HD Webcam", description: "A 1080p-at-30-fps external webcam in Logitech's established C920 family. Check USB-A availability, mounting, operating-system support, room lighting, and the capture mode your application actually uses.", url: 'https://stackgeist.dev/gear/budget-tech/logitech-c920x-hd-webcam', image: 'https://m.media-amazon.com/images/I/71YN85pLGcL._AC_SL1500_.jpg', brand: 'Logitech' }), faqSchema({ questions: [{"question":"Will it fit my computer?","answer":"Confirm an available USB-A port or plan for a compatible adapter, then check Logitech's current operating-system support."},{"question":"Can I mount it on a tripod?","answer":"Logitech lists tripod-ready mounting for the C920 family; verify the current package and mount before ordering."},{"question":"Is it a 4K production camera?","answer":"No. Logitech publishes 1080p at 30fps for this tier. Choose a different camera when higher resolution, frame rate, or manual image control is required."},{"question":"Buy this if","answer":"Your laptop webcam is embarrassing on daily calls and you want a boring reliable fix. It's been the default answer for a decade for good reason."},{"question":"Skip this if","answer":"You do serious content work — a mirrorless camera plus capture card is the tier above and worth the difference. Or if you have a modern iPhone you're happy to tie up during calls."}] })];
+const __sd=[
+  productSchema({
+    name:'Logitech C920x HD Pro Webcam',
+    description:'Logitech documents an autofocus HD 1080p lens, dual microphones, universal mounting clip, tripod thread, and an attached 1.5 m USB-A cable.',
+    url:'https://stackgeist.dev/gear/budget-tech/logitech-c920x-hd-webcam',
+    brand:'Logitech'
+  }),
+  faqSchema({questions:[
+    {question:'Does C920x use USB-A?',answer:'Yes. Logitech’s C920x product guide shows an attached 5 ft (1.5 m) USB-A cable. A USB-C-only computer needs a compatible adapter or hub.'},
+    {question:'Is the lens autofocus?',answer:'Yes. Logitech’s C920x product guide identifies an autofocus HD 1080p lens.'},
+    {question:'Can it mount on a tripod?',answer:'Yes. Logitech documents a tripod thread, while noting that a tripod is not included.'}
+  ]})
+];
 ---
-<ContentLayout structuredData={__sd} title="Logitech C920x HD Webcam buying guide | StackGeist" description="Published specifications, fit checks, and tradeoffs for the Logitech C920x HD Webcam." active="gear">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / Logitech C920x</p>
-  <p class="page-kicker">Best under $75 · Video</p>
-  <h1 class="page-title">Logitech C920x HD Webcam</h1>
-  <p class="page-lead">A 1080p-at-30-fps external webcam in Logitech's established C920 family. Check USB-A availability, mounting, operating-system support, room lighting, and the capture mode your application actually uses.</p>
-  <img class="hero" src="https://m.media-amazon.com/images/I/71YN85pLGcL._AC_SL1500_.jpg" alt="Logitech C920x HD Webcam" loading="eager" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;height:clamp(280px,42vw,520px);object-fit:contain;background:#fff;border:1px solid var(--term-border);margin:24px 0;filter:saturate(.8)" />
-  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Logitech C920 product specifications', href: 'https://www.logitech.com/en-us/shop/p/c920s-pro-hd-webcam' }, { label: 'Amazon product identity — ASIN B085TFF7M1', href: 'https://www.amazon.com/dp/B085TFF7M1' }]} />
-  <nav class="decision-nav" aria-label="Product decision sections"><span>[verified detail]</span><a href="#verdict">verdict</a><a href="#specs">specs</a><a href="#compatibility">compatibility</a><a href="#alternatives">alternatives</a><a href="#buy-or-skip">buy or skip</a><a class="price-link" href="https://www.amazon.com/dp/B085TFF7M1?tag=deskrespawn-20" rel="sponsored nofollow noopener noreferrer">price ↗</a></nav>
+<ContentLayout structuredData={__sd} title="Logitech C920x HD Pro Webcam: fit, ports, and tradeoffs | StackGeist" description="Source-checked C920x decision page covering the attached USB-A cable, autofocus HD 1080p lens, microphones, mounting, and when to skip it." active="gear">
+<p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear/">Gear</a> / <a href="/gear/budget-tech/">Budget tech</a> / Logitech C920x</p>
+<p class="page-kicker">Source-checked product decision</p>
+<h1 class="page-title">Logitech C920x HD Pro Webcam</h1>
+<p class="page-lead">C920x makes sense when the requirement is a straightforward external webcam with an attached USB-A connection, autofocus HD 1080p lens, dual microphones, and a conventional monitor/laptop clip. It is not a reason to replace a camera that already meets your call or recording requirements.</p>
 
-  <section class="content-section" id="verdict">
-    <p class="page-kicker">Quick verdict</p>
-    <h2 class="section-heading">Boring, correct, still the default in 2026.</h2>
-    <p>The Logitech C920 family is a straightforward 1080p-at-30-fps option with autofocus, a 78-degree field of view, and dual microphones according to Logitech's published specifications. It is a practical external-camera tier, not a 4K production camera.</p>
-  </section>
+<EvidencePanel status="owned-and-used" reviewed="2026-10-01" sources={[
+  {label:'Logitech — C920x Know Your Product guide',href:'https://www.logitech.com/assets/66173/c920x-pro.pdf'},
+  {label:'Amazon product identity — ASIN B085TFF7M1',href:'https://www.amazon.com/dp/B085TFF7M1'}
+]} />
 
-  <section class="content-section">
-    <p class="page-kicker">The problem it solves</p>
-    <h2 class="section-heading">Built-in laptop webcams are dire.</h2>
-    <p>An external webcam lets you position the camera independently of a laptop screen and can provide a more useful field of view. Logitech lists a full-HD glass lens and automatic light correction for the C920 family; actual image quality still depends heavily on room lighting and placement.</p>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Documented hardware</p>
+<h2 class="section-heading">What Logitech actually documents.</h2>
+<ul class="article-list">
+<li>Autofocus HD 1080p lens</li>
+<li>Dual microphones</li>
+<li>LED activity light</li>
+<li>Universal mounting clip</li>
+<li>Tripod thread; tripod not included</li>
+<li>Attached 5 ft / 1.5 m USB-A cable</li>
+</ul>
+<p>Those facts do not establish low-light quality, microphone quality, autofocus behavior in your room, or compatibility with every conferencing/recording application. Those are workflow questions, not safe assumptions from the spec sheet.</p>
+</section>
 
-  <section class="content-section" id="specs">
-    <p class="page-kicker">Verified specs</p>
-    <h2 class="section-heading">What Logitech lists.</h2>
-    <ul><li>1080p at 30fps per Logitech's C920 family specifications</li><li>Autofocus</li><li>78° field of view</li><li>Two microphones</li><li>USB-A connection</li><li>Monitor clip and tripod-ready mounting</li></ul>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Fit check</p>
+<h2 class="section-heading">Check the connection and placement before buying.</h2>
+<div class="article-cards">
+<div><strong>USB connection</strong><p>If the computer is USB-C-only, plan for a compatible USB-A adapter or hub. Do not assume every low-cost adapter exposes the same USB mode.</p></div>
+<div><strong>Camera height</strong><p>An external webcam helps most when it lets you put the lens where you want it. Check monitor thickness and whether the clip or tripod thread suits your placement.</p></div>
+<div><strong>Lighting</strong><p>A webcam cannot create light that is not present. Improve face lighting and camera angle before upgrading solely for image quality.</p></div>
+</div>
+</section>
 
-  <section class="content-section" id="compatibility">
-    <p class="page-kicker">Compatibility check</p>
-    <h2 class="section-heading">It works with almost everything.</h2>
-    <p>Check Logitech's current operating-system requirements and your conferencing application's supported capture modes. Laptops without USB-A need a compatible adapter or hub.</p>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Do you need it?</p>
+<h2 class="section-heading">Buy only if it solves a specific camera problem.</h2>
+<div class="article-cards">
+<div><strong>Consider it</strong><p>Your built-in camera placement or quality is inadequate, USB-A is available or adaptable, and HD 1080p is sufficient for the intended calls/recording.</p></div>
+<div><strong>Skip it</strong><p>You need 4K capture, higher-frame-rate production modes, interchangeable lenses, hardware zoom, or controls beyond this webcam class.</p></div>
+<div><strong>Fix the setup first</strong><p>If the current camera looks bad because it is below eye level or the face is poorly lit, solve that before replacing hardware.</p></div>
+</div>
+</section>
 
-  <section class="content-section">
-    <p class="page-kicker">Real-world use cases</p>
-    <h2 class="section-heading">The setup this makes look better.</h2>
-    <p><strong>Video calls and instruction.</strong> The external mount gives more placement flexibility than a fixed laptop camera. For recorded production, compare the verified 1080p30 mode with the frame rate, low-light performance, and lens control your workflow requires.</p>
-  </section>
+<section class="content-section cards">
+<a class="card" href="/guides/better-video-calls/"><h2>Better video calls</h2><p>Fix camera height, lighting, distance, and audio before assuming resolution is the bottleneck.</p></a>
+<a class="card" href="/guides/logitech-brio-not-detected-windows-11/"><h2>Logitech webcam not detected</h2><p>Use direct USB, Device Manager, Camera app, permissions, and another host to isolate detection problems.</p></a>
+</section>
 
-  <section class="content-section">
-    <p class="page-kicker">Tradeoffs and deal-breakers</p>
-    <h2 class="section-heading">Where the C920x falls short.</h2>
-    <ul><li><strong>Low-light performance is average.</strong> The sensor is 2013-era. A dark room still looks like a dark room. A cheap $20 desk light aimed at your face fixes this more than any webcam upgrade.</li><li><strong>Autofocus can hunt.</strong> Fixed-focus mode via Logi Options+ solves this if it bothers you.</li><li><strong>No 4K.</strong> The C922 Pro Stream also doesn't do 4K; step up to the Brio 4K for that. But 4K webcams are almost always upscaled 1080p sensors, so the value is questionable.</li><li><strong>USB-A only.</strong> If your laptop has only USB-C, you need a hub or an adapter.</li><li><strong>Microphone is fine, not great.</strong> Fine for calls where nobody has a real mic. Get a dedicated USB mic if audio quality actually matters.</li></ul>
-  </section>
-
-  <section class="content-section" id="alternatives">
-    <p class="page-kicker">Better alternatives</p>
-    <h2 class="section-heading">When to buy something else.</h2>
-    <p><strong>iPhone Continuity Camera / DroidCam.</strong> If you have a modern iPhone or Android phone, the phone sensor is bigger than the C920x and produces better image quality when the phone is stable in a stand. Free (Continuity is built into macOS Ventura+; DroidCam has a Windows version). Downside: phone is unavailable during the call.</p><p><strong>Insta360 Link / Elgato Facecam Pro.</strong> $200-300. Real step up in low-light, better sensor, AI framing. Overkill for anyone not doing paid content work.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">FAQ</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Will it fit my computer?</h3><p>Confirm an available USB-A port or plan for a compatible adapter, then check Logitech's current operating-system support.</p></div><div class="card"><h3>Can I mount it on a tripod?</h3><p>Logitech lists tripod-ready mounting for the C920 family; verify the current package and mount before ordering.</p></div><div class="card"><h3>Is it a 4K production camera?</h3><p>No. Logitech publishes 1080p at 30fps for this tier. Choose a different camera when higher resolution, frame rate, or manual image control is required.</p></div></div>
-  </section>
-
-  <section class="content-section" id="buy-or-skip">
-    <p class="page-kicker">Buy or skip</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Buy this if</h3><p>Your laptop webcam is embarrassing on daily calls and you want a boring reliable fix. It's been the default answer for a decade for good reason.</p></div><div class="card"><h3>Skip this if</h3><p>You do serious content work — a mirrorless camera plus capture card is the tier above and worth the difference. Or if you have a modern iPhone you're happy to tie up during calls.</p></div></div>
-  </section>
-
-  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B085TFF7M1?tag=deskrespawn-20" style="display:inline-block;padding:10px 14px;border:1px solid var(--phosphor);background:rgba(163,230,53,.07);color:var(--phosphor);font:600 12px var(--font-mono);text-decoration:none">Check price on Amazon</a></p>
-  <div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
-  <style>
-    .decision-nav{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding:12px 14px;border:1px solid var(--term-border);background:var(--term-bg);font-size:11px}.decision-nav span{color:var(--phosphor)}.decision-nav a{display:inline-flex;min-height:36px;align-items:center;color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}.decision-nav .price-link{margin-left:auto;color:var(--phosphor)}
-    @media(max-width:600px){.decision-nav a{min-height:44px}.decision-nav .price-link{width:100%;margin-left:0;border-top:1px dashed var(--term-border)}}
-  </style>
+<section class="content-section">
+<p class="page-kicker">Retailer</p>
+<p>After the fit checks above, use the retailer listing to confirm current package contents, seller, price, and return terms.</p>
+<p><a class="btn primary" href="https://www.amazon.com/dp/B085TFF7M1?tag=deskrespawn-20" rel="sponsored nofollow noopener noreferrer">Check current Amazon listing →</a></p>
+<div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
+</section>
 </ContentLayout>

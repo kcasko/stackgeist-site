@@ -1,71 +1,20 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import EvidencePanel from '../../../components/EvidencePanel.astro';
-import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "Acodot 9-in-1 USB-C Hub", description: "A compact hub sold with HDMI, USB, card-reader, and pass-through charging functions. Confirm the current port revision and the host laptop's USB-C capabilities before ordering.", url: 'https://stackgeist.dev/gear/budget-tech/acodot-9-in-1-usb-c-hub', image: 'https://m.media-amazon.com/images/I/61x2sflA1IL._AC_SL1500_.jpg', brand: 'Acodot' }), faqSchema({ questions: [{"question":"Does it work with M-series Macs?","answer":"Yes, with the same single-external-display limit that all standard USB-C hubs have on base M-series (M1/M2/M3 non-Pro). Pro/Max/Ultra Macs handle multiple displays natively regardless of hub."},{"question":"Can I run two monitors from it?","answer":"Not from this hub. It has one HDMI output. The Anker 553 has two."},{"question":"Do I need a USB-C charger to use the hub?","answer":"No, for basic use. Only if you want pass-through charging (which you probably do if the hub is drawing power itself)."},{"question":"Will it charge my MacBook Pro 16'?","answer":"Not at full 140W. This hub tops out around 87W to the laptop. Fine for slow-charge overnight, not fine for high-CPU work."},{"question":"Buy this if","answer":"You have a modern USB-C laptop, need one external monitor + a couple of USB-A devices + card reader + pass-through charging, and don't want to spend more than $25 on a dongle."},{"question":"Skip this if","answer":"You need two external monitors (Anker 553), 4K60 output, 10 Gbps data, or a permanent desktop dock (Thunderbolt dock instead)."}] })];
 ---
-<ContentLayout structuredData={__sd} title="Acodot 9-in-1 USB-C Hub buying guide | StackGeist" description="Fit, host-port checks, and tradeoffs for the Acodot 9-in-1 USB-C hub." active="gear">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / Acodot 9-in-1 USB-C Hub</p>
-  <p class="page-kicker">Best under $25 · Connectivity</p>
-  <h1 class="page-title">Acodot 9-in-1 USB-C Hub</h1>
-  <p class="page-lead">A compact hub sold with HDMI, USB, card-reader, and pass-through charging functions. Confirm the current port revision and the host laptop's USB-C capabilities before ordering.</p>
-  <img class="hero" src="https://m.media-amazon.com/images/I/61x2sflA1IL._AC_SL1500_.jpg" alt="Acodot 9-in-1 USB-C Hub" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;max-height:420px;object-fit:contain;background:#fff;border:1px solid var(--term-border);margin:24px 0;filter:saturate(.8)" />
-  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Amazon product identity — ASIN B0BKPYY8BC', href: 'https://www.amazon.com/dp/B0BKPYY8BC' }]} />
-
+<ContentLayout title="Acodot 9-in-1 USB-C hub — research pending | StackGeist" description="This legacy catalog entry is undergoing an authoritative-source review and is not currently a StackGeist buying recommendation." active="gear" noindex>
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear/">Gear</a> / <a href="/gear/budget-tech/">Budget tech</a> / Research pending</p>
+  <p class="page-kicker">Research starting point</p>
+  <h1 class="page-title">Acodot 9-in-1 USB-C hub</h1>
+  <p class="page-lead">The exact hub revision and port/power/display specifications could not be tied to a current authoritative manufacturer source. Old claims about Mac display limits, pass-through wattage, port speeds, and compatibility have therefore been withdrawn.</p>
+  <div class="article-summary"><strong>No purchase recommendation yet</strong><p>The previous affiliate CTA and unsupported technical claims have been removed. Before this page returns to search, StackGeist needs a current authoritative source for the exact model/revision, its compatibility limits, and the specifications that matter to the intended use case.</p></div>
   <section class="content-section">
-    <p class="page-kicker">Quick verdict</p>
-    <h2 class="section-heading">Consider it when one host port needs several common connections.</h2>
-    <p>The Acodot can fit a basic single-cable desk or travel setup when its current port list matches the devices involved. It is not a substitute for a Thunderbolt dock or for host capabilities the laptop does not provide.</p>
+    <p class="page-kicker">What to verify</p>
+    <h2 class="section-heading">Use the requirement, not the product name, to make the decision.</h2>
+    <div class="cards">
+      <a class="card" href="/guides/usb-c-cable-buying-guide/"><h3>USB-C cable requirements</h3><p>Separate charging power, data rate, video, USB4/Thunderbolt and length.</p></a>
+      <a class="card" href="/guides/usb-c-dock-compatibility/"><h3>USB-C hub and dock compatibility</h3><p>Match host capability, displays, power delivery, data and cabling before buying.</p></a>
+      <a class="card" href="/guides/laptop-charger-wattage/"><h3>Charging requirements</h3><p>Match the laptop’s documented input and USB-C Power Delivery path rather than a charger’s headline wattage.</p></a>
+    </div>
   </section>
-
-  <section class="content-section">
-    <p class="page-kicker">The problem it solves</p>
-    <h2 class="section-heading">Modern laptops removed ports.</h2>
-    <p>The 2016 MacBook Pro USB-C-only redesign started a decade of laptops shipping with fewer physical ports. Today's typical thin-and-light has 2-3 USB-C ports and nothing else — no HDMI, no USB-A for old accessories, no SD card slot, no Ethernet.</p><p>USB-C hubs are the dongle-life fix. Plug one USB-C cable into the laptop, get HDMI + USB-A + SD + microSD + pass-through PD charging on the other end. Acodot's 9-in-1 hits every port you actually use, in a metal-shelled package that doesn't rattle in a backpack.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Verified specs</p>
-    <h2 class="section-heading">The port loadout.</h2>
-    <ul><li>HDMI output</li><li>USB-A ports</li><li>USB-C Power Delivery pass-through input</li><li>SD and microSD card readers</li><li>Attached USB-C host cable</li></ul><p>Port counts, transfer rates, display modes, and power available to the laptop can vary by listing revision and host support. Confirm the current ASIN listing and your laptop's USB-C capabilities before buying.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Compatibility check</p>
-    <h2 class="section-heading">Confirm your host port before ordering.</h2>
-    <p>Requires a USB-C port that supports:</p><ol><li>USB Power Delivery (for pass-through charging)</li><li>DisplayPort Alt Mode (for HDMI output)</li><li>USB 3.0 data speed (for full-speed USB-A and card readers)</li></ol><p>Most 2019+ laptops with USB-C ports meet all three. Older laptops, budget Chromebooks, and some Windows machines with power-only USB-C ports won't get HDMI output — plug in and check.</p><p>macOS: works, but the HDMI output mirrors displays when combined with the laptop's built-in HDMI (if your Mac has one). Windows: works, extended display supported. Linux: works with any distro that supports standard USB Alt Mode (Ubuntu, Fedora, most others).</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Real-world use cases</p>
-    <h2 class="section-heading">The dongle-life fix.</h2>
-    <p><strong>Coffee shop / hotel desk setup.</strong> Plug into any USB-C laptop, get external monitor + wired mouse + SD card offload + charging in one connection.</p><p><strong>Photographer's laptop-based workflow.</strong> Offload SD cards, connect an external monitor for editing, keep the laptop charging — all through one hub. Not fast enough for 8K video workflow, fine for everything else.</p><p><strong>Presentations / meetings.</strong> Laptop to conference room HDMI plus USB-A for a clicker plus power. One dongle.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Tradeoffs and deal-breakers</p>
-    <h2 class="section-heading">Where a $25 hub falls short.</h2>
-    <ul><li><strong>Host support controls the result.</strong> HDMI output and pass-through charging require the corresponding capabilities on the laptop's USB-C port.</li><li><strong>This is not a Thunderbolt dock.</strong> Buyers who need independently verified multi-display modes or high-speed external storage should use a dock with those exact published capabilities.</li><li><strong>Attached cable cannot be replaced.</strong> Cable failure means replacing the hub.</li></ul>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Better alternatives</p>
-    <h2 class="section-heading">When to spend more.</h2>
-    <p><strong>Anker 553 8-in-1 USB-C Hub.</strong> ~$50. Dual HDMI (with the same 4K30 cap), better warranty, longer cable. If you need two external displays instead of one, this is the buy. Compared them directly here: <a href="/gear/budget-tech/compare/acodot-hub-vs-anker-553">Acodot vs Anker 553</a>.</p><p><strong>CalDigit TS4 or OWC Thunderbolt Dock.</strong> $300+. Real Thunderbolt 4, dual independent 4K60 displays, 10 Gbps USB, 40 Gbps Thunderbolt passthrough, 96W charging. Overkill for a laptop dongle, correct for a permanent desktop dock.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">FAQ</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Does it work with M-series Macs?</h3><p>Yes, with the same single-external-display limit that all standard USB-C hubs have on base M-series (M1/M2/M3 non-Pro). Pro/Max/Ultra Macs handle multiple displays natively regardless of hub.</p></div><div class="card"><h3>Can I run two monitors from it?</h3><p>Not from this hub. It has one HDMI output. The Anker 553 has two.</p></div><div class="card"><h3>Do I need a USB-C charger to use the hub?</h3><p>No, for basic use. Only if you want pass-through charging (which you probably do if the hub is drawing power itself).</p></div><div class="card"><h3>Will it charge my MacBook Pro 16'?</h3><p>Not at full 140W. This hub tops out around 87W to the laptop. Fine for slow-charge overnight, not fine for high-CPU work.</p></div></div>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Buy or skip</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Buy this if</h3><p>You have a modern USB-C laptop, need one external monitor + a couple of USB-A devices + card reader + pass-through charging, and don't want to spend more than $25 on a dongle.</p></div><div class="card"><h3>Skip this if</h3><p>You need two external monitors (Anker 553), 4K60 output, 10 Gbps data, or a permanent desktop dock (Thunderbolt dock instead).</p></div></div>
-  </section>
-
-  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B0BKPYY8BC?tag=deskrespawn-20" style="display:inline-block;padding:10px 14px;border:1px solid var(--phosphor);background:rgba(163,230,53,.07);color:var(--phosphor);font:600 12px var(--font-mono);text-decoration:none">Check price on Amazon</a></p>
-  <div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
+  <section class="content-section"><div class="note">Editorial status: noindex · no affiliate CTA · no firsthand-use claim · technical review pending.</div></section>
 </ContentLayout>

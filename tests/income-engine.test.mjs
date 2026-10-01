@@ -39,7 +39,8 @@ test('income kit component tracks paid links and keeps disclosure near the conve
   assert.match(component, /data-affiliate-link/);
   assert.match(component, /sponsored nofollow noopener noreferrer/);
   assert.match(component, /data-affiliate-placement/);
-  assert.match(component, /Paid Amazon links are marked/);
+  assert.match(component, /Paid Amazon search links are marked/);
+  assert.match(component, /category research paths, not blanket endorsements/);
   assert.doesNotMatch(component, /document\.cookie|localStorage|userAgent|\.referrer/);
 });
 

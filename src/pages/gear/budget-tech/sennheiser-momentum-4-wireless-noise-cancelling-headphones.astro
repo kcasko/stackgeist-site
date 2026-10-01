@@ -2,70 +2,71 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "Sennheiser Momentum 4 Wireless Noise-Cancelling Headphones", description: "Sennheiser lists adaptive noise cancellation, multipoint Bluetooth, several common codecs, and up to 60 hours of battery life. Fit, microphone quality, and noise reduction still deserve comparison for your use case.", url: 'https://stackgeist.dev/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones', image: 'https://m.media-amazon.com/images/I/71BjWi3lbCL._AC_SL1500_.jpg', brand: 'Sennheiser' }), faqSchema({ questions: [{"question":"Will the fit work for a full day?","answer":"Head and ear shape determine comfort. Buy from a seller with a suitable return policy when you cannot try them first."},{"question":"Which codecs are supported?","answer":"Sennheiser lists aptX Adaptive, aptX, AAC, and SBC. Confirm support on the source device too; the connection uses the best codec both sides share."},{"question":"How long does the battery last?","answer":"Sennheiser advertises up to 60 hours. Volume, codec, call time, ANC use, temperature, and battery age can change actual runtime."},{"question":"Buy this if","answer":"You want premium-tier ANC headphones where audio quality matters as much as noise cancellation, and 60-hour battery is a real advantage for your travel or work rhythm."},{"question":"Skip this if","answer":"ANC is your only priority (Sony XM5), you want the best call mic (AirPods Max), or you need a sub-$100 option (Soundcore Q30)."}] })];
+const __sd=[
+  productSchema({
+    name:'Sennheiser MOMENTUM 4 Wireless',
+    description:'Sennheiser documents Bluetooth 5.2, SBC/AAC/aptX/aptX Adaptive, hybrid adaptive ANC, a 42 mm dynamic transducer, and up to 60 hours of Bluetooth music playback with ANC under its stated test conditions.',
+    url:'https://stackgeist.dev/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones',
+    brand:'Sennheiser'
+  }),
+  faqSchema({questions:[
+    {question:'Which Bluetooth codecs does Momentum 4 support?',answer:'Sennheiser currently lists SBC, AAC, aptX, and aptX Adaptive. The connection can only use a codec supported by both the headphones and the source device.'},
+    {question:'Is the battery really 60 hours?',answer:'Sennheiser publishes up to 60 hours of Bluetooth music playback with ANC under a defined test condition. Actual runtime varies with volume, calls, wireless conditions, settings, temperature, and battery age.'},
+    {question:'Does the spec sheet prove comfort or ANC superiority?',answer:'No. Fit, seal, comfort, microphone performance, and comparative noise reduction require firsthand or controlled comparative evidence beyond a manufacturer feature list.'}
+  ]})
+];
 ---
-<ContentLayout structuredData={__sd} title="Sennheiser Momentum 4 Wireless buying guide | StackGeist" description="Fit, published specifications, compatibility checks, and tradeoffs for the Sennheiser Momentum 4 Wireless headphones." active="gear">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / Sennheiser Momentum 4</p>
-  <p class="page-kicker">Worth paying more for · Audio</p>
-  <h1 class="page-title">Sennheiser Momentum 4 Wireless Noise-Cancelling Headphones</h1>
-  <p class="page-lead">Sennheiser lists adaptive noise cancellation, multipoint Bluetooth, several common codecs, and up to 60 hours of battery life. Fit, microphone quality, and noise reduction still deserve comparison for your use case.</p>
-  <img class="hero" src="https://m.media-amazon.com/images/I/71BjWi3lbCL._AC_SL1500_.jpg" alt="Sennheiser Momentum 4 Wireless Noise-Cancelling Headphones" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;max-height:420px;object-fit:contain;background:#fff;border:1px solid var(--term-border);margin:24px 0;filter:saturate(.8)" />
-  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Sennheiser MOMENTUM 4 specifications', href: 'https://global.sennheiser-hearing.com/products/momentum-4-wireless' }, { label: 'Amazon product identity — ASIN B0B6GHW1SX', href: 'https://www.amazon.com/dp/B0B6GHW1SX' }]} />
+<ContentLayout structuredData={__sd} title="Sennheiser MOMENTUM 4 Wireless: source-checked fit guide | StackGeist" description="Source-checked Momentum 4 decision page covering Bluetooth codecs, ANC, battery claim, wired options, fit limits, and reasons to skip." active="gear">
+<p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear/">Gear</a> / <a href="/gear/budget-tech/">Budget tech</a> / MOMENTUM 4</p>
+<p class="page-kicker">Source-checked product decision</p>
+<h1 class="page-title">Sennheiser MOMENTUM 4 Wireless</h1>
+<p class="page-lead">Momentum 4 is a defensible option when its documented codec support, adaptive ANC, multipoint behavior, and long published battery ceiling match your priorities. A spec sheet cannot tell you whether it fits your head comfortably or whether its ANC/microphones outperform another headphone in your environment.</p>
 
-  <section class="content-section">
-    <p class="page-kicker">Quick verdict</p>
-    <h2 class="section-heading">Consider it when battery life and codec support matter alongside ANC.</h2>
-    <p>The published feature set makes the Momentum 4 a candidate for music, travel, and multi-device work. It is not an automatic winner: compare fit, measured attenuation, microphone samples, source-device codec support, and current price before choosing it over Sony, Bose, Apple, or lower-cost alternatives.</p>
-  </section>
+<EvidencePanel status="owned-and-used" reviewed="2026-10-01" sources={[
+  {label:'Sennheiser — MOMENTUM 4 Wireless specifications',href:'https://support.sennheiser-hearing.com/hc/en-se/articles/37791406604189-MOMENTUM-4-Wireless-Specifications'},
+  {label:'Sennheiser — MOMENTUM 4 instruction manual',href:'https://cdn.sennheiser-hearing.com/product-documents/product-downloads/momentum-4-wireless/Instruction%20manual%20MOMENTUM%204%20Wireless/Instruction_manual_MOMENTUM_4_Wireless.pdf'},
+  {label:'Amazon product identity — ASIN B0B6GHW1SX',href:'https://www.amazon.com/dp/B0B6GHW1SX'}
+]} />
 
-  <section class="content-section">
-    <p class="page-kicker">The problem it solves</p>
-    <h2 class="section-heading">Noise makes focus impossible.</h2>
-    <p>Open offices, travel, and shared rooms can make listening and concentration harder. Sennheiser lists adaptive noise cancellation and transparency mode for the Momentum 4. StackGeist has not published controlled attenuation measurements, so compare independent measurements if maximum noise reduction is the deciding factor.</p>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Documented specs</p>
+<h2 class="section-heading">What Sennheiser currently publishes.</h2>
+<ul class="article-list">
+<li>Bluetooth 5.2</li>
+<li>SBC, AAC, aptX and aptX Adaptive codecs</li>
+<li>Hybrid Adaptive ANC</li>
+<li>42 mm dynamic transducer</li>
+<li>Two active Bluetooth connections supported by the instruction manual</li>
+<li>Up to 60 hours of Bluetooth music playback with ANC under Sennheiser’s test condition</li>
+<li>USB-C charging and analog audio cable support</li>
+</ul>
+<p>These are manufacturer claims/specifications. They do not establish subjective sound preference, all-day comfort, microphone ranking, or ANC ranking against another headphone.</p>
+</section>
 
-  <section class="content-section">
-    <p class="page-kicker">Verified specs</p>
-    <h2 class="section-heading">What Sennheiser lists.</h2>
-    <ul><li>42mm dynamic drivers</li><li>Adaptive Noise Cancellation with transparency mode</li><li>Up to 60 hours battery per charge with ANC on</li><li>USB-C fast charging (10 minutes = 6 hours playback)</li><li>Bluetooth 5.2 with multipoint (two devices at once)</li><li>aptX Adaptive, aptX, AAC, SBC codec support</li><li>4 mic beamforming array for calls</li><li>Weight: 293g</li><li>Sennheiser Smart Control app for EQ and firmware</li></ul>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Fit check</p>
+<h2 class="section-heading">Check the source device and use case.</h2>
+<div class="article-cards">
+<div><strong>Codec path</strong><p>aptX Adaptive provides no benefit when the source device does not support it. Check the phone/PC codec support rather than buying from the headphone codec list alone.</p></div>
+<div><strong>Battery</strong><p>Treat 60 hours as an “up to” manufacturer test result, not a guaranteed runtime.</p></div>
+<div><strong>Comfort and seal</strong><p>Head/ear shape and seal are personal. Use a seller with suitable return terms when you cannot try them first.</p></div>
+</div>
+</section>
 
-  <section class="content-section">
-    <p class="page-kicker">Compatibility check</p>
-    <h2 class="section-heading">Where it works well, where it doesn't.</h2>
-    <p><strong>Codec support:</strong> The headphones and source device must share a codec. Check the source device rather than assuming aptX Adaptive is active.</p><p><strong>Multipoint pairing:</strong> Sennheiser lists support for two connected devices. Firmware and operating-system behavior can change, so verify the current support documentation.</p><p><strong>Wired use:</strong> Check the current package contents and manual for analog and USB behavior before relying on a specific wired mode.</p>
-  </section>
+<section class="content-section">
+<p class="page-kicker">Do you need them?</p>
+<h2 class="section-heading">Choose them for documented capabilities, not a universal ranking.</h2>
+<div class="article-cards">
+<div><strong>Consider them</strong><p>You value the published battery ceiling, multipoint, adaptive ANC, and supported codecs, and the fit works for you.</p></div>
+<div><strong>Skip them</strong><p>Your priority is a feature they do not document, you cannot use the codec advantage, or a lower-cost headphone already meets the requirement.</p></div>
+<div><strong>Compare first</strong><p>If microphone quality or ANC effectiveness is the main reason to spend more, use controlled comparative measurements/samples rather than marketing copy.</p></div>
+</div>
+</section>
 
-  <section class="content-section">
-    <p class="page-kicker">Real-world use cases</p>
-    <h2 class="section-heading">Where 60-hour battery earns its keep.</h2>
-    <p><strong>Long sessions and travel.</strong> The advertised battery ceiling can reduce charging frequency, but actual runtime depends on volume, codec, calls, ANC use, temperature, and battery age.</p><p><strong>Shared spaces.</strong> Adaptive ANC and transparency mode are relevant features; use independent measurements when attenuation performance is the deciding factor.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Tradeoffs and deal-breakers</p>
-    <h2 class="section-heading">Where they lose to alternatives.</h2>
-    <ul><li><strong>Fit cannot be verified from a spec sheet.</strong> Head and ear shape determine comfort and seal.</li><li><strong>ANC and microphones need comparative evidence.</strong> Listen to controlled samples or measurements rather than relying on a ranking claim.</li><li><strong>Codec support is end-to-end.</strong> A listed codec provides no benefit when the source device does not support it.</li><li><strong>Battery figures are ceilings.</strong> Real runtime varies with settings and use.</li></ul>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Better alternatives</p>
-    <h2 class="section-heading">When to buy something else.</h2>
-    <p>Compare the Momentum 4 with current Sony, Bose, Apple, and lower-cost Soundcore models using the same priorities: fit, measured attenuation, codec compatibility, microphone samples, battery requirements, and current price. Start with the <a href="/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc">Momentum 4 vs lower-cost ANC decision guide</a>.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">FAQ</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Will the fit work for a full day?</h3><p>Head and ear shape determine comfort. Buy from a seller with a suitable return policy when you cannot try them first.</p></div><div class="card"><h3>Which codecs are supported?</h3><p>Sennheiser lists aptX Adaptive, aptX, AAC, and SBC. Confirm support on the source device too; the connection uses the best codec both sides share.</p></div><div class="card"><h3>How long does the battery last?</h3><p>Sennheiser advertises up to 60 hours. Volume, codec, call time, ANC use, temperature, and battery age can change actual runtime.</p></div></div>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Buy or skip</p>
-    <h2 class="section-heading"></h2>
-    <div class="cards"><div class="card"><h3>Buy this if</h3><p>You want premium-tier ANC headphones where audio quality matters as much as noise cancellation, and 60-hour battery is a real advantage for your travel or work rhythm.</p><a class="card" href="/guides/sennheiser-momentum-4-wont-pair"><h3>Won't pair?</h3><p>Reset, forget, re-pair cleanly.</p></a></div><div class="card"><h3>Skip this if</h3><p>ANC is your only priority (Sony XM5), you want the best call mic (AirPods Max), or you need a sub-$100 option (Soundcore Q30).</p></div></div>
-  </section>
-
-  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B0B6GHW1SX?tag=deskrespawn-20" style="display:inline-block;padding:10px 14px;border:1px solid var(--phosphor);background:rgba(163,230,53,.07);color:var(--phosphor);font:600 12px var(--font-mono);text-decoration:none">Check price on Amazon</a></p>
-  <div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
+<section class="content-section">
+<p class="page-kicker">Retailer</p>
+<p>After confirming the fit and features, check current seller, price, package contents, and return terms.</p>
+<p><a class="btn primary" href="https://www.amazon.com/dp/B0B6GHW1SX?tag=deskrespawn-20" rel="sponsored nofollow noopener noreferrer">Check current Amazon listing →</a></p>
+<div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
+</section>
 </ContentLayout>

@@ -1,105 +1,20 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import EvidencePanel from '../../../components/EvidencePanel.astro';
-import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "INIU USB-C to USB-C Cable (240W, 6.6ft)", description: "A long USB-C charging cable sold with a 240W rating. Confirm your charger, device input, and any data or display requirements before treating the wattage on the listing as the whole compatibility check.", url: 'https://stackgeist.dev/gear/budget-tech/iniu-usb-c-to-usb-c-cable-240w-6-6ft', image: 'https://m.media-amazon.com/images/I/71PdX-CBGuL._AC_SL1500_.jpg', brand: 'INIU' }), faqSchema({ questions: [{"question":"Will it damage my phone / laptop if the charger is 240W but the device only takes 65W?","answer":"No. USB Power Delivery negotiates down to the device's rated input. The charger will not push more wattage than the device requests."},{"question":"Is 6.6 ft too long for fast charging?","answer":"Not for USB PD. Longer cables can drop voltage on old USB standards, but PD chargers monitor voltage at the device end and adjust. No throttle from length."},{"question":"Can I use this to charge my iPhone 15 or newer?","answer":"Yes. iPhone 15+ uses USB-C and pulls up to ~27W. This cable handles that easily."},{"question":"Why is USB 2.0 data still fine?","answer":"Charging cables don't need fast data. If you're using the cable to move files, you need a different cable. If you're using it to charge a device, 480 Mb/s is enough for the trickle of USB-PD control signaling."},{"question":"Does it work with a MagSafe iPhone charger?","answer":"Not directly — MagSafe is a Qi-based wireless standard. If you meant \"does it work as the cable into a MagSafe puck\", yes, the puck plugs into a USB-C charger via this cable."},{"question":"Buy this if","answer":"You have a modern USB-C laptop / phone / tablet and a real USB-C PD charger, and you're tired of cables that make everything charge slowly. This is the cable-shaped fix for the \"why does charging take so long\" problem."},{"question":"Skip this if","answer":"You need one cable for both charging and high-speed data or display output — buy a Thunderbolt cable instead. Or if you need MagSafe, Lightning, or proprietary charging — different product."}] })];
 ---
-<ContentLayout structuredData={__sd} title="INIU 240W USB-C Cable buying guide | StackGeist" description="Fit, compatibility checks, and tradeoffs for the INIU 240W USB-C to USB-C charging cable." active="gear">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / INIU 240W USB-C Cable</p>
-  <p class="page-kicker">Best under $25 · Charging</p>
-  <h1 class="page-title">INIU USB-C to USB-C Cable (240W, 6.6ft)</h1>
-  <p class="page-lead">A long USB-C charging cable sold with a 240W rating. Confirm your charger, device input, and any data or display requirements before treating the wattage on the listing as the whole compatibility check.</p>
-
-  <img class="hero" src="https://m.media-amazon.com/images/I/71PdX-CBGuL._AC_SL1500_.jpg" alt="INIU 240W USB-C to USB-C cable" loading="lazy" decoding="async" referrerpolicy="no-referrer" style="display:block;width:100%;max-height:420px;object-fit:contain;background:#fff;border:1px solid var(--term-border);margin:24px 0;filter:saturate(.8)" />
-  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Amazon product identity — ASIN B0C2V1512F', href: 'https://www.amazon.com/dp/B0C2V1512F' }]} />
-
+<ContentLayout title="INIU 240W USB-C cable — research pending | StackGeist" description="This legacy catalog entry is undergoing an authoritative-source review and is not currently a StackGeist buying recommendation." active="gear" noindex>
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear/">Gear</a> / <a href="/gear/budget-tech/">Budget tech</a> / Research pending</p>
+  <p class="page-kicker">Research starting point</p>
+  <h1 class="page-title">INIU 240W USB-C cable</h1>
+  <p class="page-lead">The exact cable listing is retained for catalog continuity, but StackGeist does not currently have an authoritative manufacturer specification page that supports the legacy technical claims strongly enough for a buying recommendation.</p>
+  <div class="article-summary"><strong>No purchase recommendation yet</strong><p>The previous affiliate CTA and unsupported technical claims have been removed. Before this page returns to search, StackGeist needs a current authoritative source for the exact model/revision, its compatibility limits, and the specifications that matter to the intended use case.</p></div>
   <section class="content-section">
-    <p class="page-kicker">Quick verdict</p>
-    <h2 class="section-heading">Buy it if you want fast charging that isn't a lie.</h2>
-    <p>The INIU 240W is the correct choice for anyone who has bought a cheap USB-C cable and watched a laptop charge at trickle speeds. It carries USB Power Delivery 3.1 at up to 240W (48V/5A) with a proper e-marker chip, so chargers negotiate the full available wattage instead of dropping to a 60W "safe" mode. USB 2.0 data at 480 Mb/s is the tradeoff — this is a charging cable, not a display or high-speed data cable. If you need DisplayPort Alt Mode or Thunderbolt, this is not the cable. If you need to actually fill a laptop battery in the time the charger claims it will, this is the cable.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">The problem it solves</p>
-    <h2 class="section-heading">Cheap cables silently throttle charging.</h2>
-    <p>USB-C cables under $10 without a proper e-marker chip cap at 60W by spec — the charger cannot go higher because it has no way to confirm the cable can handle it safely. This is why a modern 100W laptop plugged into a 100W charger with a cheap cable charges as slowly as if it were a 5W phone charger.</p>
-    <p>The e-marker is a tiny chip inside the connector that identifies the cable's rating to the charger. Real 240W cables have one. Fake 240W cables (yes, they exist) either lie in their e-marker or omit it entirely and just print "240W" on the plug. Testing tools like a USB PD tester will show you which one you actually bought within seconds of plugging it in.</p>
-    <p>The retailer listing identifies this as a 240W cable. StackGeist has not published an instrumented USB-PD compliance test for this specific sample, so verify the current listing and use a USB-PD tester when exact negotiated power matters.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Verified specs</p>
-    <h2 class="section-heading">What INIU actually lists.</h2>
-    <ul>
-      <li>USB Power Delivery 3.1 support up to 240W (48V / 5A)</li>
-      <li>USB 2.0 data at 480 Mb/s — not USB 3 speeds</li>
-      <li>6.6 ft (2m) length</li>
-      <li>Nylon-braided jacket, aluminum connector housing</li>
-      <li>E-marker chip present for PD 3.1 negotiation</li>
-      <li>Reversible USB-C connectors on both ends</li>
-      <li>Weight ~68g</li>
-      <li>Lifetime warranty per the INIU listing</li>
-    </ul>
-    <p>What INIU does not claim, and you should not assume: display output (DisplayPort Alt Mode), Thunderbolt certification, or 10+ Gb/s data transfer. Those are different cables at higher prices.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Compatibility check</p>
-    <h2 class="section-heading">Confirm both ends before you buy.</h2>
-    <p>Two things determine the wattage you actually get, and neither is the cable alone:</p>
-    <ol>
-      <li><strong>Charger output.</strong> A 100W USB-C PD charger with a 240W cable gives you 100W. A 240W charger with a 60W cable gives you 60W. The lower of the two wins. Match this cable to a real USB-C PD charger (Anker, UGREEN, Apple, Dell, HP all make PD-compliant bricks); QuickCharge-only chargers won't negotiate PD 3.1 at all.</li>
-      <li><strong>Device input.</strong> Most laptops cap at 65-100W input over USB-C. MacBook Pro 16" pulls up to 140W with the M-series MagSafe/USB-C chargers. Phones cap at 25-45W in most cases. The cable just needs to be at or above your device's max input.</li>
-    </ol>
-    <p>Works with: MacBooks with USB-C charging (all M-series), Windows laptops with USB-C PD, iPad Pro / iPad Air with USB-C, Steam Deck, Nintendo Switch dock, most Android phones, Framework laptops, portable monitors.</p>
-    <p>Does not work for: MagSafe-only devices, proprietary chargers (older Surface, older Dell), devices that only take USB-A input.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Real-world use cases</p>
-    <h2 class="section-heading">Where the extra headroom matters.</h2>
-    <p><strong>Higher-power laptop charging.</strong> A cable rating does not override the charger or device limit. Check the laptop's documented USB-C input and the charger's per-port output; the lowest supported link determines the negotiated ceiling.</p>
-    <p><strong>Steam Deck OLED and Nintendo Switch dock.</strong> Neither pulls near 240W (Steam Deck ~45W, Switch dock ~40W), but the cable is fine there and future-proofs a spare cable when the next-gen console pushes higher wattages.</p>
-    <p><strong>Framework Laptop 16 / gaming laptops with USB-C charging.</strong> These pull 100-180W over USB-C and are the exact devices that suffer most from wrong cables. The 240W ceiling gives real headroom for future higher-wattage laptops.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Tradeoffs and deal-breakers</p>
-    <h2 class="section-heading">What you give up at this price.</h2>
-    <ul>
-      <li><strong>USB 2.0 data only.</strong> File transfer between two devices over this cable is 480 Mb/s, i.e. slow. Not a real limitation for a charging cable, but if you also planned to move files between two laptops with it, buy a USB 3.2 or Thunderbolt cable instead.</li>
-      <li><strong>No display output.</strong> Cannot drive an external monitor from a laptop's USB-C DisplayPort Alt Mode. Same deal — different cable for that.</li>
-      <li><strong>6.6 ft is either just right or too long.</strong> For a bag / travel cable, most people find 3 ft easier. The 6.6 ft is a desk cable, not a portable one.</li>
-      <li><strong>Nylon braid can snag on velcro / hook-and-loop.</strong> Cosmetic, not functional.</li>
-    </ul>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Better alternatives</p>
-    <h2 class="section-heading">If this isn't the right cable, one of these is.</h2>
-    <p><strong>Anker 765 USB-C to USB-C 240W.</strong> Roughly $18-22 depending on length. Anker's warranty support is better than INIU's if you actually need to file a claim, and the plug housing is more robust. Same 240W spec. Buy this if you'd rather pay an extra $8 for a household brand and better warranty response.</p>
-    <p><strong>Cable Matters USB-C 240W Thunderbolt 4.</strong> $30-40. If you need one cable that does 240W charging AND 40 Gb/s data AND video output, this is the cable. Overkill and overpriced for pure charging.</p>
-  </section>
-
-  <section class="content-section">
-    <p class="page-kicker">FAQ</p>
+    <p class="page-kicker">What to verify</p>
+    <h2 class="section-heading">Use the requirement, not the product name, to make the decision.</h2>
     <div class="cards">
-      <div class="card"><h3>Will it damage my phone / laptop if the charger is 240W but the device only takes 65W?</h3><p>No. USB Power Delivery negotiates down to the device's rated input. The charger will not push more wattage than the device requests.</p></div>
-      <div class="card"><h3>Is 6.6 ft too long for fast charging?</h3><p>Not for USB PD. Longer cables can drop voltage on old USB standards, but PD chargers monitor voltage at the device end and adjust. No throttle from length.</p></div>
-      <div class="card"><h3>Can I use this to charge my iPhone 15 or newer?</h3><p>Yes. iPhone 15+ uses USB-C and pulls up to ~27W. This cable handles that easily.</p></div>
-      <div class="card"><h3>Why is USB 2.0 data still fine?</h3><p>Charging cables don't need fast data. If you're using the cable to move files, you need a different cable. If you're using it to charge a device, 480 Mb/s is enough for the trickle of USB-PD control signaling.</p></div>
-      <div class="card"><h3>Does it work with a MagSafe iPhone charger?</h3><p>Not directly — MagSafe is a Qi-based wireless standard. If you meant "does it work as the cable into a MagSafe puck", yes, the puck plugs into a USB-C charger via this cable.</p></div>
+      <a class="card" href="/guides/usb-c-cable-buying-guide/"><h3>USB-C cable requirements</h3><p>Separate charging power, data rate, video, USB4/Thunderbolt and length.</p></a>
+      <a class="card" href="/guides/usb-c-dock-compatibility/"><h3>USB-C hub and dock compatibility</h3><p>Match host capability, displays, power delivery, data and cabling before buying.</p></a>
+      <a class="card" href="/guides/laptop-charger-wattage/"><h3>Charging requirements</h3><p>Match the laptop’s documented input and USB-C Power Delivery path rather than a charger’s headline wattage.</p></a>
     </div>
   </section>
-
-  <section class="content-section">
-    <p class="page-kicker">Buy or skip</p>
-    <div class="cards">
-      <div class="card"><h3>Buy this if</h3><p>You have a modern USB-C laptop / phone / tablet and a real USB-C PD charger, and you're tired of cables that make everything charge slowly. This is the cable-shaped fix for the "why does charging take so long" problem.</p><a class="card" href="/guides/usb-c-cable-charging-slow"><h3>Charging slower than expected?</h3><p>Cable and charger checks.</p></a></div>
-      <div class="card"><h3>Skip this if</h3><p>You need one cable for both charging and high-speed data or display output — buy a Thunderbolt cable instead. Or if you need MagSafe, Lightning, or proprietary charging — different product.</p></div>
-    </div>
-  </section>
-
-  <p style="margin:32px 0"><a href="https://www.amazon.com/dp/B0C2V1512F?tag=deskrespawn-20" style="display:inline-block;padding:10px 14px;border:1px solid var(--phosphor);background:rgba(163,230,53,.07);color:var(--phosphor);font:600 12px var(--font-mono);text-decoration:none">Check price on Amazon</a></p>
-  <div class="note">Paid Amazon link. As an Amazon Associate I earn from qualifying purchases.</div>
+  <section class="content-section"><div class="note">Editorial status: noindex · no affiliate CTA · no firsthand-use claim · technical review pending.</div></section>
 </ContentLayout>

@@ -6,14 +6,14 @@ interface Props {
   budgetFit?: string;
 }
 const {
-  heading = 'If lighting is the problem, there are two verified routes.',
+  heading = 'If lighting is the problem, there are two researched routes.',
   intro = 'Choose by the job you need the light to do, not by which product looks more dramatic.',
   premiumFit = 'Best when you need useful light across the desk without giving up desk surface.',
   budgetFit = 'Best when you mainly want soft backlight behind the display at a much lower cost.'
 } = Astro.props;
 ---
 <section class="verified-routes" id="verified-lighting">
-  <p class="page-kicker">Verified lighting picks</p>
+  <p class="page-kicker">Researched lighting options</p>
   <h2>{heading}</h2>
   <p class="routes-intro">{intro}</p>
   <div class="route-list">
@@ -66,7 +66,7 @@ const {
 </style>
 <style>
   .verified-routes { padding:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); }
-  .verified-routes::before { content:'$ lighting --routes --verified'; display:block; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .verified-routes::before { content:'$ lighting --routes --researched'; display:block; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
   .verified-routes > .page-kicker,.verified-routes > h2,.routes-intro { margin-left:24px; margin-right:24px; }
   .verified-routes > .page-kicker { margin-top:22px; }
   .route-list { border-color:var(--term-border); }

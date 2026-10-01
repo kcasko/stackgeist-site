@@ -330,7 +330,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Security+ study desk kit', hook: 'Professor Messer videos, Dion practice exams, VirtualBox labs, flashcards. No overpriced study bundles.', utmContent: 'security_plus_study_kit' },
-      { channel: 'tiktok', title: 'Pass Security+ on a budget', hook: 'Free Messer videos, cheap Dion practice tests, virtual labs. Skip the $500 bootcamps.', utmContent: 'pass_security_plus_budget' },
+      { channel: 'tiktok', title: 'Pass Security+ on a budget', hook: 'Compare current free training, practice tests, and hands-on labs before paying for a bootcamp.', utmContent: 'pass_security_plus_budget' },
       { channel: 'reddit', title: 'Security+ study path', hook: 'Messer for content, Dion for practice exams, VirtualBox for labs. Physical gear is optional.', utmContent: 'reddit_security_plus_path' }
     ],
     faqs: [
@@ -355,7 +355,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     items: [
       { label: 'AWS free tier account', role: 'Hands-on practice with real AWS services without cost.', href: search('aws free tier account signup'), kind: 'search', tier: 'must-have', check: 'Monitor usage to avoid surprise charges outside free tier limits.' },
-      { label: 'Stephane Maarek AWS CCP course', role: 'Popular Udemy course with lectures, slides, and practice questions.', href: search('stephane maarek aws cloud practitioner udemy'), kind: 'search', tier: 'must-have', check: 'Wait for Udemy sales and pay under $15 instead of full price.' },
+      { label: 'Stephane Maarek AWS CCP course', role: 'Popular Udemy course with lectures, slides, and practice questions.', href: search('stephane maarek aws cloud practitioner udemy'), kind: 'search', tier: 'must-have', check: 'Check current course pricing and promotions before enrolling.' },
       { label: 'Tutorials Dojo CCP practice exams', role: 'Realistic timed practice tests with detailed answer explanations.', href: search('tutorials dojo aws cloud practitioner practice exams'), kind: 'search', tier: 'must-have', check: 'Practice exams reveal weak areas before the real test.' },
       { label: 'Anki AWS flashcard deck', role: 'Spaced repetition for service names, features, pricing, and limits.', href: search('anki aws cloud practitioner flashcards'), kind: 'search', tier: 'nice-next', check: 'Free Anki decks exist. Make custom cards for services you forget.' },
       { label: 'AWS Skill Builder free courses', role: 'Official AWS training with modules, quizzes, and sandboxes.', href: search('aws skill builder cloud practitioner essentials'), kind: 'search', tier: 'skip-until-needed', check: 'Skill Builder is free but slower than third-party courses.' }
@@ -367,7 +367,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'AWS Cloud Practitioner study kit', hook: 'Free tier account, Stephane course, Tutorials Dojo exams, flashcards. Learn by doing, not just reading.', utmContent: 'aws_ccp_study_kit' },
-      { channel: 'tiktok', title: 'Pass AWS CCP on a budget', hook: 'AWS free tier, $15 Udemy course, practice exams. Skip the overpriced bootcamps.', utmContent: 'pass_aws_ccp_budget' },
+      { channel: 'tiktok', title: 'Pass AWS CCP on a budget', hook: 'Use current AWS training, practice exams, and hands-on labs; compare course pricing before paying for a bootcamp.', utmContent: 'pass_aws_ccp_budget' },
       { channel: 'reddit', title: 'AWS CCP study path', hook: 'Stephane Maarek course, Tutorials Dojo practice tests, hands-on free tier labs. Finish in 2 to 4 weeks.', utmContent: 'reddit_aws_ccp_path' }
     ],
     faqs: [
@@ -445,7 +445,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { channel: 'reddit', title: 'Media server path', hook: 'Jellyfin for free or Plex for polish, WD Red drives, backup before the drive fails. Transcoding needs Quick Sync or VCE.', utmContent: 'reddit_media_server_path' }
     ],
     faqs: [
-      { question: 'Should I use Plex or Jellyfin?', answer: 'Plex is easier with better apps and hardware transcoding. Jellyfin is free, open-source, and has no paid tiers.' },
+      { question: 'Should I use Plex or Jellyfin?', answer: 'Plex and Jellyfin take different approaches to clients, account features, and hardware transcoding. Compare the current server/client support for your devices before choosing.' },
       { question: 'What CPU do I need for a media server?', answer: 'For transcoding, use Intel with Quick Sync or AMD with VCE. For direct play only, any low-power CPU works.' }
     ]
   },
@@ -556,7 +556,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { channel: 'reddit', title: 'PC thermal paste path', hook: 'Arctic MX-4 or MX-6, 99% isopropyl, microfiber wipes. Thermal pads only when cracked or missing.', utmContent: 'reddit_thermal_paste_path' }
     ],
     faqs: [
-      { question: 'How much thermal paste should I use?', answer: 'A pea-sized dot in the center for most CPUs. Spread evenly or let the heatsink spread it. Too much paste hurts cooling.' },
+      { question: 'How much thermal paste should I use?', answer: 'Follow the application guidance from the CPU-cooler or thermal-paste manufacturer. Recommended amount and pattern vary with heat-spreader size, paste viscosity, and cooler design.' },
       { question: 'When should I replace thermal paste?', answer: 'Every 3 to 5 years, or when temps rise and throttling occurs. New builds need paste immediately.' }
     ]
   },
@@ -566,7 +566,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     seoTitle: 'Laptop repair toolkit: screwdrivers, pry tools, and parts for DIY fixes | StackGeist',
     description: 'A laptop repair toolkit for opening cases, replacing screens, swapping batteries, upgrading storage, and fixing common laptop hardware issues.',
     audience: 'DIY repair techs and laptop owners tired of expensive repair shop fees.',
-    promise: 'Fix common laptop problems yourself instead of paying $150 for a $20 part.',
+    promise: 'Use safe diagnostics to identify whether a laptop issue is realistically DIY-repairable before buying parts or paying for service.',
     summary: 'Precision screwdrivers, plastic pry tools, anti-static gear, thermal paste, replacement parts, and patience.',
     buyingOrder: [
       'Research the specific repair before buying tools or parts.',
@@ -668,7 +668,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     faqs: [
       { question: 'What is the best way to learn Python for data science?', answer: 'Take one course, practice with real datasets on Kaggle, and build projects. Books like Python for Data Analysis help as references.' },
-      { question: 'Do I need Jupyter Notebook or can I use VSCode?', answer: 'Both work. Jupyter is standard for data science. VSCode supports Jupyter notebooks and offers better version control.' }
+      { question: 'Do I need Jupyter Notebook or can I use VSCode?', answer: 'Jupyter notebooks and VS Code can both support notebook-based workflows. Choose based on the environment, extensions, collaboration needs, and version-control workflow.' }
     ]
   },
   {
@@ -705,7 +705,7 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     faqs: [
       { question: 'What should I do before a remote proctored exam?', answer: 'Run the system check, test webcam and mic, clear the desk and room, light your face, and use wired internet if possible.' },
-      { question: 'Can I use a second monitor during a proctored exam?', answer: 'Most proctors ban second monitors. Check your exam rules and disconnect extra displays before check-in.' }
+      { question: 'Can I use a second monitor during a proctored exam?', answer: 'Exam rules vary by provider and exam. Check the current proctoring requirements for your specific test before changing the display setup.' }
     ]
   },
   {

@@ -23,7 +23,7 @@ interface Props {
 const {
   setup,
   categories = ['desk', 'chair', 'monitor', 'audio'],
-  heading = 'Start with these four picks',
+  heading = 'Start with these four categories',
   intro,
 } = Astro.props as Props;
 
@@ -59,20 +59,15 @@ const linkRel = (kind: 'internal' | 'search') =>
         <span class="shoplist-cat">{cat.name}</span>
         <span class="shoplist-name">{pick.label}</span>
         <span class="shoplist-price">{pick.price ?? '—'}</span>
-        <a
-          class="shoplist-cta"
-          href={pick.href}
-          target={isExternal(pick.href) ? '_blank' : undefined}
-          rel={linkRel(pick.kind)}
-          data-affiliate-link={pick.kind === 'search' ? '' : undefined}
-          data-affiliate-placement={`setup-${setup.slug}-shoplist-${cat.slug}`}
-        >
-          {pick.kind === 'search' ? 'Check on Amazon →' : 'See our pick →'}
-        </a>
+        {pick.kind === 'internal' ? (
+          <a class="shoplist-cta" href={pick.href} data-affiliate-placement={`setup-${setup.slug}-shoplist-${cat.slug}`}>Review fit →</a>
+        ) : (
+          <span class="shoplist-research">Research example</span>
+        )}
       </li>
     ))}
   </ol>
-  <p class="shoplist-note">Sweet-spot picks · Full comparison and starter/premium tiers below · Paid links marked. As an Amazon Associate we earn from qualifying purchases.</p>
+  <p class="shoplist-note">Internal links lead to StackGeist decision pages. External catalog entries are research examples and are not presented here as buy-now recommendations.</p>
 </aside>
 <style>
 .setup-shoplist{max-width:1040px;margin:20px 0 8px;border:1px solid var(--term-border);background:var(--term-bg);font-family:var(--font-mono)}
@@ -89,12 +84,13 @@ const linkRel = (kind: 'internal' | 'search') =>
 .shoplist-price{color:var(--phosphor);font-size:12px;text-align:right}
 .shoplist-cta{color:var(--phosphor);border:1px solid var(--term-border);padding:6px 10px;font-size:11.5px;font-weight:700;text-decoration:none;white-space:nowrap;background:rgba(163,230,53,.03)}
 .shoplist-cta:hover{border-color:var(--phosphor);background:rgba(163,230,53,.08)}
+.shoplist-research{color:var(--amber);border:1px solid var(--term-border);padding:6px 10px;font-size:10.5px;text-align:center;white-space:nowrap}
 .shoplist-note{margin:0;padding:10px 16px;border-top:1px dashed var(--term-border);color:var(--quiet);font-size:10.5px;line-height:1.5}
 @media(max-width:720px){
   .shoplist-row{grid-template-columns:1fr 90px;grid-template-areas:'name price' 'cat cat' 'cta cta';gap:6px 12px}
   .shoplist-cat{grid-area:cat}
   .shoplist-name{grid-area:name}
   .shoplist-price{grid-area:price}
-  .shoplist-cta{grid-area:cta;text-align:center;padding:8px 10px;margin-top:4px}
+  .shoplist-cta,.shoplist-research{grid-area:cta;text-align:center;padding:8px 10px;margin-top:4px}
 }
 </style>
