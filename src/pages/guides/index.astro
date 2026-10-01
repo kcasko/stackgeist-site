@@ -1,6 +1,18 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { troubleshootingHubs } from '../../data/troubleshootingHubs';
+const priorityFixes=[
+ {slug:'usb-c-dock-only-one-monitor',title:'USB-C dock only detecting one monitor',desc:'Start here when one external display works and the second does not.'},
+ {slug:'portable-usb-c-monitor-no-signal',title:'Portable USB-C monitor showing no signal',desc:'Check host video support, full-featured cables, and hub passthrough.'},
+ {slug:'usb-c-cable-charging-slow',title:'USB-C cable charging slow',desc:'Separate cable rating from charger output and device limits.'},
+ {slug:'gan-charger-not-charging-laptop-full-speed',title:'GaN charger not charging laptop full speed',desc:'Find USB PD and shared-port wattage limits.'},
+ {slug:'raspberry-pi-5-wont-boot',title:'Raspberry Pi 5 won’t boot',desc:'Power, boot media, LED, HDMI, and peripheral checks.'},
+ {slug:'microsd-card-not-detected',title:'microSD card not detected',desc:'Reader, Disk Management, write protection, and failure checks.'},
+ {slug:'wd-elements-not-showing-up',title:'WD Elements not showing up',desc:'Cable, power, Disk Management, and drive health triage.'},
+ {slug:'govee-strip-lights-not-connecting-wifi',title:'Govee lights not connecting to Wi-Fi',desc:'2.4 GHz, permissions, mesh steering, and pairing fixes.'},
+ {slug:'mx-master-3s-scroll-wheel-not-working',title:'MX Master 3S scroll wheel not working',desc:'SmartShift, app profiles, firmware, debris, and hardware checks.'},
+ {slug:'keychron-v6-max-bluetooth-not-connecting',title:'Keychron V6 Max Bluetooth not connecting',desc:'Mode, profile, pairing, and reset sequence.'},
+];
 const guides=[
  {slug:'desk-layout-basics',kicker:'Setup basics',title:'Desk layout basics',desc:'Fix the primary zone before deciding where accessories, lighting, and audio should live.'},
  {slug:'cable-management',kicker:'Cable path',title:'Cable management that stays manageable',desc:'Route power, signal, and removable cables differently so future changes do not wreck the whole desk.'},
@@ -37,6 +49,21 @@ const guides=[
   <h1 class="page-title">Practical guides that help you decide, not shop.</h1>
   <p class="page-lead">Each guide covers one desk decision end to end. Read the two or three that match your bottleneck and skip the rest.</p>
 
+  <section class="content-section">
+    <p class="page-kicker">Start here</p>
+    <h2>Popular troubleshooting fixes</h2>
+    <p>These are the most specific problem-solving guides on StackGeist. If one matches your symptom, start there before buying replacement hardware.</p>
+    <div class="cards">
+      {priorityFixes.map((g)=>(
+        <a class="card" href={'/guides/' + g.slug + '/'}>
+          <p class="page-kicker">Troubleshooting</p>
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <section class="content-section cards">
     {troubleshootingHubs.map((hub)=>(
       <a class="card" href={`/guides/${hub.slug}`}>
@@ -49,7 +76,7 @@ const guides=[
 
   <section class="content-section cards">
     {guides.map((g)=>(
-      <a class="card" href={`/guides/${g.slug}`}>
+      <a class="card" href={`/guides/${g.slug}/`}>
         <p class="page-kicker">{g.kicker}</p>
         <h2>{g.title}</h2>
         <p>{g.desc}</p>

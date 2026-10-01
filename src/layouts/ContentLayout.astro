@@ -1,4 +1,4 @@
-﻿---
+---
 import '../styles/global.css';
 import '../styles/content.css';
 import Header from '../components/Header.astro';
@@ -12,6 +12,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 const { title, description, active, noindex = false, structuredData } = Astro.props;
+const isIndividualGuide = active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/';
 ---
 <!doctype html>
 <html lang="en">
@@ -25,9 +26,13 @@ const { title, description, active, noindex = false, structuredData } = Astro.pr
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
-      <main id="main-content" class="content-main" tabindex="-1"><slot /><SiteFooter /></main>
+      <main id="main-content" class="content-main" tabindex="-1"><slot />{isIndividualGuide && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> Technical claims are source-checked; personal use and researched recommendations are kept distinct. <a href="/editorial-methodology">Editorial methodology →</a></span></aside>}<SiteFooter /></main>
     </div>
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
   </body>
 </html>
+
+<style is:global>
+.editorial-byline{margin:36px 0 12px;padding:14px 16px;border:1px solid var(--term-border);background:var(--term-bg);color:var(--muted);font-size:13px;line-height:1.55}.editorial-byline strong{color:var(--text)}.editorial-byline a{color:var(--phosphor)}
+</style>

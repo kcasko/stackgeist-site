@@ -34,7 +34,7 @@ const { hub } = Astro.props as { hub: TroubleshootingHub };
     <h2>Pick the symptom you actually have.</h2>
     <div class="cards hub-guide-grid">
       {hub.guides.map((guide) => (
-        <a class="card hub-guide-card" href={`/guides/${guide.slug}`}>
+        <a class="card hub-guide-card" href={`/guides/${guide.slug}/`}>
           <p class="page-kicker">{guide.kicker}</p>
           <h3>{guide.title}</h3>
           <p class="symptom"><strong>Problem:</strong> {guide.problem}</p>

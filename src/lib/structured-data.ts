@@ -39,7 +39,7 @@ export function articleSchema(input: {
     headline: input.headline,
     description: input.description,
     mainEntityOfPage: input.url,
-    author: { '@type': 'Organization', name: input.author ?? 'StackGeist' },
+    author: { '@type': 'Person', name: input.author ?? 'Keith Casko', url: 'https://stackgeist.dev/about' },
     publisher: { '@type': 'Organization', name: 'StackGeist' },
   };
   if (input.image) out.image = input.image;
