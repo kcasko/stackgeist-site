@@ -1,79 +1,96 @@
 ---
 import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import MindMap from '../components/MindMap.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';
-const stats=[{k:'gear.routes',v:'45',hint:'product decision pages'},{k:'comparisons.live',v:'10',hint:'side-by-side, no filler'},{k:'affiliate.disclosed',v:'100%',hint:'links marked in-line'},{k:'skip.if.blocks',v:'always',hint:'when a pick is wrong'}];
-const problems=[{id:'01',href:'/setups',cmd:'ls /setups',title:'show me a whole setup',note:'pick by room, budget, and use — not aesthetic'},{id:'02',href:'/guides',cmd:'ls /guides',title:'help me decide one thing',note:'layout, cables, docks, input, calls'},{id:'03',href:'/gear',cmd:'ls /gear',title:'i already know what to buy',note:'fit-first product pages with skip reasons'},{id:'04',href:'/gear/budget-tech/compare',cmd:'diff a b',title:'compare two options',note:'side-by-side · who each product suits'}];
+
+const jobs=[
+  {href:'/guides/',eyebrow:'Start here',title:'Fix a problem',note:'USB-C, charging, displays, storage, Wi-Fi, Bluetooth, mice, keyboards, webcams, and more.',cta:'Browse fixes →',tone:'primary'},
+  {href:'/gear/',eyebrow:'Buying decision',title:'Choose gear',note:'Use fit-first product pages when troubleshooting shows that hardware is actually the problem.',cta:'Browse gear →',tone:'secondary'},
+  {href:'/setups/',eyebrow:'Whole build',title:'Build a setup',note:'Complete desk and gaming setups organized around room size, budget, and what you actually do there.',cta:'Browse setups →',tone:'secondary'},
+];
+
 const popularFixes=[
   {href:'/guides/usb-c-dock-only-one-monitor/',title:'USB-C dock only detecting one monitor',note:'MST, DisplayLink, Thunderbolt, host limits, and cable checks.'},
-  {href:'/guides/portable-usb-c-monitor-no-signal/',title:'Portable USB-C monitor has no signal',note:'Check DisplayPort Alt Mode, cable capability, and hub passthrough.'},
-  {href:'/guides/usb-c-cable-charging-slow/',title:'USB-C cable charging too slowly',note:'Separate cable wattage, charger output, and the device charging ceiling.'},
-  {href:'/guides/gan-charger-not-charging-laptop-full-speed/',title:'GaN charger not charging a laptop at full speed',note:'Find PD negotiation and multi-port wattage sharing problems.'},
+  {href:'/guides/portable-usb-c-monitor-no-signal/',title:'Portable USB-C monitor has no signal',note:'Check video support, cable capability, and hub passthrough.'},
+  {href:'/guides/usb-c-cable-charging-slow/',title:'USB-C cable charging too slowly',note:'Separate cable wattage, charger output, and device limits.'},
   {href:'/guides/raspberry-pi-5-wont-boot/',title:'Raspberry Pi 5 won’t boot',note:'Power, boot media, LED patterns, HDMI, and attached-device checks.'},
-  {href:'/guides/microsd-card-not-detected/',title:'microSD card not detected',note:'Reader, drive letter, read-only state, and card failure checks.'},
-  {href:'/guides/wd-elements-not-showing-up/',title:'WD Elements not showing up',note:'USB power, cable, Disk Management, and failure-symptom triage.'},
-  {href:'/guides/govee-strip-lights-not-connecting-wifi/',title:'Govee lights won’t connect to Wi-Fi',note:'2.4 GHz, permissions, mesh steering, and clean pairing steps.'},
   {href:'/guides/mx-master-3s-scroll-wheel-not-working/',title:'MX Master 3S scroll wheel not working',note:'SmartShift, app profiles, firmware, debris, and hardware triage.'},
   {href:'/guides/keychron-v6-max-bluetooth-not-connecting/',title:'Keychron V6 Max Bluetooth not connecting',note:'Mode, profile keys, pairing sequence, and reset steps.'},
 ];
-const research=[{href:'/guides/usb-c-dock-compatibility',tag:'checklist',title:'USB-C dock compatibility before port counting',note:'trace the host, displays, power, bandwidth, software, and cables.'},{href:'/guides/keyboard-mouse-fit',tag:'fit-guide',title:'keyboard width and mouse reach as one system',note:'measure the desk and body position before comparing switches and DPI.'},{href:'/guides/better-video-calls',tag:'guide',title:'better calls without a resolution arms race',note:'fix camera angle, front light, microphone distance, and background first.'}];
 
-// Conversion strip — the plain-English shortcut for first-time visitors.
-// Each card leads with the question a real person types into Google.
-const quickPicks = [
-  { href: '/kits/help-desk-homelab-starter-kit', img: '/gear/caldigit-ts4.jpg', kicker: 'IT lab', title: 'Help desk homelab starter kit', note: 'Mini PC, storage, switch, UPS. Buy in order.', cta: 'Open the kit →', slug: 'help-desk-homelab' },
-  { href: '/kits/cheap-desk-upgrades-under-100', img: '/gear/clamp-on-led-desk-lamp.jpg', kicker: 'Under $100', title: 'Cheap desk upgrades that matter', note: 'Power, light, cable path, reach fixes.', cta: 'Open the kit →', slug: 'cheap-desk-upgrades' },
-  { href: '/setups/budget-gaming-desk', img: '/setups/budget-gaming-desk.png', kicker: 'Under $500', title: 'Best budget gaming desk setup', note: 'Full build order, real prices, skip-list.', cta: 'See the setup →', slug: 'budget-gaming-desk' },
-  { href: '/kits/usb-c-desk-survival-kit', img: '/gear/anker-553-usb-c-hub.jpg', kicker: 'USB-C', title: 'USB-C desk survival kit', note: 'Cable, hub, charger, adapters. No mystery drawer.', cta: 'Open the kit →', slug: 'usb-c-survival' },
+const buildNext=[
+  {href:'/kits/usb-c-desk-survival-kit/',title:'USB-C desk survival kit',note:'Cable, hub, charger, and adapters — only after you know what the host supports.'},
+  {href:'/kits/help-desk-homelab-starter-kit/',title:'Help desk homelab starter kit',note:'A practical lab buying order for learning support and systems work.'},
+  {href:'/kits/cheap-desk-upgrades-under-100/',title:'Cheap desk upgrades under $100',note:'Low-cost fixes for lighting, power, cable routing, and reach problems.'},
 ];
-const updated = 'Updated October 2026';
+
+const updated='Updated October 2026';
 ---
 <Layout title="PC & Desk Tech Troubleshooting, Gear Guides & Setups | StackGeist" description="Fix USB-C, peripherals, storage, charging, and desk-tech problems with practical troubleshooting guides, fit-first gear research, and setup advice.">
 <div class="site-shell home-shell"><Header interactive={false}/><main id="main-content" tabindex="-1">
-<section class="hero-conversion" aria-label="Popular starting points"><div class="hero-copy"><p class="hero-eyebrow">{updated} · 45 gear decision pages · No sponsorships</p><h1 class="hero-h1">Fix desk tech problems before buying more gear.</h1><p class="hero-sub">Start with a troubleshooting fix, then use the buying guides only when the diagnosis points to hardware.</p></div><div class="hero-grid">{quickPicks.map((q,i)=>(<a class="hero-card" href={`${q.href}?utm_source=stackgeist&utm_medium=home_hero&utm_campaign=featured&utm_content=${q.slug}`} data-affiliate-placement={`home-featured-${q.slug}`}><div class="hero-thumb"><img src={q.img} alt="" loading={i === 0 ? "eager" : "lazy"} fetchpriority={i === 0 ? "high" : "auto"} decoding="async" /></div><div class="hero-body"><span class="hero-kicker">{q.kicker}</span><h2 class="hero-title">{q.title}</h2><p class="hero-note">{q.note}</p><span class="hero-cta">{q.cta}</span></div></a>))}</div></section>
-<section class="motd" aria-label="StackGeist introduction"><p class="home-title">Practical desk setups and evidence-labeled gear research</p><pre class="ascii" aria-hidden="true"><code>  ____  _             _     ____      _     _
- / ___|| |_ __ _  ___| | __/ ___| ___(_)___| |_
- \___ \| __/ _` |/ __| |/ / |  _ / _ \ / __| __|
-  ___) | || (_| | (__|   &lt;| |_| |  __/ \__ \ |_
- |____/ \__\__,_|\___|_|\_\\____|\___|_|___/\__|
-</code></pre><div class="motd-body"><p class="motd-line"><span class="prompt">motd</span><span class="sep">:</span> practical setup research · no brand hype · human-reviewed picks</p><p class="motd-line"><span class="prompt">whoami</span><span class="sep">:</span> desk operator · <a class="inline" href="/gear/budget-tech">go to budget-tech</a> · <a class="inline" href="/guides/desk-layout-basics">plan the desk first</a></p><p class="motd-line quiet">tip: click a bracketed node in the map below, or ? for keyboard help.</p></div></section>
-<section class="panel fixes-panel" aria-labelledby="fixes-title"><header class="panel-head"><span class="dollar">$</span><span id="fixes-title" class="cmd">ls ./guides/popular-fixes</span><span class="rc">→ 10 fixes</span></header><div class="fix-grid">{popularFixes.map((fix)=><a class="fix-link" href={fix.href}><strong>{fix.title}</strong><span>{fix.note}</span><span class="fix-go">open fix →</span></a>)}</div></section>
-<MindMap/>
-<section class="statbar" aria-label="StackGeist catalog status">{stats.map((s)=><div class="stat"><span class="stat-k">{s.k}</span><span class="stat-v">{s.v}</span><span class="stat-h">// {s.hint}</span></div>)}</section>
-<section class="panel" aria-labelledby="problem-title"><header class="panel-head"><span class="dollar">$</span><span id="problem-title" class="cmd">ps aux --sort=intent</span><span class="rc">→ 4 rows</span></header><div class="ps"><div class="ps-row ps-head"><span>#</span><span>cmd</span><span>problem</span><span>next</span><span></span></div>{problems.map((p)=><a class="ps-row" href={p.href}><span class="ps-id">{p.id}</span><span class="ps-cmd">{p.cmd}</span><span class="ps-title">{p.title}</span><span class="ps-note">{p.note}</span><span class="ps-go" aria-hidden="true">↗</span></a>)}</div></section>
-<section class="panel" aria-labelledby="research-title"><header class="panel-head"><span class="dollar">$</span><span id="research-title" class="cmd">cat ./research/*.md | head</span><span class="rc">→ 3 files</span></header><div class="files">{research.map((r)=><a class="file" href={r.href}><div class="file-head"><span class="file-tag">[{r.tag}]</span><span class="file-path">./research/{r.href.split('/').slice(-1)[0]}.md</span></div><p class="file-title">{r.title}</p><p class="file-note">{r.note}</p><p class="file-more">→ read the research</p></a>)}</div></section>
-<section class="panel featured" aria-labelledby="setup-title"><header class="panel-head"><span class="dollar">$</span><span id="setup-title" class="cmd">./setups/midnight-shift --featured</span><span class="rc live">● live</span></header><div class="feat"><pre class="feat-art" aria-hidden="true"><code>┌────────────────────────────────────────────┐
-│  ┌──────┐   ┌──────┐                       │
-│  │ mon1 │   │ mon2 │       ambient · dim   │
-│  └──────┘   └──────┘                       │
-│  ══════════════════════════════════        │  desk
-│              [ keyboard ]                  │
-└────────────────────────────────────────────┘
-     ~ midnight-shift . dark room . small footprint ~</code></pre><div class="feat-copy"><p class="feat-name"># midnight-shift</p><p class="feat-desc">A dark gaming-and-work setup that protects usable desk space instead of filling every surface with RGB accessories.</p><dl class="feat-meta"><div><dt>best-for</dt><dd>gaming · work · console</dd></div><div><dt>room</dt><dd>small · &lt; 5ft desk</dd></div><div><dt>vibe</dt><dd>dim ambient · no RGB</dd></div></dl><a class="cta" href="/setups/midnight-shift">open setup →</a></div></div></section>
-<NewsletterSignup/></main></div></Layout>
-<style>
-.home-shell{overflow:visible}.home-shell main{padding-bottom:8px}.motd{padding:34px 0 4px}.home-title{margin:0 0 14px;color:var(--muted);font-size:13px;font-weight:500;letter-spacing:.02em}.home-title::before{content:'$ ';color:var(--phosphor)}.ascii{margin:0;color:var(--phosphor);font-family:var(--font-mono);font-size:clamp(10px,1.3vw,14px);line-height:1.15;text-shadow:0 0 12px rgba(163,230,53,.18);overflow-x:auto}.motd-body{margin-top:18px;font-family:var(--font-mono);font-size:13.5px}.motd-line{margin:4px 0;color:var(--muted)}.motd-line.quiet{color:var(--quiet);font-size:12.5px}.prompt{color:var(--phosphor)}.sep{color:var(--muted);margin:0 6px 0 0}.inline{color:var(--purple-light);text-decoration:underline dotted;text-underline-offset:3px}.statbar{display:grid;grid-template-columns:repeat(4,1fr);margin:30px 0 6px;border:1px solid var(--term-border);background:var(--term-bg);font-family:var(--font-mono)}.stat{display:grid;gap:4px;padding:14px 16px;border-left:1px solid var(--term-border)}.stat:first-child{border-left:0}.stat-k{color:var(--quiet);font-size:11px}.stat-v{color:var(--phosphor);font-size:20px;font-weight:700}.stat-h{color:var(--muted);font-size:11.5px}.panel{margin-top:46px;border:1px solid var(--term-border);background:var(--term-bg);font-family:var(--font-mono)}.panel-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--term-border);color:var(--muted);font-size:12.5px}.dollar{color:var(--phosphor)}.cmd{color:var(--text)}.rc{margin-left:auto;color:var(--quiet);font-size:11.5px}.rc.live{color:var(--phosphor)}.ps{display:block;padding:6px 0 8px}.ps-row{display:grid;grid-template-columns:44px 190px 1.15fr 1.35fr 24px;align-items:center;gap:14px;padding:10px 16px;font-size:13px;color:var(--text);border-top:1px solid transparent}.ps-head{color:var(--quiet);font-size:11px;text-transform:uppercase;padding-block:4px;border-bottom:1px solid var(--term-border)}.ps-row+.ps-row{border-top:1px solid var(--term-border)}.ps-row:not(.ps-head):hover{background:rgba(163,230,53,.05);color:var(--phosphor)}.ps-id{color:var(--quiet)}.ps-cmd{color:var(--purple-light)}.ps-title{font-weight:600}.ps-note{color:var(--muted);font-size:12.5px}.ps-go{color:var(--quiet);text-align:right}.files{display:grid;grid-template-columns:repeat(3,1fr)}.file{display:block;padding:18px 18px 20px;border-left:1px solid var(--term-border)}.file:first-child{border-left:0}.file:hover{background:rgba(192,132,252,.06)}.file-head{display:flex;gap:8px;font-size:11.5px}.file-tag{color:var(--phosphor)}.file-path{color:var(--quiet)}.file-title{margin:12px 0 8px;font-size:15px;font-weight:600}.file-note{margin:0;color:var(--muted);font-size:13px;line-height:1.55}.file-more{margin:16px 0 0;color:var(--quiet);font-size:12px}.feat{display:grid;grid-template-columns:1.1fr 1fr}.feat-art{margin:0;padding:22px 24px;color:var(--phosphor);background:#050508;border-right:1px solid var(--term-border);font-family:var(--font-mono);font-size:12.5px;line-height:1.35;overflow-x:auto}.feat-copy{padding:22px 24px}.feat-name{margin:0 0 10px;color:var(--purple-light);font-size:14px}.feat-desc{margin:0;color:var(--muted);font-size:13.5px;line-height:1.55}.feat-meta{display:grid;gap:8px;margin:20px 0;padding:16px 0;border-block:1px dashed var(--term-border)}.feat-meta div{display:grid;grid-template-columns:96px 1fr;gap:12px}.feat-meta dt{color:var(--quiet);font-size:11px;text-transform:uppercase}.feat-meta dd{margin:0;color:var(--text);font-size:13px}.cta{display:inline-block;padding:8px 14px;border:1px solid var(--phosphor);color:var(--phosphor);background:rgba(163,230,53,.06);font-size:13px}.fix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.fix-link{display:grid;gap:7px;padding:16px 18px;border-top:1px solid var(--term-border);color:var(--text)}.fix-link:nth-child(-n+2){border-top:0}.fix-link:nth-child(even){border-left:1px solid var(--term-border)}.fix-link:hover{background:rgba(163,230,53,.05)}.fix-link strong{font-size:13.5px}.fix-link span{color:var(--muted);font-size:12.5px;line-height:1.45}.fix-link .fix-go{color:var(--phosphor);font-size:11.5px}
-@media(max-width:1080px){.statbar{grid-template-columns:repeat(2,1fr)}.stat:nth-child(3){border-left:0;border-top:1px solid var(--term-border)}.stat:nth-child(4){border-top:1px solid var(--term-border)}.files{grid-template-columns:1fr 1fr}.file:nth-child(3){border-left:0;border-top:1px solid var(--term-border);grid-column:1/-1}.feat{grid-template-columns:1fr}.feat-art{border-right:0;border-bottom:1px solid var(--term-border)}.ps-row{grid-template-columns:36px 150px 1fr 1fr 20px}}@media(max-width:720px){.fix-grid{grid-template-columns:1fr}.fix-link:nth-child(n){border-left:0;border-top:1px solid var(--term-border)}.fix-link:first-child{border-top:0}.ps-row{grid-template-columns:30px 1fr 20px;gap:10px}.ps-cmd,.ps-note{display:none}.files{grid-template-columns:1fr}.file{border-left:0;border-top:1px solid var(--term-border)}.file:first-child{border-top:0}}
 
-.hero-conversion{margin:28px 0 12px;font-family:var(--font-mono)}
-.hero-copy{margin:0 0 20px}
-.hero-eyebrow{margin:0 0 10px;color:var(--phosphor);font-size:11.5px;letter-spacing:.04em;text-transform:lowercase}
-.hero-eyebrow::before{content:'\1F7E2  ';color:var(--phosphor)}
-.hero-h1{margin:0 0 12px;font-family:var(--font-mono);font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;letter-spacing:-.035em;color:var(--text)}
-.hero-h1::after{content:'_';color:var(--phosphor);animation:term-cursor 1.1s steps(2) infinite}
-.hero-sub{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
-.hero-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--term-border);background:var(--term-bg)}
-.hero-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-left:1px solid var(--term-border);background:var(--term-bg);transition:background .12s}
-.hero-card:first-child{border-left:0}
-.hero-card:hover{background:rgba(163,230,53,.04)}
-.hero-thumb{position:relative;aspect-ratio:16/9;background:#050508;border-bottom:1px solid var(--term-border);overflow:hidden}
-.hero-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.04);transition:filter .12s}
-.hero-card:hover .hero-thumb img{filter:saturate(1) contrast(1.05)}
-.hero-body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.hero-kicker{color:var(--purple-light);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.hero-kicker::before{content:'[';color:var(--purple)}
-.hero-kicker::after{content:']';color:var(--purple)}
-.hero-title{margin:0;font-family:var(--font-mono);font-size:15px;font-weight:700;line-height:1.3;letter-spacing:-.01em;color:var(--text)}
-.hero-note{margin:0;color:var(--muted);font-size:12.5px;line-height:1.5;flex:1}
-.hero-cta{color:var(--phosphor);font-size:12px;font-weight:600}
-@media(max-width:960px){.hero-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-card{border-left:0;border-top:1px solid var(--term-border)}.hero-card:nth-child(-n+2){border-top:0}.hero-card:nth-child(even){border-left:1px solid var(--term-border)}}
-@media(max-width:560px){.hero-grid{grid-template-columns:1fr}.hero-card:nth-child(even){border-left:0}.hero-card:nth-child(n+2){border-top:1px solid var(--term-border)}}
+<section class="hero-simple" aria-labelledby="home-title">
+  <p class="hero-eyebrow">{updated} · practical fixes · evidence-labeled gear</p>
+  <h1 id="home-title">What are you trying to do?</h1>
+  <p class="hero-lead">Start with the problem. Buy something only when the diagnosis says you need it.</p>
+  <div class="job-grid">
+    {jobs.map((job)=><a class:list={['job-card',job.tone]} href={job.href}><span class="job-eyebrow">{job.eyebrow}</span><strong>{job.title}</strong><span>{job.note}</span><b>{job.cta}</b></a>)}
+  </div>
+</section>
+
+<section class="panel fixes-panel" aria-labelledby="fixes-title">
+  <header class="panel-head"><span class="dollar">$</span><span id="fixes-title" class="cmd">popular fixes</span><a class="panel-link" href="/guides/">all fixes →</a></header>
+  <div class="fix-grid">{popularFixes.map((fix)=><a class="fix-link" href={fix.href}><strong>{fix.title}</strong><span>{fix.note}</span><span class="fix-go">open fix →</span></a>)}</div>
+</section>
+
+<section class="plain-section" aria-labelledby="buy-title">
+  <p class="section-kicker">After the diagnosis</p>
+  <h2 id="buy-title">Need to buy or build something?</h2>
+  <p class="section-lead">These are the next steps when a fix points to hardware or you are starting from scratch.</p>
+  <div class="next-grid">{buildNext.map((item)=><a class="next-card" href={item.href}><strong>{item.title}</strong><span>{item.note}</span><b>open →</b></a>)}</div>
+</section>
+
+<section class="explore-section" aria-labelledby="explore-title">
+  <div class="explore-copy"><p class="section-kicker">Optional explorer</p><h2 id="explore-title">Want to browse everything?</h2><p>The terminal map is here for exploring the catalog. You do not need it to find a fix or make a buying decision.</p></div>
+  <MindMap/>
+</section>
+
+<section class="trust-strip" aria-label="How StackGeist works">
+  <div><strong>Fix first</strong><span>Troubleshoot before replacing hardware.</span></div>
+  <div><strong>Show the evidence</strong><span>Owned, used, or researched is stated explicitly.</span></div>
+  <div><strong>Name the tradeoff</strong><span>Pages include skip reasons, not just buy buttons.</span></div>
+</section>
+
+<NewsletterSignup/>
+</main></div></Layout>
+
+<style>
+.home-shell{overflow:visible}.home-shell main{padding-bottom:8px}
+.hero-simple{padding:56px 0 8px;font-family:var(--font-mono)}
+.hero-eyebrow{margin:0 0 12px;color:var(--phosphor);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase}
+.hero-simple h1{max-width:760px;margin:0;color:var(--text);font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em}
+.hero-lead{max-width:700px;margin:18px 0 0;color:var(--muted);font-size:15px;line-height:1.65}
+.job-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;margin-top:28px;border:1px solid var(--term-border);background:var(--term-bg)}
+.job-card{display:grid;gap:9px;min-height:190px;padding:24px;border-left:1px solid var(--term-border);color:inherit}
+.job-card:first-child{border-left:0}.job-card:hover{background:rgba(163,230,53,.04)}
+.job-card.primary{background:linear-gradient(180deg,rgba(163,230,53,.06),transparent)}
+.job-eyebrow{color:var(--purple-light);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.job-card strong{font-size:22px;line-height:1.2}.job-card span:not(.job-eyebrow){color:var(--muted);font-size:13px;line-height:1.55}
+.job-card b{align-self:end;color:var(--phosphor);font-size:12.5px}
+.panel{margin-top:42px;border:1px solid var(--term-border);background:var(--term-bg);font-family:var(--font-mono)}
+.panel-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px dashed var(--term-border);font-size:12.5px}.dollar{color:var(--phosphor)}.cmd{color:var(--text)}.panel-link{margin-left:auto;color:var(--phosphor)}
+.fix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.fix-link{display:grid;gap:7px;padding:16px 18px;border-top:1px solid var(--term-border);color:var(--text)}
+.fix-link:nth-child(-n+2){border-top:0}.fix-link:nth-child(even){border-left:1px solid var(--term-border)}.fix-link:hover{background:rgba(163,230,53,.05)}
+.fix-link strong{font-size:13.5px}.fix-link span{color:var(--muted);font-size:12.5px;line-height:1.45}.fix-link .fix-go{color:var(--phosphor);font-size:11.5px}
+.plain-section,.explore-section{margin-top:64px}.section-kicker{margin:0 0 8px;color:var(--purple-light);font:700 11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em}
+.plain-section h2,.explore-copy h2{margin:0;color:var(--text);font-size:clamp(24px,3vw,34px);letter-spacing:-.025em}
+.section-lead,.explore-copy p:last-child{max-width:700px;margin:10px 0 0;color:var(--muted);line-height:1.6}
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:22px;border:1px solid var(--term-border);background:var(--term-bg)}
+.next-card{display:grid;gap:9px;min-height:150px;padding:20px;border-left:1px solid var(--term-border);color:inherit}.next-card:first-child{border-left:0}.next-card:hover{background:rgba(192,132,252,.05)}
+.next-card strong{font-size:15px}.next-card span{color:var(--muted);font-size:12.5px;line-height:1.55}.next-card b{align-self:end;color:var(--phosphor);font:600 12px var(--font-mono)}
+.explore-copy{margin-bottom:16px}.explore-section :global(.tree){margin-top:0}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);margin:56px 0 10px;border-block:1px solid var(--term-border);font-family:var(--font-mono)}
+.trust-strip div{display:grid;gap:6px;padding:18px;border-left:1px solid var(--term-border)}.trust-strip div:first-child{border-left:0}
+.trust-strip strong{color:var(--phosphor);font-size:12px}.trust-strip span{color:var(--muted);font-size:11.5px;line-height:1.5}
+@media(max-width:900px){.job-grid{grid-template-columns:1fr}.job-card{min-height:0;border-left:0;border-top:1px solid var(--term-border)}.job-card:first-child{border-top:0}.next-grid{grid-template-columns:1fr}.next-card{min-height:0;border-left:0;border-top:1px solid var(--term-border)}.next-card:first-child{border-top:0}}
+@media(max-width:720px){.hero-simple{padding-top:34px}.hero-simple h1{font-size:36px}.hero-lead{font-size:14px}.job-card{padding:20px}.fix-grid{grid-template-columns:1fr}.fix-link:nth-child(n){border-left:0;border-top:1px solid var(--term-border)}.fix-link:first-child{border-top:0}.plain-section{margin-top:46px}.explore-section{display:none}.trust-strip{grid-template-columns:1fr}.trust-strip div{border-left:0;border-top:1px solid var(--term-border)}.trust-strip div:first-child{border-top:0}}
 </style>
