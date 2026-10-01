@@ -37,6 +37,34 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
     ],
     guides: [
       {
+        slug: 'how-to-tell-if-usb-c-port-supports-video',
+        kicker: 'Host capability',
+        title: 'How to tell if a USB-C port supports video',
+        desc: 'Use the exact host specification and a direct-display test instead of guessing from connector shape.',
+        problem: 'A USB-C monitor or HDMI adapter does nothing and you do not know whether the port can output video.',
+      },
+      {
+        slug: 'usb-c-hub-ethernet-works-hdmi-doesnt',
+        kicker: 'Display troubleshooting',
+        title: 'USB-C hub Ethernet works but HDMI does not',
+        desc: 'Working USB data does not prove the host exposes DisplayPort video. Isolate the display path.',
+        problem: 'Ethernet, USB devices, or charging work through the hub but HDMI stays blank.',
+      },
+      {
+        slug: 'usb-c-dock-second-monitor-stops-working',
+        kicker: 'Display troubleshooting',
+        title: 'USB-C dock fails when the second monitor is connected',
+        desc: 'Use low-resolution testing and dock-mode checks to expose bandwidth or display-stream limits.',
+        problem: 'One external display works, but adding the second breaks the setup.',
+      },
+      {
+        slug: 'laptop-says-slow-charger-with-100w-usb-c-charger',
+        kicker: 'Power troubleshooting',
+        title: '100W USB-C charger but Windows says slow charger',
+        desc: 'Compare laptop input requirements with per-port charger output, cable rating, port choice, and dock losses.',
+        problem: 'The charger says 100W, but Windows still reports slow charging.',
+      },
+      {
         slug: 'usb-c-dock-only-one-monitor',
         kicker: 'Display troubleshooting',
         title: 'USB-C dock only detecting one monitor',
@@ -282,6 +310,13 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
         title: 'microSD card not detected',
         desc: 'Reader swap, Disk Management letter assign, read-only clear, and card end-of-life signs.',
         problem: 'A phone, camera, PC, or reader does not see the card.',
+      },
+      {
+        slug: 'external-drive-shows-in-disk-management-not-file-explorer',
+        kicker: 'Windows storage troubleshooting',
+        title: 'External drive in Disk Management but not File Explorer',
+        desc: 'Assign a missing drive letter safely and recognize RAW or unallocated states before making destructive changes.',
+        problem: 'Windows sees the physical disk, but File Explorer does not show a usable drive.',
       },
       {
         slug: 'wd-elements-not-showing-up',

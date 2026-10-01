@@ -1,0 +1,87 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "USB-C hub Ethernet works but HDMI doesn't: the USB side can work while video fails.",
+    description: "Working Ethernet proves the USB data path is alive. It does not prove the host USB-C port supports DisplayPort video. Isolate host video support, cable capability, HDMI output, and dock mode.",
+    url: 'https://stackgeist.dev/guides/usb-c-hub-ethernet-works-hdmi-doesnt',
+    dateModified: '2026-10-01'
+  }),
+  howToSchema({
+    name: "Fix a USB-C hub where Ethernet works but HDMI does not",
+    description: "Confirm the host port supports display output, test the display directly, check the hub upstream cable, test the HDMI path separately, and identify whether the hub uses native Alt Mode or another display technology.",
+    steps: [
+      { name: "Confirm the USB-C port supports video", text: "Working Ethernet only proves USB data works. Read the host specification for DisplayPort Alt Mode, USB4, or Thunderbolt." },
+      { name: "Test a direct display path", text: "Connect a known-good USB-C display or USB-C-to-DisplayPort adapter directly to the computer." },
+      { name: "Replace the hub's upstream cable if removable", text: "Use the hub's supplied full-featured cable or a cable that meets its documented requirements." },
+      { name: "Test HDMI cable and monitor input", text: "Use a known-good HDMI cable and select the correct monitor input." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "If Ethernet works through my USB-C hub, doesn't that mean the USB-C port supports everything?", answer: "No. Ethernet uses USB data. HDMI on many hubs depends on a separate DisplayPort Alt Mode path from the host. One can work while the other is unavailable." },
+      { question: "Can a charge-only USB-C port still run hub Ethernet?", answer: "A USB-C port that supports USB data can run an Ethernet adapter even if it does not expose a display signal. Charging support is a separate capability again." },
+      { question: "Why does the same hub HDMI work on another laptop?", answer: "That strongly suggests the first laptop's USB-C port lacks the required video capability or has a different display limit." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="USB-C hub Ethernet works but HDMI doesn't: fix it | StackGeist" description="Working Ethernet proves USB data works, not DisplayPort video. Confirm host video support, test a direct display path, then isolate the hub cable and HDMI output." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides/">Guides</a> / Hub Ethernet works but HDMI does not</p>
+    <p class="page-kicker">USB-C troubleshooting</p>
+    <h1 class="page-title">USB-C hub Ethernet works but HDMI doesn't: the USB side can work while video fails.</h1>
+    <p class="page-lead">This symptom feels contradictory only if you treat USB-C as one feature. Ethernet and HDMI can travel through completely different logical paths. Working Ethernet proves the hub's USB data connection is alive. It does not prove the laptop is supplying a display signal to the hub.</p>
+
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and confirm the connected USB-C port supports DisplayPort video, USB4, or Thunderbolt. Then test a display directly from that port with a known-good adapter or USB-C monitor. If direct video works, return to the hub and test its upstream cable and HDMI path. If direct video does not work, the hub is probably not the problem.</p></div>
+
+    <div class="article-body">
+      <section><p class="page-kicker">Why this happens</p><h2>Ethernet and HDMI prove different things.</h2>
+        <div class="article-cards">
+          <div><strong>Ethernet works</strong><p>The USB data path between host and hub is functioning.</p></div>
+          <div><strong>Power delivery works</strong><p>The charging path is functioning. This still says nothing definitive about display output.</p></div>
+          <div><strong>HDMI fails</strong><p>Now investigate the display path: host capability, upstream cable, dock mode, HDMI cable, and monitor input.</p></div>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Step 01</p><h2>Confirm the laptop's USB-C port actually outputs video.</h2><p>Microsoft notes that a display adapter must be connected to a USB-C port that supports the correct Alternate Mode. Search the exact laptop model and read the specification for the port you are using. USB 3.2 data support alone is not evidence of DisplayPort output.</p>
+        <div class="cards"><a class="card" href="/guides/how-to-tell-if-usb-c-port-supports-video/"><h3>How to tell if the port supports video</h3><p>Use the exact host specification and a direct display test instead of guessing from connector shape.</p></a></div>
+      </section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Test video without the hub.</h2><p>Connect a known-good USB-C monitor or a known-good USB-C-to-DisplayPort/HDMI adapter directly to the laptop. Keep the test simple: one display, one cable, no extension, no KVM.</p>
+        <ol class="article-steps">
+          <li><strong>Direct video works.</strong><span>The host can output video. Move the diagnosis back to the hub/cable/HDMI path.</span></li>
+          <li><strong>Direct video fails.</strong><span>Re-check the host specification and try another documented video-capable USB-C port if the machine has one.</span></li>
+        </ol>
+      </section>
+
+      <section><p class="page-kicker">Step 03</p><h2>If the hub has a removable upstream cable, replace that cable.</h2><p>A cable can pass USB data while lacking the capabilities or signal integrity needed for the hub's display path. Use the cable supplied with the hub or one that meets the exact manufacturer requirement. Do not diagnose through a USB-C extension cable.</p></section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Test the HDMI side as its own system.</h2><ul class="article-list">
+        <li>Use an HDMI cable that you know works with another source.</li>
+        <li>Select the correct input manually on the monitor or TV.</li>
+        <li>Start at a conservative display mode such as 1080p at 60 Hz.</li>
+        <li>If possible, test the hub HDMI output on another known video-capable USB-C computer.</li>
+      </ul></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When you actually need different hardware.</h2>
+        <div class="article-cards">
+          <div><strong>Host has no video-capable USB-C port</strong><p>A passive Alt Mode hub cannot create video. Use another native display output or a USB graphics solution designed for that purpose.</p></div>
+          <div><strong>Direct video works, hub HDMI fails on multiple hosts</strong><p>The hub HDMI path or upstream cable is the likely failure.</p></div>
+          <div><strong>Hub works on another laptop</strong><p>Compare the two hosts' USB-C display capabilities before replacing the hub.</p></div>
+        </div>
+        <div class="cards">
+          <a class="card" href="/guides/usb-c-dock-compatibility/"><h3>USB-C dock compatibility</h3><p>Choose a replacement based on the host rather than port count.</p></a>
+          <a class="card" href="/guides/usb-c-dock-second-monitor-stops-working/"><h3>Second monitor breaks the dock setup</h3><p>Continue if one display works and the failure starts only with display number two.</p></a>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

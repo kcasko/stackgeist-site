@@ -1,0 +1,83 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "External drive shows in Disk Management but not File Explorer: do this before formatting.",
+    description: "If Windows sees the disk but File Explorer does not, check its drive letter, volume state, file system, and health before initializing or formatting anything.",
+    url: 'https://stackgeist.dev/guides/external-drive-shows-in-disk-management-not-file-explorer',
+    dateModified: '2026-10-01'
+  }),
+  howToSchema({
+    name: "Fix an external drive visible in Disk Management but missing from File Explorer",
+    description: "Identify the disk by capacity, inspect its volume and file system, assign a missing drive letter when safe, and avoid initialization or formatting when the disk contains needed data.",
+    steps: [
+      { name: "Identify the correct disk", text: "Use capacity and connection type to identify the external disk before changing anything." },
+      { name: "Check whether the volume already exists", text: "A healthy volume without a drive letter can be assigned one without formatting." },
+      { name: "Inspect file system and status", text: "Do not initialize, create a volume, or format a disk containing needed data just because Windows offers those actions." },
+      { name: "Confirm with PowerShell", text: "Use Get-Disk and Get-Volume to see what Windows currently exposes." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Should I initialize a drive that has files on it?", answer: "Not as a first troubleshooting step. Initializing and especially formatting are storage-configuration actions, not harmless detection fixes. If the disk contains needed data, stop and understand its current partition/file-system state first." },
+      { question: "Can a missing drive letter hide an external drive from File Explorer?", answer: "Yes. A healthy volume can exist in Disk Management without a drive letter. Assigning an unused letter can make it appear in File Explorer without formatting the volume." },
+      { question: "How can I see USB disks in PowerShell?", answer: "Microsoft documents Get-Disk as the cmdlet for disks visible to Windows. You can filter its output by BusType to show USB disks." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="Drive in Disk Management but not File Explorer: safe fix | StackGeist" description="If Windows sees the disk but File Explorer does not, check drive letter, volume state, file system, and health before initializing or formatting anything." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides/">Guides</a> / Disk Management but not File Explorer</p>
+    <p class="page-kicker">Windows storage troubleshooting</p>
+    <h1 class="page-title">External drive shows in Disk Management but not File Explorer: do this before formatting.</h1>
+    <p class="page-lead">If the drive appears in Disk Management, Windows can see the physical storage device. That changes the diagnosis. You are no longer troubleshooting “is the drive connected?” — you are troubleshooting the volume, drive letter, file system, or disk state.</p>
+
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Find the disk in Disk Management by capacity. If it contains a healthy partition but has no drive letter, assign an unused letter. If Windows shows RAW, Unallocated, Offline, or asks you to initialize a disk that contains important files, <strong>stop before formatting or initializing it</strong>. Those states need a different recovery decision.</p></div>
+
+    <div class="article-body">
+      <section><p class="page-kicker">Safety first</p><h2>Do not turn a detection problem into a data-loss problem.</h2><p>Microsoft's Disk Management documentation warns that formatting a volume destroys the data on that partition. If this is an existing external drive with files you care about, do not click Initialize, New Simple Volume, or Format merely because Windows offers those options. First determine what state the disk is actually in.</p></section>
+
+      <section><p class="page-kicker">Step 01</p><h2>Identify the external disk by capacity.</h2><p>Open Disk Management with Win+R → <code>diskmgmt.msc</code>. Match the external disk by its approximate size. A marketed 2TB drive will appear somewhat smaller in Windows because manufacturers and Windows report capacity differently. Confirm twice before changing anything.</p></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>If the partition is healthy but has no letter, assign one.</h2><p>A normal formatted volume can be invisible in File Explorer simply because it has no drive letter. Right-click the existing volume → <strong>Change Drive Letter and Paths</strong> → Add → choose an unused letter. This does not require formatting the existing volume.</p></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Use the displayed state to choose the next action.</h2>
+        <div class="article-cards">
+          <div><strong>Healthy partition, no letter</strong><p>Assign a drive letter.</p></div>
+          <div><strong>Offline</strong><p>Investigate why it is offline, then bring it online only when you have identified the correct disk.</p></div>
+          <div><strong>RAW</strong><p>Do not format if you need the files. The file system is not currently readable by Windows.</p></div>
+          <div><strong>Unallocated</strong><p>Do not create a new volume on a previously used disk until you understand why the partition is missing.</p></div>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Confirm what Windows sees with PowerShell.</h2><p>Microsoft documents <code>Get-Disk</code> as returning disks visible to the operating system and <code>Get-Volume</code> as returning volume objects. These are read-only checks when used without modification cmdlets.</p>
+        <pre><code>Get-Disk
+
+Get-Disk | Where-Object BusType -eq 'USB'
+
+Get-Volume</code></pre>
+        <p>If the physical USB disk appears in <code>Get-Disk</code> but there is no expected volume in <code>Get-Volume</code>, focus on partition/file-system state rather than USB detection.</p>
+      </section>
+
+      <section><p class="page-kicker">Step 05</p><h2>If it is a new empty drive, treat it differently.</h2><p>A genuinely new blank disk may need initialization, partition creation, formatting, and a drive letter before File Explorer can use it. Microsoft documents those actions in Disk Management. That is appropriate for a new empty disk — not as a blind repair step for an existing drive containing files.</p></section>
+
+      <section><p class="page-kicker">Decision</p><h2>When to stop troubleshooting and protect the data.</h2><p>If the drive contains important files and suddenly appears as RAW, Unallocated, or with a missing partition, stop making write changes. If the drive is also disconnecting, clicking, or failing to stay online, prioritize data recovery or backup rather than “fixing” the partition table.</p>
+        <div class="cards">
+          <a class="card" href="/guides/wd-elements-not-showing-up/"><h3>WD Elements not showing up</h3><p>USB power, cable, Disk Management, and drive-health triage.</p></a>
+          <a class="card" href="/guides/microsd-card-not-detected/"><h3>microSD card not detected</h3><p>The same safe-storage principle applied to removable flash media.</p></a>
+          <a class="card" href="/guides/storage-raspberry-pi-boot-fixes/"><h3>Storage troubleshooting hub</h3><p>Continue with safe storage diagnostics.</p></a>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-volume">Microsoft Learn — Get-Volume</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

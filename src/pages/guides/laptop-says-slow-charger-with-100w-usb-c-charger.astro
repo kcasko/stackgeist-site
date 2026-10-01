@@ -1,0 +1,77 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+  articleSchema({
+    headline: "Laptop says slow charger with a 100W USB-C charger: diagnose the real limit.",
+    description: "A 100W label does not guarantee 100W reaches the laptop. Check the laptop's required USB-C profile, charger per-port output, cable rating, port choice, and dock losses.",
+    url: 'https://stackgeist.dev/guides/laptop-says-slow-charger-with-100w-usb-c-charger',
+    dateModified: '2026-10-01'
+  }),
+  howToSchema({
+    name: "Fix a slow-charger warning with a 100W USB-C charger",
+    description: "Compare the laptop's required input with the charger's per-port output, disconnect other charger ports, test a known 5A cable, use the correct charging port, and bypass docks or hubs.",
+    steps: [
+      { name: "Check the laptop input requirement", text: "Read the original adapter label or official specification to learn the wattage and supported USB-C charging requirement." },
+      { name: "Check per-port charger output", text: "A multi-port charger can advertise 100W total while delivering less to one port when other devices are connected." },
+      { name: "Use a cable rated for the required current", text: "For power above 60W, use a cable designed for 5A operation and the relevant USB Power Delivery level." },
+      { name: "Connect directly to the laptop charging port", text: "Bypass hubs and docks during the test and use the laptop port documented for charging." }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: "Why does Windows say slow charger when the brick says 100W?", answer: "The laptop only receives what the charger, cable, and laptop negotiate on that specific port. Multi-port sharing, a lower-rated cable, the wrong USB-C port, or charging through a dock can reduce the negotiated power." },
+      { question: "Can a 60W cable cause a slow-charger warning on a 100W charger?", answer: "Yes, if the laptop expects more than the cable can carry. The charger label does not bypass the cable's current limit." },
+      { question: "Does plugging in a phone change the laptop charging speed?", answer: "It can on multi-port chargers. Many units redistribute their total power budget when a second port becomes active." }
+    ]
+  })
+];
+---
+<ContentLayout structuredData={__sd} title="100W USB-C charger but Windows says slow charger | StackGeist" description="A 100W label does not guarantee 100W reaches the laptop. Check per-port output, cable rating, laptop requirements, port choice, and dock losses in order." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides/">Guides</a> / 100W charger says slow charger</p>
+    <p class="page-kicker">USB-C power troubleshooting</p>
+    <h1 class="page-title">Laptop says “slow charger” with a 100W USB-C charger: diagnose the real limit.</h1>
+    <p class="page-lead">The number printed on a charger is not the wattage the laptop is guaranteed to receive. USB-C charging is negotiated end to end. The laptop, charging port, charger port, cable, and anything in between must all support the required power path.</p>
+
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Disconnect every other device from the charger. Plug its highest-output USB-C port directly into the laptop's documented charging port using a known cable rated for the power you need. If the warning disappears, the problem was power sharing, the cable, the wrong port, or the dock — not the charger's total advertised wattage.</p></div>
+
+    <div class="article-body">
+      <section><p class="page-kicker">First question</p><h2>How much power does the laptop actually expect?</h2><p>Check the original charger label or the manufacturer's specification. A laptop designed around a higher-wattage adapter can accept USB-C charging and still warn that the connected source is slower than the preferred adapter. The important comparison is the laptop requirement versus the power available from the exact charger port you are using.</p></section>
+
+      <section><p class="page-kicker">Step 01</p><h2>Disconnect every other charger port.</h2><p>A multi-port charger might be marketed as “100W” because 100W is its total power budget or its maximum on one port under certain conditions. Once a phone, tablet, or second laptop is connected, many chargers redistribute that budget. Test the laptop as the only connected device.</p></section>
+
+      <section><p class="page-kicker">Step 02</p><h2>Check the output table printed on the charger.</h2><p>Look for the tiny voltage/current table or the manufacturer's port-allocation chart. You want the maximum output of the specific USB-C port by itself and the output assigned to that same port when multiple ports are in use. Do not rely on the large “100W” number on the front of the charger.</p></section>
+
+      <section><p class="page-kicker">Step 03</p><h2>Use a cable that can carry the required current.</h2><p>Microsoft lists an underpowered or incompatible cable as a cause of the Windows slow-charger warning. If the laptop expects more than 60W, use a cable explicitly designed for the higher USB Power Delivery current level. During diagnosis, remove extension cables and magnetic adapters.</p>
+        <div class="cards">
+          <a class="card" href="/guides/usb-c-cable-charging-slow/"><h3>USB-C cable charging slowly</h3><p>Diagnose the cable, charger, and device ceiling separately.</p></a>
+          <a class="card" href="/guides/usb-c-cable-buying-guide/"><h3>USB-C cable buying guide</h3><p>Understand power and data ratings before replacing the cable.</p></a>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Step 04</p><h2>Use the laptop's actual charging port.</h2><p>Some laptops have multiple USB-C connectors with different capabilities. Microsoft specifically lists using the wrong USB-C port as a possible reason for charging problems. Check the manual and connect the charger to the port documented for charging or USB Power Delivery.</p></section>
+
+      <section><p class="page-kicker">Step 05</p><h2>Bypass the dock during the test.</h2><p>If the charger is connected to a dock and the dock powers the laptop, the dock becomes part of the power path. The dock may reserve power for itself and its downstream devices, or it may have a lower laptop-charging limit than the charger connected to it. Plug the charger directly into the laptop. If the warning goes away, the dock path is the constraint.</p></section>
+
+      <section><p class="page-kicker">Decision table</p><h2>What the result tells you.</h2>
+        <div class="article-cards">
+          <div><strong>Warning disappears with other charger ports empty</strong><p>The charger is power-sharing. Use the preferred port combination or a charger with more simultaneous headroom.</p></div>
+          <div><strong>Warning disappears with another cable</strong><p>The old cable was the limit. Replace the cable, not the charger.</p></div>
+          <div><strong>Warning disappears when bypassing the dock</strong><p>The dock's charging limit or reserved power is the bottleneck.</p></div>
+          <div><strong>Warning remains direct with one device</strong><p>Compare the laptop's required input with the charger port's actual supported output.</p></div>
+        </div>
+        <div class="cards">
+          <a class="card" href="/guides/laptop-charger-wattage/"><h3>How many watts does my laptop need?</h3><p>Match the adapter to the computer's real input requirement.</p></a>
+          <a class="card" href="/guides/gan-charger-not-charging-laptop-full-speed/"><h3>GaN charger not charging full speed</h3><p>Go deeper on shared-output and USB-PD behavior.</p></a>
+        </div>
+      </section>
+
+      <section><p class="page-kicker">Sources</p><ol class="article-list">
+        <li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
+      </ol></section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
