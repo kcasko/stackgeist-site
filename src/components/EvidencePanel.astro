@@ -13,7 +13,7 @@ interface Props {
 const { status, reviewed, sources } = Astro.props;
 const label = status === 'owned-and-used' ? 'Owned & used' : 'Researched';
 const explanation = status === 'owned-and-used'
-  ? 'The StackGeist operator personally purchased and used this product. That records ownership and practical familiarity; it is not a laboratory test, and technical specifications still come from the sources below.'
+  ? 'Keith Casko personally purchased and used this product. That records ownership and practical familiarity; it is not a laboratory test, and technical specifications still come from the sources below.'
   : 'This recommendation is based on identified source material. StackGeist does not claim personal ownership or hands-on testing for this item.';
 ---
 <section class="evidence-panel" data-evidence-status={status} aria-labelledby="evidence-title">

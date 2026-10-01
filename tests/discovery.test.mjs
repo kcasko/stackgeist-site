@@ -50,6 +50,6 @@ test('pages advertise the RSS feed and emit breadcrumb structured data', async (
 
   const setup = await read('dist/setups/streaming-content-creator/index.html');
   assert.match(setup, /"@type":"BreadcrumbList"/);
-  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups"/);
-  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups\/streaming-content-creator"/);
+  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups\/"/);
+  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups\/streaming-content-creator\/"/);
 });

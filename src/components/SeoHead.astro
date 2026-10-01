@@ -12,7 +12,8 @@ const extraSchemas: Record<string, unknown>[] = extraStructuredData
   : [];
 const googleVerify = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '').trim();
 const site = Astro.site ?? new URL('https://stackgeist.dev');
-const canonical = new URL(Astro.url.pathname, site).toString();
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '') + '/';
+const canonical = new URL(canonicalPath, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
 const feed = new URL('/rss.xml', site).toString();
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
@@ -33,7 +34,7 @@ const breadcrumbStructured = pathSegments.length === 0 ? null : {
         .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
-      item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}`, site).toString(),
+      item: new URL('/' + pathSegments.slice(0, index + 1).join('/') + '/', site).toString(),
     })),
   ],
 };

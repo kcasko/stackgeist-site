@@ -3,6 +3,12 @@
 
 type SchemaObj = Record<string, unknown>;
 
+function canonicalUrl(url: string): string {
+  const parsed = new URL(url);
+  if (parsed.pathname !== '/' && !parsed.pathname.endsWith('/')) parsed.pathname += '/';
+  return parsed.toString();
+}
+
 export function productSchema(input: {
   name: string;
   description: string;
@@ -16,7 +22,7 @@ export function productSchema(input: {
     '@type': 'Product',
     name: input.name,
     description: input.description,
-    url: input.url,
+    url: canonicalUrl(input.url),
   };
   if (input.image) out.image = input.image;
   if (input.brand) out.brand = { '@type': 'Brand', name: input.brand };
@@ -38,8 +44,8 @@ export function articleSchema(input: {
     '@type': 'Article',
     headline: input.headline,
     description: input.description,
-    mainEntityOfPage: input.url,
-    author: { '@type': 'Person', name: input.author ?? 'Keith Casko', url: 'https://stackgeist.dev/about' },
+    mainEntityOfPage: canonicalUrl(input.url),
+    author: { '@type': 'Person', name: input.author ?? 'Keith Casko', url: 'https://stackgeist.dev/about/' },
     publisher: { '@type': 'Organization', name: 'StackGeist' },
   };
   if (input.image) out.image = input.image;

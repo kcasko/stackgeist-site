@@ -13,9 +13,9 @@ const structuredData = [
   articleSchema({
     headline: kit.title,
     description: kit.description,
-    url: `https://stackgeist.dev/kits/${kit.slug}`,
+    url: 'https://stackgeist.dev/kits/' + kit.slug + '/',
     datePublished: '2026-09-12',
-    dateModified: '2026-09-12',
+    dateModified: '2026-10-01',
   }),
   faqSchema({ questions: kit.faqs }),
   {
@@ -26,7 +26,7 @@ const structuredData = [
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      url: item.href.startsWith('/') ? `https://stackgeist.dev${item.href}` : item.href,
+      ...(item.href.startsWith('/') ? { url: 'https://stackgeist.dev' + item.href.replace(/\/$/, '') + '/' } : {}),
     })),
   },
 ];

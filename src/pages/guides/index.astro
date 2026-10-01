@@ -66,7 +66,7 @@ const guides=[
 
   <section class="content-section cards">
     {troubleshootingHubs.map((hub)=>(
-      <a class="card" href={`/guides/${hub.slug}`}>
+      <a class="card" href={'/guides/' + hub.slug + '/'}>
         <p class="page-kicker">Troubleshooting hub</p>
         <h2>{hub.title}</h2>
         <p>{hub.description}</p>

@@ -41,8 +41,8 @@ const campaign = `income_kits_${kit.slug}`;
   </section>
 
   <section class="content-section kit-items">
-    <p class="page-kicker">monetized picks</p>
-    <h2 class="section-heading">Every link has to earn its spot.</h2>
+    <p class="page-kicker">recommended picks</p>
+    <h2 class="section-heading">Buy only what solves the next constraint.</h2>
     <div class="kit-grid">
       {kit.items.map((item) => (
         <a
@@ -65,26 +65,11 @@ const campaign = `income_kits_${kit.slug}`;
   </section>
 
   <section class="content-section kit-related">
-    <p class="page-kicker">internal links</p>
-    <h2 class="section-heading">Where this kit sends people next.</h2>
+    <p class="page-kicker">related decisions</p>
+    <h2 class="section-heading">Check the fit before you spend more.</h2>
     <div class="cards">
       {kit.related.map((item) => (
         <a class="card" href={item.href}><h3>{item.title}</h3><p>{item.desc}</p></a>
-      ))}
-    </div>
-  </section>
-
-  <section class="content-section kit-social">
-    <p class="page-kicker">distribution</p>
-    <h2 class="section-heading">Angles ready for scheduled posts.</h2>
-    <div class="social-rows">
-      {kit.socialAngles.map((angle) => (
-        <div class="social-row">
-          <span>{angle.channel}</span>
-          <strong>{angle.title}</strong>
-          <p>{angle.hook}</p>
-          <code>?utm_source={angle.channel}&amp;utm_medium=organic&amp;utm_campaign=income_kits&amp;utm_content={angle.utmContent}</code>
-        </div>
       ))}
     </div>
   </section>
@@ -122,18 +107,9 @@ const campaign = `income_kits_${kit.slug}`;
   .kit-item strong { margin-top:4px; color:var(--text); font-size:12px; }
   .kit-item small { color:var(--amber); font-size:11.5px; line-height:1.55; }
   .kit-disclosure { margin:14px 0 0; color:var(--quiet); font-size:11px; line-height:1.55; }
-  .social-rows { border:1px solid var(--term-border); background:var(--term-bg); }
-  .social-row { display:grid; grid-template-columns:110px 220px 1fr; gap:14px; align-items:start; padding:16px; border-top:1px solid var(--term-border); }
-  .social-row:first-child { border-top:0; }
-  .social-row span { color:var(--phosphor); font-size:11px; }
-  .social-row strong { font-size:13px; }
-  .social-row p { margin:0; color:var(--muted); font-size:12.5px; line-height:1.55; }
-  .social-row code { grid-column:2 / -1; color:var(--quiet); font-size:10.5px; white-space:normal; }
   @media(max-width:760px){
     .kit-grid { grid-template-columns:1fr; }
     .kit-item:nth-child(even){ border-left:0; }
     .kit-item:nth-child(n+2){ border-top:1px solid var(--term-border); }
-    .social-row { grid-template-columns:1fr; gap:8px; }
-    .social-row code { grid-column:1; }
   }
 </style>

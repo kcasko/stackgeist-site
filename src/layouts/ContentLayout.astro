@@ -12,7 +12,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 const { title, description, active, noindex = false, structuredData } = Astro.props;
-const isIndividualGuide = active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/';
+const isEditorialPage = (active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/') || (active === 'kits' && Astro.url.pathname.startsWith('/kits/') && Astro.url.pathname !== '/kits/');
 ---
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,7 @@ const isIndividualGuide = active === 'guides' && Astro.url.pathname.startsWith('
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
-      <main id="main-content" class="content-main" tabindex="-1"><slot />{isIndividualGuide && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> Technical claims are source-checked; personal use and researched recommendations are kept distinct. <a href="/editorial-methodology">Editorial methodology →</a></span></aside>}<SiteFooter /></main>
+      <main id="main-content" class="content-main" tabindex="-1"><slot />{isEditorialPage && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> Technical claims are source-checked; personal use and researched recommendations are kept distinct. <a href="/editorial-methodology">Editorial methodology →</a></span></aside>}<SiteFooter /></main>
     </div>
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
