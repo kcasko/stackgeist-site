@@ -1,0 +1,82 @@
+{
+  "id": "stackgeistAssetReq",
+  "name": "StackGeist Asset Request",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "stackgeist-asset",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "stackgeist-asset-webhook",
+      "name": "Asset request webhook",
+      "webhookId": "14e1b6a2-629c-4799-a630-0e6ec0eeaccd"
+    },
+    {
+      "parameters": {
+        "jsCode": "const fs = require('fs');\nconst path = require('path');\nconst crypto = require('crypto');\nconst http = require('http');\nconst https = require('https');\nconst { URL, URLSearchParams } = require('url');\nconst { Buffer } = require('buffer');\n\nfunction slugify(value) {\n  return String(value ?? '').trim().toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'stackgeist-asset';\n}\nfunction normalizeSize(input = {}) {\n  const presets = { hero: [1344, 768], wide: [1344, 768], square: [1024, 1024], pin: [832, 1216], pinterest: [832, 1216], card: [1024, 768], thumb: [1024, 576], thumbnail: [1024, 576] };\n  const [width, height] = presets[input.size || input.aspect || 'hero'] || presets.hero;\n  return { width, height };\n}\n\nfunction httpRequest(url, options = {}) {\n  return new Promise((resolve, reject) => {\n    const parsed = new URL(url);\n    const body = options.body ? Buffer.from(options.body) : null;\n    const lib = parsed.protocol === 'https:' ? https : http;\n    const req = lib.request(parsed, {\n      method: options.method || 'GET',\n      headers: { ...(options.headers || {}), ...(body ? { 'Content-Length': body.length } : {}) },\n    }, (res) => {\n      const chunks = [];\n      res.on('data', (chunk) => chunks.push(chunk));\n      res.on('end', () => resolve({ status: res.statusCode, ok: res.statusCode >= 200 && res.statusCode < 300, body: Buffer.concat(chunks) }));\n    });\n    req.on('error', reject);\n    if (body) req.write(body);\n    req.end();\n  });\n}\nasync function fetchJson(url, options = {}) {\n  const res = await httpRequest(url, options);\n  const text = res.body.toString('utf8');\n  if (!res.ok) throw new Error(`${options.method || 'GET'} ${url} failed ${res.status}: ${text.slice(0, 500)}`);\n  return text ? JSON.parse(text) : {};\n}\nasync function waitForHistory(host, promptId) {\n  const started = Date.now();\n  while (Date.now() - started < 180000) {\n    const history = await fetchJson(`${host}/history/${promptId}`);\n    if (history[promptId]) return history[promptId];\n    await new Promise((resolve) => setTimeout(resolve, 1500));\n  }\n  throw new Error(`Timed out waiting for ${promptId}`);\n}\nconst input = $json.body || $json;\nconst host = 'http://172.28.96.1:8189';\nconst repoRoot = '/workspace/stackgeist-site';\nconst slug = slugify(input.slug || input.title);\nconst type = slugify(input.type || 'hero');\nconst { width, height } = normalizeSize(input);\nconst info = await fetchJson(`${host}/object_info/CheckpointLoaderSimple`);\nconst checkpoints = info.CheckpointLoaderSimple.input.required.ckpt_name[0];\nconst checkpoint = checkpoints.includes(input.checkpoint) ? input.checkpoint : (checkpoints.includes('Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors') ? 'Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors' : checkpoints[0]);\nif (!checkpoint) throw new Error('No ComfyUI checkpoints available');\nconst seed = input.seed === -1 || input.seed == null ? crypto.randomInt(1, 2 ** 32 - 1) : Number(input.seed);\nconst positive = input.positive || [`StackGeist ${type} artwork`, input.title || '', input.prompt || '', 'dark terminal/operator aesthetic', 'black graphite background, subtle phosphor green and amber glow, cyber workstation mood', 'premium editorial tech illustration, sharp composition, cinematic lighting', 'no readable text, no logos, no product packaging, no fake screenshots'].filter(Boolean).join(', ');\nconst workflow = {\n  '3': { class_type: 'KSampler', inputs: { seed, steps: Number(input.steps || 18), cfg: Number(input.cfg || 6), sampler_name: 'euler', scheduler: 'normal', denoise: 1, model: ['4', 0], positive: ['6', 0], negative: ['7', 0], latent_image: ['5', 0] } },\n  '4': { class_type: 'CheckpointLoaderSimple', inputs: { ckpt_name: checkpoint } },\n  '5': { class_type: 'EmptyLatentImage', inputs: { width, height, batch_size: Number(input.count || 1) } },\n  '6': { class_type: 'CLIPTextEncode', inputs: { text: positive, clip: ['4', 1] } },\n  '7': { class_type: 'CLIPTextEncode', inputs: { text: input.negative || 'readable text, watermark, logo, brand name, fake product packaging, blurry, low quality', clip: ['4', 1] } },\n  '8': { class_type: 'VAEDecode', inputs: { samples: ['3', 0], vae: ['4', 2] } },\n  '9': { class_type: 'SaveImage', inputs: { filename_prefix: `StackGeist/${slug}/${type}`, images: ['8', 0] } },\n};\nconst queued = await fetchJson(`${host}/prompt`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: workflow, client_id: `n8n-stackgeist-${Date.now()}` }) });\nconst promptId = queued.prompt_id;\nconst history = await waitForHistory(host, promptId);\nconst images = Object.values(history.outputs || {}).flatMap((node) => node.images || []);\nif (!images.length) throw new Error(`ComfyUI prompt ${promptId} produced no images`);\nconst outputRoot = path.join(repoRoot, 'public', 'generated', 'stackgeist', slug);\nfs.mkdirSync(outputRoot, { recursive: true });\nconst outputs = [];\nfor (let i = 0; i < images.length; i++) {\n  const img = images[i];\n  const params = new URLSearchParams({ filename: img.filename, subfolder: img.subfolder || '', type: img.type || 'output' });\n  const res = await httpRequest(`${host}/view?${params}`);\n  if (!res.ok) throw new Error(`GET /view failed ${res.status}`);\n  const bytes = res.body;\n  const ext = path.extname(img.filename) || '.png';\n  const dest = path.join(outputRoot, `${type}-${promptId.slice(0, 8)}-${i + 1}${ext}`);\n  fs.writeFileSync(dest, bytes);\n  outputs.push({ file: path.relative(repoRoot, dest).replace(/\\\\/g, '/'), bytes: bytes.length, comfy: img });\n}\nconst manifest = { generatedAt: new Date().toISOString(), slug, type, title: input.title || '', prompt: positive, checkpoint, seed, width, height, promptId, outputs };\nfs.writeFileSync(path.join(outputRoot, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\\n');\nreturn [{ json: manifest }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ],
+      "id": "stackgeist-asset-code",
+      "name": "Generate StackGeist asset"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        520,
+        0
+      ],
+      "id": "stackgeist-asset-response",
+      "name": "Return manifest"
+    }
+  ],
+  "connections": {
+    "Asset request webhook": {
+      "main": [
+        [
+          {
+            "node": "Generate StackGeist asset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate StackGeist asset": {
+      "main": [
+        [
+          {
+            "node": "Return manifest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "versionId": "9a97dd36-53b1-4624-a8eb-c62f9f9fc9f3",
+  "tags": []
+}

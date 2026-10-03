@@ -10,7 +10,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 // so tests can drive it without hitting Wrangler or the network.
 
 const DATABASE = 'stackgeist-affiliate-events';
-const WRANGLER = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
+const WRANGLER = process.env.STACKGEIST_WRANGLER_BIN
+  || fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url));
 
 export function parseDays(args) {
   const index = args.indexOf('--days');
