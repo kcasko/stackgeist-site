@@ -34,3 +34,41 @@
 
 ### Caption
 That USB-C cable does not have all the features you think. 60W != 100W, fast charge != fast data. Test, label, and match—full breakdown at StackGeist.dev. #usbc #cables #charging #techtok
+
+## 2026-10-04 — Your extension cord should not feel hot
+
+- Source: `https://stackgeist.dev/guides/extension-cord-getting-hot`
+- Landing URL: `https://stackgeist.dev/guides/extension-cord-getting-hot?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=hot_extension_cord`
+- Best posting time (ET): Sunday 7:30 PM ET
+- Length: 20s
+- Hashtags: #extensionsafety #electricalsafety #firesafety #homeoffice #desksetup #techtok #safetytips
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ cord-temp --check`
+  - Visual: Thermal-camera effect tracks a red hot spot along a coiled extension cord.
+  - VO/caption: "Your extension cord should not feel hot."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  UNCOIL IT`
+  - Visual: Cord unrolls from a tight loop into a straight line on open flooring.
+  - VO/caption: "A tight coil traps heat, so spread the cord out in open air."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `02  CHECK THE GAUGE`
+  - Visual: Macro shot highlights `16/3` printed on the jacket, then displays `13A / 1560W`.
+  - VO/caption: "A common 16-gauge cord is rated for 13 amps, or 1,560 watts."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `03  WALL ONLY`
+  - Visual: Space-heater plug moves from the extension cord directly to the wall outlet.
+  - VO/caption: "High-draw appliances like space heaters belong directly in the wall."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `MELTING? SMELL PLASTIC? UNPLUG NOW.`
+  - Visual: Red warning cursor, then `$ open stackgeist.dev/guides/extension-cord-getting-hot`.
+  - VO/caption: "Melting, discoloration, or a plastic smell means unplug it now."
+
+### Caption
+A hot extension cord is warning you, not warming up. Uncoil it, check the load and gauge, and unplug immediately if you see melting or smell plastic. Full checklist at StackGeist.dev.
