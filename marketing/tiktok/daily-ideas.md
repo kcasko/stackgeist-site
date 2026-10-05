@@ -72,3 +72,38 @@ That USB-C cable does not have all the features you think. 60W != 100W, fast cha
 
 ### Caption
 A hot extension cord is warning you, not warming up. Uncoil it, check the load and gauge, and unplug immediately if you see melting or smell plastic. Full checklist at StackGeist.dev.
+
+## 2026-10-05 — A 100W charger will not fry your 65W laptop
+
+- Source: `https://stackgeist.dev/guides/laptop-charger-wattage`
+- Landing URL: `https://stackgeist.dev/guides/laptop-charger-wattage?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=higher_watt_charger_safe`
+- Best posting time (ET): Monday 7:30 PM ET
+- Length: 20s
+- Hashtags: #laptopcharger #usbcpd #usbc #laptoptips #techtok #techsupport #desksetup
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ charger --100w --laptop=65w`
+  - Visual: A 100W USB-C charger connects to a laptop labeled `65W`. Red warning flashes, then changes to green.
+  - VO/caption: "A 100-watt charger will not force 100 watts into a 65-watt laptop."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `USB PD NEGOTIATES: 65W`
+  - Visual: Terminal handshake animation: `charger 100W > request 65W > deliver 65W`.
+  - VO/caption: "USB Power Delivery negotiates the correct voltage and current."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `LOWER WATTAGE = TRADEOFFS`
+  - Visual: Swap in a 45W brick. Battery drops from 48% to 47% while a game or export runs.
+  - VO/caption: "The real problem is going lower. Heavy work can drain the battery while plugged in."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `CHECK THE CABLE TOO`
+  - Visual: A 100W charger connects through a cable stamped `60W`; output meter stops at `60W`.
+  - VO/caption: "And a 60-watt cable can cap a higher-watt charger at 60."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `MATCH THE LAPTOP. ADD HEADROOM.`
+  - Visual: Terminal checklist marks `laptop wattage`, `shared devices`, and `cable rating`, then opens the source URL.
+  - VO/caption: "Match the laptop first, then add headroom for shared devices."
