@@ -107,3 +107,41 @@ A hot extension cord is warning you, not warming up. Uncoil it, check the load a
   - On-screen text: `MATCH THE LAPTOP. ADD HEADROOM.`
   - Visual: Terminal checklist marks `laptop wattage`, `shared devices`, and `cable rating`, then opens the source URL.
   - VO/caption: "Match the laptop first, then add headroom for shared devices."
+
+## 2026-10-06 — Your surge protector can die and keep powering devices
+
+- Source: `https://stackgeist.dev/guides/surge-protector-clicking`
+- Landing URL: `https://stackgeist.dev/guides/surge-protector-clicking?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=dead_surge_protector_led`
+- Best posting time (ET): Tuesday 7:30 PM ET
+- Length: 20s
+- Hashtags: #surgeprotector #powersafety #electricalsafety #desksetup #techtok #techsupport #homeoffice
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ surge-status --protected?`
+  - Visual: A power strip runs a monitor normally while its `PROTECTED` LED stays dark.
+  - VO/caption: "Your surge protector can die and keep powering every device."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `POWER ON ≠ PROTECTED`
+  - Visual: Terminal splits the strip into two states: `OUTLETS: LIVE` and `SURGE PROTECTION: DEAD`.
+  - VO/caption: "If the protection light is off, it is just a power strip now."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `CLICKING REPEATS? UNPLUG.`
+  - Visual: Audio waveform spikes with each click as a red warning cursor flashes.
+  - VO/caption: "Repeated clicking can mean a failed surge component or an overload."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `CHECK LED → CHECK LOAD → REPLACE`
+  - Visual: Terminal checklist marks the protection LED, total connected load, and strip age.
+  - VO/caption: "Check the light and the load. Replace the strip if the light is off or clicking repeats."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `STILL POWERING ≠ STILL PROTECTING`
+  - Visual: The dead strip fades into a plain power-strip icon, then `$ open stackgeist.dev/guides/surge-protector-clicking`.
+  - VO/caption: "Still powering does not mean still protecting."
+
+### Caption
+A dead surge protector can keep every outlet live. If the protection LED is off or clicking repeats, unplug it and replace it. Full diagnostic at StackGeist.dev.
