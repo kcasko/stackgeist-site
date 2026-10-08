@@ -145,3 +145,41 @@ A hot extension cord is warning you, not warming up. Uncoil it, check the load a
 
 ### Caption
 A dead surge protector can keep every outlet live. If the protection LED is off or clicking repeats, unplug it and replace it. Full diagnostic at StackGeist.dev.
+
+## 2026-10-08 — Portable monitor powered on, but no signal?
+
+- Source: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal`
+- Landing URL: `https://stackgeist.dev/guides/portable-usb-c-monitor-no-signal?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=portable_monitor_no_signal`
+- Best posting time (ET): Thursday 7:30 PM ET
+- Length: 20s
+- Hashtags: #portablemonitor #usbc #displayport #laptopsetup #techtok #techsupport #workfromanywhere
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ display --status=NO_SIGNAL`
+  - Visual: Portable monitor powers on, then flashes `NO SIGNAL` beside a connected USB-C cable.
+  - VO/caption: "Your portable monitor has power, so why is there no picture?"
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  CHECK ALT MODE`
+  - Visual: Laptop spec page highlights `DisplayPort Alt Mode`, `USB4`, and `Thunderbolt`; a data-only port turns red.
+  - VO/caption: "First, confirm that exact USB-C port supports video output."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `02  SWAP THE CABLE`
+  - Visual: Charge-only cable powers the display but shows no image; a full-featured cable restores video.
+  - VO/caption: "A charge-only cable can power the screen without carrying video."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `03  BYPASS THE HUB`
+  - Visual: Monitor cable moves from a USB-C hub directly into the laptop; the desktop appears.
+  - VO/caption: "Plug it directly into the laptop. Most portable hubs block downstream video."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `PORT → CABLE → DIRECT CONNECTION`
+  - Visual: Terminal checklist marks all three tests, then opens the source URL.
+  - VO/caption: "Diagnose the port, cable, then connection path before blaming the monitor."
+
+### Caption
+Portable monitor powers on but says no signal? Check whether the exact USB-C port supports video, swap in a full-featured cable, and bypass the hub. Full diagnostic at StackGeist.dev.
