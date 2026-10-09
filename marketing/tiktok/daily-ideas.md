@@ -183,3 +183,41 @@ A dead surge protector can keep every outlet live. If the protection LED is off 
 
 ### Caption
 Portable monitor powers on but says no signal? Check whether the exact USB-C port supports video, swap in a full-featured cable, and bypass the hub. Full diagnostic at StackGeist.dev.
+
+## 2026-10-09 — Your MX Master 3S scroll wheel may not be broken
+
+- Source: `https://stackgeist.dev/guides/mx-master-3s-scroll-wheel-not-working`
+- Landing URL: `https://stackgeist.dev/guides/mx-master-3s-scroll-wheel-not-working?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=mx_master_scroll_fix`
+- Best posting time (ET): Friday 7:30 PM ET
+- Length: 20s
+- Hashtags: #mxmaster3s #logitech #mousetips #desksetup #techtok #techsupport #productivity
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ scroll --status=BROKEN?`
+  - Visual: MX Master 3S wheel spins freely while a webpage barely moves; red error cursor flashes.
+  - VO/caption: "Your MX Master 3S scroll wheel may not be broken."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  PRESS SMARTSHIFT ONCE`
+  - Visual: Finger presses the button directly behind the wheel; the wheel changes from free-spin to ratchet mode.
+  - VO/caption: "Press the button behind the wheel once. It toggles SmartShift mode."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `02  CHECK THE AXLE`
+  - Visual: Side light reveals hair around the wheel gap; compressed air clears it.
+  - VO/caption: "Still stuck? Hair or lint can bind the wheel axle."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `03  RESET OPTIONS+`
+  - Visual: Logi Options+ scroll settings return to defaults, then the battery meter fills.
+  - VO/caption: "Reset the scroll settings, then charge the mouse fully."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `TOGGLE → CLEAN → RESET`
+  - Visual: Terminal checklist turns green, then opens the source URL.
+  - VO/caption: "Try the fix before replacing the mouse."
+
+### Caption
+MX Master 3S wheel acting dead? Toggle SmartShift, clear the axle, and reset Logi Options+ before replacing the mouse. Full fix at StackGeist.dev.
