@@ -221,3 +221,41 @@ Portable monitor powers on but says no signal? Check whether the exact USB-C por
 
 ### Caption
 MX Master 3S wheel acting dead? Toggle SmartShift, clear the axle, and reset Logi Options+ before replacing the mouse. Full fix at StackGeist.dev.
+
+## 2026-10-10 — Hard drive spinning but missing in Windows?
+
+- Source: `https://stackgeist.dev/guides/wd-elements-not-showing-up`
+- Landing URL: `https://stackgeist.dev/guides/wd-elements-not-showing-up?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=wd_elements_missing`
+- Best posting time (ET): Saturday 12:15 PM ET
+- Length: 20s
+- Hashtags: #wdElements #externalharddrive #windows11 #datastorage #techtok #techsupport #pchelp
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ disk --status=MISSING`
+  - Visual: WD Elements drive spins up, but File Explorer shows no external drive.
+  - VO/caption: "Your hard drive is spinning, but Windows acts like it does not exist."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `01  SKIP THE HUB`
+  - Visual: Move the drive from an unpowered USB hub to a rear motherboard USB port.
+  - VO/caption: "Plug it directly into a rear USB port. An unpowered hub can starve the drive."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `02  SWAP THE CABLE`
+  - Visual: Replace a generic cable with the original USB 3.0 Micro-B cable; connection turns green.
+  - VO/caption: "Then try the original cable, or a rated USB 3.0 replacement."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `03  CHECK DISK MANAGEMENT`
+  - Visual: Run `diskmgmt.msc`, identify the drive by capacity, and highlight its missing drive letter.
+  - VO/caption: "Still missing? Disk Management may see it without a drive letter."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `CLICKING? BACK UP NOW.`
+  - Visual: Terminal checklist reads `PORT → CABLE → DRIVE LETTER`, then a red clicking-drive warning.
+  - VO/caption: "Try port, cable, then drive letter. If it clicks, back up now."
+
+### Caption
+Drive spinning but missing in Windows? Test the power path, cable, and drive letter before calling it dead. If it clicks, back up immediately. Full fix at StackGeist.dev.
