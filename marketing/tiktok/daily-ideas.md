@@ -259,3 +259,41 @@ MX Master 3S wheel acting dead? Toggle SmartShift, clear the axle, and reset Log
 
 ### Caption
 Drive spinning but missing in Windows? Test the power path, cable, and drive letter before calling it dead. If it clicks, back up immediately. Full fix at StackGeist.dev.
+
+## 2026-10-11 — Why a 65W charger may not boot your Raspberry Pi 5
+
+- Source: `https://stackgeist.dev/guides/raspberry-pi-5-wont-boot`
+- Landing URL: `https://stackgeist.dev/guides/raspberry-pi-5-wont-boot?utm_source=tiktok&utm_medium=organic&utm_campaign=daily&utm_content=pi5_65w_charger`
+- Best posting time (ET): Sunday 7:30 PM ET
+- Length: 20s
+- Hashtags: #raspberrypi5 #raspberrypi #homelab #linux #usbcpd #techtok #techsupport
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ pi5 --power=65W --boot=FAIL`
+  - Visual: Raspberry Pi 5 connected to a 65W laptop charger. Red LED turns on, but the monitor stays black.
+  - VO/caption: "A 65-watt laptop charger can still fail to boot your Raspberry Pi 5."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `WATTS ARE NOT THE WHOLE SPEC`
+  - Visual: Charger profile list highlights `5V/3A`, while the Pi requirement flashes `5V/5A`.
+  - VO/caption: "The Pi needs a 5-volt, 5-amp profile. Many laptop chargers only offer 3 amps at 5 volts."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `01  USE 27W 5V/5A POWER`
+  - Visual: Swap in the official Raspberry Pi 27W USB-C supply. The undervoltage warning clears.
+  - VO/caption: "Use the official 27-watt supply, or verify 5 volts at 5 amps on the label."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `02  RED ONLY? CHECK microSD`
+  - Visual: Solid red LED with no green activity. Raspberry Pi Imager reflashes the microSD card.
+  - VO/caption: "Still red with no green activity? Reflash the microSD card with Raspberry Pi Imager."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `POWER PROFILE → LED → microSD`
+  - Visual: Terminal checklist turns green, then opens the source URL.
+  - VO/caption: "Check the power profile, read the LED, then test the card before replacing the board."
+
+### Caption
+A bigger watt number does not guarantee the 5V/5A profile a Raspberry Pi 5 needs. Check power, the LED pattern, and the microSD card before calling the board dead. Full fix at StackGeist.dev.
