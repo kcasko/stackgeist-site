@@ -297,3 +297,37 @@ Drive spinning but missing in Windows? Test the power path, cable, and drive let
 
 ### Caption
 A bigger watt number does not guarantee the 5V/5A profile a Raspberry Pi 5 needs. Check power, the LED pattern, and the microSD card before calling the board dead. Full fix at StackGeist.dev.
+
+## 2026-10-12 — Your numpad may be pushing your mouse too far away
+
+- Source: `https://stackgeist.dev/guides/keyboard-mouse-fit`
+- Best posting time (ET): Monday 7:30 PM ET
+- Length: 20s
+- Hashtags: #deskergonomics #keyboardsetup #mousetips #desksetup #productivity #techtok #homeoffice
+
+### Script (5 shots, 20s)
+
+- `00:00–00:04` — SHOT 1
+  - On-screen text: `$ reach-zone --status=TOO_WIDE`
+  - Visual: Top-down desk shot. A full-size keyboard forces the mouse outward and the user's elbow flares away from the body.
+  - VO/caption: "Your numpad may be pushing your mouse too far away."
+
+- `00:04–00:08` — SHOT 2
+  - On-screen text: `FULL SIZE = EXTRA REACH`
+  - Visual: Outline the full keyboard width, then draw the longer path from the home row to the mouse.
+  - VO/caption: "A full-size board moves a right-hand mouse farther outward."
+
+- `00:08–00:12` — SHOT 3
+  - On-screen text: `CENTER THE LETTER KEYS`
+  - Visual: Shift the keyboard until the letter keys, not the entire chassis, align with the user's torso.
+  - VO/caption: "Center the typing area to your body, not the whole keyboard."
+
+- `00:12–00:16` — SHOT 4
+  - On-screen text: `MOCK IT BEFORE CHECKOUT`
+  - Visual: Painter's tape marks a TKL footprint. The mouse moves inward and the shoulder relaxes.
+  - VO/caption: "Tape out a TKL footprint and test your real reach before buying."
+
+- `00:16–00:20` — END CARD
+  - On-screen text: `WIDTH → REACH → REAL TASK`
+  - Visual: Terminal checklist marks `keyboard width`, `mouse distance`, and `10-minute test`, then opens the source URL.
+  - VO/caption: "Choose width by reach and workflow, not the product photo."
