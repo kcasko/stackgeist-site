@@ -1,6 +1,6 @@
 ---
 import NewsletterSignup from './NewsletterSignup.astro';
-import type { IncomeKit, KitItem } from '../data/incomeKits';
+import { INCOME_KITS, type IncomeKit, type KitItem } from '../data/incomeKits';
 
 const { kit } = Astro.props as { kit: IncomeKit };
 const tierLabel: Record<KitItem['tier'], string> = {
@@ -10,6 +10,28 @@ const tierLabel: Record<KitItem['tier'], string> = {
 };
 const isExternal = (href: string) => href.startsWith('http');
 const campaign = `income_kits_${kit.slug}`;
+
+// Sibling kits: compute topic adjacency by slug-token overlap so every kit
+// page gets 4-5 inbound links from peers instead of only the /kits hub.
+// Google treats a leaf page linked only from its hub as low-priority; a kit
+// linked from 4 topic-adjacent kits reads as "part of a cluster".
+const STOP_WORDS = new Set(['kit', 'desk', 'the', 'a', 'to', 'for', 'and', 'with', 'under', '300', '100', '200', '500']);
+function tokens(slug: string): Set<string> {
+  return new Set(slug.split('-').filter((t) => t.length > 2 && !STOP_WORDS.has(t)));
+}
+const kitTokens = tokens(kit.slug);
+const siblingKits = INCOME_KITS
+  .filter((k) => k.slug !== kit.slug)
+  .map((k) => {
+    const other = tokens(k.slug);
+    let overlap = 0;
+    for (const t of kitTokens) if (other.has(t)) overlap++;
+    return { kit: k, overlap };
+  })
+  .filter((entry) => entry.overlap > 0)
+  .sort((a, b) => b.overlap - a.overlap || a.kit.title.localeCompare(b.kit.title))
+  .slice(0, 4)
+  .map((entry) => entry.kit);
 ---
 <article class="article-page kit-page">
   <p class="breadcrumbs"><a href="/kits">Kits</a> / {kit.title}</p>
@@ -73,6 +95,18 @@ const campaign = `income_kits_${kit.slug}`;
       ))}
     </div>
   </section>
+
+  {siblingKits.length > 0 && (
+    <section class="content-section kit-siblings">
+      <p class="page-kicker">adjacent kits</p>
+      <h2 class="section-heading">Other kits for similar builds.</h2>
+      <div class="cards">
+        {siblingKits.map((sib) => (
+          <a class="card" href={`/kits/${sib.slug}/`}><h3>{sib.title}</h3><p>{sib.promise}</p></a>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="content-section kit-social">
     <p class="page-kicker">distribution</p>
