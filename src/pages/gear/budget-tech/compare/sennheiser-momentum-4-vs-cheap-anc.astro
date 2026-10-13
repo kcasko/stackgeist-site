@@ -1,8 +1,19 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
-import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
-const __sd = [articleSchema({ headline: "Sennheiser Momentum 4 vs Anker Soundcore Q30", description: "These headphones sit in different price tiers. Momentum 4 adds aptX Adaptive support and a longer advertised battery life; Soundcore Q30 keeps the core wireless ANC feature set at a lower cost. The right choice depends on which differences your devices and listening habits can use.", url: 'https://stackgeist.dev/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc', dateModified: '2026-09-04' })];
+import { articleSchema, howToSchema, faqSchema, comparisonProductSchemas } from '../../../../lib/structured-data';
+const __sd = [
+  articleSchema({ headline: "Sennheiser Momentum 4 vs Anker Soundcore Q30", description: "These headphones sit in different price tiers. Momentum 4 adds aptX Adaptive support and a longer advertised battery life; Soundcore Q30 keeps the core wireless ANC feature set at a lower cost. The right choice depends on which differences your devices and listening habits can use.", url: 'https://stackgeist.dev/gear/budget-tech/compare/sennheiser-momentum-4-vs-cheap-anc', dateModified: '2026-09-04' }),
+  ...comparisonProductSchemas([
+    { name: "Sennheiser Momentum 4 Wireless", description: "Choose it when the longer published battery rating and aptX Adaptive support justify the premium.", amazonUrl: "https://www.amazon.com/dp/B0B6GHW1SX?tag=deskrespawn-20" },
+    { name: "Soundcore by Anker Life Q30", description: "Choose it for a lower-cost route to hybrid ANC, app EQ, multipoint, and long battery life.", amazonUrl: "https://www.amazon.com/dp/B08HMWZBXC?tag=deskrespawn-20" }
+  ]),
+  faqSchema({ questions: [
+    { question: "Sennheiser Momentum 4 Wireless vs Soundcore by Anker Life Q30: which should I buy?", answer: "Choose Momentum 4 when its longer published battery rating and aptX Adaptive support justify the premium for your devices." },
+    { question: "When should I pick the Sennheiser Momentum 4 Wireless?", answer: "You use a compatible device that supports aptX Adaptive and want that codec option." },
+    { question: "When should I pick the Soundcore by Anker Life Q30?", answer: "Choose it for a lower-cost route to hybrid ANC, app EQ, multipoint, and long battery life." }
+  ] }),
+];
 ---
 <ContentLayout structuredData={__sd} title="Sennheiser Momentum 4 vs Anker Soundcore Q30: Which ANC Headphones Should You Buy? | StackGeist" description="Compare Momentum 4 and Soundcore Q30 by battery life, codecs, build, controls, and intended buyer before choosing an ANC headphone." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / Sennheiser Momentum 4 vs Soundcore Q30</p>

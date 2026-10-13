@@ -1,8 +1,17 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
-import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
-const __sd = [articleSchema({ headline: "ALFA AC1900 USB Wi-Fi Adapter vs Built-in Laptop Wi-Fi", description: "Built-in Wi-Fi cards in laptops use tiny internal antennas tucked around the screen bezel. In a good-signal room they work fine. In a weak-signal room they struggle. An external USB adapter with big physical antennas can pull useful signal where the built-in card sees nothing. Here is when to spend the $50.", url: 'https://stackgeist.dev/gear/budget-tech/compare/alfa-adapter-vs-builtin-wifi', dateModified: '2026-09-04' })];
+import { articleSchema, howToSchema, faqSchema, comparisonProductSchemas } from '../../../../lib/structured-data';
+const __sd = [
+  articleSchema({ headline: "ALFA AC1900 USB Wi-Fi Adapter vs Built-in Laptop Wi-Fi", description: "Built-in Wi-Fi cards in laptops use tiny internal antennas tucked around the screen bezel. In a good-signal room they work fine. In a weak-signal room they struggle. An external USB adapter with big physical antennas can pull useful signal where the built-in card sees nothing. Here is when to spend the $50.", url: 'https://stackgeist.dev/gear/budget-tech/compare/alfa-adapter-vs-builtin-wifi', dateModified: '2026-09-04' }),
+  ...comparisonProductSchemas([
+    { name: "ALFA AC1900 USB Wi-Fi Adapter", description: "Choose it only when weak-signal placement or external antennas solve a problem your built-in Wi-Fi cannot.", amazonUrl: "https://www.amazon.com/dp/B01MZD7Z76?tag=deskrespawn-20" }
+  ]),
+  faqSchema({ questions: [
+    { question: "Should I buy the ALFA AC1900 USB Wi-Fi Adapter?", answer: "Router placement first, always." },
+    { question: "When should I pick the ALFA AC1900 USB Wi-Fi Adapter?", answer: "Your laptop is in a room where Wi-Fi is genuinely bad." }
+  ] }),
+];
 ---
 <ContentLayout structuredData={__sd} title="ALFA AC1900 USB Wi-Fi Adapter vs Built-in Laptop Wi-Fi: When to Upgrade? | StackGeist" description="Built-in laptop Wi-Fi is passable most of the time. In a weak-signal room, an external USB adapter with real antennas is a night-and-day upgrade." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / ALFA AC1900 vs built-in Wi-Fi</p>

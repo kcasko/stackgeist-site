@@ -83,3 +83,35 @@ export function faqSchema(input: {
     })),
   };
 }
+
+// Comparison-page helper. Takes two (or one) product offer objects and an
+// optional FAQ list, and returns the full schema array for a /compare/ page.
+// Keeps individual compare files tiny while giving Google Product + FAQ markup
+// on top of the existing Article schema. Every field must be verifiable from
+// the page itself.
+export interface ComparisonOffer {
+  name: string;
+  description: string;
+  amazonUrl: string;
+  brand?: string;
+  image?: string;
+}
+export function comparisonProductSchemas(offers: ComparisonOffer[]): SchemaObj[] {
+  return offers.map((o) => {
+    const out: SchemaObj = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: o.name,
+      description: o.description,
+      offers: {
+        '@type': 'Offer',
+        url: o.amazonUrl,
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'USD',
+      },
+    };
+    if (o.brand) out.brand = { '@type': 'Brand', name: o.brand };
+    if (o.image) out.image = o.image;
+    return out;
+  });
+}

@@ -1,8 +1,19 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
-import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
-const __sd = [articleSchema({ headline: "Acodot 9-in-1 vs Anker 553 8-in-1 USB-C Hub", description: "Both hubs solve the same problem: modern laptops don't have enough ports. The Acodot is cheaper and includes SD + microSD + audio jack. The Anker 553 gives up card readers to add a second HDMI output. Pick based on whether you need two external monitors or just more everyday ports.", url: 'https://stackgeist.dev/gear/budget-tech/compare/acodot-hub-vs-anker-553', dateModified: '2026-09-04' })];
+import { articleSchema, howToSchema, faqSchema, comparisonProductSchemas } from '../../../../lib/structured-data';
+const __sd = [
+  articleSchema({ headline: "Acodot 9-in-1 vs Anker 553 8-in-1 USB-C Hub", description: "Both hubs solve the same problem: modern laptops don't have enough ports. The Acodot is cheaper and includes SD + microSD + audio jack. The Anker 553 gives up card readers to add a second HDMI output. Pick based on whether you need two external monitors or just more everyday ports.", url: 'https://stackgeist.dev/gear/budget-tech/compare/acodot-hub-vs-anker-553', dateModified: '2026-09-04' }),
+  ...comparisonProductSchemas([
+    { name: "Acodot 9-in-1 USB-C Hub", description: "Lower-cost choice when one external display and broad port variety cover your setup.", amazonUrl: "https://www.amazon.com/dp/B0BKPYY8BC?tag=deskrespawn-20" },
+    { name: "Anker 553 USB-C Hub (8-in-1)", description: "Better fit when dual HDMI and Gigabit Ethernet matter more than the lowest price.", amazonUrl: "https://www.amazon.com/dp/B0874M3KW4?tag=deskrespawn-20" }
+  ]),
+  faqSchema({ questions: [
+    { question: "Acodot 9-in-1 USB-C Hub vs Anker 553 USB-C Hub (8-in-1): which should I buy?", answer: "Two external monitors: Anker 553." },
+    { question: "When should I pick the Acodot 9-in-1 USB-C Hub?", answer: "You need SD or microSD card readers." },
+    { question: "When should I pick the Anker 553 USB-C Hub (8-in-1)?", answer: "You run two external monitors from a compatible laptop." }
+  ] }),
+];
 ---
 <ContentLayout structuredData={__sd} title="Acodot 9-in-1 USB-C Hub vs Anker 553 8-in-1: Which Laptop Hub Should You Buy? | StackGeist" description="Compare the Acodot 9-in-1 and Anker 553 by display support, port mix, Ethernet, power delivery, and fit." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / Acodot vs Anker 553</p>

@@ -1,8 +1,17 @@
 ---
 import ContentLayout from '../../../../layouts/ContentLayout.astro';
 import ComparisonAffiliateCta from '../../../../components/ComparisonAffiliateCta.astro';
-import { articleSchema, howToSchema, faqSchema } from '../../../../lib/structured-data';
-const __sd = [articleSchema({ headline: "Multi-Port GaN Station vs Single Wall Brick", description: "A 500W multi-port GaN station replaces a pile of separate bricks with one desktop unit. A single 100W wall brick is smaller, cheaper, and dead simple. The right answer depends entirely on how many devices you charge at your desk vs how many rooms you charge across.", url: 'https://stackgeist.dev/gear/budget-tech/compare/gan-station-vs-wall-brick', dateModified: '2026-09-04' })];
+import { articleSchema, howToSchema, faqSchema, comparisonProductSchemas } from '../../../../lib/structured-data';
+const __sd = [
+  articleSchema({ headline: "Multi-Port GaN Station vs Single Wall Brick", description: "A 500W multi-port GaN station replaces a pile of separate bricks with one desktop unit. A single 100W wall brick is smaller, cheaper, and dead simple. The right answer depends entirely on how many devices you charge at your desk vs how many rooms you charge across.", url: 'https://stackgeist.dev/gear/budget-tech/compare/gan-station-vs-wall-brick', dateModified: '2026-09-04' }),
+  ...comparisonProductSchemas([
+    { name: "500W Multi-Port GaN Charging Station", description: "Best for consolidating several compatible devices at one desk; overkill for a single-device setup.", amazonUrl: "https://www.amazon.com/dp/B0FBH24KXC?tag=deskrespawn-20" }
+  ]),
+  faqSchema({ questions: [
+    { question: "Should I buy the 500W Multi-Port GaN Charging Station?", answer: "Count the chargers currently on your desk." },
+    { question: "When should I pick the 500W Multi-Port GaN Charging Station?", answer: "Your desk has 3+ chargers on it right now." }
+  ] }),
+];
 ---
 <ContentLayout structuredData={__sd} title="Multi-Port GaN Charging Station vs Single Wall Brick: Which Setup Actually Charges Faster? | StackGeist" description="One GaN station charges four devices from one outlet. One good wall brick charges one device. Here is when each answer is the right one." active="gear">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / <a href="/gear">Gear</a> / <a href="/gear/budget-tech">Budget tech</a> / <a href="/gear/budget-tech/compare">Compare</a> / GaN station vs wall brick</p>
