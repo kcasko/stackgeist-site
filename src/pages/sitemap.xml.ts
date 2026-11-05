@@ -2,6 +2,7 @@ export const prerender = true;
 
 import { GENERATED_SETUPS } from '../data/gamingSetupOptions';
 import { troubleshootingHubs } from '../data/troubleshootingHubs';
+import { isArchivedRoute } from '../data/searchScope';
 import { INCOME_KITS, isKitIndexable } from '../data/incomeKits';
 
 const pageModules = import.meta.glob('./**/*.astro');
@@ -55,6 +56,7 @@ const dynamicRoutes = [
   ...INCOME_KITS.filter(isKitIndexable).map((kit) => `/kits/${kit.slug}`),
 ];
 const routes = [...new Set([...staticRoutes, ...dynamicRoutes])]
+  .filter((route) => !isArchivedRoute(route))
   .sort((a, b) => a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b));
 
 export function GET() {

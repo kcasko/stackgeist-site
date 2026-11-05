@@ -15,22 +15,11 @@ before(() => {
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
 });
 
-test('sitemap includes every generated setup route exactly once', async () => {
+test('sitemap keeps the focus setup once and leaves archived setups out', async () => {
   const sitemap = await read('dist/sitemap.xml');
-  const slugs = [
-    'streaming-content-creator',
-    'console-living-room',
-    'handheld-steam-deck',
-    'work-from-home-pro',
-    'home-lab-dev-workstation',
-    'dual-monitor-productivity',
-    'sim-racing-flight',
-    'ai-ml-workstation',
-    'podcasting-audio',
-  ];
-  for (const slug of slugs) {
-    const url = `https://stackgeist.dev/setups/${slug}`;
-    assert.equal(sitemap.split(url).length - 1, 1, `${url} should appear once`);
+  assert.equal(sitemap.split('https://stackgeist.dev/setups/home-lab-dev-workstation/').length - 1, 1);
+  for (const slug of ['streaming-content-creator', 'console-living-room', 'sim-racing-flight']) {
+    assert.doesNotMatch(sitemap, new RegExp(`https://stackgeist\\.dev/setups/${slug}/`));
   }
   assert.doesNotMatch(sitemap, /https:\/\/stackgeist\.dev\/404/);
 });

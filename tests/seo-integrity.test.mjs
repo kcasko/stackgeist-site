@@ -61,3 +61,21 @@ test('noindexed pages still let crawlers follow their links', { skip: !existsSyn
     assert.doesNotMatch(readFileSync(file, 'utf8'), /<meta name="robots" content="noindex, nofollow/, routeOf(file));
   }
 });
+
+test('search focus pages are indexable and in the sitemap', { skip: !existsSync(join(DIST, 'sitemap.xml')) }, () => {
+  const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
+  for (const route of ['/labs/', '/labs/active-directory-home-lab/', '/labs/osticket-docker-help-desk-lab/', '/labs/aws-cognito-private-crud-fix/', '/labs/help-desk-practice-without-experience/', '/certs/', '/certs/security-plus-v7-vs-v8/', '/guides/usb-c-dock-only-one-monitor/']) {
+    assert.ok(sitemap.includes(`https://stackgeist.dev${route}<`), route);
+    assert.match(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /<meta name="robots" content="index/, route);
+  }
+});
+
+test('archived desk pages stay online but out of search', { skip: !existsSync(DIST) }, () => {
+  for (const route of ['/setups/midnight-shift/', '/gear/monitor-support/ergotron-lx/', '/guides/cable-management/']) {
+    assert.match(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /<meta name="robots" content="noindex, follow/, route);
+  }
+});
+
+test('offers stay hidden until they have an approved link', { skip: !existsSync(DIST) }, () => {
+  assert.doesNotMatch(readFileSync(join(DIST, 'certs', 'index.html'), 'utf8'), /Paid options/);
+});

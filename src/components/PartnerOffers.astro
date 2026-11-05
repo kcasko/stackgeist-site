@@ -1,0 +1,25 @@
+---
+import { PARTNER_OFFERS } from '../data/partnerOffers';
+
+interface Props {
+  ids: (keyof typeof PARTNER_OFFERS)[];
+  placement: string;
+}
+
+const { ids, placement } = Astro.props;
+const offers = ids.map((id) => PARTNER_OFFERS[id]).filter((offer) => offer.url);
+---
+{offers.length > 0 && (
+  <section class="content-section" aria-label="Paid options">
+    <p class="page-kicker">Paid options</p>
+    <div class="cards">
+      {offers.map((offer) => (
+        <a class="card" href={offer.url} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement={placement}>
+          <h3>{offer.label} ↗</h3>
+          <p>{offer.note}</p>
+        </a>
+      ))}
+    </div>
+    <p class="note">Paid link: StackGeist may earn a commission at no extra cost to you. <a href="/affiliate-disclosure/">Disclosure</a></p>
+  </section>
+)}

@@ -1,0 +1,24 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+const labs = [
+  { href: '/labs/help-desk-practice-without-experience/', title: 'Practice help desk work without a help desk job', note: 'Where to get real tickets, what to practice, and how to show the work.' },
+  { href: '/labs/active-directory-home-lab/', title: 'Active Directory home lab: what I built and what broke', note: 'Four VMs, verified output, and three faults found during an audit.' },
+  { href: '/labs/osticket-docker-help-desk-lab/', title: 'osTicket help desk lab with Docker Compose', note: 'A local ticket system with captured email and five practice tickets.' },
+  { href: '/labs/aws-cognito-private-crud-fix/', title: 'Fixing anonymous CRUD on an AWS portfolio app', note: 'How a public demo moved to Cognito, JWT authorization, and owner checks.' },
+];
+---
+<ContentLayout title="IT home labs for help desk and sysadmin practice | StackGeist" description="Real IT home labs documented with verified output: Active Directory, osTicket, AWS security fixes, and help desk practice for people moving into IT." active="labs">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Labs</p>
+  <p class="page-kicker">Home labs</p>
+  <h1 class="page-title">IT home labs built, broken, and documented.</h1>
+  <p class="page-lead">These are systems Keith Casko built while working toward IT support and systems roles. Each page says what was verified and what is still unfinished.</p>
+  <section class="content-section">
+    <div class="cards">
+      {labs.map((lab) => <a class="card" href={lab.href}><h2>{lab.title}</h2><p>{lab.note}</p></a>)}
+    </div>
+  </section>
+  <section class="content-section">
+    <div class="note">Choosing what to study alongside a lab? <a href="/certs/">Compare the entry-level IT certifications</a>.</div>
+  </section>
+</ContentLayout>

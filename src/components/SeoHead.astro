@@ -1,4 +1,5 @@
 ---
+import { isArchivedRoute } from '../data/searchScope';
 interface Props {
   title: string;
   description: string;
@@ -7,6 +8,7 @@ interface Props {
   extraStructuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 const { title, description, type = 'website', noindex = false, extraStructuredData } = Astro.props;
+const shouldNoindex = noindex || isArchivedRoute(Astro.url.pathname);
 const extraSchemas: Record<string, unknown>[] = extraStructuredData
   ? (Array.isArray(extraStructuredData) ? extraStructuredData : [extraStructuredData])
   : [];
@@ -46,7 +48,7 @@ const structured = {
   '@type': 'WebSite',
   name: 'StackGeist',
   url: site.toString(),
-  description: 'PC and desk tech troubleshooting, fit-first gear research, and practical setup guides.',
+  description: 'IT home labs, certification study plans, and practical PC troubleshooting for people building an IT career.',
 };
 ---
 <meta name="description" content={description} />
@@ -54,7 +56,7 @@ const structured = {
 <meta name="color-scheme" content="dark" />
 <meta name="p:domain_verify" content="be7ae82233943c7beaf0af4fa9801ed0" />
 <meta name="msvalidate.01" content="826F214A9078E8999D09FC983C4BAAA1" />
-<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+<meta name="robots" content={shouldNoindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
 {googleVerify && <meta name="google-site-verification" content={googleVerify} />}
 <link rel="canonical" href={canonical} />
 <link rel="alternate" type="application/rss+xml" title="StackGeist setup feed" href={feed} />
@@ -68,7 +70,7 @@ const structured = {
 <meta property="og:image" content={image} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="StackGeist - PC and desk tech fixes, gear research, and setup guides" />
+<meta property="og:image:alt" content="StackGeist - IT home labs, certification study plans, and PC fixes" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />

@@ -1,0 +1,70 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'Which IT certification first? A+, Network+, Security+, or AWS';
+const description = 'Compare CompTIA A+, Network+, Security+, and AWS Cloud Practitioner by exam format, recommended experience, and the IT role each one supports, from official exam pages.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/certs/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+
+const certs = [
+  { name: 'CompTIA A+', codes: '220-1201 and 220-1202 (two exams)', format: 'Up to 90 questions, 90 minutes per exam', pass: '675 and 700 of 900', exp: '12 months of hands-on IT support work', href: 'https://www.comptia.org/en-us/certifications/a/core-1-and-2-v15/' },
+  { name: 'CompTIA Network+', codes: 'N10-009', format: 'Up to 90 questions, 90 minutes', pass: '720 of 900', exp: 'A+ plus 9 to 12 months as a junior network admin or network support tech', href: 'https://www.comptia.org/en-us/certifications/network/' },
+  { name: 'CompTIA Security+', codes: 'SY0-701 now, SY0-801 expected', format: 'Up to 90 questions, 90 minutes', pass: '750 of 900', exp: 'V7: Network+ plus two years in a security or systems admin role', href: 'https://www.comptia.org/en-us/certifications/security/' },
+  { name: 'AWS Cloud Practitioner', codes: 'CLF-C02', format: '65 questions, 90 minutes', pass: 'See the AWS exam guide', exp: 'No IT background required', href: 'https://aws.amazon.com/certification/certified-cloud-practitioner/' },
+];
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/">StackGeist</a> / Certs</p>
+    <p class="page-kicker">Researched from official exam pages · checked 5 November 2026</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">Pick based on the job you want next. For most people aiming at help desk, that points to A+. For cloud support with no IT background, AWS Cloud Practitioner has the lowest stated barrier.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Help desk or desktop support: start with A+. Already comfortable with hardware and Windows: consider Network+. Cloud-focused: AWS Cloud Practitioner. Security+ is usually a later step, since CompTIA recommends several years of experience. The ordering is my judgment; the exam facts are from the official pages linked below.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Compare</p>
+        <h2>The exams side by side</h2>
+        <div class="article-cards">
+          {certs.map((cert) => (
+            <div>
+              <strong><a href={cert.href} rel="noopener">{cert.name}</a></strong>
+              <p>Exam: {cert.codes}</p>
+              <p>Format: {cert.format}</p>
+              <p>Passing score: {cert.pass}</p>
+              <p>Recommended: {cert.exp}</p>
+            </div>
+          ))}
+        </div>
+        <p>AWS lists the Cloud Practitioner exam at 100 USD, and extra fees may apply by location. CompTIA’s pages I checked did not show prices, so confirm in its store. Exams retire, so confirm your exact version before buying study material.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Recommended experience</p>
+        <h2>“Recommended” is not “required”</h2>
+        <p>Those experience figures are guidance from the vendors, not requirements listed on these pages. A home lab can’t replace a year on the job, but it does give you hands-on practice with the concepts. <a href="/labs/help-desk-practice-without-experience/">Here is how to practice without a help desk job</a>.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Timing</p>
+        <h2>Version changes to watch</h2>
+        <p>CompTIA expects Security+ V8 around 17 November 2026, while English V7 retires 11 June 2027. <a href="/certs/security-plus-v7-vs-v8/">See which version to take</a>. Network+ N10-009 has an estimated 2027 retirement, and A+ V15 an estimated 2028 retirement.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">About this page</p>
+        <h2>What this is based on</h2>
+        <p>This is research from official exam pages, not a report from someone who has sat all four exams. Treat it as a starting point for your decision.</p>
+      </section>
+    </div>
+    <PartnerOffers ids={['comptiaPractice', 'awsPractice']} placement="certs-hub" />
+  </article>
+</ContentLayout>

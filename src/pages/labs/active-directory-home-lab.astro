@@ -1,0 +1,93 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'Active Directory home lab: what I built and what broke';
+const description = 'A four-VM Windows Server 2022 Active Directory lab on VMware Workstation, with verified PowerShell output and the time, trust, and permission faults an audit found.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/labs/active-directory-home-lab/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / Active Directory home lab</p>
+    <p class="page-kicker">Built and documented · lab state verified 3 October 2026</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">I run a small Windows domain to practice the work that shows up on help desk and junior sysadmin tickets. The useful part was not installing it. It was auditing it afterward and finding what was quietly wrong.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Four VMs are enough: a domain controller, a file server, a Windows 11 client, and a firewall. The audit found a domain controller using its local clock, a client on the wrong network with a broken trust, and a share with broader access than intended. The first two are fixed. The third is still open and documented below.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Topology</p>
+        <h2>What is in the lab</h2>
+        <div class="article-cards">
+          <div><strong>DC01</strong><p>Windows Server 2022. AD DS, DNS, all FSMO roles, and the Global Catalog.</p></div>
+          <div><strong>FILE01</strong><p>Windows Server 2022 member server with one departmental SMB share.</p></div>
+          <div><strong>WIN11-01</strong><p>Domain-joined Windows 11 client.</p></div>
+          <div><strong>OPNSENSE</strong><p>Firewall for segmentation practice. Moving clients behind it is planned, not finished.</p></div>
+        </div>
+        <p>Everything runs on VMware Workstation Pro. The domain is <code>ad.bytegeist.lab</code>, with OUs for groups, servers, workstations, and users split into HR, IT, and Sales.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Fault 01</p>
+        <h2>The domain controller was keeping its own time</h2>
+        <p>The PDC Emulator is the authoritative time source for a forest. If it drifts, Kerberos tickets can fall outside the allowed five-minute skew, which reaches the help desk as “I can’t log in.” Nothing was failing yet, but this check showed the risk:</p>
+        <pre><code>w32tm /query /source
+# returned: Local CMOS Clock</code></pre>
+        <p>The fix pointed it at external time sources:</p>
+        <pre><code>w32tm /config /manualpeerlist:"time.windows.com,0x9 pool.ntp.org,0x9 time.nist.gov,0x9" `
+  /syncfromflags:manual /reliable:yes /update
+Restart-Service W32Time
+w32tm /resync /rediscover</code></pre>
+        <p>Afterward the source reported <code>time.windows.com,0x9</code> at stratum 5.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Fault 02</p>
+        <h2>The client lost its trust because of its network</h2>
+        <p>WIN11-01 had a NIC bridged to the physical LAN, so it could not reach the domain’s DNS. I moved it to the lab NAT network, pointed DNS at DC01, and repaired the machine account. These checks confirmed the result:</p>
+        <pre><code>Test-ComputerSecureChannel -Verbose
+# The secure channel between the local computer and the domain
+# ad.bytegeist.lab is in good condition.
+nltest /dsgetdc:ad.bytegeist.lab
+# DC: \\DC01.ad.bytegeist.lab
+# Flags: PDC GC DS LDAP KDC TIMESERV ... DNS_DC DNS_DOMAIN DNS_FOREST</code></pre>
+        <p>The lesson for tickets: when a domain client misbehaves, check which network it is on and which DNS server it uses before touching the account.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Fault 03</p>
+        <h2>The share is broader than it looks</h2>
+        <p>FILE01 grants access through the IT Employees group, so accounts do not get rights directly. Share permissions cap that group at Change, and NTFS grants Modify. But <code>BUILTIN\Users</code> still inherits read and create rights on the folder, which is wider than the IT-only model I intended.</p>
+        <pre><code>Invoke-Command FILE01 &#123;
+  Get-SmbShare | Where-Object Name -NotIn 'ADMIN$','C$','IPC$' | Get-SmbShareAccess
+  (Get-Acl C:\Shares\IT).Access
+&#125;</code></pre>
+        <p><strong>This is not fixed yet.</strong> The next change is to disable inheritance and keep only the required administrative and IT permissions.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Honest limits</p>
+        <h2>What I would do differently</h2>
+        <p>The repair transcript came from a built-in Administrator session. A named admin account with a separate daily sign-in is the better practice and my next hardening step. I also cleared a stale System log to quiet <code>dcdiag</code>. In production I would export it first:</p>
+        <pre><code>wevtutil epl System C:\Temp\System-before-clear.evtx
+wevtutil cl System
+dcdiag /q</code></pre>
+      </section>
+
+      <section>
+        <p class="page-kicker">Build your own</p>
+        <h2>Where to start</h2>
+        <p>Microsoft offers Windows Server trials through its <a href="https://www.microsoft.com/en-us/evalcenter/" rel="noopener">Evaluation Center</a>. Check the current terms there. Then build the domain controller first, join one client, and break something on purpose. Pair it with <a href="/labs/osticket-docker-help-desk-lab/">a ticket system</a> so each fix leaves a record.</p>
+      </section>
+    </div>
+    <PartnerOffers ids={['comptiaPractice']} placement="lab-active-directory" />
+  </article>
+</ContentLayout>

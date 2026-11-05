@@ -29,7 +29,7 @@ test('income kit routes are linked from navigation, footer, homepage, and sitema
   const home = await read('src/pages/index.astro');
   const sitemap = await read('src/pages/sitemap.xml.ts');
   for (const src of [header, footer, sitemap]) assert.match(src, /\/kits/);
-  for (const slug of ['help-desk-homelab-starter-kit', 'cheap-desk-upgrades-under-100', 'usb-c-desk-survival-kit']) {
+  for (const slug of ['help-desk-homelab-starter-kit']) {
     assert.match(home, new RegExp(`/kits/${slug}`));
   }
 });

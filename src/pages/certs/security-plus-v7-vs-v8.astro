@@ -1,0 +1,67 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'Security+ SY0-701 vs SY0-801: which version should you take?';
+const description = 'Security+ V8 (SY0-801) is expected around 17 November 2026 and English V7 (SY0-701) retires 11 June 2027. How to choose, based on CompTIA’s published dates and domains.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/certs/security-plus-v7-vs-v8/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/certs/">Certs</a> / Security+ V7 vs V8</p>
+    <p class="page-kicker">Researched from CompTIA pages · checked 5 November 2026, before the V8 launch</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">If you are already well into V7 study, finishing V7 is usually the practical choice while it is available. If you have not started, look at V8 first, and check that your study material matches it.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>CompTIA expects V8 (SY0-801) around 17 November 2026. V7 (SY0-701) stays available in English until 11 June 2027. Both have up to 90 questions, 90 minutes, and a passing score of 750. The choice mostly comes down to how far along you are and what study material exists yet. That advice is my judgment.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Dates and format</p>
+        <h2>What CompTIA publishes</h2>
+        <div class="article-cards">
+          <div><strong><a href="https://www.comptia.org/en-us/certifications/security/v7/" rel="noopener">V7: SY0-701</a></strong><p>Launched 7 November 2023. English retires 11 June 2027; Japanese, Portuguese, Spanish, and Thai retire 13 August 2027.</p></div>
+          <div><strong><a href="https://www.comptia.org/en-us/certifications/security/v8/" rel="noopener">V8: SY0-801</a></strong><p>Expected on or around 17 November 2026. English only so far. Estimated retirement is three years after launch.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Objectives</p>
+        <h2>V8 domains and weights</h2>
+        <div class="article-cards">
+          <div><strong>Security Operations</strong><p>27%</p></div>
+          <div><strong>Threats, Vulnerabilities, and Attacks</strong><p>24%</p></div>
+          <div><strong>Security Architecture</strong><p>19%</p></div>
+          <div><strong>General Security Concepts</strong><p>16%</p></div>
+          <div><strong>Security Program Management and Oversight</strong><p>14%</p></div>
+        </div>
+        <p>The V8 objectives include AI-related risks and AI-assisted security workflows. The page I checked does not give a side-by-side comparison with V7, so use the official objectives document rather than third-party summaries to judge the differences.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Decide</p>
+        <h2>Which version fits you</h2>
+        <div class="article-cards">
+          <div><strong>Far into V7 study</strong><p>Book V7 well before June 2027, and leave room for a retake.</p></div>
+          <div><strong>Not started</strong><p>Read the V8 objectives, then confirm your course or book names SY0-801.</p></div>
+          <div><strong>Starting right at launch</strong><p>Expect less V8 practice material at first. Check what exists before committing.</p></div>
+          <div><strong>New to IT</strong><p>Security+ may not be your first step. <a href="/certs/">Compare the entry options</a>.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">About this page</p>
+        <h2>What this is based on</h2>
+        <p>This was written before V8 launched, from CompTIA’s published pages. Launch dates can change, so confirm on CompTIA’s site before booking. It isn’t based on sitting either exam.</p>
+      </section>
+    </div>
+    <PartnerOffers ids={['comptiaPractice']} placement="certs-security-plus" />
+  </article>
+</ContentLayout>

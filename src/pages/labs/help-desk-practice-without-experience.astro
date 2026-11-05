@@ -1,0 +1,72 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'How to practice help desk work without a help desk job';
+const description = 'Practice real help desk skills before your first IT job: free troubleshooting incidents, a local ticket queue, a small Windows domain, and written proof you can show.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/labs/help-desk-practice-without-experience/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / Help desk practice</p>
+    <p class="page-kicker">From my own labs · disclosure: I built the tools linked here</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">Studying commands teaches you what a tool does. It does not teach the job, which is taking a vague complaint, gathering evidence, and explaining what you did. You can practice that part at home.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Practice in three steps: work simulated incidents, run a local ticket queue, then build a small Windows domain so your fixes are real. Keep the written notes, because they are what you can show an interviewer.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Step 01</p>
+        <h2>Work simulated incidents</h2>
+        <p>I built <a href="https://supportlab.casko.dev" rel="noopener">ByteGeist Support Lab</a> for an AWS hackathon because this gap kept bothering me. You get a ticket and investigate in a simulated terminal. An AI coach guides your reasoning, but code does the grading, so the AI cannot change your score.</p>
+        <div class="article-cards">
+          <div><strong>The Missing File Server</strong><p>Windows, networking, and DNS. Beginner.</p></div>
+          <div><strong>Access Denied</strong><p>Active Directory and file shares. Beginner.</p></div>
+          <div><strong>AccessDenied in S3</strong><p>AWS IAM and S3. Intermediate.</p></div>
+          <div><strong>Service Won’t Start</strong><p>Linux system administration. Intermediate.</p></div>
+          <div><strong>Server Is Up, App Is Down</strong><p>AWS cloud networking. Intermediate.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 02</p>
+        <h2>Run a real ticket queue</h2>
+        <p><a href="/labs/osticket-docker-help-desk-lab/">The osTicket lab</a> runs locally in Docker. File a ticket as the user, then work it as staff. The goal is the habit of priority, notes, and a clear resolution.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 03</p>
+        <h2>Make the fixes real</h2>
+        <p><a href="/labs/active-directory-home-lab/">A small Active Directory lab</a> lets you actually unlock the account or grant the folder access from a ticket. Audit it too. Mine had faults I did not know about until I looked.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Step 04</p>
+        <h2>Write it down in this format</h2>
+        <p>For each problem, record four things:</p>
+        <div class="article-cards">
+          <div><strong>Symptom</strong><p>What the user reported, in their words.</p></div>
+          <div><strong>Evidence</strong><p>The commands you ran and what they showed.</p></div>
+          <div><strong>Cause and fix</strong><p>What was wrong and exactly what you changed.</p></div>
+          <div><strong>Verification</strong><p>How you confirmed it works, and what is still unresolved.</p></div>
+        </div>
+        <p>Include what you got wrong. A lab with honest limits is more believable than one where everything went perfectly.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">What this does not do</p>
+        <h2>A lab is not job experience</h2>
+        <p>Describe it as a home lab on your resume and in interviews. It gives you specifics to discuss, but I can’t promise it will get you hired. Some employers also filter on certifications, so <a href="/certs/">compare those next</a>.</p>
+      </section>
+    </div>
+    <PartnerOffers ids={['comptiaPractice', 'linuxTraining']} placement="lab-help-desk-practice" />
+  </article>
+</ContentLayout>

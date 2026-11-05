@@ -7,12 +7,12 @@ import SeoHead from '../components/SeoHead.astro';
 import PinterestConsent from '../components/PinterestConsent.astro';
 interface Props {
   title: string; description: string;
-  active?: 'setups' | 'gear' | 'guides' | 'kits';
+  active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 const { title, description, active, noindex = false, structuredData } = Astro.props;
-const isEditorialPage = (active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/') || (active === 'kits' && Astro.url.pathname.startsWith('/kits/') && Astro.url.pathname !== '/kits/');
+const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathname.startsWith(prefix) && Astro.url.pathname !== prefix)) || (active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/') || (active === 'kits' && Astro.url.pathname.startsWith('/kits/') && Astro.url.pathname !== '/kits/');
 ---
 <!doctype html>
 <html lang="en">

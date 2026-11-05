@@ -1,0 +1,95 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'osTicket help desk lab with Docker Compose';
+const description = 'Run osTicket 1.18.4 locally with MariaDB and MailHog in Docker Compose, keep email inside the lab, and work five realistic help desk practice tickets.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/labs/osticket-docker-help-desk-lab/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / osTicket help desk lab</p>
+    <p class="page-kicker">Built and documented · stack committed September 2026</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">A help desk job is mostly a queue: intake, priority, notes, resolution. This lab gives you that queue on your own machine, with nothing exposed to the network and no real email leaving it.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Three containers: osTicket, MariaDB, and MailHog to capture email. I built the osTicket image from the release zip because the Docker Hub image I found was years out of date. Everything binds to <code>127.0.0.1</code>.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">The stack</p>
+        <h2>What runs and why</h2>
+        <div class="article-cards">
+          <div><strong>osTicket 1.18.4</strong><p>On <code>php:8.2-apache-bookworm</code>, built from a vendored zip so rebuilds do not depend on a download.</p></div>
+          <div><strong>MariaDB 11</strong><p>A named volume keeps data, and a healthcheck holds the web container until the database is ready.</p></div>
+          <div><strong>MailHog</strong><p>Catches outgoing mail so you can read ticket notifications without sending anything.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Compose</p>
+        <h2>The important parts of compose.yml</h2>
+        <p>This is trimmed from my file. Credentials come from a gitignored <code>.env</code>, and the <code>db</code> service still needs its database environment variables and a data volume.</p>
+        <pre><code>services:
+  db:
+    image: mariadb:11
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8087:80"
+    volumes:
+      - osticket-include:/var/www/html/include
+      - osticket-attachments:/var/www/html/attachments
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"</code></pre>
+        <p>The <code>include</code> volume matters because the web installer writes its config there. Without it, a rebuild loses your configuration.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Setup</p>
+        <h2>First run</h2>
+        <pre><code>docker compose build web
+docker compose up -d
+docker compose ps</code></pre>
+        <p>Give the database about 30 seconds, then open <code>http://127.0.0.1:8087/scp</code> for the installer. Use <code>db</code> as the database host. For outgoing mail, set SMTP host <code>mailhog</code>, port <code>1025</code>, with no authentication or TLS. Read captured mail at <code>http://127.0.0.1:8025</code>.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">The drill</p>
+        <h2>Five tickets to work</h2>
+        <p>File these through the customer portal so you see intake from the user’s side, then work them from the staff panel.</p>
+        <div class="article-cards">
+          <div><strong>Account locked</strong><p>A user mistyped a password after autofill failed and has a 10am meeting.</p></div>
+          <div><strong>HR shared folder request</strong><p>An access request, which should go through a group rather than to the person directly.</p></div>
+          <div><strong>Printer offline</strong><p>Practice asking what changed and scoping who is affected.</p></div>
+          <div><strong>New hire setup</strong><p>A checklist task with accounts, groups, and a deadline.</p></div>
+          <div><strong>Network outage</strong><p>Practice priority and updates when more than one person is down.</p></div>
+        </div>
+        <p>Write the resolution note as if someone else will read it: what you verified, what you changed, and how you confirmed it worked. Connect the account and folder tickets to <a href="/labs/active-directory-home-lab/">an Active Directory lab</a> so the fixes are real.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Honest limits</p>
+        <h2>What this page does not show</h2>
+        <p>This documents the stack and ticket set from my lab repository. I have not published completed ticket transcripts here. Keep the stack on localhost, since it is set up for practice rather than production use.</p>
+      </section>
+    </div>
+  </article>
+</ContentLayout>

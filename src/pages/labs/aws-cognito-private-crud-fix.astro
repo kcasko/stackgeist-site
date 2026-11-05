@@ -1,0 +1,59 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema } from '../../lib/structured-data';
+
+const title = 'Fixing anonymous CRUD on an AWS portfolio app';
+const description = 'How a public serverless study tracker moved from anonymous writes to Cognito sign-in, API Gateway JWT authorization, and per-record ownership checks in Lambda.';
+const structuredData = articleSchema({
+  headline: title,
+  description,
+  url: 'https://stackgeist.dev/labs/aws-cognito-private-crud-fix/',
+  datePublished: '2026-11-05',
+  dateModified: '2026-11-05',
+});
+---
+<ContentLayout title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / AWS Cognito private CRUD fix</p>
+    <p class="page-kicker">Built and documented · <a href="https://github.com/kcasko/bytegeist-cloud-study-tracker" rel="noopener">source on GitHub</a></p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">My cloud study tracker began as a weekend challenge with a public demo. Then I noticed the problem: anyone could create, edit, or delete records. That breaks least privilege even when the data is harmless.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Keep one anonymous read-only route for the demo. Put every private read and every write behind a JWT authorizer. Store an owner ID on each record, and check it in Lambda before any update or delete, because a valid token only proves who the caller is.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Architecture</p>
+        <h2>The request path</h2>
+        <pre><code>Browser -&gt; AWS Amplify -&gt; Amazon Cognito / API Gateway -&gt; Lambda -&gt; DynamoDB</code></pre>
+        <div class="article-cards">
+          <div><strong>GET /topics</strong><p>Public, read-only demo topics.</p></div>
+          <div><strong>GET /my-topics</strong><p>Requires a token. Returns only the caller’s records.</p></div>
+          <div><strong>POST /topics</strong><p>Requires a token. Creates a private record.</p></div>
+          <div><strong>PUT and DELETE /topics/&#123;id&#125;</strong><p>Require a token and ownership of that record.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Layers</p>
+        <h2>Why it takes more than a login page</h2>
+        <div class="article-cards">
+          <div><strong>Cognito</strong><p>Handles sign-up, email verification, sign-in, password reset, and authorization-code login with PKCE.</p></div>
+          <div><strong>API Gateway</strong><p>The JWT authorizer rejects unauthenticated calls before Lambda runs.</p></div>
+          <div><strong>Lambda</strong><p>Reads the Cognito <code>sub</code> claim from the verified token rather than trusting a user ID from the request.</p></div>
+          <div><strong>DynamoDB</strong><p>Every private record stores its owner ID, which is what makes the ownership check possible.</p></div>
+        </div>
+        <p>The middle check is the one people skip. Without it, any signed-in user who knows a record ID could edit someone else’s data. A login screen would hide that problem without solving it.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Try this</p>
+        <h2>Audit your own demo</h2>
+        <p>Call your write routes without a token, then with a token from a second test account against the first account’s record. Both should fail. If either works, you have the same problem I had.</p>
+        <p>If you are studying for a cloud role, see the <a href="/certs/">certification comparison</a>. For the troubleshooting side, try <a href="/labs/help-desk-practice-without-experience/">practice incidents</a>, including an S3 AccessDenied scenario.</p>
+      </section>
+    </div>
+    <PartnerOffers ids={['awsPractice', 'labHosting']} placement="lab-aws-cognito" />
+  </article>
+</ContentLayout>
