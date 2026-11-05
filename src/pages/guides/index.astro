@@ -30,6 +30,8 @@ const groups = [
     guides: [
       { slug: 'usb-c-cable-charging-slow', title: 'USB-C cable charging slow', desc: 'Separate cable rating, charger output, and device limits.' },
       { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Power negotiation and multi-port wattage sharing.' },
+      { slug: 'usb-c-charger-charges-phone-not-laptop', title: 'USB-C charger charges phone but not laptop', desc: 'Missing 20V output, per-port wattage, and cable rating.' },
+      { slug: 'laptop-not-charging-through-usb-c-dock', title: 'Laptop not charging through a USB-C dock', desc: 'Host charging wattage, brand limits, and firmware.' },
       { slug: 'laptop-says-slow-charger-with-100w-usb-c-charger', title: '100W USB-C charger but Windows says slow charger', desc: 'Per-port output, cable rating, port choice, and dock losses.' },
       { slug: 'laptop-charger-wattage', title: 'How many watts does my laptop charger need?', desc: 'Match rated input and plan headroom for docks.' },
       { slug: 'surge-protector-clicking', title: 'Surge protector clicking', desc: 'When to keep using it and when to replace it.' },
@@ -39,12 +41,16 @@ const groups = [
   },
   {
     id: 'storage-boot',
-    title: 'Storage and boot problems',
+    title: 'Storage, recovery, and backup',
     hub: 'storage-raspberry-pi-boot-fixes',
     guides: [
       { slug: 'microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader swap, drive letters, read-only state, and end-of-life signs.' },
       { slug: 'external-drive-shows-in-disk-management-not-file-explorer', title: 'Drive in Disk Management but not File Explorer', desc: 'Safe checks before you initialize or format anything.' },
       { slug: 'wd-elements-not-showing-up', title: 'WD Elements not showing up', desc: 'Cable, power, Disk Management, and drive health triage.' },
+      { slug: 'external-drive-says-you-need-to-format-it', title: 'Drive says “You need to format the disk”', desc: 'Save your files before you click Format.' },
+      { slug: 'recover-deleted-photos-from-sd-card', title: 'Recover deleted photos from an SD card', desc: 'Free and paid recovery tools, step by step.' },
+      { slug: 'how-to-tell-if-ssd-is-failing', title: 'How to tell if your SSD is failing', desc: 'Symptoms and free health checks in Windows.' },
+      { slug: 'back-up-windows-pc-before-replacing-drive', title: 'Back up before replacing a drive', desc: 'BitLocker key, files, settings, and cloning.' },
       { slug: 'raspberry-pi-5-wont-boot', title: 'Raspberry Pi 5 won’t boot', desc: 'Power, boot media, LED patterns, and HDMI checks.' },
     ],
   },

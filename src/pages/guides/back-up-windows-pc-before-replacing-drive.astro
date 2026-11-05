@@ -1,0 +1,93 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'How to back up a Windows PC before replacing its drive: files, settings, and a full clone.',
+  description:'Save your BitLocker recovery key, back up files to an external drive, use Windows Backup for settings and apps, list your software and licences, and decide between a clean install and cloning the drive.',
+  url:'https://stackgeist.dev/guides/back-up-windows-pc-before-replacing-drive',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+howToSchema({
+  name:'Back up a Windows PC before replacing its drive',
+  description:'Protect files, settings, and access to the PC before swapping the drive.',
+  steps:[
+    {name:'Save your BitLocker recovery key',text:'Find it at aka.ms/myrecoverykey or in your organization’s account, and keep a copy off the PC.'},
+    {name:'Copy your files to an external drive',text:'Copy your user folders and anything stored outside them, then open a few files from the backup to check it.'},
+    {name:'Run Windows Backup',text:'Back up folders, apps, settings, and Wi-Fi credentials to your Microsoft account.'},
+    {name:'Record software and licences',text:'Note installed apps, product keys, browser profiles, and anything that needs deactivating before the swap.'},
+    {name:'Choose clean install or clone',text:'Install Windows fresh and restore files, or clone the old drive to the new one with cloning software.'}
+  ]
+}),
+faqSchema({questions:[
+  {question:'Does Windows Backup back up everything?',answer:'No. Windows Backup syncs selected folders to OneDrive and saves app lists, settings, and some credentials to your Microsoft account. It is not a full image of the drive, and a free account includes 5 GB of OneDrive storage.'},
+  {question:'Should I clone or clean install?',answer:'Clone if you want the PC exactly as it is, with all apps installed. Clean install if the old drive was unreliable or the system had problems you don’t want to carry over.'},
+  {question:'Why do I need my BitLocker recovery key?',answer:'Hardware changes can trigger BitLocker recovery, and without the key you cannot unlock an encrypted drive. Find it before you start, not after.'},
+  {question:'Can I clone a failing drive?',answer:'Sometimes, but cloning reads every sector and can fail partway or copy corrupted data. Copy your most important files first, then try the clone.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="Back up a Windows PC before replacing its drive: checklist | StackGeist" description="Before swapping a Windows drive, save your BitLocker key, back up files and settings, record software licences, and choose between cloning and a clean install." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / Back up before replacing a drive</p>
+<p class="page-kicker">Storage and backup</p>
+<h1 class="page-title">How to back up a Windows PC before replacing its drive.</h1>
+<p class="page-lead">Swapping a drive is straightforward. Losing access to your files, licences, or an encrypted drive halfway through is what turns it into a bad day. This checklist covers what to save, in the order to do it.</p>
+
+<div class="article-summary"><strong>The five-minute answer</strong><p>Save your BitLocker recovery key first. Copy your files to an external drive and check the copy opens. Run Windows Backup for your settings and app list. Write down your software and product keys. Then either clone the old drive to the new one, or do a clean install and restore your files.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Step 01</p><h2>Save your BitLocker recovery key.</h2>
+<p>Many Windows PCs encrypt their drive with BitLocker or device encryption. Changing hardware can trigger a recovery screen that asks for a 48-digit key. Without it, the encrypted drive can’t be unlocked.</p>
+<ul class="article-list">
+<li>Personal PCs: sign in at <a href="https://aka.ms/myrecoverykey">aka.ms/myrecoverykey</a> with your Microsoft account.</li>
+<li>Work or school PCs: check <a href="https://aka.ms/aadrecoverykey">aka.ms/aadrecoverykey</a>, or ask your IT team.</li>
+</ul>
+<p>Write the key down or save it somewhere other than the PC you’re working on. Match it using the key ID shown on the recovery screen.</p></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Copy your files to an external drive.</h2>
+<p>This is the backup that matters most. Copy your user folders (Desktop, Documents, Downloads, Pictures, Videos, and Music) to an external drive, plus anything you keep elsewhere, such as a <code>C:\Projects</code> folder or game saves.</p>
+<p>Then open a handful of files from the external drive to make sure the copy worked. A backup you haven’t checked isn’t a backup yet.</p>
+<div class="note">If the old drive is failing, copy your most important files first, in small batches, before anything else. See <a href="/guides/how-to-tell-if-ssd-is-failing/">how to tell if your SSD is failing</a>.</div></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Run Windows Backup for settings and apps.</h2>
+<p>On Windows 11, open <strong>Windows Backup</strong> from the Start menu. It can back up folders to OneDrive and save your installed apps, settings, and Wi-Fi networks and passwords to your Microsoft account. When you sign in on the new drive, Windows can restore them.</p>
+<p>It’s useful, but it isn’t a full backup. A free Microsoft account includes 5 GB of OneDrive storage, which most photo and video libraries exceed, and desktop apps still need reinstalling. Keep the external drive copy from Step 02.</p></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Record your software and licences.</h2>
+<ul class="article-list">
+<li>List installed apps from <strong>Settings → Apps → Installed apps</strong>. A screenshot is enough.</li>
+<li>Find product keys for paid software, and deactivate any app that limits installs, such as some creative and audio software.</li>
+<li>Make sure browser profiles are synced or exported, including saved passwords if you don’t use a password manager.</li>
+<li>Export anything stored only in an app, like email archives or local password vaults.</li>
+</ul></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Clone or clean install?</h2>
+<div class="article-cards">
+<div><strong>Clone</strong><p>Copies the whole drive, including Windows, apps, and settings, to the new one. Best when the old drive is healthy and you want everything to work as before. It needs cloning software and a way to connect both drives at once, such as a USB enclosure or a second slot.</p></div>
+<div><strong>Clean install</strong><p>Install Windows fresh on the new drive, then restore files from your backup. Best when the old drive is failing or Windows had problems. It takes longer because you reinstall apps.</p></div>
+</div>
+<p>Some SSD makers provide free cloning software for their own drives, so check your new drive’s support page before buying a tool. Make sure the new drive is at least as large as the space used on the old one.</p></section>
+
+<section><p class="page-kicker">After the swap</p><h2>Keep the old drive for a while.</h2>
+<p>Don’t wipe the old drive until the new setup has run for a week or two and you’ve found everything you need. If the old drive still works, it’s a useful extra copy in a drawer.</p></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>These steps are based on Microsoft documentation, linked below. StackGeist has not timed or compared cloning tools for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>Related guides</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/how-to-tell-if-ssd-is-failing/">Is my SSD failing?</a></strong><p>Free health checks before you decide to replace it.</p></div>
+<div><strong><a href="/guides/external-drive-shows-in-disk-management-not-file-explorer/">Drive in Disk Management but not File Explorer</a></strong><p>If your backup drive doesn’t show up.</p></div>
+</div></section>
+
+<PartnerOffers ids={['externalBackupDrive', 'backupSoftware']} placement="guide-back-up-windows-pc-before-replacing-drive" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6">Microsoft Support — Find your BitLocker recovery key</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/back-up-your-windows-pc-87a81f8a-78fa-456e-b521-ac0560e32338">Microsoft Support — Back up your Windows PC</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

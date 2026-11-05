@@ -1,0 +1,94 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'How to tell if your SSD is failing: the symptoms, the free health checks, and what to do first.',
+  description:'Back up first, then read the SSD’s health data in Windows, PowerShell, or the manufacturer’s tool, check Event Viewer for disk errors, and replace the drive if errors or wear warnings appear.',
+  url:'https://stackgeist.dev/guides/how-to-tell-if-ssd-is-failing',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+howToSchema({
+  name:'Check whether an SSD is failing',
+  description:'Back up important files, then read the drive’s health and error counters with free tools.',
+  steps:[
+    {name:'Back up first',text:'Copy important files off the drive before running long tests on it.'},
+    {name:'Check health in Windows',text:'On Windows 11, open Settings, System, Storage, Advanced storage settings, Disks & volumes, then Properties for the drive.'},
+    {name:'Read reliability counters',text:'Run Get-PhysicalDisk | Get-StorageReliabilityCounter in an administrator PowerShell window.'},
+    {name:'Use the manufacturer’s tool',text:'Install the SSD maker’s utility to see its health rating, warnings, and firmware updates.'},
+    {name:'Check Event Viewer',text:'Look in the System log for disk and storage errors that line up with freezes or crashes.'}
+  ]
+}),
+faqSchema({questions:[
+  {question:'What are the signs an SSD is failing?',answer:'Files that become unreadable or corrupted, freezes when saving or opening files, the drive disappearing until a restart, Windows switching it to read-only, and health tools reporting errors or a critical warning.'},
+  {question:'Does a slow SSD mean it is failing?',answer:'Not by itself. A nearly full drive, thermal throttling, or background updates can all slow an SSD down. Treat slowness as a reason to check the health data, not as proof of failure.'},
+  {question:'Should I run chkdsk /r on an SSD?',answer:'Occasional checks are fine. Microsoft notes that repeated full-surface scans add unnecessary wear, and chkdsk checks the file system rather than reading the SSD’s own health data. Back up first, and use health tools to judge the drive itself.'},
+  {question:'How long do SSDs last?',answer:'Manufacturers rate endurance in terabytes written (TBW) and warranty years. Compare that rating with the data written so far, shown in the maker’s tool, to see how much rated endurance is left. Drives can also fail from electronic or firmware faults before reaching it.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="How to tell if your SSD is failing: free health checks for Windows | StackGeist" description="Symptoms of a failing SSD, and how to check its health in Windows 11, PowerShell, and the maker’s tool. Back up first, then decide whether to replace it." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / Is my SSD failing?</p>
+<p class="page-kicker">Storage troubleshooting</p>
+<h1 class="page-title">How to tell if your SSD is failing.</h1>
+<p class="page-lead">SSDs often fail with little warning, and some fail suddenly with no warning at all. The drive does keep health records you can read for free, though. If anything looks wrong, the right order is always the same: back up, check, then decide.</p>
+
+<div class="article-summary"><strong>The five-minute answer</strong><p>Copy your important files somewhere else first. Then check the drive’s health in Windows 11 (<strong>Settings → System → Storage → Advanced storage settings → Disks &amp; volumes → Properties</strong>), or in the SSD maker’s free tool. Look for errors, a critical warning, or very low remaining life. If you see any of those, plus symptoms like freezes or corrupted files, replace the drive.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Symptoms</p><h2>Signs worth taking seriously.</h2>
+<div class="article-cards">
+<div><strong>Strong signs</strong><p>Files that won’t open or come back corrupted, Windows making the drive read-only, the drive vanishing until a restart, or repeated crashes while saving.</p></div>
+<div><strong>Possible signs</strong><p>Freezes of several seconds when opening files, blue screens that mention storage, and long boot times that started suddenly.</p></div>
+<div><strong>Usually something else</strong><p>General slowness on a nearly full drive, or a drive that runs hot during long copies. Free up space and check temperatures before blaming the hardware.</p></div>
+</div></section>
+
+<section><p class="page-kicker">Step 01</p><h2>Back up before you test.</h2>
+<p>Any check that reads the whole drive puts load on it. If the drive is genuinely failing, that load can be the last thing it does. Copy the files you can’t lose to an external drive or cloud storage first. The <a href="/guides/back-up-windows-pc-before-replacing-drive/">backup guide</a> covers the free options.</p></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Check the health readout in Windows 11.</h2>
+<p>Go to <strong>Settings → System → Storage → Advanced storage settings → Disks &amp; volumes</strong>, choose the drive, and select <strong>Properties</strong>. For supported NVMe SSDs, Windows shows a <strong>Drive health</strong> section with estimated remaining life, available spare, and temperature. A warning such as “Reliability is degraded” means the drive has reported serious errors.</p>
+<p>SATA SSDs usually don’t show this section, so use the next two steps instead.</p></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Read the reliability counters in PowerShell.</h2>
+<p>Open PowerShell as administrator and run:</p>
+<pre><code>Get-PhysicalDisk | Get-StorageReliabilityCounter | Format-List DeviceId, Wear, Temperature, ReadErrorsUncorrected, WriteErrorsUncorrected, PowerOnHours</code></pre>
+<p>This only reads information. Not every drive reports every field, so blanks are normal. What matters is <strong>uncorrected</strong> read or write errors above zero, and a <strong>Wear</strong> figure that is high and climbing.</p>
+<p>To match a <code>DeviceId</code> to a drive name, run <code>Get-PhysicalDisk</code> on its own.</p></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Use the SSD maker’s tool.</h2>
+<p>Most SSD brands provide a free utility, such as Samsung Magician, Crucial Storage Executive, or WD Dashboard. These read the drive’s own health data, show warnings in plain language, and install firmware updates, which sometimes fix stability bugs. Download it only from the manufacturer’s site.</p>
+<p>CrystalDiskInfo is a free alternative that works with most brands and shows the raw SMART data.</p></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Check Event Viewer for disk errors.</h2>
+<p>Open Event Viewer, go to <strong>Windows Logs → System</strong>, and filter for errors and warnings. Repeated entries from disk or storage sources, such as reports of bad blocks or a device reset, that line up with your freezes or crashes support a hardware problem.</p></section>
+
+<section><p class="page-kicker">Decision</p><h2>Keep it, watch it, or replace it?</h2>
+<div class="article-cards">
+<div><strong>Keep it</strong><p>Health is good, there are no uncorrected errors, and the symptoms have another explanation, like a full drive.</p></div>
+<div><strong>Watch it</strong><p>Remaining life is falling faster than you expect, or there are a few corrected errors. Keep backups current and check again monthly.</p></div>
+<div><strong>Replace it</strong><p>A critical warning, uncorrected errors, read-only mode, or corrupted files. Back up now and plan the swap.</p></div>
+</div>
+<p>If the drive is under warranty, the maker’s tool usually shows the serial number you need for a claim. Back up first, because warranty replacements don’t include your data.</p></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>These checks are based on Microsoft documentation, linked below. StackGeist has not tested a failing SSD for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>Next steps</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/back-up-windows-pc-before-replacing-drive/">Back up before replacing a drive</a></strong><p>File copies, images, and clones, and what each one covers.</p></div>
+<div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>Protect the data before clicking Format.</p></div>
+</div></section>
+
+<PartnerOffers ids={['backupSoftware', 'externalBackupDrive']} placement="guide-how-to-tell-if-ssd-is-failing" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-storagereliabilitycounter">Microsoft Learn — Get-StorageReliabilityCounter</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-physicaldisk">Microsoft Learn — Get-PhysicalDisk</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk">Microsoft Learn — chkdsk, including its notes on SSDs</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

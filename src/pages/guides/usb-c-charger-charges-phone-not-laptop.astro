@@ -1,0 +1,88 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'USB-C charger charges your phone but not your laptop: it’s almost always wattage, voltage, or the cable.',
+  description:'Phone chargers often top out at lower voltages and wattage than a laptop needs. Compare the charger’s per-port output with the laptop’s rated input, check the cable rating, and use the laptop’s charging port.',
+  url:'https://stackgeist.dev/guides/usb-c-charger-charges-phone-not-laptop',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+howToSchema({
+  name:'Find out why a USB-C charger charges a phone but not a laptop',
+  description:'Compare charger output with the laptop’s requirements, then rule out the cable and port.',
+  steps:[
+    {name:'Read the charger’s output label',text:'Find the voltage and current combinations it supports, especially whether it lists 20V.'},
+    {name:'Check what the laptop needs',text:'Look at the wattage of the laptop’s original adapter or its specification page.'},
+    {name:'Use one port on multi-port chargers',text:'Unplug other devices and use the port marked for the highest output.'},
+    {name:'Swap the cable',text:'Use a cable rated for the wattage, such as 100W or 240W for laptops above 60W.'},
+    {name:'Use the laptop’s charging port',text:'Some laptops only accept power on specific USB-C ports.'}
+  ]
+}),
+faqSchema({questions:[
+  {question:'Can I charge a laptop with a 20W phone charger?',answer:'Usually not usefully. Many laptops refuse to charge from it, and the ones that do may charge only while asleep or very slowly. Phone chargers commonly offer 5V and 9V, while most laptops charge at 15V or 20V.'},
+  {question:'Is it dangerous to use a bigger charger on a phone?',answer:'No, with USB Power Delivery the device requests the power it can handle, so a laptop charger can safely charge a phone that supports USB-C charging.'},
+  {question:'Why does Windows say “Slow charger” or “PC isn’t charging”?',answer:'Windows shows these when the connected charger provides less power than the PC wants, or when the charger isn’t compatible. Microsoft recommends using the charger and cable that came with the device and plugging into its USB-C charging port.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="USB-C charger charges phone but not laptop? Here’s why | StackGeist" description="Your USB-C charger works with your phone but not your laptop. Check per-port wattage, 20V support, cable rating, and the laptop’s charging port." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / USB-C charger charges phone but not laptop</p>
+<p class="page-kicker">Charging troubleshooting</p>
+<h1 class="page-title">USB-C charger charges your phone but not your laptop.</h1>
+<p class="page-lead">The connector fits both, so it feels like it should work. But USB-C chargers negotiate power with each device, and a laptop asks for far more than a phone. If the charger can’t offer what the laptop wants, the laptop either charges slowly or refuses to charge.</p>
+
+<div class="article-summary"><strong>The five-minute answer</strong><p>Read the small print on the charger. If it doesn’t list a <strong>20V</strong> output, or its wattage is well below your laptop’s original adapter, that’s the problem. Also check the cable: laptops above 60W need a cable rated for 100W or 240W. Finally, plug into the laptop’s charging port, and unplug other devices from multi-port chargers.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Why it happens</p><h2>Phones and laptops ask for different power.</h2>
+<p>With USB Power Delivery, the charger tells the device which voltage and current combinations it can supply, and the device picks one. Phones charge happily at 5V or 9V. Most laptops want 15V or 20V, and USB-IF notes that the standard range reaches 100W using 20V with a cable rated for 5A.</p>
+<p>A typical 20W or 25W phone charger may not offer 20V at all. The laptop sees nothing it can use, and doesn’t charge.</p></section>
+
+<section><p class="page-kicker">Step 01</p><h2>Read the charger’s output label.</h2>
+<p>The label lists lines like <code>5V⎓3A, 9V⎓2.22A</code>, or on a laptop-capable charger, <code>20V⎓3.25A</code>. Multiply volts by amps to get watts. Check two things:</p>
+<ul class="article-list">
+<li>Does any line say <strong>20V</strong>, or at least 15V?</li>
+<li>Does the highest output come close to the laptop’s original adapter wattage?</li>
+</ul></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Find out what the laptop needs.</h2>
+<p>The original adapter shows its wattage, often 45W, 65W, or 100W. If you don’t have it, the laptop’s specification page lists the adapter that ships with it. A charger well below that figure may charge only when the laptop is asleep, or not at all. The <a href="/guides/laptop-charger-wattage/">laptop charger wattage guide</a> covers how much headroom to plan for.</p></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Check multi-port charger sharing.</h2>
+<p>A “100W” multi-port charger may only give 100W from one port, and split it when you plug in a second device. Unplug everything else, and use the port marked for the highest output, usually labelled C1. The <a href="/guides/gan-charger-not-charging-laptop-full-speed/">GaN charger guide</a> explains how sharing works.</p></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Swap the cable.</h2>
+<p>A cable that came with a phone may be rated for 3A, which caps a 20V connection at 60W. Laptops that need more than that require a cable marked for 100W (5A) or 240W. If you’re not sure what a cable supports, test with one that’s clearly labelled. The <a href="/guides/usb-c-cable-buying-guide/">USB-C cable guide</a> explains the markings.</p></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Use the laptop’s charging port.</h2>
+<p>Some laptops accept power on only one or two of their USB-C ports. Look for a charging icon next to the port, or check the manual. Microsoft’s guidance for the Windows “Slow charger” and “PC isn’t charging” notifications is to use the charger and cable that came with the PC, connect to its USB-C charging port, and clean the port of dust.</p></section>
+
+<section><p class="page-kicker">Decision</p><h2>Do you need a new charger?</h2>
+<div class="article-cards">
+<div><strong>No</strong><p>A different cable, port, or unplugging other devices fixed it.</p></div>
+<div><strong>Yes, a higher-wattage one</strong><p>The charger doesn’t offer 20V, or its single-port output is below your laptop’s adapter. Match or exceed the original wattage on one port.</p></div>
+<div><strong>Maybe the laptop</strong><p>Its own adapter doesn’t charge it either. That points to the laptop’s port, battery, or charging circuit.</p></div>
+</div></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>These steps are based on USB-IF and Microsoft documentation, linked below. StackGeist has not tested specific chargers for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>Keep troubleshooting the same system</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/laptop-says-slow-charger-with-100w-usb-c-charger/">100W charger but Windows says slow charger</a></strong><p>Per-port output, cable, and dock losses.</p></div>
+<div><strong><a href="/guides/laptop-not-charging-through-usb-c-dock/">Laptop not charging through a dock</a></strong><p>When the dock is between the charger and the laptop.</p></div>
+<div><strong><a href="/guides/usb-c-charging-display-problems/">USB-C charging and display hub</a></strong><p>The full map of USB-C power problems.</p></div>
+</div></section>
+
+<PartnerOffers ids={['usbcCharger', 'usbcCable']} placement="guide-usb-c-charger-charges-phone-not-laptop" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://www.usb.org/usb-charger-pd">USB-IF — USB Charger (USB Power Delivery)</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

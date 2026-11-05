@@ -1,0 +1,94 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'How to recover deleted photos from an SD card: stop using it, then scan with the right tool.',
+  description:'Take the card out of the camera or phone, check backups and the camera’s own trash, then recover photos with Windows File Recovery, PhotoRec, or paid software, saving them to a different drive.',
+  url:'https://stackgeist.dev/guides/recover-deleted-photos-from-sd-card',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+howToSchema({
+  name:'Recover deleted photos from an SD or microSD card',
+  description:'Stop writes to the card, check for copies, then scan the card with a recovery tool and save results to another drive.',
+  steps:[
+    {name:'Stop using the card',text:'Remove it from the camera, phone, or drone so new photos cannot overwrite the deleted ones.'},
+    {name:'Check for copies first',text:'Look in cloud photo backups, your computer’s import folders, and any recently deleted folder on the device.'},
+    {name:'Connect the card with a reliable reader',text:'Use a card reader and confirm Windows sees the card without formatting it.'},
+    {name:'Scan the card',text:'Run Windows File Recovery in Extensive mode, PhotoRec, or recovery software, saving recovered files to a different drive.'},
+    {name:'Check and back up what you recover',text:'Open the recovered photos, copy the good ones to two places, then format the card in the camera before reusing it.'}
+  ]
+}),
+faqSchema({questions:[
+  {question:'Can deleted photos on an SD card be recovered?',answer:'Often, if nothing new has been written to the card since. Deleting usually marks the space as free rather than erasing it, so the photos stay recoverable until new data overwrites them.'},
+  {question:'Does formatting an SD card make photos unrecoverable?',answer:'A quick format usually leaves the photo data in place, so signature-based tools like PhotoRec can often still find it. Some cameras offer a low-level or full format that overwrites the card, which makes recovery unlikely.'},
+  {question:'Why do recovered photos have strange names?',answer:'Tools that search for file signatures, like PhotoRec, find the photo data but not the original filename or folder, so they give files generic names.'},
+  {question:'Can I recover RAW camera files?',answer:'Many recovery tools recognize common camera RAW formats, but support varies by tool and camera. Check the tool’s supported file types before relying on it.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="How to recover deleted photos from an SD card (free and paid tools) | StackGeist" description="Deleted photos from an SD or microSD card? Stop using it, check backups, then recover them with Windows File Recovery, PhotoRec, or paid software. Step by step." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / Recover deleted photos from an SD card</p>
+<p class="page-kicker">Storage troubleshooting</p>
+<h1 class="page-title">How to recover deleted photos from an SD card.</h1>
+<p class="page-lead">When you delete a photo, the card usually just marks that space as free. The photo stays there until something new is written over it. That makes the most important step the simplest one: stop using the card now.</p>
+
+<div class="article-summary"><strong>The five-minute answer</strong><p>Take the card out of the camera or phone and don’t take any more pictures on it. Check cloud backups and your computer for copies first. Then connect the card with a card reader, and scan it with a free tool like PhotoRec or Windows File Recovery, or with paid recovery software. Always save recovered photos to your computer or another drive, never back to the card.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Step 01</p><h2>Stop using the card.</h2>
+<p>Every new photo, video, or file written to the card can land on the space your deleted photos occupy. Remove the card from the camera, phone, drone, or dashcam. Dashcams and security cameras that record in a loop overwrite old footage constantly, so pull those cards straight away.</p>
+<div class="note">Don’t format the card, and don’t click Format if Windows asks. If it does, see <a href="/guides/external-drive-says-you-need-to-format-it/">what to do when a drive says it needs formatting</a>.</div></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Check for copies before you scan.</h2>
+<ul class="article-list">
+<li><strong>Phone photo backups:</strong> Google Photos, iCloud Photos, OneDrive, or your phone maker’s cloud may already have them.</li>
+<li><strong>Recently deleted folders:</strong> phone gallery apps usually keep deleted items for a while.</li>
+<li><strong>Your computer:</strong> search the folder you normally import to, and the Recycle Bin if you deleted them from the computer.</li>
+<li><strong>Camera transfer apps:</strong> some cameras sync to a phone app automatically.</li>
+</ul></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Connect the card without changing it.</h2>
+<p>Use a USB card reader or the computer’s built-in slot. If Windows doesn’t see the card at all, work through the <a href="/guides/microsd-card-not-detected/">microSD card not detected</a> guide first. If the full-size SD card or adapter has a lock switch, sliding it to <strong>Lock</strong> is a useful extra guard against accidental writes.</p></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Scan the card with a recovery tool.</h2>
+<p>Make sure the drive you save to has enough free space for everything on the card.</p>
+<div class="article-cards">
+<div><strong>PhotoRec (free, Windows, Mac, Linux)</strong><p>Open-source and made for this job. It reads the card in read-only mode and searches for photo and video file signatures, so it works even after a quick format. Recovered files get generic names, so expect to sort them afterwards.</p></div>
+<div><strong>Windows File Recovery (free, Windows 10 and 11)</strong><p>Install it from the Microsoft Store. SD cards use FAT or exFAT, so Microsoft recommends <strong>Extensive</strong> mode. With the card as E: and saving to C:, a command looks like <code>winfr E: C: /extensive /n *.jpg</code>. Add more <code>/n</code> filters for other formats.</p></div>
+<div><strong>Paid recovery software</strong><p>Easier to use, with photo previews and original folder names where they survive. Most let you scan and preview for free, so you can see what is recoverable before paying.</p></div>
+</div>
+<div class="note">Windows File Recovery creates a folder named <code>Recovery_</code> followed by the date and time on the destination drive. Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop a scan.</div></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Check the results, then protect them.</h2>
+<p>Open a sample of the recovered photos. Partial or corrupted images usually mean that part of the photo was already overwritten. Copy everything good to two places, such as your computer and a cloud backup or external drive.</p>
+<p>When you’re finished, format the card in the camera you use it with, rather than on the computer. That sets it up the way the camera expects.</p></section>
+
+<section><p class="page-kicker">Decision</p><h2>When software isn’t enough.</h2>
+<div class="article-cards">
+<div><strong>Card not detected anywhere</strong><p>Software can’t read a card the computer can’t see. Try another reader first, then a professional recovery service if the photos matter.</p></div>
+<div><strong>Physically broken card</strong><p>Cracked or bent cards need a recovery lab. Don’t try to straighten or glue them.</p></div>
+<div><strong>Photos partly grey or corrupted</strong><p>That data was overwritten. A different tool rarely brings it back.</p></div>
+</div></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>These steps are based on Microsoft documentation and PhotoRec’s documentation, linked below. StackGeist has not yet run its own recovery test comparing these tools.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>If this did not solve it</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/microsd-card-not-detected/">microSD card not detected</a></strong><p>Reader, Disk Management, and card failure checks.</p></div>
+<div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>Protect the data before clicking Format.</p></div>
+</div></section>
+
+<PartnerOffers ids={['dataRecovery']} placement="guide-recover-deleted-photos-from-sd-card" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://support.microsoft.com/en-us/windows/recover-lost-files-on-windows-10-61f5b28a-f5b8-3cc2-0f8e-a63cb4e1d4c4">Microsoft Support — Recover lost files with Windows File Recovery</a></li>
+<li><a href="https://www.cgsecurity.org/wiki/PhotoRec">CGSecurity — PhotoRec</a></li>
+<li><a href="https://www.sdcard.org/downloads/formatter/faq/">SD Association — Formatter FAQ</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>

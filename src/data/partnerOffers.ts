@@ -61,4 +61,16 @@ export const PARTNER_OFFERS: Record<string, PartnerOffer> = {
     note: 'For deleted files or unreadable partitions on a drive that still detects. Stop writing to it first. Software cannot fix a physically failing drive.',
     url: '',
   },
+  backupSoftware: {
+    id: 'backup-software',
+    label: 'Backup and drive-cloning software',
+    note: 'Useful for a full-drive image or clone. Windows Backup and File History are free if you only need your files.',
+    url: '',
+  },
+  externalBackupDrive: {
+    id: 'external-backup-drive',
+    label: 'External drives for backups',
+    note: 'Pick one larger than the data you are backing up, and keep it unplugged between backups.',
+    url: '',
+  },
 };

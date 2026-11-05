@@ -1,0 +1,111 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'External drive says “You need to format the disk”: what to do before you click Format.',
+  description:'Cancel the format prompt, check the drive in Disk Management, rule out cables and failing hardware, copy or recover the files to a different drive, and format only after the data is safe.',
+  url:'https://stackgeist.dev/guides/external-drive-says-you-need-to-format-it',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+howToSchema({
+  name:'Handle an external drive that Windows says needs to be formatted',
+  description:'Protect the data first, then work out whether the problem is the connection, the file system, or the drive itself.',
+  steps:[
+    {name:'Cancel the format prompt',text:'Formatting writes a new file system over the old one and makes recovery harder.'},
+    {name:'Check the connection',text:'Try another cable and USB port, and connect directly to the computer instead of through a hub.'},
+    {name:'Read the drive state in Disk Management',text:'Note whether the volume shows as RAW, Unallocated, or a normal file system.'},
+    {name:'Listen and watch for hardware failure',text:'Clicking, repeated disconnects, or a drive that keeps vanishing means you should stop and consider professional recovery.'},
+    {name:'Recover files to a different drive',text:'Use recovery software that reads the damaged drive and saves results somewhere else.'},
+    {name:'Format only after the data is safe',text:'Once the files are copied off or not needed, format the drive and test it before trusting it again.'}
+  ]
+}),
+faqSchema({questions:[
+  {question:'Will clicking Format delete my files?',answer:'Formatting creates a new, empty file system. Recovery may still be possible afterwards, but it becomes harder and less complete, so cancel the prompt if the drive holds files you need.'},
+  {question:'Can chkdsk fix a RAW drive?',answer:'Chkdsk needs a file system it recognizes to work on, so it generally cannot check a volume Windows reports as RAW. Recover the files first rather than looking for a repair command.'},
+  {question:'Is the drive dead?',answer:'Not necessarily. A damaged file system, an unsafe removal, or a bad cable can all cause this prompt. Clicking sounds, repeated disconnects, or the same failure in multiple ports and computers point to hardware failure.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="External drive says you need to format it: save your files first | StackGeist" description="Windows says “You need to format the disk” on your external drive? Cancel, check Disk Management, rule out hardware failure, and recover files before formatting." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / External drive says format it</p>
+<p class="page-kicker">Storage troubleshooting</p>
+<h1 class="page-title">External drive says “You need to format the disk”: what to do before you click Format.</h1>
+<p class="page-lead">Windows shows this prompt when it can see the drive but cannot read its file system. The files are often still there. Clicking Format replaces the file system with an empty one, so the first job is to protect the data, then find out why Windows cannot read it.</p>
+
+<div class="article-summary"><strong>The five-minute answer</strong><p>Click <strong>Cancel</strong>. Try a different cable and a USB port directly on the computer. Open Disk Management and check whether the volume shows as RAW. If the drive clicks, disconnects repeatedly, or holds irreplaceable files, stop using it and consider professional recovery. Otherwise, use recovery software to copy the files to a different drive, and only then format it.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Step 01</p><h2>Cancel the prompt and stop writing to the drive.</h2>
+<p>The prompt reads “You need to format the disk in drive X: before you can use it.” Formatting writes a new, empty file system, which can overwrite the structures recovery tools use to find your files. Cancel it, and don’t save anything new to the drive.</p>
+<div class="note">If the prompt appears every time you plug the drive in, keep cancelling it. It won’t go away until the file system is readable again or the drive is formatted.</div></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Rule out the cable, port, and power.</h2>
+<p>A loose or damaged cable can cause read errors that make the file system look corrupt. Before assuming the data is damaged:</p>
+<ul class="article-list">
+<li>Swap the USB cable, especially if the drive uses an older Micro-B or a worn USB-C cable.</li>
+<li>Plug straight into a port on the computer, not a hub, dock, or front-panel port.</li>
+<li>If the drive has its own power adapter, make sure it is connected and switched on.</li>
+<li>Try another computer if you have one.</li>
+</ul></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Check what Disk Management sees.</h2>
+<p>Open Disk Management (right-click Start, then <strong>Disk Management</strong>) and find the drive by its size. Don’t click anything that initializes, creates, or formats a volume.</p>
+<div class="article-cards">
+<div><strong>RAW</strong><p>Windows sees a partition but cannot recognize the file system. This is the usual state behind the format prompt.</p></div>
+<div><strong>Unallocated</strong><p>The partition information is missing or damaged. Don’t create a new volume. Microsoft warns that creating a new partition after data loss lowers the chance of recovery.</p></div>
+<div><strong>NTFS or exFAT, but no drive letter</strong><p>The file system may be fine. See the <a href="/guides/external-drive-shows-in-disk-management-not-file-explorer/">Disk Management but not File Explorer</a> guide instead.</p></div>
+</div></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Look for signs of hardware failure.</h2>
+<p>Recovery software reads the whole drive, which puts heavy load on a failing one. Stop and think about a professional recovery service if:</p>
+<ul class="article-list">
+<li>A hard drive clicks, beeps, or repeatedly spins up and down.</li>
+<li>The drive keeps disconnecting and reconnecting.</li>
+<li>It fails the same way on different cables, ports, and computers.</li>
+<li>It was dropped, or got wet.</li>
+</ul>
+<p>If the files are irreplaceable, every extra hour a failing drive runs is a risk. If they are not, you can carry on to the next step.</p></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Recover the files to a different drive.</h2>
+<p>You need a second drive with enough free space for everything you want back. Never save recovered files to the drive you are recovering from.</p>
+<div class="article-cards">
+<div><strong>Windows File Recovery (free)</strong><p>Microsoft’s command-line tool from the Microsoft Store. Use <strong>Extensive</strong> mode for RAW, formatted, or corrupted drives, for example <code>winfr E: D: /extensive /n *.docx</code>. The source and destination must be different drives.</p></div>
+<div><strong>PhotoRec (free)</strong><p>Open-source and reads the source drive in read-only mode. It ignores the file system and searches for known file types, so it often works on RAW drives. Recovered files usually lose their original names and folders.</p></div>
+<div><strong>Paid recovery software</strong><p>Worth considering when you need folder structure and filenames back, or a preview before recovering. Most let you scan for free so you can check results before paying.</p></div>
+</div>
+<div class="note">Chkdsk is a repair tool, not a recovery tool. It needs a file system it can read, so it generally won’t run on a RAW volume. Running repairs before recovery can also change what is left to recover.</div></section>
+
+<section><p class="page-kicker">Step 06</p><h2>Format and test, only after the data is safe.</h2>
+<p>Once your files are copied off and checked, format the drive in Disk Management or File Explorer. Then copy some test files to it and back. If the drive goes RAW again, throws errors, or disconnects, retire it for anything important.</p></section>
+
+<section><p class="page-kicker">Decision</p><h2>Repair, replace, or send it out?</h2>
+<div class="article-cards">
+<div><strong>Keep using it</strong><p>A one-off file system problem after unplugging without ejecting, where the drive formats and tests cleanly afterwards.</p></div>
+<div><strong>Replace it</strong><p>It goes RAW again, disconnects, or shows errors after a format. Use it only for data you have copies of, or not at all.</p></div>
+<div><strong>Professional recovery</strong><p>Physical symptoms plus files you can’t lose. Don’t run software scans on it first.</p></div>
+</div></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>These steps are based on Microsoft documentation and the tools’ own documentation, linked below. StackGeist has not run a recovery test on a damaged drive for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>If this did not solve it</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/external-drive-shows-in-disk-management-not-file-explorer/">Drive in Disk Management but not File Explorer</a></strong><p>When the file system is fine but the drive has no letter.</p></div>
+<div><strong><a href="/guides/wd-elements-not-showing-up/">WD Elements not showing up</a></strong><p>Cable, power, and health checks for WD portable drives.</p></div>
+<div><strong><a href="/guides/how-to-tell-if-ssd-is-failing/">How to tell if your SSD is failing</a></strong><p>Health checks for internal and external SSDs.</p></div>
+</div></section>
+
+<PartnerOffers ids={['dataRecovery']} placement="guide-external-drive-says-you-need-to-format-it" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://support.microsoft.com/en-us/windows/recover-lost-files-on-windows-10-61f5b28a-f5b8-3cc2-0f8e-a63cb4e1d4c4">Microsoft Support — Recover lost files with Windows File Recovery</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk">Microsoft Learn — chkdsk</a></li>
+<li><a href="https://www.cgsecurity.org/wiki/PhotoRec">CGSecurity — PhotoRec</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
