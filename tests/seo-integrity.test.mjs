@@ -44,16 +44,24 @@ test('sitemap only lists indexable pages that exist', { skip: !existsSync(join(D
   }
 });
 
-test('indexable kits contain no unchecked retailer searches', { skip: !existsSync(DIST) }, () => {
+test('exactly the fix and IT kits are indexable, and unchecked items stay labeled', { skip: !existsSync(DIST) }, () => {
   const kitsDir = join(DIST, 'kits');
+  const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
+  let indexable = 0;
   for (const slug of readdirSync(kitsDir)) {
     const file = join(kitsDir, slug, 'index.html');
     if (!existsSync(file)) continue;
     const html = readFileSync(file, 'utf8');
-    if (/<meta name="robots" content="index/.test(html) && slug !== 'index.html') {
-      assert.doesNotMatch(html, /have not been individually source-checked/, `${slug} is indexable but has unchecked items`);
+    if (/<meta name="robots" content="index/.test(html)) {
+      indexable += 1;
+      assert.ok(sitemap.includes(`/kits/${slug}/<`), `${slug} is indexable but missing from the sitemap`);
+    }
+    if (/kit-research/.test(html) && /tag=/.test(html)) {
+      assert.match(html, /have not been individually source-checked/, `${slug} has unlabeled search links`);
+      assert.match(html, /sponsored nofollow/, `${slug} has unqualified paid links`);
     }
   }
+  assert.equal(indexable, 28);
 });
 
 test('noindexed pages still let crawlers follow their links', { skip: !existsSync(DIST) }, () => {
@@ -84,6 +92,11 @@ test('public hubs do not expose internal marketing language', { skip: !existsSyn
   for (const route of ['/kits/', '/guides/', '/gear/']) {
     assert.doesNotMatch(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /social angles|income paths|monetized|ready to schedule/i, route);
   }
+});
+
+test('methodology page is gone and old links redirect', { skip: !existsSync(DIST) }, () => {
+  assert.ok(!existsSync(join(DIST, 'editorial-methodology')));
+  assert.match(readFileSync(join(DIST, '_redirects'), 'utf8'), /\/editorial-methodology\/ \/about\/ 301/);
 });
 
 test('gear hub does not label research-pending pages as source-checked', { skip: !existsSync(DIST) }, () => {

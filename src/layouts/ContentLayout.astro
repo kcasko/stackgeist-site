@@ -26,7 +26,7 @@ const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathna
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
-      <main id="main-content" class="content-main" tabindex="-1"><slot />{isEditorialPage && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> Technical claims are source-checked; personal use and researched recommendations are kept distinct. <a href="/editorial-methodology">Editorial methodology →</a></span></aside>}<SiteFooter /></main>
+      <main id="main-content" class="content-main" tabindex="-1"><slot />{isEditorialPage && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> {Astro.url.pathname.startsWith('/kits/') ? 'Retailer search items in this kit have not been individually checked.' : 'Technical claims are source-checked; personal use and researched recommendations are kept distinct.'}</span></aside>}<SiteFooter /></main>
     </div>
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>

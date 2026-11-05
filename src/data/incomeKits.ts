@@ -782,11 +782,43 @@ const BASE_INCOME_KITS: IncomeKit[] = [
 
 export const INCOME_KITS: IncomeKit[] = [...BASE_INCOME_KITS, ...EXTRA_KITS];
 
-// Kits stay out of search until every item is an indexable, reviewed decision page.
-// This matches /editorial-methodology: unchecked pages are noindex.
-// Add a slug only after its retailer searches and research-pending items are replaced.
-// tests/seo-integrity.test.mjs enforces this against the built pages.
-export const INDEXABLE_KIT_SLUGS = new Set<string>([]);
+// Kit groups shown on /kits/. IT and fix kits are indexable; the rest stay noindex
+// and out of the sitemap so the site stays focused on fixes and IT.
+export const IT_KIT_SLUGS = new Set<string>([
+  'help-desk-homelab-starter-kit',
+  'network-plus-home-lab-kit',
+  'security-plus-study-desk-kit',
+  'aws-cloud-practitioner-study-kit',
+  'cloud-support-study-desk-kit',
+  'linux-beginner-lab-kit',
+  'cybersecurity-beginner-lab-kit',
+  'proxmox-mini-pc-starter-kit',
+  'docker-homelab-kit',
+  'nas-starter-kit',
+  'self-hosted-media-server-kit',
+  'raspberry-pi-starter-kit',
+  'local-ai-workstation-starter-kit',
+  'cert-exam-remote-proctor-kit',
+  'wgu-software-engineering-desk-kit',
+  'python-data-science-desk-kit',
+]);
+
+export const FIX_KIT_SLUGS = new Set<string>([
+  'usb-c-desk-survival-kit',
+  'dual-monitor-desk-kit',
+  'backup-recovery-desk-kit',
+  'bluetooth-desk-fix-kit',
+  'webcam-not-detected-fix-kit',
+  'micro-sd-storage-kit',
+  'old-pc-revival-kit',
+  'laptop-cooling-fix-kit',
+  'laptop-repair-toolkit',
+  'thermal-paste-repair-kit',
+  'desk-power-safety-kit',
+  'wifi-6-mesh-upgrade-kit',
+]);
+
+export const INDEXABLE_KIT_SLUGS = new Set<string>([...IT_KIT_SLUGS, ...FIX_KIT_SLUGS]);
 
 export const isKitIndexable = (kit: IncomeKit) => INDEXABLE_KIT_SLUGS.has(kit.slug);
 

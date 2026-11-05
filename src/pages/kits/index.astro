@@ -1,45 +1,13 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
-import { INCOME_KITS } from '../../data/incomeKits';
+import { INCOME_KITS, IT_KIT_SLUGS, FIX_KIT_SLUGS } from '../../data/incomeKits';
 
-const IT_SLUGS = new Set([
-  'help-desk-homelab-starter-kit',
-  'network-plus-home-lab-kit',
-  'security-plus-study-desk-kit',
-  'aws-cloud-practitioner-study-kit',
-  'cloud-support-study-desk-kit',
-  'linux-beginner-lab-kit',
-  'cybersecurity-beginner-lab-kit',
-  'proxmox-mini-pc-starter-kit',
-  'docker-homelab-kit',
-  'nas-starter-kit',
-  'self-hosted-media-server-kit',
-  'raspberry-pi-starter-kit',
-  'local-ai-workstation-starter-kit',
-  'cert-exam-remote-proctor-kit',
-  'wgu-software-engineering-desk-kit',
-  'python-data-science-desk-kit',
-]);
-const FIX_SLUGS = new Set([
-  'usb-c-desk-survival-kit',
-  'dual-monitor-desk-kit',
-  'backup-recovery-desk-kit',
-  'bluetooth-desk-fix-kit',
-  'webcam-not-detected-fix-kit',
-  'micro-sd-storage-kit',
-  'old-pc-revival-kit',
-  'laptop-cooling-fix-kit',
-  'laptop-repair-toolkit',
-  'thermal-paste-repair-kit',
-  'desk-power-safety-kit',
-  'wifi-6-mesh-upgrade-kit',
-]);
 
 const groups = [
-  { id: 'it-study-homelab', title: 'IT study and home labs', note: 'Practice gear and study tools for support, systems, and cloud work.', kits: INCOME_KITS.filter((kit) => IT_SLUGS.has(kit.slug)) },
-  { id: 'fix-a-problem', title: 'Fix a PC or connectivity problem', note: 'What to try and buy when a diagnosis points to hardware.', kits: INCOME_KITS.filter((kit) => FIX_SLUGS.has(kit.slug)) },
-  { id: 'desk-everyday', title: 'Desk and everyday tech', note: 'Video calls, audio, gaming, travel, and home office.', kits: INCOME_KITS.filter((kit) => !IT_SLUGS.has(kit.slug) && !FIX_SLUGS.has(kit.slug)) },
+  { id: 'it-study-homelab', title: 'IT study and home labs', note: 'Practice gear and study tools for support, systems, and cloud work.', kits: INCOME_KITS.filter((kit) => IT_KIT_SLUGS.has(kit.slug)) },
+  { id: 'fix-a-problem', title: 'Fix a PC or connectivity problem', note: 'What to try and buy when a diagnosis points to hardware.', kits: INCOME_KITS.filter((kit) => FIX_KIT_SLUGS.has(kit.slug)) },
+  { id: 'desk-everyday', title: 'Desk and everyday tech', note: 'Video calls, audio, gaming, travel, and home office.', kits: INCOME_KITS.filter((kit) => !IT_KIT_SLUGS.has(kit.slug) && !FIX_KIT_SLUGS.has(kit.slug)) },
 ];
 ---
 <ContentLayout title="IT, home lab, and tech buying kits | StackGeist" description="Buying orders for IT study, home labs, PC fixes, and everyday tech, with what to get first, what to skip, and what has and hasn’t been checked." active="kits">
@@ -53,7 +21,7 @@ const groups = [
   </nav>
 
   <section class="content-section">
-    <div class="note">Many kits use Amazon search links as a starting point, and the products in those results have not been individually checked. Each kit says which items these are. Read the <a href="/editorial-methodology/">editorial methodology</a> and <a href="/affiliate-disclosure/">affiliate disclosure</a>.</div>
+    <div class="note">Many kits use Amazon search links as a starting point, and the products in those results have not been individually checked. Each kit says which items these are. Read the <a href="/affiliate-disclosure/">affiliate disclosure</a>.</div>
   </section>
 
   {groups.map((group) => (

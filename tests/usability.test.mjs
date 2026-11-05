@@ -142,10 +142,6 @@ test('new decision guides are discoverable from both hubs', async () => {
 });
 
 test('editorial provenance distinguishes owned products from sourced research', async () => {
-  const methodology = await read('src/pages/editorial-methodology.astro');
-  for (const token of ['Owned & used', 'Researched', 'Corrections', 'Affiliate independence']) {
-    assert.match(methodology, new RegExp(token.replace('&', '&(?:amp;)?')));
-  }
 
   const evidence = await read('src/components/EvidencePanel.astro');
   assert.match(evidence, /owned-and-used/);
@@ -160,7 +156,6 @@ test('editorial provenance distinguishes owned products from sourced research', 
   }
 
   const footer = await read('src/components/SiteFooter.astro');
-  assert.match(footer, /href="\/editorial-methodology\/?"/);
 
   const sourceChecked = [
     'logitech-c920x-hd-webcam',
@@ -193,7 +188,6 @@ test('evidence-backed shortlist prioritizes source-checked pages without shrinki
   assert.equal((source.match(/data-owned-pick/g) || []).length, 2);
   assert.equal((source.match(/<a class="card" data-catalog-card/g) || []).length, 30);
   assert.match(source, /Evidence-backed shortlist/);
-  assert.match(source, /\/editorial-methodology/);
 
   for (const slug of [
     'logitech-c920x-hd-webcam',

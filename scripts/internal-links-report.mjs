@@ -39,7 +39,7 @@ for (const [r, f] of routes) {
   }
   outbound.set(r, links);
 }
-const exempt = new Set(['/','/404','/privacy','/contact','/about','/affiliate-disclosure','/editorial-methodology']);
+const exempt = new Set(['/','/404','/privacy','/contact','/about','/affiliate-disclosure']);
 const orphans = [...routes.keys()].filter((r) => !exempt.has(r) && inbound.get(r).size === 0).sort();
 const thin = [...routes.keys()].filter((r) => !exempt.has(r) && [...outbound.get(r)].filter((x) => x.startsWith('/gear') || x.startsWith('/guides') || x.startsWith('/setups')).length < 3).sort();
 console.log(JSON.stringify({ pages: routes.size, orphanCount: orphans.length, orphans, thinOutboundCount: thin.length, thinOutbound: thin }, null, 2));
