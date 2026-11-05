@@ -1,4 +1,4 @@
-// StackGeist's search focus is IT labs, certifications, and PC/USB-C fixes.
+// StackGeist's search focus is troubleshooting fixes, then IT labs and certifications.
 // Pages outside that focus stay online for existing links and social traffic,
 // but are noindex and left out of the sitemap. Remove a route here to restore it.
 
@@ -16,24 +16,18 @@ const ARCHIVED_PREFIXES = [
 ];
 
 const ARCHIVED_GUIDES = [
-  'benq-screenbar-flickering',
   'better-video-calls',
-  'cable-management',
   'cheap-desk-upgrades',
   'desk-layout-basics',
-  'desk-power-safety-problems',
-  'extension-cord-getting-hot',
-  'extension-cord-safety-guide',
-  'govee-strip-lights-not-connecting-wifi',
-  'home-office-peripheral-fixes',
   'keyboard-mouse-fit',
-  'monitor-arm-sagging-fix',
-  'office-chair-gas-cylinder-replacement',
-  'surge-protector-clicking',
 ];
 
 // Exceptions inside an archived prefix that fit the focus.
-const KEPT_ROUTES = new Set(['/setups/home-lab-dev-workstation']);
+const KEPT_ROUTES = new Set([
+  '/setups/home-lab-dev-workstation',
+  '/gear/input/logitech-mx-master-3s',
+  '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones',
+]);
 
 const ARCHIVED_ROUTES = new Set(ARCHIVED_GUIDES.map((slug) => `/guides/${slug}`));
 

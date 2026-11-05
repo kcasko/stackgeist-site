@@ -1,99 +1,137 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
-import { troubleshootingHubs } from '../../data/troubleshootingHubs';
-const priorityFixes=[
- {slug:'usb-c-dock-only-one-monitor',title:'USB-C dock only detecting one monitor',desc:'Start here when one external display works and the second does not.'},
- {slug:'portable-usb-c-monitor-no-signal',title:'Portable USB-C monitor showing no signal',desc:'Check host video support, full-featured cables, and hub passthrough.'},
- {slug:'usb-c-cable-charging-slow',title:'USB-C cable charging slow',desc:'Separate cable rating from charger output and device limits.'},
- {slug:'gan-charger-not-charging-laptop-full-speed',title:'GaN charger not charging laptop full speed',desc:'Find USB PD and shared-port wattage limits.'},
- {slug:'raspberry-pi-5-wont-boot',title:'Raspberry Pi 5 won’t boot',desc:'Power, boot media, LED, HDMI, and peripheral checks.'},
- {slug:'microsd-card-not-detected',title:'microSD card not detected',desc:'Reader, Disk Management, write protection, and failure checks.'},
- {slug:'wd-elements-not-showing-up',title:'WD Elements not showing up',desc:'Cable, power, Disk Management, and drive health triage.'},
- {slug:'govee-strip-lights-not-connecting-wifi',title:'Govee lights not connecting to Wi-Fi',desc:'2.4 GHz, permissions, mesh steering, and pairing fixes.'},
- {slug:'mx-master-3s-scroll-wheel-not-working',title:'MX Master 3S scroll wheel not working',desc:'SmartShift, app profiles, firmware, debris, and hardware checks.'},
- {slug:'keychron-v6-max-bluetooth-not-connecting',title:'Keychron V6 Max Bluetooth not connecting',desc:'Mode, profile, pairing, and reset sequence.'},
+
+const topFixes = [
+  { slug: 'sennheiser-momentum-4-wont-pair', title: 'Sennheiser Momentum 4 not pairing', desc: 'Correct pairing slide, multipoint limits, and a clean reset sequence.' },
+  { slug: 'usb-c-dock-only-one-monitor', title: 'USB-C dock only detecting one monitor', desc: 'Start here when one external display works and the second does not.' },
+  { slug: 'microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader, Disk Management, write protection, and failure checks.' },
+  { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Find USB PD and shared-port wattage limits.' },
 ];
-const guides=[
- {slug:'desk-layout-basics',kicker:'Setup basics',title:'Desk layout basics',desc:'Fix the primary zone before deciding where accessories, lighting, and audio should live.'},
- {slug:'cable-management',kicker:'Cable path',title:'Cable management that stays manageable',desc:'Route power, signal, and removable cables differently so future changes do not wreck the whole desk.'},
- {slug:'cheap-desk-upgrades',kicker:'Order of operations',title:'Cheap desk upgrades first',desc:'Fix friction, lighting, cable paths, and reach zones before replacing working hardware.'},
- {slug:'usb-c-dock-compatibility',kicker:'Connectivity',title:'USB-C dock compatibility',desc:'Trace host capability, display paths, charging, bandwidth, software, and cables before counting ports.'},
- {slug:'how-to-tell-if-usb-c-port-supports-video',kicker:'Troubleshooting',title:'Does this USB-C port support video?',desc:'Confirm DisplayPort Alt Mode, USB4, or Thunderbolt from the exact host spec instead of guessing from connector shape.'},
- {slug:'usb-c-hub-ethernet-works-hdmi-doesnt',kicker:'Troubleshooting',title:'USB-C hub Ethernet works but HDMI does not',desc:'USB data can work while the display path fails. Isolate host video support, cable capability, and HDMI output.'},
- {slug:'usb-c-dock-second-monitor-stops-working',kicker:'Troubleshooting',title:'USB-C dock fails when a second monitor is connected',desc:'Use the one-monitor baseline to find display-stream, bandwidth, MST, DisplayLink, or host limits.'},
- {slug:'laptop-says-slow-charger-with-100w-usb-c-charger',kicker:'Troubleshooting',title:'100W USB-C charger but Windows says slow charger',desc:'Check per-port output, cable current rating, laptop input needs, port choice, and dock losses.'},
- {slug:'usb-c-dock-only-one-monitor',kicker:'Troubleshooting',title:'USB-C dock only detecting one monitor',desc:'Diagnose host port limits, MST vs DisplayLink vs Thunderbolt, and cables before returning a working dock.'},
- {slug:'usb-c-cable-charging-slow',kicker:'Troubleshooting',title:'Why your USB-C cable is charging slow',desc:'Isolate cable rating, charger per-port output, and device ceiling before replacing anything.'},
- {slug:'gan-charger-not-charging-laptop-full-speed',kicker:'Troubleshooting',title:'GaN charger not charging laptop full speed',desc:'PDO negotiation, multi-port wattage sharing, and proprietary charging quirks explained.'},
- {slug:'portable-usb-c-monitor-no-signal',kicker:'Troubleshooting',title:'Portable USB-C monitor showing no signal',desc:'The host port is usually why. DisplayPort Alt Mode, cables, and hub passthrough checks.'},
- {slug:'extension-cord-getting-hot',kicker:'Troubleshooting',title:'Extension cord getting hot',desc:'Watt draw vs gauge, coiled cord heat traps, and when to unplug immediately.'},
- {slug:'surge-protector-clicking',kicker:'Troubleshooting',title:'Surge protector clicking sound',desc:'MOV wear, thermal breaker cycling, inrush current — when to keep it and when to replace.'},
- {slug:'alfa-ac1900-slow-speed-fix',kicker:'Troubleshooting',title:'ALFA AC1900 slow speed fix',desc:'Driver, USB 3.0 port, band selection, and antenna orientation for the RTL8814AU adapter.'},
- {slug:'monitor-arm-sagging-fix',kicker:'Troubleshooting',title:'Monitor arm sagging or drooping',desc:'Find the tension hex, match monitor weight to arm range, and know when the strut is truly blown.'},
- {slug:'logitech-brio-not-detected-windows-11',kicker:'Troubleshooting',title:'Logitech Brio not detected on Windows 11',desc:'Camera privacy, USB 3.0 port, driver conflicts, and cable checks in order.'},
- {slug:'mx-master-3s-scroll-wheel-not-working',kicker:'Troubleshooting',title:'MX Master 3s scroll wheel not working',desc:'SmartShift toggle, axle debris, firmware, and battery — clean-unlock-replace triage.'},
- {slug:'benq-screenbar-flickering',kicker:'Troubleshooting',title:'BenQ ScreenBar flickering',desc:'Underpowered USB port, Halo puck battery, and PWM dimming perception explained.'},
- {slug:'keychron-v6-max-bluetooth-not-connecting',kicker:'Troubleshooting',title:'Keychron V6 Max not connecting over Bluetooth',desc:'Mode switch, profile keys, pairing sequence, and factory reset in order.'},
- {slug:'sennheiser-momentum-4-wont-pair',kicker:'Troubleshooting',title:'Sennheiser Momentum 4 not pairing',desc:'Correct pairing slide, multipoint limits, and reset sequence for clean re-pair.'},
- {slug:'govee-strip-lights-not-connecting-wifi',kicker:'Troubleshooting',title:'Govee strip lights not connecting to Wi-Fi',desc:'2.4 GHz-only band, app permissions, and mesh router band-steering fixes.'},
- {slug:'raspberry-pi-5-wont-boot',kicker:'Troubleshooting',title:'Raspberry Pi 5 won\u2019t boot',desc:'27W PSU requirement, LED patterns, SD card reflash, and HDMI port order.'},
- {slug:'microsd-card-not-detected',kicker:'Troubleshooting',title:'microSD card not detected',desc:'Reader swap, Disk Management letter assign, read-only clear, and card end-of-life signs.'},
- {slug:'wd-elements-not-showing-up',kicker:'Troubleshooting',title:'WD Elements not showing up',desc:'Rear USB port, unpowered hub problems, cable swap, and the click that means back up now.'},
- {slug:'external-drive-shows-in-disk-management-not-file-explorer',kicker:'Troubleshooting',title:'External drive in Disk Management but not File Explorer',desc:'Check drive letter, volume state, and file system safely before initializing or formatting anything.'},
- {slug:'office-chair-gas-cylinder-replacement',kicker:'Troubleshooting',title:'Office chair gas cylinder replacement',desc:'Class 3 vs Class 4, universal 2\" size, pipe wrench method, and warranty check.'},
- {slug:'usb-c-cable-buying-guide',kicker:'Connectivity',title:'USB-C cable buying guide',desc:'How wattage ratings actually work, what USB 2.0 vs 3.x vs Thunderbolt means, and how to tell what an unlabeled cable really is.'},
- {slug:'laptop-charger-wattage',kicker:'Power',title:'How many watts does my laptop charger need?',desc:'Match the laptop\u2019s rated input, plan headroom for docks and multi-device chargers, and know when a lower-wattage brick is safe.'},
- {slug:'extension-cord-safety-guide',kicker:'Power',title:'Extension cord safety guide',desc:'Calculate desk load, pick the right amp rating and gauge, and understand where surge protectors fit \u2014 without stacking violations.'},
- {slug:'keyboard-mouse-fit',kicker:'Input fit',title:'Keyboard and mouse fit',desc:'Choose keyboard width and pointer shape as one reach system, with OSHA-backed placement guidance.'},
- {slug:'better-video-calls',kicker:'Calls',title:'Better video calls',desc:'Fix camera angle, front lighting, microphone distance, and background before buying resolution.'},
+
+const groups = [
+  {
+    id: 'usb-c-displays',
+    title: 'USB-C, docks, and displays',
+    hub: 'usb-c-charging-display-problems',
+    guides: [
+      { slug: 'usb-c-dock-only-one-monitor', title: 'USB-C dock only detecting one monitor', desc: 'Host port limits, MST vs DisplayLink vs Thunderbolt, and cables.' },
+      { slug: 'usb-c-dock-second-monitor-stops-working', title: 'USB-C dock fails with a second monitor', desc: 'Use a one-monitor baseline to find stream, bandwidth, or host limits.' },
+      { slug: 'portable-usb-c-monitor-no-signal', title: 'Portable USB-C monitor showing no signal', desc: 'DisplayPort Alt Mode, cables, and hub passthrough checks.' },
+      { slug: 'usb-c-hub-ethernet-works-hdmi-doesnt', title: 'USB-C hub Ethernet works but HDMI does not', desc: 'USB data can work while the display path fails.' },
+      { slug: 'how-to-tell-if-usb-c-port-supports-video', title: 'Does this USB-C port support video?', desc: 'Confirm it from the exact host spec instead of the connector shape.' },
+      { slug: 'usb-c-dock-compatibility', title: 'USB-C dock compatibility checklist', desc: 'Trace host capability, displays, charging, and bandwidth before buying.' },
+      { slug: 'usb-c-cable-buying-guide', title: 'USB-C cable buying guide', desc: 'What wattage and USB or Thunderbolt labels actually mean.' },
+    ],
+  },
+  {
+    id: 'charging-power',
+    title: 'Charging and power',
+    hub: 'desk-power-safety-problems',
+    guides: [
+      { slug: 'usb-c-cable-charging-slow', title: 'USB-C cable charging slow', desc: 'Separate cable rating, charger output, and device limits.' },
+      { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Power negotiation and multi-port wattage sharing.' },
+      { slug: 'laptop-says-slow-charger-with-100w-usb-c-charger', title: '100W USB-C charger but Windows says slow charger', desc: 'Per-port output, cable rating, port choice, and dock losses.' },
+      { slug: 'laptop-charger-wattage', title: 'How many watts does my laptop charger need?', desc: 'Match rated input and plan headroom for docks.' },
+      { slug: 'surge-protector-clicking', title: 'Surge protector clicking', desc: 'When to keep using it and when to replace it.' },
+      { slug: 'extension-cord-getting-hot', title: 'Extension cord getting hot', desc: 'When to stop using it, and how to find the cause.' },
+      { slug: 'extension-cord-safety-guide', title: 'Extension cord safety', desc: 'Desk load, amp rating, gauge, and where surge protectors fit.' },
+    ],
+  },
+  {
+    id: 'storage-boot',
+    title: 'Storage and boot problems',
+    hub: 'storage-raspberry-pi-boot-fixes',
+    guides: [
+      { slug: 'microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader swap, drive letters, read-only state, and end-of-life signs.' },
+      { slug: 'external-drive-shows-in-disk-management-not-file-explorer', title: 'Drive in Disk Management but not File Explorer', desc: 'Safe checks before you initialize or format anything.' },
+      { slug: 'wd-elements-not-showing-up', title: 'WD Elements not showing up', desc: 'Cable, power, Disk Management, and drive health triage.' },
+      { slug: 'raspberry-pi-5-wont-boot', title: 'Raspberry Pi 5 won’t boot', desc: 'Power, boot media, LED patterns, and HDMI checks.' },
+    ],
+  },
+  {
+    id: 'wireless-peripherals',
+    title: 'Bluetooth, Wi-Fi, and peripherals',
+    hub: 'wireless-bluetooth-smart-home-fixes',
+    guides: [
+      { slug: 'sennheiser-momentum-4-wont-pair', title: 'Sennheiser Momentum 4 not pairing', desc: 'Pairing slide, multipoint limits, and reset sequence.' },
+      { slug: 'keychron-v6-max-bluetooth-not-connecting', title: 'Keychron V6 Max Bluetooth not connecting', desc: 'Mode switch, profile keys, pairing, and reset.' },
+      { slug: 'alfa-ac1900-slow-speed-fix', title: 'ALFA AC1900 slow speed fix', desc: 'Driver, USB port, band selection, and antenna checks.' },
+      { slug: 'mx-master-3s-scroll-wheel-not-working', title: 'MX Master 3S scroll wheel not working', desc: 'SmartShift, firmware, debris, and hardware triage.' },
+      { slug: 'logitech-brio-not-detected-windows-11', title: 'Logitech Brio not detected on Windows 11', desc: 'Camera privacy, USB port, driver, and cable checks.' },
+      { slug: 'govee-strip-lights-not-connecting-wifi', title: 'Govee lights not connecting to Wi-Fi', desc: '2.4 GHz, permissions, mesh steering, and pairing fixes.' },
+    ],
+  },
+  {
+    id: 'home-office-hardware',
+    title: 'Home office hardware',
+    hub: 'home-office-peripheral-fixes',
+    guides: [
+      { slug: 'monitor-arm-sagging-fix', title: 'Monitor arm sagging', desc: 'Capacity, tension, VESA, and clamp checks.' },
+      { slug: 'benq-screenbar-flickering', title: 'BenQ ScreenBar flickering', desc: 'Model and power checks before you replace it.' },
+      { slug: 'office-chair-gas-cylinder-replacement', title: 'Office chair sinking', desc: 'Gas cylinder or control mechanism?' },
+    ],
+  },
+];
+
+const deskGuides = [
+  { slug: 'cable-management', title: 'Cable management' },
+  { slug: 'desk-layout-basics', title: 'Desk layout basics' },
+  { slug: 'cheap-desk-upgrades', title: 'Cheap desk upgrades' },
+  { slug: 'keyboard-mouse-fit', title: 'Keyboard and mouse fit' },
+  { slug: 'better-video-calls', title: 'Better video calls' },
 ];
 ---
-<ContentLayout title="Practical desk setup guides | StackGeist" description="Practical desk and gaming setup guides: layout, cable management, cheap upgrades, dock compatibility, input fit, and better video calls." active="guides">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Guides</p>
-  <p class="page-kicker">guides /</p>
-  <h1 class="page-title">Practical guides that help you decide, not shop.</h1>
-  <p class="page-lead">Each guide covers one desk decision end to end. Read the two or three that match your bottleneck and skip the rest.</p>
+<ContentLayout title="PC, USB-C, and storage troubleshooting guides | StackGeist" description="Step-by-step fixes for USB-C docks and displays, charging, storage, Raspberry Pi boot problems, Bluetooth, and peripherals, tied to manufacturer sources." active="guides">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Fixes</p>
+  <p class="page-kicker">Fixes</p>
+  <h1 class="page-title">Find the fix before you replace the hardware.</h1>
+  <p class="page-lead">Pick the problem closest to yours. Each guide starts with a short answer, then works through the checks in order.</p>
+
+  <nav class="fix-jump" aria-label="Jump to a problem area">
+    {groups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
+  </nav>
 
   <section class="content-section">
     <p class="page-kicker">Start here</p>
-    <h2>Popular troubleshooting fixes</h2>
-    <p>These are the most specific problem-solving guides on StackGeist. If one matches your symptom, start there before buying replacement hardware.</p>
+    <h2>Common fixes</h2>
     <div class="cards">
-      {priorityFixes.map((g)=>(
-        <a class="card" href={'/guides/' + g.slug + '/'}>
-          <p class="page-kicker">Troubleshooting</p>
-          <h3>{g.title}</h3>
-          <p>{g.desc}</p>
-        </a>
+      {topFixes.map((guide) => (
+        <a class="card" href={`/guides/${guide.slug}/`}><h3>{guide.title}</h3><p>{guide.desc}</p></a>
       ))}
     </div>
   </section>
 
-  <section class="content-section cards">
-    {troubleshootingHubs.map((hub)=>(
-      <a class="card" href={'/guides/' + hub.slug + '/'}>
-        <p class="page-kicker">Troubleshooting hub</p>
-        <h2>{hub.title}</h2>
-        <p>{hub.description}</p>
-      </a>
-    ))}
-  </section>
+  {groups.map((group) => (
+    <section class="content-section" id={group.id}>
+      <h2>{group.title}</h2>
+      {group.hub && <p><a href={`/guides/${group.hub}/`}>Not sure which one? Start with the overview →</a></p>}
+      <div class="cards">
+        {group.guides.map((guide) => (
+          <a class="card" href={`/guides/${guide.slug}/`}><h3>{guide.title}</h3><p>{guide.desc}</p></a>
+        ))}
+      </div>
+    </section>
+  ))}
 
-  <section class="content-section cards">
-    {guides.map((g)=>(
-      <a class="card" href={`/guides/${g.slug}/`}>
-        <p class="page-kicker">{g.kicker}</p>
-        <h2>{g.title}</h2>
-        <p>{g.desc}</p>
-      </a>
-    ))}
+  <section class="content-section">
+    <p class="page-kicker">Building skills too?</p>
+    <div class="cards">
+      <a class="card" href="/labs/"><h3>IT home labs</h3><p>Practice support and systems work on documented labs.</p></a>
+      <a class="card" href="/certs/"><h3>IT certifications</h3><p>Compare A+, Network+, Security+, and AWS Cloud Practitioner.</p></a>
+    </div>
   </section>
 
   <section class="content-section">
-    <p class="page-kicker">Next</p>
-    <div class="cards">
-      <a class="card" href="/setups"><h3>Browse setups</h3><p>Match a full desk to your room and budget instead of a single decision.</p></a>
-      <a class="card" href="/gear"><h3>Browse gear decision pages</h3><p>Jump straight to fit-first product pages when you already know what to buy.</p></a>
-    </div>
+    <h2>Desk setup guides</h2>
+    <ul class="desk-guides">
+      {deskGuides.map((guide) => <li><a href={`/guides/${guide.slug}/`}>{guide.title}</a></li>)}
+    </ul>
   </section>
+
+  <style>
+    .fix-jump { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .fix-jump a { padding:8px 12px; border:1px solid var(--term-border-strong); font-size:12.5px; }
+    .desk-guides { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:8px 24px; padding:0; list-style:none; }
+    .desk-guides a { display:inline-block; padding:4px 0; }
+  </style>
 </ContentLayout>

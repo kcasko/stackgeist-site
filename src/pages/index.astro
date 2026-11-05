@@ -2,16 +2,18 @@
 import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 const jobs=[
-  {href:'/labs/',eyebrow:'Start here',title:'Build a home lab',note:'Active Directory, ticket queues, and AWS projects, documented with verified output and honest limits.',cta:'Browse labs →',tone:'primary'},
+  {href:'/guides/',eyebrow:'Start here',title:'Fix a problem',note:'USB-C, docks, charging, storage, Bluetooth, Raspberry Pi, and home office hardware, diagnosed step by step.',cta:'Browse fixes →',tone:'primary'},
+  {href:'/labs/',eyebrow:'Build skills',title:'Build a home lab',note:'Active Directory, ticket queues, and AWS projects, documented with verified output and honest limits.',cta:'Browse labs →',tone:'secondary'},
   {href:'/certs/',eyebrow:'Next step',title:'Choose a certification',note:'A+, Network+, Security+, and AWS Cloud Practitioner compared from official exam pages.',cta:'Compare certs →',tone:'secondary'},
-  {href:'/guides/',eyebrow:'Right now',title:'Fix a problem',note:'USB-C, docks, charging, storage, Raspberry Pi, and Bluetooth, diagnosed step by step.',cta:'Browse fixes →',tone:'secondary'},
 ];
 
 const popularFixes=[
+  {href:'/guides/sennheiser-momentum-4-wont-pair/',title:'Sennheiser Momentum 4 won’t pair',note:'Pairing slide, multipoint limits, and a clean reset sequence.'},
   {href:'/guides/usb-c-dock-only-one-monitor/',title:'USB-C dock only detecting one monitor',note:'MST, DisplayLink, Thunderbolt, host limits, and cable checks.'},
+  {href:'/guides/microsd-card-not-detected/',title:'microSD card not detected',note:'Reader, Disk Management, write protection, and failure checks.'},
+  {href:'/guides/keychron-v6-max-bluetooth-not-connecting/',title:'Keychron V6 Max Bluetooth not connecting',note:'Mode, profile keys, pairing sequence, and reset steps.'},
+  {href:'/guides/gan-charger-not-charging-laptop-full-speed/',title:'GaN charger not charging laptop full speed',note:'Power negotiation and shared-port wattage limits.'},
   {href:'/guides/external-drive-shows-in-disk-management-not-file-explorer/',title:'Drive in Disk Management but not File Explorer',note:'Safe checks before you format anything.'},
-  {href:'/guides/usb-c-cable-charging-slow/',title:'USB-C cable charging too slowly',note:'Separate cable wattage, charger output, and device limits.'},
-  {href:'/guides/raspberry-pi-5-wont-boot/',title:'Raspberry Pi 5 won’t boot',note:'Power, boot media, LED patterns, HDMI, and attached-device checks.'},
 ];
 
 const buildNext=[
@@ -22,13 +24,13 @@ const buildNext=[
 
 const updated='Updated November 2026';
 ---
-<Layout title="IT Home Labs, Certification Guides & PC Fixes | StackGeist" description="Build the skills for an IT job: documented home labs, certification comparisons from official exam pages, and practical troubleshooting guides.">
+<Layout title="USB-C, PC & Tech Troubleshooting Fixes | StackGeist" description="Step-by-step fixes for USB-C docks, charging, storage, Bluetooth, and PC hardware problems, plus documented IT home labs and certification guides.">
 <div class="site-shell home-shell"><Header interactive={false}/><main id="main-content" tabindex="-1">
 
 <section class="hero-simple" aria-labelledby="home-title">
-  <p class="hero-eyebrow">{updated} · real labs · evidence labeled</p>
-  <h1 id="home-title">Build the skills IT jobs ask for.</h1>
-  <p class="hero-lead">Home labs, certification guides, and fixes from someone doing the same work, with what was verified and what wasn’t.</p>
+  <p class="hero-eyebrow">{updated} · practical fixes · evidence labeled</p>
+  <h1 id="home-title">Fix the problem before you replace the hardware.</h1>
+  <p class="hero-lead">Step-by-step diagnosis tied to manufacturer sources, with what was verified and what wasn’t.</p>
   <div class="job-grid">
     {jobs.map((job)=><a class:list={['job-card',job.tone]} href={job.href}><span class="job-eyebrow">{job.eyebrow}</span><strong>{job.title}</strong><span>{job.note}</span><b>{job.cta}</b></a>)}
   </div>
@@ -40,8 +42,8 @@ const updated='Updated November 2026';
 </section>
 
 <section class="plain-section" aria-labelledby="buy-title">
-  <p class="section-kicker">Hands-on practice</p>
-  <h2 id="buy-title">Ready to build something?</h2>
+  <p class="section-kicker">Building IT skills?</p>
+  <h2 id="buy-title">Practice on real systems.</h2>
   <p class="section-lead">Start with free practice, and buy hardware only when a lab actually needs it.</p>
   <div class="next-grid">{buildNext.map((item)=><a class="next-card" href={item.href}><strong>{item.title}</strong><span>{item.note}</span><b>open →</b></a>)}</div>
 </section>
@@ -49,7 +51,7 @@ const updated='Updated November 2026';
 
 
 <section class="trust-strip" aria-label="How StackGeist works">
-  <div><strong>Built first</strong><span>Lab pages come from systems actually run.</span></div>
+  <div><strong>Fix first</strong><span>Troubleshoot before replacing hardware.</span></div>
   <div><strong>Show the evidence</strong><span>Built, owned, or researched is stated explicitly.</span></div>
   <div><strong>Name the limits</strong><span>Unfinished work and open faults stay on the page.</span></div>
 </section>

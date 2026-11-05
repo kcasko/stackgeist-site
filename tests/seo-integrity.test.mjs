@@ -64,18 +64,28 @@ test('noindexed pages still let crawlers follow their links', { skip: !existsSyn
 
 test('search focus pages are indexable and in the sitemap', { skip: !existsSync(join(DIST, 'sitemap.xml')) }, () => {
   const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
-  for (const route of ['/labs/', '/labs/active-directory-home-lab/', '/labs/osticket-docker-help-desk-lab/', '/labs/aws-cognito-private-crud-fix/', '/labs/help-desk-practice-without-experience/', '/certs/', '/certs/security-plus-v7-vs-v8/', '/guides/usb-c-dock-only-one-monitor/']) {
+  for (const route of ['/labs/', '/labs/active-directory-home-lab/', '/labs/osticket-docker-help-desk-lab/', '/labs/aws-cognito-private-crud-fix/', '/labs/help-desk-practice-without-experience/', '/certs/', '/certs/security-plus-v7-vs-v8/', '/guides/usb-c-dock-only-one-monitor/', '/guides/surge-protector-clicking/', '/guides/cable-management/', '/gear/input/logitech-mx-master-3s/', '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/']) {
     assert.ok(sitemap.includes(`https://stackgeist.dev${route}<`), route);
     assert.match(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /<meta name="robots" content="index/, route);
   }
 });
 
 test('archived desk pages stay online but out of search', { skip: !existsSync(DIST) }, () => {
-  for (const route of ['/setups/midnight-shift/', '/gear/monitor-support/ergotron-lx/', '/guides/cable-management/']) {
+  for (const route of ['/setups/midnight-shift/', '/gear/monitor-support/ergotron-lx/', '/guides/desk-layout-basics/']) {
     assert.match(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /<meta name="robots" content="noindex, follow/, route);
   }
 });
 
 test('offers stay hidden until they have an approved link', { skip: !existsSync(DIST) }, () => {
   assert.doesNotMatch(readFileSync(join(DIST, 'certs', 'index.html'), 'utf8'), /Paid options/);
+});
+
+test('public hubs do not expose internal marketing language', { skip: !existsSync(DIST) }, () => {
+  for (const route of ['/kits/', '/guides/', '/gear/']) {
+    assert.doesNotMatch(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /social angles|income paths|monetized|ready to schedule/i, route);
+  }
+});
+
+test('gear hub does not label research-pending pages as source-checked', { skip: !existsSync(DIST) }, () => {
+  assert.doesNotMatch(readFileSync(join(DIST, 'gear', 'index.html'), 'utf8'), /amazon-basics-dual-monitor-arm/);
 });
