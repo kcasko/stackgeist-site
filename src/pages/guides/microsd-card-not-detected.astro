@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd=[
 articleSchema({
@@ -69,6 +70,7 @@ faqSchema({questions:[
 <div><strong><a href="/guides/storage-raspberry-pi-boot-fixes/">Storage and boot fixes</a></strong><p>An overview of microSD, external drive, and Raspberry Pi problems.</p></div>
 </div></section>
 
+<PartnerOffers ids={['dataRecovery']} placement="guide-microsd-card-not-detected" />
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
 <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [
   articleSchema({
@@ -82,7 +83,8 @@ Get-Volume</code></pre>
         </div>
       </section>
 
-      <section><p class="page-kicker">Sources</p><ol class="article-list">
+      <PartnerOffers ids={['dataRecovery']} placement="guide-wd-elements-not-showing-up" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
         <li><a href="https://support-en.wd.com/app/answers/detailweb/a_id/52804/">Western Digital — Resolve External Drive Not Detected by Windows</a></li>
         <li><a href="https://support-en.wd.com/app/answers/detailweb/a_id/6265/">Western Digital — Supported drives for WD Security and WD Drive Utilities</a></li>
         <li><a href="https://support-en.wd.com/app/answers/detailweb/a_id/50404/">Western Digital — Install and use WD Drive Utilities</a></li>

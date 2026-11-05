@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
 const __sd=[
 articleSchema({
@@ -56,6 +57,7 @@ faqSchema({questions:[
 <a class="card" href="/guides/usb-c-cable-charging-slow/"><h3>USB-C cable charging slowly</h3><p>Separate cable current capability from charger and device limits.</p></a>
 </div></section>
 
+<PartnerOffers ids={['usbcCharger']} placement="guide-laptop-charger-wattage" />
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
 <li><a href="https://www.usb.org/usb-charger-pd">USB-IF — USB Power Delivery</a></li>

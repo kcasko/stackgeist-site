@@ -102,3 +102,15 @@ test('methodology page is gone and old links redirect', { skip: !existsSync(DIST
 test('gear hub does not label research-pending pages as source-checked', { skip: !existsSync(DIST) }, () => {
   assert.doesNotMatch(readFileSync(join(DIST, 'gear', 'index.html'), 'utf8'), /amazon-basics-dual-monitor-arm/);
 });
+
+test('partner offers only render with a link and always carry the disclosure', { skip: !existsSync(DIST) }, () => {
+  const offers = readFileSync('src/data/partnerOffers.ts', 'utf8');
+  const live = new Set([...offers.matchAll(/id: '([^']+)'[\s\S]*?url: '([^']*)'/g)].filter((m) => m[2]).map((m) => m[1]));
+  for (const file of htmlFiles(DIST)) {
+    const html = readFileSync(file, 'utf8');
+    if (!html.includes('aria-label="Paid options"')) continue;
+    assert.equal(live.size > 0, true, `${file} shows paid options but no offer has a url`);
+    assert.match(html, /Paid link: StackGeist may earn a commission/, file);
+    assert.match(html, /rel="sponsored nofollow noopener noreferrer"[^>]*data-affiliate-link/, file);
+  }
+});

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [
   articleSchema({
@@ -68,7 +69,8 @@ const __sd = [
         </div>
       </section>
 
-      <section><p class="page-kicker">Sources</p><ol class="article-list">
+      <PartnerOffers ids={['usbcCharger', 'usbcCable']} placement="guide-laptop-says-slow-charger-with-100w-usb-c-charger" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
         <li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
       </ol></section>
     </div>

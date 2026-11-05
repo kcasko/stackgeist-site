@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [
   articleSchema({
@@ -58,6 +59,7 @@ const __sd = [
       </div></section>
 
       <section><p class="page-kicker">Related fixes</p><h2>Keep troubleshooting the same system.</h2><div class="cards"><a class="card" href="/guides/usb-c-charging-display-problems"><h3>USB-C charging and display hub</h3><p>Work through the full charging path.</p></a><a class="card" href="/guides/gan-charger-not-charging-laptop-full-speed"><h3>GaN charger not charging full speed</h3><p>Check PD negotiation and shared wattage.</p></a><a class="card" href="/guides/laptop-says-slow-charger-with-100w-usb-c-charger/"><h3>100W charger but Windows says slow charger</h3><p>Diagnose per-port output, cable limits, port choice, and dock losses.</p></a></div></section>
+<PartnerOffers ids={['usbcCable', 'usbcCharger']} placement="guide-usb-c-cable-charging-slow" />
 <section><p class="page-kicker">Sources</p><ol class="article-list">
         <li>[1] <a href="https://www.usb.org/document-library/usb-power-delivery">USB-IF — USB Power Delivery specification and revision history</a></li>
         <li>[2] <a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — USB-C slow charger and charging requirements</a></li>

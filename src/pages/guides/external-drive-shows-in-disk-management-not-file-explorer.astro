@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd = [
   articleSchema({
@@ -72,7 +73,8 @@ Get-Volume</code></pre>
         </div>
       </section>
 
-      <section><p class="page-kicker">Sources</p><ol class="article-list">
+      <PartnerOffers ids={['dataRecovery']} placement="guide-external-drive-shows-in-disk-management-not-file-explorer" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
         <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
         <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>
         <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-volume">Microsoft Learn — Get-Volume</a></li>
