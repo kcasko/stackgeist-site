@@ -2,7 +2,7 @@ export const prerender = true;
 
 import { GENERATED_SETUPS } from '../data/gamingSetupOptions';
 import { troubleshootingHubs } from '../data/troubleshootingHubs';
-import { INCOME_KITS } from '../data/incomeKits';
+import { INCOME_KITS, isKitIndexable } from '../data/incomeKits';
 
 const pageModules = import.meta.glob('./**/*.astro');
 
@@ -36,7 +36,8 @@ const editorialNoindexRoutes = new Set([
   '/gear/budget-tech/usb-to-3-5mm-audio-adapter-cable',
   '/gear/budget-tech/wd-elements-portable-external-hard-drive',
   '/gear/desk-lighting/luminoodle',
-  '/gear/monitor-support/amazon-basics-dual-monitor-arm'
+  '/gear/monitor-support/amazon-basics-dual-monitor-arm',
+  '/native-iptv/privacy'
 ]);
 
 const staticRoutes = Object.keys(pageModules)
@@ -51,7 +52,7 @@ const staticRoutes = Object.keys(pageModules)
 const dynamicRoutes = [
   ...GENERATED_SETUPS.map((setup) => `/setups/${setup.slug}`),
   ...troubleshootingHubs.map((hub) => `/guides/${hub.slug}`),
-  ...INCOME_KITS.map((kit) => `/kits/${kit.slug}`),
+  ...INCOME_KITS.filter(isKitIndexable).map((kit) => `/kits/${kit.slug}`),
 ];
 const routes = [...new Set([...staticRoutes, ...dynamicRoutes])]
   .sort((a, b) => a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b));

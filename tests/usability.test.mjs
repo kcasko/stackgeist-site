@@ -58,12 +58,12 @@ test('content CSS constrains prose and preserves mobile intent context', async (
 test('primary navigation goes to hub pages, not deep-linked children', async () => {
   const header = await read('src/components/Header.astro');
   const footer = await read('src/components/SiteFooter.astro');
-  assert.match(header, /href:'\/setups'/);
-  assert.match(header, /href:'\/guides'/);
+  assert.match(header, /href:'\/setups\/?'/);
+  assert.match(header, /href:'\/guides\/?'/);
   assert.doesNotMatch(header, /href:'\/setups\/gaming'/);
   assert.doesNotMatch(header, /href:'\/guides\/desk-layout-basics'/);
-  assert.match(footer, /href="\/setups"/);
-  assert.match(footer, /href="\/guides"/);
+  assert.match(footer, /href="\/setups\/?"/);
+  assert.match(footer, /href="\/guides\/?"/);
 });
 
 test('setups and guides hub pages exist with h1 and template every setup card', async () => {
@@ -160,7 +160,7 @@ test('editorial provenance distinguishes owned products from sourced research', 
   }
 
   const footer = await read('src/components/SiteFooter.astro');
-  assert.match(footer, /href="\/editorial-methodology"/);
+  assert.match(footer, /href="\/editorial-methodology\/?"/);
 
   const sourceChecked = [
     'logitech-c920x-hd-webcam',

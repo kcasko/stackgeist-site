@@ -30,7 +30,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     related: [
       { href: '/guides/keyboard-mouse-fit', title: 'Keyboard and mouse fit', desc: 'Fix reach and wrist angle before blaming the switches.' },
       { href: '/gear/input/keychron-v6-max', title: 'Keychron V6 Max', desc: 'Full-size wireless mechanical board with hot-swap and QMK support.' },
-      { href: '/guides/mechanical-keyboard-buying-guide', title: 'Mechanical keyboard buying guide', desc: 'Switch types, sizes, layouts, and when to skip the hobby entirely.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Mechanical keyboard starter kit', hook: 'Switch tester, hot-swap board, better keycaps. The hobby can wait in the garage.', utmContent: 'mechanical_keyboard_starter' },
@@ -65,9 +64,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Replacement ear cushions', role: 'Fix flattened or cracked pads instead of replacing the whole headset.', href: search('replacement ear cushions arctis'), kind: 'search', tier: 'skip-until-needed', check: 'Match cushion size and mounting style to your headset model.' }
     ],
     related: [
-      { href: '/guides/headset-mic-troubleshooting', title: 'Headset mic troubleshooting', desc: 'Fix muted, quiet, or static headset mics before replacing gear.' },
       { href: '/gear/audio/elgato-wave-3', title: 'Elgato Wave:3', desc: 'Desktop mic option for streaming and calls.' },
-      { href: '/guides/usb-audio-vs-onboard', title: 'USB audio vs onboard', desc: 'When to use a USB soundcard or DAC instead of motherboard audio.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Gaming headset and comm kit', hook: 'Wireless for convenience, wired for backup, and clear voice before expensive drivers.', utmContent: 'gaming_headset_comm_kit' },
@@ -103,8 +100,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/gear/audio/elgato-wave-3', title: 'Elgato Wave:3', desc: 'Simpler USB mic option with software mixing and decent sound.' },
-      { href: '/guides/mic-preamp-gain-setup', title: 'Mic preamp and gain setup', desc: 'Set proper gain and avoid clipping or noise floor issues.' },
-      { href: '/guides/acoustic-treatment-basics', title: 'Acoustic treatment basics', desc: 'When and where to add foam or panels without overdoing it.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Streaming mic and arm kit', hook: 'Boom arm, shock mount, windscreen, and stable placement. Room treatment can wait.', utmContent: 'streaming_mic_arm_kit' },
@@ -140,7 +135,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/guides/keyboard-mouse-fit', title: 'Keyboard and mouse fit', desc: 'Fix reach, desk height, and chair height before buying new gear.' },
-      { href: '/guides/wrist-pain-desk-checklist', title: 'Wrist pain desk checklist', desc: 'Identify the real cause before replacing the mouse.' },
       { href: '/gear/input/logitech-mx-master-3s', title: 'Logitech MX Master 3S', desc: 'Contoured wireless mouse with thumb rest and horizontal scroll.' }
     ],
     socialAngles: [
@@ -176,9 +170,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Thermal pads for memory and VRM', role: 'Improve contact between hot chips and heat spreaders.', href: search('thermal pads laptop memory vrm'), kind: 'search', tier: 'skip-until-needed', check: 'Advanced mod. Only useful if you are already inside the laptop.' }
     ],
     related: [
-      { href: '/guides/laptop-overheating-checklist', title: 'Laptop overheating checklist', desc: 'Diagnose thermal throttling before buying cooling gear.' },
-      { href: '/guides/laptop-repasting-guide', title: 'Laptop repasting guide', desc: 'When and how to replace thermal paste on laptops.' },
-      { href: '/guides/desk-airflow-basics', title: 'Desk airflow basics', desc: 'Prevent heat buildup around the laptop and monitors.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Laptop cooling fix kit', hook: 'Laptop stand, compressed air, cooling pad. Thermal paste is the last step, not the first.', utmContent: 'laptop_cooling_fix_kit' },
@@ -213,9 +204,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'WiFi analyzer app or tool', role: 'Map signal strength, channel congestion, and node placement.', href: search('wifi analyzer netgear nighthawk app'), kind: 'search', tier: 'skip-until-needed', check: 'Free phone apps work for basic signal and channel checks.' }
     ],
     related: [
-      { href: '/guides/mesh-wifi-vs-router-extender', title: 'Mesh WiFi vs router and extender', desc: 'When to use mesh instead of range extenders or access points.' },
-      { href: '/guides/ethernet-backhaul-setup', title: 'Ethernet backhaul setup', desc: 'Wire mesh nodes for stable connections and better speed.' },
-      { href: '/guides/wifi-dead-zone-checklist', title: 'WiFi dead zone checklist', desc: 'Diagnose coverage issues before buying new gear.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'WiFi 6 mesh upgrade kit', hook: 'Mesh system, Ethernet backhaul, smart placement. More nodes is not always the answer.', utmContent: 'wifi_6_mesh_upgrade' },
@@ -250,9 +238,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Thermal paste', role: 'Replace dried CPU paste if the PC is over 5 years old and runs hot.', href: search('arctic mx-4 thermal paste'), kind: 'search', tier: 'skip-until-needed', check: 'Only repaste if the CPU temperature is high and throttling.' }
     ],
     related: [
-      { href: '/guides/ssd-upgrade-clone-guide', title: 'SSD upgrade and clone guide', desc: 'Clone a hard drive to SSD without reinstalling Windows.' },
-      { href: '/guides/old-pc-performance-checklist', title: 'Old PC performance checklist', desc: 'Diagnose slow PCs before buying new parts.' },
-      { href: '/guides/windows-bloatware-removal', title: 'Windows bloatware removal', desc: 'Uninstall startup junk and pre-installed clutter safely.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Old PC revival kit', hook: 'SSD, RAM, driver updates, dust cleaning. The old PC can run fine if you fix the bottlenecks.', utmContent: 'old_pc_revival_kit' },
@@ -287,9 +272,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Twelve South HiRise stand for Mac mini', role: 'Desk stand with storage drawer underneath the mini.', href: search('twelve south hirise mac mini stand'), kind: 'search', tier: 'skip-until-needed', check: 'Only useful if desk space is tight and you need vertical stacking.' }
     ],
     related: [
-      { href: '/guides/mac-mini-display-setup', title: 'Mac mini display setup', desc: 'Thunderbolt, USB-C, and HDMI display paths for Apple Silicon.' },
       { href: '/guides/usb-c-dock-compatibility', title: 'USB-C dock compatibility', desc: 'Match dock capabilities to Mac mini ports and display needs.' },
-      { href: '/setups/apple-silicon-dev-desk', title: 'Apple Silicon dev desk', desc: 'Full desk build around Mac mini or Mac Studio for development work.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Mac mini desk kit', hook: 'Monitor, hub, storage, and stand. Skip the overpriced Apple peripherals unless you want them.', utmContent: 'mac_mini_desk_kit' },
@@ -325,8 +308,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/network-plus-home-lab-kit', title: 'Network+ home lab kit', desc: 'Build a wired lab for networking and security practice.' },
-      { href: '/guides/comptia-exam-voucher-discounts', title: 'CompTIA exam voucher discounts', desc: 'Save on exam fees with academic or bundle vouchers.' },
-      { href: '/guides/virtual-lab-vs-home-lab', title: 'Virtual lab vs home lab', desc: 'When to use VMs versus physical network gear for studying.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Security+ study desk kit', hook: 'Professor Messer videos, Dion practice exams, VirtualBox labs, flashcards. No overpriced study bundles.', utmContent: 'security_plus_study_kit' },
@@ -361,8 +342,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'AWS Skill Builder free courses', role: 'Official AWS training with modules, quizzes, and sandboxes.', href: search('aws skill builder cloud practitioner essentials'), kind: 'search', tier: 'skip-until-needed', check: 'Skill Builder is free but slower than third-party courses.' }
     ],
     related: [
-      { href: '/guides/aws-free-tier-safety', title: 'AWS free tier safety', desc: 'Avoid surprise charges when learning AWS services.' },
-      { href: '/guides/aws-cloud-practitioner-exam-tips', title: 'AWS Cloud Practitioner exam tips', desc: 'Focus areas, time management, and question strategies.' },
       { href: '/kits/cloud-support-study-desk-kit', title: 'Cloud support study desk kit', desc: 'General cloud support and help desk lab setup.' }
     ],
     socialAngles: [
@@ -399,8 +378,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/proxmox-mini-pc-starter-kit', title: 'Proxmox mini PC starter kit', desc: 'Run Docker inside Proxmox VMs for isolated lab environments.' },
-      { href: '/guides/docker-compose-basics', title: 'Docker Compose basics', desc: 'Write compose files for multi-container apps.' },
-      { href: '/guides/docker-volume-and-network-guide', title: 'Docker volume and network guide', desc: 'Persist data and connect containers safely.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Docker homelab kit', hook: 'Docker, Compose, Portainer, reverse proxy. Deploy real services instead of just running hello-world.', utmContent: 'docker_homelab_kit' },
@@ -436,8 +413,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/nas-starter-kit', title: 'NAS starter kit', desc: 'Build or buy a NAS for media, backups, and file shares.' },
-      { href: '/guides/plex-vs-jellyfin', title: 'Plex vs Jellyfin', desc: 'Feature comparison and client support for self-hosted media.' },
-      { href: '/guides/media-server-transcoding-guide', title: 'Media server transcoding guide', desc: 'CPU and GPU requirements for smooth remote streaming.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Self-hosted media server kit', hook: 'Plex or Jellyfin, NAS drives, backup storage. Own your library instead of renting it monthly.', utmContent: 'self_hosted_media_server' },
@@ -473,8 +448,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/self-hosted-media-server-kit', title: 'Self-hosted media server kit', desc: 'Run Plex or Jellyfin on the NAS for streaming.' },
-      { href: '/guides/raid-vs-backup', title: 'RAID vs backup', desc: 'Understand redundancy and backup before losing files.' },
-      { href: '/guides/truenas-vs-synology', title: 'TrueNAS vs Synology', desc: 'Compare DIY and pre-built NAS options.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'NAS starter kit', hook: 'Synology or DIY TrueNAS, RAID drives, backup strategy. Centralize storage before the drives fail.', utmContent: 'nas_starter_kit' },
@@ -509,9 +482,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'SmartThings hub', role: 'Samsung hub for Zigbee and Z-Wave devices with cloud automation.', href: search('samsung smartthings hub v3'), kind: 'search', tier: 'skip-until-needed', check: 'SmartThings works but relies on cloud. Consider Home Assistant for local control.' }
     ],
     related: [
-      { href: '/guides/smart-home-platform-comparison', title: 'Smart home platform comparison', desc: 'Compare Alexa, Google, HomeKit, SmartThings, and Home Assistant.' },
-      { href: '/guides/zigbee-vs-wifi-smart-devices', title: 'Zigbee vs WiFi smart devices', desc: 'Pick the right wireless protocol for your home.' },
-      { href: '/kits/openhue', title: 'OpenHue control', desc: 'Control Philips Hue lights without the official app.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Smart home starter kit', hook: 'Hue bulbs, Kasa plugs, motion sensors, Home Assistant. Automate without vendor lock-in.', utmContent: 'smart_home_starter_kit' },
@@ -546,9 +516,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Plastic spudger and pry tool set', role: 'Open laptop cases and remove clips without damaging plastic.', href: search('plastic spudger pry tool set laptop'), kind: 'search', tier: 'nice-next', check: 'Metal tools scratch and short components. Use plastic for safe disassembly.' }
     ],
     related: [
-      { href: '/guides/how-to-apply-thermal-paste', title: 'How to apply thermal paste', desc: 'Application patterns, amount, and common mistakes.' },
-      { href: '/guides/laptop-repasting-guide', title: 'Laptop repasting guide', desc: 'Disassemble and repaste laptops safely.' },
-      { href: '/guides/thermal-pad-replacement', title: 'Thermal pad replacement', desc: 'When and how to replace thermal pads on GPUs and laptops.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Thermal paste and repair kit', hook: 'Arctic paste, isopropyl alcohol, lint-free wipes, thermal pads. Fix heat before replacing parts.', utmContent: 'thermal_paste_repair_kit' },
@@ -583,8 +550,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Laptop screen replacement', role: 'Replace cracked or dim screens yourself.', href: search('laptop screen replacement panel model number'), kind: 'search', tier: 'skip-until-needed', check: 'Match screen size, resolution, and connector type exactly.' }
     ],
     related: [
-      { href: '/guides/laptop-disassembly-guide', title: 'Laptop disassembly guide', desc: 'Safely open and repair laptops without breaking clips.' },
-      { href: '/guides/laptop-battery-replacement', title: 'Laptop battery replacement', desc: 'Swap laptop batteries and recalibrate charge reporting.' },
       { href: '/kits/thermal-paste-repair-kit', title: 'Thermal paste and repair kit', desc: 'Repaste CPUs and GPUs in laptops.' }
     ],
     socialAngles: [
@@ -620,9 +585,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Artist drawing glove', role: 'Reduce hand friction and prevent accidental palm touches.', href: search('artist drawing glove two finger'), kind: 'search', tier: 'nice-next', check: 'Two-finger gloves let the pen hand glide while leaving other fingers free.' }
     ],
     related: [
-      { href: '/guides/pen-display-vs-graphics-tablet', title: 'Pen display vs graphics tablet', desc: 'Compare screen and screenless tablets for digital art.' },
-      { href: '/guides/drawing-tablet-wrist-setup', title: 'Drawing tablet wrist setup', desc: 'Fix wrist angle and reduce strain from long drawing sessions.' },
-      { href: '/gear/creative/wacom-cintiq-pro', title: 'Wacom Cintiq Pro', desc: 'High-end pen display for professional illustration and design.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Drawing tablet desk kit', hook: 'Pen display, adjustable stand, screen protector, drawing glove. Fix wrist angle before blaming the tablet.', utmContent: 'drawing_tablet_desk_kit' },
@@ -658,8 +620,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/wgu-software-engineering-desk-kit', title: 'WGU software engineering desk kit', desc: 'Study desk setup for coding and school.' },
-      { href: '/guides/jupyter-vs-vscode-data-science', title: 'Jupyter vs VSCode for data science', desc: 'Pick the right coding environment for notebooks and analysis.' },
-      { href: '/guides/kaggle-competitions-beginner', title: 'Kaggle competitions for beginners', desc: 'Start with simple competitions to build portfolio projects.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Python data science desk kit', hook: 'Wes McKinney book, Kaggle datasets, Jupyter setup. Learn by doing, not watching.', utmContent: 'python_data_science_kit' },
@@ -695,8 +655,6 @@ export const EXTRA_KITS: IncomeKit[] = [
     ],
     related: [
       { href: '/kits/budget-video-call-kit', title: 'Budget video call kit', desc: 'Webcam, lighting, and audio fixes for calls and interviews.' },
-      { href: '/guides/remote-proctor-room-setup', title: 'Remote proctor room setup', desc: 'Pass the proctor room scan without surprises.' },
-      { href: '/guides/pearson-vue-proctor-troubleshooting', title: 'Pearson VUE proctor troubleshooting', desc: 'Fix proctor software and check-in issues.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Cert exam remote proctor kit', hook: 'Webcam, front light, clear desk, wired internet. Pass the proctor check before the exam starts.', utmContent: 'cert_exam_proctor_kit' },
@@ -731,8 +689,6 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'USB-C to USB-C cable for laptop charging', role: 'Charge USB-C laptops directly from the power station USB-C port.', href: search('usb-c to usb-c cable 100w 6ft'), kind: 'search', tier: 'must-have', check: 'Check power station USB-C wattage. Some ports are low-power and will not charge laptops.' }
     ],
     related: [
-      { href: '/guides/portable-power-station-sizing', title: 'Portable power station sizing', desc: 'Calculate wattage and runtime for your desk gear.' },
-      { href: '/guides/solar-panel-power-station-guide', title: 'Solar panel and power station guide', desc: 'Recharge power stations with solar panels effectively.' },
       { href: '/kits/backup-recovery-desk-kit', title: 'Backup and recovery desk kit', desc: 'UPS and backup strategies for desk gear and data.' }
     ],
     socialAngles: [

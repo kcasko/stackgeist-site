@@ -149,7 +149,7 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
     related: [
       { href: '/guides/extension-cord-safety-guide', title: 'Extension cord safety guide', desc: 'Calculate desk load, pick the right amp rating and gauge, and avoid stack-of-doom wiring.' },
       { href: '/guides/laptop-charger-wattage', title: 'Laptop charger wattage', desc: 'Match the laptop input rating and leave headroom for docks and multi-device chargers.' },
-      { href: '/gear/power/flat-plug-surge-protector', title: 'Flat plug surge protector', desc: 'Fit-first notes for a low-profile desk power strip.' },
+      { href: '/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb', title: 'Flat plug surge protector', desc: 'Fit-first notes for a low-profile desk power strip.' },
     ],
     faqs: [
       {
@@ -275,8 +275,8 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
     ],
     related: [
       { href: '/guides/keyboard-mouse-fit', title: 'Keyboard and mouse fit', desc: 'Input-device placement and fit checks after the connection is stable.' },
-      { href: '/gear/networking/alfa-ac1900', title: 'ALFA AC1900 fit guide', desc: 'When an external USB Wi-Fi adapter makes sense and when it does not.' },
-      { href: '/gear/audio/sennheiser-momentum-4', title: 'Momentum 4 fit guide', desc: 'Fit notes for battery life, ANC, multipoint, and desk use.' },
+      { href: '/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter', title: 'ALFA AC1900 fit guide', desc: 'When an external USB Wi-Fi adapter makes sense and when it does not.' },
+      { href: '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones', title: 'Momentum 4 fit guide', desc: 'Fit notes for battery life, ANC, multipoint, and desk use.' },
     ],
     faqs: [
       {
@@ -334,9 +334,9 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
       },
     ],
     related: [
-      { href: '/gear/storage/wd-elements-portable', title: 'WD Elements fit guide', desc: 'Capacity-first external storage notes and when a portable HDD still makes sense.' },
-      { href: '/gear/storage/samsung-evo-select-512gb', title: 'Samsung EVO Select microSD', desc: 'microSD card fit notes for handhelds, cameras, Raspberry Pi, and general storage.' },
-      { href: '/gear/sbc/raspberry-pi-5-kit', title: 'Raspberry Pi 5 kit', desc: 'Power, case, cooling, and boot-media fit notes for the Pi 5.' },
+      { href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', title: 'WD Elements fit guide', desc: 'Capacity-first external storage notes and when a portable HDD still makes sense.' },
+      { href: '/gear/budget-tech/samsung-evo-select-512gb-microsd-card', title: 'Samsung EVO Select microSD', desc: 'microSD card fit notes for handhelds, cameras, Raspberry Pi, and general storage.' },
+      { href: '/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb', title: 'Raspberry Pi 5 kit', desc: 'Power, case, cooling, and boot-media fit notes for the Pi 5.' },
     ],
     faqs: [
       {

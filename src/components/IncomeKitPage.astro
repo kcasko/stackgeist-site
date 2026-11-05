@@ -9,10 +9,10 @@ const tierLabel: Record<KitItem['tier'], string> = {
   'skip-until-needed': 'skip-until-needed',
 };
 const isExternal = (href: string) => href.startsWith('http');
-const campaign = `income_kits_${kit.slug}`;
+const campaign = `kits_${kit.slug}`;
 ---
 <article class="article-page kit-page">
-  <p class="breadcrumbs"><a href="/kits">Kits</a> / {kit.title}</p>
+  <p class="breadcrumbs"><a href="/kits/">Kits</a> / {kit.title}</p>
   <p class="page-kicker">buyer kit</p>
   <h1 class="page-title">{kit.title}</h1>
   <p class="page-lead">{kit.promise}</p>
@@ -66,7 +66,7 @@ const campaign = `income_kits_${kit.slug}`;
     <p class="kit-disclosure">Paid Amazon search links are marked and may earn a commission; they are category research paths, not blanket endorsements of the returned products. Internal links lead to StackGeist decision pages with evidence status, fit notes, limitations, and reasons to skip.</p>
   </section>
 
-  <section class="content-section kit-related">
+  {kit.related.length > 0 && <section class="content-section kit-related">
     <p class="page-kicker">related decisions</p>
     <h2 class="section-heading">Check the fit before you spend more.</h2>
     <div class="cards">
@@ -74,7 +74,7 @@ const campaign = `income_kits_${kit.slug}`;
         <a class="card" href={item.href}><h3>{item.title}</h3><p>{item.desc}</p></a>
       ))}
     </div>
-  </section>
+  </section>}
 
   <section class="content-section kit-faq">
     <p class="page-kicker">FAQ</p>

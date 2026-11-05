@@ -782,4 +782,12 @@ const BASE_INCOME_KITS: IncomeKit[] = [
 
 export const INCOME_KITS: IncomeKit[] = [...BASE_INCOME_KITS, ...EXTRA_KITS];
 
+// Kits stay out of search until every item is an indexable, reviewed decision page.
+// This matches /editorial-methodology: unchecked pages are noindex.
+// Add a slug only after its retailer searches and research-pending items are replaced.
+// tests/seo-integrity.test.mjs enforces this against the built pages.
+export const INDEXABLE_KIT_SLUGS = new Set<string>([]);
+
+export const isKitIndexable = (kit: IncomeKit) => INDEXABLE_KIT_SLUGS.has(kit.slug);
+
 export const INCOME_KIT_MAP = new Map(INCOME_KITS.map((kit) => [kit.slug, kit]));

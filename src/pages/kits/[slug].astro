@@ -1,7 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import IncomeKitPage from '../../components/IncomeKitPage.astro';
-import { INCOME_KITS } from '../../data/incomeKits';
+import { INCOME_KITS, isKitIndexable } from '../../data/incomeKits';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
 
 export function getStaticPaths() {
@@ -31,6 +31,6 @@ const structuredData = [
   },
 ];
 ---
-<ContentLayout structuredData={structuredData} title={kit.seoTitle} description={kit.description} active="kits">
+<ContentLayout structuredData={structuredData} title={kit.seoTitle} description={kit.description} active="kits" noindex={!isKitIndexable(kit)}>
   <IncomeKitPage kit={kit} />
 </ContentLayout>
