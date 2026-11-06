@@ -1,6 +1,6 @@
 // Generates StackGeist's original SVG illustrations into public/illustrations/.
-// One shared "plate" frame keeps every image consistent: dark panel, faint grid,
-// corner registration marks, a monospace figure label, lime and purple line art.
+// One shared "plate" frame keeps every image consistent: white ground, faint grid,
+// corner registration marks, a figure label, ink line art with Geist-yellow highlights.
 // Run: node scripts/build-illustrations.mjs
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -8,7 +8,7 @@ import { join } from 'node:path';
 const OUT = 'public/illustrations';
 mkdirSync(OUT, { recursive: true });
 
-const C = { bg: '#0e0a16', panel: '#151020', grid: '#1b1427', line: '#3b3846', lime: '#a3e635', purple: '#c084fc', text: '#f7f3fb', muted: '#a59bab', amber: '#f2b872' };
+const C = { bg: '#ffffff', panel: '#f6f6f3', grid: '#eeeeea', line: '#121212', lime: '#121212', purple: '#5f5f5a', text: '#121212', muted: '#5f5f5a', amber: '#9a5b00' };
 const sans = "ui-sans-serif,system-ui,'Segoe UI',sans-serif";
 const mono = 'ui-monospace,Consolas,monospace';
 
@@ -35,7 +35,7 @@ const save = (name, svg) => writeFileSync(join(OUT, name), svg);
 const laptop = (x, y, sc = 1, screen = '') => `<g transform="translate(${x} ${y}) scale(${sc})">${box(0, 0, 300, 190, C.text, C.panel, 12, 3)}${box(14, 14, 272, 162, C.line, C.bg, 6, 1.5)}${screen}<path d="M-30 204H330L310 228H-10Z" fill="${C.text}" opacity=".9"/></g>`;
 const drive = (x, y, sc = 1) => `<g transform="translate(${x} ${y}) scale(${sc})">${box(0, 0, 120, 170, C.lime, C.panel, 16, 3)}<circle cx="60" cy="70" r="34" fill="none" stroke="${C.line}" stroke-width="2"/><circle cx="60" cy="70" r="6" fill="${C.lime}"/>${s('M60 70L86 52', C.purple, 3)}<rect x="20" y="132" width="80" height="10" rx="5" fill="${C.line}"/><circle cx="96" cy="152" r="4" fill="${C.lime}"/></g>`;
 const usbc = (x, y, sc = 1, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${sc})">${box(0, -14, 60, 28, C.text, C.panel, 14, 3)}<rect x="12" y="-5" width="36" height="10" rx="5" fill="${C.text}"/></g>`;
-const magnifier = (x, y, sc = 1) => `<g transform="translate(${x} ${y}) scale(${sc})"><circle cx="0" cy="0" r="40" fill="rgba(163,230,53,.06)" stroke="${C.lime}" stroke-width="5"/>${s('M29 29L66 66', C.lime, 9)}</g>`;
+const magnifier = (x, y, sc = 1) => `<g transform="translate(${x} ${y}) scale(${sc})"><circle cx="0" cy="0" r="40" fill="rgba(255,207,46,.55)" stroke="${C.lime}" stroke-width="5"/>${s('M29 29L66 66', C.lime, 9)}</g>`;
 const check = (x, y, sc = 1, color = C.lime) => `<g transform="translate(${x} ${y}) scale(${sc})">${s('M0 0l10 10l20-20', color, 4)}</g>`;
 const server = (x, y, label, ip, color = C.line) => `${box(x, y, 150, 86, color, C.panel, 8, color === C.line ? 2 : 2.5)}${t(x + 16, y + 30, label, 17)}${t(x + 16, y + 52, ip, 13, C.lime, 600, mono)}<circle cx="${x + 132}" cy="${y + 20}" r="4" fill="${C.lime}"/>`;
 
@@ -51,7 +51,7 @@ const server = (x, y, label, ip, color = C.line) => `${box(x, y, 150, 86, color,
     + magnifier(330, 520, 1.1)
     + `<g>${box(120, 120, 220, 120, C.purple, C.panel, 10, 2)}${t(140, 156, 'SYMPTOM', 13, C.purple, 600, mono)}${t(140, 186, 'Second monitor', 20)}${t(140, 212, 'not detected', 20)}</g>`
     + s('M340 180C400 180 400 260 430 290', C.purple, 2.5)
-    + `<g>${box(900, 600, 190, 92, C.lime, 'rgba(163,230,53,.06)', 10, 2)}${t(918, 634, 'RESULT', 13, C.lime, 600, mono)}${t(918, 664, 'Fixed. Nothing', 18)}${t(918, 686, 'bought.', 18)}</g>`;
+    + `<g>${box(900, 600, 190, 92, C.lime, 'rgba(255,207,46,.55)', 10, 2)}${t(918, 634, 'RESULT', 13, C.lime, 600, mono)}${t(918, 664, 'Fixed. Nothing', 18)}${t(918, 686, 'bought.', 18)}</g>`;
   save('hero-fix-first.svg', plate(1200, 760, 'STACKGEIST / FIG. 00 — FIX BEFORE YOU REPLACE', body, 'Illustration of a laptop running a diagnostic checklist, connected by USB-C cable to an external drive, with a magnifying glass over the cable'));
 }
 
@@ -67,7 +67,7 @@ cat('category-labs.svg', 'FIG. 02 — HOME LABS', 'Illustration of three virtual
   + t(560, 190, '10.20.30.0/24', 14, C.purple, 600, mono));
 cat('category-certs.svg', 'FIG. 03 — CERTIFICATIONS', 'Illustration of a certificate with a seal next to a study checklist',
   box(150, 70, 300, 300, C.text, C.panel, 8, 3) + t(180, 120, 'CERTIFICATE', 16, C.purple, 600, mono)
-  + s('M180 160H420M180 190H390M180 220H410', C.line, 4) + `<circle cx="380" cy="300" r="40" fill="rgba(163,230,53,.08)" stroke="${C.lime}" stroke-width="4"/>${s('M366 300l10 10l18-18', C.lime, 4)}${s('M362 336l-10 36l18-10l12 14l6-34', C.lime, 3)}`
+  + s('M180 160H420M180 190H390M180 220H410', C.line, 4) + `<circle cx="380" cy="300" r="40" fill="rgba(255,207,46,.55)" stroke="${C.lime}" stroke-width="4"/>${s('M366 300l10 10l18-18', C.lime, 4)}${s('M362 336l-10 36l18-10l12 14l6-34', C.lime, 3)}`
   + box(500, 110, 170, 230, C.line, C.panel, 8, 2) + [0, 1, 2, 3].map((i) => `<rect x="520" y="${140 + i * 48}" width="22" height="22" rx="4" fill="none" stroke="${C.line}" stroke-width="2"/>${i < 3 ? check(524, 152 + i * 48, 0.55) : ''}${s(`M556 ${151 + i * 48}H646`, C.line, 4)}`).join(''));
 cat('category-gear.svg', 'FIG. 04 — GEAR', 'Illustration of a USB-C dock with ports beside a pair of headphones',
   box(160, 180, 330, 110, C.text, C.panel, 14, 3) + [0, 1, 2, 3, 4].map((i) => `<rect x="${190 + i * 56}" y="220" width="${i < 2 ? 40 : 28}" height="${i < 2 ? 22 : 14}" rx="4" fill="none" stroke="${i === 0 ? C.lime : C.line}" stroke-width="2.5"/>`).join('')
@@ -83,7 +83,7 @@ thumb('topic-charging.svg', 'TOPIC — CHARGING AND POWER', 'Illustration of a U
   box(80, 120, 120, 140, C.text) + `<path d="M150 150l-24 46h20l-12 40l34-54h-20l12-32z" fill="${C.lime}"/>` + s('M200 190H300C340 190 340 150 380 150H420', C.text, 5)
   + t(250, 175, '20V', 16, C.lime, 700, mono) + laptop(420, 110, 0.55));
 thumb('topic-storage.svg', 'TOPIC — STORAGE AND RECOVERY', 'Illustration of an external drive with a partition bar showing recovered and damaged regions',
-  drive(90, 90, 1) + box(260, 130, 300, 46, C.line, C.panel, 6, 2) + `<rect x="264" y="134" width="170" height="38" rx="4" fill="rgba(163,230,53,.18)"/><rect x="438" y="134" width="118" height="38" rx="4" fill="rgba(242,184,114,.18)"/>`
+  drive(90, 90, 1) + box(260, 130, 300, 46, C.line, C.panel, 6, 2) + `<rect x="264" y="134" width="170" height="38" rx="4" fill="rgba(255,207,46,.55)"/><rect x="438" y="134" width="118" height="38" rx="4" fill="rgba(242,184,114,.18)"/>`
   + t(270, 160, 'NTFS', 14, C.lime, 600, mono) + t(446, 160, 'RAW', 14, C.amber, 600, mono) + check(270, 226, 0.9) + t(312, 236, 'recover first', 16, C.text, 600, mono));
 thumb('topic-wireless.svg', 'TOPIC — WI-FI AND BLUETOOTH', 'Illustration of Wi-Fi signal arcs and a Bluetooth symbol beside a pair of headphones',
   s('M120 230a110 110 0 0 1 160 0M150 260a66 66 0 0 1 100 0', C.lime, 6) + `<circle cx="200" cy="290" r="10" fill="${C.lime}"/>`
@@ -108,7 +108,7 @@ save('diagram-usb-c-power-delivery.svg', plate(960, 420, 'FIG. — USB POWER DEL
   + [['5V', '3A'], ['9V', '3A'], ['15V', '3A'], ['20V', '3.25A']].map(([v, a], i) => `${box(60, 166 + i * 34, 180, 26, i === 3 ? C.lime : C.line, C.bg, 5, i === 3 ? 2.5 : 1.5)}${t(74, 184 + i * 34, v, 14, i === 3 ? C.lime : C.text, 700, mono)}${t(150, 184 + i * 34, a, 14, C.muted, 600, mono)}`).join('')
   + s('M260 200H380', C.text, 6) + box(380, 160, 200, 80, C.purple, C.panel, 10, 2.5) + t(400, 192, 'Cable', 20) + t(400, 220, 'rated 3A or 5A', 13, C.muted, 500)
   + s('M580 200H700', C.text, 6) + box(700, 90, 220, 220, C.text) + t(720, 125, 'Laptop', 20) + t(720, 150, 'requests one profile', 13, C.muted, 500)
-  + box(720, 180, 180, 40, C.lime, 'rgba(163,230,53,.08)', 6, 2.5) + t(736, 206, '20V × 3.25A = 65W', 14, C.lime, 700, mono)
+  + box(720, 180, 180, 40, C.lime, 'rgba(255,207,46,.55)', 6, 2.5) + t(736, 206, '20V × 3.25A = 65W', 14, C.lime, 700, mono)
   + t(720, 254, 'No 20V offered?', 14, C.amber, 600) + t(720, 276, 'May charge slowly or not at all.', 13, C.muted, 500)
   + t(400, 290, 'A 3A cable caps 20V at 60W.', 14, C.amber, 600) + t(400, 312, 'Above 60W needs a 5A (100W) cable.', 13, C.muted, 500),
   'Diagram: a USB-C charger offers 5, 9, 15, and 20 volt profiles; the laptop requests 20 volts at 3.25 amps for 65 watts; a 3 amp cable caps 20 volts at 60 watts'));
@@ -116,7 +116,7 @@ save('diagram-usb-c-power-delivery.svg', plate(960, 420, 'FIG. — USB POWER DEL
 // Recover then repair (used on storage guides)
 save('diagram-recover-then-repair.svg', plate(960, 360, 'FIG. — RECOVER FIRST, REPAIR LAST',
   [['01', 'Stop writing', 'Cancel format and', 'initialize prompts', C.amber], ['02', 'Diagnose', 'Compare disk and', 'partition sizes', C.line], ['03', 'Recover', 'Copy files to a', 'different drive', C.lime], ['04', 'Repair', 'Fix or recreate the', 'partition table', C.line]]
-    .map(([n, h, a, b, col], i) => `${box(40 + i * 225, 90, 195, 170, col, col === C.lime ? 'rgba(163,230,53,.06)' : C.panel, 10, col === C.line ? 2 : 2.5)}${t(60 + i * 225, 124, n, 13, C.purple, 600, mono)}${t(60 + i * 225, 156, h, 20)}${t(60 + i * 225, 188, a, 14, C.muted, 500)}${t(60 + i * 225, 208, b, 14, C.muted, 500)}${i < 3 ? s(`M${235 + i * 225} 175H${265 + i * 225}`, C.purple, 3) : ''}`).join('')
+    .map(([n, h, a, b, col], i) => `${box(40 + i * 225, 90, 195, 170, col, col === C.lime ? 'rgba(255,207,46,.55)' : C.panel, 10, col === C.line ? 2 : 2.5)}${t(60 + i * 225, 124, n, 13, C.purple, 600, mono)}${t(60 + i * 225, 156, h, 20)}${t(60 + i * 225, 188, a, 14, C.muted, 500)}${t(60 + i * 225, 208, b, 14, C.muted, 500)}${i < 3 ? s(`M${235 + i * 225} 175H${265 + i * 225}`, C.purple, 3) : ''}`).join('')
   + t(40, 304, 'Every write before step 03 can overwrite what recovery tools need.', 15, C.amber, 600),
   'Diagram: four steps in order: stop writing, diagnose, recover files to a different drive, then repair the partition table'));
 
@@ -124,7 +124,7 @@ save('diagram-recover-then-repair.svg', plate(960, 360, 'FIG. — RECOVER FIRST,
 save('diagram-ad-dns-domain-join.svg', plate(960, 400, 'FIG. — WHY A CLIENT NEEDS DOMAIN DNS',
   box(40, 140, 200, 110, C.text) + t(60, 176, 'WIN11-01', 20) + t(60, 200, 'joining the domain', 13, C.muted, 500) + t(60, 226, 'ad.bytegeist.lab', 13, C.lime, 600, mono)
   + s('M240 170C330 170 340 100 420 100', C.amber, 3) + box(420, 60, 240, 80, C.amber, C.panel, 10, 2) + t(440, 92, 'VMware NAT DNS', 18) + t(440, 116, "doesn't know the domain", 13, C.amber, 500)
-  + s('M240 220C330 220 340 290 420 290', C.lime, 3.5) + box(420, 250, 240, 80, C.lime, 'rgba(163,230,53,.06)', 10, 2.5) + t(440, 282, 'DC01 DNS  .10', 18) + t(440, 306, 'returns the DC records', 13, C.lime, 500)
+  + s('M240 220C330 220 340 290 420 290', C.lime, 3.5) + box(420, 250, 240, 80, C.lime, 'rgba(255,207,46,.55)', 10, 2.5) + t(440, 282, 'DC01 DNS  .10', 18) + t(440, 306, 'returns the DC records', 13, C.lime, 500)
   + s('M660 290H740', C.lime, 3.5) + box(740, 250, 180, 80, C.text) + t(760, 282, 'Join succeeds', 18) + t(760, 306, 'LDAP port 389 open', 13, C.muted, 500)
   + t(440, 180, 'Set-DnsClientServerAddress … 10.20.30.10', 13, C.purple, 600, mono),
   'Diagram: a Windows 11 client using VMware NAT DNS cannot find the domain; pointed at the domain controller DNS at 10.20.30.10 it finds the domain and the join succeeds'));
@@ -133,7 +133,7 @@ save('diagram-ad-dns-domain-join.svg', plate(960, 400, 'FIG. — WHY A CLIENT NE
 save('diagram-aws-cognito-crud.svg', plate(960, 380, 'FIG. — PRIVATE CRUD ON AWS',
   box(40, 140, 150, 90, C.text) + t(60, 176, 'Browser', 18) + t(60, 200, 'signed-in user', 13, C.muted, 500)
   + s('M190 160C240 160 240 100 290 100', C.purple, 3) + box(290, 60, 170, 80, C.purple, C.panel, 10, 2.5) + t(310, 94, 'Cognito', 18) + t(310, 118, 'issues a JWT', 13, C.muted, 500)
-  + s('M190 205H290', C.lime, 3.5) + box(290, 170, 170, 80, C.lime, 'rgba(163,230,53,.06)', 10, 2.5) + t(310, 204, 'API Gateway', 18) + t(310, 228, 'JWT authorizer', 13, C.lime, 500)
+  + s('M190 205H290', C.lime, 3.5) + box(290, 170, 170, 80, C.lime, 'rgba(255,207,46,.55)', 10, 2.5) + t(310, 204, 'API Gateway', 18) + t(310, 228, 'JWT authorizer', 13, C.lime, 500)
   + s('M460 210H540', C.lime, 3.5) + box(540, 170, 170, 80, C.text) + t(560, 204, 'Lambda', 18) + t(560, 228, 'checks the owner', 13, C.muted, 500)
   + s('M710 210H790', C.lime, 3.5) + box(790, 170, 140, 80, C.text) + t(810, 204, 'DynamoDB', 18) + t(810, 228, 'per-user items', 13, C.muted, 500)
   + t(290, 300, 'No valid token: request rejected before Lambda runs.', 15, C.amber, 600),
@@ -144,7 +144,7 @@ save('diagram-wifi-router-or-pc.svg', plate(960, 380, 'FIG. — ROUTER OR PC?',
   box(380, 50, 200, 80, C.text) + t(400, 84, 'Wi-Fi drops', 20) + t(400, 108, 'Check other devices', 13, C.muted, 500)
   + s('M430 130C430 170 250 160 250 200', C.purple, 3) + s('M530 130C530 170 710 160 710 200', C.purple, 3)
   + box(130, 200, 240, 110, C.amber, C.panel, 10, 2) + t(150, 234, 'Everything drops', 18) + t(150, 260, 'Router, modem,', 14, C.muted, 500) + t(150, 280, 'or provider', 14, C.muted, 500)
-  + box(590, 200, 240, 110, C.lime, 'rgba(163,230,53,.06)', 10, 2.5) + t(610, 234, 'Only this PC drops', 18) + t(610, 260, 'Test on a phone hotspot,', 14, C.muted, 500) + t(610, 280, 'then fix the PC side', 14, C.muted, 500),
+  + box(590, 200, 240, 110, C.lime, 'rgba(255,207,46,.55)', 10, 2.5) + t(610, 234, 'Only this PC drops', 18) + t(610, 260, 'Test on a phone hotspot,', 14, C.muted, 500) + t(610, 280, 'then fix the PC side', 14, C.muted, 500),
   'Diagram: when Wi-Fi drops, check other devices; if everything drops the router, modem, or provider is likely; if only one PC drops, test it on a phone hotspot and fix the PC side'));
 
 console.log('illustrations written to', OUT);
