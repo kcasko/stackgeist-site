@@ -513,7 +513,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: 'SanDisk Ultra Flair USB drive', role: 'Simple file transfer and boot media.', href: '/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', kind: 'internal', tier: 'nice-next', check: 'Do not store your only copy on it.' },
       { label: 'TI-84 Plus CE', role: 'Calculator for courses or exams that expect it.', href: '/gear/budget-tech/texas-instruments-ti-84-plus-ce-graphing-calculator', kind: 'internal', tier: 'skip-until-needed', check: 'Only buy when the course or exam requires it.' }
     ],
-    related: [{ href: '/kits/wgu-software-engineering-desk-kit', title: 'WGU software engineering desk kit', desc: 'Study desk counterpart.' }, { href: '/guides/usb-c-cable-buying-guide/', title: 'USB-C desk survival kit', desc: 'Adapters, cable, hub, charger.' }, { href: '/guides/usb-c-cable-buying-guide', title: 'USB-C cable buying guide', desc: 'Know the cable limits.' }],
+    related: [{ href: '/certs/wgu-software-engineering-degree/', title: 'WGU software engineering desk kit', desc: 'Study desk counterpart.' }, { href: '/guides/usb-c-cable-buying-guide/', title: 'USB-C desk survival kit', desc: 'Adapters, cable, hub, charger.' }, { href: '/guides/usb-c-cable-buying-guide', title: 'USB-C cable buying guide', desc: 'Know the cable limits.' }],
     socialAngles: [{ channel: 'pinterest', title: 'College tech backpack kit', hook: 'Laptop protection, cable, adapters, storage, calculator only when needed.', utmContent: 'college_tech_backpack' }, { channel: 'tiktok', title: 'Student tech carry', hook: 'Carry less junk. Protect laptop, charge devices, keep adapters, back up files.', utmContent: 'student_tech_carry' }, { channel: 'reddit', title: 'College tech backpack list', hook: 'A practical student tech bag is mostly protection, charging, adapters, and storage.', utmContent: 'reddit_college_backpack' }],
     faqs: [{ question: 'What tech should I carry daily for college?', answer: 'Laptop protection, charger, known-good cable, one or two adapters, and storage if your classes need file transfer.' }, { question: 'Should I buy a calculator before class starts?', answer: 'Only if the syllabus or exam requirements call for it.' }]
   },
@@ -653,7 +653,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: '500W GaN charging station', role: 'Central charging for several devices.', href: '/gear/budget-tech/500w-multi-port-gan-charging-station', kind: 'internal', tier: 'nice-next', check: 'Check per-port sharing.' },
       { label: 'Microfiber cleaning cloths', role: 'Clean screen and camera glass.', href: '/gear/budget-tech/microfiber-cleaning-cloths-18-pack', kind: 'internal', tier: 'skip-until-needed', check: 'Do not use paper towels on screens.' }
     ],
-    related: [{ href: '/guides/usb-c-cable-buying-guide/', title: 'USB-C desk survival kit', desc: 'Cable, hub, charger, adapters.' }, { href: '/kits/wgu-software-engineering-desk-kit', title: 'WGU desk kit', desc: 'Study desk route.' }, { href: '/guides/desk-layout-basics', title: 'Desk layout basics', desc: 'Placement before accessories.' }],
+    related: [{ href: '/guides/usb-c-cable-buying-guide/', title: 'USB-C desk survival kit', desc: 'Cable, hub, charger, adapters.' }, { href: '/certs/wgu-software-engineering-degree/', title: 'WGU desk kit', desc: 'Study desk route.' }, { href: '/guides/desk-layout-basics', title: 'Desk layout basics', desc: 'Placement before accessories.' }],
     socialAngles: [{ channel: 'pinterest', title: 'Phone and tablet desk kit', hook: 'Stand, charger, cable, cleaning cloth, adapter only if it earns the space.', utmContent: 'phone_tablet_desk' }, { channel: 'tiktok', title: 'Tablet desk setup', hook: 'A tablet is useful when it has a real angle, charge path, and job.', utmContent: 'tablet_desk_setup' }, { channel: 'reddit', title: 'Phone tablet desk kit', hook: 'Small screens become useful when they are stable, charged, and assigned a real role.', utmContent: 'reddit_phone_tablet_desk' }],
     faqs: [{ question: 'Is a tablet useful as a second screen?', answer: 'Yes if it has a stable stand, good viewing angle, and a specific job like notes, docs, chat, or monitoring.' }, { question: 'What phone stand should I buy?', answer: 'Buy for stability, angle adjustment, and case compatibility before looks.' }]
   },
@@ -753,7 +753,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: 'Adjustable phone stand', role: 'Keeps notes or backup device visible.', href: '/gear/budget-tech/adjustable-desk-phone-stand', kind: 'internal', tier: 'nice-next', check: 'Do not stare down at notes constantly.' },
       { label: 'Flat plug surge protector', role: 'Stable power for laptop, light, and camera.', href: '/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb', kind: 'internal', tier: 'skip-until-needed', check: 'Charge laptop before the call.' }
     ],
-    related: [{ href: '/kits/budget-video-call-kit', title: 'Budget video call kit', desc: 'Full call setup kit.' }, { href: '/guides/better-video-calls', title: 'Better video calls', desc: 'Angle, light, mic, and background.' }, { href: '/kits/wgu-software-engineering-desk-kit', title: 'WGU desk kit', desc: 'Study and interview desk route.' }],
+    related: [{ href: '/kits/budget-video-call-kit', title: 'Budget video call kit', desc: 'Full call setup kit.' }, { href: '/guides/better-video-calls', title: 'Better video calls', desc: 'Angle, light, mic, and background.' }, { href: '/certs/wgu-software-engineering-degree/', title: 'WGU desk kit', desc: 'Study and interview desk route.' }],
     socialAngles: [{ channel: 'pinterest', title: 'Student video interview kit', hook: 'Camera high, face lit, mic close, background clean, power stable.', utmContent: 'student_video_interview' }, { channel: 'tiktok', title: 'Interview call setup', hook: 'Fix the chin-cam. Raise camera, light face, use close audio.', utmContent: 'interview_call_setup' }, { channel: 'reddit', title: 'Remote interview setup', hook: 'Students can look prepared with camera height, lighting, and audio before buying expensive gear.', utmContent: 'reddit_video_interview' }],
     faqs: [{ question: 'What matters most for remote interviews?', answer: 'Camera height, face lighting, clear audio, and a clean background matter more than buying an expensive webcam.' }, { question: 'Can I use a laptop webcam?', answer: 'Yes if it is raised to eye level and well-lit. An external webcam helps when the laptop camera is especially bad.' }]
   },
@@ -786,9 +786,6 @@ export const INCOME_KITS: IncomeKit[] = [...BASE_INCOME_KITS, ...EXTRA_KITS];
 // and out of the sitemap so the site stays focused on fixes and IT.
 // help-desk-homelab-starter-kit was merged into /labs/homelab-equipment-for-beginners/ (301 in public/_redirects).
 export const IT_KIT_SLUGS = new Set<string>([
-  'security-plus-study-desk-kit',
-  'aws-cloud-practitioner-study-kit',
-  'cloud-support-study-desk-kit',
   'linux-beginner-lab-kit',
   'cybersecurity-beginner-lab-kit',
   'proxmox-mini-pc-starter-kit',
@@ -798,20 +795,14 @@ export const IT_KIT_SLUGS = new Set<string>([
   'raspberry-pi-starter-kit',
   'local-ai-workstation-starter-kit',
   'cert-exam-remote-proctor-kit',
-  'wgu-software-engineering-desk-kit',
   'python-data-science-desk-kit',
 ]);
 
 export const FIX_KIT_SLUGS = new Set<string>([
-  'dual-monitor-desk-kit',
-  'bluetooth-desk-fix-kit',
-  'webcam-not-detected-fix-kit',
   'old-pc-revival-kit',
   'laptop-cooling-fix-kit',
   'laptop-repair-toolkit',
   'thermal-paste-repair-kit',
-  'desk-power-safety-kit',
-  'wifi-6-mesh-upgrade-kit',
 ]);
 
 export const INDEXABLE_KIT_SLUGS = new Set<string>([...IT_KIT_SLUGS, ...FIX_KIT_SLUGS]);

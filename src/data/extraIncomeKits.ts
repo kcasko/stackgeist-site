@@ -342,7 +342,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'AWS Skill Builder free courses', role: 'Official AWS training with modules, quizzes, and sandboxes.', href: search('aws skill builder cloud practitioner essentials'), kind: 'search', tier: 'skip-until-needed', check: 'Skill Builder is free but slower than third-party courses.' }
     ],
     related: [
-      { href: '/kits/cloud-support-study-desk-kit', title: 'Cloud support study desk kit', desc: 'General cloud support and help desk lab setup.' }
+      { href: '/certs/', title: 'Cloud support study desk kit', desc: 'General cloud support and help desk lab setup.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'AWS Cloud Practitioner study kit', hook: 'Free tier account, Stephane course, Tutorials Dojo exams, flashcards. Learn by doing, not just reading.', utmContent: 'aws_ccp_study_kit' },
@@ -619,7 +619,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'Quality keyboard for long coding sessions', role: 'Comfortable typing for data cleaning scripts and analysis notebooks.', href: search('keychron mechanical keyboard hot swap'), kind: 'search', tier: 'skip-until-needed', check: 'Only upgrade if keyboard discomfort blocks daily practice.' }
     ],
     related: [
-      { href: '/kits/wgu-software-engineering-desk-kit', title: 'WGU software engineering desk kit', desc: 'Study desk setup for coding and school.' },
+      { href: '/certs/wgu-software-engineering-degree/', title: 'WGU software engineering desk kit', desc: 'Study desk setup for coding and school.' },
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Python data science desk kit', hook: 'Wes McKinney book, Kaggle datasets, Jupyter setup. Learn by doing, not watching.', utmContent: 'python_data_science_kit' },
