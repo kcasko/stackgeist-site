@@ -46,12 +46,12 @@ This is for review before the identity is applied to the other pages. Screenshot
 - The Pinterest "Privacy choices" control moved from a floating button into the footer.
 - `astro.config.mjs` keeps scripts external. Inlining had copied the affiliate script's tag string into research pages that must not carry it.
 
-## Image honesty
+## Image labelling (updated 2026-11-06)
 
-- Every generated image is captioned "Generated image".
-- The lead image also says it is "not the hardware the steps below were checked against".
-- Three crops from the starter pack are used, at their native size or smaller: the USB-C dock desk, the homelab rack, and the study desk. A fourth crop (retro desk) is used in the about strip. Hero sizes that need larger files are in [02-image-brief.md](02-image-brief.md).
-- **To check:** the mug in the retro-desk image has a pixel ghost that resembles an arcade character. Replace it if that's a concern.
+- Generated desk and rack scenes are decorative, so they carry no caption or badge. Their alt text describes them accurately, and they are never used as evidence on product, lab, or owned-product pages.
+- Manufacturer images carry a short credit, for example "Product image: Sennheiser".
+- Wikimedia Commons photos carry the one-line attribution their licence requires, for example "Example photo · author, licence, Wikimedia Commons". Photos of the exact model name the model instead of "Example photo".
+- The external-SSD guide's diagram keeps "not a screenshot", because it draws a Windows window.
 
 ## Not yet done (waiting on review)
 

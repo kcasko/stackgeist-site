@@ -21,7 +21,7 @@ const wide = width >= 900;
   ) : (
     <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
   )}
-  {caption && <figcaption>{caption} <span class="credit">StackGeist diagram</span></figcaption>}
+  {caption && <figcaption>{caption}</figcaption>}
 </figure>
 <style>
   .sg-figure-img { margin:28px 0 8px; }
