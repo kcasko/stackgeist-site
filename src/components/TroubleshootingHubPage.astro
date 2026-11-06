@@ -3,16 +3,13 @@ import NewsletterSignup from './NewsletterSignup.astro';
 import type { TroubleshootingHub } from '../data/troubleshootingHubs';
 
 const { hub } = Astro.props as { hub: TroubleshootingHub };
-const hubArt: Record<string, string> = { 'usb-c-charging-display-problems': 'usb-c-displays', 'desk-power-safety-problems': 'charging', 'storage-raspberry-pi-boot-fixes': 'storage', 'wireless-bluetooth-smart-home-fixes': 'wireless', 'home-office-peripheral-fixes': 'home-office' };
-const art = hubArt[hub.slug];
 ---
 
 <article class="article-page hub-page">
-  <p class="breadcrumbs"><a href="/guides">Guides</a> / {hub.title}</p>
-  <p class="page-kicker">{hub.kicker}</p>
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/guides/">Fixes</a> / Topic guide</nav>
+  <p class="article-tags"><a class="slab" href="/guides/">Fixes</a> <span class="kicker">{hub.kicker}</span></p>
   <h1 class="page-title">{hub.title}</h1>
   <p class="page-lead">{hub.lead}</p>
-  {art && <img class="hub-art" src={`/illustrations/topic-${art}.svg`} width="640" height="360" alt="" loading="eager" decoding="async" />}
 
   <div class="article-summary">
     <strong>The useful answer</strong>
@@ -77,10 +74,6 @@ const art = hubArt[hub.slug];
 <NewsletterSignup variant="inline" />
 
 <style>
-  .hub-page :global(.article-summary) {
-    border-color: rgba(36, 255, 143, 0.34);
-  }
-
   .hub-checks h2,
   .hub-faq h2 {
     margin-top: 0;
@@ -102,7 +95,7 @@ const art = hubArt[hub.slug];
 
   .hub-guide-card .symptom {
     color: var(--text);
-    border-left: 2px solid var(--accent);
+    border-left: 3px solid var(--dept);
     padding-left: 0.75rem;
     margin: 0.15rem 0;
   }

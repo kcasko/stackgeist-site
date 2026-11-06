@@ -269,12 +269,17 @@ a.card:hover h2, a.card:hover h3 { background: var(--geist); color: #121212; box
   box-shadow: 6px 6px 0 var(--dept);
 }
 .article-summary::before {
-  content: "Quick fix"; display: inline-block; margin-bottom: var(--space-2);
+  content: "Short answer"; display: inline-block; margin-bottom: var(--space-2);
   color: var(--dept-ink); font: 800 .72rem/1.2 var(--font-sans); font-stretch: var(--expanded); letter-spacing: .06em; text-transform: uppercase;
 }
 .article-summary > strong { display: none; }
 .article-summary p { margin: 0; color: var(--ink); font-size: 1.06rem; line-height: 1.58; }
+[data-type="troubleshooting"] .article-summary::before, [data-type="topic"] .article-summary::before { content: "Quick fix"; }
+[data-type="lab"] .article-summary::before { content: "Lab summary"; }
+[data-type="course-review"] .article-summary::before { content: "The short version"; }
+[data-type="study-log"] .article-summary::before { content: "At a glance"; }
 .kit-summary::before { content: "At a glance"; }
+.kit-order .article-steps strong { display: none; }
 .kit-summary > strong { display: block; margin: var(--space-3) 0 2px; color: var(--ink-3); font-size: .75rem; font-weight: 750; text-transform: uppercase; }
 
 .article-body { max-width: var(--measure); margin-top: var(--space-5); }

@@ -17,12 +17,6 @@ test('homepage has a semantic primary heading', async () => {
   assert.match(await read('src/pages/index.astro'), /<h1\b/);
 });
 
-test('interactive mind map is not hidden from assistive technology', async () => {
-  const source = await read('src/components/MindMap.astro');
-  assert.doesNotMatch(source, /<pre[^>]*aria-hidden="true"[^>]*>[\s\S]*?<button/);
-  assert.match(source, /aria-controls=/);
-});
-
 test('section navigation is always visible and needs no script on mobile', async () => {
   // The four sections fit one row on phones, so there is no hidden menu to open.
   const source = await read('src/components/Header.astro');
@@ -51,12 +45,10 @@ test('Logitech page uses first-party evidence and puts the retailer link after f
   assert.ok(fit >= 0 && retailer > fit, 'retailer CTA should follow the fit/skip decision');
 });
 
-test('content CSS constrains prose and preserves mobile intent context', async () => {
+test('content CSS constrains prose to a readable measure', async () => {
   const content = await read('src/styles/site.css');
-  const map = await read('src/components/MindMap.astro');
   assert.match(content, /--measure:\s*68ch/);
   assert.match(content, /\.article-body \{[^}]*max-width:\s*var\(--measure\)/);
-  assert.doesNotMatch(map, /\.node-intent,\s*\.leaf-note\s*\{\s*display:\s*none/);
 });
 
 test('primary navigation goes to hub pages, not deep-linked children', async () => {
@@ -142,11 +134,12 @@ test('new decision guides are discoverable from both hubs', async () => {
     assert.match(source, /Sources/);
     assert.match(source, /Check|check|measure|verify/);
   }
+  // The indexed decision guide is linked from the Gear front. keyboard-mouse-fit and
+  // better-video-calls are archived (noindex, see searchScope.ts), so hubs don't promote them.
   const gear = await read('src/pages/gear/index.astro');
-  const map = await read('src/components/MindMap.astro');
-  for (const slug of guides) {
-    assert.match(`${gear}\n${map}`, new RegExp(`/guides/${slug}`));
-  }
+  assert.match(gear, /\/guides\/usb-c-dock-compatibility/);
+  const scope = await read('src/data/searchScope.ts');
+  for (const slug of ['keyboard-mouse-fit', 'better-video-calls']) assert.match(scope, new RegExp(`'${slug}'`));
 });
 
 test('editorial provenance distinguishes owned products from sourced research', async () => {

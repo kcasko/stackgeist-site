@@ -95,17 +95,17 @@ const groups = Object.entries(familyMeta).map(([family, meta]) => ({
     .setup-thumb img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;filter:saturate(.9)}
     .setup-body{padding:22px}
     .setup-body h3{margin:0 0 10px;font-size:20px;letter-spacing:-.015em}
-    .setup-body h3::before{content:'# ';color:var(--purple-light)}
-    .setup-body p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.65}
+    .setup-body h3::before{content:none;color:var(--purple-light)}
+    .setup-body p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
     .setup-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:18px 0 0;border-top:1px dashed var(--term-border)}
     .setup-meta>div{padding:12px 12px 4px;border-left:1px dashed var(--term-border)}
     .setup-meta>div:first-child{border-left:0}
-    .setup-meta dt{color:var(--quiet);font-size:10.5px;letter-spacing:.04em;text-transform:lowercase}
-    .setup-meta dd{margin:4px 0 0;color:var(--phosphor);font-size:12px}
-    .setup-cta{display:inline-block;margin-top:16px;color:var(--phosphor);font-size:12px}
+    .setup-meta dt{color:var(--quiet);font-size:.8rem;letter-spacing:.04em;text-transform:none}
+    .setup-meta dd{margin:4px 0 0;color:var(--phosphor);font-size:.88rem}
+    .setup-cta{display:inline-block;margin-top:16px;color:var(--phosphor);font-size:.88rem}
     .setup-card:hover{background:rgba(163,230,53,.03)}
     .setup-card:hover .setup-thumb img{filter:saturate(1.05)}
-    .group-blurb{margin:0 0 18px;max-width:76ch;color:var(--muted);font-size:13.5px;line-height:1.65}
+    .group-blurb{margin:0 0 18px;max-width:76ch;color:var(--muted);font-size:.94rem;line-height:1.65}
     @media(max-width:760px){.setup-grid{grid-template-columns:1fr}.setup-card:nth-child(even){border-left:0}.setup-card:nth-child(n+2){border-top:1px solid var(--term-border)}.setup-meta{grid-template-columns:1fr 1fr}}
   </style>
 </ContentLayout>

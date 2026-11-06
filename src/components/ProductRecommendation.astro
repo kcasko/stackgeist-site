@@ -95,30 +95,30 @@ const p = Astro.props;
 </section>
 
 <style>
-  .recommend-card { margin-top: 34px; padding: 32px; display:grid; grid-template-columns: 430px 1fr; gap:44px; border:1px solid var(--border); border-radius:18px; background:var(--surface); }
-  .product-photo { margin:0; align-self:start; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff; }
+  .recommend-card { margin-top: 34px; padding: 32px; display:grid; grid-template-columns: 430px 1fr; gap:44px; border:1px solid var(--border); border-radius:0; background:var(--surface); }
+  .product-photo { margin:0; align-self:start; border:1px solid var(--border); border-radius:0; overflow:hidden; background:#fff; }
   .product-photo img { display:block; width:100%; height:430px; object-fit:contain; }
-  .product-photo figcaption { padding:10px 12px; border-top:1px solid var(--border); color:var(--quiet); font-size:10px; background:var(--surface-2); }
+  .product-photo figcaption { padding:10px 12px; border-top:1px solid var(--border); color:var(--quiet); font-size:.8rem; background:var(--surface-2); }
   .product-photo figcaption a { color:inherit; }
   .recommend-copy h2 { margin: 8px 0 6px; font-size:34px; letter-spacing:-.035em; }
-  .product-meta { margin:0; color:var(--muted); font-size:13px; }
+  .product-meta { margin:0; color:var(--muted); font-size:.94rem; }
   .product-tags { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
   .primary-offer { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:-4px 0 24px; }
-  .primary-offer small { color:var(--muted); font-size:11px; line-height:1.45; }
+  .primary-offer small { color:var(--muted); font-size:.8rem; line-height:1.45; }
   .reason-grid { display:grid; grid-template-columns:1fr 1fr; gap:36px; padding:22px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-  .reason-grid strong, .proof-grid strong, .check-block strong, .alt-panel strong { font-size:13px; }
-  .reason-grid p, .proof-grid p, .check-block p, .alt-route p, .publishing-rule p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+  .reason-grid strong, .proof-grid strong, .check-block strong, .alt-panel strong { font-size:.94rem; }
+  .reason-grid p, .proof-grid p, .check-block p, .alt-route p, .publishing-rule p { margin:8px 0 0; color:var(--muted); font-size:.94rem; line-height:1.55; }
   .check-block { padding-top:22px; }
   .check-block strong { color:var(--purple-light); }
   .check-block small { display:block; margin-top:10px; color:var(--quiet); }
   .retailer-actions { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-  .retailer-actions span { margin-left:6px; color:var(--muted); font-size:11px; }
+  .retailer-actions span { margin-left:6px; color:var(--muted); font-size:.8rem; }
   .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
   .proof-grid > div { padding-right:34px; }
   .proof-grid > div + div { padding-left:34px; border-left:1px solid var(--border); }
   .alt-route { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
   .alt-route h2, .publishing-rule h2 { margin:8px 0 0; font-size:27px; }
-  .alt-panel { padding:24px; border:1px solid var(--border); border-radius:14px; background:var(--surface-2); }
+  .alt-panel { padding:24px; border:1px solid var(--border); border-radius:0; background:var(--surface-2); }
   .alt-panel .trade { display:block; margin-top:18px; color:var(--purple-light); }
   .alt-panel .btn { margin-top:20px; }
   @media(max-width:900px){ .recommend-card { grid-template-columns:1fr; } }
@@ -135,7 +135,7 @@ const p = Astro.props;
 </style>
 <style>
   .recommend-card { padding:0; gap:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); box-shadow:none; }
-  .recommend-copy::before { content:'Recommendation'; display:block; margin-bottom:18px; color:var(--phosphor); font-size:11px; }
+  .recommend-copy::before { content:'Recommendation'; display:block; margin-bottom:18px; color:var(--phosphor); font-size:.8rem; }
   .recommend-visual { border-right:1px solid var(--term-border); }
   .recommend-copy { padding:24px; }
   .recommend-copy .reason { padding:14px 0; border:0; border-top:1px solid var(--term-border); border-radius:0; background:transparent; }

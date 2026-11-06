@@ -19,7 +19,7 @@ const description = setup.summary;
 const totalPicks = setup.categories.reduce((n, c) => n + c.picks.length, 0);
 ---
 <ContentLayout title={title} description={description} active="setups">
-  <p class="breadcrumbs"><a href="/setups">Setups</a> / <a href="/setups/gaming">Setups index</a> / {setup.headline}</p>
+  <p class="breadcrumbs"><a href="/setups/">Setups</a> / <a href="/setups/gaming">Setups index</a> / {setup.headline}</p>
   <p class="page-kicker">{setup.kicker}</p>
   <h1 class="page-title">{setup.headline}</h1>
   <p class="page-lead">{setup.lead}</p>

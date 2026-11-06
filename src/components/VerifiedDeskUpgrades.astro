@@ -22,18 +22,18 @@ const { compact = false } = Astro.props;
 </div>
 <style>
   .verified-upgrades { display:grid; gap:12px; margin-top:22px; }
-  .upgrade-row { display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center; padding:20px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+  .upgrade-row { display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center; padding:20px; border:1px solid var(--border); border-radius:0; background:var(--surface); }
   .upgrade-row:hover { border-color:var(--purple); }
   .upgrade-row .page-kicker { margin-bottom:7px; }
   .upgrade-row strong { display:block; font-size:16px; }
-  .upgrade-row span { display:block; margin-top:7px; color:var(--muted); font-size:13px; line-height:1.55; }
-  .upgrade-row em { color:var(--purple-light); font-size:12px; font-style:normal; font-weight:700; white-space:nowrap; }
+  .upgrade-row span { display:block; margin-top:7px; color:var(--muted); font-size:.94rem; line-height:1.55; }
+  .upgrade-row em { color:var(--purple-light); font-size:.88rem; font-style:normal; font-weight:700; white-space:nowrap; }
   .compact .upgrade-row { padding:16px 18px; }
   @media(max-width:760px){ .upgrade-row { grid-template-columns:1fr; } .upgrade-row em { justify-self:start; } }
 </style>
 <style>
   .verified-upgrades { gap:0; border:1px solid var(--term-border); }
-  .verified-upgrades::before { content:'$ upgrades --researched'; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .verified-upgrades::before { content:none; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:.8rem; }
   .upgrade-row { border:0; border-top:1px solid var(--term-border); border-radius:0; background:var(--term-bg); }
   .upgrade-row:first-of-type { border-top:0; }
   .upgrade-row:hover { border-color:var(--term-border); background:rgba(163,230,53,.035); }
