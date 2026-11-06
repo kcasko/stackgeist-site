@@ -26,8 +26,8 @@
   --geist: #ffcf2e;        /* brand highlight yellow */
   --mark-bg: #121212;      /* wordmark "GEIST" block */
   --mark-fg: #ffcf2e;
-  --fixes: #df3f28;
-  --labs: #0b8774;
+  --fixes: #c9341e;        /* department colours pass 5:1 with white text */
+  --labs: #0a7d6b;
   --learning: #3557d4;
   --gear: #f09a0b;
   --dept: var(--ink);
@@ -96,6 +96,7 @@
     --ink: #f0efe9; --ink-2: #d3d2cc; --ink-3: #a3a29b; --rule: #38383d; --rule-strong: #f0efe9;
     --fixes: #f2604a; --labs: #2fb39c; --learning: #7b93f0; --gear: #f5ae37;
     --link: #f0efe9; --plate: #0f0f11; --border-strong: #55555b; --term-border-strong: #55555b;
+    --on-dept: #121212; --ok: #5fd29a; --warn: #f0b955; --stop: #ff8a7e;
     --mark-bg: #ffcf2e; --mark-fg: #121212;
   }
   :root:not([data-theme="light"]) [data-section="fixes"] { --dept-ink: #ff8a76; }
@@ -109,6 +110,7 @@
   --ink: #f0efe9; --ink-2: #d3d2cc; --ink-3: #a3a29b; --rule: #38383d; --rule-strong: #f0efe9;
   --fixes: #f2604a; --labs: #2fb39c; --learning: #7b93f0; --gear: #f5ae37;
   --link: #f0efe9; --plate: #0f0f11; --border-strong: #55555b; --term-border-strong: #55555b;
+    --on-dept: #121212; --ok: #5fd29a; --warn: #f0b955; --stop: #ff8a7e;
     --mark-bg: #ffcf2e; --mark-fg: #121212;
 }
 :root[data-theme="dark"] [data-section="fixes"] { --dept-ink: #ff8a76; }
@@ -344,6 +346,7 @@ pre code { font-size: inherit; white-space: inherit; color: inherit; background:
 
 /* ---------- 10. Figures ---------- */
 .sg-figure, .sg-illus, figure.sg-figure-img { margin: var(--space-6) 0 var(--space-4); }
+.sg-illus figcaption, .sg-illus .sg-illus-label { color: #4a4a45 !important; }
 .sg-figure-scroll, .sg-illus-scroll, .sg-fig-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .sg-figure svg, .sg-illus svg { display: block; width: 100%; min-width: 560px; height: auto; }
 .sg-figure > .sg-figure-scroll, .sg-illus > .sg-illus-scroll { padding: var(--space-4); background: var(--surface); border: 2px solid var(--ink); }
