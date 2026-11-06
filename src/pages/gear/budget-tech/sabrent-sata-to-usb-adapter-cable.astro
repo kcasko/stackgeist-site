@@ -2,7 +2,7 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", description: "If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data.", url: 'https://stackgeist.dev/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', brand: 'Sabrent' })];
+const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", description: "If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data.", url: 'https://stackgeist.dev/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', image: 'https://stackgeist.dev/gear/mfr/sabrent-ec-sshd.webp', brand: 'Sabrent' })];
 ---
 <ContentLayout structuredData={__sd} title="SABRENT SATA to USB Adapter Cable | StackGeist" description="If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data." active="gear" noindex>
   <ProductDetailSimple
@@ -17,6 +17,10 @@ const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", descrip
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
     facts="Sourced from taurustech.me/affiliate. See the retailer page for the current spec sheet."
     skip="Skip this page as a buying recommendation until the current manufacturer specification and compatibility requirements are checked."
+    imageUrl="/gear/mfr/sabrent-ec-sshd.webp"
+    imageAlt="Sabrent EC-SSHD USB 3.0 to 2.5-inch SATA adapter cable"
+    imageSourceLabel="Sabrent"
+    imageSourceUrl="https://sabrent.com/products/ec-sshd"
     amazonUrl="https://www.amazon.com/dp/B011M8YACM?tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""
