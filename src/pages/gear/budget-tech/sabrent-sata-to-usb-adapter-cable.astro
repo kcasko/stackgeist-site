@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", description: "If you’ve ever pulled a hard drive or SSD out of an old laptop, you know how annoying it is to access the data.", url: 'https://stackgeist.dev/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', image: 'https://stackgeist.dev/gear/mfr/sabrent-ec-sshd.webp', brand: 'Sabrent' })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", descrip
   <ProductDetailSimple
     eyebrow="Best under $25"
     heading="SABRENT SATA to USB Adapter Cable"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in November 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="November 2025"
     productName="SABRENT SATA to USB Adapter Cable"
     productMeta="Amazon ASIN B011M8YACM"
     tags={['Budget tech','Best under $25']}
@@ -27,4 +29,5 @@ const __sd = [productSchema({ name: "SABRENT SATA to USB Adapter Cable", descrip
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B011M8YACM', href: 'https://www.amazon.com/dp/B011M8YACM' }]} />
 </ContentLayout>

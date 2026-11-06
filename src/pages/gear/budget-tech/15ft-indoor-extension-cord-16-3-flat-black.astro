@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "15ft Indoor Extension Cord (16/3, Flat Black)", description: "Sometimes the outlet just isn’t where you need it.", url: 'https://stackgeist.dev/gear/budget-tech/15ft-indoor-extension-cord-16-3-flat-black', })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "15ft Indoor Extension Cord (16/3, Flat Blac
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="15ft Indoor Extension Cord (16/3, Flat Black)"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in September 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="September 2025"
     productName="15ft Indoor Extension Cord (16/3, Flat Black)"
     productMeta="Amazon ASIN B0FFYQ7JN3"
     tags={['Budget tech','Everyday essentials']}
@@ -23,6 +25,7 @@ const __sd = [productSchema({ name: "15ft Indoor Extension Cord (16/3, Flat Blac
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B0FFYQ7JN3', href: 'https://www.amazon.com/dp/B0FFYQ7JN3' }]} />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/extension-cord-getting-hot"><h3>Cord getting hot?</h3><p>When to unplug and why.</p></a></div></section>
 </ContentLayout>

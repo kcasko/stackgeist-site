@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "ALFA AC1900 Long-Range USB Wi-Fi Adapter", description: "Built-in Wi-Fi adapters struggle in bad signal areas.", url: 'https://stackgeist.dev/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter', image: 'https://stackgeist.dev/gear/mfr/alfa-awus1900.webp', brand: 'Alfa' })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "ALFA AC1900 Long-Range USB Wi-Fi Adapter", 
   <ProductDetailSimple
     eyebrow="Best under $75"
     heading="ALFA AC1900 Long-Range USB Wi-Fi Adapter"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in October 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="October 2025"
     productName="ALFA AC1900 Long-Range USB Wi-Fi Adapter"
     productMeta="Amazon ASIN B01MZD7Z76"
     tags={['Budget tech','Best under $75']}
@@ -27,6 +29,7 @@ const __sd = [productSchema({ name: "ALFA AC1900 Long-Range USB Wi-Fi Adapter", 
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B01MZD7Z76', href: 'https://www.amazon.com/dp/B01MZD7Z76' }]} />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/alfa-ac1900-slow-speed-fix"><h3>Speed lower than expected?</h3><p>Driver, port, and band checks.</p></a></div></section>
 </ContentLayout>

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Drive", description: "Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data.", url: 'https://stackgeist.dev/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', image: 'https://stackgeist.dev/gear/commons/sandisk-ultra-flair-128gb.webp', brand: 'SanDisk' })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Dri
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in September 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="September 2025"
     productName="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive"
     productMeta="Amazon ASIN B015CH1PJU"
     tags={['Budget tech','Everyday essentials']}
@@ -30,4 +32,5 @@ const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Dri
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B015CH1PJU', href: 'https://www.amazon.com/dp/B015CH1PJU' }]} />
 </ContentLayout>

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "14” Portable Laptop Screen Extender (Triple Display)", description: "One laptop screen is a bottleneck.", url: 'https://stackgeist.dev/gear/budget-tech/14-portable-laptop-screen-extender-triple-display', })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "14” Portable Laptop Screen Extender (Trip
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="14” Portable Laptop Screen Extender (Triple Display)"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in December 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="December 2025"
     productName="14” Portable Laptop Screen Extender (Triple Display)"
     productMeta="Amazon ASIN B0FRRD17L6"
     tags={['Budget tech','Worth paying more for']}
@@ -30,6 +32,7 @@ const __sd = [productSchema({ name: "14” Portable Laptop Screen Extender (Trip
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B0FRRD17L6', href: 'https://www.amazon.com/dp/B0FRRD17L6' }]} />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/portable-usb-c-monitor-no-signal"><h3>Getting no signal on USB-C?</h3><p>Host port and cable diagnosis.</p></a></div></section>
 </ContentLayout>

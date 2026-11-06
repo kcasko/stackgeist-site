@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", description: "This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs.", url: 'https://stackgeist.dev/gear/budget-tech/80w-digital-soldering-iron-kit', })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", descriptio
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="80W Digital Soldering Iron Kit"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in July 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="July 2025"
     productName="80W Digital Soldering Iron Kit"
     productMeta="Amazon ASIN B08R3515SF"
     tags={['Budget tech','Everyday essentials']}
@@ -30,4 +32,5 @@ const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", descriptio
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B08R3515SF', href: 'https://www.amazon.com/dp/B08R3515SF' }]} />
 </ContentLayout>

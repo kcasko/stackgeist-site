@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)", description: "This isn’t a bare-bones Raspberry Pi setup.", url: 'https://stackgeist.dev/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb', image: 'https://stackgeist.dev/gear/mfr/canakit-pi5-starter-kit-turbine-black.webp', brand: 'CanaKit' })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "CanaKit Raspberry Pi 5 Starter Kit PRO (8GB
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in March 2024. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="March 2024"
     productName="CanaKit Raspberry Pi 5 Starter Kit PRO (8GB, 128GB)"
     productMeta="Amazon ASIN B0CRSNCJ6Y"
     tags={['Budget tech','Worth paying more for']}
@@ -27,6 +29,7 @@ const __sd = [productSchema({ name: "CanaKit Raspberry Pi 5 Starter Kit PRO (8GB
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B0CRSNCJ6Y', href: 'https://www.amazon.com/dp/B0CRSNCJ6Y' }]} />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/raspberry-pi-5-wont-boot"><h3>Pi 5 won't boot?</h3><p>PSU, SD, and cable checks.</p></a></div></section>
 </ContentLayout>

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "Microfiber Cleaning Cloths (18-Pack)", description: "Screens, glasses, and lenses get dirty constantly.", url: 'https://stackgeist.dev/gear/budget-tech/microfiber-cleaning-cloths-18-pack', })];
 ---
@@ -8,7 +9,8 @@ const __sd = [productSchema({ name: "Microfiber Cleaning Cloths (18-Pack)", desc
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Microfiber Cleaning Cloths (18-Pack)"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in September 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="September 2025"
     productName="Microfiber Cleaning Cloths (18-Pack)"
     productMeta="Amazon ASIN B081W1LR9P"
     tags={['Budget tech','Everyday essentials']}
@@ -30,4 +32,5 @@ const __sd = [productSchema({ name: "Microfiber Cleaning Cloths (18-Pack)", desc
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B081W1LR9P', href: 'https://www.amazon.com/dp/B081W1LR9P' }]} />
 </ContentLayout>
