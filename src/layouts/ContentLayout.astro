@@ -1,11 +1,11 @@
 ---
 // Content pages: articles, hubs, products, legal.
-// `feature` turns on the article treatment: numbered step blocks, a contents list and
-// related links in a right-hand rail, all built at build time (no layout shift).
-// Pages opt in one at a time while the design is reviewed.
+// Articles (catalog pages under /guides/, /labs/, /certs/ that use .article-page) get the
+// feature treatment automatically: breadcrumbs, section slab and meta line from the catalog,
+// numbered step blocks, and a contents/related rail, all built at build time.
 import Layout from './Layout.astro';
-import type { Section } from '../data/catalog';
-import { related, SECTIONS, TYPE_LABEL } from '../data/sections';
+import { CATALOG, type Section } from '../data/catalog';
+import { related, SECTIONS, TYPE_LABEL, TOPIC_LABEL, formatDate } from '../data/sections';
 
 interface Props {
   title: string; description: string;
@@ -13,30 +13,39 @@ interface Props {
   section?: Section;
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  /** Force the article treatment on or off; by default it follows the catalog. */
   feature?: boolean;
   /** Extra rail links, e.g. hardware the article discusses. */
   railLinks?: { href: string; title: string; note?: string }[];
   /** @deprecated Kept so existing pages compile. */
   design?: 'v1' | 'v2';
 }
-const { title, description, active, section, noindex = false, structuredData, feature = false, railLinks = [] } = Astro.props;
+const { title, description, active, section, noindex = false, structuredData, railLinks = [] } = Astro.props;
 const path = Astro.url.pathname;
+const norm = path.endsWith('/') ? path : `${path}/`;
 const isDetail = (prefix: string) => path.startsWith(prefix) && path !== prefix;
 const isEditorialPage = ['/labs/', '/certs/', '/guides/', '/kits/'].some(isDetail);
 const isArticle = isEditorialPage || isDetail('/gear/');
+const entry = CATALOG.find((e) => e.href === norm);
+const articleTypes = ['troubleshooting', 'buying-guide', 'lab', 'lab-hardware', 'certification', 'course-review', 'study-log'];
+const feature = Astro.props.feature ?? Boolean(entry && articleTypes.includes(entry.type));
+
+const tocLabel: Record<string, string> = { troubleshooting: 'In this fix', lab: 'In this lab', 'lab-hardware': 'In this guide', 'course-review': 'In this review', 'study-log': 'On this page', certification: 'On this page', 'buying-guide': 'In this guide' };
+const railTitle = (entry && tocLabel[entry.type]) ?? 'On this page';
 
 let body = '';
 const toc: { id: string; text: string; step?: string }[] = [];
 if (feature) {
   body = await Astro.slots.render('default');
-  const slug = (t: string) => t.toLowerCase().replace(/&[a-z]+;/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
-  // Section headings inside the article body: give each an id and collect them for the contents list.
-  // "Step NN" kickers become a numbered block.
+  const slug = (t: string) => t.toLowerCase().replace(/&[a-z#0-9]+;/g, '').replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+  const used = new Set<string>();
+  const uniq = (id: string) => { const base = id || 'section'; let out = base; let n = 2; while (used.has(out)) out = `${base}-${n++}`; used.add(out); return out; };
+  // Section headings: ids, contents list, and numbered blocks for "Step NN" kickers.
   body = body.replace(/<section(?:\s[^>]*)?>\s*<p class="page-kicker"[^>]*>([^<]*)<\/p>\s*<h2(?:\s[^>]*)?>([\s\S]*?)<\/h2>/g, (_m, kicker: string, h: string) => {
     const text = h.replace(/<[^>]+>/g, '').trim();
-    const id = slug(text);
+    const id = uniq(slug(text));
     const step = /^Step\s+0?(\d+)/i.exec(kicker.trim());
-    if (/^(Sources|Related fixes)$/i.test(kicker.trim())) {
+    if (/^(Sources|Related( fixes| reading| guides)?|Keep going|Paid options)$/i.test(kicker.trim())) {
       return `<section><p class="page-kicker">${kicker}</p><h2 id="${id}">${h}</h2>`;
     }
     toc.push({ id, text, step: step?.[1] });
@@ -45,11 +54,33 @@ if (feature) {
     }
     return `<section><p class="page-kicker">${kicker}</p><h2 id="${id}">${h}</h2>`;
   });
+
+  if (entry && !body.includes('class="article-tags"')) {
+    // Breadcrumbs from the catalog, so section names are consistent everywhere.
+    const crumbs: { href: string; label: string }[] = [{ href: SECTIONS[entry.section].href, label: SECTIONS[entry.section].label }];
+    const hub = entry.section === 'fixes' ? CATALOG.find((e) => e.type === 'topic' && e.topic === entry.topic) : undefined;
+    if (hub && hub.href !== entry.href) crumbs.push({ href: hub.href, label: TOPIC_LABEL[entry.topic] ?? hub.title });
+    if (entry.topic === 'wgu' && entry.href !== '/certs/wgu-software-engineering-degree/') crumbs.push({ href: '/certs/wgu-software-engineering-degree/', label: 'WGU degree' });
+    const crumbHtml = `<nav class="breadcrumbs" aria-label="Breadcrumb">${crumbs.map((c) => `<a href="${c.href}">${c.label}</a>`).join(' / ')}</nav>`;
+    body = body.replace(/<p class="breadcrumbs"[^>]*>[\s\S]*?<\/p>/, crumbHtml);
+
+    // Section slab plus the page's own kicker text.
+    body = body.replace(/<p class="page-kicker"[^>]*>([^<]*)<\/p>(\s*<h1)/, (_m, k: string, h1: string) =>
+      `<p class="article-tags"><a class="slab" href="${SECTIONS[entry.section].href}">${SECTIONS[entry.section].label}</a> <span class="kicker">${k}</span></p>${h1}`);
+
+    // Meta line after the lead: byline, date, step count, and format.
+    const steps = toc.filter((t) => t.step).length;
+    const meta = ['By <a href="/about/">Keith Casko</a>'];
+    if (entry.updated) meta.push(`Updated <time datetime="${entry.updated}">${formatDate(entry.updated)}</time>`);
+    if (steps >= 2) meta.push(`<b>${steps} steps</b>`);
+    meta.push(TYPE_LABEL[entry.type]);
+    body = body.replace(/(<p class="page-lead"[^>]*>[\s\S]*?<\/p>)/, `$1<p class="article-meta">${meta.join(' · ')}</p>`);
+  }
 }
 if (feature && toc.length >= 3) {
   // Phones get the contents list right after the short answer; the rail copy is for wide screens.
   const list = toc.map((t) => `<li><a href="#${t.id}">${t.step ? `<b>${t.step}</b> ` : ''}${t.text}</a></li>`).join('');
-  body = body.replace(/(<div class="article-summary"[^>]*>[\s\S]*?<\/div>)/, `$1<nav class="v2-toc inline-toc" aria-label="In this fix"><p>In this fix</p><ol>${list}</ol></nav>`);
+  body = body.replace(/(<div class="article-summary[^"]*"[^>]*>[\s\S]*?<\/div>)/, `$1<nav class="v2-toc inline-toc" aria-label="${railTitle}"><p>${railTitle}</p><ol>${list}</ol></nav>`);
 }
 if (feature && isEditorialPage) {
   // Byline closes the article itself, ahead of the newsletter.
@@ -59,7 +90,7 @@ if (feature && isEditorialPage) {
 }
 const more = feature ? related(path, 5) : [];
 ---
-<Layout title={title} description={description} noindex={noindex} structuredData={structuredData} active={active} section={section} mainClass={feature ? 'content-main has-rail' : 'content-main'} type={isArticle ? 'article' : 'website'}>
+<Layout title={title} description={description} noindex={noindex} structuredData={structuredData} active={active} section={section} mainClass={feature ? 'content-main has-rail' : 'content-main'} pageType={entry?.type} type={isArticle ? 'article' : 'website'}>
   {feature ? <Fragment set:html={body} /> : <slot />}
   {isEditorialPage && !feature && (
     <aside class="editorial-byline" aria-label="Editorial information">
@@ -74,7 +105,7 @@ const more = feature ? related(path, 5) : [];
       <div class="rail-inner">
         {toc.length >= 3 && (
           <nav class="rail-block rail-toc" aria-labelledby="rail-toc-title">
-            <h2 id="rail-toc-title" class="rail-title">In this fix</h2>
+            <h2 id="rail-toc-title" class="rail-title">{railTitle}</h2>
             <ol>{toc.map((t) => <li class:list={{ 'is-step': t.step }}><span aria-hidden="true">{t.step ?? '•'}</span><a href={`#${t.id}`}>{t.text}</a></li>)}</ol>
           </nav>
         )}

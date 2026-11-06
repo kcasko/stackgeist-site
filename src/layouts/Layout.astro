@@ -17,6 +17,8 @@ interface Props {
   active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs' | Section;
   mainClass?: string;
   type?: 'website' | 'article';
+  /** Editorial format from the catalog; drives format-specific labels in CSS. */
+  pageType?: string;
 }
 const {
   title = 'StackGeist: computer fixes, home labs, and IT study notes',
@@ -27,6 +29,7 @@ const {
   active,
   mainClass,
   type = 'website',
+  pageType,
 } = Astro.props;
 const legacy: Record<string, Section> = { guides: 'fixes', certs: 'learning', kits: 'gear', setups: 'gear', labs: 'labs', gear: 'gear' };
 const dept: Section | undefined = section ?? (active ? (legacy[active] ?? (active as Section)) : undefined);
@@ -40,7 +43,7 @@ const dept: Section | undefined = section ?? (active ? (legacy[active] ?? (activ
     <title>{title}</title>
     <SeoHead title={title} description={description} noindex={noindex} extraStructuredData={structuredData} type={type} />
   </head>
-  <body data-section={dept}>
+  <body data-section={dept} data-type={pageType}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={dept} />
