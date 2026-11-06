@@ -13,9 +13,9 @@ export type PartnerOffer = {
 export const PARTNER_OFFERS: Record<string, PartnerOffer> = {
   awsPractice: {
     id: 'aws-practice-exams',
-    label: 'AWS practice exams',
+    label: 'Tutorials Dojo AWS practice exams',
     note: 'Use after the free AWS Skill Builder material, once you can explain each exam domain.',
-    url: '',
+    url: 'https://portal.tutorialsdojo.com/product-category/aws/aws-practice-exams/ref/379698',
   },
   comptiaPractice: {
     id: 'comptia-practice-exams',

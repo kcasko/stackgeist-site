@@ -85,7 +85,13 @@ test('archived desk pages stay online but out of search', { skip: !existsSync(DI
 });
 
 test('offers stay hidden until they have an approved link', { skip: !existsSync(DIST) }, () => {
-  assert.doesNotMatch(readFileSync(join(DIST, 'certs', 'index.html'), 'utf8'), /Paid options/);
+  // The certs page lists the CompTIA and AWS slots: it shows paid options only when one of them has a link.
+  const offers = readFileSync('src/data/partnerOffers.ts', 'utf8');
+  const hasUrl = (key) => new RegExp(`${key}: \{[^}]*url: '[^']+'`).test(offers);
+  const certs = readFileSync(join(DIST, 'certs', 'index.html'), 'utf8');
+  if (hasUrl('comptiaPractice') || hasUrl('awsPractice')) assert.match(certs, /Paid options/);
+  else assert.doesNotMatch(certs, /Paid options/);
+  if (!hasUrl('comptiaPractice')) assert.doesNotMatch(certs, /CompTIA practice exams/);
 });
 
 test('public hubs do not expose internal marketing language', { skip: !existsSync(DIST) }, () => {
