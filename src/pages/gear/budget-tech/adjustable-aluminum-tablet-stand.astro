@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "Adjustable Aluminum Tablet Stand", description: "Holding a tablet for long periods gets uncomfortable fast.", url: 'https://stackgeist.dev/gear/budget-tech/adjustable-aluminum-tablet-stand', })];
 ---
@@ -8,19 +9,21 @@ const __sd = [productSchema({ name: "Adjustable Aluminum Tablet Stand", descript
   <ProductDetailSimple
     eyebrow="Everyday essentials"
     heading="Adjustable Aluminum Tablet Stand"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in September 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="September 2025"
     productName="Adjustable Aluminum Tablet Stand"
-    productMeta="Amazon ASIN B0BM4MK8JC"
+    productMeta="Amazon ASIN B0BM4P4BM4"
     tags={['Budget tech','Everyday essentials']}
     why="Technical fit has not yet been source-checked for this exact product."
     tradeoff="No firsthand-use claim or performance recommendation is being made until the evidence review is complete."
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
     facts="Sourced from taurustech.me/affiliate. See the retailer page for the current spec sheet."
     skip="Skip this page as a buying recommendation until the current manufacturer specification and compatibility requirements are checked."
-    amazonUrl="https://www.amazon.com/dp/B0BM4MK8JC?tag=deskrespawn-20"
+    amazonUrl="https://www.amazon.com/dp/B0BM4P4BM4?tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B0BM4P4BM4', href: 'https://www.amazon.com/dp/B0BM4P4BM4' }]} />
 </ContentLayout>

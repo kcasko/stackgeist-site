@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "Texas Instruments TI-84 Plus CE Graphing Calculator", description: "This is the calculator most schools and exams are built around.", url: 'https://stackgeist.dev/gear/budget-tech/texas-instruments-ti-84-plus-ce-graphing-calculator' })];
 ---
@@ -8,23 +9,23 @@ const __sd = [productSchema({ name: "Texas Instruments TI-84 Plus CE Graphing Ca
   <ProductDetailSimple
     eyebrow="Worth paying more for"
     heading="Texas Instruments TI-84 Plus CE Graphing Calculator"
-    intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
+    intro="I bought this in June 2025. Firsthand notes are still to come, so for now this page records that I own it and which listing it is. It isn’t a review or a buying recommendation yet."
+    ownedSince="June 2025"
     productName="Texas Instruments TI-84 Plus CE Graphing Calculator"
     imageUrl=""
     imageAlt="Texas Instruments TI-84 Plus CE Graphing Calculator"
-    imageSourceLabel="Amazon"
-    imageSourceUrl="https://amzn.to/4poZJ8l"
-    productMeta="Imported from taurustech.me/affiliate"
+    productMeta="Amazon ASIN B01NC0PLBO"
     tags={['Budget tech','Worth paying more for']}
     why="Technical fit has not yet been source-checked for this exact product."
     tradeoff="No firsthand-use claim or performance recommendation is being made until the evidence review is complete."
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
     facts="Sourced from taurustech.me/affiliate. See the retailer page for the current spec sheet."
     skip="Skip this page as a buying recommendation until the current manufacturer specification and compatibility requirements are checked."
-    amazonUrl="https://amzn.to/4poZJ8l"
+    amazonUrl="https://www.amazon.com/dp/B01NC0PLBO?tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[{ label: 'Amazon product identity — ASIN B01NC0PLBO', href: 'https://www.amazon.com/dp/B01NC0PLBO' }]} />
 </ContentLayout>
