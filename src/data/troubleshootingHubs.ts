@@ -163,7 +163,7 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
     related: [
       { href: '/guides/extension-cord-safety-guide', title: 'Extension cord safety guide', desc: 'Calculate desk load, pick the right amp rating and gauge, and avoid stack-of-doom wiring.' },
       { href: '/guides/laptop-charger-wattage', title: 'Laptop charger wattage', desc: 'Match the laptop input rating and leave headroom for docks and multi-device chargers.' },
-      { href: '/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb', title: 'Flat plug surge protector', desc: 'Fit-first notes for a low-profile desk power strip.' },
+      { href: '/gear/budget-tech/flat-plug-surge-protector-power-strip-8-outlets-usb', title: 'Flat plug surge protector', desc: 'Notes on a low-profile desk power strip.' },
     ],
     faqs: [
       {

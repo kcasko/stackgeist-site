@@ -23,12 +23,13 @@ test('income kits define monetized buyer-intent pages and social angles', async 
   assert.doesNotMatch(data, /tested in our lab|guaranteed income|passive income/i);
 });
 
-test('income kit routes are linked from navigation, footer, homepage, and sitemap source', async () => {
+test('income kit routes are linked from the footer, homepage, and sitemap source', async () => {
   const header = await read('src/components/Header.astro');
   const footer = await read('src/components/SiteFooter.astro');
   const home = await read('src/pages/index.astro');
   const sitemap = await read('src/pages/sitemap.xml.ts');
-  for (const src of [header, footer, sitemap]) assert.match(src, /\/kits/);
+  for (const src of [footer, sitemap]) assert.match(src, /\/kits/);
+  assert.match(header, /\/gear\//);
   for (const slug of ['help-desk-homelab-starter-kit']) {
     assert.match(home, new RegExp(`/kits/${slug}`));
   }

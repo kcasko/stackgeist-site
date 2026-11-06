@@ -2,6 +2,7 @@
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
+import SdRecoveryHero from '../../components/illustrations/SdRecoveryHero.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd=[
 articleSchema({
@@ -36,6 +37,7 @@ faqSchema({questions:[
 <p class="page-kicker">Storage troubleshooting</p>
 <h1 class="page-title">How to recover deleted photos from an SD card.</h1>
 <p class="page-lead">When you delete a photo, the card usually just marks that space as free. The photo stays there until something new is written over it. That makes the most important step the simplest one: stop using the card now.</p>
+<SdRecoveryHero />
 
 <div class="article-summary"><strong>The five-minute answer</strong><p>Take the card out of the camera or phone and don’t take any more pictures on it. Check cloud backups and your computer for copies first. Then connect the card with a card reader, and scan it with a free tool like PhotoRec or Windows File Recovery, or with paid recovery software. Always save recovered photos to your computer or another drive, never back to the card.</p></div>
 
@@ -90,5 +92,5 @@ faqSchema({questions:[
 <li><a href="https://www.sdcard.org/downloads/formatter/faq/">SD Association — Formatter FAQ</a></li>
 </ol></section>
 </div></article>
-<NewsletterSignup variant="inline" heading="Get the next practical tech fix." subhead="One practical troubleshooting fix per email. No sponsor copy." />
+<NewsletterSignup variant="inline" />
 </ContentLayout>

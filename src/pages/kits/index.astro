@@ -7,7 +7,6 @@ import { INCOME_KITS, IT_KIT_SLUGS, FIX_KIT_SLUGS } from '../../data/incomeKits'
 const groups = [
   { id: 'it-study-homelab', title: 'IT study and home labs', note: 'Practice gear and study tools for support, systems, and cloud work.', kits: INCOME_KITS.filter((kit) => IT_KIT_SLUGS.has(kit.slug)) },
   { id: 'fix-a-problem', title: 'Fix a PC or connectivity problem', note: 'What to try and buy when a diagnosis points to hardware.', kits: INCOME_KITS.filter((kit) => FIX_KIT_SLUGS.has(kit.slug)) },
-  { id: 'desk-everyday', title: 'Desk and everyday tech', note: 'Video calls, audio, gaming, travel, and home office.', kits: INCOME_KITS.filter((kit) => !IT_KIT_SLUGS.has(kit.slug) && !FIX_KIT_SLUGS.has(kit.slug)) },
 ];
 ---
 <ContentLayout title="IT, home lab, and tech buying kits | StackGeist" description="Buying orders for IT study, home labs, PC fixes, and everyday tech, with what to get first, what to skip, and what has and hasn’t been checked." active="kits">

@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import FixFlow from '../../components/illustrations/FixFlow.astro';
 
 const topFixes = [
   { slug: 'sennheiser-momentum-4-wont-pair', title: 'Sennheiser Momentum 4 not pairing', desc: 'Correct pairing slide, multipoint limits, and a clean reset sequence.' },
@@ -77,23 +78,18 @@ const groups = [
       { slug: 'monitor-arm-sagging-fix', title: 'Monitor arm sagging', desc: 'Capacity, tension, VESA, and clamp checks.' },
       { slug: 'benq-screenbar-flickering', title: 'BenQ ScreenBar flickering', desc: 'Model and power checks before you replace it.' },
       { slug: 'office-chair-gas-cylinder-replacement', title: 'Office chair sinking', desc: 'Gas cylinder or control mechanism?' },
+      { slug: 'cable-management', title: 'Cable management', desc: 'Route power and data so cables stop causing faults.' },
     ],
   },
 ];
 
-const deskGuides = [
-  { slug: 'cable-management', title: 'Cable management' },
-  { slug: 'desk-layout-basics', title: 'Desk layout basics' },
-  { slug: 'cheap-desk-upgrades', title: 'Cheap desk upgrades' },
-  { slug: 'keyboard-mouse-fit', title: 'Keyboard and mouse fit' },
-  { slug: 'better-video-calls', title: 'Better video calls' },
-];
 ---
 <ContentLayout title="PC, USB-C, and storage troubleshooting guides | StackGeist" description="Step-by-step fixes for USB-C docks and displays, charging, storage, Raspberry Pi boot problems, Bluetooth, and peripherals, tied to manufacturer sources." active="guides">
   <p class="breadcrumbs"><a href="/">StackGeist</a> / Fixes</p>
   <p class="page-kicker">Fixes</p>
   <h1 class="page-title">Find the fix before you replace the hardware.</h1>
   <p class="page-lead">Pick the problem closest to yours. Each guide starts with a short answer, then works through the checks in order.</p>
+  <FixFlow />
 
   <nav class="fix-jump" aria-label="Jump to a problem area">
     {groups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
@@ -129,17 +125,10 @@ const deskGuides = [
     </div>
   </section>
 
-  <section class="content-section">
-    <h2>Desk setup guides</h2>
-    <ul class="desk-guides">
-      {deskGuides.map((guide) => <li><a href={`/guides/${guide.slug}/`}>{guide.title}</a></li>)}
-    </ul>
-  </section>
 
   <style>
     .fix-jump { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
     .fix-jump a { padding:8px 12px; border:1px solid var(--term-border-strong); font-size:12.5px; }
-    .desk-guides { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:8px 24px; padding:0; list-style:none; }
-    .desk-guides a { display:inline-block; padding:4px 0; }
+
   </style>
 </ContentLayout>

@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';
+import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';import FixFlow from '../components/illustrations/FixFlow.astro';
 
 const jobs=[
   {href:'/guides/',eyebrow:'Start here',title:'Fix a problem',note:'USB-C, docks, charging, storage, Bluetooth, Raspberry Pi, and home office hardware, diagnosed step by step.',cta:'Browse fixes →',tone:'primary'},
@@ -35,6 +35,7 @@ const updated='Updated November 2026';
     {jobs.map((job)=><a class:list={['job-card',job.tone]} href={job.href}><span class="job-eyebrow">{job.eyebrow}</span><strong>{job.title}</strong><span>{job.note}</span><b>{job.cta}</b></a>)}
   </div>
 </section>
+<FixFlow />
 
 <section class="panel fixes-panel" aria-labelledby="fixes-title">
   <header class="panel-head"><span class="dollar">$</span><span id="fixes-title" class="cmd">popular fixes</span><a class="panel-link" href="/guides/">all fixes →</a></header>

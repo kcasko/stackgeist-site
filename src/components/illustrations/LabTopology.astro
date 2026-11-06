@@ -1,0 +1,64 @@
+---
+// Original StackGeist illustration of the author's six-VM lab, from the lab documentation.
+---
+<figure class="sg-illus">
+  <div class="sg-illus-scroll" tabindex="0" role="region" aria-label="Lab topology illustration">
+    <svg viewBox="0 0 860 330" role="img" aria-labelledby="lt-title lt-desc" xmlns="http://www.w3.org/2000/svg">
+      <title id="lt-title">The StackGeist home lab topology</title>
+      <desc id="lt-desc">One laptop runs VMware Workstation with six virtual machines on a NAT network, 10.20.30.0/24, with the gateway at 10.20.30.2. DC01 at .10 provides Active Directory and DNS for the other machines: FILE01 at .20, WIN11-01 at .30, LINUX01 at .40, ARCH01 at .50, and PARROT01 at .60.</desc>
+      <style>
+        .lt-host{fill:none;stroke:#3b3846;stroke-width:1.5;stroke-dasharray:6 5}
+        .lt-box{fill:#0e0a16;stroke:#3b3846;stroke-width:1.5}
+        .lt-dc{fill:rgba(163,230,53,.07);stroke:#a3e635;stroke-width:2}
+        .lt-t{fill:#f7f3fb;font:700 15px ui-sans-serif,system-ui,'Segoe UI',sans-serif}
+        .lt-m{fill:#d9d1e0;font:12.5px ui-sans-serif,system-ui,'Segoe UI',sans-serif}
+        .lt-ip{fill:#a3e635;font:600 12px ui-monospace,Consolas,monospace}
+        .lt-k{fill:#c084fc;font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.08em}
+        .lt-bus{stroke:#4a3267;stroke-width:3}
+        .lt-ln{stroke:#4a3267;stroke-width:2}
+      </style>
+      <rect class="lt-host" x="8" y="8" width="844" height="314" rx="12"/>
+      <text class="lt-k" x="28" y="34">LAPTOP · RYZEN 7 7435HS · 64 GB · VMWARE WORKSTATION</text>
+      <rect class="lt-dc" x="330" y="52" width="200" height="74" rx="8"/>
+      <text class="lt-t" x="348" y="78">DC01</text>
+      <text class="lt-ip" x="430" y="78">.10</text>
+      <text class="lt-m" x="348" y="98">Active Directory + DNS</text>
+      <text class="lt-m" x="348" y="115">Windows Server 2022</text>
+      <line class="lt-ln" x1="430" y1="126" x2="430" y2="160"/>
+      <line class="lt-bus" x1="70" y1="160" x2="790" y2="160"/>
+      <text class="lt-k" x="600" y="152">VMNET8 NAT · 10.20.30.0/24 · GW .2</text>
+      <line class="lt-ln" x1="96" y1="160" x2="96" y2="196"/>
+      <line class="lt-ln" x1="230" y1="160" x2="230" y2="196"/>
+      <line class="lt-ln" x1="364" y1="160" x2="364" y2="196"/>
+      <line class="lt-ln" x1="498" y1="160" x2="498" y2="196"/>
+      <line class="lt-ln" x1="632" y1="160" x2="632" y2="196"/>
+      <line class="lt-ln" x1="766" y1="160" x2="766" y2="196"/>
+      <g>
+        <rect class="lt-box" x="34" y="196" width="124" height="96" rx="8"/><text class="lt-t" x="48" y="222">FILE01</text><text class="lt-ip" x="48" y="242">.20</text><text class="lt-m" x="48" y="262">File shares,</text><text class="lt-m" x="48" y="279">backups</text>
+      </g>
+      <g>
+        <rect class="lt-box" x="168" y="196" width="124" height="96" rx="8"/><text class="lt-t" x="182" y="222">WIN11-01</text><text class="lt-ip" x="182" y="242">.30</text><text class="lt-m" x="182" y="262">Domain-joined</text><text class="lt-m" x="182" y="279">workstation</text>
+      </g>
+      <g>
+        <rect class="lt-box" x="302" y="196" width="124" height="96" rx="8"/><text class="lt-t" x="316" y="222">LINUX01</text><text class="lt-ip" x="316" y="242">.40</text><text class="lt-m" x="316" y="262">RHEL, joined</text><text class="lt-m" x="316" y="279">to AD</text>
+      </g>
+      <g>
+        <rect class="lt-box" x="436" y="196" width="124" height="96" rx="8"/><text class="lt-t" x="450" y="222">ARCH01</text><text class="lt-ip" x="450" y="242">.50</text><text class="lt-m" x="450" y="262">Arch Linux,</text><text class="lt-m" x="450" y="279">joined to AD</text>
+      </g>
+      <g>
+        <rect class="lt-box" x="570" y="196" width="124" height="96" rx="8"/><text class="lt-t" x="584" y="222">PARROT01</text><text class="lt-ip" x="584" y="242">.60</text><text class="lt-m" x="584" y="262">Security</text><text class="lt-m" x="584" y="279">testing</text>
+      </g>
+      <g>
+        <rect class="lt-box" x="704" y="196" width="124" height="96" rx="8" stroke-dasharray="5 4"/><text class="lt-t" x="718" y="222">Internet</text><text class="lt-ip" x="718" y="242">via NAT</text><text class="lt-m" x="718" y="262">Outbound</text><text class="lt-m" x="718" y="279">only</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>The lab behind these pages: six VMs on one laptop, with DC01 providing sign-in and DNS for the rest. Drawn from the lab’s own documentation. <span class="sg-illus-label">StackGeist illustration</span></figcaption>
+</figure>
+<style>
+  .sg-illus{margin:32px 0 8px;padding:18px;border:1px solid var(--term-border);border-radius:8px;background:var(--surface)}
+  .sg-illus-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sg-illus svg{display:block;width:100%;min-width:640px;height:auto}
+  .sg-illus figcaption{margin-top:10px;color:var(--quiet);font-size:.875rem;line-height:1.5}
+  .sg-illus-label{margin-left:6px;color:var(--purple-light);font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase}
+</style>

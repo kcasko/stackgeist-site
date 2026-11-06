@@ -39,13 +39,14 @@ test('research placeholders are noindex, non-commercial, and excluded from sitem
   assert.doesNotMatch(sitemap, /https:\/\/stackgeist\.dev\/gear\/budget-tech\/compare\//);
 });
 
-test('RSS feed publishes the complete setup catalog with canonical links', async () => {
+test('RSS feed publishes fixes, labs, and cert pages with canonical links', async () => {
   const rss = await read('dist/rss.xml');
   assert.match(rss, /<rss version="2\.0"/);
-  assert.match(rss, /<title>StackGeist setup guides<\/title>/);
-  assert.equal((rss.match(/<item>/g) || []).length, 12);
-  assert.match(rss, /https:\/\/stackgeist\.dev\/setups\/streaming-content-creator/);
-  assert.match(rss, /https:\/\/stackgeist\.dev\/setups\/midnight-shift/);
+  assert.match(rss, /<title>StackGeist: tech fixes, IT home labs, and certification guides<\/title>/);
+  assert.ok((rss.match(/<item>/g) || []).length >= 20);
+  assert.match(rss, /https:\/\/stackgeist\.dev\/guides\/sennheiser-momentum-4-wont-pair\//);
+  assert.match(rss, /https:\/\/stackgeist\.dev\/labs\/active-directory-home-lab\//);
+  assert.doesNotMatch(rss, /\/setups\//);
 });
 
 test('pages advertise the RSS feed and emit breadcrumb structured data', async () => {

@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
+import CertPaths from '../../components/illustrations/CertPaths.astro';
 import { articleSchema } from '../../lib/structured-data';
 
 const title = 'Which IT certification first? A+, Network+, Security+, or AWS';
@@ -28,6 +29,8 @@ const certs = [
     <p class="page-lead">Pick based on the job you want next. For most people aiming at help desk, that points to A+. For cloud support with no IT background, AWS Cloud Practitioner has the lowest stated barrier.</p>
 
     <div class="article-summary"><strong>The short version</strong><p>Help desk or desktop support: start with A+. Already comfortable with hardware and Windows: consider Network+. Cloud-focused: AWS Cloud Practitioner. Security+ is usually a later step, since CompTIA recommends several years of experience. The ordering is my judgment; the exam facts are from the official pages linked below.</p></div>
+
+    <CertPaths />
 
     <div class="article-body">
       <section>
