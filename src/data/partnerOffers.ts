@@ -67,6 +67,24 @@ export const PARTNER_OFFERS: Record<string, PartnerOffer> = {
     note: 'Useful for a full-drive image or clone. Windows Backup and File History are free if you only need your files.',
     url: '',
   },
+  homelabRam: {
+    id: 'homelab-ram',
+    label: 'Laptop and desktop RAM upgrades',
+    note: 'Check your exact model’s maximum RAM and whether the memory is soldered before buying. RAM is the first limit most VMware labs hit.',
+    url: '',
+  },
+  nvmeSsd: {
+    id: 'nvme-ssd',
+    label: 'NVMe SSDs for VM storage',
+    note: 'Plan for at least 250 GB free for a six-VM lab, plus room for snapshots. Confirm your slot’s size and PCIe generation first.',
+    url: '',
+  },
+  miniPc: {
+    id: 'homelab-mini-pc',
+    label: 'Mini PCs for a dedicated lab host',
+    note: 'Only worth it if your current PC can’t take more RAM. Look for 8 cores and support for 64 GB.',
+    url: '',
+  },
   wifiAdapter: {
     id: 'usb-wifi-adapter',
     label: 'USB Wi-Fi adapters',

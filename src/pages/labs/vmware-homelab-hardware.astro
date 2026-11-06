@@ -1,0 +1,152 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'What hardware do you need for a VMware homelab? What my six-VM lab actually uses';
+const description = 'Real numbers from a six-VM VMware Workstation lab: Active Directory, a file server, Windows 11, and three Linux machines. RAM, CPU, and storage sizing, and what to upgrade first.';
+const structuredData = [
+  articleSchema({
+    headline: 'What hardware do you need for a VMware homelab? What my six-VM lab actually uses',
+    description,
+    url: 'https://stackgeist.dev/labs/vmware-homelab-hardware/',
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
+  }),
+  faqSchema({ questions: [
+    { question: 'How much RAM do I need for a VMware homelab?', answer: 'For a basic Active Directory lab with a domain controller, a file server, and a Windows 11 client, plan on 32 GB of host RAM. The author’s six-VM lab assigns 36 GB to its VMs and runs on a 64 GB host.' },
+    { question: 'Can I run a homelab on a laptop?', answer: 'Yes. The lab described here runs on a laptop with an 8-core Ryzen 7 7435HS, 64 GB of RAM, and a 4 TB NVMe SSD. Check that your laptop’s RAM can be upgraded before relying on one.' },
+    { question: 'Do I need a server for a homelab?', answer: 'No. VMware Workstation runs on a normal Windows PC. A dedicated server or mini PC only helps if you want the lab running all the time or your PC can’t take more RAM.' },
+    { question: 'Does a Windows 11 VM need a TPM?', answer: 'Microsoft lists TPM 2.0 and UEFI Secure Boot among Windows 11’s requirements. In VMware Workstation, you add a virtual TPM to the VM. The Windows 11 VM in this lab uses one.' },
+  ] }),
+];
+
+const vms = [
+  { name: 'DC01', os: 'Windows Server 2022', role: 'Domain controller and DNS', cpu: 2, ram: 4, disk: 29 },
+  { name: 'FILE01', os: 'Windows Server 2022', role: 'File server, shares, backups', cpu: 2, ram: 4, disk: 22.5 },
+  { name: 'WIN11-01', os: 'Windows 11', role: 'Domain-joined workstation', cpu: 2, ram: 8, disk: 83.1 },
+  { name: 'LINUX01', os: 'Red Hat Enterprise Linux', role: 'AD-joined Linux server', cpu: 2, ram: 4, disk: 14.6 },
+  { name: 'ARCH01', os: 'Arch Linux (headless)', role: 'AD-joined Linux server', cpu: 4, ram: 8, disk: 10.6 },
+  { name: 'PARROT01', os: 'Parrot Security OS', role: 'Security testing', cpu: 4, ram: 8, disk: 42.5 },
+];
+---
+<ContentLayout title="VMware homelab hardware: real RAM, CPU, and storage numbers | StackGeist" description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / VMware homelab hardware</p>
+    <p class="page-kicker">Built and documented · lab measured 5 November 2026</p>
+    <h1 class="page-title">What hardware do you need for a VMware homelab?</h1>
+    <p class="page-lead">Most homelab hardware advice is either “buy a used server” or a vague “16 GB should be fine.” Here are the real numbers from the lab I use to practice Active Directory, Windows Server, and Linux administration, and what they mean for your own setup.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>RAM is the limit you hit first. My six VMs are set to use 36 GB in total, on a host with 64 GB. A basic Active Directory lab (domain controller, file server, Windows 11 client) needs 16 GB for the VMs, so plan on <strong>32 GB of host RAM</strong>. A modern 8-core CPU is plenty. Put the VMs on an NVMe SSD with at least 250 GB free. You don’t need a server.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">The host</p>
+        <h2>What the lab runs on</h2>
+        <div class="article-cards">
+          <div><strong>Computer</strong><p>A Lenovo laptop (model 83JC). No dedicated server.</p></div>
+          <div><strong>CPU and RAM</strong><p>AMD Ryzen 7 7435HS, 8 cores and 16 threads, with 64 GB of RAM.</p></div>
+          <div><strong>Storage and software</strong><p>A 4 TB Kingston NVMe SSD, Windows 11, and VMware Workstation 25.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">The VMs</p>
+        <h2>What each machine is given</h2>
+        <p>These are the settings in each VM’s configuration and the space each one uses on disk, read from the lab on 5 November 2026. Every VM uses VMware’s NAT network.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Lab VM resources">
+          <table class="lab-table">
+            <thead><tr><th scope="col">VM</th><th scope="col">Operating system</th><th scope="col">Role</th><th scope="col">vCPUs</th><th scope="col">RAM</th><th scope="col">Disk used</th></tr></thead>
+            <tbody>
+              {vms.map((vm) => <tr><th scope="row">{vm.name}</th><td>{vm.os}</td><td>{vm.role}</td><td>{vm.cpu}</td><td>{vm.ram} GB</td><td>{vm.disk} GB</td></tr>)}
+              <tr class="total"><th scope="row">Total</th><td></td><td></td><td>16</td><td>36 GB</td><td>about 202 GB</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>“Disk used” is the real space on the SSD, not the size of the virtual disks. The disks are set larger and grow as they fill. FILE01, for example, has an 80 GB system disk and a 150 GB data disk, but uses 22.5 GB today.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">RAM</p>
+        <h2>RAM decides how many VMs you can run at once.</h2>
+        <p>Plan for each running VM to use up to the RAM you give it, and Windows on the host needs its own share too. My six VMs add up to 36 GB. On a 64 GB host, that leaves comfortable room for Windows and a browser.</p>
+        <div class="article-cards">
+          <div><strong>16 GB host</strong><p>Enough for a domain controller and one Windows 11 client (12 GB for the VMs), with little left over. Fine for learning the basics, but it gets tight fast.</p></div>
+          <div><strong>32 GB host</strong><p>The practical starting point. Runs the core three (DC01, FILE01, WIN11-01 at 16 GB total) with room to spare, or swap one Linux VM in.</p></div>
+          <div><strong>64 GB host</strong><p>What this lab uses. All six VMs running at once, with room to add more.</p></div>
+        </div>
+        <p>Microsoft’s minimums are low: 2 GB for Windows Server 2022 with the desktop, and 4 GB for Windows 11. The 4 and 8 GB settings above are what I gave them to stay responsive, not hard requirements.</p>
+        <div class="note">I haven’t measured how much of the host’s RAM the lab uses with all six VMs running. The figures here are the amounts assigned to each VM.</div>
+      </section>
+
+      <section>
+        <p class="page-kicker">CPU</p>
+        <h2>Cores matter less than you’d think.</h2>
+        <p>The lab assigns 16 virtual CPUs in total, one for every thread the Ryzen 7 has. Lab VMs spend most of their time idle, so they share the CPU well. Extra cores help most when several VMs are busy at once, such as installing updates together.</p>
+        <p>What you do need is hardware virtualization: AMD-V (often called SVM in the firmware) on AMD, or Intel VT-x. If VMware complains when a VM starts, check that it’s turned on in your PC’s UEFI settings. Windows Server also requires a CPU with Second Level Address Translation, which modern AMD and Intel CPUs have.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Storage</p>
+        <h2>Use an NVMe SSD, and leave room to grow.</h2>
+        <p>The six VMs take about 202 GB today. Windows 11 is the largest at 83 GB. The three Linux VMs together take less than 70 GB.</p>
+        <ul class="article-list">
+          <li><strong>Plan for at least 250 GB free</strong> for a lab this size. Virtual disks grow as you install updates and add files.</li>
+          <li><strong>Snapshots use extra space.</strong> Each one keeps the changes since it was taken.</li>
+          <li><strong>Use an SSD.</strong> Several VMs booting at once on a hard drive is painfully slow.</li>
+          <li><strong>Microsoft’s minimums:</strong> 32 GB for Windows Server and 64 GB for Windows 11. My Windows 11 VM uses 83 GB of a 100 GB disk.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Windows 11 VMs</p>
+        <h2>Windows 11 needs a virtual TPM.</h2>
+        <p>Microsoft lists TPM 2.0, UEFI with Secure Boot, and 4 GB of RAM among Windows 11’s requirements. In VMware Workstation, give the VM UEFI firmware and add a Trusted Platform Module in its hardware settings. My WIN11-01 VM uses UEFI and a virtual TPM. The Windows Server VMs here also use UEFI, but don’t need a TPM.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Should you buy anything?</p>
+        <h2>What to upgrade first.</h2>
+        <div class="article-cards">
+          <div><strong>Nothing yet</strong><p>If your PC has 16 GB and a 6-core or better CPU, start with a domain controller and one client. You’ll learn more by building than by shopping.</p></div>
+          <div><strong>RAM first</strong><p>Going from 16 to 32 GB is the single biggest improvement. Check your model’s maximum and whether the RAM is soldered before buying.</p></div>
+          <div><strong>Then storage</strong><p>An extra NVMe SSD if your main drive is short on space. Keep the VMs off a nearly full system drive.</p></div>
+          <div><strong>A dedicated host last</strong><p>A mini PC only makes sense if your PC can’t take more RAM, or you want the lab running all the time.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">How this page was made</p>
+        <p>The host and VM figures come from my own lab, read directly from the machine and the VM configuration files on 5 November 2026. The minimum requirements come from Microsoft’s documentation, linked below. I haven’t benchmarked the lab or compared it against other hardware.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>Build the lab</h2>
+        <div class="article-cards">
+          <div><strong><a href="/labs/active-directory-home-lab/">Active Directory home lab</a></strong><p>What I built, and what an audit found wrong.</p></div>
+          <div><strong><a href="/labs/help-desk-practice-without-experience/">Practice help desk work</a></strong><p>What to do with the lab once it’s running.</p></div>
+          <div><strong><a href="/certs/">Compare IT certifications</a></strong><p>What to study alongside the lab.</p></div>
+        </div>
+      </section>
+
+      <PartnerOffers ids={['homelabRam', 'nvmeSsd', 'miniPc']} placement="lab-vmware-homelab-hardware" />
+
+      <section>
+        <p class="page-kicker">Sources</p>
+        <ol class="article-list">
+          <li><a href="https://learn.microsoft.com/en-us/windows-server/get-started/hardware-requirements">Microsoft Learn — Hardware requirements for Windows Server</a></li>
+          <li><a href="https://www.microsoft.com/en-us/windows/windows-11-specifications">Microsoft — Windows 11 specifications and system requirements</a></li>
+        </ol>
+      </section>
+    </div>
+  </article>
+  <style>
+    .table-scroll{overflow-x:auto;margin:18px 0 16px;border:1px solid var(--term-border)}
+    .lab-table{width:100%;min-width:640px;border-collapse:collapse;font-size:13px}
+    .lab-table th,.lab-table td{padding:10px 12px;border-top:1px solid var(--term-border);text-align:left;color:var(--muted)}
+    .lab-table thead th{border-top:0;color:var(--phosphor);font-size:11.5px;font-weight:600}
+    .lab-table tbody th{color:var(--text)}
+    .lab-table .total th,.lab-table .total td{color:var(--text);font-weight:600;border-top:1px solid var(--term-border-strong)}
+  </style>
+</ContentLayout>
