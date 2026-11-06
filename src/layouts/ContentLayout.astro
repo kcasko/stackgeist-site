@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/content.css';
+import '../styles/v2.css';
 import Header from '../components/Header.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SeoHead from '../components/SeoHead.astro';
@@ -10,8 +11,9 @@ interface Props {
   active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  design?: 'v2';
 }
-const { title, description, active, noindex = false, structuredData } = Astro.props;
+const { title, description, active, noindex = false, structuredData, design } = Astro.props;
 const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathname.startsWith(prefix) && Astro.url.pathname !== prefix)) || (active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/') || (active === 'kits' && Astro.url.pathname.startsWith('/kits/') && Astro.url.pathname !== '/kits/');
 ---
 <!doctype html>
@@ -22,7 +24,7 @@ const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathna
     <title>{title}</title>
     <SeoHead title={title} description={description} noindex={noindex} extraStructuredData={structuredData} />
   </head>
-  <body>
+  <body data-design={design}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
@@ -32,6 +34,30 @@ const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathna
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
     <script>
+      // v2 pilot: build an "On this page" list from the guide's section headings.
+      if (document.body.dataset.design === 'v2') {
+        const headings = [...document.querySelectorAll('.article-body > section > h2')];
+        const summary = document.querySelector('.article-summary');
+        if (summary && headings.length >= 3) {
+          const nav = document.createElement('nav');
+          nav.className = 'v2-toc';
+          nav.setAttribute('aria-label', 'On this page');
+          const label = document.createElement('p');
+          label.textContent = 'On this page';
+          const list = document.createElement('ol');
+          headings.forEach((h, i) => {
+            if (!h.id) h.id = `section-${i + 1}`;
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#${h.id}`;
+            a.textContent = h.textContent;
+            li.append(a);
+            list.append(li);
+          });
+          nav.append(label, list);
+          summary.after(nav);
+        }
+      }
       // Let keyboard users scroll code blocks that are wider than the screen.
       document.querySelectorAll('.content-main pre').forEach((pre) => {
         if (pre.scrollWidth > pre.clientWidth) {

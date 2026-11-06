@@ -32,13 +32,60 @@ const __sd = [
   })
 ];
 ---
-<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: diagnose the display path | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides">
+<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: diagnose the display path | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides" design="v2">
   <article class="article-page">
     <p class="breadcrumbs"><a href="/guides">Guides</a> / USB-C dock only one monitor</p>
     <p class="page-kicker">Connectivity troubleshooting</p>
     <h1 class="page-title">USB-C dock only detecting one monitor: diagnose the display path.</h1>
     <p class="page-lead">One display working through a USB-C dock does not prove the dock is bad. The host's display limits, dock technology, cable, firmware, and display settings can all produce the same symptom. Diagnose those layers in order.</p>
     <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and its USB-C port capability. Read the host's documented external-display capability first. A second display may depend on MST, USB4/Thunderbolt display tunneling, or DisplayLink, depending on the host and dock. If the port qualifies, swap in the dock's supplied cable, install DisplayLink or vendor drivers, update the dock's firmware, and set the OS to extend rather than mirror.</p></div>
+    <figure class="sg-figure">
+      <div class="sg-figure-scroll" tabindex="0" role="region" aria-label="Display path diagram">
+        <svg viewBox="0 0 760 300" role="img" aria-labelledby="dock-path-title dock-path-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="dock-path-title">The display path from a laptop through a USB-C dock to two monitors</title>
+          <desc id="dock-path-desc">Four links in a chain. The laptop's USB-C port must carry video and enough display streams. The cable must be a full-featured USB-C, USB4, or Thunderbolt cable. The dock must use MST, Thunderbolt or USB4, or DisplayLink with its driver installed. The operating system must be set to extend displays. Any one weak link leaves you with one monitor.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3b3846"/></marker>
+          </defs>
+          <style>
+            .box{fill:#0e0a16;stroke:#3b3846;stroke-width:1.5}
+            .hot{fill:#0e0a16;stroke:#a3e635;stroke-width:2}
+            .t{fill:#f7f3fb;font:600 15px ui-sans-serif,system-ui,'Segoe UI',sans-serif}
+            .m{fill:#d9d1e0;font:13px ui-sans-serif,system-ui,'Segoe UI',sans-serif}
+            .k{fill:#c084fc;font:600 11px ui-monospace,Consolas,monospace;letter-spacing:.06em}
+            .ln{stroke:#3b3846;stroke-width:2;fill:none}
+          </style>
+          <rect class="hot" x="10" y="70" width="160" height="120" rx="6"/>
+          <text class="k" x="24" y="96">STEP 01–02</text>
+          <text class="t" x="24" y="120">Laptop port</text>
+          <text class="m" x="24" y="144">Carries video?</text>
+          <text class="m" x="24" y="164">How many streams?</text>
+          <line class="ln" x1="170" y1="130" x2="200" y2="130" marker-end="url(#arrow)"/>
+          <rect class="box" x="204" y="70" width="150" height="120" rx="6"/>
+          <text class="k" x="218" y="96">STEP 04</text>
+          <text class="t" x="218" y="120">Cable</text>
+          <text class="m" x="218" y="144">Full-featured,</text>
+          <text class="m" x="218" y="164">not charge-only</text>
+          <line class="ln" x1="354" y1="130" x2="384" y2="130" marker-end="url(#arrow)"/>
+          <rect class="box" x="388" y="70" width="170" height="120" rx="6"/>
+          <text class="k" x="402" y="96">STEP 03, 05</text>
+          <text class="t" x="402" y="120">Dock</text>
+          <text class="m" x="402" y="144">MST, Thunderbolt,</text>
+          <text class="m" x="402" y="164">or DisplayLink + driver</text>
+          <path class="ln" d="M558,110 C585,110 585,64 612,64" marker-end="url(#arrow)"/>
+          <path class="ln" d="M558,150 C585,150 585,196 612,196" marker-end="url(#arrow)"/>
+          <rect class="box" x="616" y="30" width="134" height="68" rx="6"/>
+          <text class="t" x="630" y="58">Monitor 1</text>
+          <text class="m" x="630" y="80">Usually works</text>
+          <rect class="box" x="616" y="162" width="134" height="68" rx="6"/>
+          <text class="t" x="630" y="190">Monitor 2</text>
+          <text class="m" x="630" y="212">Needs every link</text>
+          <text class="m" x="10" y="270">Step 06: the operating system must also be set to extend, not mirror.</text>
+          <text class="k" x="10" y="292">STACKGEIST ILLUSTRATION</text>
+        </svg>
+      </div>
+      <figcaption>A second monitor needs every link in the chain to support it. The laptop port (outlined in green) is the most common limit, so start there.</figcaption>
+    </figure>
     <div class="article-body">
       <section><p class="page-kicker">Step 01</p><h2>Confirm the host port carries video at all.</h2><p>USB-C is a connector shape. The port behind it may carry USB data only, USB data plus DisplayPort Alt Mode, USB4, or Thunderbolt 3 or 4. A data-only USB-C port cannot drive any external display through any dock, regardless of price. Find the laptop's official specification page and read the language for the specific port you are using.</p><ul class="article-list"><li>Record the exact laptop model and OS version.</li><li>Find the documented capability of the port you plug the dock into.</li><li>Reject the "one port must be the same as the other" assumption — many laptops label each USB-C port differently.</li></ul></section>
 

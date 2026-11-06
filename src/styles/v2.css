@@ -1,0 +1,116 @@
+/* StackGeist design v2 (pilot).
+   Opt-in per page via <ContentLayout design="v2">. Everything here is scoped to
+   body[data-design="v2"], so pages without it are unchanged.
+   Direction: dark technical publication with restrained terminal accents.
+   Sans-serif for reading, monospace for code and short labels only. */
+
+body[data-design="v2"] {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --read: #d9d1e0;
+}
+
+/* No scanlines over reading surfaces */
+body[data-design="v2"]::before { display: none; }
+
+/* Base reading type */
+body[data-design="v2"] .content-main { font-family: var(--font-sans); font-size: 1.0625rem; }
+body[data-design="v2"] .breadcrumbs { font-family: var(--font-mono); font-size: .8125rem; }
+body[data-design="v2"] .page-kicker { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+
+body[data-design="v2"] .page-title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4.2vw, 2.9rem);
+  font-weight: 750;
+  line-height: 1.12;
+  letter-spacing: -.025em;
+  max-width: 24ch;
+}
+body[data-design="v2"] .page-title::after { content: none; }
+body[data-design="v2"] .page-lead { max-width: 64ch; margin-top: 18px; color: var(--read); font-size: 1.1875rem; line-height: 1.6; }
+
+/* Quick answer box */
+body[data-design="v2"] .article-summary { max-width: 72ch; margin-top: 30px; padding: 22px 24px; border-color: rgba(163, 230, 53, .55); background: rgba(163, 230, 53, .05); }
+body[data-design="v2"] .article-summary::before { content: 'Quick answer'; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+body[data-design="v2"] .article-summary > strong { display: none; }
+body[data-design="v2"] .article-summary p { color: var(--text); font-size: 1.0625rem; line-height: 1.65; }
+
+/* Article body */
+body[data-design="v2"] .article-body { margin-top: 36px; }
+body[data-design="v2"] .article-body > section { padding: 40px 0; border-top: 1px solid var(--term-border); }
+body[data-design="v2"] .article-body h2 { max-width: 34ch; margin-bottom: 16px; font-family: var(--font-sans); font-size: clamp(1.45rem, 2.6vw, 1.85rem); font-weight: 700; line-height: 1.25; letter-spacing: -.015em; }
+body[data-design="v2"] .article-body > section > p:not(.page-kicker),
+body[data-design="v2"] .article-list li { max-width: 68ch; color: var(--read); font-size: 1.0625rem; line-height: 1.7; }
+body[data-design="v2"] .article-list li { padding: 4px 2px; }
+body[data-design="v2"] .article-body a:not(.card):not(.btn) { color: var(--phosphor); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* Cards */
+body[data-design="v2"] .article-cards { gap: 12px; border: 0; }
+body[data-design="v2"] .article-cards > div { padding: 18px 20px; border: 1px solid var(--term-border); border-radius: 6px; background: var(--surface); }
+body[data-design="v2"] .article-cards > div > strong { font-size: 1rem; color: var(--text); }
+body[data-design="v2"] .article-cards p { color: var(--read); font-size: .9688rem; line-height: 1.6; }
+
+/* Notes, code, byline */
+body[data-design="v2"] .note { max-width: 72ch; border-radius: 6px; font-size: .9688rem; line-height: 1.6; color: var(--read); }
+body[data-design="v2"] .note::before { font-family: var(--font-mono); font-size: .75rem; }
+body[data-design="v2"] :not(pre) > code { padding: 1px 6px; border: 1px solid var(--term-border); border-radius: 4px; background: var(--surface-2); font-family: var(--font-mono); font-size: .875em; }
+body[data-design="v2"] .content-main pre { border-radius: 6px; font-family: var(--font-mono); font-size: .875rem; }
+body[data-design="v2"] .editorial-byline { border-radius: 6px; font-family: var(--font-sans); font-size: .9375rem; }
+
+/* On this page (built from the h2s by the layout script) */
+body[data-design="v2"] .v2-toc { max-width: 72ch; margin: 22px 0 0; padding: 16px 20px; border: 1px solid var(--term-border); border-radius: 6px; background: var(--surface); }
+body[data-design="v2"] .v2-toc p { margin: 0 0 8px; color: var(--purple-light); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+body[data-design="v2"] .v2-toc ol { margin: 0; padding-left: 20px; color: var(--quiet); }
+body[data-design="v2"] .v2-toc li { padding: 3px 0; font-size: .9688rem; }
+body[data-design="v2"] .v2-toc a { color: var(--text); text-decoration: underline; text-decoration-color: var(--term-border-strong); text-underline-offset: 3px; }
+body[data-design="v2"] .v2-toc a:hover { color: var(--phosphor); }
+
+/* Figures */
+body[data-design="v2"] .sg-figure { margin: 24px 0 8px; padding: 18px; border: 1px solid var(--term-border); border-radius: 6px; background: var(--surface); }
+body[data-design="v2"] .sg-figure figcaption { margin-top: 12px; color: var(--quiet); font-size: .875rem; line-height: 1.5; }
+
+/* Product decision page: image beside the summary, quieter chrome */
+body[data-design="v2"] .product-detail { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); border-radius: 8px; overflow: hidden; }
+body[data-design="v2"] .product-detail::before { content: none; }
+body[data-design="v2"] .product-detail > * { grid-column: 1 / -1; }
+body[data-design="v2"] .product-detail > .product-photo { grid-column: 1; border-bottom: 0; border-right: 1px solid var(--term-border); display: flex; flex-direction: column; justify-content: center; }
+body[data-design="v2"] .product-detail > .product-photo img { height: clamp(220px, 26vw, 340px); padding: 18px; }
+body[data-design="v2"] .product-detail > .product-heading { grid-column: 2; align-self: center; padding: 28px; }
+body[data-design="v2"] .product-heading h2 { font-family: var(--font-sans); font-size: clamp(1.5rem, 2.6vw, 2rem); }
+body[data-design="v2"] .product-heading h2::before { content: none; }
+body[data-design="v2"] .product-heading > p { font-family: var(--font-mono); font-size: .8125rem; }
+body[data-design="v2"] .decision-grid strong,
+body[data-design="v2"] .skip-block strong { font-size: .8125rem; font-family: var(--font-mono); letter-spacing: .04em; text-transform: uppercase; }
+body[data-design="v2"] .decision-grid strong::before { content: none; }
+body[data-design="v2"] .skip-block strong::before { content: none; }
+body[data-design="v2"] .decision-grid p,
+body[data-design="v2"] .skip-block p { color: var(--read); font-size: 1rem; line-height: 1.65; }
+body[data-design="v2"] .retailer-actions span { font-size: .8125rem; }
+
+@media (max-width: 760px) {
+  body[data-design="v2"] .content-main { font-size: 1rem; }
+  body[data-design="v2"] .page-title { font-size: 1.85rem; }
+  body[data-design="v2"] .page-lead { font-size: 1.0625rem; }
+  body[data-design="v2"] .article-body > section > p:not(.page-kicker),
+  body[data-design="v2"] .article-list li,
+  body[data-design="v2"] .article-summary p { font-size: 1rem; }
+  body[data-design="v2"] .article-body > section { padding: 30px 0; }
+  body[data-design="v2"] .product-detail { grid-template-columns: 1fr; }
+  body[data-design="v2"] .product-detail > .product-photo,
+  body[data-design="v2"] .product-detail > .product-heading { grid-column: 1; border-right: 0; border-bottom: 1px solid var(--term-border); }
+  body[data-design="v2"] .product-detail > .product-photo img { height: 220px; }
+}
+
+/* Scrollable diagrams: readable text on phones, swipe sideways */
+body[data-design="v2"] .sg-figure-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+body[data-design="v2"] .sg-figure svg { display: block; width: 100%; min-width: 560px; height: auto; }
+
+/* Component styles are scoped with extra attribute selectors, so these overrides need !important. */
+body[data-design="v2"] .product-heading h2::before,
+body[data-design="v2"] .decision-grid strong::before,
+body[data-design="v2"] .skip-block strong::before,
+body[data-design="v2"] .product-detail::before { content: none !important; display: none !important; }
+body[data-design="v2"] .decision-grid p,
+body[data-design="v2"] .skip-block p { font-size: 1rem !important; line-height: 1.65 !important; color: var(--read) !important; }
+body[data-design="v2"] .product-heading h2 { font-family: var(--font-sans) !important; }
+body[data-design="v2"] .decision-grid strong,
+body[data-design="v2"] .skip-block strong { font-size: .8125rem !important; }
