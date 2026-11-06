@@ -114,3 +114,10 @@ body[data-design="v2"] .skip-block p { font-size: 1rem !important; line-height: 
 body[data-design="v2"] .product-heading h2 { font-family: var(--font-sans) !important; }
 body[data-design="v2"] .decision-grid strong,
 body[data-design="v2"] .skip-block strong { font-size: .8125rem !important; }
+
+/* Sections and cards on topic hub and related-link blocks */
+body[data-design="v2"] .content-section::before { content: none; display: none; }
+body[data-design="v2"] .content-main h2 { font-family: var(--font-sans); }
+body[data-design="v2"] .card h3 { font-family: var(--font-sans); font-size: 1.0625rem; letter-spacing: -.01em; }
+body[data-design="v2"] .card p { color: var(--read); font-size: .9688rem; line-height: 1.6; }
+body[data-design="v2"] .article-steps span { color: var(--read); font-size: .9688rem; }
