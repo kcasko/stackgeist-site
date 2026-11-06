@@ -1,79 +1,91 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import { SECTIONS, entry, entries } from '../../data/sections';
+import { INCOME_KITS, isKitIndexable } from '../../data/incomeKits';
 
+// Evidence labels follow each product page's own EvidencePanel status.
 const products = [
-  { href: '/gear/connectivity/caldigit-ts4/', img: '/gear/caldigit-ts4.jpg', alt: 'CalDigit TS4 Thunderbolt 4 dock', kicker: 'Thunderbolt dock', title: 'CalDigit TS4', desc: 'An 18-port Thunderbolt desk dock for hosts that can actually use its displays, bandwidth, and 98W charging.', tags: ['ASIN matched', 'Thunderbolt 4'], fix: { href: '/guides/usb-c-dock-only-one-monitor/', label: 'Dock only showing one monitor?' } },
-  { href: '/gear/connectivity/anker-553-usb-c-hub/', img: '/gear/anker-553-usb-c-hub.jpg', alt: 'Anker 553 eight-in-one USB-C hub', kicker: 'USB-C hub', title: 'Anker 553 8-in-1 USB-C hub', desc: 'Add HDMI, Ethernet, USB, and card readers to a compatible laptop. Host-port and operating-system limits matter.', tags: ['Source-checked', 'Dual HDMI'], fix: { href: '/guides/usb-c-hub-ethernet-works-hdmi-doesnt/', label: 'Hub HDMI not working?' } },
-  { href: '/gear/input/logitech-mx-master-3s/', img: '/gear/logitech-mx-master-3s.png', alt: 'Logitech MX Master 3S mouse', kicker: 'Mouse', title: 'Logitech MX Master 3S', desc: 'Workflow controls for right-handed desk work. Check hand fit, mass, receiver needs, and software policy.', tags: ['ASIN matched', 'Right-handed'], fix: { href: '/guides/mx-master-3s-scroll-wheel-not-working/', label: 'Scroll wheel not working?' } },
-  { href: '/gear/budget-tech/wd-elements-portable-external-hard-drive/', img: 'https://m.media-amazon.com/images/I/71LBKkZrvgL._AC_SL1500_.jpg', alt: 'WD Elements Portable external hard drive', kicker: 'Portable hard drive · owned', title: 'WD Elements Portable 5TB', desc: 'Bulk storage and backups where capacity matters more than speed, with the tradeoffs of a spinning drive.', tags: ['Owned', '5 TB'], fix: { href: '/guides/wd-elements-not-showing-up/', label: 'Not showing up?' } },
-  { href: '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/', img: '', alt: '', kicker: 'Headphones · owned and used', title: 'Sennheiser MOMENTUM 4 Wireless', desc: 'Codec support, adaptive ANC, multipoint behavior, and battery life, with reasons to skip it.', tags: ['Owned and used'], fix: { href: '/guides/sennheiser-momentum-4-wont-pair/', label: 'Won’t pair?' } },
+  { e: entry('/gear/budget-tech/wd-elements-portable-external-hard-drive/'), kind: 'Portable hard drive', evidence: 'Owned and used', note: 'Owned since January 2026.', fix: { href: '/guides/wd-elements-not-showing-up/', label: 'Not showing up?' } },
+  { e: entry('/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/'), kind: 'Wireless headphones', evidence: 'Owned and used', note: 'Codec support, adaptive noise cancelling, and fit notes.', fix: { href: '/guides/sennheiser-momentum-4-wont-pair/', label: 'Won’t pair?' } },
+  { e: entry('/gear/connectivity/caldigit-ts4/'), img: '/gear/caldigit-ts4.jpg', kind: 'Thunderbolt 4 dock', evidence: 'Researched', fix: { href: '/guides/usb-c-dock-only-one-monitor/', label: 'Dock only showing one monitor?' } },
+  { e: entry('/gear/connectivity/anker-553-usb-c-hub/'), img: '/gear/anker-553-usb-c-hub.jpg', kind: 'USB-C hub', evidence: 'Researched', fix: { href: '/guides/usb-c-hub-ethernet-works-hdmi-doesnt/', label: 'Hub HDMI not working?' } },
+  { e: entry('/gear/input/logitech-mx-master-3s/'), img: '/gear/logitech-mx-master-3s.png', kind: 'Mouse', evidence: 'Researched', fix: { href: '/guides/mx-master-3s-scroll-wheel-not-working/', label: 'Scroll wheel not working?' } },
 ];
-
-const guides = [
-  { href: '/guides/usb-c-dock-compatibility/', title: 'USB-C dock compatibility checklist', desc: 'Trace host capability, displays, charging, and bandwidth before counting ports.' },
-  { href: '/guides/usb-c-charger-charges-phone-not-laptop/', title: 'Charger works with a phone but not a laptop', desc: 'Check voltage, per-port wattage, and the cable before buying a charger.' },
-  { href: '/guides/how-to-tell-if-ssd-is-failing/', title: 'Is your SSD failing?', desc: 'Free health checks before you replace a drive.' },
-];
+const guides = entries(['/guides/usb-c-dock-compatibility/', '/guides/usb-c-cable-buying-guide/', '/guides/laptop-charger-wattage/', '/guides/how-to-tell-if-ssd-is-failing/']);
+const kits = INCOME_KITS.filter(isKitIndexable);
 ---
-<ContentLayout title="Tech gear decision pages: docks, hubs, and more | StackGeist" description="StackGeist gear decision pages for docks, hubs, and accessories tied to our fix guides, with source-checked specifications, fit checks, tradeoffs, and reasons to skip." active="gear">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Gear</p>
-  <p class="page-kicker">Gear decision pages</p>
-  <h1 class="page-title">Buy for the problem, not the category.</h1>
-  <p class="page-lead">Each product page names an exact model, who it fits, a reason to skip it, and what to check before buying. If something isn’t working, try the matching fix first.</p>
-  <img class="gear-hero" src="/illustrations/category-gear.svg" width="800" height="450" alt="Illustration of a USB-C dock with ports beside a pair of headphones" loading="eager" decoding="async" />
+<ContentLayout section="gear" title="Tech gear decision pages: docks, hubs, and more | StackGeist" description="StackGeist gear decision pages for docks, hubs, and accessories tied to our fix guides, with source-checked specifications, owned-and-used labels, and reasons to skip.">
+  <header class="gear-head">
+    <p class="head-tags"><span class="slab">Gear</span> <span class="kicker">Buy for the problem, not the category</span></p>
+    <h1 class="page-title">Hardware notes that say how we know.</h1>
+    <p class="page-lead">{SECTIONS.gear.blurb} “Owned and used” means Keith bought it and uses it. “Researched” means the page is built from manufacturer documentation. Neither one is a lab benchmark.</p>
+  </header>
 
-  <section class="content-section">
-    <p class="page-kicker">Reviewed products</p>
-    <h2 class="section-heading">Products tied to our most-used fixes.</h2>
-    <div class="gear-grid">
-      {products.map((p) => (
-        <article class="gear-card">
-          <a class="gear-thumb" href={p.href} tabindex="-1" aria-hidden="true">
-            {p.img ? (
-              <img src={p.img} alt="" loading="lazy" decoding="async" width="640" height="400" referrerpolicy="no-referrer" />
-            ) : (
-              <svg viewBox="0 0 120 80" role="presentation" xmlns="http://www.w3.org/2000/svg"><path d="M30 46 C30 22 90 22 90 46" fill="none" stroke="#3b3846" stroke-width="5" stroke-linecap="round"/><rect x="22" y="42" width="16" height="26" rx="7" fill="#a3e635"/><rect x="82" y="42" width="16" height="26" rx="7" fill="#a3e635"/></svg>
-            )}
-          </a>
-          <div class="gear-body">
-            <p class="page-kicker">{p.kicker}</p>
-            <h3><a href={p.href}>{p.title}</a></h3>
-            <p>{p.desc}</p>
-            <div class="card-meta">{p.tags.map((t, i) => <span class:list={['tag', { active: i === 0 }]}>{t}</span>)}</div>
-            <a class="gear-fix" href={p.fix.href}>{p.fix.label} Try the fix first →</a>
-          </div>
-        </article>
-      ))}
-    </div>
+  <section class="products" aria-label="Product pages">
+    {products.map((p) => (
+      <article class:list={['product', { owned: p.evidence.startsWith('Owned') }]}>
+        <a class="product-art" href={p.e.href} tabindex="-1" aria-hidden="true">
+          {p.img ? <img src={p.img} alt="" width="480" height="300" loading="lazy" decoding="async" /> : <span class="stamp">Owned<br />and used</span>}
+        </a>
+        <div class="product-body">
+          <p class="kicker">{p.kind}</p>
+          <h2><a href={p.e.href}>{p.e.title}</a></h2>
+          <p>{p.note ?? p.e.dek}</p>
+          <p class="product-foot"><span class:list={['evidence', { owned: p.evidence.startsWith('Owned') }]}>{p.evidence}</span> <a href={p.fix.href}>{p.fix.label} Try the fix first</a></p>
+        </div>
+      </article>
+    ))}
   </section>
 
-  <section class="content-section">
-    <p class="page-kicker">Before you buy</p>
-    <h2 class="section-heading">Guides that can save a bad purchase.</h2>
-    <div class="cards">
-      {guides.map((g) => <a class="card" href={g.href}><h3>{g.title}</h3><p>{g.desc}</p></a>)}
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="note">More product pages are added only after the exact model, its specifications, and its compatibility limits have been checked. Paid Amazon links are disclosed next to the retailer action and in the site footer. As an Amazon Associate I earn from qualifying purchases.</div>
-  </section>
-
-  <style>
-    .gear-hero { display:block; width:100%; max-width:720px; height:auto; margin-top:24px; border:1px solid var(--term-border); border-radius:8px; }
-    .gear-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-    .gear-card { display:grid; grid-template-rows:auto 1fr; border:1px solid var(--term-border); border-radius:8px; overflow:hidden; background:var(--surface); }
-    .gear-thumb { display:grid; place-items:center; height:200px; padding:16px; background:#fff; }
-    .gear-thumb:has(svg) { background:var(--term-bg); }
-    .gear-thumb img { width:100%; height:100%; object-fit:contain; }
-    .gear-thumb svg { width:120px; height:80px; }
-    .gear-body { display:flex; flex-direction:column; gap:8px; padding:20px 22px 22px; }
-    .gear-body .page-kicker { margin:0; }
-    .gear-body h3 { margin:0; font-size:1.2rem; }
-    .gear-body h3 a { color:var(--text); }
-    .gear-body h3 a:hover { color:var(--phosphor); }
-    .gear-body > p:not(.page-kicker) { margin:0; color:var(--read, var(--muted)); font-size:.9688rem; line-height:1.6; }
-    .gear-fix { margin-top:auto; padding-top:10px; color:var(--phosphor); font-size:.9375rem; text-decoration:underline; text-underline-offset:3px; }
-    @media(max-width:760px){ .gear-grid { grid-template-columns:1fr; } .gear-thumb { height:180px; } }
-  </style>
+  <div class="gear-lower">
+    <section aria-labelledby="before-title">
+      <h2 id="before-title" class="block-label">Before you buy</h2>
+      <ul class="plain-list">{guides.map((e) => <li><a href={e.href}>{e.title}</a><p>{e.dek}</p></li>)}</ul>
+    </section>
+    <section aria-labelledby="kits-title">
+      <h2 id="kits-title" class="block-label">Buying lists</h2>
+      <p class="kits-note">Buying orders for one goal each. Many use retailer search links whose results have not been individually checked; each list says which. <a href="/kits/">All buying lists</a></p>
+      <ul class="kit-list">{kits.map((k) => <li><a href={`/kits/${k.slug}/`}>{k.title}</a></li>)}</ul>
+    </section>
+  </div>
 </ContentLayout>
+
+<style>
+.head-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 var(--space-3); }
+.head-tags .kicker { margin: 0; }
+.products { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-7); }
+.product { grid-column: span 2; display: grid; grid-template-rows: auto 1fr; border: 2px solid var(--ink); background: var(--surface); }
+.product.owned { grid-column: span 3; box-shadow: 6px 6px 0 var(--geist); }
+.product-art { display: grid; place-items: center; height: 200px; padding: var(--space-4); background: #fff; border-bottom: 2px solid var(--ink); }
+.product-art:hover { background: #fff; }
+.product-art img { width: 100%; height: 100%; object-fit: contain; }
+.product.owned .product-art { background: var(--geist); }
+.stamp { display: inline-block; padding: 10px 16px; border: 4px solid #121212; color: #121212; font: 900 2rem/.95 var(--font-sans); font-stretch: var(--condensed); text-align: center; text-transform: uppercase; transform: rotate(-4deg); }
+.product-body { display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); }
+.product-body .kicker { margin: 0; }
+.product-body h2 { margin: 0; font: 850 1.45rem/1.05 var(--font-sans); font-stretch: 82%; }
+.product-body h2 a { text-decoration: none; }
+.product-body h2 a:hover { text-decoration: underline; }
+.product-body > p { margin: 0; color: var(--ink-2); font-size: .95rem; line-height: 1.45; }
+.product-body .product-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: auto; padding-top: var(--space-2); font-size: .9rem; }
+.evidence { display: inline-block; padding: 2px 7px; border: 1.5px solid var(--ink-3); color: var(--ink-2); font: 750 .7rem/1.3 var(--font-sans); font-stretch: var(--expanded); text-transform: uppercase; }
+.evidence.owned { border-color: var(--ink); background: var(--geist); color: #121212; }
+.gear-lower { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); margin-top: var(--space-8); }
+.gear-lower section { border-top: 8px solid var(--dept); padding-top: var(--space-3); }
+.block-label { margin: 0 0 var(--space-3); font: 900 1.4rem/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
+.plain-list, .kit-list { margin: 0; padding: 0; list-style: none; }
+.plain-list li { padding: var(--space-3) 0; border-top: 1px solid var(--rule); }
+.plain-list a { font: 800 1.1rem/1.2 var(--font-sans); font-stretch: 88%; }
+.plain-list p { margin: 4px 0 0; color: var(--ink-2); font-size: .94rem; }
+.kits-note { margin: 0 0 var(--space-3); color: var(--ink-2); font-size: .94rem; }
+.kit-list { columns: 2 200px; column-gap: var(--space-5); }
+.kit-list li { break-inside: avoid; padding: 6px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
+@media (max-width: 1060px) {
+  .products { grid-template-columns: 1fr 1fr; }
+  .product, .product.owned { grid-column: span 1; }
+}
+@media (max-width: 700px) {
+  .products, .gear-lower { grid-template-columns: 1fr; }
+  .product-art { height: 160px; }
+}
+</style>

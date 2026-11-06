@@ -2,7 +2,7 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", description: "This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs.", url: 'https://stackgeist.dev/gear/budget-tech/80w-digital-soldering-iron-kit', image: 'https://m.media-amazon.com/images/I/71V4Ld8XzCL._AC_SL1500_.jpg' })];
+const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", description: "This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs.", url: 'https://stackgeist.dev/gear/budget-tech/80w-digital-soldering-iron-kit', })];
 ---
 <ContentLayout structuredData={__sd} title="80W Digital Soldering Iron Kit | StackGeist" description="This isn’t something everyone needs, but it’s cheap enough to be worth having if you do basic electronic repairs." active="gear" noindex>
   <ProductDetailSimple
@@ -10,10 +10,6 @@ const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", descriptio
     heading="80W Digital Soldering Iron Kit"
     intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
     productName="80W Digital Soldering Iron Kit"
-    imageUrl="https://m.media-amazon.com/images/I/71V4Ld8XzCL._AC_SL1500_.jpg"
-    imageAlt="80W Digital Soldering Iron Kit"
-    imageSourceLabel="Amazon"
-    imageSourceUrl="https://www.amazon.com/dp/B08R3515SF?tag=deskrespawn-20"
     productMeta="Amazon ASIN B08R3515SF"
     tags={['Budget tech','Everyday essentials']}
     why="Technical fit has not yet been source-checked for this exact product."
@@ -21,6 +17,13 @@ const __sd = [productSchema({ name: "80W Digital Soldering Iron Kit", descriptio
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
     facts="Sourced from taurustech.me/affiliate. See the retailer page for the current spec sheet."
     skip="Skip this page as a buying recommendation until the current manufacturer specification and compatibility requirements are checked."
+    imageUrl="/gear/commons/soldering-iron.webp"
+    imageAlt="A soldering iron resting in its holder with a cleaning sponge"
+    imageExample="Example of a soldering iron in its stand."
+    imageCredit="Bgrimer"
+    imageSourceUrl="https://commons.wikimedia.org/wiki/File:Soldering_iron_in_holder.jpg"
+    imageLicense="CC BY-SA 3.0"
+    imageLicenseUrl="https://creativecommons.org/licenses/by-sa/3.0"
     amazonUrl="https://www.amazon.com/dp/B08R3515SF?tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""

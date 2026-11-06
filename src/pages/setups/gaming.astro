@@ -6,7 +6,7 @@ import { SETUP_LIST } from '../../data/gamingSetupOptions';
 const gamingSetups = SETUP_LIST.filter((s) => s.family === 'gaming');
 ---
 <ContentLayout title="Gaming setups | StackGeist" description="Gaming and mixed-use desk setups built around real space, budget, and clutter constraints." active="setups">
-  <p class="breadcrumbs"><a href="/setups">Setups</a> / Gaming</p>
+  <p class="breadcrumbs"><a href="/setups/">Setups</a> / Gaming</p>
   <p class="page-kicker">Gaming setups</p>
   <h1 class="page-title">Gaming setups that still work as actual desks.</h1>
   <p class="page-lead">Start with the room, desk space, and gear you already have. Then add only what improves the setup.</p>
@@ -82,15 +82,15 @@ const gamingSetups = SETUP_LIST.filter((s) => s.family === 'gaming');
 </ContentLayout>
 
 <style>
-  .matrix-lede { margin: 0 0 18px; max-width: 76ch; color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+  .matrix-lede { margin: 0 0 18px; max-width: 76ch; color: var(--muted); font-size:.94rem; line-height: 1.65; }
   .matrix-wrap { overflow-x: auto; border: 1px solid var(--term-border); background: var(--term-bg); }
-  .matrix { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12.5px; }
+  .matrix { width: 100%; border-collapse: collapse; font-family:var(--font-sans); font-size:.88rem; }
   .matrix th, .matrix td { padding: 12px 14px; border: 1px solid var(--term-border); vertical-align: top; text-align: left; }
-  .matrix thead th { background: rgba(163,230,53,.04); color: var(--phosphor); font-size: 10.5px; letter-spacing: .04em; text-transform: lowercase; }
-  .matrix thead th a { color: var(--phosphor); text-decoration: underline dotted; text-underline-offset: 3px; }
+  .matrix thead th { font-size:.8rem; letter-spacing: .04em; text-transform:none; }
+  .matrix thead th a { color: inherit !important; text-decoration-color: var(--geist); text-underline-offset: 3px; }
   .matrix tbody th { color: var(--purple-light); font-weight: 600; }
   .matrix .matrix-link { color: var(--text); text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--term-border-strong); }
   .matrix .matrix-link:hover { color: var(--phosphor); text-decoration-color: var(--phosphor); }
   .matrix .empty { color: var(--quiet); }
-  .matrix-foot { margin: 12px 0 0; color: var(--quiet); font-size: 11px; }
+  .matrix-foot { margin: 12px 0 0; color: var(--quiet); font-size:.8rem; }
 </style>

@@ -32,12 +32,20 @@ const __sd = [
   })
 ];
 ---
-<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: diagnose the display path | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides" design="v2">
+<ContentLayout structuredData={__sd} title="USB-C dock only detecting one monitor: diagnose the display path | StackGeist" description="A single working monitor usually narrows the problem to host display limits, dock technology, cabling, firmware, or display configuration. Diagnose those before replacing the dock." active="guides" feature railLinks={[{ href: '/gear/connectivity/caldigit-ts4/', title: 'CalDigit TS4', note: 'Thunderbolt 4 dock · researched' }, { href: '/gear/connectivity/anker-553-usb-c-hub/', title: 'Anker 553 USB-C hub', note: 'Single-display hub · researched' }]}>
   <article class="article-page">
-    <p class="breadcrumbs"><a href="/guides">Guides</a> / USB-C dock only one monitor</p>
-    <p class="page-kicker">Connectivity troubleshooting</p>
+    <p class="breadcrumbs"><a href="/guides/">Fixes</a> / <a href="/guides/usb-c-charging-display-problems/">USB-C, docks, and displays</a></p>
+    <p class="article-tags"><a class="slab" href="/guides/">Fixes</a> <span class="kicker">USB-C, docks, and displays</span></p>
     <h1 class="page-title">USB-C dock only detecting one monitor: diagnose the display path.</h1>
     <p class="page-lead">One display working through a USB-C dock does not prove the dock is bad. The host's display limits, dock technology, cable, firmware, and display settings can all produce the same symptom. Diagnose those layers in order.</p>
+    <p class="article-meta">By <a href="/about/">Keith Casko</a> · Updated <time datetime="2026-10-01">October 1, 2026</time> · <b>6 steps</b> · Based on manufacturer documentation, not a bench test</p>
+    <figure class="photo article-hero">
+      <picture>
+        <source media="(max-width: 700px)" srcset="/images/generated/usb-c-dock-desk-640.webp" />
+        <img src="/images/generated/usb-c-dock-desk.webp" width="964" height="643" alt="A laptop on a wooden desk connected to a USB-C dock with HDMI, USB-A, and Ethernet ports" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+      <figcaption>Illustrative scene. It is not the hardware the steps below were checked against.<span class="credit">Generated image</span></figcaption>
+    </figure>
     <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and its USB-C port capability. Read the host's documented external-display capability first. A second display may depend on MST, USB4/Thunderbolt display tunneling, or DisplayLink, depending on the host and dock. If the port qualifies, swap in the dock's supplied cable, install DisplayLink or vendor drivers, update the dock's firmware, and set the OS to extend rather than mirror.</p></div>
     <figure class="sg-figure">
       <div class="sg-figure-scroll" tabindex="0" role="region" aria-label="Display path diagram">
@@ -84,7 +92,7 @@ const __sd = [
           <text class="k" x="10" y="292">STACKGEIST ILLUSTRATION</text>
         </svg>
       </div>
-      <figcaption>A second monitor needs every link in the chain to support it. The laptop port (outlined in green) is the most common limit, so start there.</figcaption>
+      <figcaption>A second monitor needs every link in the chain to support it. The laptop port (highlighted) is the most common limit, so start there.</figcaption>
     </figure>
     <div class="article-body">
       <section><p class="page-kicker">Step 01</p><h2>Confirm the host port carries video at all.</h2><p>USB-C is a connector shape. The port behind it may carry USB data only, USB data plus DisplayPort Alt Mode, USB4, or Thunderbolt 3 or 4. A data-only USB-C port cannot drive any external display through any dock, regardless of price. Find the laptop's official specification page and read the language for the specific port you are using.</p><ul class="article-list"><li>Record the exact laptop model and OS version.</li><li>Find the documented capability of the port you plug the dock into.</li><li>Reject the "one port must be the same as the other" assumption — many laptops label each USB-C port differently.</li></ul></section>

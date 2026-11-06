@@ -7,8 +7,8 @@ const { src, alt } = Astro.props;
   <figcaption>Illustration only. Product placement in real setups depends on your room, desk, and gear.</figcaption>
 </figure>
 <style>
-  .setup-hero{margin:24px 0 0;padding:0;border:1px solid var(--term-border);background:#050508}
+  .setup-hero{margin:24px 0 0;padding:0;border:2px solid var(--ink);background:var(--surface)}
   .setup-hero img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
-  .setup-hero figcaption{padding:9px 14px;border-top:1px dashed var(--term-border);color:var(--quiet);font-size:10.5px}
-  .setup-hero figcaption::before{content:'// ';color:var(--phosphor)}
+  .setup-hero figcaption{margin:0;padding:9px 14px;border-top:1px solid var(--rule);color:var(--ink-3);font-size:.86rem}
+  .setup-hero figcaption::before{content:none;color:var(--phosphor)}
 </style>

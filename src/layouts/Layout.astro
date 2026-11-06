@@ -1,14 +1,38 @@
 ﻿---
-import '../styles/global.css';
-import '../styles/v2.css';
+// The one page shell: head, masthead, main, footer. ContentLayout builds on it.
+import '@fontsource-variable/archivo/wdth.css';
+import '../styles/site.css';
 import SeoHead from '../components/SeoHead.astro';
+import Header from '../components/Header.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PinterestConsent from '../components/PinterestConsent.astro';
-interface Props { title?: string; description?: string; }
+import type { Section } from '../data/catalog';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  section?: Section;
+  active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs' | Section;
+  mainClass?: string;
+  type?: 'website' | 'article';
+  /** Editorial format from the catalog; drives format-specific labels in CSS. */
+  pageType?: string;
+}
 const {
-  title = 'StackGeist: tech fixes, IT home labs, and certification guides',
-  description = 'Step-by-step troubleshooting for USB-C, storage, charging, and Wi-Fi problems, plus documented IT home labs and certification guides.',
+  title = 'StackGeist: computer fixes, home labs, and IT study notes',
+  description = 'Step-by-step fixes for Windows, storage, USB-C, and network problems, documented IT home labs, WGU and certification study notes, and practical hardware advice.',
+  noindex = false,
+  structuredData,
+  section,
+  active,
+  mainClass,
+  type = 'website',
+  pageType,
 } = Astro.props;
+const legacy: Record<string, Section> = { guides: 'fixes', certs: 'learning', kits: 'gear', setups: 'gear', labs: 'labs', gear: 'gear' };
+const dept: Section | undefined = section ?? (active ? (legacy[active] ?? (active as Section)) : undefined);
 ---
 <!doctype html>
 <html lang="en">
@@ -17,17 +41,16 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <SeoHead title={title} description={description} />
+    <SeoHead title={title} description={description} noindex={noindex} extraStructuredData={structuredData} type={type} />
   </head>
-  <body data-design="v2">
+  <body data-section={dept} data-type={pageType}>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <slot />
-    <div class="site-shell home-shared-footer"><div class="footer-pad"><SiteFooter /></div></div>
+    <div class="site-shell">
+      <Header active={dept} />
+      <main id="main-content" class={mainClass} tabindex="-1"><slot /></main>
+      <SiteFooter />
+    </div>
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
   </body>
 </html>
-<style is:global>
-  body > .site-shell:first-of-type main > footer.site-footer:not([data-shared-footer]) { display:none; }
-  .home-shared-footer .footer-pad { padding:0 var(--page-pad); }
-</style>

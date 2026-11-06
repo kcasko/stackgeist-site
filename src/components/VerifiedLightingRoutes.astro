@@ -47,16 +47,16 @@ const {
 </section>
 
 <style>
-  .verified-routes { margin-top: 28px; padding: 26px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+  .verified-routes { margin-top: 28px; padding: 26px; border: 1px solid var(--border); border-radius:0; background: var(--surface); }
   .verified-routes h2 { margin: 0; max-width: 760px; font-size: clamp(24px,3vw,30px); line-height: 1.15; letter-spacing: -.03em; }
   .routes-intro { margin: 12px 0 0; max-width: 760px; color: var(--muted); font-size: 14px; line-height: 1.65; }
   .route-list { margin-top: 24px; border-top: 1px solid var(--border); }  .route-row { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 28px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--border); }
-  .route-label { color: var(--purple-light); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .route-label { color: var(--purple-light); font-size:.8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   .route-row h3 { margin: 6px 0 8px; font-size: 20px; letter-spacing: -.025em; }
-  .route-row p { margin: 0; max-width: 650px; color: var(--muted); font-size: 13px; line-height: 1.55; }
-  .route-row small { display: block; margin-top: 8px; color: var(--quiet); font-size: 11px; line-height: 1.5; }
+  .route-row p { margin: 0; max-width: 650px; color: var(--muted); font-size:.94rem; line-height: 1.55; }
+  .route-row small { display: block; margin-top: 8px; color: var(--quiet); font-size:.8rem; line-height: 1.5; }
   .route-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
-  .route-disclosure { margin: 14px 0 0; color: var(--quiet); font-size: 10px; line-height: 1.55; }
+  .route-disclosure { margin: 14px 0 0; color: var(--quiet); font-size:.8rem; line-height: 1.55; }
   @media(max-width:760px){
     .verified-routes { padding: 18px; }
     .route-row { grid-template-columns: 1fr; gap: 16px; }
@@ -66,7 +66,7 @@ const {
 </style>
 <style>
   .verified-routes { padding:0; border-color:var(--term-border); border-radius:0; background:var(--term-bg); }
-  .verified-routes::before { content:'$ lighting --routes --researched'; display:block; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:11px; }
+  .verified-routes::before { content:none; display:block; padding:9px 13px; border-bottom:1px dashed var(--term-border); color:var(--phosphor); font-size:.8rem; }
   .verified-routes > .page-kicker,.verified-routes > h2,.routes-intro { margin-left:24px; margin-right:24px; }
   .verified-routes > .page-kicker { margin-top:22px; }
   .route-list { border-color:var(--term-border); }

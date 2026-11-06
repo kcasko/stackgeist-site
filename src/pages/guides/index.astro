@@ -1,143 +1,116 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import FixFlow from '../../components/illustrations/FixFlow.astro';
+import { CATALOG } from '../../data/catalog';
+import { SECTIONS, TOPIC_LABEL, entries, formatDate } from '../../data/sections';
 
-const topFixes = [
-  { slug: 'sennheiser-momentum-4-wont-pair', title: 'Sennheiser Momentum 4 not pairing', desc: 'Correct pairing slide, multipoint limits, and a clean reset sequence.' },
-  { slug: 'usb-c-dock-only-one-monitor', title: 'USB-C dock only detecting one monitor', desc: 'Start here when one external display works and the second does not.' },
-  { slug: 'microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader, Disk Management, write protection, and failure checks.' },
-  { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Find USB PD and shared-port wattage limits.' },
-];
-
-const groupArt: Record<string, string> = { 'usb-c-displays': 'usb-c-displays', 'charging-power': 'charging', 'storage-boot': 'storage', 'wireless-peripherals': 'wireless', 'home-office-hardware': 'home-office' };
-const fixArt: Record<string, string> = { 'sennheiser-momentum-4-wont-pair': 'wireless', 'usb-c-dock-only-one-monitor': 'usb-c-displays', 'microsd-card-not-detected': 'storage', 'gan-charger-not-charging-laptop-full-speed': 'charging' };
-
-const groups = [
-  {
-    id: 'usb-c-displays',
-    title: 'USB-C, docks, and displays',
-    hub: 'usb-c-charging-display-problems',
-    guides: [
-      { slug: 'usb-c-dock-only-one-monitor', title: 'USB-C dock only detecting one monitor', desc: 'Host port limits, MST vs DisplayLink vs Thunderbolt, and cables.' },
-      { slug: 'usb-c-dock-second-monitor-stops-working', title: 'USB-C dock fails with a second monitor', desc: 'Use a one-monitor baseline to find stream, bandwidth, or host limits.' },
-      { slug: 'portable-usb-c-monitor-no-signal', title: 'Portable USB-C monitor showing no signal', desc: 'DisplayPort Alt Mode, cables, and hub passthrough checks.' },
-      { slug: 'usb-c-hub-ethernet-works-hdmi-doesnt', title: 'USB-C hub Ethernet works but HDMI does not', desc: 'USB data can work while the display path fails.' },
-      { slug: 'how-to-tell-if-usb-c-port-supports-video', title: 'Does this USB-C port support video?', desc: 'Confirm it from the exact host spec instead of the connector shape.' },
-      { slug: 'usb-c-dock-compatibility', title: 'USB-C dock compatibility checklist', desc: 'Trace host capability, displays, charging, and bandwidth before buying.' },
-      { slug: 'usb-c-cable-buying-guide', title: 'USB-C cable buying guide', desc: 'What wattage and USB or Thunderbolt labels actually mean.' },
-    ],
-  },
-  {
-    id: 'charging-power',
-    title: 'Charging and power',
-    hub: 'desk-power-safety-problems',
-    guides: [
-      { slug: 'usb-c-cable-charging-slow', title: 'USB-C cable charging slow', desc: 'Separate cable rating, charger output, and device limits.' },
-      { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Power negotiation and multi-port wattage sharing.' },
-      { slug: 'usb-c-charger-charges-phone-not-laptop', title: 'USB-C charger charges phone but not laptop', desc: 'Missing 20V output, per-port wattage, and cable rating.' },
-      { slug: 'laptop-not-charging-through-usb-c-dock', title: 'Laptop not charging through a USB-C dock', desc: 'Host charging wattage, brand limits, and firmware.' },
-      { slug: 'laptop-says-slow-charger-with-100w-usb-c-charger', title: '100W USB-C charger but Windows says slow charger', desc: 'Per-port output, cable rating, port choice, and dock losses.' },
-      { slug: 'laptop-charger-wattage', title: 'How many watts does my laptop charger need?', desc: 'Match rated input and plan headroom for docks.' },
-      { slug: 'surge-protector-clicking', title: 'Surge protector clicking', desc: 'When to keep using it and when to replace it.' },
-      { slug: 'extension-cord-getting-hot', title: 'Extension cord getting hot', desc: 'When to stop using it, and how to find the cause.' },
-      { slug: 'extension-cord-safety-guide', title: 'Extension cord safety', desc: 'Desk load, amp rating, gauge, and where surge protectors fit.' },
-    ],
-  },
-  {
-    id: 'storage-boot',
-    title: 'Storage, recovery, and backup',
-    hub: 'storage-raspberry-pi-boot-fixes',
-    guides: [
-      { slug: 'microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader swap, drive letters, read-only state, and end-of-life signs.' },
-      { slug: 'external-drive-shows-in-disk-management-not-file-explorer', title: 'Drive in Disk Management but not File Explorer', desc: 'Safe checks before you initialize or format anything.' },
-      { slug: 'wd-elements-not-showing-up', title: 'WD Elements not showing up', desc: 'Cable, power, Disk Management, and drive health triage.' },
-      { slug: 'external-ssd-not-showing-up-windows-11', title: 'External SSD not showing up in Windows 11', desc: 'New drives, missing letters, Mac formats, and data cables.' },
-      { slug: 'external-drive-wrong-partition-size', title: 'Drive shows the wrong size', desc: 'A partition bigger than the disk, or capacity that looks wrong.' },
-      { slug: 'external-drive-says-you-need-to-format-it', title: 'Drive says “You need to format the disk”', desc: 'Save your files before you click Format.' },
-      { slug: 'recover-deleted-photos-from-sd-card', title: 'Recover deleted photos from an SD card', desc: 'Free and paid recovery tools, step by step.' },
-      { slug: 'how-to-tell-if-ssd-is-failing', title: 'How to tell if your SSD is failing', desc: 'Symptoms and free health checks in Windows.' },
-      { slug: 'back-up-windows-pc-before-replacing-drive', title: 'Back up before replacing a drive', desc: 'BitLocker key, files, settings, and cloning.' },
-      { slug: 'raspberry-pi-5-wont-boot', title: 'Raspberry Pi 5 won’t boot', desc: 'Power, boot media, LED patterns, and HDMI checks.' },
-    ],
-  },
-  {
-    id: 'wireless-peripherals',
-    title: 'Bluetooth, Wi-Fi, and peripherals',
-    hub: 'wireless-bluetooth-smart-home-fixes',
-    guides: [
-      { slug: 'sennheiser-momentum-4-wont-pair', title: 'Sennheiser Momentum 4 not pairing', desc: 'Pairing slide, multipoint limits, and reset sequence.' },
-      { slug: 'keychron-v6-max-bluetooth-not-connecting', title: 'Keychron V6 Max Bluetooth not connecting', desc: 'Mode switch, profile keys, pairing, and reset.' },
-      { slug: 'wifi-keeps-disconnecting-router-or-pc', title: 'Wi-Fi keeps disconnecting: router or PC?', desc: 'Two tests to find the cause, then the right fixes.' },
-      { slug: 'alfa-ac1900-slow-speed-fix', title: 'ALFA AC1900 slow speed fix', desc: 'Driver, USB port, band selection, and antenna checks.' },
-      { slug: 'mx-master-3s-scroll-wheel-not-working', title: 'MX Master 3S scroll wheel not working', desc: 'SmartShift, firmware, debris, and hardware triage.' },
-      { slug: 'logitech-brio-not-detected-windows-11', title: 'Logitech Brio not detected on Windows 11', desc: 'Camera privacy, USB port, driver, and cable checks.' },
-      { slug: 'govee-strip-lights-not-connecting-wifi', title: 'Govee lights not connecting to Wi-Fi', desc: '2.4 GHz, permissions, mesh steering, and pairing fixes.' },
-    ],
-  },
-  {
-    id: 'home-office-hardware',
-    title: 'Home office hardware',
-    hub: 'home-office-peripheral-fixes',
-    guides: [
-      { slug: 'monitor-arm-sagging-fix', title: 'Monitor arm sagging', desc: 'Capacity, tension, VESA, and clamp checks.' },
-      { slug: 'benq-screenbar-flickering', title: 'BenQ ScreenBar flickering', desc: 'Model and power checks before you replace it.' },
-      { slug: 'office-chair-gas-cylinder-replacement', title: 'Office chair sinking', desc: 'Gas cylinder or control mechanism?' },
-      { slug: 'cable-management', title: 'Cable management', desc: 'Route power and data so cables stop causing faults.' },
-    ],
-  },
-];
-
+const start = entries([
+  '/guides/usb-c-dock-only-one-monitor/',
+  '/guides/external-drive-shows-in-disk-management-not-file-explorer/',
+  '/guides/gan-charger-not-charging-laptop-full-speed/',
+  '/guides/sennheiser-momentum-4-wont-pair/',
+]);
+const topics = Object.entries(TOPIC_LABEL).map(([topic, label]) => ({
+  topic,
+  label,
+  hub: CATALOG.find((e) => e.type === 'topic' && e.topic === topic),
+  fixes: CATALOG.filter((e) => e.section === 'fixes' && e.type === 'troubleshooting' && e.topic === topic),
+}));
+const total = topics.reduce((n, t) => n + t.fixes.length, 0);
+const buying = CATALOG.filter((e) => e.type === 'buying-guide');
 ---
-<ContentLayout title="PC, USB-C, and storage troubleshooting guides | StackGeist" description="Step-by-step fixes for USB-C docks and displays, charging, storage, Raspberry Pi boot problems, Bluetooth, and peripherals, tied to manufacturer sources." active="guides">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Fixes</p>
-  <p class="page-kicker">Fixes</p>
-  <h1 class="page-title">Find the fix before you replace the hardware.</h1>
-  <p class="page-lead">Pick the problem closest to yours. Each guide starts with a short answer, then works through the checks in order.</p>
-  <FixFlow />
+<ContentLayout section="fixes" title="PC, USB-C, and storage troubleshooting guides | StackGeist" description="Step-by-step fixes for USB-C docks and displays, charging, storage, Raspberry Pi boot problems, Bluetooth, and peripherals, tied to manufacturer sources.">
+  <header class="front-head">
+    <p><span class="slab">Fixes</span> <span class="kicker">{total} troubleshooting guides</span></p>
+    <h1 class="page-title">Find the fix before you replace the hardware.</h1>
+    <p class="page-lead">{SECTIONS.fixes.blurb} Pick the problem closest to yours: each guide opens with a short answer, then works through the checks in order.</p>
+  </header>
 
-  <nav class="fix-jump" aria-label="Jump to a problem area">
-    {groups.map((group) => <a href={`#${group.id}`}>{group.title}</a>)}
+  <nav class="topic-jump" aria-label="Jump to a problem area">
+    {topics.map((t) => <a href={`#${t.topic}`}><span>{t.label}</span><b>{t.fixes.length}</b></a>)}
   </nav>
 
-  <section class="content-section">
-    <p class="page-kicker">Start here</p>
-    <h2>Common fixes</h2>
-    <div class="cards">
-      {topFixes.map((guide) => (
-        <a class="card card-thumb" href={`/guides/${guide.slug}/`}><img src={`/illustrations/topic-${fixArt[guide.slug] ?? 'storage'}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" /><h3>{guide.title}</h3><p>{guide.desc}</p></a>
+  <section class="start" aria-labelledby="start-title">
+    <h2 id="start-title" class="block-label">Start here</h2>
+    <ol>
+      {start.map((e, i) => (
+        <li>
+          <span class="num" aria-hidden="true">{i + 1}</span>
+          <div><span class="kicker">{TOPIC_LABEL[e.topic]}</span><a href={e.href}>{e.title}</a><p>{e.dek}</p></div>
+        </li>
       ))}
-    </div>
+    </ol>
   </section>
 
-  {groups.map((group) => (
-    <section class="content-section" id={group.id}>
-      <div class="group-head"><img src={`/illustrations/topic-${groupArt[group.id]}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" /><h2>{group.title}</h2></div>
-      {group.hub && <p><a href={`/guides/${group.hub}/`}>Not sure which one? Start with the overview →</a></p>}
-      <div class="cards">
-        {group.guides.map((guide) => (
-          <a class="card" href={`/guides/${guide.slug}/`}><h3>{guide.title}</h3><p>{guide.desc}</p></a>
+  <FixFlow />
+
+  {topics.map((t) => (
+    <section class="topic-block" id={t.topic} aria-labelledby={`${t.topic}-title`}>
+      <header>
+        <h2 id={`${t.topic}-title`}>{t.label}</h2>
+        {t.hub && <a class="hub-link" href={t.hub.href}>Not sure which? Start with the overview</a>}
+      </header>
+      <ul class="fix-rows">
+        {t.fixes.map((e) => (
+          <li>
+            <a href={e.href}>{e.title}</a>
+            <p>{e.dek}</p>
+            {e.updated && <time datetime={e.updated}>{formatDate(e.updated)}</time>}
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   ))}
 
-  <section class="content-section">
-    <p class="page-kicker">Building skills too?</p>
-    <div class="cards">
-      <a class="card" href="/labs/"><h3>IT home labs</h3><p>Practice support and systems work on documented labs.</p></a>
-      <a class="card" href="/certs/"><h3>IT certifications</h3><p>Compare A+, Network+, Security+, and AWS Cloud Practitioner.</p></a>
-    </div>
+  <section class="also" aria-labelledby="also-title">
+    <h2 id="also-title" class="block-label">Buying after all?</h2>
+    <p>When the diagnosis says the hardware really is the limit, these check compatibility before you spend: {buying.map((e, i) => <>{i > 0 && ' · '}<a href={e.href}>{e.title}</a></>)}. Product notes are in <a href="/gear/">Gear</a>.</p>
   </section>
-
-
-  <style>
-    .group-head { display:grid; grid-template-columns:160px 1fr; gap:20px; align-items:center; margin-bottom:12px; }
-    .group-head img { width:160px; height:auto; border:1px solid var(--term-border); border-radius:6px; }
-    .group-head h2 { margin:0; }
-    .card-thumb img { display:block; width:100%; height:180px; object-fit:contain; background:#0e0a16; margin-bottom:14px; border:1px solid var(--term-border); border-radius:6px; }
-    @media(max-width:560px){ .group-head { grid-template-columns:96px 1fr; gap:14px; } .group-head img { width:96px; } }
-    .fix-jump { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
-    .fix-jump a { padding:8px 12px; border:1px solid var(--term-border-strong); font-size:12.5px; }
-
-  </style>
 </ContentLayout>
+
+<style>
+.front-head > p:first-child { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 var(--space-3); }
+.front-head .kicker { margin: 0; }
+.topic-jump { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: var(--space-6); }
+.topic-jump a { display: flex; justify-content: space-between; align-items: end; gap: var(--space-2); min-height: 64px; padding: var(--space-2) var(--space-3); background: var(--surface); border-top: 5px solid var(--dept); color: var(--ink); font: 800 1rem/1.15 var(--font-sans); font-stretch: 85%; text-decoration: none; }
+.topic-jump a:hover { background: var(--geist); color: #121212; }
+.topic-jump b { color: var(--dept-ink); font: 900 1.7rem/1 var(--font-sans); font-stretch: var(--condensed); }
+.topic-jump a:hover b { color: #121212; }
+
+.block-label { margin: 0 0 var(--space-3); font: 900 1.4rem/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
+.start { margin-top: var(--space-7); padding: var(--space-5); background: var(--plate); color: var(--plate-ink); --link: var(--plate-ink); }
+.start .block-label { color: #fff; }
+.start ol { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-5); margin: 0; padding: 0; list-style: none; }
+.start li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); padding-top: var(--space-3); border-top: 3px solid var(--dept); }
+.start .num { color: var(--dept); font: 900 2.6rem/.85 var(--font-sans); font-stretch: var(--condensed); }
+.start .kicker { display: block; margin-bottom: 4px; color: #a9a8a1; }
+.start a { color: #fff; font: 800 1.1rem/1.15 var(--font-sans); font-stretch: 88%; text-decoration: none; }
+.start a:hover { background: var(--geist); color: #121212; }
+.start p { margin: 6px 0 0; color: #c9c8c2; font-size: .9rem; line-height: 1.45; }
+.start :focus-visible { box-shadow: 0 0 0 5px #fff; }
+
+.topic-block { margin-top: var(--space-8); scroll-margin-top: var(--space-4); }
+.topic-block > header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-2) var(--space-5); padding-top: var(--space-3); border-top: 8px solid var(--dept); }
+.topic-block h2 { margin: 0; font: 900 clamp(1.8rem, 3.6vw, 2.6rem)/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
+.hub-link { font-weight: 700; }
+.fix-rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-6); margin: var(--space-4) 0 0; padding: 0; list-style: none; }
+.fix-rows li { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--space-3); padding: var(--space-3) 0; border-top: 1px solid var(--rule); }
+.fix-rows a { font: 800 1.12rem/1.2 var(--font-sans); font-stretch: 88%; text-decoration: none; }
+.fix-rows a:hover { text-decoration: underline; }
+.fix-rows p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: .94rem; line-height: 1.45; }
+.fix-rows time { grid-column: 2; grid-row: 1; color: var(--ink-3); font-size: .78rem; white-space: nowrap; }
+
+.also { margin-top: var(--space-8); padding: var(--space-4) var(--space-5); border: 2px solid var(--ink); background: var(--surface); }
+.also p { max-width: var(--measure); margin: 0; color: var(--ink-2); }
+
+@media (max-width: 1060px) {
+  .topic-jump { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .start ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .topic-jump { grid-template-columns: 1fr 1fr; }
+  .topic-jump a:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .start { margin-left: calc(var(--page-pad) * -1); margin-right: calc(var(--page-pad) * -1); padding: var(--space-5) var(--page-pad); }
+  .start ol, .fix-rows { grid-template-columns: 1fr; }
+}
+</style>

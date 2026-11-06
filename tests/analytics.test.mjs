@@ -84,9 +84,9 @@ test('browser attribution is session-only, minimal, and loaded by both layouts',
     utmContent: 'pin-01',
   });
 
-  for (const layout of ['src/layouts/Layout.astro', 'src/layouts/ContentLayout.astro']) {
-    assert.match(await read(layout), /affiliate-attribution/);
-  }
+  // Layout.astro is the single page shell; ContentLayout builds on it.
+  assert.match(await read('src/layouts/Layout.astro'), /affiliate-attribution/);
+  assert.match(await read('src/layouts/ContentLayout.astro'), /<Layout /);
 });
 
 test('Pinterest consent defaults off and accepts only explicit choices', async () => {
@@ -115,11 +115,11 @@ test('Pinterest tag is opt-in, privacy-minimal, and available from both layouts'
   assert.match(component, /data-pinterest-settings/);
   assert.doesNotMatch(component, /\bem\b|email|user_email/i);
 
-  for (const layout of ['src/layouts/Layout.astro', 'src/layouts/ContentLayout.astro']) {
-    const source = await read(layout);
-    assert.match(source, /PinterestConsent/);
-    assert.match(source, /<PinterestConsent\s*\/>/);
-  }
+  // Layout.astro is the single page shell; ContentLayout builds on it.
+  assert.match(await read('src/layouts/Layout.astro'), /<PinterestConsent\s*\/>/);
+  assert.match(await read('src/layouts/ContentLayout.astro'), /<Layout /);
+  // The consent settings control lives in the shared footer.
+  assert.match(await read('src/components/SiteFooter.astro'), /data-pinterest-settings/);
 
   const privacy = await read('src/pages/privacy.astro');
   for (const token of ['Pinterest', 'opt in', 'localStorage', 'advertising cookies', 'change your choice']) {

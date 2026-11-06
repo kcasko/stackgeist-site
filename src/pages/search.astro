@@ -1,0 +1,75 @@
+---
+// Site search. Every catalog page is listed in the HTML, so the page works without
+// JavaScript; the script filters the list as you type and reads ?q= from the URL.
+import Layout from '../layouts/Layout.astro';
+import { CATALOG } from '../data/catalog';
+import { SECTIONS, TYPE_LABEL, TOPIC_LABEL } from '../data/sections';
+
+const items = CATALOG.filter((e) => e.type !== 'setup')
+  .map((e) => ({ ...e, hay: [e.title, e.headline, e.dek, SECTIONS[e.section].label, TYPE_LABEL[e.type], TOPIC_LABEL[e.topic] ?? ''].join(' ').toLowerCase() }));
+---
+<Layout title="Search StackGeist" description="Search StackGeist fixes, home labs, course reviews, and gear pages." noindex>
+  <section class="search-page">
+    <h1 class="page-title">Search</h1>
+    <form class="search-form" action="/search/" method="get" role="search">
+      <label for="q" class="sr-only">Search StackGeist</label>
+      <input id="q" name="q" type="search" placeholder="Try: dock, SSD, Active Directory, D287" autocomplete="off" />
+      <button type="submit" class="btn primary">Search</button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite" data-status>{items.length} pages</p>
+    <ol class="search-results" data-results>
+      {items.map((e) => (
+        <li data-section={e.section} data-hay={e.hay}>
+          <span class="kicker">{SECTIONS[e.section].label} · {TYPE_LABEL[e.type]}</span>
+          <a href={e.href}>{e.title}</a>
+          <p>{e.dek}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="search-empty" data-empty hidden>Nothing matched. Try a shorter word, or browse <a href="/guides/">Fixes</a>, <a href="/labs/">Labs</a>, <a href="/learning/">Learning</a>, or <a href="/gear/">Gear</a>.</p>
+  </section>
+</Layout>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('#q');
+  const rows = [...document.querySelectorAll<HTMLLIElement>('[data-results] li')];
+  const status = document.querySelector<HTMLElement>('[data-status]');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  const run = () => {
+    const terms = (input?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const row of rows) {
+      const hit = terms.every((t) => row.dataset.hay?.includes(t));
+      row.hidden = !hit;
+      if (hit) shown++;
+    }
+    if (status) status.textContent = terms.length ? `${shown} ${shown === 1 ? 'page matches' : 'pages match'} “${input?.value.trim()}”` : `${rows.length} pages`;
+    if (empty) empty.hidden = shown > 0;
+  };
+  const q = new URLSearchParams(location.search).get('q');
+  if (input && q) input.value = q;
+  input?.addEventListener('input', () => {
+    run();
+    const url = new URL(location.href);
+    if (input.value.trim()) url.searchParams.set('q', input.value.trim()); else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+  });
+  document.querySelector('.search-form')?.addEventListener('submit', (e) => { e.preventDefault(); run(); });
+  run();
+  input?.focus();
+</script>
+
+<style>
+.search-page { max-width: 820px; padding-top: var(--space-6); }
+.search-form { display: flex; gap: var(--space-2); margin-top: var(--space-4); }
+.search-form input { flex: 1; min-width: 0; min-height: 50px; padding: 0 14px; border: 3px solid var(--ink); border-radius: 0; background: var(--surface); color: var(--ink); font-size: 1.1rem; }
+.search-status { margin: var(--space-3) 0 var(--space-2); color: var(--ink-3); font-size: .9rem; }
+.search-results { margin: 0; padding: 0; list-style: none; border-top: 4px solid var(--ink); }
+.search-results li { padding: var(--space-3) 0; border-bottom: 1px solid var(--rule); }
+.search-results li[hidden] { display: none; }
+.search-results .kicker { display: block; margin-bottom: 2px; }
+.search-results a { font: 800 1.2rem/1.2 var(--font-sans); font-stretch: 88%; text-decoration: none; }
+.search-results a:hover { text-decoration: underline; }
+.search-results p { margin: 4px 0 0; color: var(--ink-2); font-size: .95rem; }
+.search-empty { padding: var(--space-4); border: 2px solid var(--ink); background: var(--surface); }
+</style>

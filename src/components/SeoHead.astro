@@ -18,6 +18,8 @@ const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.repl
 const canonical = new URL(canonicalPath, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
 const feed = new URL('/rss.xml', site).toString();
+// Department names match the visible navigation, whatever the URL segment is called.
+const SECTION_NAMES: Record<string, string> = { guides: 'Fixes', certs: 'Learning', kits: 'Buying lists' };
 const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
 const breadcrumbStructured = pathSegments.length === 0 ? null : {
   '@context': 'https://schema.org',
@@ -32,10 +34,12 @@ const breadcrumbStructured = pathSegments.length === 0 ? null : {
     ...pathSegments.map((segment, index) => ({
       '@type': 'ListItem',
       position: index + 2,
-      name: segment
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' '),
+      name: index === 0 && SECTION_NAMES[segment]
+        ? SECTION_NAMES[segment]
+        : segment
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' '),
       item: new URL('/' + pathSegments.slice(0, index + 1).join('/') + '/', site).toString(),
     })),
   ],
@@ -52,8 +56,9 @@ const structured = {
 };
 ---
 <meta name="description" content={description} />
-<meta name="theme-color" content="#07050d" />
-<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#f6f3eb" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#18171a" media="(prefers-color-scheme: dark)" />
+<meta name="color-scheme" content="light dark" />
 <meta name="p:domain_verify" content="be7ae82233943c7beaf0af4fa9801ed0" />
 <meta name="msvalidate.01" content="826F214A9078E8999D09FC983C4BAAA1" />
 <meta name="impact-site-verification" value="a20b3580-1f47-4ef9-ad3f-9a685551e808" />

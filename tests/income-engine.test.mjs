@@ -29,7 +29,9 @@ test('income kit routes are linked from the footer, homepage, and sitemap source
   const home = await read('src/pages/index.astro');
   const sitemap = await read('src/pages/sitemap.xml.ts');
   for (const src of [footer, sitemap]) assert.match(src, /\/kits/);
-  assert.match(header, /\/gear\//);
+  // The header renders the department fronts from sections.ts, which includes Gear.
+  assert.match(header, /SECTIONS\[key\]\.href/);
+  assert.match(await read('src/data/sections.ts'), /href: '\/gear\/'/);
   // The homelab kit was merged into a buying guide; the homepage links the guide.
   assert.match(home, /\/labs\/homelab-equipment-for-beginners\//);
 });

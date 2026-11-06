@@ -1,21 +1,79 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import LabTopology from '../../components/illustrations/LabTopology.astro';
+import { SECTIONS, inSection, formatDate } from '../../data/sections';
 
-import { LABS as labs } from '../../data/labs';
+const writeups = inSection('labs', { types: ['lab'] });
+const hardware = inSection('labs', { types: ['lab-hardware'] });
 ---
-<ContentLayout design="v2" title="IT home labs for help desk and sysadmin practice | StackGeist" description="Real IT home labs documented with verified output: Active Directory, osTicket, AWS security fixes, and help desk practice for people moving into IT." active="labs">
-  <p class="breadcrumbs"><a href="/">StackGeist</a> / Labs</p>
-  <p class="page-kicker">Home labs</p>
-  <h1 class="page-title">IT home labs built, broken, and documented.</h1>
-  <p class="page-lead">These are systems Keith Casko built while working toward IT support and systems roles. Each page says what was verified and what is still unfinished.</p>
+<ContentLayout section="labs" title="IT home labs for help desk and sysadmin practice | StackGeist" description="Real IT home labs documented with verified output: Active Directory, osTicket, AWS security fixes, and help desk practice for people moving into IT.">
+  <div class="labs-head">
+    <header>
+      <p class="head-tags"><span class="slab">Labs</span> <span class="kicker">{writeups.length} write-ups · {hardware.length} hardware guides</span></p>
+      <h1 class="page-title">IT home labs, built, broken, and written up.</h1>
+      <p class="page-lead">{SECTIONS.labs.blurb} Each page says what was verified and what is still unfinished.</p>
+    </header>
+    <figure class="photo labs-photo">
+      <img src="/images/generated/homelab-rack.webp" srcset="/images/generated/homelab-rack-640.webp 640w, /images/generated/homelab-rack.webp 976w" sizes="(max-width: 860px) 100vw, 480px" width="976" height="651" alt="A small network switch with blue patch cables in an open rack, with compact servers on the shelves above" loading="eager" decoding="async" />
+      <figcaption>Illustrative rack, not the lab described on these pages.<span class="credit">Generated image</span></figcaption>
+    </figure>
+  </div>
+
+  <section class="lab-index" aria-labelledby="writeups-title">
+    <h2 id="writeups-title" class="block-label">Lab write-ups</h2>
+    <ol>
+      {writeups.map((e, i) => (
+        <li>
+          <span class="lab-no" aria-hidden="true">Lab<b>{String(i + 1).padStart(2, '0')}</b></span>
+          <div>
+            <a href={e.href}>{e.title}</a>
+            <p>{e.dek}</p>
+            {e.updated && <time datetime={e.updated}>Updated {formatDate(e.updated)}</time>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
   <LabTopology />
-  <section class="content-section">
-    <div class="cards">
-      {labs.map((lab) => <a class="card card-thumb" href={lab.href}>{lab.img && <img src={`/illustrations/${lab.img}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" />}<h2>{lab.title}</h2><p>{lab.note}</p></a>)}
+
+  <section class="hw" aria-labelledby="hw-title">
+    <h2 id="hw-title" class="block-label">What to run it on</h2>
+    <div class="hw-grid">
+      {hardware.map((e) => (
+        <article><a href={e.href}>{e.title}</a><p>{e.dek}</p></article>
+      ))}
+      <article class="hw-note"><p>Choosing what to study alongside a lab? <a href="/learning/">Course reviews and certification guides are in Learning.</a></p></article>
     </div>
   </section>
-  <section class="content-section">
-    <div class="note">Choosing what to study alongside a lab? <a href="/certs/">Compare the entry-level IT certifications</a>.</div>
-  </section>
 </ContentLayout>
+
+<style>
+.labs-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-6); align-items: end; }
+.head-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 var(--space-3); }
+.head-tags .kicker { margin: 0; }
+.labs-photo img { aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 8px solid var(--dept); }
+.block-label { margin: 0 0 var(--space-3); font: 900 1.4rem/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
+.lab-index { margin-top: var(--space-7); }
+.lab-index ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-6); margin: 0; padding: 0; list-style: none; border-top: 4px solid var(--ink); }
+.lab-index li { display: grid; grid-template-columns: 4.2rem 1fr; gap: var(--space-3); padding: var(--space-4) 0; border-bottom: 1px solid var(--rule); }
+.lab-no { display: grid; align-content: start; color: var(--ink-3); font: 800 .66rem/1.2 var(--font-sans); font-stretch: var(--expanded); letter-spacing: .06em; text-transform: uppercase; }
+.lab-no b { color: var(--dept-ink); font: 900 2.4rem/1 var(--font-sans); font-stretch: var(--condensed); letter-spacing: 0; }
+.lab-index a { font: 850 1.3rem/1.12 var(--font-sans); font-stretch: 85%; text-decoration: none; }
+.lab-index a:hover { text-decoration: underline; }
+.lab-index p { margin: 6px 0 4px; color: var(--ink-2); font-size: .95rem; line-height: 1.45; }
+.lab-index time { color: var(--ink-3); font-size: .8rem; }
+.hw { margin-top: var(--space-7); }
+.hw-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 2px solid var(--ink); background: var(--surface); }
+.hw-grid article { padding: var(--space-4); border-right: 1px solid var(--rule); }
+.hw-grid article:last-child { border-right: 0; }
+.hw-grid a { font: 800 1.12rem/1.2 var(--font-sans); font-stretch: 88%; }
+.hw-grid p { margin: 6px 0 0; color: var(--ink-2); font-size: .94rem; line-height: 1.45; }
+.hw-note { background: var(--base); }
+.hw-note a { font: inherit; font-weight: 700; }
+@media (max-width: 860px) {
+  .labs-head { grid-template-columns: 1fr; }
+  .lab-index ol, .hw-grid { grid-template-columns: 1fr; }
+  .hw-grid article { border-right: 0; border-bottom: 1px solid var(--rule); }
+}
+</style>
