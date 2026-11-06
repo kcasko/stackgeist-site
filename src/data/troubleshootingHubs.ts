@@ -259,6 +259,13 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
     ],
     guides: [
       {
+        slug: 'wifi-keeps-disconnecting-router-or-pc',
+        kicker: 'Wi-Fi troubleshooting',
+        title: 'Wi-Fi keeps disconnecting: router or PC?',
+        desc: 'Hotspot test, the Windows wireless report, then PC or router fixes.',
+        problem: 'Wi-Fi drops repeatedly and you do not know which device is at fault.',
+      },
+      {
         slug: 'alfa-ac1900-slow-speed-fix',
         kicker: 'Wi-Fi troubleshooting',
         title: 'ALFA AC1900 slow speed fix',

@@ -67,6 +67,18 @@ export const PARTNER_OFFERS: Record<string, PartnerOffer> = {
     note: 'Useful for a full-drive image or clone. Windows Backup and File History are free if you only need your files.',
     url: '',
   },
+  wifiAdapter: {
+    id: 'usb-wifi-adapter',
+    label: 'USB Wi-Fi adapters',
+    note: 'A fix when only one PC drops and its built-in adapter or driver is the problem. Check driver support for your Windows version first.',
+    url: '',
+  },
+  wifiSystem: {
+    id: 'wifi-router-mesh',
+    label: 'Routers and mesh Wi-Fi',
+    note: 'Worth it when every device drops, or the signal is weak in the rooms you use. Not needed if only one PC has the problem.',
+    url: '',
+  },
   externalBackupDrive: {
     id: 'external-backup-drive',
     label: 'External drives for backups',

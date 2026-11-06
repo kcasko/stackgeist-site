@@ -1,0 +1,115 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+const __sd=[
+articleSchema({
+  headline:'Wi-Fi keeps disconnecting: find out whether it’s the router or your PC first.',
+  description:'Check whether other devices drop too, test the PC on a phone hotspot, read the Windows wireless network report, then apply the fixes for whichever side is at fault.',
+  url:'https://stackgeist.dev/guides/wifi-keeps-disconnecting-router-or-pc',
+  datePublished:'2026-11-05',
+  dateModified:'2026-11-05'
+}),
+faqSchema({questions:[
+  {question:'How do I know if my router or my PC is the problem?',answer:'If phones and other computers drop at the same time, the router, modem, or internet connection is the likely cause. If only one PC drops, and it also drops on a phone hotspot, the PC’s Wi-Fi adapter, driver, or settings are the likely cause.'},
+  {question:'Why does my Wi-Fi disconnect after sleep?',answer:'The Wi-Fi adapter may not wake up cleanly. Updating the adapter driver from the PC or adapter maker is the first fix. Changing the adapter’s power management setting helps on some systems, but results vary.'},
+  {question:'Will a network reset delete anything?',answer:'It removes and reinstalls network adapters and resets their settings, so you will need to reconnect to Wi-Fi and may need to reinstall VPN software. Microsoft recommends it as a last step.'},
+  {question:'Does a new router fix Wi-Fi disconnects?',answer:'Only if the router is the cause. If only one PC drops, a new router usually won’t help. Run the checks in this guide first.'}
+]})
+];
+---
+<ContentLayout structuredData={__sd} title="Wi-Fi keeps disconnecting: router or PC? How to tell and fix it | StackGeist" description="Wi-Fi keeps dropping on Windows 11? Find out whether the router or the PC is at fault with a hotspot test and the Windows wireless report, then fix the right side." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / Wi-Fi keeps disconnecting</p>
+<p class="page-kicker">Network troubleshooting</p>
+<h1 class="page-title">Wi-Fi keeps disconnecting: is it the router or your PC?</h1>
+<p class="page-lead">Most Wi-Fi fixes online are a list of twenty things to try on your PC. That wastes time if the router is the problem, and a new router wastes money if the PC is. Two quick tests tell you which side to fix.</p>
+
+<div class="article-summary"><strong>Quick answer</strong><p>Next time it drops, check whether phones and other devices lost Wi-Fi too. If they did, restart the modem and router and look at the router side. If only your PC drops, connect it to your phone’s hotspot for half an hour. If it still drops there, the PC is the problem: update its Wi-Fi driver, forget and rejoin the network, and use the Windows wireless network report to see why it disconnected.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Symptoms</p><h2>What “keeps disconnecting” usually looks like.</h2>
+<ul class="article-list">
+<li>The Wi-Fi icon drops to disconnected, then reconnects a few seconds or minutes later.</li>
+<li>Wi-Fi stays connected, but websites stop loading, sometimes with “No internet” under the network name.</li>
+<li>It drops every time the PC wakes from sleep.</li>
+<li>Video calls and games freeze for a few seconds at a time.</li>
+</ul>
+<p>The second case often isn’t a Wi-Fi problem at all. If the PC stays connected to the router but loses the internet, the modem or internet provider is the usual cause.</p></section>
+
+<section><p class="page-kicker">Test 01</p><h2>Do other devices drop at the same time?</h2>
+<p><strong>Do this:</strong> When your PC disconnects, check a phone or another computer on the same Wi-Fi straight away. Try loading a page on each.</p>
+<p><strong>Why:</strong> A problem with the router, modem, or internet connection hits every device. A problem with one PC’s adapter or driver only hits that PC.</p>
+<div class="article-cards">
+<div><strong>Everything drops</strong><p>Router, modem, or internet provider. Go to the router fixes below.</p></div>
+<div><strong>Only this PC drops</strong><p>Probably the PC. Do Test 02 to confirm.</p></div>
+<div><strong>Only far rooms drop</strong><p>Weak signal or coverage. Test near the router to confirm.</p></div>
+</div></section>
+
+<section><p class="page-kicker">Test 02</p><h2>Put the PC on your phone’s hotspot.</h2>
+<p><strong>Do this:</strong> Turn on your phone’s mobile hotspot, connect the PC to it, and use it normally for 30 minutes or so.</p>
+<p><strong>Why:</strong> This swaps the router for a completely different one while keeping the same PC.</p>
+<p><strong>Expect:</strong> If it stays connected on the hotspot, your home router or signal is the likely problem. If it drops on the hotspot too, the PC is the problem. If you can, a wired Ethernet cable to the router is an even cleaner test: if Ethernet stays up while Wi-Fi drops, the Wi-Fi side is the problem rather than the internet connection.</p></section>
+
+<section><p class="page-kicker">Test 03</p><h2>Read the Windows wireless network report.</h2>
+<p><strong>Do this:</strong> Open Command Prompt as administrator and run:</p>
+<pre><code>netsh wlan show wlanreport</code></pre>
+<p>The output shows where it saved the report, an HTML file you can open in any browser.</p>
+<p><strong>Why:</strong> Microsoft’s report covers the last three days of Wi-Fi activity, grouped into connection sessions. It lists session durations, successes and failures, and a <strong>Disconnect reasons</strong> section showing why each drop happened.</p>
+<p><strong>What to look for:</strong> Many short sessions confirm the drops are real. Disconnect reasons that point to the driver or adapter support a PC-side cause. Drops that line up with sleep or wake times point to the adapter waking badly.</p></section>
+
+<section><p class="page-kicker">PC fixes</p><h2>If only your PC drops.</h2>
+<p>Work through these in order, checking whether the drops stop after each one.</p>
+<ol class="article-list">
+<li><strong>Forget the network and rejoin it.</strong> Go to <strong>Settings → Network &amp; internet → Wi-Fi → Manage known networks</strong>, choose your network, select <strong>Forget</strong>, then reconnect with the password.</li>
+<li><strong>Update the Wi-Fi driver from the maker.</strong> Get the latest driver from your PC maker’s support page or the adapter maker (such as Intel, Realtek, or MediaTek). Find the adapter name in <strong>Device Manager → Network adapters</strong>. Windows Update doesn’t always have the newest version.</li>
+<li><strong>Reinstall the adapter.</strong> Microsoft’s steps: in Device Manager, right-click the Wi-Fi adapter, choose <strong>Uninstall device</strong>, and restart. Windows reinstalls it. Download the driver first in case you need it.</li>
+<li><strong>Reset the network stack.</strong> In Command Prompt as administrator, run these one at a time:
+<pre><code>netsh winsock reset
+netsh int ip reset
+ipconfig /release
+ipconfig /renew
+ipconfig /flushdns</code></pre>
+Then restart.</li>
+<li><strong>Check power management if drops follow sleep.</strong> In Device Manager, open the Wi-Fi adapter’s properties. If there’s a <strong>Power Management</strong> tab, clearing “Allow the computer to turn off this device to save power” helps on some PCs. Many newer laptops hide this tab, and results vary, so treat it as something to try, not a guaranteed fix.</li>
+<li><strong>Network reset, last.</strong> Go to <strong>Settings → Network &amp; internet → Advanced network settings → Network reset</strong>. Microsoft notes this removes and reinstalls all network adapters, and you may need to reinstall VPN software afterwards.</li>
+</ol></section>
+
+<section><p class="page-kicker">Router fixes</p><h2>If every device drops.</h2>
+<ol class="article-list">
+<li><strong>Restart the modem and router properly.</strong> Unplug the router, then the modem. Wait about 30 seconds, plug the modem in, wait for its lights to settle, then plug in the router.</li>
+<li><strong>Check the router’s position.</strong> Routers on the floor, in cabinets, or behind TVs lose a lot of signal. Move it somewhere central and raised, then test again.</li>
+<li><strong>Update the router’s firmware.</strong> Use the router’s app or admin page. Firmware bugs can cause regular drops.</li>
+<li><strong>Test with the internet only.</strong> If Wi-Fi stays connected but the internet drops on every device, including over Ethernet, the problem is likely the modem or your internet provider. Your provider can check the line.</li>
+<li><strong>Look at the age of the router.</strong> If it’s many years old, provided by your internet company and never replaced, or struggles with the number of devices you now have, replacement becomes a reasonable fix.</li>
+</ol></section>
+
+<section><p class="page-kicker">Verification</p><h2>Confirm the drops have stopped.</h2>
+<p>Use the PC normally for a day, including a sleep and wake cycle. Then run <code>netsh wlan show wlanreport</code> again and compare: fewer, longer sessions mean the fix worked.</p></section>
+
+<section><p class="page-kicker">Should you buy anything?</p><h2>When new hardware actually helps.</h2>
+<div class="article-cards">
+<div><strong>Don’t buy anything yet</strong><p>If you haven’t done the two tests above. Most drops are fixed with drivers, settings, or a restart.</p></div>
+<div><strong>A USB Wi-Fi adapter</strong><p>Only one PC drops, drivers didn’t help, and other devices are fine. A desktop with a weak built-in adapter is the classic case.</p></div>
+<div><strong>A new router or mesh</strong><p>Every device drops, the router is old, or the signal is weak in rooms you use. Mesh helps with coverage. It won’t fix a faulty internet line.</p></div>
+</div></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>The commands and Windows steps come from Microsoft documentation, linked below. StackGeist has not tested specific routers or adapters for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>Related guides</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/alfa-ac1900-slow-speed-fix/">ALFA AC1900 slow speed fix</a></strong><p>Driver, USB port, and band checks for USB Wi-Fi adapters.</p></div>
+<div><strong><a href="/guides/govee-strip-lights-not-connecting-wifi/">Smart lights not connecting to Wi-Fi</a></strong><p>2.4 GHz and mesh band steering problems.</p></div>
+<div><strong><a href="/guides/wireless-bluetooth-smart-home-fixes/">Wireless and Bluetooth fixes</a></strong><p>All of the wireless troubleshooting guides.</p></div>
+</div></section>
+
+<PartnerOffers ids={['wifiAdapter', 'wifiSystem']} placement="guide-wifi-keeps-disconnecting-router-or-pc" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://support.microsoft.com/en-us/windows/fix-wi-fi-connection-issues-in-windows-9424a1f7-6a3b-65a6-4d78-7f07eee84d2c">Microsoft Support — Fix Wi-Fi connection issues in Windows</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/experience/connectivity-networking/analyze-the-wireless-network-report">Microsoft Support — Analyze the wireless network report</a></li>
+<li><a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/wireless-network-connectivity-issues-troubleshooting">Microsoft Learn — Wireless network connectivity troubleshooting</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" heading="Get the next practical setup fix." subhead="One grounded troubleshooting decision or desk fix per dispatch. No sponsor copy." />
+</ContentLayout>
