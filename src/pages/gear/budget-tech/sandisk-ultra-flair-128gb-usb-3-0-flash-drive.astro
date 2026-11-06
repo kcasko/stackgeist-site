@@ -2,7 +2,7 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Drive", description: "Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data.", url: 'https://stackgeist.dev/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', brand: 'SanDisk' })];
+const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Drive", description: "Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data.", url: 'https://stackgeist.dev/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', image: 'https://stackgeist.dev/gear/commons/sandisk-ultra-flair-128gb.webp', brand: 'SanDisk' })];
 ---
 <ContentLayout structuredData={__sd} title="SanDisk Ultra Flair 128GB USB 3.0 Flash Drive | StackGeist" description="Small flash drives are easy to lose, but you still need one that actually holds a decent amount of data." active="gear" noindex>
   <ProductDetailSimple
@@ -17,6 +17,13 @@ const __sd = [productSchema({ name: "SanDisk Ultra Flair 128GB USB 3.0 Flash Dri
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
     facts="Sourced from taurustech.me/affiliate. See the retailer page for the current spec sheet."
     skip="Skip this page as a buying recommendation until the current manufacturer specification and compatibility requirements are checked."
+    imageUrl="/gear/commons/sandisk-ultra-flair-128gb.webp"
+    imageAlt="SanDisk Ultra Flair 128GB USB flash drive with a metal casing, seen from the front"
+    imageExample="SanDisk Ultra Flair 128GB."
+    imageCredit="ScienceOS"
+    imageSourceUrl="https://commons.wikimedia.org/wiki/File:SanDisk_Ultra_Flair_128GB_(Front).jpg"
+    imageLicense="CC BY 4.0"
+    imageLicenseUrl="https://creativecommons.org/licenses/by/4.0"
     amazonUrl="https://www.amazon.com/dp/B015CH1PJU?tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""
