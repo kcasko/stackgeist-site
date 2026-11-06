@@ -273,7 +273,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: 'TP-Link gigabit switch', role: 'Wired ports for host, NAS, and test machine.', href: search('tp-link tl-sg108 gigabit switch'), kind: 'search', tier: 'nice-next', check: 'Gigabit is enough for starter labs.' },
       { label: 'CyberPower UPS', role: 'Clean shutdown during power dips.', href: search('cyberpower cp1500pfclcd ups'), kind: 'search', tier: 'skip-until-needed', check: 'Buy before the lab stores important data.' }
     ],
-    related: [{ href: '/setups/home-lab-dev-workstation', title: 'Home lab / dev workstation', desc: 'Full desk and server setup.' }, { href: '/kits/network-plus-home-lab-kit', title: 'Network+ home lab kit', desc: 'Networking gear for the same lab.' }, { href: '/guides/back-up-windows-pc-before-replacing-drive/', title: 'Backup and recovery kit', desc: 'Protect the lab before it grows.' }],
+    related: [{ href: '/setups/home-lab-dev-workstation', title: 'Home lab / dev workstation', desc: 'Full desk and server setup.' }, { href: '/labs/network-plus-home-lab/', title: 'Network+ home lab kit', desc: 'Networking gear for the same lab.' }, { href: '/guides/back-up-windows-pc-before-replacing-drive/', title: 'Backup and recovery kit', desc: 'Protect the lab before it grows.' }],
     socialAngles: [{ channel: 'pinterest', title: 'Proxmox mini PC starter kit', hook: 'Mini PC, RAM, backup drive, switch, UPS. Quiet homelab beats loud regret.', utmContent: 'proxmox_mini_pc_kit' }, { channel: 'tiktok', title: 'Quiet Proxmox lab', hook: 'Do not buy a rack server first. Start with a mini PC and backups.', utmContent: 'quiet_proxmox_lab' }, { channel: 'reddit', title: 'Mini PC Proxmox start', hook: 'For a first Proxmox box, low idle power and RAM matter more than server cosplay.', utmContent: 'reddit_proxmox_mini_pc' }],
     faqs: [{ question: 'Is a mini PC enough for Proxmox?', answer: 'For beginner labs, yes. It can run several light VMs and containers if it has enough RAM and storage.' }, { question: 'Should I buy a rack server first?', answer: 'Usually no. Rack servers are loud, power hungry, and overkill for most first labs.' }]
   },
@@ -333,7 +333,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: 'TP-Link gigabit switch', role: 'Small isolated wired practice network.', href: search('tp-link tl-sg108 gigabit switch'), kind: 'search', tier: 'nice-next', check: 'Basic segmentation starts with knowing what is plugged in.' },
       { label: 'Precision screwdriver kit', role: 'Open old PCs safely for drive and RAM swaps.', href: '/gear/budget-tech/140-in-1-precision-screwdriver-repair-kit', kind: 'internal', tier: 'skip-until-needed', check: 'Use the right bit before you strip a laptop screw.' }
     ],
-    related: [{ href: '/kits/network-plus-home-lab-kit', title: 'Network+ home lab kit', desc: 'Networking fundamentals before security tooling.' }, { href: '/kits/linux-beginner-lab-kit', title: 'Linux beginner lab kit', desc: 'Linux practice for security learners.' }, { href: '/setups/ai-ml-workstation', title: 'AI / ML workstation', desc: 'Higher-end workstation planning when compute becomes real.' }],
+    related: [{ href: '/labs/network-plus-home-lab/', title: 'Network+ home lab kit', desc: 'Networking fundamentals before security tooling.' }, { href: '/kits/linux-beginner-lab-kit', title: 'Linux beginner lab kit', desc: 'Linux practice for security learners.' }, { href: '/setups/ai-ml-workstation', title: 'AI / ML workstation', desc: 'Higher-end workstation planning when compute becomes real.' }],
     socialAngles: [{ channel: 'pinterest', title: 'Cybersecurity beginner lab kit', hook: 'VMs, backups, switch, Wi-Fi adapter, notes. Defensive lab first, movie-hacker cosplay never.', utmContent: 'cyber_beginner_lab' }, { channel: 'tiktok', title: 'Beginner cyber lab order', hook: 'RAM, snapshots, backups, switch, then wireless practice with permission.', utmContent: 'cyber_lab_order' }, { channel: 'reddit', title: 'Safe cyber lab gear', hook: 'A defensive beginner lab needs isolation, backups, and notes more than exotic hardware.', utmContent: 'reddit_safe_cyber_lab' }],
     faqs: [{ question: 'What hardware do I need for beginner cybersecurity?', answer: 'A VM-capable computer, enough RAM, backups, and basic network gear are enough for defensive beginner practice.' }, { question: 'Do I need Wi-Fi hacking gear?', answer: 'No. Learn networking, Linux, logging, and defensive tooling first. Only test wireless networks you own or have permission to assess.' }]
   },
@@ -786,7 +786,6 @@ export const INCOME_KITS: IncomeKit[] = [...BASE_INCOME_KITS, ...EXTRA_KITS];
 // and out of the sitemap so the site stays focused on fixes and IT.
 // help-desk-homelab-starter-kit was merged into /labs/homelab-equipment-for-beginners/ (301 in public/_redirects).
 export const IT_KIT_SLUGS = new Set<string>([
-  'network-plus-home-lab-kit',
   'security-plus-study-desk-kit',
   'aws-cloud-practitioner-study-kit',
   'cloud-support-study-desk-kit',

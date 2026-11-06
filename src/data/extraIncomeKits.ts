@@ -307,7 +307,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'CompTIA Security+ official study guide', role: 'Dense reference book for deep dives on exam objectives.', href: search('comptia security+ sy0-701 official study guide'), kind: 'search', tier: 'skip-until-needed', check: 'Only buy if you prefer reading over videos and need a reference.' }
     ],
     related: [
-      { href: '/kits/network-plus-home-lab-kit', title: 'Network+ home lab kit', desc: 'Build a wired lab for networking and security practice.' },
+      { href: '/labs/network-plus-home-lab/', title: 'Network+ home lab kit', desc: 'Build a wired lab for networking and security practice.' },
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Security+ study desk kit', hook: 'Professor Messer videos, Dion practice exams, VirtualBox labs, flashcards. No overpriced study bundles.', utmContent: 'security_plus_study_kit' },

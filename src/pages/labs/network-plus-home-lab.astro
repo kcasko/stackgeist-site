@@ -1,0 +1,145 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'Network+ home lab: practice on virtual machines before you buy gear';
+const description = 'Practice CompTIA Network+ skills in a free virtual lab: subnet planning, DHCP, DNS, ports, and firewall rules, with real commands from a working lab, and the physical gear worth adding later.';
+const structuredData = [
+  articleSchema({
+    headline: title,
+    description,
+    url: 'https://stackgeist.dev/labs/network-plus-home-lab/',
+    datePublished: '2026-11-06',
+    dateModified: '2026-11-06',
+  }),
+  faqSchema({ questions: [
+    { question: 'Do I need a switch or router to practice for Network+?', answer: 'Not to start. Virtualization software provides a virtual network where you can practice addressing, DHCP, DNS, ports, and firewall rules. Physical gear helps later for cabling and wireless practice.' },
+    { question: 'What does the Network+ exam cover?', answer: 'CompTIA lists five domains for N10-009: networking concepts (23%), network implementation (20%), network operations (19%), network security (14%), and network troubleshooting (24%).' },
+    { question: 'How many questions are on Network+?', answer: 'CompTIA lists a maximum of 90 multiple-choice and performance-based questions in 90 minutes, with a passing score of 720 on a 100 to 900 scale.' },
+  ] }),
+];
+
+const domains = [
+  { name: 'Networking concepts', weight: '23%', lab: 'Plan a subnet, assign static and DHCP addresses, and explain how NAT reaches the internet.' },
+  { name: 'Network implementation', weight: '20%', lab: 'Build the virtual network, set addresses and gateways, and add physical cabling later.' },
+  { name: 'Network operations', weight: '19%', lab: 'Document the address plan and keep a record of every change.' },
+  { name: 'Network security', weight: '14%', lab: 'Restrict a service to one source address with a host firewall rule.' },
+  { name: 'Network troubleshooting', weight: '24%', lab: 'Fix name resolution, then test that specific ports are reachable.' },
+];
+---
+<ContentLayout title="Network+ home lab: practice on VMs before buying gear | StackGeist" description={description} active="labs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/labs/">Labs</a> / Network+ home lab</p>
+    <p class="page-kicker">Lab guide · built on a working lab</p>
+    <h1 class="page-title">Network+ home lab: practice on virtual machines before you buy gear.</h1>
+    <p class="page-lead">Most Network+ lab advice starts with a shopping list. You don’t need one to start. The virtual network in my homelab has given me practice with addressing, DHCP, DNS, ports, and firewall rules, without a single switch. Here’s what to practice, with the commands I used, and the physical gear worth adding later.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Start with free virtualization software and two or three VMs. Plan a subnet, run a DNS server, break name resolution and fix it, test ports, and lock a service down with a firewall rule. Those cover all five Network+ domains. Add a basic switch, cables, and a USB Wi-Fi adapter once you want to practice cabling and wireless problems.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">What the exam covers</p>
+        <h2>The five Network+ domains, and how a lab practices each</h2>
+        <p>CompTIA’s N10-009 exam has a maximum of 90 multiple-choice and performance-based questions in 90 minutes, with a passing score of 720 on a 100 to 900 scale. CompTIA suggests A+ and 9 to 12 months in a junior networking role first.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Network+ domains">
+          <table class="lab-table">
+            <thead><tr><th scope="col">Domain</th><th scope="col">Weight</th><th scope="col">Lab practice</th></tr></thead>
+            <tbody>{domains.map((d) => <tr><th scope="row">{d.name}</th><td>{d.weight}</td><td>{d.lab}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Exercise 01</p>
+        <h2>Plan a subnet before building anything.</h2>
+        <p>Write the address plan down first. This is the one my lab uses on VMware’s NAT network:</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Lab address plan">
+          <table class="lab-table">
+            <thead><tr><th scope="col">Item</th><th scope="col">Address</th><th scope="col">Why</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Subnet</th><td><code>10.20.30.0/24</code></td><td>254 usable addresses, plenty for a lab</td></tr>
+              <tr><th scope="row">Gateway (NAT)</th><td><code>10.20.30.2</code></td><td>VMware’s NAT device, the way out to the internet</td></tr>
+              <tr><th scope="row">Servers</th><td><code>.10</code> to <code>.60</code></td><td>Static, so DNS and clients can always find them</td></tr>
+              <tr><th scope="row">DHCP range</th><td><code>.100</code> to <code>.200</code></td><td>For clients, kept clear of the static range</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Practice:</strong> work out the network address, broadcast address, and usable range by hand, then check them against the plan. Then try splitting the /24 into four /26 subnets on paper.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Exercise 02</p>
+        <h2>Break DNS, then fix it.</h2>
+        <p>This came up in my lab. A Windows 11 VM on VMware’s NAT network gets its DNS server from VMware, which knows nothing about the lab’s domain, so the client can’t find the domain controller. Before joining the domain, I pointed it at the DNS server that does:</p>
+        <pre><code>Set-DnsClientServerAddress -InterfaceAlias "Ethernet0" -ServerAddresses "10.20.30.10"
+Resolve-DnsName ad.bytegeist.lab</code></pre>
+        <p><strong>What it teaches:</strong> “the network is down” is often “name resolution is wrong.” A device can reach an IP address and still fail anything that depends on a name.</p>
+        <p><strong>Practice:</strong> deliberately set a client’s DNS to the wrong server, note exactly what fails and what still works, then fix it.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Exercise 03</p>
+        <h2>Test the port, not just the ping.</h2>
+        <p>A successful ping only proves the host answers ping. Test the actual service port:</p>
+        <pre><code>Test-NetConnection 10.20.30.10 -Port 389</code></pre>
+        <p>That checks LDAP on the domain controller, which a domain join needs. On Linux, a successful SSH session to port 22 does the same job for SSH.</p>
+        <p><strong>Practice:</strong> list the ports your lab’s services use (DNS 53, LDAP 389, SSH 22, RDP 3389, SMB 445), then test each one from a client.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Exercise 04</p>
+        <h2>Lock a service down with a firewall rule.</h2>
+        <p>On my RHEL server, SSH was allowed from anywhere. I replaced that with a rule that only accepts SSH from my laptop’s address on the lab network:</p>
+        <pre><code>sudo firewall-cmd --permanent --zone=public \
+  --add-rich-rule='rule family="ipv4" source address="10.20.30.1/32" service name="ssh" accept'
+sudo firewall-cmd --permanent --zone=public --remove-service=ssh
+sudo firewall-cmd --reload</code></pre>
+        <p>A fresh SSH connection from the laptop still worked afterwards. My notes record one gap honestly: I haven’t yet tested that a connection from a different address is refused. That test is the real proof the rule works, so do it in your own lab.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">When to buy gear</p>
+        <h2>Physical gear that adds something a VM can’t</h2>
+        <div class="article-cards">
+          <div><strong>An unmanaged switch and cables</strong><p>For cabling, link lights, and physical-layer faults. A basic gigabit switch is enough.</p></div>
+          <div><strong>A USB Wi-Fi adapter</strong><p>For wireless troubleshooting: drivers, bands, and signal. Driver support matters more than antenna size.</p></div>
+          <div><strong>A cable tester and labels</strong><p>Once you route or make several cables. Label both ends.</p></div>
+          <div><strong>A managed switch, later</strong><p>Only when you’re ready to practice VLANs, and have physical machines to put on them.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">How this guide was made</p>
+        <p>The address plan, commands, and results come from my own lab documentation. Exam details come from CompTIA’s Network+ page, checked on 6 November 2026. This page doesn’t claim I’ve passed Network+.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>Keep going</h2>
+        <div class="article-cards">
+          <div><strong><a href="/labs/homelab-equipment-for-beginners/">Beginner homelab equipment</a></strong><p>What the lab itself needs, and what can wait.</p></div>
+          <div><strong><a href="/certs/">Compare IT certifications</a></strong><p>Where Network+ fits next to A+, Security+, and AWS.</p></div>
+          <div><strong><a href="/guides/wifi-keeps-disconnecting-router-or-pc/">Wi-Fi keeps disconnecting</a></strong><p>Real-world network troubleshooting, step by step.</p></div>
+        </div>
+      </section>
+
+      <PartnerOffers ids={['comptiaPractice', 'wifiAdapter']} placement="lab-network-plus-home-lab" />
+
+      <section>
+        <p class="page-kicker">Sources</p>
+        <ol class="article-list">
+          <li><a href="https://www.comptia.org/en-us/certifications/network/">CompTIA — Network+ (N10-009) exam details</a></li>
+          <li>My lab documentation: network configuration, Windows 11 deployment, and RHEL security baseline notes.</li>
+        </ol>
+      </section>
+    </div>
+  </article>
+  <style>
+    .table-scroll{overflow-x:auto;margin:18px 0 16px;border:1px solid var(--term-border);border-radius:6px}
+    .lab-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.9375rem}
+    .lab-table th,.lab-table td{padding:10px 12px;border-top:1px solid var(--term-border);text-align:left;vertical-align:top;color:var(--read,var(--muted))}
+    .lab-table thead th{border-top:0;color:var(--phosphor);font-size:.75rem;font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase}
+    .lab-table tbody th{color:var(--text);white-space:nowrap}
+  </style>
+</ContentLayout>
