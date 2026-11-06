@@ -784,8 +784,8 @@ export const INCOME_KITS: IncomeKit[] = [...BASE_INCOME_KITS, ...EXTRA_KITS];
 
 // Kit groups shown on /kits/. IT and fix kits are indexable; the rest stay noindex
 // and out of the sitemap so the site stays focused on fixes and IT.
+// help-desk-homelab-starter-kit was merged into /labs/homelab-equipment-for-beginners/ (301 in public/_redirects).
 export const IT_KIT_SLUGS = new Set<string>([
-  'help-desk-homelab-starter-kit',
   'network-plus-home-lab-kit',
   'security-plus-study-desk-kit',
   'aws-cloud-practitioner-study-kit',

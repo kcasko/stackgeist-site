@@ -30,9 +30,8 @@ test('income kit routes are linked from the footer, homepage, and sitemap source
   const sitemap = await read('src/pages/sitemap.xml.ts');
   for (const src of [footer, sitemap]) assert.match(src, /\/kits/);
   assert.match(header, /\/gear\//);
-  for (const slug of ['help-desk-homelab-starter-kit']) {
-    assert.match(home, new RegExp(`/kits/${slug}`));
-  }
+  // The homelab kit was merged into a buying guide; the homepage links the guide.
+  assert.match(home, /\/labs\/homelab-equipment-for-beginners\//);
 });
 
 test('income kit component tracks paid links and keeps disclosure near the conversion area', async () => {

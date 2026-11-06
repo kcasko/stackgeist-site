@@ -61,7 +61,7 @@ test('exactly the fix and IT kits are indexable, and unchecked items stay labele
       assert.match(html, /sponsored nofollow/, `${slug} has unqualified paid links`);
     }
   }
-  assert.equal(indexable, 28);
+  assert.equal(indexable, 27);
 });
 
 test('noindexed pages still let crawlers follow their links', { skip: !existsSync(DIST) }, () => {
