@@ -1,31 +1,104 @@
 ---
-interface Props { active?: 'setups'|'gear'|'guides'|'kits'|'labs'|'certs'; interactive?: boolean; }
-const { active, interactive=false }=Astro.props;
-const links=[
-  {key:'guides',label:'Fixes',mobile:'Fix a problem',href:'/guides/'},
-  {key:'labs',label:'Labs',mobile:'Build a home lab',href:'/labs/'},
-  {key:'certs',label:'Certs',mobile:'Choose a certification',href:'/certs/'},
-  {key:'gear',label:'Gear',mobile:'Products we checked',href:'/gear/'},
-] as const;
+import BrandMark from './BrandMark.astro';
+import { SECTIONS, SECTION_ORDER } from '../data/sections';
+import type { Section } from '../data/catalog';
+
+// `active` keeps the old route keys so existing pages need no edits.
+type LegacyKey = 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
+interface Props { active?: LegacyKey | Section }
+const { active } = Astro.props;
+const legacy: Record<string, Section> = { guides: 'fixes', certs: 'learning', kits: 'gear', setups: 'gear' };
+const path = Astro.url.pathname;
+const fromPath: Section | undefined =
+  path.startsWith('/guides') ? 'fixes'
+  : path.startsWith('/labs') ? 'labs'
+  : path.startsWith('/certs') || path.startsWith('/learning') ? 'learning'
+  : path.startsWith('/gear') || path.startsWith('/kits') || path.startsWith('/setups') ? 'gear'
+  : undefined;
+const current: Section | undefined = active ? (legacy[active] ?? (active as Section)) : fromPath;
 ---
-<header class="site-header" data-header>
-  <a class="brand" href="/" aria-label="StackGeist home"><span class="brand-prompt" aria-hidden="true">sg@local:</span><strong>~/</strong><span class="brand-name">STACKGEIST</span><span class="brand-cursor" aria-hidden="true">_</span></a>
-  <nav class="desktop-nav" aria-label="Primary navigation">
-    {links.map((link)=>interactive?(<button type="button" data-nav-branch={link.key}>{link.label}</button>):(<a class:list={{active:active===link.key}} href={link.href}>{link.label}</a>))}
-    <a href="/about/">About</a>
+<header class="site-masthead">
+  <div class="mast-top">
+    <a class="brand" href="/" aria-label="StackGeist home">
+      <BrandMark size={44} />
+      <span class="wordmark" aria-hidden="true">Stack<span>Geist</span></span>
+    </a>
+    <p class="mast-strap">Fixes, home labs, and IT study notes.<br />Written by someone who opens the case first.</p>
+    <form class="mast-search" action="/search/" method="get" role="search">
+      <label class="sr-only" for="site-search">Search StackGeist</label>
+      <input id="site-search" name="q" type="search" placeholder="Search: dock, SSD, AD lab…" autocomplete="off" />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <nav class="mast-nav" aria-label="Sections">
+    <ul>
+      {SECTION_ORDER.map((key) => (
+        <li data-section={key}>
+          <a href={SECTIONS[key].href} aria-current={current === key ? 'page' : undefined}>{SECTIONS[key].label}</a>
+        </li>
+      ))}
+    </ul>
+    <ul class="mast-aux">
+      <li class="nav-about"><a href="/about/" aria-current={path.startsWith('/about') ? 'page' : undefined}>About</a></li>
+      <li class="nav-search"><a href="/search/">Search</a></li>
+    </ul>
   </nav>
-  <a class="header-cta" href="/guides/" aria-label="Browse troubleshooting fixes"><span aria-hidden="true">$</span> find --fix</a>
-  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span></button>
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
-    <span class="menu-label">What do you need?</span>
-    {links.map((link)=>interactive?(<button type="button" data-nav-branch={link.key}>{link.mobile}<span aria-hidden="true">→</span></button>):(<a class:list={{active:active===link.key}} href={link.href}>{link.mobile}<span aria-hidden="true">→</span></a>))}
-    <a href="/about/">About StackGeist <span aria-hidden="true">→</span></a><a class="mobile-cta" href="/guides/" aria-label="Browse troubleshooting fixes">Browse fixes <span aria-hidden="true">→</span></a>
-  </nav>
+  <div class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </header>
+
 <style>
-.site-header{position:sticky;top:0;z-index:30;height:66px;display:flex;align-items:center;padding:0 var(--page-pad);border-bottom:1px solid var(--term-border);background:rgba(7,5,13,.96);font-family:var(--font-mono)}
-.site-header::after{content:'';position:absolute;right:var(--page-pad);bottom:-1px;left:var(--page-pad);height:1px;background:linear-gradient(90deg,var(--phosphor) 0 72px,transparent 72px);opacity:.8}.brand{display:inline-flex;align-items:baseline;gap:4px;font-size:12px}.brand-prompt{color:var(--phosphor)}.brand strong{color:var(--purple-light);font-weight:500}.brand-name{margin-left:6px;color:var(--text);font-size:13px;font-weight:700;letter-spacing:.06em}.brand-cursor{color:var(--phosphor);animation:blink 1.05s steps(2) infinite}@keyframes blink{50%{opacity:0}}.desktop-nav{margin-left:auto;display:flex;align-items:center;gap:25px}.desktop-nav button,.desktop-nav a{position:relative;padding:7px 0;border:0;background:transparent;color:var(--quiet);font:600 11.5px var(--font-mono);cursor:pointer}.desktop-nav button:hover,.desktop-nav a:hover,.desktop-nav a.active{color:var(--phosphor)}.desktop-nav a.active::before{content:'>';position:absolute;left:-12px;color:var(--phosphor)}.header-cta{display:inline-flex;min-height:32px;align-items:center;gap:8px;margin-left:28px;padding:0 11px;border:1px solid var(--term-border-strong);color:var(--purple-light);font-size:11px;font-weight:600}.header-cta span{color:var(--phosphor)}.header-cta:hover{border-color:var(--phosphor);background:rgba(163,230,53,.05);color:var(--phosphor)}.menu-toggle,.mobile-menu{display:none}@media(max-width:980px){.desktop-nav{gap:17px}.header-cta{display:none}}@media(max-width:760px){.site-header{height:60px;padding:0 18px}.site-header::after{left:18px;right:18px}.brand-prompt{display:none}.desktop-nav{display:none}.menu-toggle{position:absolute;right:14px;top:8px;display:grid;width:44px;height:44px;place-content:center;gap:6px;border:1px solid var(--term-border-strong);border-radius:0;background:var(--term-bg);cursor:pointer}.menu-toggle span{display:block;width:16px;height:1px;background:var(--phosphor);transition:transform .15s linear}.site-header[data-open="true"] .menu-toggle span:first-child{transform:translateY(3.5px) rotate(45deg)}.site-header[data-open="true"] .menu-toggle span:last-child{transform:translateY(-3.5px) rotate(-45deg)}.mobile-menu{position:absolute;top:60px;left:0;right:0;padding:16px 18px 20px;border-bottom:1px solid var(--phosphor);background:#07070a;box-shadow:0 24px 35px rgba(0,0,0,.7)}.site-header[data-open="true"] .mobile-menu{display:grid;gap:2px}.menu-label{margin-bottom:8px;color:var(--phosphor);font-size:11px}.mobile-menu button,.mobile-menu a{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;border:1px solid transparent;border-radius:0;background:transparent;color:var(--muted);font:600 12.5px var(--font-mono);text-align:left;cursor:pointer}.mobile-menu button:hover,.mobile-menu a:hover,.mobile-menu a.active{border-color:var(--term-border);background:rgba(163,230,53,.04);color:var(--phosphor)}.mobile-menu .mobile-cta{margin-top:8px;border-color:var(--phosphor);color:var(--phosphor)}}
+.site-masthead { padding-top: var(--space-4); }
+.mast-top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--space-5); padding-bottom: var(--space-4); }
+.brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.brand:hover { background: none; color: var(--ink); }
+.brand :global(.brand-mark) { flex: none; transition: transform .12s; }
+.brand:hover :global(.brand-mark) { transform: rotate(-6deg); }
+.wordmark { font: 900 clamp(1.9rem, 3.4vw, 2.6rem)/1 var(--font-sans); font-stretch: 78%; letter-spacing: -.01em; text-transform: uppercase; }
+.wordmark span { padding: 0 .08em; margin-left: .04em; background: var(--mark-bg); color: var(--mark-fg); }
+.mast-strap { margin: 0; color: var(--ink-3); font-size: .86rem; line-height: 1.35; }
+.mast-search { display: flex; }
+.mast-search input {
+  width: 15.5rem; min-height: 40px; padding: 0 10px;
+  border: 2px solid var(--ink); border-right: 0; border-radius: 0; background: var(--surface); color: var(--ink); font-size: .92rem;
+}
+.mast-search input::placeholder { color: var(--ink-3); }
+.mast-search button {
+  min-height: 40px; padding: 0 14px; border: 2px solid var(--ink); border-radius: 0;
+  background: var(--ink); color: var(--base); font: 800 .78rem var(--font-sans); font-stretch: var(--expanded); text-transform: uppercase; cursor: pointer;
+}
+.mast-search button:hover { background: var(--geist); color: #121212; }
+
+.mast-nav { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-4); }
+.mast-nav ul { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.mast-nav a {
+  display: flex; align-items: center; min-height: 46px; padding: 6px 18px 0;
+  border-top: 5px solid var(--dept, var(--ink)); background: var(--surface);
+  color: var(--ink); font: 850 1.02rem/1 var(--font-sans); font-stretch: 82%; letter-spacing: .01em; text-transform: uppercase; text-decoration: none;
+}
+.mast-nav a:hover { background: var(--surface-2); color: var(--ink); }
+.mast-nav a[aria-current="page"] { background: var(--dept, var(--ink)); color: var(--on-dept, var(--base)); }
+.mast-aux a { border-top-color: transparent; background: transparent; color: var(--ink-3); font-size: .9rem; }
+.mast-aux a[aria-current="page"] { background: var(--ink); color: var(--base); }
+.nav-search { display: none !important; }
+
+@media (max-width: 1060px) {
+  .mast-strap { display: none; }
+  .mast-top { grid-template-columns: auto 1fr; }
+  .mast-search { justify-self: end; }
+}
+@media (max-width: 760px) {
+  .mast-top { padding-bottom: var(--space-3); }
+  .mast-search { display: none; }
+  .nav-search { display: flex !important; }
+  .mast-nav { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .mast-nav > ul:first-child { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+  .mast-nav a { justify-content: center; min-height: 44px; padding: 5px 4px 0; font-size: .86rem; }
+  .mast-aux { justify-content: flex-end; }
+  .mast-aux a { min-height: 44px; padding: 4px 4px 0 10px; font-size: .8rem; }
+  .nav-about { display: none !important; }
+  .wordmark { font-size: 1.65rem; }
+  .brand :global(.brand-mark) { width: 36px; height: 36px; }
+  .mast-nav > ul.mast-aux { order: -1; position: absolute; top: 12px; right: var(--page-pad); }
+  .site-masthead { position: relative; }
+}
 </style>
-<script>
-const header=document.querySelector('[data-header]');const toggle=header?.querySelector('[data-menu-toggle]');const menu=header?.querySelector('[data-mobile-menu]');const setMenu=(open)=>{header?.setAttribute('data-open',String(open));toggle?.setAttribute('aria-expanded',String(open));toggle?.setAttribute('aria-label',open?'Close menu':'Open menu');};toggle?.addEventListener('click',()=>{const open=header?.getAttribute('data-open')!=='true';setMenu(open);if(open)menu?.querySelector('a,button')?.focus();});document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&header?.getAttribute('data-open')==='true'){setMenu(false);toggle.focus();}});
-</script>

@@ -1,12 +1,68 @@
+---
+import BrandMark from './BrandMark.astro';
+import { SECTIONS, SECTION_ORDER, entries } from '../data/sections';
+
+// A few durable entry points per department; the department front lists everything.
+const picks: Record<string, string[]> = {
+  fixes: ['/guides/usb-c-dock-only-one-monitor/', '/guides/external-drive-shows-in-disk-management-not-file-explorer/', '/guides/wifi-keeps-disconnecting-router-or-pc/'],
+  labs: ['/labs/active-directory-home-lab/', '/labs/network-plus-home-lab/', '/labs/vmware-homelab-hardware/'],
+  learning: ['/certs/wgu-software-engineering-degree/', '/certs/', '/certs/security-plus-v7-vs-v8/'],
+  gear: ['/gear/budget-tech/wd-elements-portable-external-hard-drive/', '/guides/usb-c-cable-buying-guide/', '/guides/usb-c-dock-compatibility/'],
+};
+const year = new Date().getFullYear();
+---
 <footer class="site-footer" data-shared-footer>
-  <div class="footer-head"><span class="prompt">stackgeist@local</span><span>:</span><span class="path">~/footer</span><span>$ tree</span></div>
-  <div class="footer-grid">
-    <div class="footer-brand"><strong>stackgeist/</strong><p>Practical troubleshooting fixes, IT home labs, and certification guides, with the evidence labeled.</p><span class="status"><i></i> systems nominal</span></div>
-    <div class="footer-group"><strong>├── explore/</strong><nav aria-label="Explore StackGeist"><a href="/guides/">├── fixes</a><a href="/labs/">├── labs</a><a href="/certs/">├── certs</a><a href="/kits/">├── kits</a><a href="/gear/">└── gear</a></nav></div>
-    <div class="footer-group"><strong>└── stackgeist/</strong><nav aria-label="Company and policy links"><a href="/about/">├── about</a><a href="/contact/">├── contact</a><a href="/privacy/">├── privacy</a><a href="/affiliate-disclosure/">└── disclosure</a></nav></div>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="foot-mark" href="/" aria-label="StackGeist, home"><BrandMark size={36} /><span>Stack<b>Geist</b></span></a>
+      <p>An independent site written by Keith Casko, an IT and software engineering student, about fixing, building, and learning on real hardware. Each page says whether it comes from firsthand work or research.</p>
+    </div>
+    {SECTION_ORDER.map((key) => (
+      <nav class="foot-col" data-section={key} aria-label={`${SECTIONS[key].label} pages`}>
+        <a class="foot-head" href={SECTIONS[key].href}>{SECTIONS[key].label}</a>
+        <ul>
+          {entries(picks[key]).map((e) => <li><a href={e.href}>{e.title}</a></li>)}
+          {key === 'gear' && <li><a href="/kits/">Buying lists for labs and repairs</a></li>}
+        </ul>
+      </nav>
+    ))}
   </div>
-  <div class="footer-bottom"><p><span>NOTICE</span> As an Amazon Associate StackGeist earns from qualifying purchases. Editorial pages explain fit, tradeoffs, and reasons to skip before a qualifying link.</p><p>© {new Date().getFullYear()} stackgeist // EOF</p></div>
+  <div class="foot-base">
+    <nav aria-label="About this site">
+      <a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/rss.xml">RSS</a><button type="button" class="foot-privacy" data-pinterest-settings aria-haspopup="dialog">Privacy choices</button>
+    </nav>
+    <p>As an Amazon Associate, StackGeist earns from qualifying purchases. Paid links are labeled where they appear.</p>
+    <p>© {year} StackGeist</p>
+  </div>
 </footer>
+
 <style>
-.site-footer{margin-top:70px;padding:0 0 22px;border:1px solid var(--term-border);background:var(--term-bg);color:var(--muted);font:12px var(--font-mono)}.footer-head{display:flex;gap:6px;padding:9px 13px;border-bottom:1px dashed var(--term-border);color:var(--quiet);font-size:11px}.footer-head .prompt,.path{color:var(--phosphor)}.footer-grid{display:grid;grid-template-columns:1.45fr .75fr .75fr;gap:0}.footer-grid>div{padding:24px;border-left:1px solid var(--term-border)}.footer-grid>div:first-child{border-left:0}.footer-brand>strong{color:var(--phosphor);font-size:13px}.footer-brand p{max-width:390px;margin:13px 0 16px;color:var(--quiet);line-height:1.65}.status{color:var(--quiet);font-size:10.5px}.status i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--phosphor);box-shadow:0 0 8px var(--phosphor)}.footer-group>strong{display:block;margin-bottom:13px;color:var(--purple-light);font-size:11px}.footer-group nav{display:grid;gap:2px}.footer-group a{display:flex;min-height:32px;align-items:center;color:var(--quiet);font-size:11.5px}.site-footer a:hover{color:var(--phosphor)}.footer-bottom{display:flex;justify-content:space-between;gap:30px;padding:15px 22px 0;border-top:1px solid var(--term-border);color:#a099a8;font-size:10px}.footer-bottom p{max-width:760px;margin:0;line-height:1.6}.footer-bottom p:last-child{flex-shrink:0}.footer-bottom span{color:var(--amber)}@media(max-width:760px){.site-footer{margin-top:52px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div{padding:18px}.footer-brand{grid-column:1/-1;border-left:0!important;border-bottom:1px solid var(--term-border)}.footer-group:nth-child(2){border-left:0}.footer-group a{min-height:44px}.footer-bottom{display:grid;padding:14px 18px 0}}
+.site-footer { margin-top: var(--space-8); padding: var(--space-6) var(--space-5) var(--space-5); background: #121212; color: #d8d7d1; font-size: .92rem; }
+.foot-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: var(--space-5); }
+.foot-mark { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font: 900 1.6rem/1 var(--font-sans); font-stretch: 78%; text-transform: uppercase; }
+.foot-mark b { margin-left: .04em; padding: 0 .08em; background: #ffcf2e; color: #121212; font-weight: 900; }
+.foot-mark:hover { background: none; color: #fff; }
+.foot-brand p { max-width: 36ch; margin: var(--space-3) 0 0; color: #b5b4ad; line-height: 1.5; }
+.foot-col { --rule: #333; }
+.foot-head { display: block; margin-bottom: var(--space-2); padding-top: 8px; border-top: 5px solid var(--dept); color: #fff; font: 850 1.05rem/1 var(--font-sans); font-stretch: 82%; text-transform: uppercase; text-decoration: none; }
+.foot-head:hover { background: none; color: var(--dept); }
+.foot-col ul { margin: 0; padding: 0; list-style: none; }
+.foot-col li { padding: 6px 0; border-bottom: 1px solid #2e2e2e; line-height: 1.3; }
+.foot-col li a { color: #d8d7d1; text-decoration: none; }
+.foot-col li a:hover { background: #ffcf2e; color: #121212; }
+.foot-base { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-5); align-items: baseline; margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px solid #333; color: #9d9c95; font-size: .82rem; }
+.foot-base nav { display: flex; flex-wrap: wrap; gap: 4px var(--space-4); }
+.foot-base nav a { color: #fff; font-weight: 700; text-decoration: none; }
+.foot-base nav a:hover, .foot-privacy:hover { background: #ffcf2e; color: #121212; }
+.foot-privacy { padding: 0; border: 0; background: none; color: #fff; font: 700 .82rem var(--font-sans); cursor: pointer; }
+.foot-base p { margin: 0; }
+.site-footer :focus-visible { box-shadow: 0 0 0 5px #fff; }
+@media (max-width: 1060px) { .foot-grid { grid-template-columns: repeat(2, 1fr); } .foot-brand { grid-column: 1 / -1; } }
+@media (max-width: 760px) {
+  .site-footer { margin-left: calc(var(--page-pad) * -1); margin-right: calc(var(--page-pad) * -1); padding: var(--space-5) var(--page-pad); }
+  .foot-base { grid-template-columns: 1fr; gap: var(--space-2); }
+  .foot-col li { padding: 0; }
+  .foot-col li a { display: block; padding: 10px 0; }
+}
+@media (max-width: 480px) { .foot-grid { grid-template-columns: 1fr; } }
 </style>

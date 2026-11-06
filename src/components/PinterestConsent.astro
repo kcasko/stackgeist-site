@@ -10,7 +10,6 @@
     <button type="button" class="primary" data-pinterest-grant>Allow Pinterest</button>
   </div>
 </div>
-<button class="privacy-settings" type="button" data-pinterest-settings aria-haspopup="dialog">Privacy choices</button>
 
 <script>
   import { readPinterestConsent, writePinterestConsent } from '../scripts/pinterest-consent';
@@ -85,42 +84,21 @@
 
 <style>
   .privacy-panel {
-    position: fixed;
-    z-index: 1000;
-    right: clamp(1rem, 3vw, 2rem);
-    bottom: clamp(1rem, 3vw, 2rem);
-    width: min(34rem, calc(100vw - 2rem));
-    padding: 1rem;
-    border: 1px solid var(--border, #2f3847);
-    border-left: 4px solid var(--accent, #9bea4d);
-    background: #10151d;
-    color: #e8edf3;
-    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 45%);
+    position: fixed; z-index: 1000; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem);
+    width: min(32rem, calc(100vw - 2rem)); padding: 1rem 1.1rem;
+    border: 3px solid var(--ink); background: var(--surface); color: var(--ink);
+    box-shadow: 8px 8px 0 var(--geist);
   }
   .privacy-panel[hidden] { display: none; }
-  .privacy-kicker { margin: 0 0 .35rem; color: #9bea4d; font: 700 .7rem/1.2 ui-monospace, monospace; letter-spacing: .12em; }
-  .privacy-panel h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
-  .privacy-panel p { margin: 0; color: #b7c0cc; line-height: 1.55; }
-  .privacy-panel a { display: inline-block; margin-top: .6rem; color: #b9e884; }
+  .privacy-kicker { margin: 0 0 .35rem; color: var(--ink-3); font: 800 .7rem/1.2 var(--font-sans); font-stretch: var(--expanded); letter-spacing: .06em; }
+  .privacy-panel h2 { margin: 0 0 .4rem; font: 850 1.35rem/1.05 var(--font-sans); font-stretch: var(--condensed); }
+  .privacy-panel p { margin: 0; color: var(--ink-2); font-size: .95rem; line-height: 1.5; }
+  .privacy-panel a { display: inline-block; margin-top: .5rem; }
   .privacy-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
-  .privacy-actions button, .privacy-settings {
-    border: 1px solid #596474;
-    background: #171e28;
-    color: #e8edf3;
-    font: 700 .76rem/1 ui-monospace, monospace;
-    letter-spacing: .03em;
-    cursor: pointer;
+  .privacy-actions button {
+    min-height: 44px; padding: 0 1rem; border: 2px solid var(--ink); border-radius: 0;
+    background: var(--surface); color: var(--ink); font: 750 .82rem/1 var(--font-sans); font-stretch: var(--expanded); cursor: pointer;
   }
-  .privacy-actions button { padding: .7rem .9rem; }
-  .privacy-actions button.primary { border-color: #9bea4d; background: #9bea4d; color: #0b100f; }
-  .privacy-actions button:focus-visible, .privacy-settings:focus-visible { outline: 2px solid #f0c84b; outline-offset: 3px; }
-  .privacy-settings {
-    position: fixed;
-    z-index: 999;
-    left: .75rem;
-    bottom: .75rem;
-    padding: .5rem .65rem;
-    opacity: .78;
-  }
-  .privacy-settings:hover { opacity: 1; }
+  .privacy-actions button:hover { background: var(--surface-2); }
+  .privacy-actions button.primary { background: var(--ink); color: var(--base); }
 </style>

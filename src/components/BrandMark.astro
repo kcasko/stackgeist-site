@@ -1,0 +1,36 @@
+---
+// The Geist: StackGeist's mascot, a pixel ghost whose tail is a cable ending in a plug
+// (the ghost in the machine). Drawn from the grid below so it stays crisp at any size.
+// `tile` puts it on the yellow brand square; `bare` is the ghost alone in currentColor.
+interface Props { size?: number; variant?: 'tile' | 'bare'; class?: string; label?: string }
+const { size = 36, variant = 'tile', class: className, label } = Astro.props;
+const grid = [
+  '...xxxxx.....',
+  '.xxxxxxxxx...',
+  '.xxxxxxxxx...',
+  'xx..xxx..xx..',
+  'xx..xxx..xx..',
+  'xxxxxxxxxxx..',
+  'xxxxxxxxxxx..',
+  '.xxxxxxxxx...',
+  '..xxxxxxx....',
+  '....xxx......',
+  '.....xx...xxx',
+  '......xxxxxx.',
+  '..........xxx',
+];
+const pad = variant === 'tile' ? 2 : 0;
+const w = grid[0].length + pad * 2;
+const h = grid.length + pad * 2;
+const dim = Math.max(w, h);
+const ox = (dim - grid[0].length) / 2;
+const oy = (dim - grid.length) / 2;
+let d = '';
+grid.forEach((row, y) => [...row].forEach((c, x) => { if (c === 'x') d += `M${ox + x} ${oy + y}h1v1h-1z`; }));
+---
+<svg class:list={['brand-mark', `brand-mark--${variant}`, className]} width={size} height={size} viewBox={`0 0 ${dim} ${dim}`}
+  role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false"
+  shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+  {variant === 'tile' && <rect width={dim} height={dim} fill="#ffcf2e" />}
+  <path d={d} fill={variant === 'tile' ? '#121212' : 'currentColor'} />
+</svg>

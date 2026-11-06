@@ -5,11 +5,12 @@ import { test } from 'node:test';
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
 test('shared layouts provide a keyboard skip link and pages expose a named main target', async () => {
-  for (const path of ['src/layouts/Layout.astro', 'src/layouts/ContentLayout.astro']) {
-    assert.match(await read(path), /class="skip-link"/);
-  }
-  assert.match(await read('src/layouts/ContentLayout.astro'), /id="main-content"/);
-  assert.match(await read('src/pages/index.astro'), /id="main-content"/);
+  // One shell provides the skip link and the main target for every page.
+  const shell = await read('src/layouts/Layout.astro');
+  assert.match(shell, /class="skip-link" href="#main-content"/);
+  assert.match(shell, /<main id="main-content"/);
+  assert.match(await read('src/layouts/ContentLayout.astro'), /<Layout /);
+  assert.match(await read('src/pages/index.astro'), /<Layout\s/);
 });
 
 test('homepage has a semantic primary heading', async () => {
@@ -22,12 +23,14 @@ test('interactive mind map is not hidden from assistive technology', async () =>
   assert.match(source, /aria-controls=/);
 });
 
-test('mobile menu exposes state, relationship, and focus-safe close behavior', async () => {
+test('section navigation is always visible and needs no script on mobile', async () => {
+  // The four sections fit one row on phones, so there is no hidden menu to open.
   const source = await read('src/components/Header.astro');
-  assert.match(source, /aria-controls="mobile-menu"/);
-  assert.match(source, /id="mobile-menu"/);
-  assert.match(source, /Close menu/);
-  assert.match(source, /toggle\.focus\(\)/);
+  assert.match(source, /<nav class="mast-nav" aria-label="Sections">/);
+  assert.match(source, /SECTION_ORDER\.map/);
+  assert.match(source, /aria-current=/);
+  assert.doesNotMatch(source, /<script/);
+  assert.doesNotMatch(source, /mast-nav[^}]*display:\s*none/);
 });
 
 test('budget catalog includes search, filtering, status, and section jumps', async () => {
@@ -49,22 +52,26 @@ test('Logitech page uses first-party evidence and puts the retailer link after f
 });
 
 test('content CSS constrains prose and preserves mobile intent context', async () => {
-  const content = await read('src/styles/content.css');
+  const content = await read('src/styles/site.css');
   const map = await read('src/components/MindMap.astro');
-  assert.match(content, /max-width:\s*76ch/);
+  assert.match(content, /--measure:\s*68ch/);
+  assert.match(content, /\.article-body \{[^}]*max-width:\s*var\(--measure\)/);
   assert.doesNotMatch(map, /\.node-intent,\s*\.leaf-note\s*\{\s*display:\s*none/);
 });
 
 test('primary navigation goes to hub pages, not deep-linked children', async () => {
+  // Header and footer both link the department fronts defined in sections.ts.
   const header = await read('src/components/Header.astro');
   const footer = await read('src/components/SiteFooter.astro');
-  assert.match(header, /href:'\/labs\/?'/);
-  assert.match(header, /href:'\/guides\/?'/);
-  assert.doesNotMatch(header, /href:'\/setups\/gaming'/);
-  assert.doesNotMatch(header, /href:'\/guides\/desk-layout-basics'/);
-  assert.doesNotMatch(footer, /href="\/setups\/?"/);
-  assert.match(footer, /href="\/labs\/?"/);
-  assert.match(footer, /href="\/guides\/?"/);
+  const sections = await read('src/data/sections.ts');
+  for (const href of ['/guides/', '/labs/', '/learning/', '/gear/']) assert.match(sections, new RegExp(`href: '${href}'`));
+  assert.match(header, /SECTIONS\[key\]\.href/);
+  assert.match(footer, /SECTIONS\[key\]\.href/);
+  for (const src of [header, footer]) {
+    assert.doesNotMatch(src, /\/setups\/gaming/);
+    assert.doesNotMatch(src, /\/guides\/desk-layout-basics/);
+    assert.doesNotMatch(src, /href="\/setups\/?"/);
+  }
 });
 
 test('setups and guides hub pages exist with h1 and template every setup card', async () => {
