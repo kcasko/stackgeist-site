@@ -1,13 +1,12 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
-import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "WD Elements Portable External Hard Drive", description: "Running out of storage is inevitable if you keep files long enough.", url: 'https://stackgeist.dev/gear/budget-tech/wd-elements-portable-external-hard-drive', image: 'https://m.media-amazon.com/images/I/71LBKkZrvgL._AC_SL1500_.jpg', brand: 'WD' })];
 ---
 <ContentLayout structuredData={__sd} title="WD Elements Portable External Hard Drive | StackGeist" description="Running out of storage is inevitable if you keep files long enough." active="gear" noindex>
   <ProductDetailSimple
-    eyebrow="Worth paying more for"
+    eyebrow="Research pending"
     heading="WD Elements Portable External Hard Drive"
     intro="This listing is retained as a research starting point. StackGeist has not yet completed an authoritative specification and compatibility review for this exact product."
     productName="WD Elements Portable External Hard Drive"
@@ -16,7 +15,7 @@ const __sd = [productSchema({ name: "WD Elements Portable External Hard Drive", 
     imageSourceLabel="Amazon"
     imageSourceUrl="https://www.amazon.com/dp/B07X41PWTY?tag=deskrespawn-20"
     productMeta="Amazon ASIN B07X41PWTY"
-    tags={['Budget tech','Worth paying more for']}
+    tags={['Budget tech','Research pending']}
     why="Technical fit has not yet been source-checked for this exact product."
     tradeoff="No firsthand-use claim or performance recommendation is being made until the evidence review is complete."
     check="Confirm current price and availability before purchase. Product was imported from a short editorial blurb; specs and compatibility have not been individually re-verified."
@@ -28,7 +27,6 @@ const __sd = [productSchema({ name: "WD Elements Portable External Hard Drive", 
     backHref="/gear/budget-tech"
     backLabel="Budget tech"
   />
-  <EvidencePanel status="owned-and-used" reviewed="2026-08-30" sources={[{ label: 'Western Digital Elements Portable specifications', href: 'https://www.westerndigital.com/products/portable-drives/wd-elements-portable-usb-3-0-hdd' }, { label: 'Amazon product identity — ASIN B07X41PWTY', href: 'https://www.amazon.com/dp/B07X41PWTY' }]} />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/wd-elements-not-showing-up"><h3>Drive not showing up?</h3><p>Port, cable, and partition fixes.</p></a></div></section>
 </ContentLayout>

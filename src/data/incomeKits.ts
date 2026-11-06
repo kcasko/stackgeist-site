@@ -37,7 +37,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     description: 'A practical help desk homelab starter kit for learning Windows support, Linux basics, networking, storage, backups, and remote troubleshooting without buying random gear.',
     audience: 'Entry-level IT, WGU, Net+, and cloud-support learners who need hands-on practice at home.',
     promise: 'Build a small lab that teaches support skills instead of collecting noisy hardware trophies.',
-    summary: 'Start with a stable desk, one mini PC or spare machine, removable storage, a USB-C hub, a small switch, and backup power only when the lab stores anything important.',
+    summary: 'Start with a stable desk, one mini PC or spare machine, removable storage, a small switch, and backup power only when the lab stores anything important.',
     download: { title: 'Download the Help Desk Homelab Starter Checklist', href: '/downloads/help-desk-homelab-starter-checklist.pdf', note: 'Printable checklist for building the lab in the right order.' },
     buyingOrder: [
       'Use the computer you already own until it blocks the lab.',

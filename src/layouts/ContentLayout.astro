@@ -26,10 +26,21 @@ const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathna
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <Header active={active} interactive={false} />
-      <main id="main-content" class="content-main" tabindex="-1"><slot />{isEditorialPage && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> {Astro.url.pathname.startsWith('/kits/') ? 'Retailer search items in this kit have not been individually checked.' : 'Technical claims are source-checked; personal use and researched recommendations are kept distinct.'}</span></aside>}<SiteFooter /></main>
+      <main id="main-content" class="content-main" tabindex="-1"><slot />{isEditorialPage && <aside class="editorial-byline" aria-label="Editorial information"><strong>Written and researched by <a href="/about">Keith Casko</a>.</strong> <span> {Astro.url.pathname.startsWith('/kits/') ? 'Retailer search items in this kit have not been individually checked.' : 'Technical claims are source-checked; personal use and researched recommendations are kept distinct.'}</span></aside>}</main>
+      <SiteFooter />
     </div>
     <PinterestConsent />
     <script>import '../scripts/affiliate-attribution';</script>
+    <script>
+      // Let keyboard users scroll code blocks that are wider than the screen.
+      document.querySelectorAll('.content-main pre').forEach((pre) => {
+        if (pre.scrollWidth > pre.clientWidth) {
+          pre.tabIndex = 0;
+          pre.setAttribute('role', 'region');
+          pre.setAttribute('aria-label', 'Code, scrolls sideways');
+        }
+      });
+    </script>
   </body>
 </html>
 

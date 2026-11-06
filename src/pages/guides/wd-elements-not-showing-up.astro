@@ -53,7 +53,7 @@ const __sd = [
       <section><p class="page-kicker">Step 02</p><h2>Separate “not in File Explorer” from “not detected at all.”</h2><p>Open Disk Management with <code>diskmgmt.msc</code>. If the WD drive appears there, Windows sees the physical disk even if File Explorer does not show a drive letter. That moves the diagnosis away from basic USB detection and toward the disk's volume, file system, status, or drive-letter assignment.</p></section>
 
       <section><p class="page-kicker">Step 03</p><h2>If the existing volume is healthy but has no drive letter, assign one.</h2><p>Microsoft documents drive-letter changes in Disk Management. If the correct external disk contains an existing healthy volume with no drive letter, right-click that volume and choose <strong>Change Drive Letter and Paths</strong>. Assign an unused letter. This does not require reformatting the existing volume.</p>
-        <div class="note">Confirm the disk by capacity and existing partitions before changing anything. Do not guess which disk is the external drive.</div>
+        <div class="note note-warn">Confirm the disk by capacity and existing partitions before changing anything. Do not guess which disk is the external drive.</div>
       </section>
 
       <section><p class="page-kicker">Step 04</p><h2>Do not initialize or format an existing drive just because Windows offers it.</h2><p>Microsoft explicitly warns that formatting destroys data on the partition. If a previously used drive appears as RAW, Unallocated, or unexpectedly asks to be initialized, stop before creating a new volume or formatting it if the files matter. Those states can indicate file-system or partition damage rather than an empty drive.</p>

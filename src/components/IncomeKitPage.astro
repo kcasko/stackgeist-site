@@ -1,12 +1,13 @@
 ---
 import NewsletterSignup from './NewsletterSignup.astro';
 import type { IncomeKit, KitItem } from '../data/incomeKits';
+import { isResearchPending } from '../data/researchPending';
 
 const { kit } = Astro.props as { kit: IncomeKit };
 const tierLabel: Record<KitItem['tier'], string> = {
-  'must-have': 'must-have',
-  'nice-next': 'nice-next',
-  'skip-until-needed': 'skip-until-needed',
+  'must-have': 'get first',
+  'nice-next': 'add next',
+  'skip-until-needed': 'skip until needed',
 };
 const isExternal = (href: string) => href.startsWith('http');
 const campaign = `kits_${kit.slug}`;
@@ -56,6 +57,7 @@ const campaign = `kits_${kit.slug}`;
         >
           <span class="kit-tier">{tierLabel[item.tier]}</span>
           {isExternal(item.href) && <span class="kit-research">retailer search · not an exact-product endorsement</span>}
+          {isResearchPending(item.href) && <span class="kit-research">example model · not yet reviewed</span>}
           <h3>{item.label}</h3>
           <p>{isExternal(item.href) ? 'Use this retailer search as a category starting point. The exact products in the results have not been individually source-checked by StackGeist.' : item.role}</p>
           <strong>Check before buying</strong>
