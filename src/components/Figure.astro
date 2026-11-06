@@ -1,0 +1,23 @@
+---
+// A responsive image with reserved dimensions (no layout shift), alt text, and an optional caption.
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { src, alt, width, height, caption, eager = false, class: className } = Astro.props;
+---
+<figure class:list={['sg-figure-img', className]}>
+  <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  {caption && <figcaption>{caption} <span class="sg-figure-label">StackGeist illustration</span></figcaption>}
+</figure>
+<style>
+  .sg-figure-img { margin:28px 0 8px; }
+  .sg-figure-img img { display:block; width:100%; height:auto; border:1px solid var(--term-border); border-radius:8px; background:#0e0a16; }
+  .sg-figure-img figcaption { margin-top:10px; color:var(--quiet); font-size:.875rem; line-height:1.5; }
+  .sg-figure-label { margin-left:6px; color:var(--purple-light); font-family:var(--font-mono); font-size:.6875rem; letter-spacing:.06em; text-transform:uppercase; }
+</style>
