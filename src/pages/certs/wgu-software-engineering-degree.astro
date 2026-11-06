@@ -1,0 +1,151 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'My WGU Software Engineering degree: every course I’ve passed, in order';
+const description = 'A current WGU B.S. Software Engineering student’s real course order, pass dates, term-by-term pace, one retake, and the certifications earned so far. No assessment content.';
+const structuredData = [
+  articleSchema({
+    headline: title,
+    description,
+    url: 'https://stackgeist.dev/certs/wgu-software-engineering-degree/',
+    datePublished: '2026-11-05',
+    dateModified: '2026-11-05',
+  }),
+  faqSchema({ questions: [
+    { question: 'How many courses can you finish in a WGU term?', answer: 'It varies by student and course. In this record, terms ranged from 5 to 9 courses passed, or 16 to 28 competency units, across four six-month terms.' },
+    { question: 'What happens if you fail a WGU objective assessment?', answer: 'In this record, Applied Probability and Statistics (C955) was not passed on 1 June 2025 and passed on 29 July 2025. Retake rules depend on WGU policy and your program mentor, so check with them.' },
+    { question: 'Does the WGU Software Engineering degree include certifications?', answer: 'WGU’s current program page lists AWS Certified Developer – Associate, ITIL 4 Foundation, and WGU front-end, back-end, and full-stack developer certificates. Older program versions may differ, so check your own degree plan.' },
+  ] }),
+];
+
+type Course = { code: string; name: string; cu: number; type: 'Objective' | 'Performance'; date: string; note?: string };
+const terms: { name: string; dates: string; courses: Course[] }[] = [
+  { name: 'Term 1', dates: 'Started November 2024', courses: [
+    { code: 'ORA1', name: 'Orientation', cu: 0, type: 'Performance', date: '15 Nov 2024' },
+    { code: 'D278', name: 'Scripting and Programming – Foundations', cu: 3, type: 'Objective', date: '9 Dec 2024' },
+    { code: 'D335', name: 'Introduction to Programming in Python', cu: 3, type: 'Objective', date: '19 Feb 2025' },
+    { code: 'D370', name: 'IT Leadership Foundations', cu: 3, type: 'Performance', date: '4 Mar 2025' },
+    { code: 'D276', name: 'Web Development Foundations', cu: 3, type: 'Performance', date: '22 Mar 2025' },
+    { code: 'D197', name: 'Version Control', cu: 1, type: 'Performance', date: '25 Mar 2025' },
+    { code: 'D277', name: 'Front-End Web Development', cu: 3, type: 'Performance', date: '1 Apr 2025' },
+  ] },
+  { name: 'Term 2', dates: 'June – November 2025', courses: [
+    { code: 'C955', name: 'Applied Probability and Statistics', cu: 3, type: 'Objective', date: '29 Jul 2025', note: 'Second attempt. First attempt not passed, 1 Jun 2025.' },
+    { code: 'D322', name: 'Introduction to IT', cu: 4, type: 'Objective', date: '23 Aug 2025' },
+    { code: 'C683', name: 'Natural Science Lab', cu: 2, type: 'Performance', date: '1 Sep 2025' },
+    { code: 'C957', name: 'Applied Algebra', cu: 3, type: 'Objective', date: '8 Oct 2025' },
+    { code: 'C949', name: 'Data Structures and Algorithms I', cu: 4, type: 'Objective', date: '27 Dec 2025', note: 'Passed early in Term 3.' },
+  ] },
+  { name: 'Term 3', dates: 'December 2025 – May 2026', courses: [
+    { code: 'D372', name: 'Introduction to Systems Thinking', cu: 3, type: 'Performance', date: '30 Dec 2025' },
+    { code: 'D426', name: 'Data Management – Foundations', cu: 3, type: 'Objective', date: '16 Feb 2026' },
+    { code: 'D427', name: 'Data Management – Applications', cu: 4, type: 'Objective', date: '11 Mar 2026' },
+    { code: 'D280', name: 'JavaScript Programming', cu: 3, type: 'Performance', date: '12 Mar 2026' },
+    { code: 'D333', name: 'Ethics in Technology', cu: 3, type: 'Performance', date: '17 Mar 2026' },
+    { code: 'D315', name: 'Network and Security – Foundations', cu: 3, type: 'Objective', date: '3 Apr 2026' },
+    { code: 'D326', name: 'Advanced Data Management', cu: 3, type: 'Performance', date: '27 Apr 2026' },
+    { code: 'D279', name: 'User Interface Design', cu: 3, type: 'Performance', date: '1 May 2026' },
+    { code: 'D479', name: 'User Experience Design', cu: 3, type: 'Performance', date: '15 May 2026' },
+  ] },
+  { name: 'Term 4', dates: 'June – November 2026 (current)', courses: [
+    { code: 'C458', name: 'Health, Fitness, and Wellness', cu: 4, type: 'Objective', date: '1 Aug 2026' },
+    { code: 'D286', name: 'Java Fundamentals', cu: 3, type: 'Objective', date: '6 Sep 2026' },
+    { code: 'D282', name: 'Cloud Foundations', cu: 3, type: 'Objective', date: '4 Oct 2026' },
+    { code: 'D287', name: 'Java Frameworks', cu: 3, type: 'Performance', date: '4 Oct 2026' },
+    { code: 'D386', name: 'Hardware and Operating Systems Essentials', cu: 3, type: 'Objective', date: '16 Oct 2026' },
+  ] },
+];
+---
+<ContentLayout title="WGU Software Engineering degree: real course order and pace | StackGeist" description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/certs/">Certs</a> / WGU Software Engineering</p>
+    <p class="page-kicker">Student record · updated 5 November 2026</p>
+    <h1 class="page-title">{title}</h1>
+    <p class="page-lead">I’m working through the B.S. Software Engineering at Western Governors University, with completion expected in May 2028. This is my actual course order and the date I passed each one, so you can see a real pace instead of a best-case one.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>From November 2024 to October 2026, I passed 25 courses plus orientation, worth 76 competency units, over four six-month terms. I passed between 5 and 9 courses per term. I failed one exam, Applied Probability and Statistics, and passed it on the second attempt eight weeks later. Business of IT – Project Management (D324) is in progress.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">At a glance</p>
+        <h2>The numbers</h2>
+        <div class="article-cards">
+          <div><strong>Courses</strong><p>25 passed, plus orientation. 13 were objective assessments (exams) and 12 were performance assessments (projects and written tasks).</p></div>
+          <div><strong>Pace by term</strong><p>Term 1: 16 CUs. Term 2: 16 CUs. Term 3: 28 CUs, my fastest. Term 4: 16 CUs so far, with one course in progress.</p></div>
+          <div><strong>Certifications so far</strong><p>AWS Certified Cloud Practitioner and the WGU Front-End Developer certificate, both listed with verification links on <a href="https://casko.dev/" rel="noopener">my portfolio</a>.</p></div>
+        </div>
+      </section>
+
+      {terms.map((term) => (
+        <section>
+          <p class="page-kicker">{term.dates}</p>
+          <h2>{term.name}: {term.courses.reduce((n, c) => n + c.cu, 0)} competency units</h2>
+          <div class="table-scroll" tabindex="0" role="region" aria-label={`${term.name} courses`}>
+            <table class="wgu-table">
+              <thead><tr><th scope="col">Code</th><th scope="col">Course</th><th scope="col">CUs</th><th scope="col">Assessment</th><th scope="col">Passed</th></tr></thead>
+              <tbody>
+                {term.courses.map((c) => (
+                  <tr><th scope="row">{c.code}</th><td>{c.name}{c.note && <span class="wgu-note">{c.note}</span>}</td><td>{c.cu}</td><td>{c.type}</td><td>{c.date}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ))}
+
+      <section>
+        <p class="page-kicker">What the record shows</p>
+        <h2>Three things I’d point out to a new student</h2>
+        <ul class="article-list">
+          <li><strong>Pace isn’t steady, and that’s fine.</strong> Term 3 had 28 CUs, almost double the other terms. It included all three data management courses, one after another.</li>
+          <li><strong>Failing an exam isn’t the end of a course.</strong> I didn’t pass C955 on the first try in June 2025 and passed it at the end of July. The record shows the retake, not a lost term.</li>
+          <li><strong>Courses can carry into the next term.</strong> Data Structures and Algorithms I was part of Term 2, but I passed it in late December, after Term 3 had started.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="page-kicker">Certifications</p>
+        <h2>What the degree includes</h2>
+        <p>WGU’s current Software Engineering program page lists these as included at no additional cost: AWS Certified Developer – Associate, ITIL 4 Foundation, and WGU Front-End, Back-End, and Full-Stack Developer certificates. WGU notes ITIL depends on vendor availability.</p>
+        <p>The course list on WGU’s current page doesn’t match my degree plan exactly. WGU updates its programs over time, so mine may be an older version. Check your own degree plan rather than relying on any student’s list, including this one.</p>
+        <p>For the cloud side, see <a href="/certs/">how AWS Cloud Practitioner compares with the CompTIA certifications</a>.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">What this page won’t include</p>
+        <p>No questions, answers, or task details from WGU assessments, and no copied course materials. WGU’s academic integrity rules prohibit sharing them. StackGeist isn’t affiliated with Western Governors University.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>Putting the coursework to use</h2>
+        <div class="article-cards">
+          <div><strong><a href="/labs/vmware-homelab-hardware/">VMware homelab hardware</a></strong><p>The lab I use alongside the degree, with real specs.</p></div>
+          <div><strong><a href="/labs/active-directory-home-lab/">Active Directory home lab</a></strong><p>Practice the systems side the courses only introduce.</p></div>
+          <div><strong><a href="/certs/">Compare IT certifications</a></strong><p>A+, Network+, Security+, and AWS Cloud Practitioner.</p></div>
+        </div>
+      </section>
+
+      <PartnerOffers ids={['awsPractice']} placement="certs-wgu-software-engineering" />
+
+      <section>
+        <p class="page-kicker">Sources</p>
+        <ol class="article-list">
+          <li>My WGU degree plan, course status as of 5 November 2026.</li>
+          <li><a href="https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html">WGU — B.S. Software Engineering program page</a></li>
+          <li><a href="https://casko.dev/">casko.dev — certifications with verification links</a></li>
+        </ol>
+      </section>
+    </div>
+  </article>
+  <style>
+    .table-scroll{overflow-x:auto;margin:16px 0 4px;border:1px solid var(--term-border)}
+    .wgu-table{width:100%;min-width:620px;border-collapse:collapse;font-size:13px}
+    .wgu-table th,.wgu-table td{padding:10px 12px;border-top:1px solid var(--term-border);text-align:left;color:var(--muted);vertical-align:top}
+    .wgu-table thead th{border-top:0;color:var(--phosphor);font-size:11.5px;font-weight:600}
+    .wgu-table tbody th{color:var(--text);white-space:nowrap}
+    .wgu-note{display:block;margin-top:4px;color:var(--amber,#e8b04b);font-size:12px}
+  </style>
+</ContentLayout>
