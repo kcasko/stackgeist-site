@@ -141,5 +141,5 @@ body[data-design="v2"] .kit-order .article-steps li { grid-template-columns: 42p
 body[data-design="v2"] .kit-order .article-steps strong { display: none; }
 
 /* Card thumbnails and featured images (StackGeist illustration set) */
-body[data-design="v2"] .card-thumb img { display: block; width: 100%; height: auto; margin-bottom: 14px; border: 1px solid var(--term-border); border-radius: 6px; }
+body[data-design="v2"] .card-thumb img { display: block; width: 100%; height: 180px; object-fit: contain; background: #0e0a16; margin-bottom: 14px; border: 1px solid var(--term-border); border-radius: 6px; }
 body[data-design="v2"] .hub-art { display: block; width: 100%; max-width: 640px; height: auto; margin-top: 24px; border: 1px solid var(--term-border); border-radius: 8px; }
