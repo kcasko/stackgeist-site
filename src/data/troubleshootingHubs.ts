@@ -340,6 +340,13 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
         problem: 'The external drive spins, clicks, or disappears from File Explorer.',
       },
       {
+        slug: 'external-ssd-not-showing-up-windows-11',
+        kicker: 'Drive troubleshooting',
+        title: 'External SSD not showing up in Windows 11',
+        desc: 'Initialize only new drives, assign letters, fix Mac formats, and rule out charge-only cables.',
+        problem: 'A new or Mac-formatted SSD lights up but does not appear in File Explorer.',
+      },
+      {
         slug: 'external-drive-says-you-need-to-format-it',
         kicker: 'Data recovery',
         title: 'External drive says you need to format it',
