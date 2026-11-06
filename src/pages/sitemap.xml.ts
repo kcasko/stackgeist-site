@@ -16,7 +16,7 @@ const staticRoutes = Object.keys(pageModules)
     .replace(/\/index\.astro$/, '')
     .replace(/\.astro$/, ''))
   .map((route) => route || '/')
-  .filter((route) => route !== '/404' && !route.includes('['))
+  .filter((route) => route !== '/404' && route !== '/search' && !route.includes('['))
   .filter((route) => !editorialNoindexRoutes.has(route) && !route.startsWith('/gear/budget-tech/compare'));
 
 const dynamicRoutes = [

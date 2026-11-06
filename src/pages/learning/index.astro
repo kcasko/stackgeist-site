@@ -1,0 +1,51 @@
+---
+// Learning department front. Provisional: built so the new navigation has a real
+// destination; it gets the full hub treatment with the other section fronts after review.
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { SECTIONS, TYPE_LABEL, inSection, formatDate } from '../../data/sections';
+
+const reviews = inSection('learning', { types: ['course-review', 'study-log'] });
+const certs = inSection('learning', { types: ['certification'] });
+---
+<ContentLayout section="learning" title="Learning: WGU course reviews and IT certification guides | StackGeist" description="WGU Software Engineering course reviews and degree pace from a current student, plus IT certification comparisons checked against official exam pages.">
+  <p class="breadcrumbs"><a href="/">StackGeist</a> / Learning</p>
+  <p><span class="slab">Learning</span></p>
+  <h1 class="page-title">Courses, certs, and the route into IT.</h1>
+  <p class="page-lead">{SECTIONS.learning.blurb}</p>
+
+  <div class="learn-grid">
+    <section class="learn-block" aria-labelledby="wgu-title">
+      <h2 id="wgu-title" class="learn-head">WGU, from the inside</h2>
+      <p class="learn-note">Firsthand: course reviews and the degree log are written from courses Keith has taken.</p>
+      <ul class="learn-items">
+        {reviews.map((e) => (
+          <li><span class="kicker">{TYPE_LABEL[e.type]}{e.updated && ` · ${formatDate(e.updated)}`}</span><a href={e.href}>{e.title}</a><p>{e.dek}</p></li>
+        ))}
+      </ul>
+    </section>
+    <section class="learn-block" aria-labelledby="cert-title">
+      <h2 id="cert-title" class="learn-head">Certifications</h2>
+      <p class="learn-note">Researched from the official exam pages, not from sitting every exam.</p>
+      <ul class="learn-items">
+        {certs.map((e) => (
+          <li><span class="kicker">{TYPE_LABEL[e.type]}{e.updated && ` · ${formatDate(e.updated)}`}</span><a href={e.href}>{e.title}</a><p>{e.dek}</p></li>
+        ))}
+      </ul>
+      <div class="note">Practising for Network+? The <a href="/labs/network-plus-home-lab/">Network+ home lab</a> covers all five exam domains on free virtual machines.</div>
+    </section>
+  </div>
+</ContentLayout>
+
+<style>
+.learn-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-7); margin-top: var(--space-7); }
+.learn-block { border-top: 8px solid var(--dept); padding-top: var(--space-3); }
+.learn-head { margin: 0; font: 900 clamp(1.8rem, 3vw, 2.4rem)/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
+.learn-note { margin: var(--space-2) 0 var(--space-3); color: var(--ink-3); font-size: .92rem; }
+.learn-items { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+.learn-items li { padding: var(--space-3) 0; border-bottom: 1px solid var(--rule); }
+.learn-items .kicker { display: block; margin-bottom: 2px; }
+.learn-items a { font: 800 1.15rem/1.2 var(--font-sans); font-stretch: 88%; text-decoration: none; }
+.learn-items a:hover { text-decoration: underline; }
+.learn-items p { margin: 4px 0 0; color: var(--ink-2); font-size: .94rem; }
+@media (max-width: 860px) { .learn-grid { grid-template-columns: 1fr; } }
+</style>
