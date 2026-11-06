@@ -372,6 +372,7 @@ figcaption { margin-top: var(--space-2); color: var(--ink-3); font-size: .86rem;
 .product-detail > .product-photo { grid-column: 1; display: flex; flex-direction: column; justify-content: center; margin: 0; padding: var(--space-4); border-right: 2px solid var(--ink); background: #fff !important; }
 .product-detail > .product-photo img { width: 100%; height: clamp(220px, 26vw, 340px); object-fit: contain; filter: none !important; }
 .product-detail > .product-heading { grid-column: 2; align-self: center; padding: var(--space-5); }
+.product-detail:not(:has(> .product-photo)) > .product-heading { grid-column: 1 / -1; }
 .product-heading h2 { margin: 0 0 6px; font: 850 clamp(1.7rem, 3vw, 2.4rem)/1 var(--font-sans) !important; font-stretch: var(--condensed) !important; }
 .product-heading h2::before, .decision-grid strong::before, .skip-block strong::before { content: none !important; display: none !important; }
 .decision-grid p, .skip-block p { color: var(--ink-2) !important; font-size: 1rem !important; line-height: 1.6 !important; }
