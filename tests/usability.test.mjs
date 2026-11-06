@@ -62,7 +62,8 @@ test('primary navigation goes to hub pages, not deep-linked children', async () 
   assert.match(header, /href:'\/guides\/?'/);
   assert.doesNotMatch(header, /href:'\/setups\/gaming'/);
   assert.doesNotMatch(header, /href:'\/guides\/desk-layout-basics'/);
-  assert.match(footer, /href="\/setups\/?"/);
+  assert.doesNotMatch(footer, /href="\/setups\/?"/);
+  assert.match(footer, /href="\/labs\/?"/);
   assert.match(footer, /href="\/guides\/?"/);
 });
 
