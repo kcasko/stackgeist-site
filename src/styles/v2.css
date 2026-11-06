@@ -121,3 +121,21 @@ body[data-design="v2"] .content-main h2 { font-family: var(--font-sans); }
 body[data-design="v2"] .card h3 { font-family: var(--font-sans); font-size: 1.0625rem; letter-spacing: -.01em; }
 body[data-design="v2"] .card p { color: var(--read); font-size: .9688rem; line-height: 1.6; }
 body[data-design="v2"] .article-steps span { color: var(--read); font-size: .9688rem; }
+
+/* Homepage (Layout.astro, main without .content-main). Its styles are page-scoped, hence !important. */
+body[data-design="v2"] main:not(.content-main) :is(h1, h2, h3, p, strong, span, a) { font-family: var(--font-sans) !important; }
+body[data-design="v2"] main:not(.content-main) :is(.hero-eyebrow, .job-eyebrow, .section-kicker, .panel-head, .panel-head *, .cmd, .dollar, .fix-go, .panel-link) { font-family: var(--font-mono) !important; }
+body[data-design="v2"] main:not(.content-main) .hero-simple h1 { letter-spacing: -.03em !important; line-height: 1.08 !important; }
+body[data-design="v2"] main:not(.content-main) .hero-lead { color: var(--read) !important; font-size: 1.1875rem !important; line-height: 1.6 !important; }
+body[data-design="v2"] main:not(.content-main) .fix-link strong { font-size: 1rem !important; }
+body[data-design="v2"] main:not(.content-main) .fix-link span { color: var(--read) !important; font-size: .9375rem !important; }
+@media (max-width: 760px) {
+  body[data-design="v2"] main:not(.content-main) .hero-lead { font-size: 1.0625rem !important; }
+}
+
+/* Kit pages: the summary has its own labelled parts, and buying-order rows don't need an "order" label */
+body[data-design="v2"] .kit-summary::before { content: 'At a glance'; }
+body[data-design="v2"] .kit-summary > strong { display: block; margin: 14px 0 4px; color: var(--phosphor); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+body[data-design="v2"] .kit-summary > strong:first-of-type { margin-top: 0; }
+body[data-design="v2"] .kit-order .article-steps li { grid-template-columns: 42px 1fr; }
+body[data-design="v2"] .kit-order .article-steps strong { display: none; }

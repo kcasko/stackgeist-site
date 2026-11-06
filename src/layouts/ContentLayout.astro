@@ -11,9 +11,9 @@ interface Props {
   active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
-  design?: 'v2';
+  design?: 'v1' | 'v2';
 }
-const { title, description, active, noindex = false, structuredData, design } = Astro.props;
+const { title, description, active, noindex = false, structuredData, design = 'v2' } = Astro.props;
 const isEditorialPage = (['/labs/', '/certs/'].some((prefix) => Astro.url.pathname.startsWith(prefix) && Astro.url.pathname !== prefix)) || (active === 'guides' && Astro.url.pathname.startsWith('/guides/') && Astro.url.pathname !== '/guides/') || (active === 'kits' && Astro.url.pathname.startsWith('/kits/') && Astro.url.pathname !== '/kits/');
 ---
 <!doctype html>

@@ -1,5 +1,6 @@
 ﻿---
 import '../styles/global.css';
+import '../styles/v2.css';
 import SeoHead from '../components/SeoHead.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PinterestConsent from '../components/PinterestConsent.astro';
@@ -18,7 +19,7 @@ const {
     <title>{title}</title>
     <SeoHead title={title} description={description} />
   </head>
-  <body>
+  <body data-design="v2">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <slot />
     <div class="site-shell home-shared-footer"><div class="footer-pad"><SiteFooter /></div></div>
