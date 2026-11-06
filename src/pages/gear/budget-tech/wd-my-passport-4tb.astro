@@ -5,7 +5,7 @@ import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema } from '../../../lib/structured-data';
 // Corrected 2026-11-06: the owned drive is a WD My Passport 4TB. This page previously
 // named it a WD Elements 5TB; the old URL redirects here (public/_redirects).
-const __sd = [productSchema({ name: 'WD My Passport 4TB portable hard drive', description: 'Ownership notes on the WD My Passport 4TB portable hard drive: what it is good for, its tradeoffs, and what to check before relying on it.', url: 'https://stackgeist.dev/gear/budget-tech/wd-my-passport-4tb', brand: 'WD' })];
+const __sd = [productSchema({ name: 'WD My Passport 4TB portable hard drive', description: 'Ownership notes on the WD My Passport 4TB portable hard drive: what it is good for, its tradeoffs, and what to check before relying on it.', url: 'https://stackgeist.dev/gear/budget-tech/wd-my-passport-4tb', brand: 'WD', image: 'https://stackgeist.dev/gear/mfr/wd-my-passport-4tb.webp' })];
 ---
 <ContentLayout structuredData={__sd} title="WD My Passport 4TB portable hard drive: ownership notes | StackGeist" description="Ownership notes on the WD My Passport 4TB portable hard drive: what a portable HDD is good for, its tradeoffs, and what to check before trusting it with backups." active="gear">
   <ProductDetailSimple
@@ -20,6 +20,9 @@ const __sd = [productSchema({ name: 'WD My Passport 4TB portable hard drive', de
     check="A 4 TB drive shows as roughly 3.6 TB in Windows, because Windows counts in binary units. That’s normal. A partition that reports far more space than the drive holds is not normal, and it’s a sign of a damaged partition table. Stop writing to the drive and see the troubleshooting guides below."
     facts="Retailer listings for the 4 TB My Passport describe a USB 3.2 Gen 1/USB 3.0 portable drive with password protection and 256-bit AES hardware encryption, and a 3-year limited warranty. Several My Passport generations exist, so check the model number on your drive’s label and confirm specifications and warranty terms with Western Digital."
     skip="you need fast transfers, or want to run apps or virtual machines from the drive; a portable SSD suits that better. Also skip it as your only copy of important files: one drive is the first copy, not a complete backup plan."
+    imageUrl="/gear/mfr/wd-my-passport-4tb.webp"
+    imageAlt="WD My Passport portable hard drive in black, with the diagonal ridged design"
+    imageCaption="Product image of the WD My Passport, not a photo of the drive Keith owns."
     amazonUrl="https://www.amazon.com/s?k=WD+My+Passport+4TB+portable+hard+drive&tag=deskrespawn-20"
     makerLabel=""
     makerUrl=""

@@ -5,8 +5,8 @@ import { INCOME_KITS, isKitIndexable } from '../../data/incomeKits';
 
 // Evidence labels follow each product page's own EvidencePanel status.
 const products = [
-  { e: entry('/gear/budget-tech/wd-my-passport-4tb/'), kind: 'Portable hard drive', evidence: 'Owned and used', note: 'Owned since January 2026.', fix: { href: '/guides/wd-elements-not-showing-up/', label: 'Not showing up?' } },
-  { e: entry('/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/'), kind: 'Wireless headphones', evidence: 'Owned and used', note: 'Codec support, adaptive noise cancelling, and fit notes.', fix: { href: '/guides/sennheiser-momentum-4-wont-pair/', label: 'Won’t pair?' } },
+  { e: entry('/gear/budget-tech/wd-my-passport-4tb/'), img: '/gear/mfr/wd-my-passport-4tb.webp', kind: 'Portable hard drive', evidence: 'Owned and used', note: 'Owned since January 2026.', fix: { href: '/guides/wd-elements-not-showing-up/', label: 'Not showing up?' } },
+  { e: entry('/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/'), img: '/gear/mfr/sennheiser-momentum-4-black.webp', kind: 'Wireless headphones', evidence: 'Owned and used', note: 'Codec support, adaptive noise cancelling, and fit notes.', fix: { href: '/guides/sennheiser-momentum-4-wont-pair/', label: 'Won’t pair?' } },
   { e: entry('/gear/connectivity/caldigit-ts4/'), img: '/gear/mfr/caldigit-ts4.webp', kind: 'Thunderbolt 4 dock', evidence: 'Researched', fix: { href: '/guides/usb-c-dock-only-one-monitor/', label: 'Dock only showing one monitor?' } },
   { e: entry('/gear/connectivity/anker-553-usb-c-hub/'), img: '/gear/mfr/anker-553-usb-c-hub.webp', kind: 'USB-C hub', evidence: 'Researched', fix: { href: '/guides/usb-c-hub-ethernet-works-hdmi-doesnt/', label: 'Hub HDMI not working?' } },
   { e: entry('/gear/input/logitech-mx-master-3s/'), img: '/gear/mfr/logitech-mx-master-3s.webp', kind: 'Mouse', evidence: 'Researched', fix: { href: '/guides/mx-master-3s-scroll-wheel-not-working/', label: 'Scroll wheel not working?' } },
@@ -58,8 +58,10 @@ const kits = INCOME_KITS.filter(isKitIndexable);
 .product.owned { grid-column: span 3; box-shadow: 6px 6px 0 var(--geist); }
 .product-art { display: grid; place-items: center; height: 200px; padding: var(--space-4); background: #fff; border-bottom: 2px solid var(--ink); }
 .product-art:hover { background: #fff; }
-.product-art img { width: 100%; height: 100%; object-fit: contain; }
-.product.owned .product-art { background: var(--geist); }
+.product-art { overflow: hidden; }
+.product-art img { display: block; width: 100%; height: 168px; object-fit: contain; }
+.product.owned .product-art { background: var(--geist); padding: var(--space-3); }
+.product.owned .product-art img { box-sizing: border-box; height: 176px; background: #fff; border: 2px solid #121212; padding: var(--space-2); }
 .stamp { display: inline-block; padding: 10px 16px; border: 4px solid #121212; color: #121212; font: 900 2rem/.95 var(--font-sans); font-stretch: var(--condensed); text-align: center; text-transform: uppercase; transform: rotate(-4deg); }
 .product-body { display: flex; flex-direction: column; gap: 6px; padding: var(--space-4); }
 .product-body .kicker { margin: 0; }
@@ -87,5 +89,7 @@ const kits = INCOME_KITS.filter(isKitIndexable);
 @media (max-width: 700px) {
   .products, .gear-lower { grid-template-columns: 1fr; }
   .product-art { height: 160px; }
+  .product-art img { height: 128px; }
+  .product.owned .product-art img { height: 136px; }
 }
 </style>
