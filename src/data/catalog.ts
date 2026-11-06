@@ -587,13 +587,13 @@ export const CATALOG: Entry[] = [
     updated: ""
   },
   {
-    href: "/gear/budget-tech/wd-elements-portable-external-hard-drive/",
+    href: "/gear/budget-tech/wd-my-passport-4tb/",
     section: "gear",
     type: "product",
     topic: "products",
-    title: "WD Elements 5TB portable drive",
-    headline: "WD Elements 5TB: notes from owning one.",
-    dek: "Ownership notes on the WD Elements 5TB portable hard drive (WDBU6Y0050BBK): what a large portable HDD is good for, its tradeoffs, and what to check…",
+    title: "WD My Passport 4TB portable drive",
+    headline: "WD My Passport 4TB: notes from owning one.",
+    dek: "Ownership notes on the WD My Passport 4TB portable hard drive: what a portable HDD is good for, its tradeoffs, and what to check before trusting it with backups.",
     updated: ""
   },
   {

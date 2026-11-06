@@ -47,7 +47,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       'Add a UPS when storage, DNS, or self-hosted services matter.'
     ],
     items: [
-      { label: 'WD Elements portable drive', role: 'Offline backups, recovery drills, and large file storage.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'Do not treat one external drive as a full backup plan.' },
+      { label: 'WD My Passport portable drive', role: 'Offline backups, recovery drills, and large file storage.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'Do not treat one external drive as a full backup plan.' },
       { label: 'SABRENT SATA to USB adapter', role: 'Read old laptop drives and practice recovery workflows.', href: '/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', kind: 'internal', tier: 'must-have', check: 'Match SATA vs NVMe before buying an adapter.' },
       { label: 'TP-Link 8-port gigabit switch', role: 'Wire the lab instead of blaming Wi-Fi for every weird failure.', href: search('tp-link tl-sg108 gigabit switch'), kind: 'search', tier: 'must-have', check: 'A basic unmanaged switch is enough for most starter labs.' },
       { label: 'N100 or Ryzen mini PC', role: 'Dedicated host for Linux, Docker, Proxmox, Home Assistant, or test services.', href: search('n100 mini pc 16gb ram 512gb'), kind: 'search', tier: 'nice-next', check: 'Buy low idle wattage before peak benchmark numbers.' },
@@ -248,7 +248,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     buyingOrder: ['Use a spare machine if possible.', 'Make known-good boot media.', 'Back up before wiping drives.', 'Add external storage for ISOs and snapshots.', 'Add a mini PC only if you want a dedicated host.'],
     items: [
       { label: 'SanDisk Ultra Flair USB drive', role: 'Boot media for Linux installers and recovery tools.', href: '/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', kind: 'internal', tier: 'must-have', check: 'Keep one drive reserved for installers.' },
-      { label: 'WD Elements portable drive', role: 'Backups before partition experiments.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'Back up before resizing or wiping partitions.' },
+      { label: 'WD My Passport portable drive', role: 'Backups before partition experiments.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'Back up before resizing or wiping partitions.' },
       { label: 'SABRENT SATA to USB adapter', role: 'Read old drives and recover files from pulled storage.', href: '/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', kind: 'internal', tier: 'nice-next', check: 'SATA only, not NVMe.' },
       { label: 'Used ThinkPad or N100 mini PC', role: 'Dedicated Linux playground.', href: search('used thinkpad linux laptop'), kind: 'search', tier: 'nice-next', check: 'Check Wi-Fi chipset support.' },
       { label: 'USB-C to USB-A adapter', role: 'Keeps older keyboards, mice, and installers usable.', href: '/gear/budget-tech/usb-c-to-usb-a-adapter-2-pack', kind: 'internal', tier: 'skip-until-needed', check: 'Useful when the machine is port-starved.' }
@@ -269,7 +269,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     items: [
       { label: 'N100 16GB mini PC', role: 'Starter virtualization host for Linux services and labs.', href: search('n100 mini pc 16gb ram 512gb'), kind: 'search', tier: 'must-have', check: 'More RAM beats a slightly faster CPU for several VMs.' },
       { label: '64GB RAM mini PC', role: 'Headroom for more VMs and containers.', href: search('mini pc 64gb ram proxmox'), kind: 'search', tier: 'nice-next', check: 'Verify upgradeability before buying.' },
-      { label: 'WD Elements portable drive', role: 'Backups and exported VM images.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'Backups need to live outside the host.' },
+      { label: 'WD My Passport portable drive', role: 'Backups and exported VM images.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'Backups need to live outside the host.' },
       { label: 'TP-Link gigabit switch', role: 'Wired ports for host, NAS, and test machine.', href: search('tp-link tl-sg108 gigabit switch'), kind: 'search', tier: 'nice-next', check: 'Gigabit is enough for starter labs.' },
       { label: 'CyberPower UPS', role: 'Clean shutdown during power dips.', href: search('cyberpower cp1500pfclcd ups'), kind: 'search', tier: 'skip-until-needed', check: 'Buy before the lab stores important data.' }
     ],
@@ -287,7 +287,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     summary: 'The kit is simple: one external drive, one boot USB, one adapter for old drives, one cleaning cloth, and a rule that formatting is never step one.',
     buyingOrder: ['Buy external backup storage.', 'Make boot and recovery media.', 'Add drive adapters.', 'Label storage by purpose.', 'Test restore before trusting the system.'],
     items: [
-      { label: 'WD Elements portable drive', role: 'Main offline backup target.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'One drive is better than nothing, not a full backup strategy.' },
+      { label: 'WD My Passport portable drive', role: 'Main offline backup target.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'One drive is better than nothing, not a full backup strategy.' },
       { label: 'SanDisk Ultra Flair flash drive', role: 'Recovery media and installer USB.', href: '/gear/budget-tech/sandisk-ultra-flair-128gb-usb-3-0-flash-drive', kind: 'internal', tier: 'must-have', check: 'Do not store your only files on the installer drive.' },
       { label: 'SABRENT SATA adapter', role: 'Read files from pulled laptop and desktop drives.', href: '/gear/budget-tech/sabrent-sata-to-usb-adapter-cable', kind: 'internal', tier: 'nice-next', check: 'SATA drives only.' },
       { label: 'SABRENT drive dock', role: 'More comfortable access for multiple bare drives.', href: '/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata', kind: 'internal', tier: 'nice-next', check: 'Check NVMe and SATA support for your drive type.' },
@@ -309,7 +309,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     items: [
       { label: '27 inch 1440p monitor', role: 'Room for docs, console, notes, and labs.', href: search('27 inch 1440p monitor'), kind: 'search', tier: 'must-have', check: 'One good monitor beats cramped dual screens.' },
       { label: 'N100 mini PC', role: 'Linux practice host for services and command-line reps.', href: search('n100 mini pc linux'), kind: 'search', tier: 'nice-next', check: 'Use a VM first if your current machine handles it.' },
-      { label: 'WD Elements portable drive', role: 'Back up notes, projects, and lab exports.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'Cloud accounts are not a substitute for local backups.' },
+      { label: 'WD My Passport portable drive', role: 'Back up notes, projects, and lab exports.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'Cloud accounts are not a substitute for local backups.' },
       { label: 'Logitech C920x webcam', role: 'Cleaner calls and mock interviews.', href: '/gear/budget-tech/logitech-c920x-hd-webcam', kind: 'internal', tier: 'nice-next', check: 'Light and camera height matter first.' },
       { label: 'TP-Link gigabit switch', role: 'Stable lab network when Wi-Fi starts lying.', href: search('tp-link gigabit switch'), kind: 'search', tier: 'skip-until-needed', check: 'Skip if everything is laptop-only.' }
     ],
@@ -328,7 +328,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
     buyingOrder: ['Use VMs before extra hardware.', 'Back up clean snapshots.', 'Add network practice gear.', 'Add wireless adapter practice carefully.', 'Keep unsafe experiments isolated and legal.'],
     items: [
       { label: '64GB RAM workstation or mini PC', role: 'VM headroom for defensive labs.', href: search('mini pc 64gb ram virtualization'), kind: 'search', tier: 'must-have', check: 'RAM matters more than RGB and benchmark bait.' },
-      { label: 'WD Elements portable drive', role: 'Backups and VM exports.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'must-have', check: 'Keep clean snapshots before experiments.' },
+      { label: 'WD My Passport portable drive', role: 'Backups and VM exports.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'must-have', check: 'Keep clean snapshots before experiments.' },
       { label: 'ALFA AC1900 Wi-Fi adapter', role: 'Wireless driver and signal troubleshooting practice.', href: '/gear/budget-tech/alfa-ac1900-long-range-usb-wi-fi-adapter', kind: 'internal', tier: 'nice-next', check: 'Use only on networks you own or are allowed to test.' },
       { label: 'TP-Link gigabit switch', role: 'Small isolated wired practice network.', href: search('tp-link tl-sg108 gigabit switch'), kind: 'search', tier: 'nice-next', check: 'Basic segmentation starts with knowing what is plugged in.' },
       { label: 'Precision screwdriver kit', role: 'Open old PCs safely for drive and RAM swaps.', href: '/gear/budget-tech/140-in-1-precision-screwdriver-repair-kit', kind: 'internal', tier: 'skip-until-needed', check: 'Use the right bit before you strip a laptop screw.' }
@@ -730,7 +730,7 @@ const BASE_INCOME_KITS: IncomeKit[] = [
       { label: 'Samsung EVO Select 512GB', role: 'General microSD storage for handhelds and devices.', href: '/gear/budget-tech/samsung-evo-select-512gb-microsd-card', kind: 'internal', tier: 'must-have', check: 'Match capacity and speed to device support.' },
       { label: 'SanDisk Ultra 128GB two-pack', role: 'Spare cards for cameras, Pi, and transfers.', href: '/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack', kind: 'internal', tier: 'must-have', check: 'Two labeled cards beat one mystery card.' },
       { label: 'USB-C card reader', role: 'Known-good reader for laptops and phones.', href: search('usb c microsd card reader'), kind: 'search', tier: 'nice-next', check: 'Reader failure can mimic card failure.' },
-      { label: 'WD Elements portable drive', role: 'Backup target for card contents.', href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', kind: 'internal', tier: 'nice-next', check: 'Do not keep the only copy on microSD.' },
+      { label: 'WD My Passport portable drive', role: 'Backup target for card contents.', href: '/gear/budget-tech/wd-my-passport-4tb', kind: 'internal', tier: 'nice-next', check: 'Do not keep the only copy on microSD.' },
       { label: 'Card case and labels', role: 'Prevents mystery cards and bent adapters.', href: search('microsd card case labels'), kind: 'search', tier: 'skip-until-needed', check: 'Useful when you own more than two cards.' }
     ],
     related: [{ href: '/guides/microsd-card-not-detected', title: 'microSD card not detected', desc: 'Reader, device, and data-safety triage.' }, { href: '/kits/steam-deck-dock-kit', title: 'Steam Deck dock kit', desc: 'Handheld storage context.' }, { href: '/kits/raspberry-pi-starter-kit', title: 'Raspberry Pi starter kit', desc: 'Pi boot media context.' }],

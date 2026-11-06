@@ -204,7 +204,7 @@ test('featured owned pages do not retain unsupported precision from legacy copy'
     ['acodot-9-in-1-usb-c-hub', [/~87W/i, /gets warm under sustained load/i, /works reliably across firmware/i]],
     ['logitech-c920x-hd-webcam', [/1080p60/i, /answer for 90%/i, /top 20%/i, /1\/4-inch sensor/i]],
     ['sennheiser-momentum-4-wireless-noise-cancelling-headphones', [/within a few dB/i, /20-30 dB/i, /55-65 hours/i, /works reliably across firmware/i]],
-    ['wd-elements-portable-external-hard-drive', [/plug-and-play, reliable/i]],
+    ['wd-my-passport-4tb', [/plug-and-play, reliable/i]],
   ]);
   for (const [slug, patterns] of prohibited) {
     const source = await read(`src/pages/gear/budget-tech/${slug}.astro`);

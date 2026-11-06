@@ -1,0 +1,40 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
+import { productSchema } from '../../../lib/structured-data';
+// Corrected 2026-11-06: the owned drive is a WD My Passport 4TB. This page previously
+// named it a WD Elements 5TB; the old URL redirects here (public/_redirects).
+const __sd = [productSchema({ name: 'WD My Passport 4TB portable hard drive', description: 'Ownership notes on the WD My Passport 4TB portable hard drive: what it is good for, its tradeoffs, and what to check before relying on it.', url: 'https://stackgeist.dev/gear/budget-tech/wd-my-passport-4tb', brand: 'WD' })];
+---
+<ContentLayout structuredData={__sd} title="WD My Passport 4TB portable hard drive: ownership notes | StackGeist" description="Ownership notes on the WD My Passport 4TB portable hard drive: what a portable HDD is good for, its tradeoffs, and what to check before trusting it with backups." active="gear">
+  <ProductDetailSimple
+    eyebrow="Owned since January 2026"
+    heading="WD My Passport 4TB: notes from owning one."
+    intro="I’ve owned this drive since at least January 2026. This page covers what a portable hard drive like this is good for, where it falls short, and what to check before relying on it. I haven’t owned it long enough to judge long-term reliability, so this isn’t a verdict or a buying recommendation."
+    productName="WD My Passport 4TB"
+    productMeta="Portable USB hard drive · 4 TB"
+    tags={['Portable HDD', '4 TB', 'Owned']}
+    why="Plenty of space for bulk storage and backups, where speed matters less than capacity. It’s a single pocket-sized drive you can plug into a laptop for a backup and then unplug."
+    tradeoff="It’s a spinning hard drive, not an SSD. Large copies are slower than on a portable SSD, and hard drives are more sensitive to drops and knocks while running."
+    check="A 4 TB drive shows as roughly 3.6 TB in Windows, because Windows counts in binary units. That’s normal. A partition that reports far more space than the drive holds is not normal, and it’s a sign of a damaged partition table. Stop writing to the drive and see the troubleshooting guides below."
+    facts="Retailer listings for the 4 TB My Passport describe a USB 3.2 Gen 1/USB 3.0 portable drive with password protection and 256-bit AES hardware encryption, and a 3-year limited warranty. Several My Passport generations exist, so check the model number on your drive’s label and confirm specifications and warranty terms with Western Digital."
+    skip="you need fast transfers, or want to run apps or virtual machines from the drive; a portable SSD suits that better. Also skip it as your only copy of important files: one drive is the first copy, not a complete backup plan."
+    amazonUrl="https://www.amazon.com/s?k=WD+My+Passport+4TB+portable+hard+drive&tag=deskrespawn-20"
+    makerLabel=""
+    makerUrl=""
+    backHref="/gear/"
+    backLabel="Gear"
+  />
+  <EvidencePanel status="owned-and-used" reviewed="2026-11-06" sources={[
+    { label: 'Memory Express — 4TB My Passport Portable HDD (encryption listing)', href: 'https://www.memoryexpress.com/Products/MX78691' },
+    { label: 'Micro Center — WD My Passport 4TB (warranty listing)', href: 'https://www.microcenter.com/quickView/611095/wd-my-passport-4tb-usb-32-(gen-1-type-a)-25-portable-external-hard-drive---black' },
+  ]} />
+
+  <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards">
+    <a class="card" href="/guides/external-drive-shows-in-disk-management-not-file-explorer/"><h3>Drive in Disk Management but not File Explorer?</h3><p>Safe checks before you initialize or format anything.</p></a>
+    <a class="card" href="/guides/external-drive-wrong-partition-size/"><h3>Drive shows the wrong size?</h3><p>Partition bigger than the disk, and what to do first.</p></a>
+    <a class="card" href="/guides/external-drive-says-you-need-to-format-it/"><h3>Drive says it needs formatting?</h3><p>Protect your files before clicking Format.</p></a>
+    <a class="card" href="/guides/back-up-windows-pc-before-replacing-drive/"><h3>Back up before replacing a drive</h3><p>Where an external drive fits in a backup routine.</p></a>
+  </div></section>
+</ContentLayout>

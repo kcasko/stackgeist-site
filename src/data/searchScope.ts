@@ -27,7 +27,7 @@ const KEPT_ROUTES = new Set([
   '/setups/home-lab-dev-workstation',
   '/gear/input/logitech-mx-master-3s',
   '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones',
-  '/gear/budget-tech/wd-elements-portable-external-hard-drive',
+  '/gear/budget-tech/wd-my-passport-4tb',
 ]);
 
 const ARCHIVED_ROUTES = new Set(ARCHIVED_GUIDES.map((slug) => `/guides/${slug}`));

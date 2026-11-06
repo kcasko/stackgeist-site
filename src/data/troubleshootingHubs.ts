@@ -397,7 +397,7 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
       },
     ],
     related: [
-      { href: '/gear/budget-tech/wd-elements-portable-external-hard-drive', title: 'WD Elements fit guide', desc: 'Capacity-first external storage notes and when a portable HDD still makes sense.' },
+      { href: '/gear/budget-tech/wd-my-passport-4tb', title: 'WD My Passport 4TB ownership notes', desc: 'Capacity-first external storage notes and when a portable HDD still makes sense.' },
       { href: '/gear/budget-tech/samsung-evo-select-512gb-microsd-card', title: 'Samsung EVO Select microSD', desc: 'microSD card fit notes for handhelds, cameras, Raspberry Pi, and general storage.' },
       { href: '/gear/budget-tech/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb', title: 'Raspberry Pi 5 kit', desc: 'Power, case, cooling, and boot-media fit notes for the Pi 5.' },
     ],
