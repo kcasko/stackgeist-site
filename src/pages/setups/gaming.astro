@@ -86,8 +86,8 @@ const gamingSetups = SETUP_LIST.filter((s) => s.family === 'gaming');
   .matrix-wrap { overflow-x: auto; border: 1px solid var(--term-border); background: var(--term-bg); }
   .matrix { width: 100%; border-collapse: collapse; font-family:var(--font-sans); font-size:.88rem; }
   .matrix th, .matrix td { padding: 12px 14px; border: 1px solid var(--term-border); vertical-align: top; text-align: left; }
-  .matrix thead th { background: rgba(163,230,53,.04); color: var(--phosphor); font-size:.8rem; letter-spacing: .04em; text-transform:none; }
-  .matrix thead th a { color: var(--phosphor); text-decoration: underline dotted; text-underline-offset: 3px; }
+  .matrix thead th { font-size:.8rem; letter-spacing: .04em; text-transform:none; }
+  .matrix thead th a { color: inherit !important; text-decoration-color: var(--geist); text-underline-offset: 3px; }
   .matrix tbody th { color: var(--purple-light); font-weight: 600; }
   .matrix .matrix-link { color: var(--text); text-decoration: underline dotted; text-underline-offset: 3px; text-decoration-color: var(--term-border-strong); }
   .matrix .matrix-link:hover { color: var(--phosphor); text-decoration-color: var(--phosphor); }

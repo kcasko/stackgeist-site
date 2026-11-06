@@ -71,11 +71,17 @@ All of it is built at build time, so nothing shifts on load.
 
 ## Unresolved concerns
 
-1. **The catalog is now the source of truth.** A new page has to be added to `src/data/catalog.ts` before it appears on the fronts, in search, in related links, or in the footer. `src/data/labs.ts` still feeds the RSS feed, so RSS has a second list to keep in step.
-2. **Old pages only got base styling.** About 50 archived gear product pages and the noindexed setups pages inherit the new styling, but their layouts weren't reviewed one by one. They are noindexed. The setups pages still get Pinterest traffic.
-3. **WD product page:** it still hotlinks its product image from `m.media-amazon.com`.
-4. **Retro-desk image:** the pixel ghost on the mug resembles an arcade character.
-5. **Copy:** no content was rewritten or invented in this pass. Phase 8 (content cleanup) is not done, including thin kits and stale configurations.
+1. **The catalog is the single source of truth.** A new page has to be added to `src/data/catalog.ts` to show up on the section fronts, in search, in related links, the footer, and the RSS feed. The RSS feed now reads the catalog too: newest first, with dates. `labs.ts` was removed.
+2. **Archived pages:**
+   - The archived budget-tech product pages and compare pages, and the noindexed setups pages, were spot-checked at desktop and mobile width and pass the contrast check.
+   - They still use their older layouts in the new styling.
+   - The desk-lighting page's product art is dark placeholder-style renders.
+3. **Amazon images:**
+   - The four indexed product pages, plus four archived ones that had local copies, now use self-hosted images.
+   - The WD page shows no retailer image. It's waiting on a real photo.
+   - **20 archived budget-tech pages and the budget-tech catalog still load images from `m.media-amazon.com`.** Removing those images, or self-hosting copies, is a decision about the Amazon Associates image rules. It's left to the owner.
+4. **Content:** the indexed "Home lab / dev workstation" setup lists a gaming chair, a 165 Hz monitor, and a gaming headset. That doesn't match its home-lab topic. No copy was rewritten in this pass, and Phase 8 (content cleanup) is not done.
+5. **Retro-desk image:** the pixel ghost on the mug resembles an arcade character.
 
 ## Deployment readiness
 
