@@ -361,6 +361,13 @@ export const troubleshootingHubs: TroubleshootingHub[] = [
         problem: 'Windows asks to format a drive that has files on it.',
       },
       {
+        slug: 'external-drive-wrong-partition-size',
+        kicker: 'Partition problems',
+        title: 'External drive shows the wrong size',
+        desc: 'Unit math, sector size mismatches, and damaged partition tables, with recovery before repair.',
+        problem: 'A partition claims more space than the drive has, or capacity looks wrong.',
+      },
+      {
         slug: 'recover-deleted-photos-from-sd-card',
         kicker: 'Data recovery',
         title: 'Recover deleted photos from an SD card',

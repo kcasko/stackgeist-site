@@ -1,0 +1,117 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+const __sd = [
+articleSchema({
+  headline: 'External drive shows the wrong size, or a partition bigger than the disk: what it means and what to do.',
+  description: 'Work out whether a wrong partition size is normal unit math, a sector size mismatch from a USB enclosure, or a damaged partition table, then recover files before repairing anything.',
+  url: 'https://stackgeist.dev/guides/external-drive-wrong-partition-size',
+  datePublished: '2026-11-06',
+  dateModified: '2026-11-06'
+}),
+faqSchema({ questions: [
+  { question: 'Why does my 5 TB drive only show 4.5 TB?', answer: 'That is normal. Drive makers count 1 TB as 1,000,000,000,000 bytes, while Windows counts in binary units, so a 5 TB drive shows as roughly 4.5 TB.' },
+  { question: 'Why does a partition show as bigger than the drive?', answer: 'A partition cannot really be larger than the disk it is on, so the partition information is wrong. Common causes are a sector size mismatch after moving the drive to a different USB enclosure or adapter, or a damaged partition table.' },
+  { question: 'Should I let Windows initialize or format the drive?', answer: 'No, not if it holds files you need. Initializing or formatting writes new structures over the old ones. Recover the files first.' },
+  { question: 'Can TestDisk fix a wrong partition size?', answer: 'Often it can find the real partitions and rewrite the partition table. Its Write step changes the disk, so copy your files off first and only write once the listed partitions and files look correct.' },
+] })
+];
+---
+<ContentLayout structuredData={__sd} title="External drive shows wrong size or a partition bigger than the disk | StackGeist" description="External drive showing the wrong capacity, or a partition larger than the disk? Check the size math, sector size, and partition table, and recover files before repairing." active="guides">
+<article class="article-page">
+<p class="breadcrumbs"><a href="/guides/">Guides</a> / Wrong partition size</p>
+<p class="page-kicker">Storage troubleshooting</p>
+<h1 class="page-title">External drive shows the wrong size, or a partition bigger than the disk.</h1>
+<p class="page-lead">Sometimes a “wrong” size is just unit math. But a partition that claims more space than the drive physically has is a real problem: the information describing where your data lives is wrong. The good news is the files are often still there. The order you do things in decides whether they stay that way.</p>
+
+<div class="article-summary"><strong>The short version</strong><p>First rule out unit math: a 5 TB drive normally shows as about 4.5 TB. If a partition claims more than the whole disk, stop writing to the drive and don’t let Windows format or initialize it. Compare the disk and partition sizes. If they’re off by a factor of 8, the drive was probably moved between USB enclosures or adapters, so reconnect it the way it was originally connected. Any other mismatch points to a damaged partition table. Recover the files to another drive first, and repair the partition table last.</p></div>
+
+<div class="article-body">
+<section><p class="page-kicker">Step 01</p><h2>Rule out normal unit math.</h2>
+<p>Drive makers count 1 TB as 1,000,000,000,000 bytes. Windows counts in binary units, so the same drive looks smaller:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Advertised versus Windows capacity">
+<table class="size-table">
+<thead><tr><th scope="col">On the box</th><th scope="col">Windows shows about</th></tr></thead>
+<tbody>
+<tr><th scope="row">1 TB</th><td>931 GB</td></tr>
+<tr><th scope="row">2 TB</th><td>1.82 TB</td></tr>
+<tr><th scope="row">4 TB</th><td>3.64 TB</td></tr>
+<tr><th scope="row">5 TB</th><td>4.55 TB</td></tr>
+</tbody>
+</table>
+</div>
+<p>If your numbers match this table, nothing is wrong. Carry on only if a partition is far bigger or far smaller than the disk it’s on.</p></section>
+
+<section><p class="page-kicker">Step 02</p><h2>Stop writing, and don’t format.</h2>
+<div class="note note-warn"><strong>Warning:</strong> If Windows offers to format or initialize the drive, cancel. Those write new structures over the old ones. Don’t run repair tools yet either. Every write can overwrite information recovery tools need.</div>
+<p>If the drive clicks, disconnects repeatedly, or was dropped, stop here and read <a href="/guides/external-drive-says-you-need-to-format-it/">the format prompt guide</a>, which covers when to send a failing drive to a recovery service.</p></section>
+
+<section><p class="page-kicker">Step 03</p><h2>Compare the disk size with the partition sizes.</h2>
+<p>Open PowerShell as administrator. These commands only read information. Replace <code>2</code> with your drive’s number from <code>Get-Disk</code>:</p>
+<pre><code>Get-Disk | Format-Table Number, FriendlyName, Size, PartitionStyle
+Get-Partition -DiskNumber 2 | Format-Table PartitionNumber, Offset, Size, Type</code></pre>
+<p>Disk Management shows the same picture visually. Write the numbers down before changing anything.</p>
+<div class="article-cards">
+<div><strong>Partition fits inside the disk</strong><p>The layout is plausible. If files are still missing, see <a href="/guides/external-drive-shows-in-disk-management-not-file-explorer/">drive in Disk Management but not File Explorer</a>.</p></div>
+<div><strong>Off by a factor of 8</strong><p>Probably a sector size mismatch. Go to Step 04.</p></div>
+<div><strong>Bigger than the disk, by any other amount</strong><p>Probably a damaged or incorrect partition table. Go to Step 05.</p></div>
+</div></section>
+
+<section><p class="page-kicker">Step 04</p><h2>Off by 8? Check the sector size.</h2>
+<p>Disks address data in sectors, usually 512 or 4096 bytes. Some USB enclosures and adapters present a drive to Windows with 4096-byte sectors, and others with 512. Partitions created under one size look 8 times too big or too small under the other, because 4096 is 8 × 512. This is a pattern widely reported by TestDisk users after moving a drive to a different enclosure or a direct SATA connection.</p>
+<p>If the volume still has a drive letter, check the sector size Windows sees (replace <code>E:</code>):</p>
+<pre><code>fsutil fsinfo sectorinfo E:</code></pre>
+<p><strong>The safest fix:</strong> reconnect the drive the way it was originally connected, in its original enclosure or with its original adapter. If the sizes look right again, copy your files off before changing anything else.</p>
+<p>If the original enclosure is gone, TestDisk lets you change the sector size it assumes when analyzing the disk. Users report that matching it to the original value often reveals the partitions again. Treat that as a recovery step, not a repair. Copy the files off first.</p></section>
+
+<section><p class="page-kicker">Step 05</p><h2>Any other mismatch: the partition table is probably damaged.</h2>
+<p>A partition that claims more space than the disk can hold, by an amount that isn’t a factor of 8, means the partition table itself is wrong. Possible causes include interrupted writes, unsafe removal, cloning problems, or tools that wrote bad information.</p>
+<div class="note"><strong>From my own troubleshooting:</strong> I’ve seen this on a roughly 5 TB external drive whose partition information listed a partition of about 9.1 TB, almost twice the usable capacity. That’s not the factor-of-8 pattern, so the sector size explanation doesn’t fit a case like that.</div></section>
+
+<section><p class="page-kicker">Step 06</p><h2>Recover files before repairing anything.</h2>
+<p>You need a second drive with enough free space for everything you want back.</p>
+<div class="article-cards">
+<div><strong>TestDisk (free)</strong><p>Open-source. It analyzes the disk, searches for lost partitions, and can list the files inside a found partition so you can copy them off. It changes nothing until you choose <strong>Write</strong>.</p></div>
+<div><strong>PhotoRec (free)</strong><p>TestDisk’s companion. If the partition can’t be found, it recovers files by type, reading the drive in read-only mode. Filenames and folders usually aren’t kept.</p></div>
+<div><strong>Paid recovery software</strong><p>Tools such as R-Studio can rebuild folder structures and preview files. Most let you scan before paying.</p></div>
+</div></section>
+
+<section><p class="page-kicker">Step 07</p><h2>Repair the partition table last.</h2>
+<p>Once your files are safely copied and checked, you have two options:</p>
+<ol class="article-list">
+<li><strong>Let TestDisk rewrite the partition table.</strong> Only when its listed partitions are correct and their files open, as TestDisk’s own guide advises. Choose <strong>Write</strong> and confirm.</li>
+<li><strong>Start fresh.</strong> Delete the partitions in Disk Management, create a new volume, and copy your files back.</li>
+</ol>
+<p>Either way, test the drive afterwards by copying a few large files to it and back. If the partition information goes wrong again, stop trusting the drive with your only copies.</p></section>
+
+<section><p class="page-kicker">How this guide was made</p><p>The commands come from Microsoft’s documentation and the recovery steps from TestDisk’s official documentation. The sector size pattern comes from TestDisk user reports, not official vendor documentation. The 9.1 TB example is from my own troubleshooting. I haven’t tested these steps on a damaged drive specifically for this guide.</p></section>
+
+<section><p class="page-kicker">Related</p><h2>If this did not solve it</h2>
+<div class="article-cards">
+<div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>RAW drives, failing hardware, and recovery first.</p></div>
+<div><strong><a href="/guides/external-ssd-not-showing-up-windows-11/">External SSD not showing up</a></strong><p>New drives, Mac formats, and data cables.</p></div>
+<div><strong><a href="/gear/budget-tech/wd-elements-portable-external-hard-drive/">WD Elements 5TB ownership notes</a></strong><p>What a large portable hard drive is good for.</p></div>
+</div></section>
+
+<PartnerOffers ids={['dataRecovery']} placement="guide-external-drive-wrong-partition-size" />
+<section><p class="page-kicker">Sources</p><ol class="article-list">
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-partition">Microsoft Learn — Get-Partition</a></li>
+<li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-fsinfo">Microsoft Learn — fsutil fsinfo (sectorinfo)</a></li>
+<li><a href="https://www.cgsecurity.org/wiki/TestDisk">CGSecurity — TestDisk</a></li>
+<li><a href="https://www.cgsecurity.org/wiki/TestDisk_Step_By_Step">CGSecurity — TestDisk step by step</a></li>
+<li><a href="https://www.cgsecurity.org/wiki/PhotoRec">CGSecurity — PhotoRec</a></li>
+<li><a href="https://forum.cgsecurity.org/phpBB3/viewtopic.php?p=31331">TestDisk forum — recovery from an external drive using 4096-byte sectors (user reports)</a></li>
+</ol></section>
+</div></article>
+<NewsletterSignup variant="inline" />
+<style>
+.table-scroll{overflow-x:auto;margin:16px 0;border:1px solid var(--term-border);border-radius:6px;max-width:520px}
+.size-table{width:100%;border-collapse:collapse;font-size:.9375rem}
+.size-table th,.size-table td{padding:9px 14px;border-top:1px solid var(--term-border);text-align:left;color:var(--read,var(--muted))}
+.size-table thead th{border-top:0;color:var(--phosphor);font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+.size-table tbody th{color:var(--text)}
+</style>
+</ContentLayout>
