@@ -1,25 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';import FixFlow from '../components/illustrations/FixFlow.astro';
+import Layout from '../layouts/Layout.astro';import Header from '../components/Header.astro';import NewsletterSignup from '../components/NewsletterSignup.astro';
 
 const jobs=[
-  {href:'/guides/',eyebrow:'Start here',title:'Fix a problem',note:'USB-C, docks, charging, storage, Bluetooth, Raspberry Pi, and home office hardware, diagnosed step by step.',cta:'Browse fixes →',tone:'primary'},
-  {href:'/labs/',eyebrow:'Build skills',title:'Build a home lab',note:'Active Directory, ticket queues, and AWS projects, documented with verified output and honest limits.',cta:'Browse labs →',tone:'secondary'},
-  {href:'/certs/',eyebrow:'Next step',title:'Choose a certification',note:'A+, Network+, Security+, and AWS Cloud Practitioner compared from official exam pages.',cta:'Compare certs →',tone:'secondary'},
+  {href:'/guides/',img:'/illustrations/category-fixes.svg',eyebrow:'Start here',title:'Fix a problem',note:'USB-C, docks, charging, storage, Bluetooth, Raspberry Pi, and home office hardware, diagnosed step by step.',cta:'Browse fixes →',tone:'primary'},
+  {href:'/labs/',img:'/illustrations/category-labs.svg',eyebrow:'Build skills',title:'Build a home lab',note:'Active Directory, ticket queues, and AWS projects, documented with verified output and honest limits.',cta:'Browse labs →',tone:'secondary'},
+  {href:'/certs/',img:'/illustrations/category-certs.svg',eyebrow:'Next step',title:'Choose a certification',note:'A+, Network+, Security+, and AWS Cloud Practitioner compared from official exam pages.',cta:'Compare certs →',tone:'secondary'},
 ];
 
 const popularFixes=[
-  {href:'/guides/sennheiser-momentum-4-wont-pair/',title:'Sennheiser Momentum 4 won’t pair',note:'Pairing slide, multipoint limits, and a clean reset sequence.'},
-  {href:'/guides/usb-c-dock-only-one-monitor/',title:'USB-C dock only detecting one monitor',note:'MST, DisplayLink, Thunderbolt, host limits, and cable checks.'},
-  {href:'/guides/microsd-card-not-detected/',title:'microSD card not detected',note:'Reader, Disk Management, write protection, and failure checks.'},
-  {href:'/guides/keychron-v6-max-bluetooth-not-connecting/',title:'Keychron V6 Max Bluetooth not connecting',note:'Mode, profile keys, pairing sequence, and reset steps.'},
-  {href:'/guides/gan-charger-not-charging-laptop-full-speed/',title:'GaN charger not charging laptop full speed',note:'Power negotiation and shared-port wattage limits.'},
-  {href:'/guides/external-drive-shows-in-disk-management-not-file-explorer/',title:'Drive in Disk Management but not File Explorer',note:'Safe checks before you format anything.'},
+  {href:'/guides/sennheiser-momentum-4-wont-pair/',img:'/illustrations/topic-wireless.svg',title:'Sennheiser Momentum 4 won’t pair',note:'Pairing slide, multipoint limits, and a clean reset sequence.'},
+  {href:'/guides/usb-c-dock-only-one-monitor/',img:'/illustrations/topic-usb-c-displays.svg',title:'USB-C dock only detecting one monitor',note:'MST, DisplayLink, Thunderbolt, host limits, and cable checks.'},
+  {href:'/guides/microsd-card-not-detected/',img:'/illustrations/topic-storage.svg',title:'microSD card not detected',note:'Reader, Disk Management, write protection, and failure checks.'},
+  {href:'/guides/keychron-v6-max-bluetooth-not-connecting/',img:'/illustrations/topic-wireless.svg',title:'Keychron V6 Max Bluetooth not connecting',note:'Mode, profile keys, pairing sequence, and reset steps.'},
+  {href:'/guides/gan-charger-not-charging-laptop-full-speed/',img:'/illustrations/topic-charging.svg',title:'GaN charger not charging laptop full speed',note:'Power negotiation and shared-port wattage limits.'},
+  {href:'/guides/external-drive-shows-in-disk-management-not-file-explorer/',img:'/illustrations/topic-storage.svg',title:'Drive in Disk Management but not File Explorer',note:'Safe checks before you format anything.'},
 ];
 
 const buildNext=[
-  {href:'/labs/help-desk-practice-without-experience/',title:'Practice help desk work without a job',note:'Simulated incidents, a local ticket queue, and written proof you can show.'},
-  {href:'/labs/active-directory-home-lab/',title:'Active Directory home lab',note:'Four VMs, verified output, and the faults an audit found.'},
-  {href:'/labs/homelab-equipment-for-beginners/',title:'Beginner homelab equipment',note:'What a real six-VM lab needs, what to buy first, and what can wait.'},
+  {href:'/labs/help-desk-practice-without-experience/',img:'/illustrations/topic-help-desk.svg',title:'Practice help desk work without a job',note:'Simulated incidents, a local ticket queue, and written proof you can show.'},
+  {href:'/labs/active-directory-home-lab/',img:'/illustrations/category-labs.svg',title:'Active Directory home lab',note:'Four VMs, verified output, and the faults an audit found.'},
+  {href:'/labs/homelab-equipment-for-beginners/',img:'/illustrations/topic-virtualization.svg',title:'Beginner homelab equipment',note:'What a real six-VM lab needs, what to buy first, and what can wait.'},
 ];
 
 const updated='Updated November 2026';
@@ -28,25 +28,29 @@ const updated='Updated November 2026';
 <div class="site-shell home-shell"><Header interactive={false}/><main id="main-content" tabindex="-1">
 
 <section class="hero-simple" aria-labelledby="home-title">
-  <p class="hero-eyebrow">{updated} · practical fixes · evidence labeled</p>
-  <h1 id="home-title">Fix the problem before you replace the hardware.</h1>
-  <p class="hero-lead">Step-by-step diagnosis tied to manufacturer sources, with what was verified and what wasn’t.</p>
+  <div class="hero-top">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">{updated} · practical fixes · evidence labeled</p>
+      <h1 id="home-title">Fix the problem before you replace the hardware.</h1>
+      <p class="hero-lead">Step-by-step diagnosis tied to manufacturer sources, with what was verified and what wasn’t.</p>
+    </div>
+    <img class="hero-art" src="/illustrations/hero-fix-first.svg" width="1200" height="760" alt="Illustration of a laptop running a diagnostic checklist, connected by USB-C cable to an external drive, with a magnifying glass over the cable" loading="eager" fetchpriority="high" decoding="async" />
+  </div>
   <div class="job-grid">
-    {jobs.map((job)=><a class:list={['job-card',job.tone]} href={job.href}><span class="job-eyebrow">{job.eyebrow}</span><strong>{job.title}</strong><span>{job.note}</span><b>{job.cta}</b></a>)}
+    {jobs.map((job)=><a class:list={['job-card',job.tone]} href={job.href}><img class="job-art" src={job.img} width="800" height="450" alt="" loading="lazy" decoding="async" /><span class="job-eyebrow">{job.eyebrow}</span><strong>{job.title}</strong><span>{job.note}</span><b>{job.cta}</b></a>)}
   </div>
 </section>
-<FixFlow />
 
 <section class="panel fixes-panel" aria-labelledby="fixes-title">
   <header class="panel-head"><span class="dollar">$</span><span id="fixes-title" class="cmd">popular fixes</span><a class="panel-link" href="/guides/">all fixes →</a></header>
-  <div class="fix-grid">{popularFixes.map((fix)=><a class="fix-link" href={fix.href}><strong>{fix.title}</strong><span>{fix.note}</span><span class="fix-go">open fix →</span></a>)}</div>
+  <div class="fix-grid">{popularFixes.map((fix)=><a class="fix-link" href={fix.href}><img class="fix-thumb" src={fix.img} width="640" height="360" alt="" loading="lazy" decoding="async" /><strong>{fix.title}</strong><span>{fix.note}</span><span class="fix-go">open fix →</span></a>)}</div>
 </section>
 
 <section class="plain-section" aria-labelledby="buy-title">
   <p class="section-kicker">Building IT skills?</p>
   <h2 id="buy-title">Practice on real systems.</h2>
   <p class="section-lead">Start with free practice, and buy hardware only when a lab actually needs it.</p>
-  <div class="next-grid">{buildNext.map((item)=><a class="next-card" href={item.href}><strong>{item.title}</strong><span>{item.note}</span><b>open →</b></a>)}</div>
+  <div class="next-grid">{buildNext.map((item)=><a class="next-card" href={item.href}><img class="job-art" src={item.img} width="640" height="360" alt="" loading="lazy" decoding="async" /><strong>{item.title}</strong><span>{item.note}</span><b>open →</b></a>)}</div>
 </section>
 
 
@@ -62,7 +66,7 @@ const updated='Updated November 2026';
 
 <style>
 .home-shell{overflow:visible}.home-shell main{padding-bottom:8px}
-.hero-simple{padding:56px 0 8px;font-family:var(--font-mono)}
+.hero-simple{padding:56px 0 8px;font-family:var(--font-mono)}.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}.hero-art{display:block;width:100%;height:auto;border:1px solid var(--term-border);border-radius:10px}.job-art{display:block;width:100%;height:auto;margin-bottom:6px;border:1px solid var(--term-border);border-radius:6px}.fix-link{grid-template-columns:120px 1fr;column-gap:16px;align-items:start}.fix-thumb{grid-row:1 / span 3;width:120px;height:auto;border:1px solid var(--term-border);border-radius:6px}
 .hero-eyebrow{margin:0 0 12px;color:var(--phosphor);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase}
 .hero-simple h1{max-width:760px;margin:0;color:var(--text);font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em}
 .hero-lead{max-width:700px;margin:18px 0 0;color:var(--muted);font-size:15px;line-height:1.65}
@@ -91,4 +95,8 @@ const updated='Updated November 2026';
 .trust-strip strong{color:var(--phosphor);font-size:12px}.trust-strip span{color:var(--muted);font-size:11.5px;line-height:1.5}
 @media(max-width:900px){.job-grid{grid-template-columns:1fr}.job-card{min-height:0;border-left:0;border-top:1px solid var(--term-border)}.job-card:first-child{border-top:0}.next-grid{grid-template-columns:1fr}.next-card{min-height:0;border-left:0;border-top:1px solid var(--term-border)}.next-card:first-child{border-top:0}}
 @media(max-width:720px){.hero-simple{padding-top:34px}.hero-simple h1{font-size:36px}.hero-lead{font-size:14px}.job-card{padding:20px}.fix-grid{grid-template-columns:1fr}.fix-link:nth-child(n){border-left:0;border-top:1px solid var(--term-border)}.fix-link:first-child{border-top:0}.plain-section{margin-top:46px}.explore-section{display:none}.trust-strip{grid-template-columns:1fr}.trust-strip div{border-left:0;border-top:1px solid var(--term-border)}.trust-strip div:first-child{border-top:0}}
+.fix-link{column-gap:16px}
+.job-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:860px){.hero-top{grid-template-columns:1fr;gap:24px}.hero-art{order:2}.job-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.fix-link{grid-template-columns:84px 1fr}.fix-thumb{width:84px}}
 </style>
