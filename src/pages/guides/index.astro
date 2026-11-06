@@ -9,6 +9,9 @@ const topFixes = [
   { slug: 'gan-charger-not-charging-laptop-full-speed', title: 'GaN charger not charging laptop full speed', desc: 'Find USB PD and shared-port wattage limits.' },
 ];
 
+const groupArt: Record<string, string> = { 'usb-c-displays': 'usb-c-displays', 'charging-power': 'charging', 'storage-boot': 'storage', 'wireless-peripherals': 'wireless', 'home-office-hardware': 'home-office' };
+const fixArt: Record<string, string> = { 'sennheiser-momentum-4-wont-pair': 'wireless', 'usb-c-dock-only-one-monitor': 'usb-c-displays', 'microsd-card-not-detected': 'storage', 'gan-charger-not-charging-laptop-full-speed': 'charging' };
+
 const groups = [
   {
     id: 'usb-c-displays',
@@ -101,14 +104,14 @@ const groups = [
     <h2>Common fixes</h2>
     <div class="cards">
       {topFixes.map((guide) => (
-        <a class="card" href={`/guides/${guide.slug}/`}><h3>{guide.title}</h3><p>{guide.desc}</p></a>
+        <a class="card card-thumb" href={`/guides/${guide.slug}/`}><img src={`/illustrations/topic-${fixArt[guide.slug] ?? 'storage'}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" /><h3>{guide.title}</h3><p>{guide.desc}</p></a>
       ))}
     </div>
   </section>
 
   {groups.map((group) => (
     <section class="content-section" id={group.id}>
-      <h2>{group.title}</h2>
+      <div class="group-head"><img src={`/illustrations/topic-${groupArt[group.id]}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" /><h2>{group.title}</h2></div>
       {group.hub && <p><a href={`/guides/${group.hub}/`}>Not sure which one? Start with the overview →</a></p>}
       <div class="cards">
         {group.guides.map((guide) => (
@@ -128,6 +131,11 @@ const groups = [
 
 
   <style>
+    .group-head { display:grid; grid-template-columns:160px 1fr; gap:20px; align-items:center; margin-bottom:12px; }
+    .group-head img { width:160px; height:auto; border:1px solid var(--term-border); border-radius:6px; }
+    .group-head h2 { margin:0; }
+    .card-thumb img { display:block; width:100%; height:auto; margin-bottom:14px; border:1px solid var(--term-border); border-radius:6px; }
+    @media(max-width:560px){ .group-head { grid-template-columns:96px 1fr; gap:14px; } .group-head img { width:96px; } }
     .fix-jump { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
     .fix-jump a { padding:8px 12px; border:1px solid var(--term-border-strong); font-size:12.5px; }
 

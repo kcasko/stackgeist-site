@@ -1,14 +1,14 @@
 // Labs and certification pages, shared by the labs index and the RSS feed.
-export type ContentLink = { href: string; title: string; note: string };
+export type ContentLink = { href: string; title: string; note: string; img?: string };
 
 export const LABS: ContentLink[] = [
-  { href: '/labs/help-desk-practice-without-experience/', title: 'Practice help desk work without a help desk job', note: 'Where to get real tickets, what to practice, and how to show the work.' },
-  { href: '/labs/active-directory-home-lab/', title: 'Active Directory home lab: what I built and what broke', note: 'Four VMs, verified output, and three faults found during an audit.' },
-  { href: '/labs/homelab-equipment-for-beginners/', title: 'Beginner IT homelab equipment: what you actually need', note: 'What to buy first, what to add later, and what to skip, from a working lab.' },
-  { href: '/labs/network-plus-home-lab/', title: 'Network+ home lab: practice on virtual machines before you buy gear', note: 'Subnets, DHCP, DNS, ports, and firewall rules, with commands from a working lab.' },
-  { href: '/labs/vmware-homelab-hardware/', title: 'What hardware you need for a VMware homelab', note: 'Real RAM, CPU, and storage numbers from a six-VM lab.' },
-  { href: '/labs/osticket-docker-help-desk-lab/', title: 'osTicket help desk lab with Docker Compose', note: 'A local ticket system with captured email and five practice tickets.' },
-  { href: '/labs/aws-cognito-private-crud-fix/', title: 'Fixing anonymous CRUD on an AWS portfolio app', note: 'How a public demo moved to Cognito, JWT authorization, and owner checks.' },
+  { href: '/labs/help-desk-practice-without-experience/', title: 'Practice help desk work without a help desk job', note: 'Where to get real tickets, what to practice, and how to show the work.', img: 'topic-help-desk' },
+  { href: '/labs/active-directory-home-lab/', title: 'Active Directory home lab: what I built and what broke', note: 'Four VMs, verified output, and three faults found during an audit.', img: 'category-labs' },
+  { href: '/labs/homelab-equipment-for-beginners/', title: 'Beginner IT homelab equipment: what you actually need', note: 'What to buy first, what to add later, and what to skip, from a working lab.', img: 'topic-virtualization' },
+  { href: '/labs/network-plus-home-lab/', title: 'Network+ home lab: practice on virtual machines before you buy gear', note: 'Subnets, DHCP, DNS, ports, and firewall rules, with commands from a working lab.', img: 'topic-network' },
+  { href: '/labs/vmware-homelab-hardware/', title: 'What hardware you need for a VMware homelab', note: 'Real RAM, CPU, and storage numbers from a six-VM lab.', img: 'topic-virtualization' },
+  { href: '/labs/osticket-docker-help-desk-lab/', title: 'osTicket help desk lab with Docker Compose', note: 'A local ticket system with captured email and five practice tickets.', img: 'topic-help-desk' },
+  { href: '/labs/aws-cognito-private-crud-fix/', title: 'Fixing anonymous CRUD on an AWS portfolio app', note: 'How a public demo moved to Cognito, JWT authorization, and owner checks.', img: 'diagram-aws-cognito-crud' },
 ];
 
 export const CERT_PAGES: ContentLink[] = [

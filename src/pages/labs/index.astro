@@ -12,7 +12,7 @@ import { LABS as labs } from '../../data/labs';
   <LabTopology />
   <section class="content-section">
     <div class="cards">
-      {labs.map((lab) => <a class="card" href={lab.href}><h2>{lab.title}</h2><p>{lab.note}</p></a>)}
+      {labs.map((lab) => <a class="card card-thumb" href={lab.href}>{lab.img && <img src={`/illustrations/${lab.img}.svg`} width="640" height="360" alt="" loading="lazy" decoding="async" />}<h2>{lab.title}</h2><p>{lab.note}</p></a>)}
     </div>
   </section>
   <section class="content-section">

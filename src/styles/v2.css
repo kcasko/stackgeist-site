@@ -139,3 +139,7 @@ body[data-design="v2"] .kit-summary > strong { display: block; margin: 14px 0 4p
 body[data-design="v2"] .kit-summary > strong:first-of-type { margin-top: 0; }
 body[data-design="v2"] .kit-order .article-steps li { grid-template-columns: 42px 1fr; }
 body[data-design="v2"] .kit-order .article-steps strong { display: none; }
+
+/* Card thumbnails and featured images (StackGeist illustration set) */
+body[data-design="v2"] .card-thumb img { display: block; width: 100%; height: auto; margin-bottom: 14px; border: 1px solid var(--term-border); border-radius: 6px; }
+body[data-design="v2"] .hub-art { display: block; width: 100%; max-width: 640px; height: auto; margin-top: 24px; border: 1px solid var(--term-border); border-radius: 8px; }
