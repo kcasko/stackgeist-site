@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
@@ -29,6 +30,7 @@ faqSchema({questions:[
 <div class="article-summary"><strong>Quick answer</strong><p>Next time it drops, check whether phones and other devices lost Wi-Fi too. If they did, restart the modem and router and look at the router side. If only your PC drops, connect it to your phone’s hotspot for half an hour. If it still drops there, the PC is the problem: update its Wi-Fi driver, forget and rejoin the network, and use the Windows wireless network report to see why it disconnected.</p></div>
 
 <div class="article-body">
+<Figure src="/illustrations/diagram-wifi-router-or-pc.svg" width={960} height={380} alt="Diagram: when Wi-Fi drops, check other devices; if everything drops the router, modem, or provider is likely; if only one PC drops, test it on a phone hotspot and fix the PC side" caption="The first question decides which half of this guide you need." />
 <section><p class="page-kicker">Symptoms</p><h2>What “keeps disconnecting” usually looks like.</h2>
 <ul class="article-list">
 <li>The Wi-Fi icon drops to disconnected, then reconnects a few seconds or minutes later.</li>

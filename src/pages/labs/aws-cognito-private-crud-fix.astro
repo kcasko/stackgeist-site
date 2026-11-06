@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema } from '../../lib/structured-data';
 
@@ -23,6 +24,7 @@ const structuredData = articleSchema({
     <div class="article-summary"><strong>The short version</strong><p>Keep one anonymous read-only route for the demo. Put every private read and every write behind a JWT authorizer. Store an owner ID on each record, and check it in Lambda before any update or delete, because a valid token only proves who the caller is.</p></div>
 
     <div class="article-body">
+<Figure src="/illustrations/diagram-aws-cognito-crud.svg" width={960} height={380} alt="Diagram: a signed-in browser gets a JWT from Cognito, calls API Gateway with a JWT authorizer, which invokes Lambda that checks record ownership before reading DynamoDB" caption="The request path after the fix: no valid token, no Lambda call." />
       <section>
         <p class="page-kicker">Architecture</p>
         <h2>The request path</h2>

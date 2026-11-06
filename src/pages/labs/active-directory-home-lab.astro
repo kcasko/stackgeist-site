@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema } from '../../lib/structured-data';
 
@@ -23,6 +24,7 @@ const structuredData = articleSchema({
     <div class="article-summary"><strong>The short version</strong><p>Four VMs are enough: a domain controller, a file server, a Windows 11 client, and a firewall. The audit found a domain controller using its local clock, a client on the wrong network with a broken trust, and a share with broader access than intended. The first two are fixed. The third is still open and documented below.</p></div>
 
     <div class="article-body">
+<Figure src="/illustrations/diagram-ad-dns-domain-join.svg" width={960} height={400} alt="Diagram: a Windows 11 client using VMware NAT DNS cannot find the domain; pointed at the domain controller DNS at 10.20.30.10 it finds the domain and the join succeeds" caption="Why a domain client needs the domain controller as its DNS server." />
       <section>
         <p class="page-kicker">Topology</p>
         <h2>What is in the lab</h2>

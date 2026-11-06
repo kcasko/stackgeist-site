@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
+import LabTopology from '../../components/illustrations/LabTopology.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
 
 const title = 'What hardware do you need for a VMware homelab? What my six-VM lab actually uses';
@@ -49,6 +50,8 @@ const vms = [
           <div><strong>Storage and software</strong><p>A 4 TB Kingston NVMe SSD, Windows 11, and VMware Workstation 25.</p></div>
         </div>
       </section>
+
+      <LabTopology />
 
       <section>
         <p class="page-kicker">The VMs</p>

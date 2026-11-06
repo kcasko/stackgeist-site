@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
@@ -39,6 +40,7 @@ faqSchema({questions:[
 <div class="article-summary"><strong>The five-minute answer</strong><p>Read the small print on the charger. If it doesn’t list a <strong>20V</strong> output, or its wattage is well below your laptop’s original adapter, that’s the problem. Also check the cable: laptops above 60W need a cable rated for 100W or 240W. Finally, plug into the laptop’s charging port, and unplug other devices from multi-port chargers.</p></div>
 
 <div class="article-body">
+<Figure src="/illustrations/diagram-usb-c-power-delivery.svg" width={960} height={420} alt="Diagram: a USB-C charger offers 5, 9, 15, and 20 volt profiles; the laptop requests 20 volts at 3.25 amps for 65 watts; a 3 amp cable caps 20 volts at 60 watts" caption="How USB Power Delivery works, simplified: the charger offers profiles, the laptop picks one, and the cable sets a ceiling." />
 <section><p class="page-kicker">Why it happens</p><h2>Phones and laptops ask for different power.</h2>
 <p>With USB Power Delivery, the charger tells the device which voltage and current combinations it can supply, and the device picks one. Phones charge happily at 5V or 9V. Most laptops want 15V or 20V, and USB-IF notes that the standard range reaches 100W using 20V with a cable rated for 5A.</p>
 <p>A typical 20W or 25W phone charger may not offer 20V at all. The laptop sees nothing it can use, and doesn’t charge.</p></section>

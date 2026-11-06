@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
 
@@ -38,6 +39,7 @@ const domains = [
     <div class="article-summary"><strong>The short version</strong><p>Start with free virtualization software and two or three VMs. Plan a subnet, run a DNS server, break name resolution and fix it, test ports, and lock a service down with a firewall rule. Those cover all five Network+ domains. Add a basic switch, cables, and a USB Wi-Fi adapter once you want to practice cabling and wireless problems.</p></div>
 
     <div class="article-body">
+<Figure src="/illustrations/diagram-ad-dns-domain-join.svg" width={960} height={400} alt="Diagram: a Windows 11 client using VMware NAT DNS cannot find the domain; pointed at the domain controller DNS at 10.20.30.10 it finds the domain and the join succeeds" caption="Why a domain client needs the domain controller as its DNS server." />
       <section>
         <p class="page-kicker">What the exam covers</p>
         <h2>The five Network+ domains, and how a lab practices each</h2>

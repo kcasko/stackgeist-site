@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
@@ -29,6 +30,7 @@ faqSchema({ questions: [
 <div class="article-summary"><strong>The short version</strong><p>First rule out unit math: a 5 TB drive normally shows as about 4.5 TB. If a partition claims more than the whole disk, stop writing to the drive and don’t let Windows format or initialize it. Compare the disk and partition sizes. If they’re off by a factor of 8, the drive was probably moved between USB enclosures or adapters, so reconnect it the way it was originally connected. Any other mismatch points to a damaged partition table. Recover the files to another drive first, and repair the partition table last.</p></div>
 
 <div class="article-body">
+<Figure src="/illustrations/diagram-recover-then-repair.svg" width={960} height={360} alt="Diagram: four steps in order: stop writing, diagnose, recover files to a different drive, then repair the partition table" caption="The safe order for any drive problem: stop writing, diagnose, recover, and only then repair." />
 <section><p class="page-kicker">Step 01</p><h2>Rule out normal unit math.</h2>
 <p>Drive makers count 1 TB as 1,000,000,000,000 bytes. Windows counts in binary units, so the same drive looks smaller:</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Advertised versus Windows capacity">

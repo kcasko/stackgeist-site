@@ -1,5 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
+import Figure from '../../components/Figure.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
@@ -40,6 +41,7 @@ faqSchema({questions:[
 <div class="article-summary"><strong>The five-minute answer</strong><p>Click <strong>Cancel</strong>. Try a different cable and a USB port directly on the computer. Open Disk Management and check whether the volume shows as RAW. If the drive clicks, disconnects repeatedly, or holds irreplaceable files, stop using it and consider professional recovery. Otherwise, use recovery software to copy the files to a different drive, and only then format it.</p></div>
 
 <div class="article-body">
+<Figure src="/illustrations/diagram-recover-then-repair.svg" width={960} height={360} alt="Diagram: four steps in order: stop writing, diagnose, recover files to a different drive, then repair the partition table" caption="The safe order for any drive problem: stop writing, diagnose, recover, and only then repair." />
 <section><p class="page-kicker">Step 01</p><h2>Cancel the prompt and stop writing to the drive.</h2>
 <p>The prompt reads “You need to format the disk in drive X: before you can use it.” Formatting writes a new, empty file system, which can overwrite the structures recovery tools use to find your files. Cancel it, and don’t save anything new to the drive.</p>
 <div class="note">If the prompt appears every time you plug the drive in, keep cancelling it. It won’t go away until the file system is readable again or the drive is formatted.</div></section>
