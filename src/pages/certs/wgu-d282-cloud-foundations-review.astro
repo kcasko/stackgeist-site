@@ -1,0 +1,125 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'WGU D282 Cloud Foundations and AWS Cloud Practitioner: what I studied and where I was weakest';
+const description = 'A WGU Software Engineering student’s D282 Cloud Foundations review and AWS Certified Cloud Practitioner (CLF-C02) prep: the topics studied, the weaker areas, and how hands-on AWS projects helped.';
+const structuredData = [
+  articleSchema({
+    headline: title,
+    description,
+    url: 'https://stackgeist.dev/certs/wgu-d282-cloud-foundations-review/',
+    datePublished: '2026-11-06',
+    dateModified: '2026-11-06',
+  }),
+  faqSchema({ questions: [
+    { question: 'What does the AWS Cloud Practitioner exam cover?', answer: 'AWS lists four domains for CLF-C02: Cloud Concepts (24%), Security and Compliance (30%), Cloud Technology and Services (34%), and Billing, Pricing, and Support (12%). The exam has 50 scored and 15 unscored questions, with a passing scaled score of 700.' },
+    { question: 'Does hands-on AWS experience help with Cloud Practitioner?', answer: 'It helped me. Building projects with Lambda, DynamoDB, S3, and IAM gave context for the concepts, though the exam itself doesn’t test coding or troubleshooting.' },
+    { question: 'Is the AWS certification part of WGU D282?', answer: 'I passed D282 and earned AWS Certified Cloud Practitioner in the same period in October 2026. Check your own course’s assessment requirements rather than assuming they’re the same thing.' },
+  ] }),
+];
+
+const domains = [
+  { name: 'Cloud Concepts', weight: '24%' },
+  { name: 'Security and Compliance', weight: '30%' },
+  { name: 'Cloud Technology and Services', weight: '34%' },
+  { name: 'Billing, Pricing, and Support', weight: '12%' },
+];
+---
+<ContentLayout title="WGU D282 Cloud Foundations and AWS Cloud Practitioner review | StackGeist" description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/certs/">Certs</a> / <a href="/certs/wgu-software-engineering-degree/">WGU Software Engineering</a> / D282</p>
+    <p class="page-kicker">Course review · passed October 2026 · AWS certified 8 October 2026</p>
+    <h1 class="page-title">WGU D282 Cloud Foundations and AWS Cloud Practitioner: what I studied, and where I was weakest.</h1>
+    <p class="page-lead">I passed D282 in October 2026 and earned AWS Certified Cloud Practitioner on 8 October 2026, in the same stretch. I already had hands-on AWS projects behind me. That helped, but it didn’t cover everything the certification asks.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Hands-on AWS projects gave me context, but certification prep was mostly about telling apart services with similar purposes. My weaker areas were networking, databases, machine learning and AI services, management and governance, migration, analytics, and storage. Practice questions plus targeted review of those areas is what closed the gap.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">The exam, from AWS</p>
+        <h2>What AWS Cloud Practitioner covers</h2>
+        <p>AWS’s exam guide for CLF-C02 lists 50 scored and 15 unscored questions, multiple choice and multiple response, with a passing scaled score of 700 out of 1,000. The guide says coding, architecture design, and troubleshooting are out of scope.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="AWS Cloud Practitioner domains">
+          <table class="lab-table">
+            <thead><tr><th scope="col">Domain</th><th scope="col">Share of scored content</th></tr></thead>
+            <tbody>{domains.map((d) => <tr><th scope="row">{d.name}</th><td>{d.weight}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">What I studied</p>
+        <h2>Topics I covered</h2>
+        <div class="article-cards">
+          <div><strong>Core services</strong><p>Compute, storage, networking, and databases.</p></div>
+          <div><strong>Security</strong><p>Security concepts and IAM.</p></div>
+          <div><strong>Cost and operations</strong><p>Cloud pricing, management and governance, and migration.</p></div>
+          <div><strong>Everything else</strong><p>Analytics, application integration, and choosing the right service for a job.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Where I was weakest</p>
+        <h2>The areas that needed extra work</h2>
+        <ul class="article-list">
+          <li>Networking</li>
+          <li>Databases</li>
+          <li>Machine learning and AI services</li>
+          <li>Management and governance</li>
+          <li>Migration</li>
+          <li>Analytics</li>
+          <li>Storage</li>
+        </ul>
+        <p>For each of these, I used practice questions to find what I was missing, then reviewed that specific area before testing myself again.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Hands-on experience</p>
+        <h2>Where my AWS projects helped, and where they didn’t</h2>
+        <p>I’d already built projects with Lambda, DynamoDB, S3, IAM, and other AWS services. One is <a href="/labs/aws-cognito-private-crud-fix/">a portfolio app I secured with Cognito</a>. That gave real context for the concepts behind those services.</p>
+        <p>What projects didn’t give me was breadth. Certification prep meant learning to distinguish between services with similar purposes, which is what the targeted review was for.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">My takeaway</p>
+        <h2>Build something, then study the map</h2>
+        <p>Hands-on AWS projects made cloud concepts concrete. Certification prep was about learning the whole map, especially the differences between services that sound alike.</p>
+        <p><strong>On D282 and the certification:</strong> I passed D282 and earned the AWS certification in the same period. I haven’t confirmed that one was the assessment for the other, so check your own course requirements.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">About this review</p>
+        <p>My experience as a WGU student, plus exam facts from AWS’s official exam guide. Nothing here comes from an assessment or exam. StackGeist isn’t affiliated with Western Governors University or AWS.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>Keep going</h2>
+        <div class="article-cards">
+          <div><strong><a href="/certs/">Compare IT certifications</a></strong><p>Where Cloud Practitioner fits next to A+, Network+, and Security+.</p></div>
+          <div><strong><a href="/certs/wgu-software-engineering-degree/">Every course in order</a></strong><p>My full course list, pass dates, and pace.</p></div>
+          <div><strong><a href="/certs/wgu-c949-data-structures-and-algorithms-review/">C949 review</a></strong><p>What made it hard, and what finally worked.</p></div>
+        </div>
+      </section>
+
+      <PartnerOffers ids={['awsPractice']} placement="certs-wgu-d282" />
+
+      <section>
+        <p class="page-kicker">Sources</p>
+        <ol class="article-list">
+          <li><a href="https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html">AWS — Certified Cloud Practitioner (CLF-C02) exam guide</a></li>
+          <li>My WGU degree plan and AWS certification record.</li>
+        </ol>
+      </section>
+    </div>
+  </article>
+  <style>
+    .table-scroll{overflow-x:auto;margin:18px 0 16px;border:1px solid var(--term-border);border-radius:6px}
+    .lab-table{width:100%;min-width:420px;border-collapse:collapse;font-size:.9375rem}
+    .lab-table th,.lab-table td{padding:10px 12px;border-top:1px solid var(--term-border);text-align:left;color:var(--read,var(--muted))}
+    .lab-table thead th{border-top:0;color:var(--phosphor);font-size:.75rem;font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase}
+    .lab-table tbody th{color:var(--text)}
+  </style>
+</ContentLayout>

@@ -1,0 +1,77 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'WGU D287 Java Frameworks: working through a Spring Boot project in small, testable steps';
+const description = 'A WGU Software Engineering student’s D287 Java Frameworks review: the Spring Boot inventory project, validation and unit tests, GitLab commits, and why small changes beat trying to understand the whole app at once.';
+const structuredData = [
+  articleSchema({
+    headline: title,
+    description,
+    url: 'https://stackgeist.dev/certs/wgu-d287-java-frameworks-review/',
+    datePublished: '2026-11-06',
+    dateModified: '2026-11-06',
+  }),
+  faqSchema({ questions: [
+    { question: 'What is the D287 project like?', answer: 'In my case it was a Spring Boot inventory application: controllers, templates, input validation, minimum and maximum inventory constraints, unit tests, and GitLab version control.' },
+    { question: 'How should I approach D287?', answer: 'What worked for me was making one small change at a time, testing it, and committing it, instead of trying to understand the whole application before starting.' },
+  ] }),
+];
+---
+<ContentLayout title="WGU D287 Java Frameworks review: Spring Boot project | StackGeist" description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/certs/">Certs</a> / <a href="/certs/wgu-software-engineering-degree/">WGU Software Engineering</a> / D287</p>
+    <p class="page-kicker">Course review · project submitted October 2026</p>
+    <h1 class="page-title">WGU D287 Java Frameworks: work through it in small, testable steps.</h1>
+    <p class="page-lead">D287 is a project course. Mine centered on a Spring Boot inventory application. The thing that made it manageable wasn’t a tutorial. It was refusing to understand the whole app at once.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>Expect to work inside an existing Spring Boot application: controllers, templates, validation, and inventory rules. Make one change, test it, commit it, and move on. By final review, my inventory project had 13 passing unit tests and a GitLab history of completed tasks.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">What the work involved</p>
+        <h2>The projects</h2>
+        <p>I worked with two Java applications: a membership roster project and a Spring Boot inventory application. Between them, the work covered:</p>
+        <div class="article-cards">
+          <div><strong>Java fundamentals</strong><p>Object-oriented programming, encapsulation, classes, and methods.</p></div>
+          <div><strong>Spring Boot</strong><p>Controllers and templates in a working web application.</p></div>
+          <div><strong>Business rules</strong><p>Input validation, plus minimum and maximum inventory constraints.</p></div>
+          <div><strong>Testing</strong><p>Unit tests for the validation changes. 13 were passing at final review.</p></div>
+          <div><strong>Version control</strong><p>GitLab, with a commit for each completed task.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">What worked</p>
+        <h2>Small changes, tested and committed</h2>
+        <ol class="article-steps">
+          <li><strong>Change one thing</strong><span>Pick a single task and make only that change.</span></li>
+          <li><strong>Test it</strong><span>Check the behavior, and add or run unit tests for validation logic.</span></li>
+          <li><strong>Commit it</strong><span>Commit each completed task to GitLab, so there’s always a working point to return to.</span></li>
+          <li><strong>Repeat</strong><span>Move to the next task only once the last one works.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <p class="page-kicker">My takeaway</p>
+        <h2>You don’t need to understand everything up front</h2>
+        <p>Working directly with functioning code and making small, testable changes was far more manageable than trying to understand the entire application at once.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">About this review</p>
+        <p>This is my own experience as a WGU student, not official course information. Project requirements change, so follow your current task instructions. Nothing here reproduces assessment content, and StackGeist isn’t affiliated with Western Governors University.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>More from the degree</h2>
+        <div class="article-cards">
+          <div><strong><a href="/certs/wgu-software-engineering-degree/">Every course in order</a></strong><p>My full course list, pass dates, and pace.</p></div>
+          <div><strong><a href="/certs/wgu-c949-data-structures-and-algorithms-review/">C949 Data Structures and Algorithms</a></strong><p>What made it hard, and what finally worked.</p></div>
+          <div><strong><a href="/certs/wgu-d282-cloud-foundations-review/">D282 and AWS Cloud Practitioner</a></strong><p>How hands-on projects helped with cloud concepts.</p></div>
+        </div>
+      </section>
+    </div>
+  </article>
+</ContentLayout>

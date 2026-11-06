@@ -4,7 +4,7 @@ import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, faqSchema } from '../../lib/structured-data';
 
 const title = 'My WGU Software Engineering degree: every course I’ve passed, in order';
-const description = 'A current WGU B.S. Software Engineering student’s real course order, pass dates, term-by-term pace, one retake, and the certifications earned so far. No assessment content.';
+const description = 'A current WGU B.S. Software Engineering student’s real course order, pass dates, term-by-term pace, two courses that took more than one attempt, and the certifications earned so far. No assessment content.';
 const structuredData = [
   articleSchema({
     headline: title,
@@ -20,7 +20,7 @@ const structuredData = [
   ] }),
 ];
 
-type Course = { code: string; name: string; cu: number; type: 'Objective' | 'Performance'; date: string; note?: string };
+type Course = { code: string; name: string; cu: number; type: 'Objective' | 'Performance'; date: string; note?: string; review?: string };
 const terms: { name: string; dates: string; courses: Course[] }[] = [
   { name: 'Term 1', dates: 'Started November 2024', courses: [
     { code: 'ORA1', name: 'Orientation', cu: 0, type: 'Performance', date: '15 Nov 2024' },
@@ -32,11 +32,11 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
     { code: 'D277', name: 'Front-End Web Development', cu: 3, type: 'Performance', date: '1 Apr 2025' },
   ] },
   { name: 'Term 2', dates: 'June – November 2025', courses: [
-    { code: 'C955', name: 'Applied Probability and Statistics', cu: 3, type: 'Objective', date: '29 Jul 2025', note: 'Second attempt. First attempt not passed, 1 Jun 2025.' },
+    { code: 'C955', name: 'Applied Probability and Statistics', cu: 3, type: 'Objective', date: '29 Jul 2025', note: 'Not passed on the first attempt (1 Jun 2025).' },
     { code: 'D322', name: 'Introduction to IT', cu: 4, type: 'Objective', date: '23 Aug 2025' },
     { code: 'C683', name: 'Natural Science Lab', cu: 2, type: 'Performance', date: '1 Sep 2025' },
     { code: 'C957', name: 'Applied Algebra', cu: 3, type: 'Objective', date: '8 Oct 2025' },
-    { code: 'C949', name: 'Data Structures and Algorithms I', cu: 4, type: 'Objective', date: '27 Dec 2025', note: 'Passed early in Term 3.' },
+    { code: 'C949', name: 'Data Structures and Algorithms I', cu: 4, type: 'Objective', date: '27 Dec 2025', note: 'Took more than one attempt. Passed early in Term 3.', review: '/certs/wgu-c949-data-structures-and-algorithms-review/' },
   ] },
   { name: 'Term 3', dates: 'December 2025 – May 2026', courses: [
     { code: 'D372', name: 'Introduction to Systems Thinking', cu: 3, type: 'Performance', date: '30 Dec 2025' },
@@ -52,8 +52,8 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
   { name: 'Term 4', dates: 'June – November 2026 (current)', courses: [
     { code: 'C458', name: 'Health, Fitness, and Wellness', cu: 4, type: 'Objective', date: '1 Aug 2026' },
     { code: 'D286', name: 'Java Fundamentals', cu: 3, type: 'Objective', date: '6 Sep 2026' },
-    { code: 'D282', name: 'Cloud Foundations', cu: 3, type: 'Objective', date: '4 Oct 2026' },
-    { code: 'D287', name: 'Java Frameworks', cu: 3, type: 'Performance', date: '4 Oct 2026' },
+    { code: 'D282', name: 'Cloud Foundations', cu: 3, type: 'Objective', date: '4 Oct 2026', note: 'Earned AWS Certified Cloud Practitioner on 8 Oct 2026, in the same period.', review: '/certs/wgu-d282-cloud-foundations-review/' },
+    { code: 'D287', name: 'Java Frameworks', cu: 3, type: 'Performance', date: '4 Oct 2026', review: '/certs/wgu-d287-java-frameworks-review/' },
     { code: 'D386', name: 'Hardware and Operating Systems Essentials', cu: 3, type: 'Objective', date: '16 Oct 2026' },
   ] },
 ];
@@ -65,7 +65,7 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
     <h1 class="page-title">{title}</h1>
     <p class="page-lead">I’m working through the B.S. Software Engineering at Western Governors University, with completion expected in May 2028. This is my actual course order and the date I passed each one, so you can see a real pace instead of a best-case one.</p>
 
-    <div class="article-summary"><strong>The short version</strong><p>From November 2024 to October 2026, I passed 25 courses plus orientation, worth 76 competency units, over four six-month terms. I passed between 5 and 9 courses per term. I failed one exam, Applied Probability and Statistics, and passed it on the second attempt eight weeks later. Business of IT – Project Management (D324) is in progress.</p></div>
+    <div class="article-summary"><strong>The short version</strong><p>From November 2024 to October 2026, I passed 25 courses plus orientation, worth 76 competency units, over four six-month terms. I passed between 5 and 9 courses per term. Two courses took more than one attempt: Applied Probability and Statistics (C955) and Data Structures and Algorithms I (C949). Business of IT – Project Management (D324) is in progress.</p></div>
 
     <div class="article-body">
       <section>
@@ -74,7 +74,17 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
         <div class="article-cards">
           <div><strong>Courses</strong><p>25 passed, plus orientation. 13 were objective assessments (exams) and 12 were performance assessments (projects and written tasks).</p></div>
           <div><strong>Pace by term</strong><p>Term 1: 16 CUs. Term 2: 16 CUs. Term 3: 28 CUs, my fastest. Term 4: 16 CUs so far, with one course in progress.</p></div>
-          <div><strong>Certifications so far</strong><p>AWS Certified Cloud Practitioner and the WGU Front-End Developer certificate, both listed with verification links on <a href="https://casko.dev/" rel="noopener">my portfolio</a>.</p></div>
+          <div><strong>Certifications so far</strong><p>AWS Certified Cloud Practitioner (8 October 2026) and the WGU Front-End Developer certificate, both listed with verification links on <a href="https://casko.dev/" rel="noopener">my portfolio</a>.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <p class="page-kicker">Course reviews</p>
+        <h2>The courses I’ve written up</h2>
+        <div class="article-cards">
+          <div><strong><a href="/certs/wgu-c949-data-structures-and-algorithms-review/">C949 Data Structures and Algorithms I</a></strong><p>What made it hard, and what finally worked after multiple attempts.</p></div>
+          <div><strong><a href="/certs/wgu-d287-java-frameworks-review/">D287 Java Frameworks</a></strong><p>A Spring Boot project, worked through in small, testable steps.</p></div>
+          <div><strong><a href="/certs/wgu-d282-cloud-foundations-review/">D282 Cloud Foundations</a></strong><p>Plus AWS Cloud Practitioner prep, and where I was weakest.</p></div>
         </div>
       </section>
 
@@ -87,7 +97,7 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
               <thead><tr><th scope="col">Code</th><th scope="col">Course</th><th scope="col">CUs</th><th scope="col">Assessment</th><th scope="col">Passed</th></tr></thead>
               <tbody>
                 {term.courses.map((c) => (
-                  <tr><th scope="row">{c.code}</th><td>{c.name}{c.note && <span class="wgu-note">{c.note}</span>}</td><td>{c.cu}</td><td>{c.type}</td><td>{c.date}</td></tr>
+                  <tr><th scope="row">{c.review ? <a href={c.review}>{c.code}</a> : c.code}</th><td>{c.name}{c.note && <span class="wgu-note">{c.note}</span>}</td><td>{c.cu}</td><td>{c.type}</td><td>{c.date}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -100,7 +110,7 @@ const terms: { name: string; dates: string; courses: Course[] }[] = [
         <h2>Three things I’d point out to a new student</h2>
         <ul class="article-list">
           <li><strong>Pace isn’t steady, and that’s fine.</strong> Term 3 had 28 CUs, almost double the other terms. It included all three data management courses, one after another.</li>
-          <li><strong>Failing an exam isn’t the end of a course.</strong> I didn’t pass C955 on the first try in June 2025 and passed it at the end of July. The record shows the retake, not a lost term.</li>
+          <li><strong>Failing an exam isn’t the end of a course.</strong> I didn’t pass C955 on the first try in June 2025 and passed it at the end of July. C949 took several attempts before I passed in December 2025. Neither cost me a term.</li>
           <li><strong>Courses can carry into the next term.</strong> Data Structures and Algorithms I was part of Term 2, but I passed it in late December, after Term 3 had started.</li>
         </ul>
       </section>

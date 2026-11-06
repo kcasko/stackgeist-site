@@ -1,0 +1,87 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema, faqSchema } from '../../lib/structured-data';
+
+const title = 'WGU C949 Data Structures and Algorithms I: what made it hard, and what finally worked';
+const description = 'A WGU Software Engineering student’s honest C949 review: the topics that caused trouble, multiple failed objective assessment attempts, and the study changes that led to passing in December 2025.';
+const structuredData = [
+  articleSchema({
+    headline: title,
+    description,
+    url: 'https://stackgeist.dev/certs/wgu-c949-data-structures-and-algorithms-review/',
+    datePublished: '2026-11-06',
+    dateModified: '2026-11-06',
+  }),
+  faqSchema({ questions: [
+    { question: 'Is WGU C949 hard?', answer: 'It was one of the more challenging courses in my degree. I needed multiple objective assessment attempts before passing in December 2025. Difficulty varies by student, especially with prior programming or math experience.' },
+    { question: 'Is C949 about Python?', answer: 'Not mainly, in my experience. The course was about how data structures and algorithms behave, not about memorizing syntax.' },
+    { question: 'What helped with C949?', answer: 'For me: breaking concepts into small pieces, practicing tracing algorithms by hand, visual explanations from outside resources, reviewing specific weak areas, and targeted practice quizzes.' },
+  ] }),
+];
+---
+<ContentLayout title="WGU C949 Data Structures and Algorithms I review | StackGeist" description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/certs/">Certs</a> / <a href="/certs/wgu-software-engineering-degree/">WGU Software Engineering</a> / C949</p>
+    <p class="page-kicker">Course review · passed 27 December 2025</p>
+    <h1 class="page-title">WGU C949 Data Structures and Algorithms I: what made it hard, and what finally worked.</h1>
+    <p class="page-lead">C949 was one of the harder courses in my B.S. Software Engineering degree. I didn’t pass the objective assessment on my first attempts. Here’s where I got stuck, what I changed, and what I’d tell someone starting it now.</p>
+
+    <div class="article-summary"><strong>The short version</strong><p>C949 tests whether you understand how data structures and algorithms behave, not whether you can write Python. I struggled with sorting algorithms and their time complexities, Big-O, hash tables, balanced trees, and graph algorithms. What worked was breaking each topic down, tracing algorithms by hand, using visual explanations, and drilling my specific weak areas with practice quizzes. I passed in December 2025 after multiple unsuccessful attempts.</p></div>
+
+    <div class="article-body">
+      <section>
+        <p class="page-kicker">Where I struggled</p>
+        <h2>The topics that caused the most trouble</h2>
+        <ul class="article-list">
+          <li><strong>Sorting algorithms.</strong> Recognizing which sort I was looking at, and remembering each one’s time complexity.</li>
+          <li><strong>Big-O in context.</strong> Connecting Big-O notation to actual data structures and the cost of specific operations on them.</li>
+          <li><strong>Dictionaries and hash tables, balanced trees, and graph algorithms.</strong> These took far longer than everything else.</li>
+          <li><strong>Tracing unfamiliar algorithms.</strong> Working out what a piece of code would do, step by step, when I hadn’t seen it before.</li>
+          <li><strong>Choosing a data structure.</strong> Recognizing which one fit a particular problem best.</li>
+        </ul>
+        <p>Stacks, queues, and basic lists were my stronger areas. If those come easily to you too, don’t assume the rest will.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">What didn’t work for me</p>
+        <h2>The course text alone wasn’t enough</h2>
+        <p>I struggled with the zyBooks material. I needed alternative explanations that presented the concepts more clearly, and it took multiple objective assessment attempts before I passed.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">What worked</p>
+        <h2>The changes that got me through</h2>
+        <ol class="article-steps">
+          <li><strong>Break it down</strong><span>One concept at a time, instead of reading whole chapters and hoping it stuck.</span></li>
+          <li><strong>Trace by hand</strong><span>Practice walking through algorithms on paper until predicting the output became routine.</span></li>
+          <li><strong>Use visual explanations</strong><span>Outside resources that animate or diagram what a structure is doing helped more than text alone.</span></li>
+          <li><strong>Target weak areas</strong><span>Review the specific topics I kept missing, rather than everything equally.</span></li>
+          <li><strong>Targeted practice quizzes</strong><span>Short quizzes on one weak topic at a time, to check whether the review had actually worked.</span></li>
+        </ol>
+        <p>Alongside zyBooks I used the instructor cohort material and outside educational resources.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">My takeaway</p>
+        <h2>Understand the behavior, not the syntax</h2>
+        <p>This course required understanding how algorithms and data structures behave, not memorizing Python syntax. If you’re failing practice questions, check whether you can explain <em>why</em> an answer is right. That was usually where my gap was.</p>
+        <p>Failing the assessment more than once didn’t end the course. It told me which topics I hadn’t actually learned yet.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">About this review</p>
+        <p>This is my own experience as a WGU student, not official course information. Courses change, so check your current course materials and your instructors. Nothing here comes from the assessment itself, and StackGeist isn’t affiliated with Western Governors University.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Related</p>
+        <h2>More from the degree</h2>
+        <div class="article-cards">
+          <div><strong><a href="/certs/wgu-software-engineering-degree/">Every course in order</a></strong><p>My full course list, pass dates, and pace.</p></div>
+          <div><strong><a href="/certs/wgu-d287-java-frameworks-review/">D287 Java Frameworks</a></strong><p>Working through a Spring Boot project in small steps.</p></div>
+          <div><strong><a href="/certs/wgu-d282-cloud-foundations-review/">D282 and AWS Cloud Practitioner</a></strong><p>How hands-on projects helped with cloud concepts.</p></div>
+        </div>
+      </section>
+    </div>
+  </article>
+</ContentLayout>

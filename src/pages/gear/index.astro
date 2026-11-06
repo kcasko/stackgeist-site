@@ -5,6 +5,7 @@ const products = [
   { href: '/gear/connectivity/caldigit-ts4/', img: '/gear/caldigit-ts4.jpg', alt: 'CalDigit TS4 Thunderbolt 4 dock', kicker: 'Thunderbolt dock', title: 'CalDigit TS4', desc: 'An 18-port Thunderbolt desk dock for hosts that can actually use its displays, bandwidth, and 98W charging.', tags: ['ASIN matched', 'Thunderbolt 4'], fix: { href: '/guides/usb-c-dock-only-one-monitor/', label: 'Dock only showing one monitor?' } },
   { href: '/gear/connectivity/anker-553-usb-c-hub/', img: '/gear/anker-553-usb-c-hub.jpg', alt: 'Anker 553 eight-in-one USB-C hub', kicker: 'USB-C hub', title: 'Anker 553 8-in-1 USB-C hub', desc: 'Add HDMI, Ethernet, USB, and card readers to a compatible laptop. Host-port and operating-system limits matter.', tags: ['Source-checked', 'Dual HDMI'], fix: { href: '/guides/usb-c-hub-ethernet-works-hdmi-doesnt/', label: 'Hub HDMI not working?' } },
   { href: '/gear/input/logitech-mx-master-3s/', img: '/gear/logitech-mx-master-3s.png', alt: 'Logitech MX Master 3S mouse', kicker: 'Mouse', title: 'Logitech MX Master 3S', desc: 'Workflow controls for right-handed desk work. Check hand fit, mass, receiver needs, and software policy.', tags: ['ASIN matched', 'Right-handed'], fix: { href: '/guides/mx-master-3s-scroll-wheel-not-working/', label: 'Scroll wheel not working?' } },
+  { href: '/gear/budget-tech/wd-elements-portable-external-hard-drive/', img: 'https://m.media-amazon.com/images/I/71LBKkZrvgL._AC_SL1500_.jpg', alt: 'WD Elements Portable external hard drive', kicker: 'Portable hard drive · owned', title: 'WD Elements Portable 5TB', desc: 'Bulk storage and backups where capacity matters more than speed, with the tradeoffs of a spinning drive.', tags: ['Owned', '5 TB'], fix: { href: '/guides/wd-elements-not-showing-up/', label: 'Not showing up?' } },
   { href: '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones/', img: '', alt: '', kicker: 'Headphones · owned and used', title: 'Sennheiser MOMENTUM 4 Wireless', desc: 'Codec support, adaptive ANC, multipoint behavior, and battery life, with reasons to skip it.', tags: ['Owned and used'], fix: { href: '/guides/sennheiser-momentum-4-wont-pair/', label: 'Won’t pair?' } },
 ];
 
@@ -28,7 +29,7 @@ const guides = [
         <article class="gear-card">
           <a class="gear-thumb" href={p.href} tabindex="-1" aria-hidden="true">
             {p.img ? (
-              <img src={p.img} alt="" loading="lazy" decoding="async" width="640" height="400" />
+              <img src={p.img} alt="" loading="lazy" decoding="async" width="640" height="400" referrerpolicy="no-referrer" />
             ) : (
               <svg viewBox="0 0 120 80" role="presentation" xmlns="http://www.w3.org/2000/svg"><path d="M30 46 C30 22 90 22 90 46" fill="none" stroke="#3b3846" stroke-width="5" stroke-linecap="round"/><rect x="22" y="42" width="16" height="26" rx="7" fill="#a3e635"/><rect x="82" y="42" width="16" height="26" rx="7" fill="#a3e635"/></svg>
             )}

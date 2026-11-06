@@ -14,5 +14,8 @@ export const LABS: ContentLink[] = [
 export const CERT_PAGES: ContentLink[] = [
   { href: '/certs/', title: 'Which IT certification first? A+, Network+, Security+, or AWS', note: 'Compare entry-level certifications from official exam pages.' },
   { href: '/certs/security-plus-v7-vs-v8/', title: 'Security+ SY0-701 vs SY0-801: which version should you take?', note: 'Retirement and launch dates from CompTIA.' },
+  { href: '/certs/wgu-c949-data-structures-and-algorithms-review/', title: 'WGU C949 Data Structures and Algorithms I review', note: 'What made it hard, and what finally worked.' },
+  { href: '/certs/wgu-d287-java-frameworks-review/', title: 'WGU D287 Java Frameworks review', note: 'A Spring Boot project in small, testable steps.' },
+  { href: '/certs/wgu-d282-cloud-foundations-review/', title: 'WGU D282 Cloud Foundations and AWS Cloud Practitioner review', note: 'What I studied and where I was weakest.' },
   { href: '/certs/wgu-software-engineering-degree/', title: 'My WGU Software Engineering degree: every course I’ve passed, in order', note: 'Real course order, pass dates, and pace.' },
 ];
