@@ -20,11 +20,17 @@ const total = topics.reduce((n, t) => n + t.fixes.length, 0);
 const buying = CATALOG.filter((e) => e.type === 'buying-guide');
 ---
 <ContentLayout section="fixes" title="PC, USB-C, and storage troubleshooting guides | StackGeist" description="Step-by-step fixes for USB-C docks and displays, charging, storage, Raspberry Pi boot problems, Bluetooth, and peripherals, tied to manufacturer sources.">
+  <div class="fixes-head">
   <header class="front-head">
     <p><span class="slab">Fixes</span> <span class="kicker">{total} troubleshooting guides</span></p>
     <h1 class="page-title">Find the fix before you replace the hardware.</h1>
     <p class="page-lead">{SECTIONS.fixes.blurb} Pick the problem closest to yours: each guide opens with a short answer, then works through the checks in order.</p>
   </header>
+  <figure class="photo fixes-photo">
+    <img src="/images/generated/repair-bench.webp" srcset="/images/generated/repair-bench-800.webp 800w, /images/generated/repair-bench.webp 1536w" sizes="(max-width: 860px) 100vw, 520px" width="1536" height="1024" alt="A wooden desk with a monitor, laptop, USB-C hub, small external drive, braided cable, and a precision screwdriver set" loading="eager" decoding="async" />
+    <figcaption>Illustrative desk, not hardware the guides were tested on.<span class="credit">Generated image</span></figcaption>
+  </figure>
+  </div>
 
   <nav class="topic-jump" aria-label="Jump to a problem area">
     {topics.map((t) => <a href={`#${t.topic}`}><span>{t.label}</span><b>{t.fixes.length}</b></a>)}
@@ -69,6 +75,9 @@ const buying = CATALOG.filter((e) => e.type === 'buying-guide');
 </ContentLayout>
 
 <style>
+.fixes-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-6); align-items: end; }
+.fixes-photo img { aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 8px solid var(--dept); }
+@media (max-width: 860px) { .fixes-head { grid-template-columns: 1fr; } }
 .front-head > p:first-child { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 var(--space-3); }
 .front-head .kicker { margin: 0; }
 .topic-jump { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: var(--space-6); }

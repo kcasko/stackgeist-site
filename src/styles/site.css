@@ -363,6 +363,8 @@ figcaption { margin-top: var(--space-2); color: var(--ink-3); font-size: .86rem;
 .sg-figure svg marker path { fill: var(--ink); }
 
 .photo { margin: 0; }
+.senn-photo { max-width: 420px; margin-top: var(--space-5); }
+.senn-photo img { background: #fff; border: 2px solid var(--ink); }
 .photo img { display: block; width: 100%; height: auto; background: var(--surface-2); }
 
 /* ---------- 11. Product pages (reviewed later) ---------- */
