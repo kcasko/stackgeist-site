@@ -689,7 +689,7 @@ export const EXTRA_KITS: IncomeKit[] = [
       { label: 'USB-C to USB-C cable for laptop charging', role: 'Charge USB-C laptops directly from the power station USB-C port.', href: search('usb-c to usb-c cable 100w 6ft'), kind: 'search', tier: 'must-have', check: 'Check power station USB-C wattage. Some ports are low-power and will not charge laptops.' }
     ],
     related: [
-      { href: '/kits/backup-recovery-desk-kit', title: 'Backup and recovery desk kit', desc: 'UPS and backup strategies for desk gear and data.' }
+      { href: '/guides/back-up-windows-pc-before-replacing-drive/', title: 'Backup and recovery desk kit', desc: 'UPS and backup strategies for desk gear and data.' }
     ],
     socialAngles: [
       { channel: 'pinterest', title: 'Portable power station desk kit', hook: 'Battery backup, solar option, power strip. Keep working when the grid fails.', utmContent: 'portable_power_station_kit' },
