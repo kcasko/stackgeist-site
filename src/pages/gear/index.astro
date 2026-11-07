@@ -12,7 +12,7 @@ const products = [
   { e: entry('/gear/input/logitech-mx-master-3s/'), img: '/gear/catalog-illustration.svg', kind: 'Mouse', evidence: 'Researched', fix: { href: '/guides/mx-master-3s-scroll-wheel-not-working/', label: 'Scroll wheel not working?' } },
   { e: entry('/gear/monitor-support/amazon-basics-dual-monitor-arm/'), img: '/gear/catalog-illustration.svg', kind: 'Dual monitor arm', evidence: 'Researched', fix: { href: '/guides/monitor-arm-sagging-fix/', label: 'Monitor arm sagging?' } },
 ];
-const guides = entries(['/guides/usb-c-dock-compatibility/', '/guides/usb-c-cable-buying-guide/', '/guides/laptop-charger-wattage/', '/guides/how-to-tell-if-ssd-is-failing/']);
+const guides = entries(['/guides/usb-c-dock-compatibility/', '/guides/usb-c-cable-buying-guide/', '/guides/laptop-charger-wattage/', '/guides/how-to-tell-if-ssd-is-failing/', '/tools/usb-c-compatibility/']);
 const kits = INCOME_KITS.filter(isKitIndexable);
 ---
 <ContentLayout section="gear" title="Tech gear decision pages: docks, hubs, and more | StackGeist" description="StackGeist gear decision pages for docks, hubs, and accessories tied to our fix guides, with source-checked specifications, owned-and-used labels, and reasons to skip.">
@@ -49,6 +49,26 @@ const kits = INCOME_KITS.filter(isKitIndexable);
       <ul class="kit-list">{kits.map((k) => <li><a href={`/kits/${k.slug}/`}>{k.title}</a></li>)}</ul>
     </section>
   </div>
+
+  <section class="desk-setup-notes" aria-labelledby="desk-setup-title">
+    <h2 id="desk-setup-title" class="block-label">Desk setup notes</h2>
+    <p class="kits-note">Recently checked desk hardware and lighting. Each page lists specifications, compatibility checks, and reasons to skip.</p>
+    <ul class="plain-list">
+      {[
+        { e: entry('/gear/desk-power/anker-nano-a9196/'), kind: 'Desk power' },
+        { e: entry('/gear/desk-lighting/govee-strip-light-2-pro/'), kind: 'Desk lighting' },
+        { e: entry('/gear/desk-lighting/benq-screenbar-pro/'), kind: 'Desk lighting' },
+        { e: entry('/gear/desk-surface/steelseries-qck-heavy-xxl/'), kind: 'Desk surface' },
+        { e: entry('/gear/accessories/razer-base-station-v2-chroma/'), kind: 'Audio accessory' },
+      ].map((item) => (
+        <li>
+          <span class="kicker">{item.kind}</span>
+          <a href={item.e.href}>{item.e.title}</a>
+          <p>{item.e.dek}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
 </ContentLayout>
 
 <style>
@@ -83,12 +103,17 @@ const kits = INCOME_KITS.filter(isKitIndexable);
 .kits-note { margin: 0 0 var(--space-3); color: var(--ink-2); font-size: .94rem; }
 .kit-list { columns: 2 200px; column-gap: var(--space-5); }
 .kit-list li { break-inside: avoid; padding: 6px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
+.desk-setup-notes { margin-top: var(--space-8); border-top: 8px solid var(--dept); padding-top: var(--space-3); }
+.desk-setup-notes .plain-list { columns: 2 280px; column-gap: var(--space-5); }
+.desk-setup-notes .plain-list li { break-inside: avoid; }
+.desk-setup-notes .kicker { display: inline-block; margin: 0 0 4px; }
 @media (max-width: 1060px) {
   .products { grid-template-columns: 1fr 1fr; }
   .product, .product.owned { grid-column: span 1; }
 }
 @media (max-width: 700px) {
   .products, .gear-lower { grid-template-columns: 1fr; }
+  .desk-setup-notes .plain-list { columns: 1; }
   .product-art { height: 160px; }
   .product-art img { height: 128px; }
   .product.owned .product-art img { height: 136px; }
