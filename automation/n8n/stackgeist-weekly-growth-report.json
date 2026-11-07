@@ -1,0 +1,63 @@
+{
+  "id": "stackgeistWeeklyRpt",
+  "name": "StackGeist Weekly Growth Report",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "stackgeist-weekly-schedule",
+      "name": "Monday 9am"
+    },
+    {
+      "parameters": {
+        "jsCode": "const { execFileSync } = require('child_process');\nconst cwd = '/workspace/stackgeist-site';\nconst stdout = execFileSync('sh', ['-lc', 'STACKGEIST_WRANGLER_BIN=/home/node/stackgeist-node-deps/node_modules/wrangler/bin/wrangler.js npm run analytics:weekly -- --write'], { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });\nreturn [{ json: { generatedAt: new Date().toISOString(), cwd, stdout } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ],
+      "id": "stackgeist-weekly-code",
+      "name": "Write weekly kit report"
+    }
+  ],
+  "connections": {
+    "Monday 9am": {
+      "main": [
+        [
+          {
+            "node": "Write weekly kit report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "versionId": "c38457d1-a3b9-4d51-9f74-788a53f45c6f",
+  "tags": []
+}
