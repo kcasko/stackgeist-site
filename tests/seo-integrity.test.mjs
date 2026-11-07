@@ -105,8 +105,8 @@ test('methodology page is gone and old links redirect', { skip: !existsSync(DIST
   assert.match(readFileSync(join(DIST, '_redirects'), 'utf8'), /\/editorial-methodology\/ \/about\/ 301/);
 });
 
-test('gear hub does not label research-pending pages as source-checked', { skip: !existsSync(DIST) }, () => {
-  assert.doesNotMatch(readFileSync(join(DIST, 'gear', 'index.html'), 'utf8'), /amazon-basics-dual-monitor-arm/);
+test('gear hub lists the now-source-checked Amazon Basics dual monitor arm', { skip: !existsSync(DIST) }, () => {
+  assert.match(readFileSync(join(DIST, 'gear', 'index.html'), 'utf8'), /amazon-basics-dual-monitor-arm/);
 });
 
 test('partner offers only render with a link and always carry the disclosure', { skip: !existsSync(DIST) }, () => {

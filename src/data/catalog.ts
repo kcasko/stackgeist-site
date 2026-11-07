@@ -627,6 +627,56 @@ export const CATALOG: Entry[] = [
     updated: ""
   },
   {
+    href: "/gear/desk-power/anker-nano-a9196/",
+    section: "gear",
+    type: "product",
+    topic: "products",
+    title: "Anker Nano Charging Station A9196",
+    headline: "Anker Nano Charging Station A9196: one outlet, several ports.",
+    dek: "A compact desk power strip with USB-C and AC outlets: what it is, what it can power, and where it fits on a desk.",
+    updated: "2026-11-07"
+  },
+  {
+    href: "/gear/desk-lighting/govee-strip-light-2-pro/",
+    section: "gear",
+    type: "product",
+    topic: "products",
+    title: "Govee Strip Light 2 Pro",
+    headline: "Govee Strip Light 2 Pro: atmosphere for a larger desk or room perimeter.",
+    dek: "Decide whether the Govee Strip Light 2 Pro fits a gaming desk, with length, controls, installation tradeoffs, and an exact affiliate link.",
+    updated: "2026-11-07"
+  },
+  {
+    href: "/gear/desk-lighting/benq-screenbar-pro/",
+    section: "gear",
+    type: "product",
+    topic: "products",
+    title: "BenQ ScreenBar Pro",
+    headline: "BenQ ScreenBar Pro: task light that uses no desk surface.",
+    dek: "Why the BenQ ScreenBar Pro fits some desks, what to check before buying, and when to skip it.",
+    updated: "2026-11-07"
+  },
+  {
+    href: "/gear/desk-surface/steelseries-qck-heavy-xxl/",
+    section: "gear",
+    type: "product",
+    topic: "products",
+    title: "SteelSeries QcK Heavy XXL",
+    headline: "SteelSeries QcK Heavy XXL: one large stable cloth surface.",
+    dek: "Who the SteelSeries QcK Heavy XXL fits, what to measure first, and the exact Amazon affiliate link.",
+    updated: "2026-11-07"
+  },
+  {
+    href: "/gear/accessories/razer-base-station-v2-chroma/",
+    section: "gear",
+    type: "product",
+    topic: "products",
+    title: "Razer Base Station V2 Chroma",
+    headline: "Razer Base Station V2 Chroma: a headset stand with a useful hub.",
+    dek: "Who the Razer Base Station V2 Chroma headset stand fits, its useful ports, tradeoffs, and exact Amazon affiliate link.",
+    updated: "2026-11-07"
+  },
+  {
     href: "/kits/cert-exam-remote-proctor-kit/",
     section: "gear",
     type: "kit",
@@ -775,5 +825,25 @@ export const CATALOG: Entry[] = [
     headline: "Home lab / dev workstation",
     dek: "A dev desk plus a small home lab: mini PCs, a NAS, wired networking, and a KVM path so it stays quiet.",
     updated: ""
+  },
+  {
+    href: "/gear/monitor-support/amazon-basics-dual-monitor-arm/",
+    section: "gear",
+    type: "product",
+    topic: "desk-hardware",
+    title: "Amazon Basics dual monitor arm",
+    headline: "Amazon Basics dual monitor arm: what it fits",
+    dek: "A researched buying note on the DS-MADDBE gas-spring dual monitor arm: monitor sizes, weight limits, VESA compatibility, and when to skip it.",
+    updated: "2026-11-07"
+  },
+  {
+    href: "/tools/usb-c-compatibility/",
+    section: "fixes",
+    type: "topic",
+    topic: "usb-c",
+    title: "USB-C dock and monitor compatibility checker",
+    headline: "USB-C dock and monitor compatibility checker",
+    dek: "Check whether your laptop and USB-C port can drive the external monitors you want, and learn when a Thunderbolt dock, USB-C hub, or DisplayLink adapter is the right fit.",
+    updated: "2026-11-07"
   }
 ];

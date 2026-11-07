@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
+import EvidencePanel from '../../../components/EvidencePanel.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
 const __sd = [productSchema({ name: "Logitech MX Master 3S — Graphite", description: "The MX Master 3S makes sense for right-handed desk work that benefits from a thumb wheel, fast document scrolling, and per-app shortcuts. It is not a universal comfort upgrade.", url: 'https://stackgeist.dev/gear/input/logitech-mx-master-3s', image: 'https://stackgeist.dev/gear/catalog-illustration.svg', brand: 'Logitech' })];
 ---
@@ -27,5 +28,9 @@ const __sd = [productSchema({ name: "Logitech MX Master 3S — Graphite", descri
     backHref="/gear"
     backLabel="Gear"
   />
+  <EvidencePanel status="researched" reviewed="2026-11-06" sources={[
+    { label: 'Logitech — MX Master 3S specifications', href: 'https://www.logitech.com/en-us/shop/p/mx-master-3s' },
+    { label: 'Amazon — exact ASIN B09HM94VDS identity and listing status', href: 'https://www.amazon.com/dp/B09HM94VDS?tag=deskrespawn-20' },
+  ]} />
   <section class="content-section related-reading"><p class="page-kicker">Sources</p><ol><li><a href="https://www.logitech.com/en-us/shop/p/mx-master-3s">Logitech — MX Master 3S specifications</a></li><li><a href="https://www.amazon.com/dp/B09HM94VDS?tag=deskrespawn-20" rel="sponsored nofollow noopener noreferrer">Amazon — exact ASIN B09HM94VDS identity and listing status</a></li></ol><div class="cards"><a class="card" href="/guides/keyboard-mouse-fit"><h3>Fit the keyboard and mouse before buying</h3><p>Use reach, width, handedness, and software constraints to narrow the shortlist.</p></a><a class="card" href="/guides/mx-master-3s-scroll-wheel-not-working"><h3>Scroll wheel acting up?</h3><p>Clean, unlock, or replace.</p></a></div></section>
 </ContentLayout>

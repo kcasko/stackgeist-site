@@ -16,6 +16,7 @@ const extraSchemas: Record<string, unknown>[] = extraStructuredData
   ? (Array.isArray(extraStructuredData) ? extraStructuredData : [extraStructuredData])
   : [];
 const googleVerify = (import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION ?? '').trim();
+const ga4Id = (import.meta.env.PUBLIC_GA4_MEASUREMENT_ID ?? '').trim();
 const site = Astro.site ?? new URL('https://stackgeist.dev');
 const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '') + '/';
 const canonical = new URL(canonicalPath, site).toString();
@@ -85,3 +86,14 @@ const structured = {
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
 {breadcrumbStructured && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructured)}></script>}
 {extraSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)}></script>)}
+{ga4Id && (
+  <Fragment>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+    <script define:vars={{ ga4Id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    </script>
+  </Fragment>
+)}

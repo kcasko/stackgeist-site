@@ -8,7 +8,7 @@ const __sd = [
     headline: "USB-C dock only detecting one monitor: diagnose the display path.",
     description: "A single monitor working through a USB-C dock commonly points to a host display limit, an MST or DisplayLink mismatch, a cable limitation, or a dock/firmware issue. Diagnose the path before replacing hardware.",
     url: 'https://stackgeist.dev/guides/usb-c-dock-only-one-monitor',
-    dateModified: '2026-10-01'
+    dateModified: '2026-11-07'
   }),
   howToSchema({
     name: "Fix a USB-C dock that only detects one monitor",
@@ -38,7 +38,7 @@ const __sd = [
     <p class="article-tags"><a class="slab" href="/guides/">Fixes</a> <span class="kicker">USB-C, docks, and displays</span></p>
     <h1 class="page-title">USB-C dock only detecting one monitor: diagnose the display path.</h1>
     <p class="page-lead">One display working through a USB-C dock does not prove the dock is bad. The host's display limits, dock technology, cable, firmware, and display settings can all produce the same symptom. Diagnose those layers in order.</p>
-    <p class="article-meta">By <a href="/about/">Keith Casko</a> · Updated <time datetime="2026-10-01">October 1, 2026</time> · <b>6 steps</b> · Based on manufacturer documentation, not a bench test</p>
+    <p class="article-meta">By <a href="/about/">Keith Casko</a> · Updated <time datetime="2026-11-07">November 7, 2026</time> · <b>6 steps</b> · Based on manufacturer documentation, not a bench test</p>
     <figure class="photo article-hero">
       <picture>
         <source media="(max-width: 700px)" srcset="/images/generated/usb-c-dock-desk-v2-800.webp" />
@@ -106,10 +106,11 @@ const __sd = [
 
       <section><p class="page-kicker">Step 06</p><h2>Set the OS to extend, not mirror.</h2><p>A dock can correctly present two displays that the operating system then silently mirrors. Confirm the arrangement before assuming the second display is missing.</p><div class="article-cards"><div><strong>Windows</strong><p>Settings &gt; System &gt; Display &gt; scroll to "Multiple displays" &gt; "Extend these displays." Then drag the display icons so their arrangement matches physical position.</p></div><div><strong>macOS</strong><p>System Settings &gt; Displays. Click the second display, uncheck "Mirror Displays" if set, then use the "Arrangement" tab to place it.</p></div></div></section>
 
-      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the dock is fine.</h2><p>Most single-display failures resolve at Step 01, 04, or 05. If the host port simply cannot carry a second stream and you cannot change laptops, a DisplayLink dock is the honest fix. If you already own a Thunderbolt-capable host and want a documented dual-display path, the two docks below are the ones on this site with a full fit guide.</p><div class="cards">
+      <section><p class="page-kicker">Decision</p><h2>When the diagnosis says the dock is fine.</h2><p>Most single-display failures resolve at Step 01, 04, or 05. If the host port simply cannot carry a second stream and you cannot change laptops, a DisplayLink dock is the honest fix. If you already own a Thunderbolt-capable host and want a documented dual-display path, the docks and tools below are the ones on this site with a full fit guide.</p><div class="cards">
         <a class="card" href="/gear/connectivity/caldigit-ts4"><h3>CalDigit TS4 fit guide</h3><p>18-port Thunderbolt 4 dock for a manufacturer-documented Thunderbolt-capable host and a high-demand desk.</p></a>
         <a class="card" href="/gear/connectivity/anker-553-usb-c-hub"><h3>Anker 553 USB-C hub</h3><p>A smaller connection set for a single external display and a few low-bandwidth peripherals.</p></a>
         <a class="card" href="/guides/usb-c-dock-compatibility"><h3>Before you buy: dock compatibility</h3><p>The buying-side companion to this troubleshooting guide — host port, displays, power, bandwidth, and cables.</p></a>
+        <a class="card" href="/tools/usb-c-compatibility"><h3>USB-C compatibility checker</h3><p>Enter your laptop port, displays, and power needs to see whether a hub, DisplayLink, or Thunderbolt dock fits.</p></a>
       </div></section>
 
       <section><p class="page-kicker">Related fixes</p><h2>Keep troubleshooting the same system.</h2><div class="cards"><a class="card" href="/guides/usb-c-charging-display-problems"><h3>USB-C charging and display hub</h3><p>Start with the full USB-C troubleshooting map.</p></a><a class="card" href="/guides/how-to-tell-if-usb-c-port-supports-video/"><h3>Does this USB-C port support video?</h3><p>Confirm the host display path before diagnosing the dock.</p></a><a class="card" href="/guides/usb-c-dock-compatibility"><h3>USB-C dock compatibility</h3><p>Verify host display and dock capabilities before replacing hardware.</p></a></div></section>

@@ -1,0 +1,496 @@
+---
+export interface Props {
+  /** Pass through route context for related links */
+  basePath?: string;
+}
+const { basePath = "/tools/usb-c-compatibility" } = Astro.props;
+---
+
+<section class="usb-compat" aria-labelledby="usb-compat-title">
+  <div class="usb-compat__intro slab">
+    <h2 id="usb-compat-title" class="usb-compat__title">USB-C dock and monitor compatibility checker</h2>
+    <p class="usb-compat__lead">
+      Tell us what you know about your laptop and displays. The checker explains what is likely to work, what information is missing, and which buying guides match your situation.
+    </p>
+  </div>
+
+  <form class="usb-compat__form" id="usb-compat-form" novalidate>
+    <fieldset class="usb-compat__group">
+      <legend class="usb-compat__legend">Laptop USB-C port</legend>
+      <p class="usb-compat__hint">Pick the best description of the port you plan to plug the dock or monitor into.</p>
+      <div class="usb-compat__options">
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="usb3" required />
+          <span class="usb-compat__label">USB-C 3.2 Gen 1 or 2 (data only, no video guarantee)</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="usbc-dp" />
+          <span class="usb-compat__label">USB-C with DisplayPort Alt Mode</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="usb4" />
+          <span class="usb-compat__label">USB4</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="tb3" />
+          <span class="usb-compat__label">Thunderbolt 3</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="tb4" />
+          <span class="usb-compat__label">Thunderbolt 4</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="usbType" value="unknown" checked />
+          <span class="usb-compat__label">I don't know</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="usb-compat__group">
+      <legend class="usb-compat__legend">DisplayPort Alt Mode support</legend>
+      <p class="usb-compat__hint">This is what lets a USB-C port send video to a monitor directly. Check your laptop specs for "DP Alt Mode" or "DisplayPort over USB-C".</p>
+      <div class="usb-compat__options usb-compat__options--inline">
+        <label class="usb-compat__choice">
+          <input type="radio" name="dpAltMode" value="yes" />
+          <span class="usb-compat__label">Yes</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="dpAltMode" value="no" />
+          <span class="usb-compat__label">No</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="dpAltMode" value="unknown" checked />
+          <span class="usb-compat__label">I don't know</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="usb-compat__group">
+      <legend class="usb-compat__legend">External displays</legend>
+      <label class="usb-compat__field" for="displayCount">
+        <span class="usb-compat__field-label">How many external displays do you want?</span>
+        <select id="displayCount" name="displayCount" class="usb-compat__select">
+          <option value="0">None</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </label>
+      <div id="display-targets" class="usb-compat__targets"></div>
+    </fieldset>
+
+    <fieldset class="usb-compat__group">
+      <legend class="usb-compat__legend">Operating system</legend>
+      <div class="usb-compat__options usb-compat__options--inline">
+        <label class="usb-compat__choice">
+          <input type="radio" name="os" value="windows" checked />
+          <span class="usb-compat__label">Windows</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="os" value="macos" />
+          <span class="usb-compat__label">macOS</span>
+        </label>
+        <label class="usb-compat__choice">
+          <input type="radio" name="os" value="linux" />
+          <span class="usb-compat__label">Linux</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="usb-compat__group">
+      <legend class="usb-compat__legend">Power delivery</legend>
+      <label class="usb-compat__field" for="pdWatts">
+        <span class="usb-compat__field-label">How many watts does your laptop need to charge?</span>
+        <span class="usb-compat__hint">If you are not sure, 65 W is a common default for ultrabooks; gaming laptops often need 100 W or more.</span>
+        <input type="number" id="pdWatts" name="pdWatts" min="0" max="240" value="65" class="usb-compat__input" />
+        <span class="usb-compat__unit">watts</span>
+      </label>
+    </fieldset>
+
+    <div class="usb-compat__actions">
+      <button type="submit" class="btn usb-compat__submit">Check compatibility</button>
+      <button type="reset" class="btn btn--secondary usb-compat__reset">Reset</button>
+    </div>
+  </form>
+
+  <div id="usb-compat-result" class="usb-compat__result" hidden>
+    <h3 class="usb-compat__result-title">Compatibility result</h3>
+    <div id="usb-compat-summary" class="usb-compat__summary"></div>
+    <div id="usb-compat-details" class="usb-compat__details"></div>
+    <div id="usb-compat-recommendations" class="usb-compat__recommendations"></div>
+    <div id="usb-compat-missing" class="usb-compat__missing"></div>
+    <div id="usb-compat-references" class="usb-compat__references">
+      <h4>References</h4>
+      <ul>
+        <li>
+          <a href="https://www.usb.org/usb4" rel="noopener noreferrer">USB-IF USB4 specification</a> — official USB4/Thunderbolt compatibility standards.
+        </li>
+        <li>
+          <a href="https://www.displayport.org/" rel="noopener noreferrer">VESA DisplayPort Alt Mode overview</a> — how DisplayPort travels over USB-C.
+        </li>
+        <li>
+          <a href="/guides/usb-c-dock-compatibility/">USB-C dock compatibility checklist</a> — manual checks you can do on your desk.
+        </li>
+        <li>
+          <a href="/guides/usb-c-dock-only-one-monitor/">USB-C dock only detecting one monitor</a> — troubleshooting if one display does not appear.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ basePath }}>
+  (function () {
+    const form = document.getElementById("usb-compat-form");
+    const result = document.getElementById("usb-compat-result");
+    const summary = document.getElementById("usb-compat-summary");
+    const details = document.getElementById("usb-compat-details");
+    const recs = document.getElementById("usb-compat-recommendations");
+    const missing = document.getElementById("usb-compat-missing");
+    const displayCount = document.getElementById("displayCount");
+    const displayTargets = document.getElementById("display-targets");
+
+    const resolutions = [
+      { value: "1080p60", label: "1080p @ 60 Hz", bw: 3.2 },
+      { value: "1080p120", label: "1080p @ 120 Hz", bw: 6.3 },
+      { value: "1080p144", label: "1080p @ 144 Hz", bw: 7.8 },
+      { value: "1440p60", label: "1440p @ 60 Hz", bw: 5.6 },
+      { value: "1440p120", label: "1440p @ 120 Hz", bw: 11.1 },
+      { value: "1440p144", label: "1440p @ 144 Hz", bw: 13.3 },
+      { value: "4k60", label: "4K @ 60 Hz", bw: 12.5 },
+      { value: "4k120", label: "4K @ 120 Hz", bw: 25.0 },
+      { value: "5k60", label: "5K @ 60 Hz", bw: 22.0 },
+      { value: "8k60", label: "8K @ 60 Hz", bw: 50.0 },
+    ];
+
+    const usbProfiles = {
+      usb3: { label: "USB-C 3.2 (data only)", dpLanes: 0, dpVersion: null, hasDpAltMode: false, totalGbps: 10, canDisplayLink: true },
+      "usbc-dp": { label: "USB-C with DP Alt Mode", dpLanes: 4, dpVersion: "hbr2", hasDpAltMode: true, totalGbps: 10, canDisplayLink: true },
+      usb4: { label: "USB4", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
+      tb3: { label: "Thunderbolt 3", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
+      tb4: { label: "Thunderbolt 4", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
+      unknown: { label: "Unknown USB-C", dpLanes: null, dpVersion: null, hasDpAltMode: null, totalGbps: null, canDisplayLink: null },
+    };
+
+    const dpBandwidth = {
+      hbr2: { perLane: 5.4, fourLane: 21.6 },
+      hbr3: { perLane: 8.1, fourLane: 32.4 },
+    };
+
+    function createDisplayTarget(index) {
+      const fieldset = document.createElement("fieldset");
+      fieldset.className = "usb-compat__target";
+      const legend = document.createElement("legend");
+      legend.textContent = `Display ${index + 1}`;
+      fieldset.appendChild(legend);
+
+      const label = document.createElement("label");
+      label.className = "usb-compat__field";
+      label.innerHTML = `
+        <span class="usb-compat__field-label">Resolution and refresh rate</span>
+        <select name="display_${index}" class="usb-compat__select" required>
+          ${resolutions.map((r) => `<option value="${r.value}">${r.label}</option>`).join("")}
+        </select>
+      `;
+      fieldset.appendChild(label);
+      return fieldset;
+    }
+
+    function renderDisplayTargets() {
+      const count = parseInt(displayCount.value, 10) || 0;
+      displayTargets.innerHTML = "";
+      for (let i = 0; i < count; i++) {
+        displayTargets.appendChild(createDisplayTarget(i));
+      }
+    }
+
+    displayCount.addEventListener("change", renderDisplayTargets);
+    renderDisplayTargets();
+
+    function getProfile(usbType, dpAltMode) {
+      const profile = usbProfiles[usbType] || usbProfiles.unknown;
+      // If DP Alt Mode is explicitly answered, use it; otherwise keep profile default.
+      if (dpAltMode === "yes" && profile.dpLanes === 0) {
+        return { ...profile, dpLanes: 4, dpVersion: "hbr2", hasDpAltMode: true };
+      }
+      if (dpAltMode === "no") {
+        return { ...profile, dpLanes: 0, dpVersion: null, hasDpAltMode: false };
+      }
+      return profile;
+    }
+
+    function collectDisplays() {
+      const inputs = displayTargets.querySelectorAll('select[name^="display_"]');
+      return Array.from(inputs).map((sel) => {
+        const res = resolutions.find((r) => r.value === sel.value) || resolutions[0];
+        return res;
+      });
+    }
+
+    function estimateDisplayCompatibility(profile, displays) {
+      const issues = [];
+      const notes = [];
+      let nativeDisplays = 0;
+      let nativeBandwidth = 0;
+      let displayLinkDisplays = 0;
+      let uncertain = false;
+
+      if (profile.dpLanes === null || profile.hasDpAltMode === null) {
+        uncertain = true;
+        issues.push("Your laptop's USB-C video support is unknown, so we cannot guarantee any display output without checking the manufacturer specs.");
+      } else if (!profile.hasDpAltMode) {
+        issues.push("This port does not support DisplayPort Alt Mode, so it cannot drive a monitor directly over a simple USB-C cable or hub.");
+      }
+
+      const maxDpBw = profile.dpVersion ? dpBandwidth[profile.dpVersion].fourLane : 0;
+
+      displays.forEach((d, i) => {
+        if (!profile.hasDpAltMode) {
+          displayLinkDisplays += 1;
+          return;
+        }
+        if (profile.dpLanes === null) {
+          uncertain = true;
+          return;
+        }
+        if (d.bw <= maxDpBw - nativeBandwidth) {
+          nativeBandwidth += d.bw;
+          nativeDisplays += 1;
+        } else if (profile.totalGbps >= 40 && d.bw <= dpBandwidth.hbr3.fourLane) {
+          // Thunderbolt/USB4 can often carry two HBR3 streams, but per-display limit still applies.
+          nativeDisplays += 1;
+          notes.push(`Display ${i + 1} (${d.label}) may need Thunderbolt/USB4 bandwidth and a dock that supports the needed lanes.`);
+          nativeBandwidth += d.bw;
+        } else {
+          displayLinkDisplays += 1;
+          notes.push(`Display ${i + 1} (${d.label}) exceeds native bandwidth; DisplayLink compression may be needed.`);
+        }
+      });
+
+      return { nativeDisplays, displayLinkDisplays, uncertain, issues, notes, nativeBandwidth, maxDpBw };
+    }
+
+    function buildResult() {
+      const fd = new FormData(form);
+      const usbType = fd.get("usbType") || "unknown";
+      const dpAltMode = fd.get("dpAltMode") || "unknown";
+      const os = fd.get("os") || "windows";
+      const pdWatts = parseInt(fd.get("pdWatts"), 10) || 0;
+      const profile = getProfile(usbType, dpAltMode);
+      const displays = collectDisplays();
+
+      const { nativeDisplays, displayLinkDisplays, uncertain, issues, notes, nativeBandwidth, maxDpBw } = estimateDisplayCompatibility(profile, displays);
+
+      const resultBits = [];
+      const missingBits = [];
+      const recBits = [];
+
+      // Summary headline
+      if (displays.length === 0) {
+        resultBits.push("You do not need video output, so almost any USB-C dock or hub that supports data and enough power will work.");
+      } else if (uncertain) {
+        resultBits.push("We need more information about your laptop to give a reliable answer.");
+        missingBits.push("Look up your exact laptop model and confirm whether its USB-C port supports DisplayPort Alt Mode, USB4, or Thunderbolt.");
+      } else if (displayLinkDisplays > 0 && nativeDisplays === 0) {
+        resultBits.push(`This port cannot drive ${displays.length > 1 ? "these displays" : "this display"} natively. A DisplayLink dock is the most likely option, with a driver dependency.`);
+      } else if (displayLinkDisplays > 0) {
+        resultBits.push(`${nativeDisplays} display${nativeDisplays === 1 ? "" : "s"} can likely run natively; ${displayLinkDisplays} may need DisplayLink compression.`);
+      } else if (nativeDisplays === displays.length) {
+        resultBits.push(`All ${displays.length} display${displays.length === 1 ? "" : "s"} can likely run natively through this port.`);
+      }
+
+      if (displays.length > 0) {
+        resultBits.push(`Estimated native DisplayPort bandwidth needed: ${nativeBandwidth.toFixed(1)} Gbps out of ${maxDpBw.toFixed(1)} Gbps available.`);
+      }
+
+      // Power delivery
+      if (pdWatts > 0) {
+        if (pdWatts > 100) {
+          recBits.push(`Your laptop needs ${pdWatts} W. Most compact USB-C hubs deliver 60–100 W. Look for a dock with a 100 W or higher PD power supply, or keep the factory charger connected to a separate port.`);
+        } else if (pdWatts > 60) {
+          recBits.push(`Your laptop needs ${pdWatts} W. Choose a dock or hub that explicitly supports 85–100 W pass-through charging.`);
+        } else {
+          recBits.push(`Your laptop needs ${pdWatts} W. Most USB-C docks and hubs that offer pass-through charging can cover this.`);
+        }
+      }
+
+      // OS DisplayLink warning
+      if (displayLinkDisplays > 0) {
+        if (os === "linux") {
+          notes.push("DisplayLink drivers on Linux are community-supported and may require manual installation; verify compatibility before buying.");
+        } else if (os === "macos") {
+          notes.push("macOS supports DisplayLink through the manufacturer's driver; Apple Silicon Macs need the ARM driver version.");
+        }
+      }
+
+      // Recommendations
+      if (displays.length === 0) {
+        recBits.push("A basic USB-C hub with the ports you need and enough power delivery is sufficient.");
+      } else if (usbType === "tb4" || usbType === "tb3" || usbType === "usb4") {
+        recBits.push("A Thunderbolt 4 or USB4 dock is the best fit for high-resolution or multiple displays.");
+        if (displays.some((d) => d.value.startsWith("4k") || d.value.startsWith("5k") || d.value.startsWith("8k"))) {
+          recBits.push("Look for a dock that explicitly lists the resolution and refresh rate you want on its spec sheet, not just '4K support.'");
+        }
+      } else if (usbType === "usbc-dp" && displays.length === 1 && displays[0].value === "1080p60") {
+        recBits.push("A mid-range USB-C hub with HDMI and 85 W+ pass-through should handle this.");
+      }
+
+      if (displays.length > 0 && dpAltMode === "unknown") {
+        recBits.push("Confirm DP Alt Mode before buying. If your laptop does not support it, a standard USB-C hub's HDMI port will not work for video.");
+      }
+
+      summary.innerHTML = resultBits.map((bit) => `<p>${bit}</p>`).join("");
+      details.innerHTML = notes.map((note) => `<p class="usb-compat__note">${note}</p>`).join("") + issues.map((issue) => `<p class="usb-compat__issue">${issue}</p>`).join("");
+      recs.innerHTML = recBits.length ? `<h4>What to look for</h4><ul>${recBits.map((r) => `<li>${r}</li>`).join("")}</ul>` : "";
+      missing.innerHTML = missingBits.length ? `<h4>Missing information</h4><ul>${missingBits.map((m) => `<li>${m}</li>`).join("")}</ul>` : "";
+      result.hidden = false;
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) return;
+      buildResult();
+    });
+
+    form.addEventListener("reset", () => {
+      result.hidden = true;
+      setTimeout(renderDisplayTargets, 0);
+    });
+  })();
+</script>
+
+<style>
+  .usb-compat {
+    --usb-compat-gap: clamp(1.5rem, 4vw, 3rem);
+    display: grid;
+    gap: var(--usb-compat-gap);
+  }
+  .usb-compat__intro {
+    max-width: 70ch;
+  }
+  .usb-compat__title {
+    font-size: var(--step-2);
+    margin-block-end: 0.5em;
+  }
+  .usb-compat__lead {
+    color: var(--text-2);
+    font-size: var(--step-1);
+  }
+  .usb-compat__form {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .usb-compat__group {
+    border: 1px solid var(--surface-3);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    background: var(--surface-1);
+  }
+  .usb-compat__legend {
+    font-weight: 600;
+    font-size: var(--step-0);
+    padding-inline: 0.25rem;
+  }
+  .usb-compat__hint {
+    color: var(--text-2);
+    font-size: var(--step--1);
+    margin-block: 0.25rem 0.75rem;
+  }
+  .usb-compat__options {
+    display: grid;
+    gap: 0.75rem;
+  }
+  .usb-compat__options--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .usb-compat__choice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  .usb-compat__choice input {
+    margin-block-start: 0.2em;
+    accent-color: var(--geist);
+  }
+  .usb-compat__label {
+    line-height: 1.4;
+  }
+  .usb-compat__field {
+    display: grid;
+    gap: 0.25rem;
+  }
+  .usb-compat__field-label {
+    font-weight: 500;
+  }
+  .usb-compat__select,
+  .usb-compat__input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--surface-3);
+    border-radius: var(--radius);
+    background: var(--surface-0);
+    color: var(--text-1);
+    font: inherit;
+    max-width: 24rem;
+  }
+  .usb-compat__input {
+    width: 8rem;
+  }
+  .usb-compat__unit {
+    color: var(--text-2);
+    font-size: var(--step--1);
+  }
+  .usb-compat__targets {
+    display: grid;
+    gap: 1rem;
+    margin-block-start: 1rem;
+  }
+  .usb-compat__target {
+    border: 1px dashed var(--surface-3);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+  .usb-compat__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .usb-compat__result {
+    border: 1px solid var(--surface-3);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background: var(--surface-1);
+  }
+  .usb-compat__result[hidden] {
+    display: none;
+  }
+  .usb-compat__result-title {
+    font-size: var(--step-1);
+    margin-block-end: 1rem;
+  }
+  .usb-compat__summary p,
+  .usb-compat__details p,
+  .usb-compat__recommendations li,
+  .usb-compat__missing li {
+    margin-block-end: 0.75rem;
+  }
+  .usb-compat__note {
+    color: var(--text-2);
+    border-inline-start: 3px solid var(--text-2);
+    padding-inline-start: 0.75rem;
+  }
+  .usb-compat__issue {
+    border-inline-start: 3px solid var(--fixes);
+    padding-inline-start: 0.75rem;
+  }
+  .usb-compat__references ul {
+    margin-block-start: 0.5rem;
+    padding-inline-start: 1.25rem;
+  }
+  .usb-compat__references li {
+    margin-block-end: 0.25rem;
+  }
+</style>

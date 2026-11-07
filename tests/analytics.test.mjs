@@ -136,6 +136,19 @@ test('Pinterest tag is opt-in, privacy-minimal, and available from both layouts'
   }
 });
 
+test('GA4 is opt-in via PUBLIC_GA4_MEASUREMENT_ID', async () => {
+  const seoHead = await read('src/components/SeoHead.astro');
+  assert.match(seoHead, /PUBLIC_GA4_MEASUREMENT_ID/);
+  assert.match(seoHead, /googletagmanager\.com\/gtag\/js/);
+  assert.match(seoHead, /gtag\('config'/);
+
+  // When the env var is not set, the default build must not include the GA4 loader.
+  if (process.env.PUBLIC_GA4_MEASUREMENT_ID) return;
+  const index = await read('dist/index.html');
+  assert.doesNotMatch(index, /googletagmanager\.com\/gtag/);
+  assert.doesNotMatch(index, /window\.dataLayer/);
+});
+
 test('wrangler declares the affiliate D1 binding', async () => {
   const wrangler = await read('wrangler.jsonc');
   assert.match(wrangler, /"binding"\s*:\s*"AFFILIATE_DB"/);

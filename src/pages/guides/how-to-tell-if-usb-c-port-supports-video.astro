@@ -7,7 +7,7 @@ const __sd = [
     headline: "How to tell if a USB-C port supports video without guessing.",
     description: "USB-C describes the connector, not the features behind it. Use the laptop's exact specifications, port markings, and a direct-display test to confirm DisplayPort Alt Mode, USB4, or Thunderbolt support.",
     url: 'https://stackgeist.dev/guides/how-to-tell-if-usb-c-port-supports-video',
-    dateModified: '2026-10-01'
+    dateModified: '2026-11-07'
   }),
   howToSchema({
     name: "Check whether a USB-C port supports video",
@@ -33,9 +33,10 @@ const __sd = [
     <p class="breadcrumbs"><a href="/guides/">Fixes</a> / USB-C port video support</p>
     <p class="page-kicker">USB-C troubleshooting</p>
     <h1 class="page-title">How to tell if your USB-C port supports video without guessing.</h1>
-    <p class="page-lead">A USB-C socket can charge a laptop, move files, run a dock, or drive a monitor — but the connector shape does not tell you which of those features are actually wired behind the port. The reliable answer comes from the exact computer specification, not from the fact that the plug fits.</p>
+    <p class="page-lead">A USB-C socket can charge a laptop, move files, run a dock, or drive a monitor — but the connector shape alone does not tell you which of those features are actually wired behind the port. The reliable answer comes from the exact computer specification, not from the fact that the plug fits.</p>
+    <p class="credibility-note">Based on manufacturer specifications and Microsoft's published USB-C documentation; not on hands-on testing of every model.</p>
 
-    <div class="article-summary"><strong>The five-minute answer</strong><p>Find the exact laptop or motherboard model, then read the manufacturer's specification for the specific USB-C port. You are looking for <strong>DisplayPort</strong>, <strong>DisplayPort Alt Mode</strong>, <strong>USB4</strong>, or <strong>Thunderbolt</strong>. If the page only says USB-C or USB 3.2 with a data rate, that does not prove monitor support. Finish by connecting a known-good USB-C display or USB-C-to-DisplayPort adapter directly to the port with no dock in between.</p></div>
+    <div class="article-summary"><strong>The five-minute answer</strong><p>Find the exact laptop or motherboard model, then read the manufacturer's specification for the specific USB-C port. You are looking for <strong>DisplayPort</strong>, <strong>DisplayPort Alt Mode</strong>, <strong>USB4</strong>, or <strong>Thunderbolt</strong>. If the page only says USB-C or USB 3.2 with a data rate, that does not prove monitor support. Finish by connecting a known-good USB-C display or USB-C-to-DisplayPort adapter directly to the port with no dock in between. For a quick cross-check of cables and known-good host combinations, see the <a href="/tools/usb-c-compatibility/">USB-C compatibility tool</a>.</p></div>
 
     <div class="article-body">
       <section><p class="page-kicker">Diagnosis</p><h2>Start by separating connector shape from port capability.</h2><p>USB-C tells you what the connector looks like. It does not guarantee DisplayPort video, high-wattage charging, Thunderbolt, USB4, or even the same capabilities on every USB-C port on the same laptop. Microsoft explicitly notes that display connections depend on the PC, cable, and connected device supporting the correct Alternate Mode.</p>
@@ -62,7 +63,7 @@ const __sd = [
 
       <section><p class="page-kicker">Step 03</p><h2>Use port symbols only as a shortcut.</h2><p>A DisplayPort logo or Thunderbolt lightning symbol is helpful when it exists. The absence of a symbol is not definitive because many manufacturers leave capable USB-C ports unlabeled. Treat the chassis marking as a clue and the specification as the authority.</p></section>
 
-      <section><p class="page-kicker">Step 04</p><h2>Verify the path with one known-good direct connection.</h2><p>Remove every dock, hub, extension cable, and KVM. Connect one known-good monitor directly to the laptop using either a full-featured USB-C cable or a known-good USB-C-to-DisplayPort adapter. This removes the dock from the diagnosis.</p>
+      <section><p class="page-kicker">Step 04</p><h2>Verify the path with one known-good direct connection.</h2><p>Remove every dock, hub (such as the <a href="/gear/connectivity/anker-553-usb-c-hub/">Anker 553 USB-C hub</a>), extension cable, and KVM. Connect one known-good monitor directly to the laptop using either a full-featured USB-C cable or a known-good USB-C-to-DisplayPort adapter. This removes the dock from the diagnosis.</p>
         <ol class="article-steps">
           <li><strong>Direct display works.</strong><span>The host port outputs video. Troubleshoot the dock, hub, or cable next.</span></li>
           <li><strong>Direct display fails on one USB-C port but works on another.</strong><span>The ports have different capabilities or one path has a hardware/firmware issue.</span></li>
@@ -70,11 +71,12 @@ const __sd = [
         </ol>
       </section>
 
-      <section><p class="page-kicker">Decision</p><h2>What to do after you know what the port supports.</h2><p>If the port has no documented display path, buying a different passive USB-C-to-HDMI adapter will not create one. You need a different host port or a USB graphics solution such as DisplayLink. If the port does support DisplayPort, continue with cable and dock troubleshooting instead of replacing the laptop.</p>
+      <section><p class="page-kicker">Decision</p><h2>What to do after you know what the port supports.</h2><p>If the port has no documented display path, buying a different passive USB-C-to-HDMI adapter will not create one. You need a different host port or a USB graphics solution such as DisplayLink. If the port does support DisplayPort, continue with cable and dock (such as the <a href="/gear/connectivity/caldigit-ts4/">CalDigit TS4</a>) troubleshooting instead of replacing the laptop.</p>
         <div class="cards">
           <a class="card" href="/guides/usb-c-hub-ethernet-works-hdmi-doesnt/"><h3>Hub Ethernet works but HDMI doesn't</h3><p>Diagnose the exact case where USB data works but the display path fails.</p></a>
           <a class="card" href="/guides/usb-c-dock-only-one-monitor/"><h3>Dock only detects one monitor</h3><p>Check display-stream and dock-mode limits after confirming the host supports video.</p></a>
           <a class="card" href="/guides/usb-c-dock-compatibility/"><h3>USB-C dock compatibility</h3><p>Match host, display, charging, bandwidth, and cable requirements before buying.</p></a>
+          <a class="card" href="/guides/portable-usb-c-monitor-no-signal/"><h3>Portable USB-C monitor no signal</h3><p>Check cable direction, host video support, and monitor power when a portable display stays black.</p></a>
         </div>
       </section>
 

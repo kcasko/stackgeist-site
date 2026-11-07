@@ -8,7 +8,7 @@ articleSchema({
   headline:'microSD card not detected: separate reader, host, disk state, and card failure.',
   description:'Use a second compatible reader or host, check Windows Disk Management or Get-Disk, preserve existing data before formatting, and use the SD Association formatter only after the data decision is made.',
   url:'https://stackgeist.dev/guides/microsd-card-not-detected',
-  dateModified:'2026-10-01'
+  dateModified:'2026-11-07'
 }),
 howToSchema({
   name:'Diagnose a microSD card that is not detected',
@@ -33,7 +33,8 @@ faqSchema({questions:[
 <p class="breadcrumbs"><a href="/guides/">Fixes</a> / microSD card not detected</p>
 <p class="page-kicker">Storage troubleshooting</p>
 <h1 class="page-title">microSD card not detected: separate the reader, host, disk state, and card.</h1>
-<p class="page-lead">“Not detected” can mean several different things: the reader never sees the card electrically, Windows sees a disk but no usable volume, File Explorer lacks a drive letter, or the card’s file system is damaged. The safest path is to identify which layer still works before writing anything to the card.</p>
+<p class="page-lead">If your microSD card is not detected by Windows or your reader, the problem can be the reader, adapter, host compatibility, a missing drive letter, a damaged file system, or the card itself. Identify which layer still works before writing anything to the card.</p>
+<p class="page-meta"><em>This guidance reflects SD Association and Microsoft documentation and standard Windows Disk Management behavior.</em></p>
 
 <div class="article-summary"><strong>The five-minute answer</strong><p>Try a second known-compatible reader or host. On Windows, open <code>diskmgmt.msc</code> and run the read-only <code>Get-Disk</code> command. If the card appears as a physical disk, inspect its partition/volume state before changing it. If the card contains important data and appears RAW, Unallocated, or otherwise damaged, stop before formatting. If the data is backed up or disposable, the SD Association recommends its current SD Memory Card Formatter for SD-family media.</p></div>
 
@@ -80,6 +81,7 @@ faqSchema({questions:[
 
 <section><p class="page-kicker">See also</p><div class="article-cards"><div><strong><a href="/guides/recover-deleted-photos-from-sd-card/">Recover deleted photos from an SD card</a></strong><p>Stop using the card, then scan it with the right tool.</p></div><div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>Protect the data before clicking Format.</p></div></div></section>
 <PartnerOffers ids={['dataRecovery']} placement="guide-microsd-card-not-detected" />
+<section><p class="page-kicker">Gear</p><h2>If you need a replacement microSD card</h2><div class="cards"><a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card/"><h3>Samsung EVO Select 512GB microSD</h3><p>A higher-capacity option for cameras, handhelds, and Raspberry Pi storage.</p></a><a class="card" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack/"><h3>SanDisk Ultra 128GB microSD 2-pack</h3><p>A practical two-pack for everyday devices and backups.</p></a></div></section>
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
 <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>

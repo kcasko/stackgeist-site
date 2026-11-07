@@ -22,6 +22,15 @@ Consult these guides before working on related tasks:
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
 
 
+## Environment variables
+
+The build reads these public env vars at build time:
+
+- `PUBLIC_GOOGLE_SITE_VERIFICATION` — optional; adds the `<meta name="google-site-verification">` tag when set.
+- `PUBLIC_GA4_MEASUREMENT_ID` — optional; adds the Google Analytics 4 `gtag.js` snippet only when set. If you enable it, update `src/pages/privacy.astro` to disclose GA4 cookies and the Google measurement ID.
+
+Cloudflare Web Analytics is injected by Cloudflare Pages at delivery time and does not need an env var here.
+
 ## Astro prose gotcha
 
 Any `<lowercase-word>` appearing in prose inside an .astro file is parsed as a JSX/component tag and will break the build with 'Expected corresponding JSX closing tag.' This bites when you write CLI placeholders like `<interface>`, `<port>`, or `<onboard interface>` in guide bodies. Always HTML-escape the angle brackets: `&lt;interface&gt;`. Uppercase like `<Component>` is fine (real component). Also watch: writing `won\u2019t` (double-backslashed) in a JS string literal ships as a literal backslash-u \u2014 use the real character \u2019 or a single-backslash unicode escape `\u2019`.

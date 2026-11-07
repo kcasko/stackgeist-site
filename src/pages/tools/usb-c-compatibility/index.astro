@@ -1,0 +1,73 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import UsbCompatibilityChecker from "../../../components/UsbCompatibilityChecker.astro";
+
+const title = "USB-C dock and monitor compatibility checker";
+const description =
+  "Check whether your laptop and USB-C port can drive the external monitors you want, and learn when a Thunderbolt dock, USB-C hub, or DisplayLink adapter is the right fit.";
+---
+
+<Layout
+  title={title}
+  description={description}
+  section="fixes"
+  active="usb-c-compatibility"
+  type="website"
+  pageType="tool"
+>
+  <article class="content-width flow" slot="default">
+    <header class="page-header">
+      <p class="eyebrow">Tool</p>
+      <h1 class="page-title">{title}</h1>
+      <p class="page-lead">{description}</p>
+    </header>
+
+    <UsbCompatibilityChecker />
+
+    <aside class="usb-compat__context">
+      <h2 class="step-1">When this tool helps</h2>
+      <p>
+        USB-C is confusing because the same connector can carry very different things: data only, data plus video, or data plus video plus charging. This checker focuses on the parts that matter for picking a dock or monitor:
+      </p>
+      <ul>
+        <li>whether your port can send video at all (DisplayPort Alt Mode)</li>
+        <li>how much display bandwidth it has</li>
+        <li>whether it can charge your laptop while connected</li>
+        <li>when DisplayLink or a Thunderbolt dock becomes necessary</li>
+      </ul>
+
+      <h2 class="step-1">What it does not do</h2>
+      <p>
+        It does not store a laptop database or guarantee a specific dock model will work. Always confirm the dock or monitor spec sheet against your laptop's USB-C, Thunderbolt, or USB4 port details. Manufacturer manuals and the <a href="https://www.usb.org/" rel="noopener noreferrer">USB-IF specifications</a> are the final source of truth.
+      </p>
+
+      <h2 class="step-1">Related guides</h2>
+      <ul>
+        <li><a href="/guides/usb-c-dock-compatibility/">USB-C dock compatibility checklist</a></li>
+        <li><a href="/guides/usb-c-dock-only-one-monitor/">USB-C dock only detecting one monitor</a></li>
+        <li><a href="/guides/portable-usb-c-monitor-no-signal/">Portable USB-C monitor showing no signal</a></li>
+        <li><a href="/gear/connectivity/caldigit-ts4/">CalDigit TS4 Thunderbolt dock</a></li>
+        <li><a href="/gear/connectivity/anker-553-usb-c-hub/">Anker 553 8-in-1 USB-C hub</a></li>
+      </ul>
+    </aside>
+  </article>
+</Layout>
+
+<style>
+  .page-header {
+    max-width: 70ch;
+  }
+  .usb-compat__context {
+    margin-block-start: clamp(2rem, 6vw, 4rem);
+    padding-block-start: clamp(2rem, 6vw, 4rem);
+    border-top: 1px solid var(--surface-3);
+  }
+  .usb-compat__context h2 {
+    margin-block-start: 1.5rem;
+    font-size: var(--step-1);
+  }
+  .usb-compat__context p,
+  .usb-compat__context ul {
+    max-width: 70ch;
+  }
+</style>
