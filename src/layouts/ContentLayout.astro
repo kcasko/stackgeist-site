@@ -104,7 +104,7 @@ const more = feature ? related(path, 5) : [];
     <aside class="article-rail" aria-label="In this article">
       <div class="rail-inner">
         {toc.length >= 3 && (
-          <nav class="rail-block rail-toc" aria-labelledby="rail-toc-title">
+          <nav class="rail-block rail-toc" aria-label={`${railTitle} sidebar`}>
             <h2 id="rail-toc-title" class="rail-title">{railTitle}</h2>
             <ol>{toc.map((t) => <li class:list={{ 'is-step': t.step }}><span aria-hidden="true">{t.step ?? '•'}</span><a href={`#${t.id}`}>{t.text}</a></li>)}</ol>
           </nav>
@@ -152,11 +152,11 @@ const more = feature ? related(path, 5) : [];
     }
   }
   // Let keyboard users scroll code blocks that are wider than the screen.
-  document.querySelectorAll<HTMLElement>('.content-main pre').forEach((pre) => {
+  document.querySelectorAll<HTMLElement>('.content-main pre').forEach((pre, index) => {
     if (pre.scrollWidth > pre.clientWidth) {
       pre.tabIndex = 0;
       pre.setAttribute('role', 'region');
-      pre.setAttribute('aria-label', 'Code, scrolls sideways');
+      pre.setAttribute('aria-label', `Code example ${index + 1}, scrolls sideways`);
     }
   });
 </script>

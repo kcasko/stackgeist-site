@@ -314,6 +314,7 @@ const buying = entries(['/guides/usb-c-dock-compatibility/', '/guides/usb-c-cabl
   .block-head p { grid-column: 1 / -1; grid-row: 2; }
 }
 @media (max-width: 860px) {
+  .depts { grid-template-columns: minmax(0, 1fr); }
   .lead { grid-template-columns: 1fr; }
   .lead-panel { grid-column: 1; grid-row: 2; margin: var(--space-3) var(--space-4) 0; }
   .dept-labs, .dept-learning { grid-column: 1 / -1; }

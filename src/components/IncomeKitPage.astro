@@ -2,6 +2,7 @@
 import NewsletterSignup from './NewsletterSignup.astro';
 import type { IncomeKit, KitItem } from '../data/incomeKits';
 import { isResearchPending } from '../data/researchPending';
+import { isPaidAffiliateUrl } from '../lib/affiliate';
 
 const { kit } = Astro.props as { kit: IncomeKit };
 const tierLabel: Record<KitItem['tier'], string> = {
@@ -51,9 +52,9 @@ const campaign = `kits_${kit.slug}`;
           class:list={['kit-item', `tier-${item.tier}`]}
           href={isExternal(item.href) ? `${item.href}&utm_source=stackgeist&utm_medium=internal&utm_campaign=${campaign}&utm_content=${encodeURIComponent(item.label.toLowerCase().replaceAll(' ', '_'))}` : item.href}
           target={isExternal(item.href) ? '_blank' : undefined}
-          rel={isExternal(item.href) ? 'sponsored nofollow noopener noreferrer' : undefined}
-          data-affiliate-link={isExternal(item.href) ? true : undefined}
-          data-affiliate-placement={isExternal(item.href) ? `kit-${kit.slug}` : undefined}
+          rel={isPaidAffiliateUrl(item.href) ? 'sponsored nofollow noopener noreferrer' : isExternal(item.href) ? 'noopener noreferrer' : undefined}
+          data-affiliate-link={isPaidAffiliateUrl(item.href) ? true : undefined}
+          data-affiliate-placement={isPaidAffiliateUrl(item.href) ? `kit-${kit.slug}` : undefined}
         >
           <span class="kit-tier">{tierLabel[item.tier]}</span>
           {isExternal(item.href) && <span class="kit-research">retailer search · not an exact-product endorsement</span>}

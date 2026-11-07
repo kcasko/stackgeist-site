@@ -1,0 +1,794 @@
+{
+  "/favicon.ico": {
+    "width": 256,
+    "height": 256
+  },
+  "/favicon.svg": {
+    "width": 64,
+    "height": 64
+  },
+  "/gear/catalog-illustration.svg": {
+    "width": 800,
+    "height": 450
+  },
+  "/gear/commons/microfiber-cloth.webp": {
+    "width": 960,
+    "height": 673
+  },
+  "/gear/commons/sandisk-ultra-flair-128gb.webp": {
+    "width": 960,
+    "height": 640
+  },
+  "/gear/commons/sandisk-ultra-microsd-32gb.webp": {
+    "width": 960,
+    "height": 741
+  },
+  "/gear/commons/screen-extender.webp": {
+    "width": 960,
+    "height": 647
+  },
+  "/gear/commons/screwdriver-kit.webp": {
+    "width": 960,
+    "height": 640
+  },
+  "/gear/commons/soldering-iron.webp": {
+    "width": 960,
+    "height": 643
+  },
+  "/gear/commons/ti-84-plus-ce.webp": {
+    "width": 545,
+    "height": 1000
+  },
+  "/gear/commons/usb-c-adapter.webp": {
+    "width": 960,
+    "height": 720
+  },
+  "/illustrations/category-certs.svg": {
+    "width": 800,
+    "height": 450
+  },
+  "/illustrations/category-fixes.svg": {
+    "width": 800,
+    "height": 450
+  },
+  "/illustrations/category-gear.svg": {
+    "width": 800,
+    "height": 450
+  },
+  "/illustrations/category-labs.svg": {
+    "width": 800,
+    "height": 450
+  },
+  "/illustrations/diagram-ad-dns-domain-join.svg": {
+    "width": 960,
+    "height": 400
+  },
+  "/illustrations/diagram-aws-cognito-crud.svg": {
+    "width": 960,
+    "height": 380
+  },
+  "/illustrations/diagram-recover-then-repair.svg": {
+    "width": 960,
+    "height": 360
+  },
+  "/illustrations/diagram-usb-c-power-delivery.svg": {
+    "width": 960,
+    "height": 420
+  },
+  "/illustrations/diagram-wifi-router-or-pc.svg": {
+    "width": 960,
+    "height": 380
+  },
+  "/illustrations/hero-fix-first.svg": {
+    "width": 1200,
+    "height": 760
+  },
+  "/illustrations/topic-charging.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-help-desk.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-home-office.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-network.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-storage.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-usb-c-displays.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-virtualization.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/illustrations/topic-wireless.svg": {
+    "width": 640,
+    "height": 360
+  },
+  "/images/generated/homelab-rack-v2-800.webp": {
+    "width": 800,
+    "height": 533
+  },
+  "/images/generated/homelab-rack-v2.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/generated/repair-bench-800.webp": {
+    "width": 800,
+    "height": 533
+  },
+  "/images/generated/repair-bench.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/generated/retro-desk-v2-800.webp": {
+    "width": 800,
+    "height": 381
+  },
+  "/images/generated/retro-desk-v2.webp": {
+    "width": 1600,
+    "height": 762
+  },
+  "/images/generated/study-desk-v2-800.webp": {
+    "width": 800,
+    "height": 533
+  },
+  "/images/generated/study-desk-v2.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/images/generated/usb-c-dock-desk-v2-800.webp": {
+    "width": 800,
+    "height": 533
+  },
+  "/images/generated/usb-c-dock-desk-v2.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/og/stackgeist-card.png": {
+    "width": 1200,
+    "height": 630
+  },
+  "/pinterest/budget-tech-products/14-portable-laptop-screen-extender-triple-display.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/140-in-1-precision-screwdriver-repair-kit.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/15ft-indoor-extension-cord-16-3-flat-black.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/500w-multi-port-gan-charging-station.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/80w-digital-soldering-iron-kit.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/80w-soundbar-for-tv-pc-and-gaming.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/acodot-9-in-1-usb-c-hub.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/adjustable-aluminum-tablet-stand.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/adjustable-desk-phone-stand.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/alfa-ac1900-long-range-usb-wi-fi-adapter.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/big-tall-high-back-office-chair-400lb-capacity.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/canakit-raspberry-pi-5-starter-kit-pro-8gb-128gb.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/clamp-on-led-desk-lamp.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/clipboard-with-storage-compartment.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/flat-plug-surge-protector-power-strip-8-outlets-usb.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/iniu-usb-c-to-usb-c-cable-240w-6-6ft.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/kroser-laptop-briefcase-up-to-17-3.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/levo-g2-deluxe-rolling-laptop-stand.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/logitech-c920x-hd-webcam.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/microfiber-cleaning-cloths-18-pack.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/sabrent-sata-to-usb-adapter-cable.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/sabrent-usb-c-lay-flat-drive-dock-nvme-sata.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/samsung-evo-select-512gb-microsd-card.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/sandisk-ultra-128gb-microsd-card-2-pack.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/sandisk-ultra-flair-128gb-usb-3-0-flash-drive.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/sennheiser-momentum-4-wireless-noise-cancelling-headphones.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/usb-c-to-usb-a-adapter-2-pack.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/usb-to-3-5mm-audio-adapter-cable.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-products/wd-elements-portable-external-hard-drive.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/budget-tech-v1/bt08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/buyer-intent-v3/b06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c09.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/comparison-v1/c10.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p09.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch/p10.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p09.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/launch-v2/p10.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p09.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/real-launch/p10.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e01.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e02.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e03.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e04.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e05.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e06.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e07.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e08.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e09.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e10.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e11.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e12.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e13.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e14.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e15.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e16.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/setup-expansion-v1/e17.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg01-usb-c-dock-only-one-monitor.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg02-usb-c-dock-only-one-monitor.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg03-usb-c-dock-only-one-monitor.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg04-usb-c-cable-charging-slow.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg05-usb-c-cable-charging-slow.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg06-usb-c-cable-charging-slow.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg07-gan-charger-not-charging-laptop-full-speed.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg08-gan-charger-not-charging-laptop-full-speed.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg09-gan-charger-not-charging-laptop-full-speed.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg10-portable-usb-c-monitor-no-signal.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg11-portable-usb-c-monitor-no-signal.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg12-portable-usb-c-monitor-no-signal.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg13-extension-cord-getting-hot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg14-extension-cord-getting-hot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg15-extension-cord-getting-hot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg16-surge-protector-clicking.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg17-surge-protector-clicking.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg18-surge-protector-clicking.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg19-alfa-ac1900-slow-speed-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg20-alfa-ac1900-slow-speed-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg21-alfa-ac1900-slow-speed-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg22-monitor-arm-sagging-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg23-monitor-arm-sagging-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg24-monitor-arm-sagging-fix.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg25-logitech-brio-not-detected-windows-11.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg26-logitech-brio-not-detected-windows-11.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg27-logitech-brio-not-detected-windows-11.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg28-mx-master-3s-scroll-wheel-not-working.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg29-mx-master-3s-scroll-wheel-not-working.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg30-mx-master-3s-scroll-wheel-not-working.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg31-benq-screenbar-flickering.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg32-benq-screenbar-flickering.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg33-benq-screenbar-flickering.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg34-keychron-v6-max-bluetooth-not-connecting.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg35-keychron-v6-max-bluetooth-not-connecting.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg36-keychron-v6-max-bluetooth-not-connecting.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg37-sennheiser-momentum-4-wont-pair.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg38-sennheiser-momentum-4-wont-pair.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg39-sennheiser-momentum-4-wont-pair.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg40-govee-strip-lights-not-connecting-wifi.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg41-govee-strip-lights-not-connecting-wifi.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg42-govee-strip-lights-not-connecting-wifi.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg43-raspberry-pi-5-wont-boot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg44-raspberry-pi-5-wont-boot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg45-raspberry-pi-5-wont-boot.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg46-microsd-card-not-detected.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg47-microsd-card-not-detected.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg48-microsd-card-not-detected.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg49-wd-elements-not-showing-up.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg50-wd-elements-not-showing-up.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg51-wd-elements-not-showing-up.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg52-office-chair-gas-cylinder-replacement.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg53-office-chair-gas-cylinder-replacement.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/pinterest/troubleshooting-guides-v1/tg54-office-chair-gas-cylinder-replacement.png": {
+    "width": 1000,
+    "height": 1500
+  },
+  "/setups/budget-gaming-desk.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/setups/gaming.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/setups/midnight-shift.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/setups/small-bedroom-gaming.png": {
+    "width": 1024,
+    "height": 576
+  }
+}

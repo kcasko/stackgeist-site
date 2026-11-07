@@ -297,7 +297,7 @@ a.card:hover h2, a.card:hover h3 { background: var(--geist); color: #121212; box
 
 /* Numbered steps: sections whose kicker reads "Step NN" get a counter block (set by ContentLayout). */
 .article-body > section[data-step] > .page-kicker { display: none; }
-.step-no {
+.article-body .step-no {
   display: inline-flex; align-items: baseline; gap: 6px; margin-bottom: var(--space-3); padding: 6px 10px 4px;
   background: var(--dept); color: var(--on-dept);
   font: 900 1.9rem/1 var(--font-sans); font-stretch: var(--condensed);

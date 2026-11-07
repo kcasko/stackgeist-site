@@ -110,7 +110,16 @@ test('Pinterest tag is opt-in, privacy-minimal, and available from both layouts'
   const component = await read('src/components/PinterestConsent.astro');
   assert.match(component, /2612792510425/);
   assert.match(component, /s\.pinimg\.com\/ct\/core\.js/);
-  assert.match(component, /readPinterestConsent\(localStorage\)\s*===\s*'granted'/);
+  const previous = Object.getOwnPropertyDescriptor(globalThis, 'window');
+  Object.defineProperty(globalThis, 'window', { configurable: true, value: { get localStorage() { throw new DOMException('Denied', 'SecurityError'); } } });
+  try {
+    const { readPinterestConsent, writePinterestConsent } = await import('../src/scripts/pinterest-consent.ts');
+    assert.equal(readPinterestConsent(), null);
+    assert.equal(writePinterestConsent(undefined, 'granted'), false);
+  } finally {
+    if (previous) Object.defineProperty(globalThis, 'window', previous);
+    else delete globalThis.window;
+  }
   assert.match(component, /pintrk\('page'\)/);
   assert.match(component, /data-pinterest-settings/);
   assert.doesNotMatch(component, /\bem\b|email|user_email/i);

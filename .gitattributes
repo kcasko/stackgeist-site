@@ -1,0 +1,2 @@
+# Generated PDFs must retain their exact byte offsets on Windows checkouts.
+*.pdf binary

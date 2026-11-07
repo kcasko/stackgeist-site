@@ -1,5 +1,8 @@
 ---
+import { buildBreadcrumbs } from '../lib/breadcrumbs';
 import { isArchivedRoute } from '../data/searchScope';
+import { CATALOG } from '../data/catalog';
+import { SECTIONS, TOPIC_LABEL } from '../data/sections';
 interface Props {
   title: string;
   description: string;
@@ -18,35 +21,32 @@ const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.repl
 const canonical = new URL(canonicalPath, site).toString();
 const image = new URL('/og/stackgeist-card.png', site).toString();
 const feed = new URL('/rss.xml', site).toString();
-// Department names match the visible navigation, whatever the URL segment is called.
-const SECTION_NAMES: Record<string, string> = { guides: 'Fixes', certs: 'Learning', kits: 'Buying lists' };
-const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
-const breadcrumbStructured = pathSegments.length === 0 ? null : {
+// Only real static ancestors are included; URL folders are not automatically pages.
+const pageFiles = Object.keys(import.meta.glob('../pages/**/*.astro'));
+const knownRoutes = new Set(pageFiles.filter(file => !file.includes('[')).map(file => {
+  const route = file.replace('../pages', '').replace(/\/index\.astro$/, '/').replace(/\.astro$/, '/');
+  return route;
+}));
+CATALOG.forEach(entry => knownRoutes.add(entry.href));
+const entry = CATALOG.find(entry => entry.href === canonicalPath);
+const hasEditorialTrail = entry && ['troubleshooting', 'buying-guide', 'lab', 'lab-hardware', 'certification', 'course-review', 'study-log'].includes(entry.type);
+const editorialParents = hasEditorialTrail ? [{ name: SECTIONS[entry.section].label, path: SECTIONS[entry.section].href }] : undefined;
+if (editorialParents && entry) {
+  const hub = entry.section === 'fixes' ? CATALOG.find(page => page.type === 'topic' && page.topic === entry.topic) : undefined;
+  if (hub && hub.href !== entry.href) editorialParents.push({ name: TOPIC_LABEL[entry.topic] ?? hub.title, path: hub.href });
+  if (entry.topic === 'wgu' && entry.href !== '/certs/wgu-software-engineering-degree/') editorialParents.push({ name: 'WGU degree', path: '/certs/wgu-software-engineering-degree/' });
+}
+const breadcrumbs = buildBreadcrumbs(Astro.url.pathname, title, knownRoutes, editorialParents);
+const breadcrumbStructured = breadcrumbs.length ? {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'StackGeist',
-      item: new URL('/', site).toString(),
-    },
-    ...pathSegments.map((segment, index) => ({
-      '@type': 'ListItem',
-      position: index + 2,
-      name: index === 0 && SECTION_NAMES[segment]
-        ? SECTION_NAMES[segment]
-        : segment
-          .split('-')
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' '),
-      item: new URL('/' + pathSegments.slice(0, index + 1).join('/') + '/', site).toString(),
-    })),
-  ],
-};
-// Cloudflare Web Analytics beacon token. Public by design — the beacon script
-// ships this token in every HTML response. Not a secret.
-const cfBeaconToken = (import.meta.env.PUBLIC_CF_BEACON_TOKEN ?? 'ef8afadeb68a45d49c726121c2976329').trim();
+  itemListElement: breadcrumbs.map((crumb, index) => ({
+    '@type': 'ListItem', position: index + 1, name: crumb.name,
+    item: new URL(crumb.path, site).toString(),
+  })),
+} : null;
+// Cloudflare Pages injects Web Analytics at delivery time. Keep a single beacon;
+// a second manual snippet used an old token and produced CORS errors on every page.
 const structured = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -85,6 +85,3 @@ const structured = {
 <script type="application/ld+json" set:html={JSON.stringify(structured)}></script>
 {breadcrumbStructured && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructured)}></script>}
 {extraSchemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)}></script>)}
-{cfBeaconToken && (
-  <script type="module" defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${cfBeaconToken}"}`}></script>
-)}

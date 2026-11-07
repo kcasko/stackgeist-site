@@ -24,7 +24,7 @@ const current: Section | undefined = active ? (legacy[active] ?? (active as Sect
       <span class="wordmark" aria-hidden="true">Stack<span>Geist</span></span>
     </a>
     <p class="mast-strap">Fixes, home labs, and IT study notes.<br />Written by someone who opens the case first.</p>
-    <form class="mast-search" action="/search/" method="get" role="search">
+    <form class="mast-search" action="/search/" method="get" role="search" aria-label="Site search">
       <label class="sr-only" for="site-search">Search StackGeist</label>
       <input id="site-search" name="q" type="search" placeholder="Search: dock, SSD, AD lab…" autocomplete="off" />
       <button type="submit">Search</button>

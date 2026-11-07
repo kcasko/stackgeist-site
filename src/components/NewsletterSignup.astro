@@ -6,8 +6,8 @@ interface Props {
 }
 const {
   variant = 'card',
-  heading = 'Get new fixes and lab write-ups by email.',
-  subhead = 'An occasional email when a new troubleshooting guide, home lab, or certification guide is published. No sponsored content.',
+  heading = 'Get StackGeist Notes by email.',
+  subhead = 'Occasional computer fixes, home lab lessons, and IT study updates. Free checks first. No daily blasts or paid placements. Any affiliate links are clearly disclosed.',
 } = Astro.props;
 const headingId = `newsletter-${variant}-title`;
 ---
@@ -16,20 +16,8 @@ const headingId = `newsletter-${variant}-title`;
     <p class="nl-label">Newsletter</p>
     <h2 id={headingId}>{heading}</h2>
     <p class="nl-sub">{subhead}</p>
-    <form
-      class="nl-form embeddable-buttondown-form"
-      action="https://buttondown.com/api/emails/embed-subscribe/stackgeist"
-      method="post"
-      target="popupwindow"
-      onsubmit="window.open('https://buttondown.com/stackgeist', 'popupwindow')"
-    >
-      <label class="sr-only" for={`email-${variant}`}>Email address</label>
-      <input id={`email-${variant}`} type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
-      <input type="hidden" value="1" name="embed" />
-      <input type="hidden" value="stackgeist-site" name="tag" />
-      <button type="submit">Subscribe</button>
-    </form>
-    <p class="nl-small">Free. Unsubscribe anytime. See the <a href="/privacy/">privacy policy</a>.</p>
+    <a class="nl-subscribe" href="https://stackgeist.kit.com/091a91df1b">Subscribe on Kit</a>
+    <p class="nl-small">Free. Unsubscribe anytime. Kit handles your signup. See the <a href="/privacy/">privacy policy</a>.</p>
   </div>
   <ul class="nl-list" aria-label="What you get">
     <li><strong>New fix guides</strong><span>Step-by-step diagnosis for USB-C, storage, charging, and Wi-Fi problems.</span></li>
@@ -44,18 +32,14 @@ const headingId = `newsletter-${variant}-title`;
 .nl-label { margin: 0; color: var(--ink-3); font: 800 .7rem/1.2 var(--font-sans); font-stretch: var(--expanded); letter-spacing: .06em; text-transform: uppercase; }
 .nl-copy h2 { max-width: 22ch; margin: 6px 0 var(--space-2); font: 850 clamp(1.7rem, 3vw, 2.3rem)/1 var(--font-sans); font-stretch: var(--condensed); }
 .nl-sub { max-width: 54ch; margin: 0; color: var(--ink-2); font-size: .98rem; line-height: 1.5; }
-.nl-form { display: flex; max-width: 480px; margin-top: var(--space-4); }
-.nl-form input[type="email"] { flex: 1; min-width: 0; min-height: 46px; padding: 0 12px; border: 2px solid var(--ink); border-right: 0; border-radius: 0; background: var(--base); color: var(--ink); font-size: 1rem; }
-.nl-form input[type="email"]::placeholder { color: var(--ink-3); }
-.nl-form button { min-height: 46px; padding: 0 20px; border: 2px solid var(--ink); border-radius: 0; background: var(--ink); color: var(--base); font: 800 .85rem/1 var(--font-sans); font-stretch: var(--expanded); text-transform: uppercase; cursor: pointer; }
-.nl-form button:hover { background: var(--geist); color: #121212; }
+.nl-subscribe { display: inline-flex; align-items: center; min-height: 46px; margin-top: var(--space-4); padding: 0 20px; border: 2px solid var(--ink); background: var(--ink); color: var(--base); font: 800 .85rem/1 var(--font-sans); font-stretch: var(--expanded); text-decoration: none; text-transform: uppercase; }
+.nl-subscribe:hover { background: var(--geist); color: #121212; }
 .nl-small { margin: var(--space-2) 0 0; color: var(--ink-3); font-size: .82rem; }
 .nl-list { display: grid; align-content: center; margin: 0; padding: var(--space-4) var(--space-5); list-style: none; border-left: 3px solid var(--ink); background: var(--base); }
 .nl-list li { display: grid; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
 .nl-list li:last-child { border-bottom: 0; }
 .nl-list strong { font-weight: 750; }
 .nl-list span { color: var(--ink-2); font-size: .9rem; line-height: 1.45; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 760px) {
   .newsletter { grid-template-columns: minmax(0, 1fr); }
   .newsletter > * { min-width: 0; }

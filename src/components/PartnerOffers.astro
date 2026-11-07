@@ -12,6 +12,7 @@ const offers = ids.map((id) => PARTNER_OFFERS[id]).filter((offer) => offer.url);
 {offers.length > 0 && (
   <section class="content-section" aria-label="Paid options">
     <p class="page-kicker">Paid options</p>
+    <p class="note">Paid link: StackGeist may earn a commission at no extra cost to you. <a href="/affiliate-disclosure/">Disclosure</a></p>
     <div class="cards">
       {offers.map((offer) => (
         <a class="card" href={offer.url} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-link data-affiliate-placement={placement}>
@@ -20,6 +21,5 @@ const offers = ids.map((id) => PARTNER_OFFERS[id]).filter((offer) => offer.url);
         </a>
       ))}
     </div>
-    <p class="note">Paid link: StackGeist may earn a commission at no extra cost to you. <a href="/affiliate-disclosure/">Disclosure</a></p>
   </section>
 )}

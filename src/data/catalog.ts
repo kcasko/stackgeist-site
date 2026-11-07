@@ -34,7 +34,7 @@ export const CATALOG: Entry[] = [
     title: "USB-C dock only detecting one monitor",
     headline: "USB-C dock only detecting one monitor: diagnose the display path.",
     dek: "Start here when one external display works and the second does not.",
-    updated: "2026-10-01"
+    updated: "2026-11-06"
   },
   {
     href: "/guides/usb-c-dock-second-monitor-stops-working/",
@@ -564,7 +564,7 @@ export const CATALOG: Entry[] = [
     title: "USB-C dock compatibility checklist",
     headline: "A USB-C connector is a shape, not a promise.",
     dek: "Trace host capability, displays, charging, and bandwidth before buying.",
-    updated: "2026-09-04"
+    updated: "2026-11-06"
   },
   {
     href: "/guides/usb-c-cable-buying-guide/",
@@ -614,7 +614,7 @@ export const CATALOG: Entry[] = [
     title: "CalDigit TS4 Thunderbolt dock",
     headline: "An excellent dock cannot add display support your laptop never had.",
     dek: "A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing.",
-    updated: ""
+    updated: "2026-11-06"
   },
   {
     href: "/gear/input/logitech-mx-master-3s/",

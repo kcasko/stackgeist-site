@@ -11,7 +11,7 @@ const items = CATALOG.filter((e) => e.type !== 'setup')
 <Layout title="Search StackGeist" description="Search StackGeist fixes, home labs, course reviews, and gear pages." noindex>
   <section class="search-page">
     <h1 class="page-title">Search</h1>
-    <form class="search-form" action="/search/" method="get" role="search">
+    <form class="search-form" action="/search/" method="get" role="search" aria-label="Filter search results">
       <label for="q" class="sr-only">Search StackGeist</label>
       <input id="q" name="q" type="search" placeholder="Try: dock, SSD, Active Directory, D287" autocomplete="off" />
       <button type="submit" class="btn primary">Search</button>
@@ -31,6 +31,7 @@ const items = CATALOG.filter((e) => e.type !== 'setup')
 </Layout>
 
 <script>
+  import { matchesSearch } from '../lib/search';
   const input = document.querySelector<HTMLInputElement>('#q');
   const rows = [...document.querySelectorAll<HTMLLIElement>('[data-results] li')];
   const status = document.querySelector<HTMLElement>('[data-status]');
@@ -39,7 +40,7 @@ const items = CATALOG.filter((e) => e.type !== 'setup')
     const terms = (input?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
     let shown = 0;
     for (const row of rows) {
-      const hit = terms.every((t) => row.dataset.hay?.includes(t));
+      const hit = matchesSearch(row.dataset.hay ?? '', input?.value ?? '');
       row.hidden = !hit;
       if (hit) shown++;
     }

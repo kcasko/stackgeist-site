@@ -29,6 +29,7 @@ interface Props {
   imageSourceUrl?: string;
 }
 const p = Astro.props;
+const illustration = p.imageUrl === "/gear/catalog-illustration.svg";
 ---
 <p class="breadcrumbs"><a href="/setups/midnight-shift">Midnight Shift</a> / <a href="/gear/desk-lighting">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
 <p class="page-kicker">{p.eyebrow}</p>
@@ -39,8 +40,8 @@ const p = Astro.props;
 <section class="recommend-card">
   {p.imageUrl ? (
     <figure class="product-photo">
-      <img src={p.imageUrl} alt={p.imageAlt || p.productName} loading="eager" decoding="async" referrerpolicy="no-referrer" />
-      {p.imageSourceUrl && <figcaption>Product image: <a href={p.imageSourceUrl} target="_blank" rel="noopener">{p.imageSourceLabel || 'manufacturer'}</a></figcaption>}
+      <img src={p.imageUrl} alt={p.imageUrl === "/gear/catalog-illustration.svg" ? "Generic hardware illustration, not a product photo" : p.imageAlt || p.productName} width="800" height="450" loading="eager" decoding="async" referrerpolicy="no-referrer" />
+      {illustration ? <figcaption>Illustration only; not a photograph of this model.</figcaption> : p.imageSourceUrl && <figcaption>Image source: <a href={p.imageSourceUrl} target="_blank" rel="noopener noreferrer">{p.imageSourceLabel || 'manufacturer'}</a></figcaption>}
     </figure>
   ) : <SetupScene variant={p.kind === 'premium' ? 'screenbar' : 'bias'} />}
   <div class="recommend-copy">

@@ -24,7 +24,7 @@ export function productSchema(input: {
     description: input.description,
     url: canonicalUrl(input.url),
   };
-  if (input.image) out.image = input.image;
+  if (input.image && !input.image.endsWith('/catalog-illustration.svg')) out.image = input.image;
   if (input.brand) out.brand = { '@type': 'Brand', name: input.brand };
   if (input.sku) out.sku = input.sku;
   return out;

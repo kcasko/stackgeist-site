@@ -2,12 +2,12 @@
   <div>
     <p class="privacy-kicker">PRIVACY CHOICE</p>
     <h2 id="privacy-title">Allow Pinterest measurement?</h2>
-    <p id="privacy-description">If you opt in, Pinterest may use cookies to measure visits and improve campaign reporting. StackGeist does not send enhanced-match identifiers.</p>
+    <p id="privacy-description">Optional Pinterest tracking measures visits and campaign results. It stays off unless you allow it. No enhanced-match identifiers are sent. If browser storage is blocked, you may be asked again.</p>
     <a href="/privacy">Read the privacy policy</a>
   </div>
   <div class="privacy-actions">
     <button type="button" data-pinterest-deny>Decline</button>
-    <button type="button" class="primary" data-pinterest-grant>Allow Pinterest</button>
+    <button type="button" class="primary" data-pinterest-grant aria-label="Allow Pinterest">Allow</button>
   </div>
 </div>
 
@@ -21,6 +21,8 @@
   const settings = document.querySelector<HTMLButtonElement>('[data-pinterest-settings]');
   const grant = document.querySelector<HTMLButtonElement>('[data-pinterest-grant]');
   const deny = document.querySelector<HTMLButtonElement>('[data-pinterest-deny]');
+  let returnFocus: HTMLElement | null = null;
+  let currentChoice = readPinterestConsent();
 
   function loadPinterest(): void {
     if (browser.pintrk || document.querySelector('script[data-pinterest-tag]')) return;
@@ -51,29 +53,34 @@
 
   function showPanel(): void {
     if (!panel) return;
+    returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     panel.hidden = false;
     grant?.focus();
   }
 
   function hidePanel(): void {
     if (panel) panel.hidden = true;
-    settings?.focus();
+    // A first-visit choice has no opener. Sending focus to the footer here
+    // scrolled readers away from the article they had just started.
+    (returnFocus ?? document.querySelector<HTMLElement>('#main-content'))?.focus({ preventScroll: true });
+    returnFocus = null;
   }
 
-  const initialChoice = readPinterestConsent(localStorage);
-  if (readPinterestConsent(localStorage) === 'granted') loadPinterest();
-  if (initialChoice === 'denied') clearPinterestCookies();
-  if (initialChoice === null && panel) panel.hidden = false;
+  if (currentChoice === 'granted') loadPinterest();
+  if (currentChoice === 'denied') clearPinterestCookies();
+  if (currentChoice === null && panel) panel.hidden = false;
 
   grant?.addEventListener('click', () => {
-    writePinterestConsent(localStorage, 'granted');
+    currentChoice = 'granted';
+    writePinterestConsent(undefined, currentChoice);
     loadPinterest();
     hidePanel();
   });
 
   deny?.addEventListener('click', () => {
-    const wasGranted = readPinterestConsent(localStorage) === 'granted';
-    writePinterestConsent(localStorage, 'denied');
+    const wasGranted = currentChoice === 'granted';
+    currentChoice = 'denied';
+    writePinterestConsent(undefined, currentChoice);
     clearPinterestCookies();
     if (wasGranted) window.location.reload();
     else hidePanel();

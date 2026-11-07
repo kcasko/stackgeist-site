@@ -1,5 +1,6 @@
 ---
 import type { SetupOptions, Pick, Category } from '../data/gamingSetupOptions';
+import { isPaidAffiliateUrl } from '../lib/affiliate';
 
 interface Props {
   setup: SetupOptions;
@@ -41,6 +42,7 @@ const linkRel = (kind: Pick['kind']) =>
   <h2 id={`opts-${setup.slug}`} class="section-heading">{heading ?? 'Options for every part of this setup.'}</h2>
   {intro && <p class="cat-grid-intro">{intro}</p>}
   <p class="cat-grid-lede">{setup.summary}</p>
+  <p>Hardware thumbnails are generic illustrations, not photographs of the listed models. Paid retailer links are marked; StackGeist may earn a commission at no extra cost to you.</p>
 
   <div class="cat-grid-legend" role="list">
     <span role="listitem"><em class="tier-dot budget"></em>Starter · lower-cost example</span>
@@ -66,13 +68,13 @@ const linkRel = (kind: Pick['kind']) =>
                 class="pick-row"
                 href={p.href}
                 target={isExternal(p.href) ? '_blank' : undefined}
-                rel={linkRel(p.kind)}
-                data-affiliate-link={p.kind === 'search' ? true : undefined}
-                data-affiliate-placement={p.kind === 'search' ? `setup-${setup.slug}-${cat.slug}` : undefined}
+                rel={isPaidAffiliateUrl(p.href) ? linkRel(p.kind) : isExternal(p.href) ? 'noopener noreferrer' : undefined}
+                data-affiliate-link={isPaidAffiliateUrl(p.href) ? true : undefined}
+                data-affiliate-placement={isPaidAffiliateUrl(p.href) ? `setup-${setup.slug}-${cat.slug}` : undefined}
               >
                 <div class={`pick-thumb ${p.image ? 'has-photo' : 'is-glyph'}`}>
                   {p.image ? (
-                    <img src={p.image} alt={p.label} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+                    <img src={p.image} alt={p.image === "/gear/catalog-illustration.svg" ? "Generic hardware illustration, not a product photo" : p.label} width="800" height="450" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
                   ) : (
                     <span aria-hidden="true">{glyphFor(cat)}</span>
                   )}
@@ -81,6 +83,7 @@ const linkRel = (kind: Pick['kind']) =>
                   <div class="pick-line">
                     <span class={`tier-pill ${p.tier}`} title={tierMeta[p.tier].hint}>{tierMeta[p.tier].label}</span>
                     <span class="pick-label">{p.label}</span>
+                    {isPaidAffiliateUrl(p.href) && <span class="badge search">Paid link</span>}
                     {p.kind === 'internal' && <span class="badge internal">decision page</span>}
                     {p.kind === 'search' && <span class="badge search">research example</span>}
                     {p.price && <span class="pick-price">{p.price}</span>}

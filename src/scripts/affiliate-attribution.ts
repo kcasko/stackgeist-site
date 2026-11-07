@@ -1,3 +1,5 @@
+import { configuredOfferId, isPaidAffiliateUrl } from '../lib/affiliate.ts';
+
 export interface CampaignAttribution {
   utmSource: string;
   utmMedium: string;
@@ -29,6 +31,8 @@ export function readCampaign(params: URLSearchParams): CampaignAttribution {
 }
 
 export function extractProductId(href: string): string {
+  const offerId = configuredOfferId(href);
+  if (offerId) return offerId;
   try {
     const path = new URL(href).pathname;
     return path.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})(?:\/|$)/i)?.[1]?.toUpperCase() || '';
@@ -113,6 +117,16 @@ function baseEvent(campaign: CampaignAttribution): Omit<AffiliateEvent, 'eventTy
 }
 
 function initializeAttribution(): void {
+  // Browser-local audit opt-out survives navigation in the current tab only.
+  const audit = new URL(window.location.href).searchParams.get('audit');
+  if (audit === '1') {
+    try { sessionStorage.setItem('stackgeist:affiliate:audit', '1'); } catch { /* unavailable storage */ }
+    return;
+  }
+  try {
+    if (audit === '0') sessionStorage.removeItem('stackgeist:affiliate:audit');
+    if (sessionStorage.getItem('stackgeist:affiliate:audit') === '1') return;
+  } catch { /* normal browsing still works without storage */ }
   const campaign = currentCampaign();
   const base = baseEvent(campaign);
   const landingKey = `${LANDING_PREFIX}${base.pagePath}`;
@@ -127,6 +141,7 @@ function initializeAttribution(): void {
 
   const selector = 'a[data-affiliate-link], a[href*="tag=deskrespawn-20"]';
   document.querySelectorAll<HTMLAnchorElement>(selector).forEach((anchor) => {
+    if (!isPaidAffiliateUrl(anchor.href)) return;
     anchor.addEventListener('click', () => {
       sendEvent({
         ...base,

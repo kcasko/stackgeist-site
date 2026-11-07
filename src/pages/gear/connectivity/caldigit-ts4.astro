@@ -2,7 +2,7 @@
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import ProductDetailSimple from '../../../components/ProductDetailSimple.astro';
 import { productSchema, faqSchema } from '../../../lib/structured-data';
-const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", description: "The TS4 is a dense one-cable desk hub for laptops that can use its Thunderbolt bandwidth, display paths, Ethernet, card readers, audio, and charging. Check the host before counting ports.", url: 'https://stackgeist.dev/gear/connectivity/caldigit-ts4', image: 'https://stackgeist.dev/gear/mfr/caldigit-ts4.webp', brand: 'CalDigit' })];
+const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", description: "The TS4 is a dense one-cable desk hub for laptops that can use its Thunderbolt bandwidth, display paths, Ethernet, card readers, audio, and charging. Check the host before counting ports.", url: 'https://stackgeist.dev/gear/connectivity/caldigit-ts4', image: 'https://stackgeist.dev/gear/catalog-illustration.svg', brand: 'CalDigit' })];
 ---
 <ContentLayout structuredData={__sd} title="CalDigit TS4 dock compatibility guide | StackGeist" description="A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing." active="gear">
   <ProductDetailSimple
@@ -10,7 +10,7 @@ const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", desc
     heading="An excellent dock cannot add display support your laptop never had."
     intro="The TS4 is a dense one-cable desk hub for laptops that can use its Thunderbolt bandwidth, display paths, Ethernet, card readers, audio, and charging. Check the host before counting ports."
     productName="CalDigit Thunderbolt Station 4 (TS4)"
-    imageUrl="/gear/mfr/caldigit-ts4.webp"
+    imageUrl="/gear/catalog-illustration.svg"
     imageAlt="CalDigit TS4 Thunderbolt 4 dock standing vertically"
     imageSourceLabel="CalDigit"
     imageSourceUrl="https://www.caldigit.com/thunderbolt-station-4/"
@@ -19,7 +19,7 @@ const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", desc
     why="It can replace several adapters when the desk genuinely uses high-speed storage, wired networking, SD and microSD cards, audio, multiple USB devices, displays, and near-100W laptop charging."
     tradeoff="It is expensive, its display behavior varies by host, and 98W may not replace the full-power adapter for larger mobile workstations. Buying it for unused ports is wasted complexity."
     check="Confirm the laptop's exact Thunderbolt or USB-C specification, supported external-display count and resolutions, OS restrictions, charging requirement, and the cable or adapter needed for each monitor."
-    facts="CalDigit specifies 18 ports, a 40Gb/s Thunderbolt 4 host connection, up to 98W host charging, 2.5Gb Ethernet, UHS-II SD and microSD readers, DisplayPort 1.4, and three downstream Thunderbolt 4 ports.[1]"
+    facts="CalDigit specifies 18 ports, a 40Gb/s Thunderbolt 4 host connection, up to 98W host charging, 2.5Gb Ethernet, UHS-II SD and microSD readers, DisplayPort 1.4, and three Thunderbolt 4 ports total: one host port and two downstream ports.[1]"
     skip="Skip it if a basic USB-C hub already covers one display and a few peripherals, your host cannot use Thunderbolt features, you need more than 98W charging, or your display plan is not explicitly supported."
     amazonUrl="https://www.amazon.com/dp/B09GK8LBWS?tag=deskrespawn-20"
     makerLabel="CalDigit compatibility [1]"
