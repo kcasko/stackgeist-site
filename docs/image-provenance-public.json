@@ -1,0 +1,1027 @@
+﻿{
+    "original_illustration":  "public/illustrations/category-gear.svg reused as catalog-illustration.svg",
+    "quarantined":  [
+                        {
+                            "url":  "/gear/amazon-basics-dual-monitor-arm.jpg",
+                            "sha256":  "f8903edd12dc55aa7ea359984cd15240750857a801a71ab8d6b0b36b0c485fdd",
+                            "bytes":  10963,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/anker-525.jpg",
+                            "sha256":  "e3a72c541eabcaf46d3fe77ea2d596b85fa0ada42bbb5962d9ab27cb3c57abc9",
+                            "bytes":  11936,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/anker-553-usb-c-hub.jpg",
+                            "sha256":  "a671714aa70ea15cae1f487687656e10a3d4a64c79b205cbac5744058a967a11",
+                            "bytes":  14181,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/anker-nano-a9196.jpg",
+                            "sha256":  "1eb708bf0535f0c2681e5c7f42489fdbb5478addd50056cbd39410f01850e4d8",
+                            "bytes":  10472,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/benq-screenbar-pro.jpg",
+                            "sha256":  "af3448bf9001fe464ce2babb78dac427f9d25fb61155ee27c41cdfcf72d9de24",
+                            "bytes":  5230,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/big-tall-office-chair.jpg",
+                            "sha256":  "ee3bef76d4fa6add9f69ea3183a465b8b766b7a2ba99194508fa7103f96f3692",
+                            "bytes":  195121,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/caldigit-ts4.jpg",
+                            "sha256":  "20a26eb33369c5d81a3895eca00438ba6277eb56091df47ae3fafd0457526a6a",
+                            "bytes":  10665,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/clamp-on-led-desk-lamp.jpg",
+                            "sha256":  "377638ee0164b662a2181d667bd7e3c736b61ba7fb93a37df177ad7482edea05",
+                            "bytes":  145431,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/elgato-wave-3.jpg",
+                            "sha256":  "6c445eff987e40173b90f70997efeaa183215d91bcf1c6daf56e73236fe58e33",
+                            "bytes":  78915,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/ergotron-lx.jpg",
+                            "sha256":  "a1cb4e1204a045d35d129e251967aec671eb12b06b369630a17913d109456913",
+                            "bytes":  8224,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/flat-plug-surge-protector.jpg",
+                            "sha256":  "ee999ee367232a3470bed964737a3eb0118567d39a3952c3d12e799afb3f200c",
+                            "bytes":  62984,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/govee-strip-light-2-pro.jpg",
+                            "sha256":  "09f9d09f8c289d26211cd5bee31a98fd7513029f8958b5da5c31ba7004e783a8",
+                            "bytes":  33212,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/keychron-v6-max.jpg",
+                            "sha256":  "f2010ea49b98db735d96f46a7101a79f30c1e613312ecebbec74d46806da4b32",
+                            "bytes":  18113,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/logitech-brio-500.png",
+                            "sha256":  "ff07a0b8e671b58abf4fccbfb3b74401fc9f578186f34cd30a6fdccbcaa299b3",
+                            "bytes":  50886,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/logitech-c920x.jpg",
+                            "sha256":  "30679bf0be89d0630826e4a068297559244ae3232e09bf6ee6417f698ef916a3",
+                            "bytes":  137895,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/logitech-mx-master-3s.png",
+                            "sha256":  "ad77bd2a0782a0a8b0d0a2a1af014c941a2986d5c77deb3c99654de9d0052e90",
+                            "bytes":  21652,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/luminoodle.jpg",
+                            "sha256":  "27e4189bfada716ec621bb24ee9597dbd17375fb1ad7d74b72a363a8158f427e",
+                            "bytes":  21846,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/razer-base-station-v2-chroma.jpg",
+                            "sha256":  "daafed13cba667fc30dec01e881ee4a50a03229feaeeea05c6229fdccf0e3f4b",
+                            "bytes":  4334,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/samsung-evo-select-512gb.jpg",
+                            "sha256":  "4f6391b7fc153feaca067101f0b6f4ec221a3d304b4d593f76c127dfdeaedd82",
+                            "bytes":  98142,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/steelseries-qck-heavy-xxl.jpg",
+                            "sha256":  "e44d683279b8c9752e681c8648907fdf53d8599e2428f2c221c8f47524c2071c",
+                            "bytes":  4111,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/0374fa82d9b3.jpg",
+                            "sha256":  "0a56e684d40e4b5e1dd53b955a05969cc84cd6147dcfab59e297d6da4a7cf793",
+                            "bytes":  18543,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/068226b14f7d.jpg",
+                            "sha256":  "10deee7f7932f93f18ce579e3a45f4690feaec287cff29be71b44e217a37ca5f",
+                            "bytes":  20842,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/06fb275f6f92.jpg",
+                            "sha256":  "5e403bf5f0408717444f000fa26ebfa9978e9969cd31f75b05c401208ed1dc2d",
+                            "bytes":  19889,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/081e904e7120.jpg",
+                            "sha256":  "71e16846860ddd1d7ccbe9257c940ffe5343f9792a7077c6c63c3bf6aa9ed30d",
+                            "bytes":  27280,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/090bd2b8eb5e.jpg",
+                            "sha256":  "f8bdb74140d8e6ac394f1cd2b74fd1a512733857783e818134b95903050e676c",
+                            "bytes":  20785,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/0c37f3c4102e.jpg",
+                            "sha256":  "3cb08e86894b42f7ca390b7768c3311f6376caead9586249e5e3b4b2fe7ec731",
+                            "bytes":  22964,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/0dabef608bdd.jpg",
+                            "sha256":  "17adee98eeceda22ee43047f6a5f7ddee586162e3f4e3e71e052cd670a5353f3",
+                            "bytes":  30486,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/0f185487932b.jpg",
+                            "sha256":  "1c87d64d1444ea700d65dee69f283c70a67ee6bd3799e060795e19d027115fb9",
+                            "bytes":  5523,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/136afee6bd3f.jpg",
+                            "sha256":  "379e6ce782db28dbdbed7fdb4bea6c994a773f0e3b5a06e761faa0289063e378",
+                            "bytes":  20148,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/13948289c0a3.jpg",
+                            "sha256":  "45434dfa7c29163d756185a19fdeda268c711ff74978f0435922fb5ad16d8e52",
+                            "bytes":  16722,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/13e506922fb2.jpg",
+                            "sha256":  "5c5c503c3419ec516914b68ce6e496c4e42b5216971f4dc50eefdb52d6d8cfd5",
+                            "bytes":  19779,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/15fc00d1f66f.jpg",
+                            "sha256":  "6ec2ceb422e0ad2983f709077ec74cecba96b646aecd1cd67206389f70c11644",
+                            "bytes":  11834,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/16423202a136.jpg",
+                            "sha256":  "069f3d567c821044347cbb19bba887e0ed0e401cbb2029589da0538a27a3cd30",
+                            "bytes":  32878,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/1e4ed6c1f7d7.jpg",
+                            "sha256":  "2afabe4f496cf8e817da231bbac8c1885f9c332feb75f32c59ff16bb29695ca3",
+                            "bytes":  20126,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/1e73a1efdd16.jpg",
+                            "sha256":  "700b12a9fb59860bcd56c8589aa87c0c35e7e74c8f7639293c752e02fd803ac8",
+                            "bytes":  13751,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/2096a5cdb108.jpg",
+                            "sha256":  "2045c410fda97264fb60c85ab55ec571b0df86d2083dd0e305304b3a33e662f0",
+                            "bytes":  13157,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/2518ed9713a7.jpg",
+                            "sha256":  "0a3980d14f068c5c3a005c8953f04de36a8ee5b7b4ee7185a4dd313bd6a85e99",
+                            "bytes":  15269,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/28be8678c948.jpg",
+                            "sha256":  "2a172e74afb55f6c16182a4efd2f08a4f8fd5f820452e21b04c1590518b6f82f",
+                            "bytes":  29855,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/2f4b8f510f53.jpg",
+                            "sha256":  "ebfbdf3e57dcf6565d1de434938bd284b83cc054c8602b9ae685893f094b77a4",
+                            "bytes":  30864,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/2fb720e5ef29.jpg",
+                            "sha256":  "7acae86413b9212d2dbba22492b5feaa66c9226d451949626bfe47215ee3fa2e",
+                            "bytes":  19845,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/31a69397154e.jpg",
+                            "sha256":  "ad203b15c123b9a5413eaeb6c41a1eccf370c30ced9fdeda74c5967ee6a115ce",
+                            "bytes":  16023,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/3227293d4b91.jpg",
+                            "sha256":  "901995b379572a86f00d9cdb19480e1ee5aea16e5680d1afc4450c201f15adfb",
+                            "bytes":  13922,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/33cfc1e17e65.jpg",
+                            "sha256":  "2f823ce47e330a8825c59950d01fb96c4f6a8511d4a2315382550cca4bacceb9",
+                            "bytes":  15809,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/3b7af369a4e8.jpg",
+                            "sha256":  "79deeb7a8eab675c13de53ad955f72232c855baba02a6e2894e81f5aa8c59258",
+                            "bytes":  33299,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/3e1961873423.jpg",
+                            "sha256":  "f7fade11f351850836eca102082d031242310a3c5975da49decae2c0eb6ae45b",
+                            "bytes":  29964,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/3f2a0fd711f7.jpg",
+                            "sha256":  "11d1217c1d2f602704de473100992f506d0e56e8a58f23cae8206c67369ed379",
+                            "bytes":  6910,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/3f6fc16fca67.jpg",
+                            "sha256":  "cbe3a2629bdc93f1b7a55c8957c2eb2c3a95ddcea11c44295d5a186e510539b4",
+                            "bytes":  12981,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/419ba100c4a5.jpg",
+                            "sha256":  "ed93eff0c21e59c7eab137e5b70bcae6346ec37bb6f3f53f647f81307f62caf0",
+                            "bytes":  12564,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/42ac6dc3de61.jpg",
+                            "sha256":  "35a3c59ccb1c6cf6123377fd8ce5461683bafca89db4de3e9de456325a70ed42",
+                            "bytes":  9079,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/46da0bf9209d.jpg",
+                            "sha256":  "7dd4506a86218aae1e892e31b1a8bcf19b9eed74fb88decb1b2a95832226e52e",
+                            "bytes":  13282,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/471e63a2150d.jpg",
+                            "sha256":  "3b342daa0353a0185f93e2cc385146dd6106625871ad26b22404fd1560044699",
+                            "bytes":  6936,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/492329663f74.jpg",
+                            "sha256":  "829ed441c5b0ae8c10ce7e1f59a8bc3438fbb53a09f6145d329bc2fce1b23bc9",
+                            "bytes":  24891,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/4fc4c7b703f9.jpg",
+                            "sha256":  "d357798a5f3f6af1537771e6cf2178b3c9f6ddf73f123b4e1b890629a431ad27",
+                            "bytes":  5569,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/4fcbdd84aff7.jpg",
+                            "sha256":  "9f75421f37941fa3a1526844c363b32b250845f161d77f3f24bd4dc99b8f44fb",
+                            "bytes":  13758,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/5093a8c5d15b.jpg",
+                            "sha256":  "83cf4b9a83e47c800d964a4264ed56298616d4b73cd59612fe79ecb67eef716b",
+                            "bytes":  13696,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/51f6eeb4c90c.jpg",
+                            "sha256":  "a148f009cdc155095d64cda9a9666c15734b7ff5b7b075d2e293177713a65823",
+                            "bytes":  19547,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/5678ce637d6c.jpg",
+                            "sha256":  "ed7a2530a6d85bd364ea0d86986e16fd85a7b017e7cc1b5bc7dae980b7cbfc5b",
+                            "bytes":  3116,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/592b5d3bdafe.jpg",
+                            "sha256":  "f277dc9405efee22709a8e9b5647f2452076cdd1eabd9102bd1e4179e9a7cac2",
+                            "bytes":  32131,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/5b2c6c0f8e8c.jpg",
+                            "sha256":  "a968e2e44145738da5b5fdd34a4beb30fce2edd721b8cca2ad4a5bd20880d37f",
+                            "bytes":  12514,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6019e72b30ac.jpg",
+                            "sha256":  "ec4e146b5e2d5f9090221630dfaeb4d30d6afdb6b7a2d08744d03c0a807a89c4",
+                            "bytes":  12180,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/63357dd590c4.jpg",
+                            "sha256":  "c2c1441e546263253e3c60812666198b6c93668e99e6ecd03b9a9a6fd2ecc695",
+                            "bytes":  8805,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/670dbb35c3ca.jpg",
+                            "sha256":  "443ad56c07e1ea7abe0080ea38abb7b01682ed20d675d7a3cc8cfe7cbe5ff2ae",
+                            "bytes":  40048,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6a4971bacbb7.jpg",
+                            "sha256":  "4f34a3ca3e34c4302e035e94ea08994ba1020a8c23493dc3d6b51e86eea2ca60",
+                            "bytes":  7460,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6c0759d75388.jpg",
+                            "sha256":  "39ea2494aaf1b8fcc6fa171d5cf93e36faab7e5342b5db0207fde795d77038f3",
+                            "bytes":  6255,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6d88919158e0.jpg",
+                            "sha256":  "a78ab9ca4b32d9e2371ff3ec0620495cee12176d5e52a95477851d5ebb0d3138",
+                            "bytes":  25616,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6e85f53dd953.jpg",
+                            "sha256":  "933515cbf815bbcd902cab7c658620df19b6f9fc106222d19a2382ac025213a8",
+                            "bytes":  10618,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6ee7286e7eb1.jpg",
+                            "sha256":  "73e8d504a5d0f0c93673df209c0faf2fe48312abd1393b67dd424bd6523a7e0c",
+                            "bytes":  38456,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6fa9697636b7.jpg",
+                            "sha256":  "3a92a7b1c1104322e1261194f241a8330737330b8b875f80e26bd0f6c601c465",
+                            "bytes":  19407,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/6fc554634009.jpg",
+                            "sha256":  "700b12a9fb59860bcd56c8589aa87c0c35e7e74c8f7639293c752e02fd803ac8",
+                            "bytes":  13751,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/7569e9701515.jpg",
+                            "sha256":  "3c442744147ff193cb046e12575b6a5bb9c61f6abc6531d6dc0c9623782f98d3",
+                            "bytes":  33487,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/771ae2b4d27a.jpg",
+                            "sha256":  "352f78037997b6c3cc58d3b3259637c48340b4e401dde9175043e1951437d5bd",
+                            "bytes":  34914,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/77679b2256b1.jpg",
+                            "sha256":  "e73de63dbd1c8efc06e725c8df8067f69b1ce925eddcff7be0e0b141ea70b9f1",
+                            "bytes":  26303,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/7aeb51046b6d.jpg",
+                            "sha256":  "9dff678911c779ca324d7a390322ae795bd4740aec064526bbccf9d5607e56d3",
+                            "bytes":  18022,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/7cf33581a917.jpg",
+                            "sha256":  "b11d0559402be375083b5c085a2a30edb48f2ddbd3adad243ff682066d5325f7",
+                            "bytes":  5921,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/81d682645adc.jpg",
+                            "sha256":  "24c276a6b36d546ff365a019fa27809ad612cf2d79ff657c3115fa3ef6a05685",
+                            "bytes":  14372,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/83f0627cca99.jpg",
+                            "sha256":  "5c5c503c3419ec516914b68ce6e496c4e42b5216971f4dc50eefdb52d6d8cfd5",
+                            "bytes":  19779,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/847d976793ab.jpg",
+                            "sha256":  "8b0757028d24d047413b60b7f90dc4edd306b988b80214b963c4dc894ca687fb",
+                            "bytes":  18847,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/890ea7b923aa.jpg",
+                            "sha256":  "e43157148547d46e6f3c9b677d031052dbe8ad06cb279f0627a48699f628597d",
+                            "bytes":  24681,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/8b96731caec4.jpg",
+                            "sha256":  "4485ec31f083589c35f6e256c75c20bcf854ddb6ce2284d732288ea2183db722",
+                            "bytes":  29474,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/8bbb79ba7d2e.jpg",
+                            "sha256":  "cae3893b13f3bca0dd0a3799c18bc27b388573192a1c6726668d5bcb3f8ceda3",
+                            "bytes":  20450,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/8be2a62ae401.jpg",
+                            "sha256":  "6766fe99f4bae5bf95015d738eb9cf249d0673c56d6aca0269045840aec93dd4",
+                            "bytes":  29066,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/8e11df60d68a.jpg",
+                            "sha256":  "9904fb8cb8806387cdc9cd60102ef9d09436ad3d7f246b5850bee0591f6adc16",
+                            "bytes":  7262,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/9147801274db.jpg",
+                            "sha256":  "1d967a06e8b8dcf42b38c15353d9e697223a3bc97c7c4a033027d1945ea63ae2",
+                            "bytes":  22900,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/918ba44e8959.jpg",
+                            "sha256":  "d937938a266a5076d1d64fae66c5d52b973b833624ee142d584657d0cefe23b9",
+                            "bytes":  10725,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/922484aabb4d.jpg",
+                            "sha256":  "343090910793600af50347ab2b8679b8e547253f99ea952b84afaf1be8090ecf",
+                            "bytes":  57885,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/9242c8cdcd2d.jpg",
+                            "sha256":  "6ab24c8866037ff0dcc8ad058fef869fa3fefa71d8fab93094cd1c07ddfaa0a3",
+                            "bytes":  13315,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/935d55fd7653.jpg",
+                            "sha256":  "a5776bdff40ede954271a99651d9f7523a271267789271808fd0fc2eaa546b0e",
+                            "bytes":  13692,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/93c916b946af.jpg",
+                            "sha256":  "19629d8c3720e0ecdb1ba6d96fc39149ef61e93b2a0126a3404d9b7b659beb8a",
+                            "bytes":  20050,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/950b0fb3ebed.jpg",
+                            "sha256":  "1d431e60e1a91e2d2c44a784efb126115009278a7d8198ca20c418507d222dfb",
+                            "bytes":  22229,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/959983dc7343.jpg",
+                            "sha256":  "7bbeb28c3dffd424b273573e676c864109ab2281aef512e0e2d92198ce101116",
+                            "bytes":  28600,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/95b679ddfd83.jpg",
+                            "sha256":  "34943e20b5ebca708b4485fe4fc047838a500f43a01a10b2d722b3ce4ceb3d38",
+                            "bytes":  34473,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/9c1065bb27d6.jpg",
+                            "sha256":  "233c7d00f92a68a225fa8a884ed21eb5a0d88da466ae6cbe5e7dc6f66bf320ff",
+                            "bytes":  9812,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/9c3d4b3daca8.jpg",
+                            "sha256":  "dab59585f63bfee149f59cefb1ccf325c132f154554f966ca8fb199f51f619d6",
+                            "bytes":  45876,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/9ff7d4e14ad5.jpg",
+                            "sha256":  "4d3af10e5391aad8b6fcd1ba6e6a07895ec3c248536a80e6442dd0051b8d2a92",
+                            "bytes":  15135,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/a1f87fecbf66.jpg",
+                            "sha256":  "b5dfc7fea7c7f253daf35458e2b8eecba0cd156916293fb64a14e1095dcc5e3b",
+                            "bytes":  38575,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/a372fcda8f22.jpg",
+                            "sha256":  "6f77dcedd3e4d797328759e108a08545b788507fa97bc426fdc7c04198c9f800",
+                            "bytes":  65107,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/a8a47bbe3b95.jpg",
+                            "sha256":  "ed8145206d09dc0df100b4e7aca2396d8a143e5a2e48f5c4d3337d48057f80fd",
+                            "bytes":  27488,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b0dd761e652b.jpg",
+                            "sha256":  "03ab1b6a15cfae8a5fc970777e179f40dd1f3cdbdbc318c93114a6692ffe81b1",
+                            "bytes":  41421,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b121ef615793.jpg",
+                            "sha256":  "7eef4909c392b806099ec580a859215a81bc039bdf0e34053e29e34972fafccd",
+                            "bytes":  22127,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b1b63b4cadf3.jpg",
+                            "sha256":  "850039a7cec31c30031eff9191437ef7a271d7c50a2ed6a5ba0202e304ee5e11",
+                            "bytes":  20595,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b1ba59de1ff6.jpg",
+                            "sha256":  "006602b947be8d9d26acff35838632f0c3a97492f887b99ba24dfd6cd5fb614f",
+                            "bytes":  38745,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b23025567c6d.jpg",
+                            "sha256":  "b6e4cd3e51af8c4606ba0c8001aeffbf8db887704ad13acca7665f0cab7647d8",
+                            "bytes":  23534,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b5cb5f2893a4.jpg",
+                            "sha256":  "8a0af82531088991218c3449680885f54908fdbb4846a2b66956bbe9d9a36ca9",
+                            "bytes":  25069,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/b7bcc17cebaa.jpg",
+                            "sha256":  "46dd912aceaddc78a69e04d6502919125a0d3ca4c7ac207983c6537cbb85b616",
+                            "bytes":  41864,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/bbca8e1b3471.jpg",
+                            "sha256":  "7e787084324e9877ec394a285e6751aac8607be1c9eb596f0c34419031945415",
+                            "bytes":  19306,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/bddf99e3c8ae.jpg",
+                            "sha256":  "ebb2c071ed36baaadafe90399fff8f5d11d9672248d14b93945f5ee5c4a17fc5",
+                            "bytes":  30429,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/beb957e1c729.jpg",
+                            "sha256":  "c7912a910919751d8c16e3bcf545c018ee42f0926b13012bb173498f639db357",
+                            "bytes":  30037,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/bf6dd4195c73.jpg",
+                            "sha256":  "4258e986a8d624b6df3d903938e8a14f01781a637487c4daf710f15460602b75",
+                            "bytes":  39979,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/bffae7b89e6c.jpg",
+                            "sha256":  "614106907c6a9f9fd9f1d62415ab1d26aa43743d876a9569062d77305734648d",
+                            "bytes":  10754,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/c4aadbfb100a.jpg",
+                            "sha256":  "5f2c5f4a3bbf5c602aef0f5a4aaded40bbc4b650d903f51517b2b431490dbe03",
+                            "bytes":  14851,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/c5953f636d51.jpg",
+                            "sha256":  "1a71a80d0b9e22d2002fd84d9e90ddf510cd7a392d43e95c0cad6c36c3d6c7a9",
+                            "bytes":  28969,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/ca8a74a019ab.jpg",
+                            "sha256":  "12a22bc1bc0b802a4860a3cfb7dafa7e2065e54c5a9aeffa3b9816ee52ed6e3f",
+                            "bytes":  14774,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/cad1a23add11.jpg",
+                            "sha256":  "ffc2f10fe50ecba5643717eb67c101c090f9e9106039d6b00ab954c2bb94016b",
+                            "bytes":  35089,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/cb8714204eaf.jpg",
+                            "sha256":  "6fbbe1504fd321ed5a31625f21ab593ecc6051cfdb21926124693dd48c53efa0",
+                            "bytes":  15272,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/cb94db273cf8.jpg",
+                            "sha256":  "ae1479623af3b57cb11f1809a7d462900f4e1dc41489429873d7e7c2f5a0cf08",
+                            "bytes":  21000,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/cda817960a94.jpg",
+                            "sha256":  "d88a51df2611e52709c9245b958b10a5cdfd143efe4a0a448466b4ca0a553beb",
+                            "bytes":  23228,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/ce55f7c67c1b.jpg",
+                            "sha256":  "2afabe4f496cf8e817da231bbac8c1885f9c332feb75f32c59ff16bb29695ca3",
+                            "bytes":  20126,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/d24682612a8b.jpg",
+                            "sha256":  "f5268e5901d8db41c8f57720677d077e3a171ed92efcc24f3e50fa181b6d427f",
+                            "bytes":  26811,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/dc6dc21da559.jpg",
+                            "sha256":  "fecdeaa948f52f9dfed60f616fcfe6f3170b30a3b658038c9da97c63ab732c3e",
+                            "bytes":  17958,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/dd91f29664ac.jpg",
+                            "sha256":  "1d12be0dbe54d76d52fef40d4bbaca4521af95c44f13b58bf382e4eaecf6cc1d",
+                            "bytes":  22213,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/e051e8168244.jpg",
+                            "sha256":  "a5c31b3fc0ad8deb414e00b6394c2d9915dfd4cd87ea446b9502743445bbdb88",
+                            "bytes":  10429,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/e2a99de13430.jpg",
+                            "sha256":  "bc683497662eff7bc9cf8b32b52353ebcfbcf54004fbbaf9782fed5e8f702058",
+                            "bytes":  5628,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/e32cfd23a202.jpg",
+                            "sha256":  "335c1db6b9484312a2149b7071751e3e2b9956946ad1d7d7624c27d63b7f4bd7",
+                            "bytes":  16089,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/ee1a9fbe4aba.jpg",
+                            "sha256":  "41f0c60c1fea944707a76ca41d42b9e3faeb131f2a3d48ed44fde732a8b137ec",
+                            "bytes":  25671,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/ef6f6f46efd7.jpg",
+                            "sha256":  "5fa5bb3d0593155590ba8099472131b38dcc30905291631d9f9bec2c162c83c4",
+                            "bytes":  14058,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f0d6a0374f46.jpg",
+                            "sha256":  "c2f1691be416e206575971638bb6202bedf049bf7d3ab7268f870d347a42e6f4",
+                            "bytes":  12532,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f111bab80050.jpg",
+                            "sha256":  "d937938a266a5076d1d64fae66c5d52b973b833624ee142d584657d0cefe23b9",
+                            "bytes":  10725,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f1a7e4b10f31.jpg",
+                            "sha256":  "901995b379572a86f00d9cdb19480e1ee5aea16e5680d1afc4450c201f15adfb",
+                            "bytes":  13922,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f1bc244fc908.jpg",
+                            "sha256":  "f35811b324ab8020cc86ea2b764bb4a8e38b8cbe7314a2bffe1a9c51e1d91e37",
+                            "bytes":  22316,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f41dbb81ca9b.jpg",
+                            "sha256":  "d043f629a6594a313cbb16861776882f702b83d3421345bbf6a77c36b66376af",
+                            "bytes":  20695,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/f600eb4d502d.jpg",
+                            "sha256":  "50e8f15f3d74b0bcf4d6e3f01946788acbc80cdb88825f255e5362ec3c0da720",
+                            "bytes":  26695,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/fa922480d8d4.jpg",
+                            "sha256":  "eb95d4e470f87df80de94922066b0782e7dd2efa60db62adc6c9d4cd4883fcc7",
+                            "bytes":  20211,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/fa9cfb7e1818.jpg",
+                            "sha256":  "04b6b825c69e7159775b933d92bcfc1196b8dbdc0a2b05832e8070227fc5265d",
+                            "bytes":  22310,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/fbc14fe84ea6.jpg",
+                            "sha256":  "708851ea152e3c7f57bb0e665de551cc274c61e175376e7cae21565f47b7219a",
+                            "bytes":  22752,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/amz/fcba55dd53ff.jpg",
+                            "sha256":  "554366e97ad5105ac87acb78bfc1af374c4f7bcecf3f1ec16f720f96ebe2d83a",
+                            "bytes":  36001,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/alfa-awus1900.webp",
+                            "sha256":  "f5c4dd1bfc8e766bd4f83751b28c206f9548c833e449e2250a540ef12fc14956",
+                            "bytes":  23068,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/anker-553-usb-c-hub.webp",
+                            "sha256":  "858c4cc6da0fb4d5f10b3959d3bb3cd6703888e673601e793a903a7229cb3616",
+                            "bytes":  17162,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/caldigit-ts4.webp",
+                            "sha256":  "7bc361b2166b3511a2b18509b2b35694b6aeb720a4c464f2e15bf0dbed2fbe1d",
+                            "bytes":  26868,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/canakit-pi5-starter-kit-turbine-black.webp",
+                            "sha256":  "daf7e1e1a74d9ed89c3ef36a469c4bd22e508897c5c5227b6cf2b7080e8c1cbe",
+                            "bytes":  54818,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/iniu-240w-usb-c-cable-2-pack.webp",
+                            "sha256":  "b15de8592723f18761d06ac001cec1a7b3340419eb7d768b858143d83580b11b",
+                            "bytes":  96696,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/logitech-mx-master-3s.webp",
+                            "sha256":  "1ab9298aff4a5ac646508a3fd301a0a19f3ac179d9e1279ffda00df523e12388",
+                            "bytes":  11852,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/sabrent-ds-ufnc.webp",
+                            "sha256":  "6868125864d22d6f6e206316063c6e9e17ab347318e3197fe4494b9b6b6f369a",
+                            "bytes":  55254,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/sabrent-ec-sshd.webp",
+                            "sha256":  "31f2d0c8b5d64dfcc93052a300a5645574b5d981ac98363a67b462771b3c654d",
+                            "bytes":  15098,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/sennheiser-momentum-4-black.webp",
+                            "sha256":  "5b8faa6df9dd7ed6c2192d1bd7b80d00395b011167da170ba859645df642095e",
+                            "bytes":  28014,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        },
+                        {
+                            "url":  "/gear/mfr/wd-my-passport-4tb.webp",
+                            "sha256":  "c0f03f21cb3fbc2bd87cb7433da8a21ba5211013dbc1cb8138fff842d132eb21",
+                            "bytes":  15390,
+                            "status":  "permission not documented; excluded from public delivery",
+                            "replacement":  "/gear/catalog-illustration.svg"
+                        }
+                    ],
+    "commons":  "Existing Commons images keep their per-page source, author, example-image warning and license attribution. No blanket manufacturer permission is assumed.",
+    "unverified_hotlinks_removed":  [
+                                        {
+                                            "url":  "https://resource.logitech.com/w_544,h_466,ar_7:6,c_pad,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/webcams/brio-500/gallery/brio-500-gallery-rose-1.png",
+                                            "replacement":  "/gear/catalog-illustration.svg"
+                                        }
+                                    ]
+}
