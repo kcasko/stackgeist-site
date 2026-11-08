@@ -45,6 +45,7 @@ export function buildSql(days) {
 FROM affiliate_events
 WHERE event_type = 'landing'
   AND page_path LIKE '/kits/%'
+  AND (utm_source != 'hermes' AND utm_medium != 'verification' AND utm_content NOT LIKE 'synthetic_%')
   AND created_at >= datetime('now', '-${safeDays} days')
 GROUP BY page_path
 UNION ALL
@@ -58,6 +59,7 @@ SELECT
 FROM affiliate_events
 WHERE event_type = 'affiliate_click'
   AND placement LIKE 'kit-%'
+  AND (utm_source != 'hermes' AND utm_medium != 'verification' AND utm_content NOT LIKE 'synthetic_%')
   AND created_at >= datetime('now', '-${safeDays} days')
 GROUP BY page_path, placement, utm_content, product_id
 ORDER BY event_type, events DESC

@@ -25,7 +25,8 @@ export function buildSql(days) {
   product_id,
   COUNT(*) AS events
 FROM affiliate_events
-WHERE created_at >= datetime('now', '-${safeDays} days')
+WHERE (utm_source != 'hermes' AND utm_medium != 'verification' AND utm_content NOT LIKE 'synthetic_%')
+  AND created_at >= datetime('now', '-${safeDays} days')
 GROUP BY event_type, page_path, source, medium, campaign, content, placement, product_id
 ORDER BY events DESC
 LIMIT 500`;
