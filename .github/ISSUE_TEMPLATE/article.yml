@@ -1,0 +1,52 @@
+name: StackGeist article
+description: Propose a new or expanded troubleshooting, learning, lab, or gear article.
+title: "[Article] "
+labels: ["editorial", "stage:idea"]
+body:
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - Fixes / Troubleshooting
+        - Labs
+        - Learning / WGU / Certifications
+        - Gear / Product decisions
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What exact problem or decision does the reader have?
+      placeholder: "My printer is connected to Wi-Fi but Windows insists it's offline..."
+    validations:
+      required: true
+  - type: textarea
+    id: research
+    attributes:
+      label: Official sources, community references and firsthand experience
+      description: Clearly separate manufacturer facts, Reddit anecdotes, and actual testing.
+    validations:
+      required: true
+  - type: textarea
+    id: article-plan
+    attributes:
+      label: Outline, commands, screenshots and diagrams
+      description: What lets a reader solve and verify this problem without buying anything?
+  - type: input
+    id: candidate-date
+    attributes:
+      label: Proposed release date (America/Detroit)
+      placeholder: "YYYY-MM-DD, or leave blank until approved"
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Complete before approval
+      options:
+        - label: Answer is direct, specific and technically accurate.
+        - label: The whole article sounds like the owner rather than an AI template.
+        - label: All first-person experiences are genuine and verifiable.
+        - label: Sources and model/OS restrictions are documented.
+        - label: Screenshots/diagrams are useful and accurate.
+        - label: Links, accessibility, desktop/mobile design and tests pass.
+        - label: The owner has personally approved the finished article.

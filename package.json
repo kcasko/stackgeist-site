@@ -16,7 +16,10 @@
     "deploy": "astro build && wrangler pages deploy",
     "analytics:report": "node scripts/affiliate-report.mjs",
     "analytics:weekly": "node scripts/kits-weekly-report.mjs",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "editorial:check": "node scripts/editorial-release.mjs --dry-run",
+    "editorial:publish": "node scripts/editorial-release.mjs --publish",
+    "editorial:validate": "node scripts/editorial-release.mjs --validate-all"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

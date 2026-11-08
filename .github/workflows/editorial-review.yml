@@ -1,0 +1,34 @@
+name: Editorial review checks
+
+on:
+  pull_request:
+    paths:
+      - 'editorial/**'
+      - 'src/pages/**'
+      - 'src/data/catalog.ts'
+      - 'public/illustrations/**'
+      - 'docs/editorial-*.md'
+      - 'scripts/editorial-release.mjs'
+      - '.github/workflows/editorial-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Check future-dated owner-approved staged articles
+        run: npm run editorial:validate
+      - name: Production build
+        run: npm run build
+      - name: Unit and content tests
+        run: npm test
