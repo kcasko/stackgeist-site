@@ -1,6 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import UsbCompatibilityChecker from "../../../components/UsbCompatibilityChecker.astro";
+import PartnerOffers from "../../../components/PartnerOffers.astro";
 import { webApplicationSchema, faqSchema } from "../../../lib/structured-data";
 
 const title = "USB-C dock and monitor compatibility checker";
@@ -51,6 +52,8 @@ const structuredData = [
 
     <UsbCompatibilityChecker />
 
+    <PartnerOffers ids={['usbcDock', 'usbcCharger', 'usbcCable']} placement="tool-usb-c-compat" />
+
     <aside class="usb-compat__context">
       <h2 class="step-1">When this tool helps</h2>
       <p>
@@ -75,6 +78,13 @@ const structuredData = [
         <li><a href="/guides/portable-usb-c-monitor-no-signal/">Portable USB-C monitor showing no signal</a></li>
         <li><a href="/gear/connectivity/caldigit-ts4/">CalDigit TS4 Thunderbolt dock</a></li>
         <li><a href="/gear/connectivity/anker-553-usb-c-hub/">Anker 553 8-in-1 USB-C hub</a></li>
+      </ul>
+
+      <h2 class="step-1">Related buyer kits</h2>
+      <ul>
+        <li><a href="/kits/dual-monitor-desk-kit/">Dual monitor desk setup kit</a></li>
+        <li><a href="/kits/desk-power-safety-kit/">Desk power safety kit</a></li>
+        <li><a href="/kits/steam-deck-dock-kit/">Steam Deck dock & gaming kit</a></li>
       </ul>
     </aside>
   </article>

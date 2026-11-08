@@ -46,6 +46,11 @@ const campaign = `kits_${kit.slug}`;
   <section class="content-section kit-items">
     <p class="page-kicker">Decision options</p>
     <h2 class="section-heading">Verify the requirement before choosing a product.</h2>
+    <div class="kit-quick-tiers">
+      <span class="qt-pill qt-must"><strong>Must have:</strong> {kit.items.filter((i) => i.tier === 'must-have').length}</span>
+      <span class="qt-pill qt-next"><strong>Add next:</strong> {kit.items.filter((i) => i.tier === 'nice-next').length}</span>
+      <span class="qt-pill qt-skip"><strong>Skip for now:</strong> {kit.items.filter((i) => i.tier === 'skip-until-needed').length}</span>
+    </div>
     <div class="kit-grid">
       {kit.items.map((item) => (
         <a
@@ -63,6 +68,7 @@ const campaign = `kits_${kit.slug}`;
           <p>{isExternal(item.href) ? 'Use this retailer search as a category starting point. The exact products in the results have not been individually source-checked by StackGeist.' : item.role}</p>
           <strong>Check before buying</strong>
           <small>{item.check}</small>
+          <span class="kit-action-btn">{isExternal(item.href) ? 'Check Price on Amazon ↗' : 'View Decision Guide →'}</span>
         </a>
       ))}
     </div>
@@ -113,6 +119,14 @@ const campaign = `kits_${kit.slug}`;
   .kit-item p { margin:0; color:var(--muted); font-size:.88rem; line-height:1.6; }
   .kit-item strong { margin-top:4px; color:var(--text); font-size:.88rem; }
   .kit-item small { color:var(--amber); font-size:.94rem; line-height:1.55; }
+  .kit-quick-tiers { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .qt-pill { font-size:.82rem; padding:4px 10px; border:1px solid var(--term-border); background:var(--term-bg); color:var(--muted); }
+  .qt-pill strong { color:var(--text); }
+  .qt-must { border-color:rgba(163,230,53,.4); }
+  .qt-next { border-color:rgba(192,132,252,.4); }
+  .qt-skip { border-color:rgba(251,191,36,.4); }
+  .kit-action-btn { display:inline-flex; align-items:center; justify-content:center; width:max-content; margin-top:8px; padding:6px 14px; border:1px solid var(--phosphor); background:rgba(163,230,53,.08); color:var(--phosphor); font-size:.82rem; font-weight:600; letter-spacing:.02em; border-radius:2px; transition:background .15s ease,color .15s ease; }
+  .kit-item:hover .kit-action-btn { background:var(--phosphor); color:#000; }
   .kit-disclosure { margin:14px 0 0; color:var(--quiet); font-size:.8rem; line-height:1.55; }
   @media(max-width:760px){
     .kit-grid { grid-template-columns:1fr; }
