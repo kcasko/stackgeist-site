@@ -103,4 +103,16 @@ export const PARTNER_OFFERS: Record<string, PartnerOffer> = {
     note: 'Pick one larger than the data you are backing up, and keep it unplugged between backups.',
     url: '',
   },
+  monitorArm: {
+    id: 'amazon-basics-dual-monitor-arm',
+    label: 'Amazon Basics Gas Spring Dual Monitor Arm',
+    note: 'Check weight, VESA pattern, and desk thickness against the exact model before buying.',
+    url: 'https://www.amazon.com/dp/B0CQXPGNCH/?tag=deskrespawn-20',
+  },
+  benqScreenbar: {
+    id: 'benq-screenbar-pro',
+    label: 'BenQ ScreenBar Pro',
+    note: 'Verify monitor thickness, curvature, and USB-C power match BenQ’s fit range.',
+    url: 'https://www.amazon.com/dp/B0CZ9P1QW9?tag=deskrespawn-20',
+  },
 };

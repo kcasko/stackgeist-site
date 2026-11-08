@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd=[
 articleSchema({
@@ -29,7 +30,7 @@ faqSchema({questions:[
 <ContentLayout design="v2" structuredData={__sd} title="Monitor arm sagging: capacity, tension, VESA, and clamp checks | StackGeist" description="Fix a sagging monitor arm by verifying the exact capacity, display depth, VESA hardware, desk attachment, and model-specific tension procedure." active="guides">
 <article class="article-page">
 <p class="breadcrumbs"><a href="/guides/">Fixes</a> / Monitor arm sagging</p>
-<p class="page-kicker">Monitor mounting</p>
+<p class="page-kicker">Monitor support</p>
 <h1 class="page-title">Monitor arm sagging: check capacity and mounting before adding tension.</h1>
 <p class="page-lead">If your monitor arm keeps dropping, the problem is usually a capacity mismatch, loose VESA hardware, a slipping desk clamp, or an incorrect tension adjustment—not a screw that simply needs more torque. This guide walks through the checks in order so you fix the right thing.</p>
 
@@ -62,6 +63,7 @@ faqSchema({questions:[
 <div><strong>Yes</strong><p>If the display falls outside the model’s supported load/mount range or the arm cannot hold a supported load after correct assembly, choose a properly rated arm—see what to check in the <a href="/gear/monitor-support/amazon-basics-dual-monitor-arm/">Amazon Basics dual monitor arm</a> notes—or seek service.</p></div>
 </div></section>
 
+<PartnerOffers ids={['monitorArm']} placement="guide-monitor-arm-sagging-fix" />
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://www.ergotron.com/en-us/products/product-details/45-245">Ergotron — LX Dual Side-by-Side Arm specifications and adjustment resources</a></li>
 <li><a href="https://www.ergotron.com/en-us/products/mounts/desk-mounts/lx-desk-mount-for-single-lcd-monitor%26%26%26%26%26">Ergotron — LX family capacities</a></li>

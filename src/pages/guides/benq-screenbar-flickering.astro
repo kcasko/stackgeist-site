@@ -1,6 +1,7 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import PartnerOffers from '../../components/PartnerOffers.astro';
 import { articleSchema, howToSchema, faqSchema } from '../../lib/structured-data';
 const __sd=[
 articleSchema({
@@ -29,7 +30,7 @@ faqSchema({questions:[
 <ContentLayout design="v2" structuredData={__sd} title="BenQ ScreenBar flickering: model and power checks | StackGeist" description="Troubleshoot BenQ ScreenBar flicker by identifying the exact model, matching its power requirement, and separating visible flicker from camera-only banding." active="guides">
 <article class="article-page">
 <p class="breadcrumbs"><a href="/guides/">Fixes</a> / BenQ ScreenBar flickering</p>
-<p class="page-kicker">Lighting troubleshooting</p>
+<p class="page-kicker">Desk lighting troubleshooting</p>
 <h1 class="page-title">BenQ ScreenBar flickering: identify the model and power path first.</h1>
 <p class="page-lead">If your BenQ ScreenBar flickers, the fix depends on the exact model and power source. The original ScreenBar, ScreenBar Halo, and ScreenBar Pro have different current requirements and controls, so match the troubleshooting step to your label before blaming the lamp.</p>
 
@@ -65,6 +66,7 @@ faqSchema({questions:[
 <div><strong>Service / replacement</strong><p>If visible flicker persists with the supplied or documented power path and controls, use BenQ support or warranty service instead of opening the light.</p></div>
 </div></section>
 
+<PartnerOffers ids={['benqScreenbar']} placement="guide-benq-screenbar-flickering" />
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://www.benq.com/en-us/lighting/monitor-light/screenbar/spec.html">BenQ — ScreenBar specifications</a></li>
 <li><a href="https://www.benq.com/en-us/lighting/monitor-light/screenbar-halo/spec.html">BenQ — ScreenBar Halo specifications</a></li>
