@@ -1,4 +1,8 @@
 workers/pinterest-scheduler/node_modules/
+# Playwright outputs
+playwright-report/
+test-results/
+
 # build output
 dist/
 
