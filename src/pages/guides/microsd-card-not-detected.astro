@@ -82,12 +82,33 @@ faqSchema({questions:[
 <section><p class="page-kicker">See also</p><div class="article-cards"><div><strong><a href="/guides/recover-deleted-photos-from-sd-card/">Recover deleted photos from an SD card</a></strong><p>Stop using the card, then scan it with the right tool.</p></div><div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>Protect the data before clicking Format.</p></div></div></section>
 <PartnerOffers ids={['dataRecovery']} placement="guide-microsd-card-not-detected" />
 <section><p class="page-kicker">Gear</p><h2>If you need a replacement microSD card</h2><div class="cards"><a class="card" href="/gear/budget-tech/samsung-evo-select-512gb-microsd-card/"><h3>Samsung EVO Select 512GB microSD</h3><p>A higher-capacity option for cameras, handhelds, and Raspberry Pi storage.</p></a><a class="card" href="/gear/budget-tech/sandisk-ultra-128gb-microsd-card-2-pack/"><h3>SanDisk Ultra 128GB microSD 2-pack</h3><p>A practical two-pack for everyday devices and backups.</p></a></div></section>
+<section><p class="page-kicker">Editorial deep dive</p><h2>Make a data-safety decision before a repair decision.</h2>
+<p>When a microSD card contains files you cannot replace, the goal changes from “make Windows recognize it” to “avoid making recovery worse.” Initializing, formatting, or writing a new file system can overwrite important metadata. Treat read-only inspection as a separate phase from repair.</p>
+<figure class="sg-editorial-figure"><img src="/illustrations/microsd-read-only-triage.svg" width="960" height="450" loading="lazy" alt="MicroSD troubleshooting decision: try a reader, inspect with Disk Management, distinguish healthy volume from RAW or unallocated without formatting."/><figcaption>Original read-only diagnostic decision tree, not a screenshot or data-recovery guarantee.</figcaption></figure>
+<h2>Read-only PowerShell checks for a detected card</h2>
+<p>In PowerShell, start with these inspection commands only. They do not initialize, clear or format the media:</p>
+<pre><code>Get-Disk | Select-Object Number, FriendlyName, BusType, OperationalStatus, Size
+Get-Volume | Select-Object DriveLetter, FileSystem, HealthStatus, Size</code></pre>
+<p>Identify the correct card by capacity and reader identity before taking any action. A removable reader may report as USB rather than SD. If it appears RAW, has an unexpected partition state, or repeatedly disconnects while reading, avoid repeated scans or writes and consider making a recovery image with suitable equipment or professional help when data is valuable.</p>
+<h2>What each result means for your next step</h2>
+<div class="article-cards">
+<div><strong>No new disk appears</strong><p>Try a known-good, supported reader and another computer. The host may not see the card electrically, so filesystem tools are premature.</p></div>
+<div><strong>Healthy file system, no letter</strong><p>Check whether a drive letter is already assigned or conflicted. A carefully chosen unused letter may make it visible without formatting.</p></div>
+<div><strong>RAW or Unallocated</strong><p>Stop and decide whether the original files need recovery before any partition creation or formatting.</p></div>
+<div><strong>Files readable but errors recur</strong><p>Copy important data immediately to verified storage. Do not continue trusting the card for the only copy.</p></div>
+</div>
+<p><strong>Verification:</strong> A file appearing in File Explorer is not enough. For valuable files, copy a representative selection, open it, and verify the backup somewhere other than the card. See <a href="/guides/recover-deleted-photos-from-sd-card/">photo recovery precautions</a> before trying recovery tools.</p>
+<p class="meta">Official references: <a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Get-Disk</a> and <a href="https://www.sdcard.org/downloads/formatter/">SD Association formatter guidance</a>. These recommendations prioritize preserving data over quick formatting.</p></section>
+
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
 <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>
 <li><a href="https://www.sdcard.org/downloads/formatter/">SD Association — SD Memory Card Formatter</a></li>
 <li><a href="https://www.sdcard.org/downloads/formatter/faq/">SD Association — Formatter FAQ and data-loss warning</a></li>
 </ol></section>
-</div></article>
+</div>
+
+
+</article>
 <NewsletterSignup variant="inline" />
 </ContentLayout>

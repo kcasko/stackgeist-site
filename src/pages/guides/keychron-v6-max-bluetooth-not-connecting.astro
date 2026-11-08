@@ -67,12 +67,28 @@ faqSchema({questions:[
 <div><strong><a href="/guides/wireless-bluetooth-smart-home-fixes/">Bluetooth and wireless fixes</a></strong><p>An overview of pairing and connection problems across devices.</p></div>
 </div></section>
 
+<section><p class="page-kicker">Editorial deep dive</p><h2>Bluetooth and 2.4 GHz use different pairing procedures.</h2>
+<p>For the V6 Max, a common mistake is trying a Bluetooth pairing command while the side switch is set to 2.4 GHz. Keychron's documented Bluetooth method is to select BT mode and hold <strong>Fn + 1</strong> (or 2/3) for roughly <strong>4–6 seconds</strong>. Its 2.4 GHz receiver procedure is different: set 2.4G mode, hold <strong>Fn + 4</strong> for four seconds, then insert the receiver.</p>
+<div class="article-cards">
+<div><strong>Bluetooth fails, wired USB works</strong><p>Keyboard power and the basic key matrix are working. Focus on BT mode, saved host record, selected profile and another Bluetooth host.</p></div>
+<div><strong>Bluetooth fails, 2.4 GHz works</strong><p>Test another Bluetooth profile and a second host before treating the whole keyboard as defective.</p></div>
+<div><strong>2.4 GHz receiver fails</strong><p>Recheck the dedicated receiver pairing process and a different USB port. A Bluetooth pairing reset does not pair the receiver.</p></div>
+<div><strong>Neither wireless mode works</strong><p>Fully charge the board, review current Keychron troubleshooting, and contact support with firmware information before attempting a flash.</p></div>
+</div>
+<h2>How to document the fault for Keychron support</h2>
+<p>Record the board's exact V6 Max variant and keyboard layout, the side-switch mode, the profile or receiver procedure used, whether the keys flashed, and whether a second host detected it. Keychron specifically requests connection behavior and firmware version evidence in its current support article.</p>
+<p><strong>Firmware risk:</strong> Keychron maintains separate keyboard, Bluetooth and receiver firmware paths. Use the vendor's instructions only for the exact hardware version and only when its troubleshooting indicates an update is necessary. A wrong image can cause a more serious problem than an old pairing record.</p>
+<p class="meta">Source: <a href="https://help-center.keychron.com/en-us/article/35953445831575-troubleshooting-keychron-v-max-q-max-k-max-wireless-connection-issues">Keychron official V Max wireless troubleshooting, updated August 2026</a>. Not a claim of a new physical keyboard test.</p></section>
+
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://help-center.keychron.com/en-us/article/35953445831575-troubleshooting-keychron-v-max-q-max-k-max-wireless-connection-issues">Keychron Help Center — V Max/Q Max/K Max wireless troubleshooting</a></li>
 <li><a href="https://www.keychron.com/pages/keychron-v6-max-user-guide">Keychron — V6 Max user guide</a></li>
 <li><a href="https://www.keychron.com/pages/keychron-v-max-q-max-k-max-series-bluetooth-firmware">Keychron — V Max Bluetooth firmware and warning</a></li>
 <li><a href="https://www.keychron.com/products/keychron-v6-max-qmk-via-wireless-custom-mechanical-keyboard">Keychron — V6 Max specifications</a></li>
 </ol></section>
-</div></article>
+</div>
+
+
+</article>
 <NewsletterSignup variant="inline" />
 </ContentLayout>

@@ -7,7 +7,7 @@ const __sd = [
     headline: "USB-C hub Ethernet works but HDMI doesn't: the USB side can work while video fails.",
     description: "Working Ethernet proves the USB data path is alive. It does not prove the host USB-C port supports DisplayPort video. Isolate host video support, cable capability, HDMI output, and dock mode.",
     url: 'https://stackgeist.dev/guides/usb-c-hub-ethernet-works-hdmi-doesnt',
-    dateModified: '2026-10-01'
+    dateModified: '2026-11-08'
   }),
   howToSchema({
     name: "Fix a USB-C hub where Ethernet works but HDMI does not",
@@ -78,10 +78,32 @@ const __sd = [
         </div>
       </section>
 
-      <section><p class="page-kicker">Sources</p><ol class="article-list">
+      <section><p class="page-kicker">Editorial deep dive</p><h2>Understand why working Ethernet does not prove video compatibility.</h2>
+<p>USB-C is a connector family, not a universal capability list. A hub's Ethernet controller can communicate through the USB data connection while the HDMI output requires a separate host display capability. The host may support ordinary USB transfer and charging without carrying DisplayPort Alt Mode video at all.</p>
+<figure class="sg-editorial-figure"><img src="/illustrations/usb-c-data-versus-video.svg" width="960" height="450" loading="lazy" alt="USB-C data, power and display modes shown as distinct capabilities, with Ethernet working while HDMI fails."/><figcaption>Original conceptual USB-C signal-path diagram. No unsupported bandwidth or monitor-count guarantees.</figcaption></figure>
+<h2>What to record before replacing anything</h2>
+<div class="article-cards">
+<div><strong>Exact laptop model and port</strong><p>Some laptops have multiple USB-C ports with different capabilities. Copy the manufacturer's port specifications rather than a generic USB-C icon.</p></div>
+<div><strong>Hub and upstream cable</strong><p>Record the hub's exact model and whether its cable is attached or removable. If removable, use the cable specified by its manufacturer for a controlled test.</p></div>
+<div><strong>Monitor input and mode</strong><p>Check HDMI input selection, another known-good HDMI cable, and a basic 1080p/60Hz mode before investigating higher bandwidth requirements.</p></div>
+<div><strong>Operating system</strong><p>Windows Extend/Duplicate modes and macOS MST behavior can differ. Write down whether the second display is missing, mirrored or intermittently black.</p></div>
+</div>
+<h2>Decision table after a known-good direct display test</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Hub HDMI diagnosis table"><table class="lab-table"><thead><tr><th>Observation</th><th>Likely next investigation</th></tr></thead><tbody>
+<tr><th>Host video not supported by specification</th><td>Choose a supported native output or a separately supported USB graphics solution. An Alt Mode HDMI hub cannot add the missing signal.</td></tr>
+<tr><th>Direct USB-C video works, hub HDMI fails</th><td>Investigate hub compatibility, hub cable, firmware, HDMI link and monitor input.</td></tr>
+<tr><th>Hub works on another compatible laptop</th><td>Compare host ports, GPU display limits, OS settings and driver state.</td></tr>
+<tr><th>Only the second monitor fails</th><td>Compare host external-display count and docking technology, not just connector count.</td></tr>
+</tbody></table></div>
+<p>Use the <a href="/tools/usb-c-compatibility/">USB-C compatibility checker</a> for a conservative checklist and the <a href="/gear/connectivity/anker-553-usb-c-hub/">Anker 553 compatibility guide</a> for one model-specific example. Neither substitutes for the exact laptop and dock documentation.</p></section>
+
+<section><p class="page-kicker">Sources</p><ol class="article-list">
         <li><a href="https://support.microsoft.com/en-us/windows/hardware/usb/fix-usb-c-problems-in-windows">Microsoft Support — Fix USB-C problems in Windows</a></li>
       </ol></section>
     </div>
-  </article>
+
+
+
+</article>
   <NewsletterSignup variant="inline" />
 </ContentLayout>

@@ -7,7 +7,7 @@ articleSchema({
   headline:'MX Master 3S scroll wheel not working: separate wheel mode, app settings, connection, and hardware.',
   description:'Check MagSpeed mode and SmartShift settings in Logi Options+, test scrolling outside app-specific profiles, reconnect the mouse, and test another host before assuming an internal sensor failure.',
   url:'https://stackgeist.dev/guides/mx-master-3s-scroll-wheel-not-working',
-  dateModified:'2026-10-01'
+  dateModified:'2026-11-08'
 }),
 howToSchema({
   name:'Diagnose an MX Master 3S scroll-wheel problem',
@@ -59,10 +59,31 @@ faqSchema({questions:[
 <div><strong>Replacement</strong><p>If Logitech confirms a hardware fault and service is not practical, then replacement is the appropriate buying decision.</p></div>
 </div></section>
 
+<section><p class="page-kicker">Editorial deep dive</p><h2>Run a controlled test before diagnosing a MagSpeed hardware failure.</h2>
+<p>Three different failures can feel like “the wheel is broken”: a change in ratchet/free-spin mode, missing scroll input in one application, or missing scroll input everywhere. Test each independently, without changing firmware and multiple software settings at the same time.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Mouse scroll symptoms and tests"><table class="lab-table"><thead><tr><th>Symptom</th><th>Reversible test</th><th>What success suggests</th></tr></thead><tbody>
+<tr><th>Wheel spins differently than expected</th><td>Press the mode-shift button once; inspect SmartShift in Options+.</td><td>Mode selection, not failed scrolling.</td></tr>
+<tr><th>One app ignores scrolling</th><td>Test a browser, Windows Settings and another document; check app-specific Options+ profiles.</td><td>Application or custom-profile behavior.</td></tr>
+<tr><th>All apps ignore the wheel</th><td>Reconnect through Bluetooth or Bolt, then try another supported computer.</td><td>If fixed on a second host, focus on the first host's configuration.</td></tr>
+<tr><th>Wheel binds or grinds physically</th><td>Stop forcing it; inspect external debris only according to Logitech's cleaning instructions.</td><td>Potential physical obstruction requiring support.</td></tr>
+</tbody></table></div>
+<h2>Separate the scroll signal from pointer connection</h2>
+<ol class="article-steps">
+<li><strong>Move the pointer and click</strong><span>If pointer movement and clicks also fail, troubleshoot Bluetooth/Bolt connectivity first.</span></li>
+<li><strong>Scroll in two unrelated apps</strong><span>Choose apps that normally support vertical scrolling and have content longer than one screen.</span></li>
+<li><strong>Restore a simple Options+ configuration</strong><span>Check the active profile, scroll direction, SmartShift setting and per-app assignments. Note the original settings before changing them.</span></li>
+<li><strong>Cross-check another host</strong><span>If the failure follows the mouse across computers, contact Logitech with the exact symptoms. If it affects one host only, start with that host's software and pairing state.</span></li>
+</ol>
+<p>Do not follow unofficial instructions to spray lubricants, pry open the MagSpeed mechanism, or install abandoned firmware utilities. Those are high-risk guesses when ordinary mode and software checks have not been exhausted.</p>
+<p class="meta">Model reference: <a href="https://support.logi.com/hc/en-us/articles/5218056588311-Getting-Started-MX-Master-3S">Logitech MX Master 3S Getting Started</a>. These are troubleshooting decisions, not a new bench test of the mouse.</p></section>
+
 <section><p class="page-kicker">Sources</p><ol class="article-list">
 <li><a href="https://support.logi.com/hc/en-us/articles/5218056588311-Getting-Started-MX-Master-3S">Logitech Support — Getting Started with MX Master 3S</a></li>
 <li><a href="https://www.logitech.com/en-us/products/mice/mx-master-3s.html">Logitech — MX Master 3S product specifications</a></li>
 </ol></section>
-</div></article>
+</div>
+
+
+</article>
 <NewsletterSignup variant="inline" />
 </ContentLayout>

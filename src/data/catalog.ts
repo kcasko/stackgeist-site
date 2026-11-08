@@ -64,7 +64,7 @@ export const CATALOG: Entry[] = [
     title: "USB-C hub Ethernet works but HDMI does not",
     headline: "USB-C hub Ethernet works but HDMI doesn’t: the USB side can work while video fails.",
     dek: "USB data can work while the display path fails.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/how-to-tell-if-usb-c-port-supports-video/",
@@ -134,7 +134,7 @@ export const CATALOG: Entry[] = [
     title: "How many watts does my laptop charger need?",
     headline: "How many watts does my laptop charger need? Start with the exact laptop, not a generic chart.",
     dek: "Match rated input and plan headroom for docks.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/surge-protector-clicking/",
@@ -174,7 +174,7 @@ export const CATALOG: Entry[] = [
     title: "microSD card not detected",
     headline: "microSD card not detected: separate the reader, host, disk state, and card.",
     dek: "Reader, Disk Management, write protection, and failure checks.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/external-drive-shows-in-disk-management-not-file-explorer/",
@@ -284,7 +284,7 @@ export const CATALOG: Entry[] = [
     title: "Keychron V6 Max Bluetooth not connecting",
     headline: "Keychron V6 Max Bluetooth not connecting: pairing first, firmware last.",
     dek: "Mode switch, profile keys, pairing, and reset.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/wifi-keeps-disconnecting-router-or-pc/",
@@ -314,7 +314,7 @@ export const CATALOG: Entry[] = [
     title: "MX Master 3S scroll wheel not working",
     headline: "MX Master 3S scroll wheel not working: separate mode, software, connection, and hardware.",
     dek: "SmartShift, firmware, debris, and hardware triage.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/logitech-brio-not-detected-windows-11/",
@@ -324,7 +324,7 @@ export const CATALOG: Entry[] = [
     title: "Logitech Brio not detected on Windows 11",
     headline: "Logitech Brio 500 not detected in Windows 11: isolate Windows from the USB path.",
     dek: "Camera privacy, USB port, driver, and cable checks.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/govee-strip-lights-not-connecting-wifi/",
@@ -334,7 +334,7 @@ export const CATALOG: Entry[] = [
     title: "Govee lights not connecting to Wi-Fi",
     headline: "Govee strip lights not connecting to Wi-Fi: isolate the light from the network.",
     dek: "2.4 GHz, permissions, mesh steering, and pairing fixes.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/monitor-arm-sagging-fix/",
@@ -354,7 +354,7 @@ export const CATALOG: Entry[] = [
     title: "BenQ ScreenBar flickering",
     headline: "BenQ ScreenBar flickering: identify the model and power path first.",
     dek: "Model and power checks before you replace it.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/office-chair-gas-cylinder-replacement/",
@@ -364,7 +364,7 @@ export const CATALOG: Entry[] = [
     title: "Office chair sinking",
     headline: "Office chair sinks: diagnose the control mechanism or gas cylinder first.",
     dek: "Gas cylinder or control mechanism?",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/cable-management/",
