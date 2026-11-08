@@ -1,5 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+// Prevent automated browser checks from polluting production affiliate analytics.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    try { sessionStorage.setItem('stackgeist:affiliate:audit', '1'); } catch { /* storage unavailable */ }
+  });
+});
+
 test('homepage loads and links to useful content', async ({ page }) => {
   const response = await page.goto('/');
   expect(response?.status()).toBe(200);
