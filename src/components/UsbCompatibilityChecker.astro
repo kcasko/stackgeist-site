@@ -163,18 +163,15 @@ const { basePath = "/tools/usb-c-compatibility" } = Astro.props;
       { value: "8k60", label: "8K @ 60 Hz", bw: 50.0 },
     ];
 
+    // Connector classes do not establish the host's DisplayPort revision, available
+    // lanes, MST behavior, dock outputs, or supported display combinations.
     const usbProfiles = {
-      usb3: { label: "USB-C 3.2 (data only)", dpLanes: 0, dpVersion: null, hasDpAltMode: false, totalGbps: 10, canDisplayLink: true },
-      "usbc-dp": { label: "USB-C with DP Alt Mode", dpLanes: 4, dpVersion: "hbr2", hasDpAltMode: true, totalGbps: 10, canDisplayLink: true },
-      usb4: { label: "USB4", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
-      tb3: { label: "Thunderbolt 3", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
-      tb4: { label: "Thunderbolt 4", dpLanes: 4, dpVersion: "hbr3", hasDpAltMode: true, totalGbps: 40, canDisplayLink: true },
-      unknown: { label: "Unknown USB-C", dpLanes: null, dpVersion: null, hasDpAltMode: null, totalGbps: null, canDisplayLink: null },
-    };
-
-    const dpBandwidth = {
-      hbr2: { perLane: 5.4, fourLane: 21.6 },
-      hbr3: { perLane: 8.1, fourLane: 32.4 },
+      usb3: { label: "USB-C 3.2 (video support unverified)", hasDpAltMode: null },
+      "usbc-dp": { label: "USB-C with DP Alt Mode", hasDpAltMode: true },
+      usb4: { label: "USB4 (display capabilities model-dependent)", hasDpAltMode: null },
+      tb3: { label: "Thunderbolt 3 (display capabilities model-dependent)", hasDpAltMode: true },
+      tb4: { label: "Thunderbolt 4 (display capabilities model-dependent)", hasDpAltMode: true },
+      unknown: { label: "Unknown USB-C", hasDpAltMode: null },
     };
 
     function createDisplayTarget(index) {
@@ -209,13 +206,10 @@ const { basePath = "/tools/usb-c-compatibility" } = Astro.props;
 
     function getProfile(usbType, dpAltMode) {
       const profile = usbProfiles[usbType] || usbProfiles.unknown;
-      // If DP Alt Mode is explicitly answered, use it; otherwise keep profile default.
-      if (dpAltMode === "yes" && profile.dpLanes === 0) {
-        return { ...profile, dpLanes: 4, dpVersion: "hbr2", hasDpAltMode: true };
-      }
-      if (dpAltMode === "no") {
-        return { ...profile, dpLanes: 0, dpVersion: null, hasDpAltMode: false };
-      }
+      // An explicit answer establishes only whether DP Alt Mode is present.
+      // It never establishes a DisplayPort rate, lane count or monitor count.
+      if (dpAltMode === "yes") return { ...profile, hasDpAltMode: true };
+      if (dpAltMode === "no") return { ...profile, hasDpAltMode: false };
       return profile;
     }
 
@@ -230,44 +224,18 @@ const { basePath = "/tools/usb-c-compatibility" } = Astro.props;
     function estimateDisplayCompatibility(profile, displays) {
       const issues = [];
       const notes = [];
-      let nativeDisplays = 0;
-      let nativeBandwidth = 0;
-      let displayLinkDisplays = 0;
-      let uncertain = false;
-
-      if (profile.dpLanes === null || profile.hasDpAltMode === null) {
-        uncertain = true;
-        issues.push("Your laptop's USB-C video support is unknown, so we cannot guarantee any display output without checking the manufacturer specs.");
-      } else if (!profile.hasDpAltMode) {
-        issues.push("This port does not support DisplayPort Alt Mode, so it cannot drive a monitor directly over a simple USB-C cable or hub.");
+      if (!displays.length) return { issues, notes, uncertain: false };
+      // A port class alone cannot establish DP link rate, lane allocation,
+      // GPU output limits, MST support, DSC, or dock display capabilities.
+      if (profile.hasDpAltMode === false) {
+        issues.push("You indicated this port lacks DisplayPort Alt Mode. Standard native USB-C video adapters cannot use that mode. A compatible DisplayLink adapter may be an alternative, but check the operating system and driver first.");
+      } else if (profile.hasDpAltMode === null) {
+        issues.push("We cannot guarantee video support without checking the manufacturer's exact port and display specifications. Verify the manufacturer specs before purchasing a display adapter.");
+      } else {
+        notes.push("Your port can carry video, but the USB-C or Thunderbolt label alone cannot confirm the number of external screens, resolutions, or refresh rates.");
       }
-
-      const maxDpBw = profile.dpVersion ? dpBandwidth[profile.dpVersion].fourLane : 0;
-
-      displays.forEach((d, i) => {
-        if (!profile.hasDpAltMode) {
-          displayLinkDisplays += 1;
-          return;
-        }
-        if (profile.dpLanes === null) {
-          uncertain = true;
-          return;
-        }
-        if (d.bw <= maxDpBw - nativeBandwidth) {
-          nativeBandwidth += d.bw;
-          nativeDisplays += 1;
-        } else if (profile.totalGbps >= 40 && d.bw <= dpBandwidth.hbr3.fourLane) {
-          // Thunderbolt/USB4 can often carry two HBR3 streams, but per-display limit still applies.
-          nativeDisplays += 1;
-          notes.push(`Display ${i + 1} (${d.label}) may need Thunderbolt/USB4 bandwidth and a dock that supports the needed lanes.`);
-          nativeBandwidth += d.bw;
-        } else {
-          displayLinkDisplays += 1;
-          notes.push(`Display ${i + 1} (${d.label}) exceeds native bandwidth; DisplayLink compression may be needed.`);
-        }
-      });
-
-      return { nativeDisplays, displayLinkDisplays, uncertain, issues, notes, nativeBandwidth, maxDpBw };
+      notes.push("Check the laptop GPU/display limits, port DisplayPort version, available bandwidth, dock outputs and OS-specific extended-display support against the manufacturer's documentation.");
+      return { issues, notes, uncertain: true };
     }
 
     function buildResult() {
@@ -279,64 +247,45 @@ const { basePath = "/tools/usb-c-compatibility" } = Astro.props;
       const profile = getProfile(usbType, dpAltMode);
       const displays = collectDisplays();
 
-      const { nativeDisplays, displayLinkDisplays, uncertain, issues, notes, nativeBandwidth, maxDpBw } = estimateDisplayCompatibility(profile, displays);
+      const { issues, notes } = estimateDisplayCompatibility(profile, displays);
 
       const resultBits = [];
       const missingBits = [];
       const recBits = [];
 
-      // Summary headline
       if (displays.length === 0) {
-        resultBits.push("You do not need video output, so almost any USB-C dock or hub that supports data and enough power will work.");
-      } else if (uncertain) {
-        resultBits.push("We need more information about your laptop to give a reliable answer.");
-        missingBits.push("Look up your exact laptop model and confirm whether its USB-C port supports DisplayPort Alt Mode, USB4, or Thunderbolt.");
-      } else if (displayLinkDisplays > 0 && nativeDisplays === 0) {
-        resultBits.push(`This port cannot drive ${displays.length > 1 ? "these displays" : "this display"} natively. A DisplayLink dock is the most likely option, with a driver dependency.`);
-      } else if (displayLinkDisplays > 0) {
-        resultBits.push(`${nativeDisplays} display${nativeDisplays === 1 ? "" : "s"} can likely run natively; ${displayLinkDisplays} may need DisplayLink compression.`);
-      } else if (nativeDisplays === displays.length) {
-        resultBits.push(`All ${displays.length} display${displays.length === 1 ? "" : "s"} can likely run natively through this port.`);
+        resultBits.push("You do not need external video, but check the hub's data ports and laptop charging requirements before buying.");
+      } else {
+        resultBits.push("Compatibility is not confirmed for this particular laptop and dock. Verify the exact models before buying.");
+        resultBits.push(`Requested display setup: ${displays.map((d) => d.label).join(", ")}.`);
+        missingBits.push("Check the laptop model's maximum external-display count, DisplayPort version and available output modes.");
+        missingBits.push("Check the proposed dock's exact supported resolution, refresh rate and OS limitations for this monitor arrangement.");
+        if (profile.hasDpAltMode === null) missingBits.push("Confirm whether this USB-C port supports native video output at all.");
       }
 
-      if (displays.length > 0) {
-        resultBits.push(`Estimated native DisplayPort bandwidth needed: ${nativeBandwidth.toFixed(1)} Gbps out of ${maxDpBw.toFixed(1)} Gbps available.`);
-      }
-
-      // Power delivery
+      // Wattage input is a requirement, not proof of charging compatibility.
       if (pdWatts > 0) {
-        if (pdWatts > 100) {
-          recBits.push(`Your laptop needs ${pdWatts} W. Most compact USB-C hubs deliver 60–100 W. Look for a dock with a 100 W or higher PD power supply, or keep the factory charger connected to a separate port.`);
-        } else if (pdWatts > 60) {
-          recBits.push(`Your laptop needs ${pdWatts} W. Choose a dock or hub that explicitly supports 85–100 W pass-through charging.`);
-        } else {
-          recBits.push(`Your laptop needs ${pdWatts} W. Most USB-C docks and hubs that offer pass-through charging can cover this.`);
-        }
+        recBits.push(`You entered ${pdWatts} W. Verify the laptop supports charging over this port and that the dock's power delivered to the host (after its own power needs) meets that requirement; otherwise use the original charger.`);
       }
 
-      // OS DisplayLink warning
-      if (displayLinkDisplays > 0) {
-        if (os === "linux") {
-          notes.push("DisplayLink drivers on Linux are community-supported and may require manual installation; verify compatibility before buying.");
-        } else if (os === "macos") {
-          notes.push("macOS supports DisplayLink through the manufacturer's driver; Apple Silicon Macs need the ARM driver version.");
-        }
+      // DisplayLink is an alternative only when drivers, OS and target hardware
+      // have been checked. We cannot infer that it is required by bandwidth alone.
+      if (displays.length > 0 && profile.hasDpAltMode === false) {
+        recBits.push("Consider a DisplayLink adapter only after confirming driver support for your operating system and the required display arrangement.");
       }
-
-      // Recommendations
-      if (displays.length === 0) {
-        recBits.push("A basic USB-C hub with the ports you need and enough power delivery is sufficient.");
-      } else if (usbType === "tb4" || usbType === "tb3" || usbType === "usb4") {
-        recBits.push("A Thunderbolt 4 or USB4 dock is the best fit for high-resolution or multiple displays.");
+      if (displays.length > 0 && os === "linux") {
+        notes.push("Linux display support depends on the GPU, kernel, dock and drivers. Check device-specific support before purchasing.");
+      } else if (displays.length > 0 && os === "macos") {
+        notes.push("Check your exact Mac's external-display limit. A standard USB-C MST dock does not necessarily provide independent extended displays on macOS.");
+      }
+      if (displays.length > 0) {
+        recBits.push("Compare the manufacturer's supported display matrix for the exact laptop and dock before choosing a product.");
         if (displays.some((d) => d.value.startsWith("4k") || d.value.startsWith("5k") || d.value.startsWith("8k"))) {
-          recBits.push("Look for a dock that explicitly lists the resolution and refresh rate you want on its spec sheet, not just '4K support.'");
+          recBits.push("Confirm the exact resolution and refresh rate, not just a generic '4K' marketing claim.");
         }
-      } else if (usbType === "usbc-dp" && displays.length === 1 && displays[0].value === "1080p60") {
-        recBits.push("A mid-range USB-C hub with HDMI and 85 W+ pass-through should handle this.");
       }
-
       if (displays.length > 0 && dpAltMode === "unknown") {
-        recBits.push("Confirm DP Alt Mode before buying. If your laptop does not support it, a standard USB-C hub's HDMI port will not work for video.");
+        recBits.push("Check native video support and any required drivers before purchasing a USB-C display hub.");
       }
 
       summary.innerHTML = resultBits.map((bit) => `<p>${bit}</p>`).join("");
