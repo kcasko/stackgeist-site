@@ -60,3 +60,13 @@ test('USB-C compatibility checker explains limits and does not guarantee merchan
   assert.match(component, /usb\.org/);
   assert.match(component, /displayport\.org/);
 });
+
+test('USB-C tool links directly to canonical non-redirected content', async () => {
+  const page = await read('src/pages/tools/usb-c-compatibility/index.astro');
+  const redirects = await read('public/_redirects');
+  const redirected = new Set([...redirects.matchAll(/^([^\s#]+)\s+[^\s]+\s+30[128]/gm)].map((match) => match[1]));
+  const hrefs = [...page.matchAll(/href="(\/[^"]+)"/g)].map((match) => match[1]);
+  for (const href of hrefs) {
+    assert.ok(!redirected.has(href), `Tool should link directly instead of through redirect: ${href}`);
+  }
+});
