@@ -1,10 +1,36 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import UsbCompatibilityChecker from "../../../components/UsbCompatibilityChecker.astro";
+import { webApplicationSchema, faqSchema } from "../../../lib/structured-data";
 
 const title = "USB-C dock and monitor compatibility checker";
 const description =
   "Check whether your laptop and USB-C port can drive the external monitors you want, and learn when a Thunderbolt dock, USB-C hub, or DisplayLink adapter is the right fit.";
+
+const structuredData = [
+  webApplicationSchema({
+    name: title,
+    description,
+    url: "https://stackgeist.dev/tools/usb-c-compatibility/",
+    applicationCategory: "UtilityApplication",
+  }),
+  faqSchema({
+    questions: [
+      {
+        question: "How do I know if my USB-C port supports external monitors?",
+        answer: "Check if your USB-C port supports DisplayPort Alternate Mode (DP Alt Mode), Thunderbolt 3/4, or USB4 in your laptop's official hardware specifications.",
+      },
+      {
+        question: "Can any USB-C cable transmit video to a monitor?",
+        answer: "No. Standard charging cables only carry USB 2.0 data and power. Video transmission requires a cable rated for DP Alt Mode, USB4, or Thunderbolt.",
+      },
+      {
+        question: "Why does my USB-C dock only detect one monitor?",
+        answer: "On macOS, standard USB-C docks using DisplayPort MST mirror displays rather than extending them. On Windows, bandwidth limits (such as DP 1.2 vs DP 1.4 HBR3) can restrict driving dual high-resolution displays.",
+      },
+    ],
+  }),
+];
 ---
 
 <Layout
@@ -14,6 +40,7 @@ const description =
   active="usb-c-compatibility"
   type="website"
   pageType="tool"
+  structuredData={structuredData}
 >
   <article class="content-width flow" slot="default">
     <header class="page-header">

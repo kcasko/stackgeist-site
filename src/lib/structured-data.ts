@@ -89,3 +89,21 @@ export function faqSchema(input: {
     })),
   };
 }
+
+export function webApplicationSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+}): SchemaObj {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: input.name,
+    description: input.description,
+    url: canonicalUrl(input.url),
+    applicationCategory: input.applicationCategory ?? 'UtilityApplication',
+    operatingSystem: input.operatingSystem ?? 'All',
+  };
+}
