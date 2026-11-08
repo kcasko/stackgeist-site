@@ -17,7 +17,8 @@ const current = [
 test('every current-batch guide has substantive diagnostic detail and sources', { skip: !existsSync('dist') }, () => {
   for (const slug of current) {
     const html = readFileSync('dist/guides/' + slug + '/index.html', 'utf8');
-    assert.ok(html.includes('Editorial deep dive'), slug + ' missing detailed editorial block');
+    assert.ok(!html.includes('Editorial deep dive'), slug + ' still has machine-written editorial scaffold');
+    assert.ok(html.match(/<h2/), slug + ' missing useful sections');
     assert.ok(html.includes('Sources'), slug + ' missing authoritative sources');
     assert.ok(html.includes('2026-11-08'), slug + ' missing current editorial date');
   }

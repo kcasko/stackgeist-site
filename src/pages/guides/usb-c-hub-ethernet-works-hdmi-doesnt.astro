@@ -35,7 +35,7 @@ const __sd = [
     <h1 class="page-title">USB-C hub Ethernet works but HDMI doesn't: the USB side can work while video fails.</h1>
     <p class="page-lead">This symptom feels contradictory only if you treat USB-C as one feature. Ethernet and HDMI can travel through completely different logical paths. Working Ethernet proves the hub's USB data connection is alive. It does not prove the laptop is supplying a display signal to the hub.</p>
 
-    <div class="article-summary"><strong>The five-minute answer</strong><p>Look up the exact laptop and confirm the connected USB-C port supports DisplayPort video, USB4, or Thunderbolt. Then test a display directly from that port with a known-good adapter or USB-C monitor. If direct video works, return to the hub and test its upstream cable and HDMI path. If direct video does not work, the hub is probably not the problem.</p></div>
+    <div class="article-summary"><strong>The short answer</strong><p>Look up the exact laptop and confirm the connected USB-C port supports DisplayPort video, USB4, or Thunderbolt. Then test a display directly from that port with a known-good adapter or USB-C monitor. If direct video works, return to the hub and test its upstream cable and HDMI path. If direct video does not work, the hub is probably not the problem.</p></div>
 
     <div class="article-body">
       <section><p class="page-kicker">Why this happens</p><h2>Ethernet and HDMI prove different things.</h2>
@@ -78,8 +78,8 @@ const __sd = [
         </div>
       </section>
 
-      <section><p class="page-kicker">Editorial deep dive</p><h2>Understand why working Ethernet does not prove video compatibility.</h2>
-<p>USB-C is a connector family, not a universal capability list. A hub's Ethernet controller can communicate through the USB data connection while the HDMI output requires a separate host display capability. The host may support ordinary USB transfer and charging without carrying DisplayPort Alt Mode video at all.</p>
+      <section><p class="page-kicker">The catch</p><h2>Ethernet works. So why is HDMI still black?</h2>
+<p>Because USB-C isn't one set of features. Ethernet uses the USB data connection. HDMI on this kind of hub also needs the laptop to send a video signal, usually through DisplayPort Alt Mode. A laptop can handle USB data and charging just fine and still have no video output on that port.</p>
 <figure class="sg-editorial-figure"><img src="/illustrations/usb-c-data-versus-video.svg" width="960" height="450" loading="lazy" alt="USB-C data, power and display modes shown as distinct capabilities, with Ethernet working while HDMI fails."/><figcaption>Original conceptual USB-C signal-path diagram. No unsupported bandwidth or monitor-count guarantees.</figcaption></figure>
 <h2>What to record before replacing anything</h2>
 <div class="article-cards">

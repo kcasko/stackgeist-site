@@ -24,7 +24,8 @@ for (const slug of routes) {
     const response = await page.goto('/guides/' + slug + '/', { waitUntil: 'domcontentloaded' });
     expect(response?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveCount(1);
-    await expect(page.getByText('Editorial deep dive', { exact: true })).toBeVisible();
+    await expect(page.locator('main h2').first()).toBeVisible();
+    expect(await page.locator('main').innerText()).not.toContain('Editorial deep dive');
     const health = await page.evaluate(async () => {
       const images = [...document.querySelectorAll('img[src^="/illustrations/"]')];
       for (const image of images) {

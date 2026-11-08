@@ -34,7 +34,7 @@ faqSchema({questions:[
 <h1 class="page-title">Logitech Brio 500 not detected in Windows 11: isolate Windows from the USB path.</h1>
 <p class="page-lead">First determine whether Windows sees the webcam at all. If Brio 500 is absent from Device Manager, focus on connection/USB enumeration. If Windows sees it but one app cannot use it, focus on privacy or application settings.</p>
 
-<div class="article-summary"><strong>The five-minute answer</strong><p>Plug Brio 500 directly into a USB-C port without a hub or extender. Open Device Manager and look for Logitech BRIO 500 under Cameras/Imaging Devices. Test the Windows Camera app. Then check Settings → Privacy & security → Camera for Camera access and desktop-app access. If the camera remains absent, try another USB port and another computer as Logitech recommends.</p></div>
+<div class="article-summary"><strong>Check this first</strong><p>Plug Brio 500 directly into a USB-C port without a hub or extender. Open Device Manager and look for Logitech BRIO 500 under Cameras/Imaging Devices. Test the Windows Camera app. Then check Settings → Privacy & security → Camera for Camera access and desktop-app access. If the camera remains absent, try another USB port and another computer as Logitech recommends.</p></div>
 
 <div class="article-body">
 <section><p class="page-kicker">Step 01</p><h2>Connect directly before changing drivers.</h2>
@@ -66,8 +66,8 @@ faqSchema({questions:[
 <div><strong>Support / replacement</strong><p>If it is absent or faulty across multiple supported hosts when connected directly, contact Logitech with the device/host details.</p></div>
 </div></section>
 
-<section><p class="page-kicker">Editorial deep dive</p><h2>The fastest useful diagnosis is a three-layer test.</h2>
-<p>A camera can fail in three places: USB device detection, the Windows camera subsystem, or the application requesting video. Use those layers in order. Reinstalling a conferencing app cannot fix a webcam that the operating system never detected.</p>
+<section><p class="page-kicker">Where to look</p><h2>If Windows cannot see the camera, the meeting app will not either.</h2>
+<p>There are three places this can go wrong: the USB connection, Windows itself, or the app trying to use the camera. Check them in that order. Reinstalling Zoom will not fix a webcam that isn't showing up in Device Manager.</p>
 <figure class="sg-editorial-figure"><img src="/illustrations/webcam-detection-branches.svg" width="960" height="450" loading="lazy" alt="Diagnostic flow from Device Manager hardware detection to Windows Camera preview to application access permissions."/><figcaption>Original conceptual diagram. Not a screenshot of Windows 11.</figcaption></figure>
 <div class="article-cards">
 <div><strong>Device Manager: no camera</strong><p>Try the integrated USB-C cable directly on another compatible port. Check for unknown USB devices and test the webcam on another computer before troubleshooting app permissions.</p></div>

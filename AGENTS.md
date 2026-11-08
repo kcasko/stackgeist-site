@@ -8,6 +8,10 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## StackGeist editorial voice
+
+Before creating or revising any article, read `docs/editorial-voice.md` and apply its human voice and sourcing checklist. Writing should sound like a practical troubleshooter, not a templated AI or SaaS page. Use the author’s verified WGU and homelab experiences for first-person context only when supported. Never fabricate ownership, testing, exam results, or personal anecdotes. Review the *whole* finished article for repetitive sections, not just the newly appended text.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

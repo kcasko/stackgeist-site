@@ -11,6 +11,10 @@
 - Still needing editorial review: 48.
 - Source-verification-required (primarily research-placeholder products): 48.
 
+## Author voice requirement
+
+Every page, including the 17 already expanded, must receive a full-article human voice edit before it is marked editorially finished. The house style and before/after examples are in [`docs/editorial-voice.md`](../docs/editorial-voice.md). Avoid AI-generated-sounding structure, repeated stock headings, corporate claims, and invented firsthand testing. Prior source-backed expansion does not itself mean the final voice pass is complete.
+
 ## Definition of done
 
 1. Verify the exact hardware model, OS version, course version, or tested environment. Label firsthand work versus sourced research.
