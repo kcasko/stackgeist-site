@@ -4,12 +4,17 @@
 
 ## Inventory snapshot (2026-11-08)
 
-- 113 individual generated content paths inventoried, excluding major section landing pages.
-- Section counts: certs: 5, gear: 55, guides: 46, labs: 7.
+- 114 individual generated content paths inventoried, excluding major section landing pages.
+- Section counts: certs: 5, gear: 55, guides: 47, labs: 7.
 - Expanded in earlier batch: 8.
 - Expanded in current batch: 9.
+- Newly published, source-backed hotel Wi-Fi guide: 1.
 - Still needing editorial review: 48.
 - Source-verification-required (primarily research-placeholder products): 48.
+
+## New article published
+
+- [Hotel Wi-Fi connected but no internet? Get the login page](https://stackgeist.dev/guides/hotel-wifi-login-page-not-showing/) (2026-11-08): original captive-portal flowchart and Windows, Mac, iPhone, Android, VPN, hotel device registration guidance. Voice reviewed, sources included; not a firsthand hotel-network test.
 
 ## Author voice requirement
 

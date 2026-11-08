@@ -1,0 +1,160 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { articleSchema, faqSchema, howToSchema } from '../../lib/structured-data';
+
+const url = 'https://stackgeist.dev/guides/hotel-wifi-login-page-not-showing/';
+const structuredData = [
+  articleSchema({
+    headline: 'Hotel Wi-Fi connected but no internet? Get the login page to appear.',
+    description: 'Hotel Wi-Fi says connected but nothing loads? Find the captive portal login page on Windows, iPhone, Android or Mac and troubleshoot VPN and hotel registration issues.',
+    url,
+    image: 'https://stackgeist.dev/illustrations/hotel-wifi-captive-portal-flow.svg',
+    datePublished: '2026-11-08',
+    dateModified: '2026-11-08'
+  }),
+  howToSchema({
+    name: 'Get the hotel Wi-Fi login page to appear',
+    description: 'Reconnect to the correct guest Wi-Fi, trigger the sign-in page, and check device restrictions without resetting the whole computer.',
+    steps: [
+      { name: 'Confirm the real guest network', text: 'Ask the front desk for the exact network name and whether the hotel requires a room number, code or web sign-in.' },
+      { name: 'Check for a sign-in prompt', text: 'Connect to that guest Wi-Fi and look for a Sign in to network notification or a welcome page.' },
+      { name: 'Try an ordinary HTTP website', text: 'Open http://example.com in a normal browser tab so the network can redirect an HTTP request to its login page. Do not click through certificate warnings.' },
+      { name: 'Forget and rejoin only that Wi-Fi network', text: 'Remove the saved hotel Wi-Fi entry, join again and check for a new sign-in prompt.' },
+      { name: 'Isolate a blocker or ask hotel support', text: 'If needed, temporarily pause VPN or custom DNS until signed in, restore it afterward, and ask the front desk to check registration or device limits if access still fails.' }
+    ]
+  }),
+  faqSchema({
+    questions: [
+      { question: 'Why does hotel Wi-Fi show connected but no internet?', answer: 'Your device may have joined the wireless network but not completed the hotel captive portal login. It can also mean the hotel connection is down or your device registration has expired.' },
+      { question: 'How do I force the hotel Wi-Fi login page to pop up?', answer: 'Use any Sign in to network notification first. If that is missing, open http://example.com in a normal browser tab, then forget and reconnect to the verified guest network if necessary.' },
+      { question: 'Should I disable my VPN at a hotel?', answer: 'Only temporarily for the portal if it is blocking the sign-in. Restore your VPN as soon as internet access is authorized. Do not disable unrelated security controls permanently.' },
+      { question: 'Why does my phone connect but my laptop or PS5 does not?', answer: 'Hotels may register devices individually or enforce device limits. Ask hotel support how they handle laptops, game consoles and streaming equipment rather than trying to bypass the guest network controls.' }
+    ]
+  })
+];
+---
+<ContentLayout design="v2" structuredData={structuredData} title="Hotel Wi-Fi Connected but No Internet? Get the Login Page | StackGeist" description="Hotel Wi-Fi login page not showing? Try the quick captive-portal fixes on Windows, Mac, iPhone, and Android. Includes VPN, DNS, and device registration troubleshooting." active="guides">
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/guides/">Fixes</a> / Hotel Wi-Fi login not showing</p>
+    <p class="page-kicker">Hotel and public Wi-Fi troubleshooting</p>
+    <h1 class="page-title">Hotel Wi-Fi connected but no internet? Get the login page to appear.</h1>
+    <p class="page-lead">You check into the hotel, connect your laptop to the guest Wi-Fi, and Windows says you're connected. Great. Except nothing loads. Before you start resetting drivers or blaming your laptop, try to get the hotel's sign-in page to show up.</p>
+
+    <div class="article-summary">
+      <strong>Try these four things first</strong>
+      <ol class="article-list">
+        <li>Make sure you're on the hotel's <strong>actual guest network</strong>. Ask the front desk for the exact Wi-Fi name.</li>
+        <li>Look for a <strong>Sign in to network</strong> notification or welcome page.</li>
+        <li>Open a normal browser window and type <a href="http://example.com">http://example.com</a> exactly, including <code>http://</code>. It may redirect to the hotel login page.</li>
+        <li>If that fails, <strong>forget only the hotel network</strong>, reconnect, and check for the login prompt again.</li>
+      </ol>
+      <p>If the page appears, use the sign-in details the hotel gave you. If it doesn't, work through the checks below before changing anything else.</p>
+    </div>
+
+    <div class="article-body">
+      <figure class="sg-editorial-figure">
+        <img src="/illustrations/hotel-wifi-captive-portal-flow.svg" width="960" height="510" loading="lazy" decoding="async" alt="Diagram of hotel Wi-Fi: device connects to guest Wi-Fi, a captive portal authorizes internet access, and you either sign in or troubleshoot a missing login page." />
+        <figcaption>The Wi-Fi connection and the hotel login are separate steps. This is an original diagram, not a screenshot from a particular hotel.</figcaption>
+      </figure>
+
+      <section>
+        <h2>Connected to Wi-Fi isn't the same as having internet access</h2>
+        <p>Hotels commonly use a <strong>captive portal</strong>. That's the page that asks for your room number, last name, access code, or agreement to the Wi-Fi terms.</p>
+        <p>Your phone or laptop can talk to the hotel's wireless access point before the hotel allows it onto the internet. That's why the Wi-Fi icon can show a strong connection while websites fail. And because modern browsers usually open encrypted HTTPS sites, the hotel's older-style redirect may not appear when you try your usual homepage.</p>
+        <p><strong>One important rule:</strong> don't bypass a certificate warning just to force the hotel page. Using a plain HTTP test page is different from ignoring a security warning on a site that's supposed to be encrypted.</p>
+      </section>
+
+      <section>
+        <h2>The login page never opens. Try this in order.</h2>
+        <ol class="article-steps">
+          <li><strong>Confirm the guest Wi-Fi name.</strong><span>A nearby network with a believable hotel name isn't necessarily run by the hotel. Ask the front desk for the exact network name, especially before entering a room number, account password or payment details.</span></li>
+          <li><strong>Reconnect and watch for the prompt.</strong><span>Disconnect, join the verified guest network, and look for a system notification or sign-in window. Some devices open it automatically.</span></li>
+          <li><strong>Use a simple HTTP request.</strong><span>In your browser's address bar, enter <code>http://example.com</code>. This is intentionally HTTP, not HTTPS. A hotel portal that intercepts ordinary HTTP may send you to its sign-in page. The trick is not guaranteed on every hotel system.</span></li>
+          <li><strong>Forget that one network.</strong><span>If it's still stuck, remove the saved hotel network and reconnect. This clears its saved connection settings without wiping every Wi-Fi network and Bluetooth pairing on your device.</span></li>
+          <li><strong>Test without an interfering VPN or custom DNS.</strong><span>If your VPN, secure DNS/Private DNS or filtering app starts before the hotel portal allows internet access, it can get in the way. Temporarily pause the relevant setting, finish the hotel's login, and restore it afterward.</span></li>
+          <li><strong>Ask the front desk to check your device.</strong><span>If the portal still doesn't appear, the hotel's gateway may have a stale session, a device limit or a system outage. Hotel support can tell you whether your specific device is registered.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Windows 11: connected, secured, no internet</h2>
+        <p>On Windows 11, open <strong>Settings → Network &amp; internet → Wi-Fi</strong>. Connect to the verified guest network, then use the notification or a browser tab if the sign-in page doesn't appear. Open <code>http://example.com</code> before changing adapters or drivers.</p>
+        <p>If you need to forget it, go to <strong>Wi-Fi → Manage known networks</strong>, find the hotel's network, choose <strong>Forget</strong>, and connect again. Expect to re-enter a network password if the hotel uses one.</p>
+        <p>If your laptop has manually configured DNS servers, a proxy, or a VPN that requires connectivity before any website can open, temporarily use its normal automatic/default connection settings while signing in, then restore your preferred configuration. Don't change unrelated corporate-managed settings without checking your organization's rules.</p>
+        <div class="note"><strong>Don't start with Network Reset.</strong> Windows' full network reset removes and reinstalls adapters and can affect VPN configuration. It's overkill when the only problem is a hotel login window that won't show up.</div>
+        <p>For Windows problems that happen on your home network too, see <a href="/guides/wifi-keeps-disconnecting-router-or-pc/">Wi-Fi keeps disconnecting: router or PC?</a>. That's a different problem from a hotel asking you to sign in.</p>
+      </section>
+
+      <section>
+        <h2>iPhone and iPad: bring back the hotel welcome screen</h2>
+        <p>Open <strong>Settings → Wi-Fi</strong>, select the hotel's guest network, and wait for the welcome screen. Apple also documents using the information button next to the network and choosing <strong>Join Network</strong> when offered.</p>
+        <p>If you previously dismissed the welcome screen, check the network's information page for <strong>Auto-Login</strong> or reconnect to the guest network. You can turn off Auto-Login for that saved network to make the welcome page appear again on a later connection. Apple notes that the exact choices depend on how the login screen was dismissed.</p>
+        <p>When an embedded Wi-Fi sign-in window won't complete an account-based login, you can try Safari. Google's own help recommends reopening the portal in Safari for certain Google Account sign-ins. That is a special case, not a reason to disable browser security.</p>
+      </section>
+
+      <section>
+        <h2>Android: tap “Sign in to Wi-Fi network”</h2>
+        <p>On many Android phones, the simplest solution is the <strong>Sign in to Wi-Fi network</strong> notification after you join the hotel's network. Tap it and complete the hotel's sign-in page.</p>
+        <p>If the notification vanished or never showed up, open the network settings and forget just that hotel network. On Google's Pixel interface, that's typically <strong>Settings → Network &amp; internet → Internet</strong>, then the saved network and <strong>Forget</strong>. Turn Wi-Fi off and on, rejoin, and check the new notification. Samsung and other brands label these menus differently.</p>
+        <p>If you're using Android's <strong>Private DNS</strong> setting, VPN, or an always-on DNS-filtering app, it may interfere with captive portal detection. Check the relevant setting only after trying the simple reconnect. Restore your privacy settings once the hotel authorizes access.</p>
+      </section>
+
+      <section>
+        <h2>Mac: join the network and use the sign-in window</h2>
+        <p>Choose the verified hotel network from the Wi-Fi menu. macOS normally opens a captive-network login window when the network needs authorization. If it doesn't, try a regular browser tab at <code>http://example.com</code>.</p>
+        <p>If the Mac previously saved a stale hotel session, forget the specific guest network in <strong>System Settings → Wi-Fi</strong>, then connect again. Mac versions place the saved-network control in slightly different places. Don't erase all network locations or disable firewall protection to fix one hotel login.</p>
+      </section>
+
+      <section>
+        <h2>What if the page opens but login still fails?</h2>
+        <div class="table-scroll" role="region" tabindex="0" aria-label="Hotel Wi-Fi login failures and next steps">
+          <table>
+            <thead><tr><th>What you see</th><th>What to check next</th></tr></thead>
+            <tbody>
+              <tr><td>Room number or last name rejected</td><td>Confirm the exact details and spelling the hotel registered. Some systems use a voucher or access code instead.</td></tr>
+              <tr><td>Login succeeds, then asks again</td><td>Ask whether the hotel's portal has expired your session. Privacy features that change the device's reported network identity can also require re-registration.</td></tr>
+              <tr><td>Phone works but laptop does not</td><td>Ask whether the hotel authorizes each device separately or has a device limit. Signing in on one phone does not necessarily authorize your laptop.</td></tr>
+              <tr><td>Every device joins Wi-Fi but nothing loads</td><td>Ask hotel staff to check whether the internet service or captive portal is down. There's no local browser trick for an upstream outage.</td></tr>
+              <tr><td>Login page shows a certificate warning</td><td>Do not click through it or enter credentials. Confirm the network with staff, close the warning, and try the hotel's documented sign-in method.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Some hotels identify registered devices using their Wi-Fi MAC address. Modern devices can use private or randomized addresses for privacy. Usually you should leave that protection enabled. If the hotel explicitly registered a different address, ask staff how to update the registration rather than blindly disabling privacy features.</p>
+      </section>
+
+      <section>
+        <h2>What about a PS5, Apple TV, or streaming stick?</h2>
+        <p>Game consoles and streaming devices aren't always good at opening hotel captive-portal pages. Depending on the hotel, the front desk may be able to register the device, provide an approved method for consoles, or explain a device limit.</p>
+        <p>Start there. A travel router isn't a magic bypass. Some hotels restrict rebroadcasting or adding personal network equipment, and a travel router still has to complete the hotel's authorized sign-in. Don't buy another gadget before finding out what the property allows.</p>
+      </section>
+
+      <section>
+        <h2>Public Wi-Fi safety: don't trade away security for a login page</h2>
+        <ul class="article-list">
+          <li>Confirm the actual network name with hotel staff. A convincing-looking nearby Wi-Fi name isn't proof of ownership.</li>
+          <li>Don't type sensitive account credentials into a suspicious page just because it appeared after joining Wi-Fi.</li>
+          <li>Don't ignore HTTPS certificate errors or browser phishing warnings to reach a captive portal.</li>
+          <li>Keep the connection set to <strong>Public</strong> on Windows so unnecessary device discovery and sharing stay restricted.</li>
+          <li>If you paused a VPN for sign-in, restart it after connecting. Use HTTPS sites normally.</li>
+          <li>Forget the hotel network after checkout if you don't want your device to reconnect automatically during future visits.</li>
+        </ul>
+        <p><strong>Bottom line:</strong> the fix is usually getting the hotel's login page back, not repairing your Wi-Fi adapter. If a verified guest network, a fresh connection and a simple HTTP request still don't get you there, let the hotel's network support check the session. That's their system, not your laptop's responsibility.</p>
+      </section>
+
+      <section>
+        <p class="page-kicker">Further reading</p>
+        <h2>Official instructions behind these steps</h2>
+        <ol class="article-list">
+          <li><a href="https://support.apple.com/en-us/102554">Apple Support: Use captive Wi-Fi networks on iPhone or iPad</a></li>
+          <li><a href="https://support.google.com/pixelphone/answer/6183600?hl=en">Google Pixel Help: Sign in to public Wi-Fi and restore the sign-in notification</a></li>
+          <li><a href="https://support.mozilla.org/en-US/kb/captive-portal">Mozilla Support: How captive portal detection works and why VPN/proxy settings interfere</a></li>
+          <li><a href="https://support.microsoft.com/en-us/windows/experience/connectivity-networking/essential-network-settings-and-tasks-in-windows">Microsoft Support: Windows network settings and Public profiles</a></li>
+          <li><a href="https://support.google.com/accounts/answer/9690282?hl=en">Google Account Help: Captive network sign-in from Safari on iOS</a></li>
+        </ol>
+        <p class="meta">This is a source-backed troubleshooting guide. Menus change across operating system versions and hotel providers. It doesn't claim a test at a particular property or any access to a hotel's network.</p>
+      </section>
+    </div>
+  </article>
+  <NewsletterSignup variant="inline" />
+</ContentLayout>

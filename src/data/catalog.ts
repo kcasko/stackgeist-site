@@ -287,6 +287,22 @@ export const CATALOG: Entry[] = [
     updated: "2026-11-08"
   },
   {
+    href: "/guides/hotel-wifi-login-page-not-showing/",
+    section: "fixes",
+    type: "troubleshooting",
+    topic: "wireless",
+    title: "Hotel Wi-Fi connected but no internet",
+    headline: "Hotel Wi-Fi connected but no internet? Get the sign-in page to appear.",
+    dek: "Open the captive portal on Windows, iPhone, Android or Mac without resetting everything.",
+    updated: "2026-11-08",
+    image: {
+      src: "/illustrations/hotel-wifi-captive-portal-flow.svg",
+      alt: "Diagram showing the hotel Wi-Fi connection, login page and internet authorization",
+      width: 960,
+      height: 510
+    }
+  },
+  {
     href: "/guides/wifi-keeps-disconnecting-router-or-pc/",
     section: "fixes",
     type: "troubleshooting",

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 510" width="960" height="510" role="img" aria-labelledby="title"><title id="title">Hotel Wi-Fi captive portal sign-in flow</title><rect width="960" height="510" fill="#fff"/><style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#243948}
+.h{font-size:27px;font-weight:700}
+.heading{font-size:20px;font-weight:700}
+.body{font-size:16px}
+.small{font-size:14px}
+.device{fill:#f4f7fa;stroke:#7da0b2;stroke-width:2}
+.good{fill:#e9f4ea;stroke:#4c9b70;stroke-width:2}
+.warn{fill:#fff0da;stroke:#c39140;stroke-width:2}
+.line{stroke:#2d6682;stroke-width:3;fill:none;marker-end:url(#arr)}
+</style>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L9 3 L0 6 Z" fill="#2d6682"/></marker></defs><text x="35" y="42" class="h">Why hotel Wi-Fi can say &quot;Connected&quot; with no internet</text><rect x="35" y="85" width="265" height="112" rx="12" class="device"/><text x="56" y="123" class="heading">1. Device joins Wi-Fi</text><text x="56" y="156" class="body">Signal works; connected</text><path d="M300 139 L343 139" class="line"/><rect x="349" y="85" width="267" height="112" rx="12" class="device"/><text x="370" y="123" class="heading">2. Hotel sign-in</text><text x="370" y="156" class="body">Portal must authorize</text><path d="M616 139 L660 139" class="line"/><rect x="665" y="85" width="263" height="112" rx="12" class="good"/><text x="687" y="123" class="heading">3. Internet works</text><text x="687" y="156" class="body">After valid sign-in</text><path d="M482 197 L482 248" class="line"/><rect x="45" y="260" width="870" height="143" rx="12" class="warn"/><text x="67" y="294" class="heading">No sign-in window? Do not reset the whole computer.</text><text x="67" y="328" class="body">Check the hotel SSID  →  Open http://example.com</text><text x="67" y="359" class="body">Forget only that network  →  Rejoin  →  Ask hotel support</text><text x="45" y="470" class="small">Illustrative network flow. Actual hotel sign-in systems vary.</text></svg>
