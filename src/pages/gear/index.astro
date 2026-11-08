@@ -1,7 +1,6 @@
 ---
 import ContentLayout from '../../layouts/ContentLayout.astro';
 import { SECTIONS, entry, entries } from '../../data/sections';
-import { INCOME_KITS, isKitIndexable } from '../../data/incomeKits';
 
 // Evidence labels follow each product page's own EvidencePanel status.
 const products = [
@@ -13,7 +12,6 @@ const products = [
   { e: entry('/gear/monitor-support/amazon-basics-dual-monitor-arm/'), img: '/gear/catalog-illustration.svg', kind: 'Dual monitor arm', evidence: 'Researched', fix: { href: '/guides/monitor-arm-sagging-fix/', label: 'Monitor arm sagging?' } },
 ];
 const guides = entries(['/guides/usb-c-dock-compatibility/', '/guides/usb-c-cable-buying-guide/', '/guides/laptop-charger-wattage/', '/guides/how-to-tell-if-ssd-is-failing/', '/tools/usb-c-compatibility/']);
-const kits = INCOME_KITS.filter(isKitIndexable);
 ---
 <ContentLayout section="gear" title="Tech gear decision pages: docks, hubs, and more | StackGeist" description="StackGeist gear decision pages for docks, hubs, and accessories tied to our fix guides, with source-checked specifications, owned-and-used labels, and reasons to skip.">
   <header class="gear-head">
@@ -43,15 +41,10 @@ const kits = INCOME_KITS.filter(isKitIndexable);
       <h2 id="before-title" class="block-label">Before you buy</h2>
       <ul class="plain-list">{guides.map((e) => <li><a href={e.href}>{e.title}</a><p>{e.dek}</p></li>)}</ul>
     </section>
-    <section aria-labelledby="kits-title">
-      <h2 id="kits-title" class="block-label">Buying lists</h2>
-      <p class="kits-note">Buying orders for one goal each. Many use retailer search links whose results have not been individually checked; each list says which. <a href="/kits/">All buying lists</a></p>
-      <ul class="kit-list">{kits.map((k) => <li><a href={`/kits/${k.slug}/`}>{k.title}</a></li>)}</ul>
-    </section>
   </div>
 
-  <section class="desk-setup-notes" aria-labelledby="desk-setup-title">
-    <h2 id="desk-setup-title" class="block-label">Desk setup notes</h2>
+  <section class="more-product-decisions" aria-labelledby="additional-product-title">
+    <h2 id="additional-product-title" class="block-label">Additional product decisions</h2>
     <p class="kits-note">Recently checked desk hardware and lighting. Each page lists specifications, compatibility checks, and reasons to skip.</p>
     <ul class="plain-list">
       {[
@@ -93,27 +86,25 @@ const kits = INCOME_KITS.filter(isKitIndexable);
 .product-body .product-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: auto; padding-top: var(--space-2); font-size: .9rem; }
 .evidence { display: inline-block; padding: 2px 7px; border: 1.5px solid var(--ink-3); color: var(--ink-2); font: 750 .7rem/1.3 var(--font-sans); font-stretch: var(--expanded); text-transform: uppercase; }
 .evidence.owned { border-color: var(--ink); background: var(--geist); color: #121212; }
-.gear-lower { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); margin-top: var(--space-8); }
+.gear-lower { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-7); margin-top: var(--space-8); }
 .gear-lower section { border-top: 8px solid var(--dept); padding-top: var(--space-3); }
 .block-label { margin: 0 0 var(--space-3); font: 900 1.4rem/1 var(--font-sans); font-stretch: var(--condensed); text-transform: uppercase; }
 .plain-list, .kit-list { margin: 0; padding: 0; list-style: none; }
 .plain-list li { padding: var(--space-3) 0; border-top: 1px solid var(--rule); }
 .plain-list a { font: 800 1.1rem/1.2 var(--font-sans); font-stretch: 88%; }
 .plain-list p { margin: 4px 0 0; color: var(--ink-2); font-size: .94rem; }
-.kits-note { margin: 0 0 var(--space-3); color: var(--ink-2); font-size: .94rem; }
-.kit-list { columns: 2 200px; column-gap: var(--space-5); }
-.kit-list li { break-inside: avoid; padding: 6px 0; border-top: 1px solid var(--rule); font-size: .95rem; }
-.desk-setup-notes { margin-top: var(--space-8); border-top: 8px solid var(--dept); padding-top: var(--space-3); }
-.desk-setup-notes .plain-list { columns: 2 280px; column-gap: var(--space-5); }
-.desk-setup-notes .plain-list li { break-inside: avoid; }
-.desk-setup-notes .kicker { display: inline-block; margin: 0 0 4px; }
+.gear-note { margin: 0 0 var(--space-3); color: var(--ink-2); font-size: .94rem; }
+.more-product-decisions { margin-top: var(--space-8); border-top: 8px solid var(--dept); padding-top: var(--space-3); }
+.more-product-decisions .plain-list { columns: 2 280px; column-gap: var(--space-5); }
+.more-product-decisions .plain-list li { break-inside: avoid; }
+.more-product-decisions .kicker { display: inline-block; margin: 0 0 4px; }
 @media (max-width: 1060px) {
   .products { grid-template-columns: 1fr 1fr; }
   .product, .product.owned { grid-column: span 1; }
 }
 @media (max-width: 700px) {
   .products, .gear-lower { grid-template-columns: 1fr; }
-  .desk-setup-notes .plain-list { columns: 1; }
+  .more-product-decisions .plain-list { columns: 1; }
   .product-art { height: 160px; }
   .product-art img { height: 128px; }
   .product.owned .product-art img { height: 136px; }

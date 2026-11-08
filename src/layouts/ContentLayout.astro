@@ -9,7 +9,7 @@ import { related, SECTIONS, TYPE_LABEL, TOPIC_LABEL, formatDate } from '../data/
 
 interface Props {
   title: string; description: string;
-  active?: 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
+  active?: 'gear' | 'guides' | 'labs' | 'certs';
   section?: Section;
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
@@ -24,7 +24,7 @@ const { title, description, active, section, noindex = false, structuredData, ra
 const path = Astro.url.pathname;
 const norm = path.endsWith('/') ? path : `${path}/`;
 const isDetail = (prefix: string) => path.startsWith(prefix) && path !== prefix;
-const isEditorialPage = ['/labs/', '/certs/', '/guides/', '/kits/'].some(isDetail);
+const isEditorialPage = ['/labs/', '/certs/', '/guides/'].some(isDetail);
 const isArticle = isEditorialPage || isDetail('/gear/');
 const entry = CATALOG.find((e) => e.href === norm);
 const articleTypes = ['troubleshooting', 'buying-guide', 'lab', 'lab-hardware', 'certification', 'course-review', 'study-log'];
@@ -95,9 +95,7 @@ const more = feature ? related(path, 5) : [];
   {isEditorialPage && !feature && (
     <aside class="editorial-byline" aria-label="Editorial information">
       <strong>Written and researched by <a href="/about/">Keith Casko</a>.</strong>{' '}
-      {path.startsWith('/kits/')
-        ? 'Retailer search items in this list have not been individually checked.'
-        : 'Technical claims are checked against the sources listed. Firsthand experience and research are labeled separately.'}
+      Technical claims are checked against the sources listed. Firsthand experience and research are labeled separately.
     </aside>
   )}
   {feature && (

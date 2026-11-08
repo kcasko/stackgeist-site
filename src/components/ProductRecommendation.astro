@@ -31,7 +31,7 @@ interface Props {
 const p = Astro.props;
 const illustration = p.imageUrl === "/gear/catalog-illustration.svg";
 ---
-<p class="breadcrumbs"><a href="/setups/midnight-shift">Midnight Shift</a> / <a href="/gear/desk-lighting">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
+<p class="breadcrumbs"><a href="/gear/">Gear</a> / <a href="/gear/desk-lighting">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
 <p class="page-kicker">{p.eyebrow}</p>
 <h1 class="page-title">{p.heading}</h1>
 <p class="page-lead">{p.intro}</p>
@@ -45,7 +45,7 @@ const illustration = p.imageUrl === "/gear/catalog-illustration.svg";
     </figure>
   ) : <SetupScene variant={p.kind === 'premium' ? 'screenbar' : 'bias'} />}
   <div class="recommend-copy">
-    <p class="page-kicker">{p.kind === 'premium' ? 'Best fit for Midnight Shift' : 'Budget fit for Midnight Shift'}</p>
+    <p class="page-kicker">{p.kind === 'premium' ? 'Best fit for task lighting' : 'Budget ambient lighting option'}</p>
     <h2>{p.productName}</h2>
     <p class="product-meta">{p.productMeta}</p>
     <div class="product-tags">{p.tags.map((tag,index) => <span class:list={['tag',{active:index===0}]}>{tag}</span>)}</div>

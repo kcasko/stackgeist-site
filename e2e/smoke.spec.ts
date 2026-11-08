@@ -22,10 +22,9 @@ test('USB-C checker gives a cautious result for unknown hardware', async ({ page
   await expect(page.locator('#usb-compat-summary')).toContainText('Compatibility is not confirmed');
 });
 
-test('active buying list displays honest CTA labels', async ({ page }) => {
-  const response = await page.goto('/kits/budget-video-call-kit/');
+test('gear product decision page remains available', async ({ page }) => {
+  const response = await page.goto('/gear/connectivity/anker-553-usb-c-hub/');
   expect(response?.status()).toBe(200);
-  await expect(page.locator('.kit-quick-tiers')).toBeVisible();
-  await expect(page.locator('.kit-action-btn').first()).toBeVisible();
-  await expect(page.locator('body')).not.toContainText('Check Price on Amazon');
+  await expect(page.locator('h1').first()).toBeVisible();
+  await expect(page.locator('a[data-affiliate-link]').first()).toHaveAttribute('rel', /sponsored/);
 });

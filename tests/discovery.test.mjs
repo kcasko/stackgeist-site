@@ -15,15 +15,6 @@ before(() => {
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
 });
 
-test('sitemap keeps the focus setup once and leaves archived setups out', async () => {
-  const sitemap = await read('dist/sitemap.xml');
-  assert.equal(sitemap.split('https://stackgeist.dev/setups/home-lab-dev-workstation/').length - 1, 1);
-  for (const slug of ['streaming-content-creator', 'console-living-room', 'sim-racing-flight']) {
-    assert.doesNotMatch(sitemap, new RegExp(`https://stackgeist\\.dev/setups/${slug}/`));
-  }
-  assert.doesNotMatch(sitemap, /https:\/\/stackgeist\.dev\/404/);
-});
-
 test('research placeholders are noindex, non-commercial, and excluded from sitemap', async () => {
   const sitemap = await read('dist/sitemap.xml');
   for (const slug of [
@@ -47,14 +38,4 @@ test('RSS feed publishes fixes, labs, and cert pages with canonical links', asyn
   assert.match(rss, /https:\/\/stackgeist\.dev\/guides\/sennheiser-momentum-4-wont-pair\//);
   assert.match(rss, /https:\/\/stackgeist\.dev\/labs\/active-directory-home-lab\//);
   assert.doesNotMatch(rss, /\/setups\//);
-});
-
-test('pages advertise the RSS feed and emit breadcrumb structured data', async () => {
-  const home = await read('dist/index.html');
-  assert.match(home, /rel="alternate"[^>]+type="application\/rss\+xml"[^>]+href="https:\/\/stackgeist\.dev\/rss\.xml"/);
-
-  const setup = await read('dist/setups/streaming-content-creator/index.html');
-  assert.match(setup, /"@type":"BreadcrumbList"/);
-  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups\/"/);
-  assert.match(setup, /"item":"https:\/\/stackgeist\.dev\/setups\/streaming-content-creator\/"/);
 });

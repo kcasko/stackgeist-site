@@ -66,16 +66,6 @@ test('primary navigation goes to hub pages, not deep-linked children', async () 
   }
 });
 
-test('setups and guides hub pages exist with h1 and template every setup card', async () => {
-  const setups = await read('src/pages/setups/index.astro');
-  const guides = await read('src/pages/guides/index.astro');
-  for (const src of [setups, guides]) assert.match(src, /<h1\b/);
-  assert.match(setups, /\$\{s\.slug\}\.png/);
-  for (const slug of ['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk', 'gaming']) {
-    assert.match(setups, new RegExp(`slug:'${slug}'`));
-  }
-});
-
 test('gear hub cards and product decision pages only load images from the self-hosted /gear path', async () => {
   const hub = await read('src/pages/gear/index.astro');
   const forbidden = /https?:\/\/[^"'\s]*(?:image\.benq\.com|cdn\.shopify\.com|images\.ctfassets\.net|assets2\.razerzone\.com)[^"'\s]*/i;
@@ -93,15 +83,6 @@ test('gear hub cards and product decision pages only load images from the self-h
     const src = await read(`src/pages/${slug}.astro`);
     assert.doesNotMatch(src, forbidden);
     assert.match(src, /\/gear\//);
-  }
-});
-
-test('setup detail pages ship a hero illustration with alt text', async () => {
-  for (const slug of ['midnight-shift', 'small-bedroom-gaming', 'budget-gaming-desk', 'gaming']) {
-    const src = await read(`src/pages/setups/${slug}.astro`);
-    assert.match(src, /SetupHero/);
-    assert.match(src, new RegExp(`/setups/${slug}\\.png`));
-    assert.match(src, /alt="/);
   }
 });
 

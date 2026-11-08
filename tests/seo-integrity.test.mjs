@@ -44,26 +44,6 @@ test('sitemap only lists indexable pages that exist', { skip: !existsSync(join(D
   }
 });
 
-test('exactly the fix and IT kits are indexable, and unchecked items stay labeled', { skip: !existsSync(DIST) }, () => {
-  const kitsDir = join(DIST, 'kits');
-  const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
-  let indexable = 0;
-  for (const slug of readdirSync(kitsDir)) {
-    const file = join(kitsDir, slug, 'index.html');
-    if (!existsSync(file)) continue;
-    const html = readFileSync(file, 'utf8');
-    if (/<meta name="robots" content="index/.test(html)) {
-      indexable += 1;
-      assert.ok(sitemap.includes(`/kits/${slug}/<`), `${slug} is indexable but missing from the sitemap`);
-    }
-    if (/kit-research/.test(html) && /tag=/.test(html)) {
-      assert.match(html, /have not been individually source-checked/, `${slug} has unlabeled search links`);
-      assert.match(html, /sponsored nofollow/, `${slug} has unqualified paid links`);
-    }
-  }
-  assert.equal(indexable, 14);
-});
-
 test('noindexed pages still let crawlers follow their links', { skip: !existsSync(DIST) }, () => {
   for (const file of htmlFiles(DIST)) {
     assert.doesNotMatch(readFileSync(file, 'utf8'), /<meta name="robots" content="noindex, nofollow/, routeOf(file));
@@ -79,7 +59,7 @@ test('search focus pages are indexable and in the sitemap', { skip: !existsSync(
 });
 
 test('archived desk pages stay online but out of search', { skip: !existsSync(DIST) }, () => {
-  for (const route of ['/setups/midnight-shift/', '/gear/monitor-support/ergotron-lx/', '/guides/desk-layout-basics/']) {
+  for (const route of ['/gear/monitor-support/ergotron-lx/', '/guides/desk-layout-basics/']) {
     assert.match(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /<meta name="robots" content="noindex, follow/, route);
   }
 });
@@ -95,7 +75,7 @@ test('offers stay hidden until they have an approved link', { skip: !existsSync(
 });
 
 test('public hubs do not expose internal marketing language', { skip: !existsSync(DIST) }, () => {
-  for (const route of ['/kits/', '/guides/', '/gear/']) {
+  for (const route of ['/guides/', '/gear/']) {
     assert.doesNotMatch(readFileSync(join(DIST, route, 'index.html'), 'utf8'), /social angles|income paths|monetized|ready to schedule/i, route);
   }
 });

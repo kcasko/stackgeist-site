@@ -41,8 +41,6 @@ export const TYPE_LABEL: Record<EntryType, string> = {
   'course-review': 'Course review',
   'study-log': 'Study log',
   product: 'Product notes',
-  kit: 'Buying list',
-  setup: 'Setup',
 };
 
 export const TOPIC_LABEL: Record<string, string> = {

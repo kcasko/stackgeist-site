@@ -3,7 +3,6 @@
 // but are noindex and left out of the sitemap. Remove a route here to restore it.
 
 const ARCHIVED_PREFIXES = [
-  '/setups',
   '/gear/accessories',
   '/gear/audio',
   '/gear/budget-tech',
@@ -24,7 +23,6 @@ const ARCHIVED_GUIDES = [
 
 // Exceptions inside an archived prefix that fit the focus.
 const KEPT_ROUTES = new Set([
-  '/setups/home-lab-dev-workstation',
   '/gear/input/logitech-mx-master-3s',
   '/gear/budget-tech/sennheiser-momentum-4-wireless-noise-cancelling-headphones',
   '/gear/budget-tech/wd-my-passport-4tb',

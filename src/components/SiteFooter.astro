@@ -22,7 +22,6 @@ const year = new Date().getFullYear();
         <a class="foot-head" href={SECTIONS[key].href}>{SECTIONS[key].label}</a>
         <ul>
           {entries(picks[key]).map((e) => <li><a href={e.href}>{e.title}</a></li>)}
-          {key === 'gear' && <li><a href="/kits/">Buying lists for labs and repairs</a></li>}
         </ul>
       </nav>
     ))}

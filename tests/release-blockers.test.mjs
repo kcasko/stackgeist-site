@@ -36,12 +36,6 @@ test('report SQL preserves untagged activity and filters synthetic traffic', () 
   }
 });
 
-test('kit search links use an honest action label', async () => {
-  const component = await readFile(new URL('../src/components/IncomeKitPage.astro', import.meta.url), 'utf8');
-  assert.match(component, /Browse options on Amazon/);
-  assert.doesNotMatch(component, /Check Price on Amazon/);
-});
-
 test('USB-C checker never guesses a port class bandwidth or guaranteed display count', async () => {
   const source = await readFile(new URL('../src/components/UsbCompatibilityChecker.astro', import.meta.url), 'utf8');
   assert.match(source, /Compatibility is not confirmed/);

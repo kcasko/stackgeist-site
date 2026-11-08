@@ -4,16 +4,16 @@ import { SECTIONS, SECTION_ORDER } from '../data/sections';
 import type { Section } from '../data/catalog';
 
 // `active` keeps the old route keys so existing pages need no edits.
-type LegacyKey = 'setups' | 'gear' | 'guides' | 'kits' | 'labs' | 'certs';
+type LegacyKey = 'gear' | 'guides' | 'labs' | 'certs';
 interface Props { active?: LegacyKey | Section }
 const { active } = Astro.props;
-const legacy: Record<string, Section> = { guides: 'fixes', certs: 'learning', kits: 'gear', setups: 'gear' };
+const legacy: Record<string, Section> = { guides: 'fixes', certs: 'learning', };
 const path = Astro.url.pathname;
 const fromPath: Section | undefined =
   path.startsWith('/guides') ? 'fixes'
   : path.startsWith('/labs') ? 'labs'
   : path.startsWith('/certs') || path.startsWith('/learning') ? 'learning'
-  : path.startsWith('/gear') || path.startsWith('/kits') || path.startsWith('/setups') ? 'gear'
+  : path.startsWith('/gear') ? 'gear'
   : undefined;
 const current: Section | undefined = active ? (legacy[active] ?? (active as Section)) : fromPath;
 ---

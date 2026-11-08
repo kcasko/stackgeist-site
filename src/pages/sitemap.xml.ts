@@ -1,10 +1,8 @@
 export const prerender = true;
 
-import { GENERATED_SETUPS } from '../data/gamingSetupOptions';
 import { troubleshootingHubs } from '../data/troubleshootingHubs';
 import { isArchivedRoute } from '../data/searchScope';
 import { RESEARCH_PENDING_ROUTES } from '../data/researchPending';
-import { INCOME_KITS, isKitIndexable } from '../data/incomeKits';
 
 const pageModules = import.meta.glob('./**/*.astro');
 
@@ -20,9 +18,7 @@ const staticRoutes = Object.keys(pageModules)
   .filter((route) => !editorialNoindexRoutes.has(route) && !route.startsWith('/gear/budget-tech/compare'));
 
 const dynamicRoutes = [
-  ...GENERATED_SETUPS.map((setup) => `/setups/${setup.slug}`),
   ...troubleshootingHubs.map((hub) => `/guides/${hub.slug}`),
-  ...INCOME_KITS.filter(isKitIndexable).map((kit) => `/kits/${kit.slug}`),
 ];
 const routes = [...new Set([...staticRoutes, ...dynamicRoutes])]
   .filter((route) => !isArchivedRoute(route))
