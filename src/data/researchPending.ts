@@ -29,7 +29,6 @@ export const RESEARCH_PENDING_ROUTES = new Set<string>([
   '/gear/budget-tech/usb-c-to-usb-a-adapter-2-pack',
   '/gear/budget-tech/usb-to-3-5mm-audio-adapter-cable',
   '/gear/desk-lighting/luminoodle',
-  '/gear/monitor-support/amazon-basics-dual-monitor-arm',
   '/native-iptv/privacy'
 ]);
 
