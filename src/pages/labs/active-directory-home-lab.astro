@@ -11,7 +11,7 @@ const structuredData = articleSchema({
   description,
   url: 'https://stackgeist.dev/labs/active-directory-home-lab/',
   datePublished: '2026-11-05',
-  dateModified: '2026-11-05',
+  dateModified: '2026-11-08',
 });
 ---
 <ContentLayout design="v2" title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
@@ -90,6 +90,21 @@ dcdiag /q</code></pre>
         <p>Microsoft offers Windows Server trials through its <a href="https://www.microsoft.com/en-us/evalcenter/" rel="noopener">Evaluation Center</a>. Check the current terms there. Then build the domain controller first, join one client, and break something on purpose. Pair it with <a href="/labs/osticket-docker-help-desk-lab/">a ticket system</a> so each fix leaves a record.</p> <p>Not sure your PC can run it? See <a href="/labs/vmware-homelab-hardware/">what hardware a VMware homelab actually needs</a>.</p>
       </section>
     </div>
+
+    <section class="content-section">
+      <p class="page-kicker">A repeatable diagnostic process</p>
+      <h2>In what order should you check a broken domain sign-in?</h2>
+      <figure class="sg-editorial-figure"><img src="/illustrations/ad-troubleshooting-sequence.svg" width="960" height="450" loading="lazy" alt="Active Directory troubleshooting sequence: client network, domain DNS, secure channel, and verification." /><figcaption>Original domain-client diagnostic flow. These are recommended checks, not evidence of a new live test.</figcaption></figure>
+      <p>A failed trust or sign-in is not automatically an Active Directory database problem. First make sure the workstation is on the intended virtual network and can reach the domain controller. Next check its DNS server and whether domain controller service records resolve. Only then investigate the secure channel and repair permissions.</p>
+      <pre><code>ipconfig /all
+nslookup -type=SRV _ldap._tcp.dc._msdcs.ad.bytegeist.lab
+nltest /dsgetdc:ad.bytegeist.lab
+Test-ComputerSecureChannel -Verbose</code></pre>
+      <p><strong>Expected results:</strong> a client configured to use the AD DNS server, a discoverable domain controller, and a healthy secure channel. If any earlier check fails, fix that layer first. Do not run a trust-repair command until the network and DNS are correct. Never present an illustrative command as if it was executed in production.</p>
+      <h2>How I'd document the next lab ticket</h2>
+      <p>Keep a ticket with the reported symptom, network adapter settings, DNS answer, secure-channel output, precise change, and a post-change verification. For FILE01, document both share permissions and NTFS effective access before changing inheritance; a broad deny entry can break legitimate access as easily as an overly broad allow can expose it.</p>
+      <p>This page intentionally keeps the shared-folder permissions issue marked unresolved until a fresh verified test establishes it was corrected.</p>
+    </section>
     <PartnerOffers ids={['comptiaPractice']} placement="lab-active-directory" />
   </article>
 </ContentLayout>

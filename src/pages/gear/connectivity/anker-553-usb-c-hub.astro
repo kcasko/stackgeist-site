@@ -29,4 +29,29 @@ const __sd = [productSchema({ name: "Anker 553 USB-C Hub (8-in-1)", description:
   />
 
   <section class="content-section related-reading"><p class="page-kicker">Troubleshooting</p><div class="cards"><a class="card" href="/guides/usb-c-dock-only-one-monitor"><h3>Only one monitor working through this hub?</h3><p>Diagnose the fix.</p></a></div></section>
+
+  <section class="content-section">
+    <p class="page-kicker">Compatibility first</p>
+    <h2>What the two HDMI sockets do not tell you</h2>
+    <p>The A8380 has two physical HDMI outputs. That is not a promise that every laptop can drive two independent external desktops. Anker specifies that the host must support DisplayPort Alt Mode. Windows display combinations vary with the host's DP capability, and Anker states that macOS does not support MST extended displays through this hub: its HDMI monitors mirror one another.</p>
+    <div class="note"><strong>Do this before buying:</strong> Find your laptop's exact model and USB-C port specification, check how many displays the GPU supports, then verify the resolution and refresh rate with Anker's model A8380 table. The hub cannot manufacture a video signal that the host does not send.</div>
+    <figure class="sg-editorial-figure"><img src="/illustrations/decision-usbc-hub-vs-thunderbolt.svg" width="960" height="450" loading="lazy" alt="Flow diagram: check laptop USB-C port, required displays, and peripherals before choosing a USB-C hub or Thunderbolt dock." /><figcaption>Original compatibility decision diagram. This is a conceptual guide, not an image of the Anker product.</figcaption></figure>
+    <h2>Check these real scenarios</h2>
+    <div class="article-cards">
+      <div><strong>Windows laptop with DP Alt Mode</strong><p>Potentially a good fit for dual HDMI when the host supports the required display mode. Check Anker's DP 1.2 and DP 1.4 resolution matrix instead of treating two sockets as a guarantee.</p></div>
+      <div><strong>Mac with two external monitors</strong><p>Do not buy expecting this hub to provide two independent extended screens through MST. Anker documents mirrored HDMI output on Mac laptops.</p></div>
+      <div><strong>USB-C port with data only</strong><p>Ethernet, USB, and cards may work while HDMI does not. Anker specifically requires host DP Alt Mode for video.</p></div>
+      <div><strong>Laptop needs charging</strong><p>The PD input accepts up to 100W, but Anker specifies up to 85W pass-through to the laptop. A suitable charger and cable are separate requirements; confirm the laptop actually accepts USB-C charging.</p></div>
+    </div>
+    <h2>If HDMI is black but Ethernet works</h2>
+    <ol class="article-steps">
+      <li><strong>Confirm host video</strong><span>Check the laptop manual for DP Alt Mode or an expressly supported USB-C display output. Do not assume all USB-C ports are equivalent.</span></li>
+      <li><strong>Try one monitor</strong><span>Connect one known-good HDMI monitor with its correct input selected. If it works, investigate multi-display support before replacing cables.</span></li>
+      <li><strong>Check OS display settings</strong><span>On Windows, choose Extend rather than Duplicate when independent screens are supported. On macOS, consult Anker's mirroring limitation first.</span></li>
+      <li><strong>Verify the charger</strong><span>Compare the laptop's charging requirement to the actual 85W host-output limit, not the 100W PD input rating.</span></li>
+    </ol>
+    <p>For a deeper diagnosis, follow <a href="/guides/usb-c-hub-ethernet-works-hdmi-doesnt/">USB-C hub Ethernet works but HDMI does not</a> or use the <a href="/tools/usb-c-compatibility/">compatibility checker</a>. Neither tool can certify an unverified laptop model.</p>
+    <p class="meta">Manufacturer source: <a href="https://www.anker.com/products/a8380">Anker 553 A8380 official port and compatibility specifications</a>. Product features are manufacturer claims; StackGeist has not benchmarked this unit.</p>
+  </section>
+
 </ContentLayout>

@@ -10,7 +10,7 @@ const structuredData = [
     description,
     url: 'https://stackgeist.dev/certs/wgu-d287-java-frameworks-review/',
     datePublished: '2026-11-06',
-    dateModified: '2026-11-06',
+    dateModified: '2026-11-08',
   }),
   faqSchema({ questions: [
     { question: 'What is the D287 project like?', answer: 'In my case it was a Spring Boot inventory application: controllers, templates, input validation, minimum and maximum inventory constraints, unit tests, and GitLab version control.' },
@@ -71,6 +71,24 @@ const structuredData = [
           <div><strong><a href="/certs/wgu-c949-data-structures-and-algorithms-review/">C949 Data Structures and Algorithms</a></strong><p>What made it hard, and what finally worked.</p></div>
           <div><strong><a href="/certs/wgu-d282-cloud-foundations-review/">D282 and AWS Cloud Practitioner</a></strong><p>How hands-on projects helped with cloud concepts.</p></div>
         </div>
+      </section>
+
+      <section class="content-section">
+        <p class="page-kicker">How to reason about the code</p>
+        <h2>Follow one browser request through the application</h2>
+        <p>Spring Boot becomes less overwhelming when you stop viewing it as one giant application. Start from the visible form or link, identify the controller action, follow the business rule or validation, then check where the state is loaded or saved. The view renders the result or returns a validation error.</p>
+        <figure class="sg-editorial-figure"><img src="/illustrations/spring-mvc-request-layers.svg" width="960" height="450" loading="lazy" alt="Conceptual flow from browser form to Spring controller, business-rule validation, repository, and view response." /><figcaption>Conceptual Spring MVC architecture. This is an original learning diagram, not WGU task code.</figcaption></figure>
+        <h2>Inventory limits are a boundary-testing problem</h2>
+        <p>Imagine an item with a documented minimum of 2 and maximum of 20 units. A validation rule should reject values below 2 or above 20 while accepting the boundaries themselves, assuming those are the stated business rules. Write tests for <code>1</code>, <code>2</code>, <code>20</code>, and <code>21</code>; that catches mistakes that a happy-path test with <code>10</code> never finds.</p>
+        <div class="article-cards">
+          <div><strong>Controller</strong><p>Which route receives the request? Which template or response should the user see when it succeeds or fails?</p></div>
+          <div><strong>Validation</strong><p>Can an invalid quantity bypass the visible form? Check server-side rules, not only the browser interface.</p></div>
+          <div><strong>Repository</strong><p>Where does the application read and persist data? Separate a display bug from a storage bug.</p></div>
+          <div><strong>Version control</strong><p>Commit one working change at a time so you can inspect exactly what introduced an unexpected result.</p></div>
+        </div>
+        <p>My course notes describe a Java membership roster exercise as well as the inventory application. Those are different pieces of work: the roster emphasized class design, encapsulation, ArrayList decisions and input validation; the Spring Boot application involved controllers, templates and inventory rules. Don't treat the roster as a Spring MVC example.</p>
+        <h2>What to use from Reddit, carefully</h2>
+        <p>Other students report difficulties navigating the project resources and differences between walkthroughs and task requirements. See the <a href="https://www.reddit.com/r/WGU/comments/18550iu/d287_java_frameworks/">D287 project walkthrough discussion</a> and a <a href="https://www.reddit.com/r/wgu_devs/comments/1r5kftz/d287_java_frameworks/">2026 discussion about changed requirements</a>. These are student anecdotes, not official project instructions. Check the current rubric before following any older guide, and don't reproduce someone else's assessment solution.</p>
       </section>
     </div>
   </article>

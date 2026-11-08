@@ -28,4 +28,29 @@ const __sd = [productSchema({ name: "CalDigit Thunderbolt Station 4 (TS4)", desc
     backLabel="Gear"
   />
   <section class="content-section related-reading"><p class="page-kicker">Sources</p><ol><li><a href="https://www.caldigit.com/thunderbolt-station-4/">CalDigit — TS4 ports, charging, and compatibility</a></li><li><a href="https://www.amazon.com/dp/B09GK8LBWS?tag=deskrespawn-20" rel="sponsored nofollow noopener noreferrer">Amazon — exact ASIN B09GK8LBWS identity</a></li></ol><div class="cards"><a class="card" href="/guides/usb-c-dock-compatibility"><h3>Run the dock compatibility checklist</h3><p>Start with host capability, displays, power, and bandwidth—not the number of sockets.</p></a><a class="card" href="/gear/connectivity/anker-553-usb-c-hub"><h3>Need a smaller hub instead?</h3><p>The Anker 553 covers a simpler portable connection set at lower cost.</p></a><a class="card" href="/guides/usb-c-dock-only-one-monitor"><h3>Dock only detecting one monitor?</h3><p>Diagnose the fix.</p></a></div></section>
+
+  <section class="content-section">
+    <p class="page-kicker">Before spending on a dock</p>
+    <h2>What 18 ports actually buys you</h2>
+    <p>CalDigit lists three Thunderbolt 4 sockets, but one is the host connection. The other two are downstream connections. The TS4 also has five USB-A ports, three additional USB-C data ports, a DisplayPort 1.4 socket, 2.5Gb Ethernet, and separate SD/microSD UHS-II readers. It is useful when you regularly need several of those capabilities at once, not merely because the total socket count is impressive.</p>
+    <figure class="sg-editorial-figure"><img src="/illustrations/decision-usbc-hub-vs-thunderbolt.svg" width="960" height="450" loading="lazy" alt="Diagram comparing the questions to ask before buying a simple USB-C hub or a full Thunderbolt dock." /><figcaption>Buy for the laptop's capabilities and required peripherals. Conceptual decision guide, not a TS4 product photo.</figcaption></figure>
+    <div class="article-cards">
+      <div><strong>Thunderbolt-equipped Windows laptop</strong><p>Check the exact Thunderbolt version, GPU display support, required monitors and monitor cable types. One Thunderbolt connection does not override the laptop's GPU output limits.</p></div>
+      <div><strong>Apple Silicon Mac</strong><p>Consult the Mac model's maximum external display count first. CalDigit supports many Mac models, but dock compatibility and permission to drive multiple independent displays are different questions.</p></div>
+      <div><strong>Basic USB-C host</strong><p>CalDigit says the dock can connect to USB-C computers, but functions are limited by host capability. You cannot assume full Thunderbolt bandwidth or display support from the connector shape.</p></div>
+      <div><strong>Large workstation</strong><p>The TS4 supplies up to 98W to the host. A laptop that needs a larger proprietary charger under sustained load may still require its original power adapter.</p></div>
+    </div>
+    <h2>Connect one system at a time to diagnose problems</h2>
+    <ol class="article-steps">
+      <li><strong>Start with the supplied host cable</strong><span>Connect the dock to the intended host port. A charge-only USB-C cable is not an equivalent Thunderbolt data cable.</span></li>
+      <li><strong>Test one display</strong><span>Connect through the TS4 DisplayPort output or a compatible downstream Thunderbolt adapter. Verify one display before troubleshooting two.</span></li>
+      <li><strong>Confirm Ethernet and peripherals</strong><span>Check the network adapter and one USB peripheral. Separate a video-path problem from a total dock connection problem.</span></li>
+      <li><strong>Add the second display</strong><span>Check CalDigit's current display compatibility table, operating system and laptop model. Avoid unsupported guesses based on peak link throughput.</span></li>
+      <li><strong>Review power and firmware</strong><span>Compare the 98W charging limit to actual laptop requirements, and use CalDigit's official support downloads for device-specific firmware instructions.</span></li>
+    </ol>
+    <h2>When a smaller hub makes more sense</h2>
+    <p>If your workflow is one 1080p display, wired Ethernet and a mouse, the <a href="/gear/connectivity/anker-553-usb-c-hub/">Anker 553</a> may cover the required ports for less money, provided its DP Alt Mode and OS limitations fit. If you frequently attach high-speed storage, wired networking, audio, several USB devices and capable external screens, the TS4's broader expansion is more relevant.</p>
+    <p class="meta">Manufacturer references: <a href="https://www.caldigit.com/thunderbolt-station-4/">CalDigit TS4 product specifications and compatibility</a> and <a href="https://www.caldigit.com/ts4-support/">TS4 support and downloads</a>. This is a source-based fit assessment, not an ownership claim or hands-on benchmark.</p>
+  </section>
+
 </ContentLayout>

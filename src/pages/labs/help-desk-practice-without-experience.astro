@@ -10,7 +10,7 @@ const structuredData = articleSchema({
   description,
   url: 'https://stackgeist.dev/labs/help-desk-practice-without-experience/',
   datePublished: '2026-11-05',
-  dateModified: '2026-11-05',
+  dateModified: '2026-11-08',
 });
 ---
 <ContentLayout design="v2" title={`${title} | StackGeist`} description={description} active="labs" structuredData={structuredData}>
@@ -67,6 +67,22 @@ const structuredData = articleSchema({
         <p>Describe it as a home lab on your resume and in interviews. It gives you specifics to discuss, but I can’t promise it will get you hired. Some employers also filter on certifications, so <a href="/certs/">compare those next</a>.</p>
       </section>
     </div>
+
+    <section class="content-section">
+      <p class="page-kicker">Practice exercise</p>
+      <h2>Try one complete ticket without inventing a customer</h2>
+      <p><strong>Scenario:</strong> A fictional employee reports: “I can sign in to Windows, but the team file share won't open.” Your goal is to distinguish network, DNS, authorization and server availability instead of immediately changing permissions.</p>
+      <ol class="article-steps">
+        <li><strong>Scope the symptom</strong><span>Does it affect one account or multiple people? Can the user reach other network resources? Record the error verbatim.</span></li>
+        <li><strong>Check basic reachability</strong><span>Confirm the correct lab network and name resolution. Do not assume a ping response proves SMB authorization.</span></li>
+        <li><strong>Check the resource</strong><span>Confirm the share exists and review the user's effective group memberships and share/NTFS permissions with a test account, not a real coworker's password.</span></li>
+        <li><strong>Make the smallest safe change</strong><span>Fix a missing group assignment or a path problem only after the evidence points there. Record who approved access in a real workplace.</span></li>
+        <li><strong>Verify as the affected user</strong><span>Test the original action, then check that unrelated users did not gain access.</span></li>
+      </ol>
+      <div class="note"><strong>Example ticket record:</strong> Symptom: “Access denied opening the IT share.” Evidence: share visible, file-server DNS resolves, account lacks expected group. Action: add approved account to the intended lab group. Verification: access restored after new sign-in; unauthorized test account still denied. This is a fictional exercise, not a claim that a customer ticket occurred.</div>
+      <h2>What to show an interviewer</h2>
+      <p>Save a sanitized incident write-up, a network diagram, relevant command output with secrets removed, and a short before/after explanation. That demonstrates your troubleshooting method without calling a personal lab paid IT experience. See the <a href="/labs/active-directory-home-lab/">Active Directory troubleshooting write-up</a> for the distinction between observed results and unfinished work.</p>
+    </section>
     <PartnerOffers ids={['comptiaPractice', 'linuxTraining']} placement="lab-help-desk-practice" />
   </article>
 </ContentLayout>

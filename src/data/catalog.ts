@@ -274,7 +274,7 @@ export const CATALOG: Entry[] = [
     title: "Sennheiser Momentum 4 not pairing",
     headline: "Sennheiser Momentum 4 won’t pair: pairing mode first, reset later.",
     dek: "Correct pairing slide, multipoint limits, and a clean reset sequence.",
-    updated: "2026-10-01"
+    updated: "2026-11-08"
   },
   {
     href: "/guides/keychron-v6-max-bluetooth-not-connecting/",
@@ -434,7 +434,7 @@ export const CATALOG: Entry[] = [
     title: "Active Directory home lab: what I built and what broke",
     headline: "Active Directory home lab: what I built and what broke",
     dek: "Four VMs, verified output, and three faults found during an audit.",
-    updated: "2026-11-05"
+    updated: "2026-11-08"
   },
   {
     href: "/labs/aws-cognito-private-crud-fix/",
@@ -454,7 +454,7 @@ export const CATALOG: Entry[] = [
     title: "Practice help desk work without a help desk job",
     headline: "How to practice help desk work without a help desk job",
     dek: "Where to get real tickets, what to practice, and how to show the work.",
-    updated: "2026-11-05"
+    updated: "2026-11-08"
   },
   {
     href: "/labs/homelab-equipment-for-beginners/",
@@ -524,7 +524,7 @@ export const CATALOG: Entry[] = [
     title: "WGU C949 Data Structures and Algorithms I review",
     headline: "WGU C949 Data Structures and Algorithms I: what made it hard, and what finally worked.",
     dek: "What made it hard, and what finally worked.",
-    updated: "2026-11-06"
+    updated: "2026-11-08"
   },
   {
     href: "/certs/wgu-d282-cloud-foundations-review/",
@@ -534,7 +534,7 @@ export const CATALOG: Entry[] = [
     title: "WGU D282 Cloud Foundations and AWS Cloud Practitioner review",
     headline: "WGU D282 Cloud Foundations and AWS Cloud Practitioner: what I studied, and where I was weakest.",
     dek: "What I studied and where I was weakest.",
-    updated: "2026-11-06"
+    updated: "2026-11-08"
   },
   {
     href: "/certs/wgu-d287-java-frameworks-review/",
@@ -544,7 +544,7 @@ export const CATALOG: Entry[] = [
     title: "WGU D287 Java Frameworks review",
     headline: "WGU D287 Java Frameworks: work through it in small, testable steps.",
     dek: "A Spring Boot project in small, testable steps.",
-    updated: "2026-11-06"
+    updated: "2026-11-08"
   },
   {
     href: "/certs/wgu-software-engineering-degree/",
@@ -604,7 +604,7 @@ export const CATALOG: Entry[] = [
     title: "Anker 553 8-in-1 USB-C hub",
     headline: "Add ports only after checking what the laptop USB-C port can do.",
     dek: "Check display, charging, port, and operating-system compatibility before buying the Anker 553 8-in-1 USB-C hub.",
-    updated: ""
+    updated: "2026-11-08"
   },
   {
     href: "/gear/connectivity/caldigit-ts4/",
@@ -614,7 +614,7 @@ export const CATALOG: Entry[] = [
     title: "CalDigit TS4 Thunderbolt dock",
     headline: "An excellent dock cannot add display support your laptop never had.",
     dek: "A fit-first CalDigit TS4 guide covering host compatibility, display limits, charging, ports, tradeoffs, and the exact Amazon listing.",
-    updated: "2026-11-06"
+    updated: "2026-11-08"
   },
   {
     href: "/gear/input/logitech-mx-master-3s/",

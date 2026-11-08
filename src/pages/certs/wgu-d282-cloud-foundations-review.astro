@@ -11,7 +11,7 @@ const structuredData = [
     description,
     url: 'https://stackgeist.dev/certs/wgu-d282-cloud-foundations-review/',
     datePublished: '2026-11-06',
-    dateModified: '2026-11-06',
+    dateModified: '2026-11-08',
   }),
   faqSchema({ questions: [
     { question: 'What does the AWS Cloud Practitioner exam cover?', answer: 'AWS lists four domains for CLF-C02: Cloud Concepts (24%), Security and Compliance (30%), Cloud Technology and Services (34%), and Billing, Pricing, and Support (12%). The exam has 50 scored and 15 unscored questions, with a passing scaled score of 700.' },
@@ -102,6 +102,22 @@ const domains = [
           <div><strong><a href="/certs/wgu-software-engineering-degree/">Every course in order</a></strong><p>My full course list, pass dates, and pace.</p></div>
           <div><strong><a href="/certs/wgu-c949-data-structures-and-algorithms-review/">C949 review</a></strong><p>What made it hard, and what finally worked.</p></div>
         </div>
+      </section>
+
+
+      <section>
+        <p class="page-kicker">A better study decision</p>
+        <h2>Use an AWS project to understand a service, then study its alternatives</h2>
+        <p>My Lambda, DynamoDB, IAM and Cognito work made those services easier to remember because I had seen what they do. The harder exam-preparation step was explaining when <em>not</em> to choose them. An application that stores records in DynamoDB does not teach you automatically when relational databases, object storage, or a queue would be more appropriate.</p>
+        <div class="article-cards">
+          <div><strong>Compute</strong><p>Explain the tradeoff among EC2 instances, Lambda functions and container services in plain English. Know who manages the servers and when code runs.</p></div>
+          <div><strong>Storage</strong><p>Distinguish S3 object storage, EBS block volumes, and EFS file storage using the kind of data and access pattern.</p></div>
+          <div><strong>Databases</strong><p>Compare a managed relational database such as RDS with DynamoDB's key-based NoSQL model. Do not treat all AWS databases as interchangeable.</p></div>
+          <div><strong>Security and cost</strong><p>Know that IAM policies define permission boundaries and that pricing and operational responsibility vary among services. Map those facts to the shared-responsibility model.</p></div>
+        </div>
+        <h2>Community resources: helpful, but not my personal study record</h2>
+        <p>A <a href="https://www.reddit.com/r/WGU/comments/1vunwjv/what_i_used_to_pass_d282/">2026 D282 Reddit discussion</a> recommends a free AWS Cloud Practitioner course, a video overview, and printable notes. That is another student's experience, not proof I used the same materials or that the course assessment requirements are identical. I would start with the <a href="https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html">official AWS exam guide</a> and use community resources to fill a specific knowledge gap.</p>
+        <p>My biggest practical recommendation is a simple two-column note: <strong>service</strong> and <strong>why I would choose it rather than a nearby alternative</strong>. When you cannot explain that distinction, return to that topic instead of repeating a whole practice exam.</p>
       </section>
 
       <PartnerOffers ids={['awsPractice']} placement="certs-wgu-d282" />

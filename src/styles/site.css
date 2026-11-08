@@ -395,3 +395,9 @@ figcaption { margin-top: var(--space-2); color: var(--ink-3); font-size: .86rem;
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media print { .site-masthead nav, .site-footer, .newsletter, .skip-link, .article-rail { display: none !important; } }
+
+/* Original technical diagrams: scale on small screens and preserve visual hierarchy. */
+.sg-editorial-figure { max-width: 960px; margin: 24px 0 28px; }
+.sg-editorial-figure img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); background: #fff; }
+.sg-editorial-figure figcaption { padding-top: 9px; color: var(--ink-3); font-size: .88rem; line-height: 1.5; }
+@media print { .sg-editorial-figure { break-inside: avoid; } }

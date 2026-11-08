@@ -7,7 +7,7 @@ articleSchema({
   headline:"Sennheiser Momentum 4 won't pair: use pairing mode, clear stale host state, then reset only if needed.",
   description:"Use Sennheiser’s documented 5-second pairing mode, remove stale host pairing records, test another device, and reserve the 20-second hardware reset for headphones that are not functioning correctly.",
   url:'https://stackgeist.dev/guides/sennheiser-momentum-4-wont-pair',
-  dateModified:'2026-11-07'
+  dateModified:'2026-11-08'
 }),
 howToSchema({
   name:'Reconnect Sennheiser Momentum 4 Wireless',
@@ -74,4 +74,28 @@ faqSchema({questions:[
 </ol></section>
 </div></article>
 <NewsletterSignup variant="inline" />
+
+  <section class="content-section">
+    <p class="page-kicker">Visual checklist</p>
+    <h2>Pairing mode, hardware restart, and factory reset are different</h2>
+    <figure class="sg-editorial-figure"><img src="/illustrations/momentum4-pairing-diagnostic.svg" width="960" height="450" loading="lazy" alt="Decision flow: enter pairing mode for five seconds, remove old Bluetooth pairing, test another host, and only then consider reset for malfunction." /><figcaption>Original diagnostic flow based on Sennheiser documentation. It is not a picture of the physical controls.</figcaption></figure>
+    <p>For ordinary pairing, Sennheiser's instruction manual describes a <strong>five-second</strong> button hold from power off. The headphones indicate discovery mode with a repeated white LED sequence and a pairing melody. If the device is not selected within the pairing window, repeat the sequence rather than holding the button indefinitely.</p>
+    <p><strong>Important distinction:</strong> Sennheiser's 2026 support pages describe both a roughly 20-second <em>hardware restart</em> for malfunction and a <em>factory-default reset</em> procedure that erases pairing settings. Follow the current support instructions for your exact device and firmware; do not erase saved pairings just because one laptop is misbehaving.</p>
+    <h2>Windows 11: isolate a stale Bluetooth device entry</h2>
+    <ol class="article-steps">
+      <li><strong>Open settings</strong><span>Go to Settings → Bluetooth &amp; devices. Check that Bluetooth is enabled and the headset is not already connected to another nearby host.</span></li>
+      <li><strong>Remove the old device</strong><span>Under Devices, find the MOMENTUM 4 entry and choose Remove device. This clears Windows' saved relationship, not every pairing stored in the headphones.</span></li>
+      <li><strong>Enter pairing mode</strong><span>Turn the headphones off, keep them near the PC, hold the multi-function button for the documented five seconds, then choose Add device → Bluetooth on Windows.</span></li>
+      <li><strong>Verify audio separately</strong><span>After Windows reports Connected, check Settings → System → Sound for the correct output. Bluetooth connection success does not guarantee the sound output is selected.</span></li>
+    </ol>
+    <h2>What the symptom tells you</h2>
+    <div class="article-cards">
+      <div><strong>Never appears in discovery</strong><p>Recheck the power-off and pairing sequence, move the headphones near the host, and test discovery on a second phone or PC.</p></div>
+      <div><strong>Appears but pairing fails</strong><p>Remove the previous host entry and retry. Also confirm the headphones are not reconnecting to a different saved host.</p></div>
+      <div><strong>Connected but no sound</strong><p>Check the operating system's audio output selection and the active audio session before resetting the headphones.</p></div>
+      <div><strong>Fails on two known-good hosts</strong><p>Follow Sennheiser's hardware reset support procedure; if it remains unresponsive, use warranty/support channels rather than guessing a repair.</p></div>
+    </div>
+    <p class="meta">Official references: <a href="https://cdn.sennheiser-hearing.com/product-documents/product-downloads/momentum-4-wireless/Instruction%20manual%20MOMENTUM%204%20Wireless/Instruction_manual_MOMENTUM_4_Wireless.pdf">MOMENTUM 4 instruction manual</a>, <a href="https://support.sennheiser-hearing.com/hc/en-us/articles/34920320323613-How-can-I-do-a-hardware-reset-of-the-headphones-Momentum-4-Wireless">hardware restart</a>, and <a href="https://support.sennheiser-hearing.com/hc/en-gb/articles/34920195661725-How-can-I-reset-the-headphones-MOMENTUM-4-Wireless-to-the-factory-default-settings">factory reset</a>. No new physical device testing is claimed.</p>
+  </section>
+
 </ContentLayout>
