@@ -8,7 +8,7 @@ const __sd = [
     headline: "External drive shows in Disk Management but not File Explorer: do this before formatting.",
     description: "If Windows sees the disk but File Explorer does not, check its drive letter, volume state, file system, and health before initializing or formatting anything.",
     url: 'https://stackgeist.dev/guides/external-drive-shows-in-disk-management-not-file-explorer',
-    dateModified: '2026-10-01'
+    dateModified: '2026-11-08'
   }),
   howToSchema({
     name: "Fix an external drive visible in Disk Management but missing from File Explorer",
@@ -34,7 +34,7 @@ const __sd = [
     <p class="breadcrumbs"><a href="/guides/">Fixes</a> / Disk Management but not File Explorer</p>
     <p class="page-kicker">Windows storage troubleshooting</p>
     <h1 class="page-title">External drive shows in Disk Management but not File Explorer: do this before formatting.</h1>
-    <p class="page-lead">If the drive appears in Disk Management, Windows can see the physical storage device. That changes the diagnosis. You are no longer troubleshooting “is the drive connected?” — you are troubleshooting the volume, drive letter, file system, or disk state.</p>
+    <p class="page-lead">If your external drive shows in Disk Management but not File Explorer, Windows sees the hardware but cannot read the volume. This guide walks you through checking the drive letter, partition state, and file system safely—without formatting anything.</p>
 
     <div class="article-summary"><strong>The five-minute answer</strong><p>Find the disk in Disk Management by capacity. If it contains a healthy partition but has no drive letter, assign an unused letter. If Windows shows RAW, Unallocated, Offline, or asks you to initialize a disk that contains important files, <strong>stop before formatting or initializing it</strong>. Those states need a different recovery decision.</p></div>
 
@@ -66,6 +66,7 @@ Get-Volume</code></pre>
       <section><p class="page-kicker">Step 05</p><h2>If it is a new empty drive, treat it differently.</h2><p>A genuinely new blank disk may need initialization, partition creation, formatting, and a drive letter before File Explorer can use it. Microsoft documents those actions in Disk Management. That is appropriate for a new empty disk — not as a blind repair step for an existing drive containing files.</p></section>
 
       <section><p class="page-kicker">Decision</p><h2>When to stop troubleshooting and protect the data.</h2><p>If the drive contains important files and suddenly appears as RAW, Unallocated, or with a missing partition, stop making write changes. If the drive is also disconnecting, clicking, or failing to stay online, prioritize data recovery or backup rather than “fixing” the partition table.</p>
+        <p>If the enclosure is failing but the bare drive inside is healthy, you can often access it directly with a <a href="/gear/budget-tech/sabrent-sata-to-usb-adapter-cable/">SATA-to-USB adapter cable</a> or a <a href="/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata/">lay-flat USB-C drive dock</a>.</p>
         <div class="cards">
           <a class="card" href="/guides/wd-elements-not-showing-up/"><h3>WD Elements not showing up</h3><p>USB power, cable, Disk Management, and drive-health triage.</p></a>
           <a class="card" href="/guides/microsd-card-not-detected/"><h3>microSD card not detected</h3><p>The same safe-storage principle applied to removable flash media.</p></a>
@@ -75,6 +76,7 @@ Get-Volume</code></pre>
 
       <section><p class="page-kicker">See also</p><div class="article-cards"><div><strong><a href="/guides/external-drive-says-you-need-to-format-it/">Drive says it needs formatting</a></strong><p>Protect the data before clicking Format.</p></div><div><strong><a href="/guides/how-to-tell-if-ssd-is-failing/">Is my SSD failing?</a></strong><p>Free health checks before you replace it.</p></div><div><strong><a href="/guides/external-ssd-not-showing-up-windows-11/">External SSD not showing up</a></strong><p>New drives, Mac formats, and data cables.</p></div></div></section>
 <PartnerOffers ids={['dataRecovery']} placement="guide-external-drive-shows-in-disk-management-not-file-explorer" />
+<section><p class="page-kicker">How this guide was made</p><p>This guide follows Microsoft’s Disk Management and PowerShell documentation, plus the partition-state guidance used by storage vendors including WD. StackGeist has not tested every failure mode.</p></section>
 <section><p class="page-kicker">Sources</p><ol class="article-list">
         <li><a href="https://support.microsoft.com/en-us/windows/experience/storage-filemanagement/disk-management-in-windows">Microsoft Support — Disk Management in Windows</a></li>
         <li><a href="https://learn.microsoft.com/en-us/powershell/module/storage/get-disk">Microsoft Learn — Get-Disk</a></li>

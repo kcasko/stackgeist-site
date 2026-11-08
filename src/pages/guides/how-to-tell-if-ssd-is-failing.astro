@@ -9,7 +9,7 @@ articleSchema({
   description:'Back up first, then read the SSD’s health data in Windows, PowerShell, or the manufacturer’s tool, check Event Viewer for disk errors, and replace the drive if errors or wear warnings appear.',
   url:'https://stackgeist.dev/guides/how-to-tell-if-ssd-is-failing',
   datePublished:'2026-11-05',
-  dateModified:'2026-11-05'
+  dateModified:'2026-11-08'
 }),
 howToSchema({
   name:'Check whether an SSD is failing',
@@ -35,7 +35,7 @@ faqSchema({questions:[
 <p class="breadcrumbs"><a href="/guides/">Fixes</a> / Is my SSD failing?</p>
 <p class="page-kicker">Storage troubleshooting</p>
 <h1 class="page-title">How to tell if your SSD is failing.</h1>
-<p class="page-lead">SSDs often fail with little warning, and some fail suddenly with no warning at all. The drive does keep health records you can read for free, though. If anything looks wrong, the right order is always the same: back up, check, then decide.</p>
+<p class="page-lead">If your SSD might be failing, back up first, then check its health with free Windows tools and the manufacturer’s utility. This guide shows you what symptoms mean, which readouts matter, and when to replace the drive.</p>
 
 <div class="article-summary"><strong>The five-minute answer</strong><p>Copy your important files somewhere else first. Then check the drive’s health in Windows 11 (<strong>Settings → System → Storage → Advanced storage settings → Disks &amp; volumes → Properties</strong>), or in the SSD maker’s free tool. Look for errors, a critical warning, or very low remaining life. If you see any of those, plus symptoms like freezes or corrupted files, replace the drive.</p></div>
 
@@ -48,7 +48,7 @@ faqSchema({questions:[
 </div></section>
 
 <section><p class="page-kicker">Step 01</p><h2>Back up before you test.</h2>
-<p>Any check that reads the whole drive puts load on it. If the drive is genuinely failing, that load can be the last thing it does. Copy the files you can’t lose to an external drive or cloud storage first. The <a href="/guides/back-up-windows-pc-before-replacing-drive/">backup guide</a> covers the free options.</p></section>
+<p>Any check that reads the whole drive puts load on it. If the drive is genuinely failing, that load can be the last thing it does. Copy the files you can’t lose to an external drive or cloud storage first. The <a href="/guides/back-up-windows-pc-before-replacing-drive/">backup guide</a> covers the free options, and a drive such as the <a href="/gear/budget-tech/wd-my-passport-4tb/">WD My Passport 4TB</a> gives you room to copy files. If you are removing a bare SATA or NVMe SSD, a <a href="/gear/budget-tech/sabrent-usb-c-lay-flat-drive-dock-nvme-sata/">USB-C lay-flat drive dock</a> makes connecting it much easier.</p></section>
 
 <section><p class="page-kicker">Step 02</p><h2>Check the health readout in Windows 11.</h2>
 <p>Go to <strong>Settings → System → Storage → Advanced storage settings → Disks &amp; volumes</strong>, choose the drive, and select <strong>Properties</strong>. For supported NVMe SSDs, Windows shows a <strong>Drive health</strong> section with estimated remaining life, available spare, and temperature. A warning such as “Reliability is degraded” means the drive has reported serious errors.</p>
@@ -75,7 +75,7 @@ faqSchema({questions:[
 </div>
 <p>If the drive is under warranty, the maker’s tool usually shows the serial number you need for a claim. Back up first, because warranty replacements don’t include your data.</p></section>
 
-<section><p class="page-kicker">How this guide was made</p><p>These checks are based on Microsoft documentation, linked below. StackGeist has not tested a failing SSD for this guide.</p></section>
+<section><p class="page-kicker">How this guide was made</p><p>These checks follow Microsoft’s PowerShell and Windows Storage documentation, plus the SMART/health reporting standards used by SSD makers including WD. StackGeist has not tested a failing SSD for this guide.</p></section>
 
 <section><p class="page-kicker">Related</p><h2>Next steps</h2>
 <div class="article-cards">
