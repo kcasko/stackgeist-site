@@ -1,5 +1,39 @@
 {
   "version": 1,
   "timezone": "America/Detroit",
-  "articles": []
+  "articles": [
+    {
+      "slug": "comptia-project-plus-pk0-005-study-guide",
+      "status": "published",
+      "section": "learning",
+      "type": "certification",
+      "topic": "project-management",
+      "title": "CompTIA Project+ PK0-005 study guide",
+      "headline": "CompTIA Project+ PK0-005: the complete exam overview and study guide",
+      "dek": "All four exam domains explained through scenarios, formulas and project-management distinctions.",
+      "publishDate": "2026-11-11",
+      "approvedBy": "kcasko",
+      "approvedAt": "2026-11-11T11:01:29-05:00",
+      "assets": [
+        {
+          "source": "editorial/staged/assets/comptia-project-plus-pk0-005-study-guide/project-plus-risk-issue-change.svg",
+          "target": "public/illustrations/project-plus-risk-issue-change.svg"
+        },
+        {
+          "source": "editorial/staged/assets/comptia-project-plus-pk0-005-study-guide/project-plus-life-cycle.svg",
+          "target": "public/illustrations/project-plus-life-cycle.svg"
+        },
+        {
+          "source": "editorial/staged/assets/comptia-project-plus-pk0-005-study-guide/project-plus-critical-path.svg",
+          "target": "public/illustrations/project-plus-critical-path.svg"
+        },
+        {
+          "source": "editorial/staged/assets/comptia-project-plus-pk0-005-study-guide/project-plus-agile-charts.svg",
+          "target": "public/illustrations/project-plus-agile-charts.svg"
+        }
+      ],
+      "publishedAt": "2026-11-11T16:02:23.189Z",
+      "publishedDate": "2026-11-11"
+    }
+  ]
 }

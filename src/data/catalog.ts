@@ -27,6 +27,17 @@ export type Entry = {
 
 export const CATALOG: Entry[] = [
   {
+    href: "/certs/comptia-project-plus-pk0-005-study-guide/",
+    section: "learning",
+    type: "certification",
+    topic: "project-management",
+    title: "CompTIA Project+ PK0-005 study guide",
+    headline: "CompTIA Project+ PK0-005: the complete exam overview and study guide",
+    dek: "All four exam domains explained through scenarios, formulas and project-management distinctions.",
+    updated: "2026-11-11",
+  },
+
+  {
     href: "/guides/usb-c-dock-only-one-monitor/",
     section: "fixes",
     type: "troubleshooting",

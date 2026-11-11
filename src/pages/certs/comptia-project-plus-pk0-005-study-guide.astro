@@ -1,0 +1,194 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { articleSchema } from '../../lib/structured-data';
+const title = 'CompTIA Project+ PK0-005 study guide: all four exam domains explained';
+const description = 'A practical PK0-005 exam overview covering all four domains, Scrum, risk and change control, critical path, EVM formulas, charts, project phases and IT governance.';
+const structuredData = articleSchema({headline:title,description,url:'https://stackgeist.dev/certs/comptia-project-plus-pk0-005-study-guide/',datePublished:'2026-11-11',dateModified:'2026-11-11'});
+const topics = [
+  ['Exam overview','exam-overview'],['Domain 1: Project management concepts','concepts'],
+  ['Domain 2: Project life cycle','life-cycle'],['Domain 3: Tools and documentation','tools'],
+  ['Domain 4: IT and governance','governance'],['Formulas and worked examples','formulas'],
+  ['Exam traps and study checklist','exam-traps'],['Sources','sources'],
+];
+---
+<ContentLayout design="v2" title={`${title} | StackGeist`} description={description} active="certs" structuredData={structuredData}>
+  <article class="article-page">
+    <p class="breadcrumbs"><a href="/learning/">Learning</a> / <a href="/certs/">Certifications</a> / Project+ PK0-005</p>
+    <p class="page-kicker">Certification study guide · PK0-005 · 11 November 2026</p>
+    <h1 class="page-title">CompTIA Project+ PK0-005: the complete exam overview and study guide</h1>
+    <p class="page-lead">A vendor might miss a deadline. Is that a risk or an issue? Your sponsor wants another feature. Can the developers just build it? Project+ wraps everyday project decisions in unfamiliar terminology. Here's the practical version, with worked examples instead of an answer dump.</p>
+    <div class="article-summary">
+      <strong>Start here</strong>
+      <p>PK0-005 covers project management concepts (33%), project life cycle phases (30%), tools and documentation (19%), and IT governance (18%). Read the four domains in order, then use the formulas and exam-trap tables for targeted revision. This is an independent overview, not official CompTIA training and not a report of passing Project+.</p>
+    </div>
+    <nav aria-label="On this page" class="article-summary">
+      <strong>On this page</strong>
+      <ol>{topics.map(([name,id]) => <li><a href={`#${id}`}>{name}</a></li>)}</ol>
+    </nav>
+    <div class="article-body">
+      <section id="exam-overview">
+        <p class="page-kicker">Before you study</p>
+        <h2>Exam structure and what Project+ actually tests</h2>
+        <p>Project+ checks whether you can coordinate a temporary effort to deliver a defined outcome. Building an inventory app is a project. Operating it after release is ongoing work. A <strong>program</strong> coordinates related projects to realize benefits, while a <strong>portfolio</strong> groups investments to meet strategic goals.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="CompTIA Project Plus exam details">
+          <table class="lab-table"><tbody>
+            <tr><th scope="row">Exam</th><td>PK0-005</td></tr><tr><th scope="row">Maximum questions</th><td>95</td></tr><tr><th scope="row">Time limit</th><td>90 minutes</td></tr><tr><th scope="row">Question formats</th><td>Multiple-choice and performance-based</td></tr><tr><th scope="row">Passing score</th><td>710 on a 100–900 scaled score</td></tr>
+          </tbody></table>
+        </div>
+        <p>710 is a scaled score, not a requirement to get precisely 71% of questions correct. Consult the <a href="https://www.comptia.org/en-us/certifications/project/" rel="noopener">current CompTIA Project+ page</a> before booking.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Project Plus exam domain weights"><table class="lab-table"><thead><tr><th scope="col">Domain</th><th scope="col">Weight</th></tr></thead><tbody>
+          <tr><td>1. Project Management Concepts</td><td>33%</td></tr><tr><td>2. Project Life Cycle Phases</td><td>30%</td></tr><tr><td>3. Tools and Documentation</td><td>19%</td></tr><tr><td>4. Basics of IT and Governance</td><td>18%</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="concepts">
+        <p class="page-kicker">Domain 1 · 33%</p>
+        <h2>Project management concepts</h2>
+        <h3>Waterfall, Agile, Hybrid and Scrum</h3>
+        <p><strong>Waterfall</strong> uses a mostly predictive approach with requirements and plans established early. It fits relatively stable requirements. <strong>Agile</strong> delivers work incrementally and adapts through feedback. <strong>Hybrid</strong> combines predictive and adaptive methods, such as fixed compliance requirements with iterative user-interface development.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Methods and frameworks"><table class="lab-table"><thead><tr><th scope="col">Approach</th><th scope="col">What makes it different</th></tr></thead><tbody>
+          <tr><th scope="row">Scrum</th><td>Fixed-length sprints, a Product Backlog, review and retrospective</td></tr><tr><th scope="row">Kanban</th><td>Visualizes work stages and limits work in progress</td></tr><tr><th scope="row">DevOps</th><td>Collaboration and automation between development and operations</td></tr><tr><th scope="row">DevSecOps</th><td>Builds security into those development and operations workflows</td></tr><tr><th scope="row">XP</th><td>Engineering practices such as pair programming and test-driven development</td></tr><tr><th scope="row">PRINCE2</th><td>Structured project governance and stage controls</td></tr><tr><th scope="row">SAFe</th><td>Coordinates Agile across larger organizations and multiple teams</td></tr>
+        </tbody></table></div>
+        <h3>Scrum responsibilities and events</h3>
+        <p><strong>Product Owner:</strong> accountable for product value and ordering the Product Backlog. <strong>Scrum Master:</strong> accountable for Scrum effectiveness, not the boss assigning everyone's tasks. <strong>Developers:</strong> create the usable increment and plan how to do the work.</p>
+        <ul class="article-list"><li><strong>Sprint Planning:</strong> establish sprint goal and plan.</li><li><strong>Daily Scrum:</strong> developers inspect progress and adapt their plan.</li><li><strong>Sprint Review:</strong> inspect product outcomes with stakeholders.</li><li><strong>Sprint Retrospective:</strong> improve teamwork and processes.</li></ul>
+        <p>The Product Backlog is the ordered list of product work. The Sprint Backlog includes the Sprint Goal, selected work, and plan. An Increment meets the Definition of Done. Agile welcomes change, but new requests should not arbitrarily endanger an active sprint goal.</p>
+        <h3>Project constraints and organizational structures</h3>
+        <p>Scope, time, cost, quality, resources and risk pull against one another. Adding features can require more money or time. A fixed deadline does not make extra work disappear.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Organizational structures"><table class="lab-table"><thead><tr><th scope="col">Structure</th><th scope="col">Authority</th></tr></thead><tbody>
+          <tr><th scope="row">Functional</th><td>Functional managers control department staff; PM has little authority</td></tr><tr><th scope="row">Weak matrix</th><td>Functional manager dominates</td></tr><tr><th scope="row">Balanced matrix</th><td>PM and functional manager share authority</td></tr><tr><th scope="row">Strong matrix</th><td>PM has stronger project authority, with dual reporting</td></tr><tr><th scope="row">Projectized</th><td>PM controls most dedicated project resources</td></tr>
+        </tbody></table></div>
+        <h3>Who's responsible?</h3>
+        <p>The <strong>sponsor</strong> provides business justification, executive support and funding. The <strong>project manager</strong> coordinates delivery and constraints. A <strong>functional manager</strong> manages department personnel. A <strong>business analyst</strong> clarifies requirements; an <strong>SME</strong> supplies specialist knowledge; a <strong>PMO</strong> supports or governs project practices.</p>
+        <p><strong>RACI</strong> means Responsible (does the work), Accountable (owns the outcome), Consulted (provides input), Informed (receives updates). Standard RACI assigns one accountable owner per task, although multiple people may be responsible.</p>
+        <h3>Stakeholders, communication and conflict</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Stakeholder power and interest grid"><table class="lab-table"><thead><tr><th scope="col">Power / Interest</th><th scope="col">Engagement</th></tr></thead><tbody>
+          <tr><td>High / High</td><td>Manage closely</td></tr><tr><td>High / Low</td><td>Keep satisfied</td></tr><tr><td>Low / High</td><td>Keep informed</td></tr><tr><td>Low / Low</td><td>Monitor</td></tr>
+        </tbody></table></div>
+        <p>Engagement may progress from unaware or resistant to neutral, supportive and leading. Match communication to actual needs: <strong>interactive</strong> is a meeting or call, <strong>push</strong> is email or a sent report, and <strong>pull</strong> is a shared wiki or dashboard.</p>
+        <p>Conflict options include collaborating (solve the cause together), compromising (each side concedes), smoothing/accommodating (emphasize agreement), forcing/directing (impose a decision), and withdrawing/avoiding (defer the dispute). Team development is often summarized as <strong>Forming → Storming → Norming → Performing → Adjourning</strong>.</p>
+        <h3>Risk, issue and change: three different things</h3>
+        <p>A vendor <em>might</em> be late: <strong>risk</strong>. The vendor confirms it is late: <strong>issue</strong>. The fix needs a new approved deadline: <strong>change request</strong>. Don't put every actual problem in a risk register or treat every risk as a current incident.</p>
+        <figure><img src="/illustrations/project-plus-risk-issue-change.svg" width="860" height="190" alt="Flow from uncertain risk, to confirmed issue, to impact assessment and a change request only if needed" loading="lazy"/><figcaption>A risk can become an issue. A change request is only needed when the solution requires controlled changes.</figcaption></figure>
+        <p>A <strong>risk register</strong> tracks probability, impact, triggers, owners, and planned responses. An <strong>issue log</strong> tracks actual problems, priority, ownership and resolution. A <strong>change log</strong> records requested modifications and decisions.</p>
+        <p><strong>Qualitative risk analysis</strong> ranks risks (high/medium/low). <strong>Quantitative analysis</strong> estimates numerical effects, including Expected Monetary Value (probability × monetary impact). A 30% chance of a $20,000 loss has an expected loss of $6,000, not a guaranteed $6,000 bill.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Risk responses"><table class="lab-table"><thead><tr><th scope="col">Threat</th><th scope="col">Meaning</th><th scope="col">Opportunity</th><th scope="col">Meaning</th></tr></thead><tbody>
+          <tr><td>Avoid</td><td>Eliminate exposure</td><td>Exploit</td><td>Ensure benefit occurs</td></tr><tr><td>Mitigate</td><td>Reduce likelihood or impact</td><td>Enhance</td><td>Increase likelihood or benefit</td></tr><tr><td>Transfer</td><td>Shift some consequences</td><td>Share</td><td>Partner to capture benefit</td></tr><tr><td>Accept</td><td>Acknowledge exposure</td><td>Accept</td><td>Take benefit if it occurs</td></tr>
+        </tbody></table></div>
+        <p>A <strong>contingency plan</strong> is the planned response if a risk occurs. A <strong>fallback</strong> is the backup if that response fails. <strong>Residual risk</strong> remains after mitigation; <strong>secondary risk</strong> arises from the response itself. Contingency reserves cover identified risk exposure; management reserves generally cover unforeseen work outside the cost baseline.</p>
+        <h3>Change control: don't implement first and ask later</h3>
+        <p>Document the requested change, assess impacts on scope/cost/schedule/quality/resources, submit it to the correct authority, record the decision, then update baselines and implement if approved. A project <strong>CCB</strong> may have delegated approval authority. An operational IT <strong>CAB</strong> handles certain live-service changes. The names do not make them interchangeable.</p>
+        <p><strong>Scope creep</strong> means uncontrolled expansion, not simply a customer asking for a feature. A formally approved scope change is controlled change.</p>
+        <h3>Quality assurance, control and procurement</h3>
+        <p><strong>Quality assurance (QA)</strong> improves the process that produces work; <strong>quality control (QC)</strong> inspects or tests the result. Improving code-review rules is QA. Finding defects in finished features is QC. <strong>Verification</strong> asks whether we built it correctly; <strong>validation</strong> whether we built the right product.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Procurement terms"><table class="lab-table"><thead><tr><th scope="col">Term</th><th scope="col">Use it when</th></tr></thead><tbody>
+          <tr><td>RFI</td><td>Learn what vendors offer</td></tr><tr><td>RFP</td><td>Solicit proposed solutions</td></tr><tr><td>RFQ</td><td>Obtain pricing for specified goods/services</td></tr><tr><td>SOW</td><td>Define the contracted deliverables and work</td></tr><tr><td>SLA</td><td>Define service-level commitments</td></tr><tr><td>Fixed-price</td><td>Agree price for defined scope</td></tr><tr><td>Time and materials</td><td>Pay for labor time and materials</td></tr><tr><td>Cost-reimbursable</td><td>Reimburse allowable costs under agreement</td></tr>
+        </tbody></table></div>
+        <p>If a vendor claims extra compensation for work already listed in a fixed-price SOW, review contractual obligations before approving additional payment or terminating the relationship.</p>
+      </section>
+      <section id="life-cycle">
+        <p class="page-kicker">Domain 2 · 30%</p>
+        <h2>Project life cycle: what happens, and when</h2>
+        <p>These phases answer different questions. <strong>Discovery:</strong> should we do it? <strong>Initiation:</strong> is it authorized? <strong>Planning:</strong> how will we deliver it? <strong>Execution:</strong> build it. <strong>Monitoring and controlling:</strong> is it on track? <strong>Closing:</strong> has everything actually been completed?</p>
+        <figure><img src="/illustrations/project-plus-life-cycle.svg" width="960" height="160" alt="Discovery, initiation, planning, execution and monitoring, closing as a project timeline" loading="lazy"/><figcaption>Monitoring and controlling happen alongside execution and other work, not only after development ends.</figcaption></figure>
+        <h3>Discovery and initiation</h3>
+        <p>A <strong>business case</strong> justifies the investment; a <strong>feasibility study</strong> examines technical, economic, operational, legal and schedule practicality. A <strong>gap analysis</strong> compares current and desired future states. <strong>ROI</strong> compares net benefits to investment costs; <strong>CapEx</strong> and <strong>OpEx</strong> distinguish capital investment from ongoing operational spending.</p>
+        <p>The <strong>project charter</strong> formally authorizes the work and establishes the project manager's authority. It names high-level objectives, scope, major milestones, sponsor, and key assumptions. The <strong>stakeholder register</strong> identifies affected people and their interests. Business case = justify; charter = authorize.</p>
+        <h3>Planning: turn goals into manageable work</h3>
+        <p>The <strong>scope statement</strong> describes inclusions, exclusions, and deliverables. A <strong>WBS</strong> decomposes scope into work packages; its <strong>dictionary</strong> explains those components. The integrated <strong>project management plan</strong> says how scope, cost, time, quality, risk, communication and resources will be managed.</p>
+        <p>Approved <strong>scope, schedule and cost baselines</strong> are references for measuring performance. A changing forecast is not the same as an authorized change to a baseline. Plan vendor work, training, go-live and handoff before the end.</p>
+        <h3>Execution and monitoring</h3>
+        <p>Execution produces deliverables: software, configured servers, migrations, documentation. Monitoring and controlling compare real results against plans, analyze variances, resolve issues, manage risks, report status, and control changes. A <strong>phase gate</strong> is an authorized go/no-go checkpoint, not just another team meeting.</p>
+        <p><strong>Corrective actions</strong> respond to existing deviations; <strong>preventive actions</strong> reduce future problems. Organizational change management helps users adopt the product through communication, training, and support.</p>
+        <h3>Closing and handoff</h3>
+        <p>Customer acceptance doesn't automatically settle vendor invoices, release team members or archive records. Closure includes formal sign-off, contract/financial closeout, resource release, access cleanup, lessons learned and a closeout report. <strong>Operational handoff</strong> transfers long-term ownership of the service. The project is temporary, but its output can continue operating.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Project documents by purpose"><table class="lab-table"><thead><tr><th scope="col">Document</th><th scope="col">Question it answers</th></tr></thead><tbody>
+          <tr><td>Business case</td><td>Why invest?</td></tr><tr><td>Project charter</td><td>What is authorized?</td></tr><tr><td>Management plan</td><td>How will we manage delivery?</td></tr><tr><td>WBS</td><td>What are the work packages?</td></tr><tr><td>Schedule baseline</td><td>What timing was approved?</td></tr><tr><td>Acceptance/sign-off</td><td>Did the customer formally accept?</td></tr><tr><td>Lessons learned</td><td>What should future teams repeat or change?</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="tools">
+        <p class="page-kicker">Domain 3 · 19%</p>
+        <h2>Tools and documentation: recognize the right chart</h2>
+        <p>Don't memorize charts in isolation. Ask what information the project manager needs: timing, dependencies, remaining work, bottlenecks, root causes, or process stability?</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Project tools"><table class="lab-table"><thead><tr><th scope="col">Tool</th><th scope="col">Best for</th></tr></thead><tbody>
+          <tr><td>Gantt chart</td><td>Tasks on a timeline, durations and overlaps</td></tr><tr><td>Network diagram</td><td>Dependencies, float and critical paths</td></tr><tr><td>Milestone chart</td><td>Major zero-duration events</td></tr><tr><td>PERT chart</td><td>Uncertain duration estimation and network scheduling</td></tr><tr><td>RACI</td><td>Responsibilities and ownership</td></tr><tr><td>Requirements Traceability Matrix</td><td>Connect requirements to work and tests</td></tr><tr><td>Project dashboard</td><td>Quick visual project health</td></tr><tr><td>Status report</td><td>Detailed progress, blockers, decisions and next steps</td></tr><tr><td>Task board</td><td>To Do, In Progress and Done workflow states</td></tr><tr><td>Version control</td><td>Track changes and history of files/code</td></tr>
+        </tbody></table></div>
+        <h3>Agile reporting: burndown isn't cumulative flow</h3>
+        <figure><img src="/illustrations/project-plus-agile-charts.svg" width="960" height="330" alt="Side-by-side burndown chart showing remaining work and cumulative flow chart showing a growing in-progress bottleneck" loading="lazy"/><figcaption>Burndown answers how much remains. Cumulative flow helps show where work is piling up.</figcaption></figure>
+        <ul class="article-list"><li><strong>Burndown:</strong> remaining work over time.</li><li><strong>Burnup:</strong> completed work relative to total scope, including scope growth.</li><li><strong>Velocity:</strong> work finished in each sprint, often story points; useful for forecasting but not a guarantee.</li><li><strong>Cumulative flow:</strong> work distributed among stages, useful for identifying expanding work in progress.</li></ul>
+        <h3>Quality and performance charts</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Quality charts"><table class="lab-table"><thead><tr><th scope="col">Chart</th><th scope="col">What to look for</th></tr></thead><tbody>
+          <tr><td>Pareto</td><td>Largest contributors to problems, ranked by category</td></tr><tr><td>Fishbone / Ishikawa</td><td>Possible underlying causes organized by category</td></tr><tr><td>Histogram</td><td>Frequency distribution of numeric measurements</td></tr><tr><td>Scatter</td><td>Relationship between two numeric variables, not proof of causation</td></tr><tr><td>Run chart</td><td>Measurements and trends over time</td></tr><tr><td>Control chart</td><td>Process measurements against statistically derived control limits</td></tr><tr><td>Decision tree</td><td>Alternatives, probabilities and possible consequences</td></tr>
+        </tbody></table></div>
+        <p>A <strong>run chart</strong> shows a trend; a <strong>control chart</strong> adds control limits. Control limits reflect observed process behavior, while specification limits define acceptable requirements. A <strong>Pareto</strong> chart prioritizes major categories; a <strong>fishbone</strong> diagram investigates possible causes.</p>
+        <p>Productivity tools also include calendars, chat, video calls, shared documents, spreadsheets, wikis, ticketing, scheduling applications, timesheets and collaboration systems. Cloud-hosted and on-premises tools differ in maintenance responsibility and deployment, not in whether project control is necessary.</p>
+      </section>
+      <section id="governance">
+        <p class="page-kicker">Domain 4 · 18%</p>
+        <h2>IT fundamentals, security and governance</h2>
+        <h3>Environmental, social and governance (ESG)</h3>
+        <p>Project decisions may affect energy consumption and e-waste (environmental), accessibility and employees (social), and legal obligations, organizational values or reputation (governance). Lowest cost is not always the authorized or responsible choice.</p>
+        <h3>Security and privacy</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Security concepts"><table class="lab-table"><thead><tr><th scope="col">Concept</th><th scope="col">Meaning</th></tr></thead><tbody>
+          <tr><td>Physical security</td><td>Protect facilities and devices; badges and restricted rooms</td></tr><tr><td>Operational security</td><td>Personnel procedures, screening, clearances</td></tr><tr><td>Digital security</td><td>Permissions, MFA, remote access controls</td></tr><tr><td>Data security</td><td>Classification and approved handling of information</td></tr><tr><td>Least privilege</td><td>Only the system permissions required for authorized work</td></tr><tr><td>Need-to-know</td><td>Only access sensitive data when duties require it</td></tr><tr><td>PII</td><td>Personally identifiable information</td></tr><tr><td>PHI</td><td>Protected health information in the applicable legal context</td></tr><tr><td>Data residency</td><td>Where data is physically stored</td></tr><tr><td>Data sovereignty</td><td>Laws and jurisdictions governing the data</td></tr>
+        </tbody></table></div>
+        <p>Know the broad relevance of HIPAA (certain US healthcare information), GDPR (EU personal data protection), PCI DSS (payment account data industry standard), SOX (financial reporting controls), and applicable state privacy laws. Regulations and standards are not interchangeable. Encryption does not automatically waive data-location rules.</p>
+        <h3>IT infrastructure and enterprise systems</h3>
+        <p>Recognize compute, storage, networking, databases, and analytical data warehouses. A common three-tier application separates presentation (interface), application logic (API/backend), and persistent data (database).</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="IT and cloud terms"><table class="lab-table"><thead><tr><th scope="col">Term</th><th scope="col">Meaning / example</th></tr></thead><tbody>
+          <tr><td>IaaS</td><td>Infrastructure service, for example Amazon EC2</td></tr><tr><td>PaaS</td><td>Managed application platform, for example Elastic Beanstalk</td></tr><tr><td>SaaS</td><td>Provider-managed finished application, such as Microsoft 365</td></tr><tr><td>XaaS</td><td>Anything as a Service umbrella term</td></tr><tr><td>ERP</td><td>Integrated business operations, finance, inventory</td></tr><tr><td>CRM</td><td>Customer relationships and interactions</td></tr><tr><td>DBMS</td><td>Database management</td></tr><tr><td>CMS</td><td>Content management</td></tr><tr><td>EDRMS</td><td>Electronic documents and records management</td></tr>
+        </tbody></table></div>
+        <p>Cloud does not remove customer responsibility for identities, application data and security configuration. The division of responsibilities changes with the service model.</p>
+        <h3>Operational IT change control</h3>
+        <p>Project change control governs project baselines. Operational change control governs modifications to live IT services. A deployment may require both. Typical steps: document and assess change, obtain required approvals, schedule a maintenance window, notify users, prepare rollback, deploy, validate and record results.</p>
+        <p><strong>Development</strong> is where code is created; <strong>testing/QA</strong> checks it; <strong>staging</strong> validates release readiness; <strong>production</strong> serves real users. A <strong>rollback</strong> restores a previous working state when the release fails.</p>
+        <p><strong>Continuous Integration</strong> frequently combines and tests code. <strong>Continuous Delivery</strong> keeps it releasable, possibly with manual production approval. <strong>Continuous Deployment</strong> automatically releases qualifying changes to production. DevSecOps integrates security into these practices.</p>
+      </section>
+      <section id="formulas">
+        <p class="page-kicker">Worked calculations</p>
+        <h2>Critical path, PERT, EVM and communication channels</h2>
+        <h3>Critical path and float</h3>
+        <p>Task A takes 3 days. Tasks B (5 days) and C (2 days) both follow A. Task D (4 days) waits for both B and C. The two paths are A → B → D = <strong>12 days</strong> and A → C → D = <strong>9 days</strong>. The 12-day path is critical. Task C's path has three days of float, assuming no other constraints.</p>
+        <figure><img src="/illustrations/project-plus-critical-path.svg" width="860" height="250" alt="Activity network with critical path A to B to D totaling 12 days, versus A to C to D totaling 9 days" loading="lazy"/><figcaption>The longest dependency path determines the earliest finish. A noncritical path can use its float before delaying the project.</figcaption></figure>
+        <p><strong>Total float = Late Start − Early Start</strong>, also Late Finish − Early Finish. <strong>Free float</strong> measures delay without affecting an immediate successor's early start.</p>
+        <h3>PERT duration estimate</h3>
+        <p>PERT = (Optimistic + 4 × Most Likely + Pessimistic) / 6. For 2, 4 and 10 days: (2 + 16 + 10) / 6 = <strong>4.67 days</strong>. The most-likely estimate carries four times the weight of the other individual estimates.</p>
+        <h3>Earned Value Management (EVM)</h3>
+        <p>Imagine a $100,000 project. At this date, 50% of the work was scheduled, 40% is actually complete, and spending totals $60,000. <strong>PV = $50,000</strong> (planned value), <strong>EV = $40,000</strong> (budgeted value earned), <strong>AC = $60,000</strong> (actual cost).</p>
+        <p><strong>CPI = EV / AC = 0.67.</strong> Cost efficiency is unfavorable: roughly $0.67 of budgeted work value per dollar spent. <strong>SPI = EV / PV = 0.80.</strong> The project has earned only 80% of its planned work value at this point.</p>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Project management formulas"><table class="lab-table"><thead><tr><th scope="col">Metric</th><th scope="col">Formula</th><th scope="col">Interpretation</th></tr></thead><tbody>
+          <tr><td>CPI</td><td>EV / AC</td><td>Cost efficiency</td></tr><tr><td>SPI</td><td>EV / PV</td><td>Schedule efficiency</td></tr><tr><td>CV</td><td>EV − AC</td><td>Cost variance</td></tr><tr><td>SV</td><td>EV − PV</td><td>Schedule variance in budgeted money, not days</td></tr><tr><td>EAC</td><td>BAC / CPI</td><td>Forecast total cost if current cost efficiency continues</td></tr><tr><td>ETC</td><td>EAC − AC</td><td>Forecast remaining cost</td></tr><tr><td>VAC</td><td>BAC − EAC</td><td>Forecast budget variance at completion</td></tr><tr><td>PERT</td><td>(O + 4M + P) / 6</td><td>Weighted duration estimate</td></tr><tr><td>Channels</td><td>n(n − 1) / 2</td><td>Possible pairwise communication links</td></tr><tr><td>EMV</td><td>Probability × financial impact</td><td>Probability-weighted expected outcome</td></tr><tr><td>ROI</td><td>Net benefit / investment cost × 100%</td><td>Simplified investment return</td></tr>
+        </tbody></table></div>
+        <p><strong>BAC</strong> is Budget at Completion. CPI or SPI below 1.0 is unfavorable; negative CV or SV is unfavorable. EAC has other variants for different forecasting assumptions. With six team members, there are 6 × 5 / 2 = <strong>15</strong> possible one-to-one communication channels, not 15 required meetings.</p>
+      </section>
+      <section id="exam-traps">
+        <p class="page-kicker">Revision</p>
+        <h2>Tricky distinctions and practical exam preparation</h2>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Common CompTIA Project Plus traps"><table class="lab-table"><thead><tr><th scope="col">If the scenario says…</th><th scope="col">Think about…</th></tr></thead><tbody>
+          <tr><td>Could happen</td><td>Risk</td></tr><tr><td>Has happened</td><td>Issue</td></tr><tr><td>Project isn't authorized</td><td>Project charter</td></tr><tr><td>Scope is expanding without control</td><td>Scope creep</td></tr><tr><td>More resources to shorten schedule</td><td>Crashing (often extra cost)</td></tr><tr><td>Overlap sequential tasks</td><td>Fast tracking (often extra risk)</td></tr><tr><td>Resource conflict may delay finish</td><td>Leveling</td></tr><tr><td>Move work within existing float</td><td>Smoothing</td></tr><tr><td>Prevent repeated defects</td><td>QA/process improvement</td></tr><tr><td>Inspect finished deliverable</td><td>QC</td></tr><tr><td>Vendor asks for extra payment</td><td>Review contract and SOW</td></tr><tr><td>Work is accepted but invoices remain</td><td>Finish administrative closure</td></tr><tr><td>Money already spent is used to justify continuing</td><td>Sunk cost fallacy</td></tr><tr><td>Production deployment is tested but unauthorized</td><td>Required operational approval</td></tr>
+        </tbody></table></div>
+        <p>For <strong>FIRST</strong> questions, identify the prerequisite action that hasn't been performed. For <strong>BEST</strong>, consider the full situation, including authority, existing plans, contracts, urgency and compliance. Don't automatically escalate every problem or choose "assess" when an approved emergency response must be carried out immediately.</p>
+        <h3>How to study without memorizing answer letters</h3>
+        <ul class="article-list">
+          <li>Use the official PK0-005 objective list as your coverage checklist.</li>
+          <li>For missed practice items, explain why each distractor is wrong.</li>
+          <li>Work critical path, EVM, PERT and float calculations without displaying the formulas.</li>
+          <li>Revisit near-duplicate chart and document terms: burndown/flow, QA/QC, charter/plan, risk/issue.</li>
+          <li>Measure readiness on fresh, mixed-domain practice questions rather than repeated memorized items.</li>
+        </ul>
+        <p>Personal note on the study process: I am working through WGU D324 as part of a Software Engineering degree. My initial CertMaster practice performance exposed gaps even where project decisions felt intuitive. That is why this guide emphasizes terminology, worked scenarios and the underlying decision process. It does <strong>not</strong> claim that I have passed the Project+ certification.</p>
+      </section>
+      <section id="sources">
+        <p class="page-kicker">Sources and scope</p>
+        <h2>Where to check the current exam requirements</h2>
+        <ul class="article-list">
+          <li><a href="https://comptiacdn.azureedge.net/webcontent/docs/default-source/exam-objectives/comptia-project-pk0-005-exam-objectives-%286-0%29.pdf?sfvrsn=c34efa21_2" rel="noopener">CompTIA Project+ PK0-005 official exam objectives, version 6.0</a> (domain structure and scope).</li>
+          <li><a href="https://www.comptia.org/en-us/certifications/project/" rel="noopener">CompTIA Project+ certification page</a> (current exam and scheduling details).</li>
+          <li><a href="https://scrumguides.org/scrum-guide.html" rel="noopener">The Scrum Guide</a> (Scrum accountabilities, events and artifacts).</li>
+          <li><a href="https://www.wiley.com/en-us/comptia-project-study-guide-exam-pk0-005-3rd-edition-p-9781119892458" rel="noopener">Wiley CompTIA Project+ Study Guide, PK0-005, 3rd edition</a> (supplementary study reference).</li>
+        </ul>
+        <p>This page explains published project management concepts using original examples. It doesn't reproduce protected practice exam questions, guarantee a passing score, or replace official objectives. StackGeist is independent of CompTIA and Western Governors University. Exam requirements can change; verify them before booking.</p>
+        <p><a href="/certs/">Browse more certification guides</a> · <a href="/learning/">Learning resources</a></p>
+      </section>
+    </div>
+  </article>
+</ContentLayout>
