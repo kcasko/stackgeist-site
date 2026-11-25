@@ -31,11 +31,11 @@ interface Props {
 const p = Astro.props;
 const illustration = p.imageUrl === "/gear/catalog-illustration.svg";
 ---
-<p class="breadcrumbs"><a href="/gear/">Gear</a> / <a href="/gear/desk-lighting">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
+<p class="breadcrumbs"><a href="/gear/">Gear</a> / <a href="/gear/desk-lighting/">Gear used</a> / {p.kind === 'premium' ? 'Desk lighting' : 'Budget lighting'}</p>
 <p class="page-kicker">{p.eyebrow}</p>
 <h1 class="page-title">{p.heading}</h1>
 <p class="page-lead">{p.intro}</p>
-<div class="page-actions"><a class="btn" href="/gear/desk-lighting">← Back to gear detail</a></div>
+<div class="page-actions"><a class="btn" href="/gear/desk-lighting/">← Back to gear detail</a></div>
 
 <section class="recommend-card">
   {p.imageUrl ? (
