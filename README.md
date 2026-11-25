@@ -27,3 +27,16 @@ Google's Indexing API is not for generic articles. The old submission script now
 ## Audit and fixes
 
 The original evidence is in `reports/comprehensive-audit-2026-11-06/`. Implementation checks and remaining account/release gates are recorded separately in `reports/audit-fixes-2026-11-06/`.
+
+## Agent development and creative standards
+
+All coding agents should start with [AGENTS.md](AGENTS.md). [CLAUDE.md](CLAUDE.md) and [.github/copilot-instructions.md](.github/copilot-instructions.md) point to the same policy. These instructions preserve this publication's existing editorial controls and favor independent critique, original editorial design, small changes, security, test evidence and explicit approval before release.
+
+- [Architecture and repository map](docs/ARCHITECTURE.md)
+- [Visual identity and design standards](docs/DESIGN_GUIDELINES.md)
+- [Security and privacy review](docs/SECURITY.md)
+- [Definition of done / quality checks](docs/QUALITY_CHECKLIST.md)
+- [Feature, design, release and retrospective templates](docs/templates/)
+- [Architecture decision record template](docs/decisions/ADR-0000-template.md)
+
+`.github/workflows/site-quality.yml` checks every pull request and can be triggered manually. It installs from the lockfile, builds **before** tests, then validates the staged editorial queue. The existing editorial-specific review and publish workflows remain in place. The general workflow does not publish or deploy. For local browser QA, set `PLAYWRIGHT_BASE_URL` to the local preview instead of relying on the default production URL.

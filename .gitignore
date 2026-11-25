@@ -49,3 +49,6 @@ scripts/_image_urls.json
 # The key itself lives at C:/Users/keith/AppData/Local/hermes/secrets/
 secrets/
 *.sa.json
+
+# private business notes (affiliate accounts, owned-product records)
+research_notes/private/
