@@ -7,7 +7,7 @@ articleSchema({
   headline:"Sennheiser Momentum 4 won't pair: use pairing mode, clear stale host state, then reset only if needed.",
   description:"Use Sennheiser’s documented 5-second pairing mode, remove stale host pairing records, test another device, and reserve the 20-second hardware reset for headphones that are not functioning correctly.",
   url:'https://stackgeist.dev/guides/sennheiser-momentum-4-wont-pair',
-  dateModified:'2026-11-08'
+  dateModified:'2026-11-19'
 }),
 howToSchema({
   name:'Reconnect Sennheiser Momentum 4 Wireless',
@@ -27,11 +27,11 @@ faqSchema({questions:[
 ]})
 ];
 ---
-<ContentLayout design="v2" structuredData={__sd} title="Sennheiser Momentum 4 won’t pair: correct pairing and reset steps | StackGeist" description="Pair Momentum 4 with Sennheiser’s documented 5-second pairing mode, clear stale host records, test another device, and use the 20-second hardware reset only when needed." active="guides">
+<ContentLayout design="v2" structuredData={__sd} title="Momentum 4 stuck in pairing mode or won't connect? | StackGeist" description="Pair Momentum 4 with Sennheiser’s documented 5-second pairing mode, clear stale host records, test another device, and use the 20-second hardware reset only when needed." active="guides">
 <article class="article-page">
 <p class="breadcrumbs"><a href="/guides/">Fixes</a> / Momentum 4 pairing</p>
 <p class="page-kicker">Bluetooth troubleshooting</p>
-<h1 class="page-title">Sennheiser Momentum 4 won't pair: pairing mode first, reset later.</h1>
+<h1 class="page-title">Sennheiser Momentum 4 stuck in pairing mode or won't connect?</h1>
 <p class="page-lead">Pairing mode and hardware reset are different procedures on Momentum 4. Start with the documented pairing sequence, clear stale host state, and use a reset only when the headphones themselves are not behaving correctly.</p>
 
 <div class="article-summary"><strong>The five-minute answer</strong><p>Turn the headphones off and place them near the device. Hold the multi-function button for <strong>5 seconds</strong> to enter pairing mode, then choose <strong>MOMENTUM 4</strong> from the Bluetooth list. If it was paired before, forget the old entry and retry. Test another phone/computer. If the headphones are unresponsive or functioning incorrectly, Sennheiser’s current support article documents an approximately <strong>20-second</strong> multi-function-button hold for a hardware reset.</p></div>
@@ -42,6 +42,12 @@ faqSchema({questions:[
 
 <section><p class="page-kicker">Step 02</p><h2>Remove the host’s stale pairing record.</h2>
 <p>If Momentum 4 is already listed but will not reconnect, forget/remove the device from the host Bluetooth settings, toggle Bluetooth off and back on, and pair again. This is less disruptive than factory-resetting the headphones.</p></section>
+
+<section><p class="page-kicker">Specific symptom</p><h2>MOMENTUM 4 stuck in pairing mode: what to check</h2>
+<p>If the white pairing LEDs keep cycling and the headphones will not connect, start on the phone or computer, not with a factory reset. Open its Bluetooth device list, remove any old MOMENTUM 4 entry, then search for new devices and select MOMENTUM 4 while the headphones are in pairing mode.</p>
+<p><strong>Normal timeout:</strong> Sennheiser's instruction manual says pairing mode ends after <strong>2 minutes</strong> without a connection and the headphones switch to standby. If the pairing sequence stops after that interval, it does not mean the headphones are stuck. Turn them off, restart pairing with the documented five-second hold, and try again.</p>
+<p><strong>Pairing repeatedly fails:</strong> Switch off Bluetooth on other nearby devices that previously connected to the headphones, then test discovery on a second known-good phone or computer. If the problem occurs on multiple hosts, follow Sennheiser's documented troubleshooting and hardware-reset guidance. A factory-default reset removes saved pairings, so do not use it as the first step.</p>
+</section>
 
 <section><p class="page-kicker">Step 03</p><h2>Use Sennheiser Smart Control to inspect saved connections.</h2>
 <p>Sennheiser documents a Connections function in Smart Control for selecting paired devices and removing pairing information. The headphones can save multiple profiles, so an old or unexpected active connection can matter.</p></section>
